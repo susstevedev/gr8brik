@@ -1,1 +1,4 @@
-Readme to create this folder
+# ALL OF EVERYTHING IN THIS FOLDER ARE OWNED BY LDRAW.ORG
+https://www.ldraw.org/legal-info
+# LDRAW.ORG CC BY 2.0 PARTS LIBRARY ATTRIBUTION
+https://www.ldraw.org/
