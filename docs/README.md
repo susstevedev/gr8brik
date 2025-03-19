@@ -9,3 +9,5 @@ Gr8brik is an all-in browser and online Lego modeler built with LdrawLoader and 
 - OrbitControls
 - TransformControls
 - SpectrumJS
+# How did you make lists of parts ?
+I used a custom built PHP script to collect a bunch of Ldraw blocks in custom lists so that it's easier for sorting and lower end devices to load.
