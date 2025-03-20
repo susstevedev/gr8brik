@@ -1,10 +1,3 @@
-<?php
-session_start();
-$user = false;
-if (!empty($_GET['user'])) {
-  $user = $_GET['user'];
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,6 +114,8 @@ if (!empty($_GET['user'])) {
       right: 10px !important;
       top: 5px !important;
       text-align: center;
+      color: #fff;
+      text-decoration: none;
     }
 
     #link-home {
@@ -217,9 +212,8 @@ if (!empty($_GET['user'])) {
 
 <body>
   <div id="top-container">
-    <span id="link-home"><img src="logo.jpg" id="logo-img" /><a
-        href="http://www.gr8brik.rf.gd"><span>&nbsp;Gr8brik&nbsp;</span></a></span>
-    <span id="username-field"></span>
+    <span id="link-home"><img src="/img/logo.jpg" id="logo-img" /><a href="http://www.gr8brik.rf.gd"><span>&nbsp;Gr8brik&nbsp;</span></a></span>
+    <a href="http://www.gr8brik.rf.gd/acc/login" id="username-field"></a>
   </div>
 
   <div id="info">
@@ -255,14 +249,14 @@ if (!empty($_GET['user'])) {
 
     <select id="part-type-filter" style="display: inline-block;">
       <option value="all">All Types</option>
-      <option value="Brick" selected>Bricks</option>
-      <option value="Plate">Plates</option>
-      <option value="Tile">Tiles</option>
-      <option value="Slope">Slopes</option>
-      <option value="Minifig">Minifigs</option>
-      <option value="Duplo">Duplo</option>
-      <option value="Animal">Animals</option>
-      <option value="Misc">Miscellaneous</option>
+      <option value="brick" selected>Bricks</option>
+      <option value="plate">Plates</option>
+      <option value="tile">Tiles</option>
+      <option value="slope">Slopes</option>
+      <option value="minifig">Minifigs</option>
+      <option value="duplo">Duplo</option>
+      <option value="animal">Animals</option>
+      <option value="misc">Miscellaneous</option>
     </select><br />
 
     <input type="text" id="search-parts" placeholder="search parts..." /><br />
@@ -288,21 +282,22 @@ if (!empty($_GET['user'])) {
   <script>
     var partColor = "#ff0000"; // red
     $(document).ready(function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      const userId = urlParams.get('user');
+      //const urlParams = new URLSearchParams(window.location.search);
+      //const userId = urlParams.get('user');
 
       function login() {
-        if (userId) {
+        //if (userId) {
           $.ajax({
-            url: "/ldraw/examples/files/profile.php",
+            url: "/ajax/user.php",
             method: "GET",
             data: {
-              user: userId
+              ajax: true
             },
             success: function (response) {
-              document.title = response.username + " | " + document.title;
-              $("#username-field").show().text(response.username);
-              tooltip('Logged in as ' + response.username);
+              document.title = response.user + " | " + document.title;
+              $("#username-field").show().text(response.user);
+              $("#username-field").attr("href", "/acc/creations");
+              tooltip('Logged in as ' + response.user);
             },
             error: function (jqXHR, textStatus, errorThrown) {
               var response = JSON.parse(jqXHR.responseText);
@@ -312,9 +307,9 @@ if (!empty($_GET['user'])) {
               tooltip(response.error);
             }
           });
-        } else {
+        /*} else {
           tooltip("Please login to save creations.");
-        }
+        }*/
       }
       login();
 
@@ -324,7 +319,7 @@ if (!empty($_GET['user'])) {
         console.log(`Loading ${type} parts...`);
 
         $.ajax({
-          url: `files/parts/${type}.json`,
+          url: `https://susstevedev.github.io/gr8brik-new/parts/${type}.json`,
           method: 'GET',
           dataType: 'json',
           success: function (data) {
@@ -393,12 +388,11 @@ if (!empty($_GET['user'])) {
           let screenshot = capture();
 
           $.ajax({
-            url: "build.php",
+            url: "/ajax/build.php",
             type: "POST",
             data: {
               save_build: true,
               creation: jsonData,
-              user: userId,
               name: name,
               desc: desc,
               screenshot: screenshot
@@ -482,25 +476,13 @@ if (!empty($_GET['user'])) {
     });
   </script>
   <script>
-    const white = new THREE.Color(0xffffff);
-    const black = new THREE.Color(0x000000);
-    const red = new THREE.Color(0xff0000);
-    const green = new THREE.Color(0x00ff00);
-    const blue = new THREE.Color(0x0000ff);
-
-    const isReleased = 0;
-    const version = "alpha7.0.1";
-
     const studSize = 1000;
-
     let partList = document.getElementById('blk');
     let colList = document.getElementById('select-color');
 
     document.getElementById("color-picker").addEventListener("click", function () {
       console.log("color picker clicked");
     });
-
-    let login = '<?php echo $user ?>';
 
     document.getElementById("toggleMenu").addEventListener("click", function () {
       var left = document.getElementById("left-container");
@@ -630,39 +612,39 @@ if (!empty($_GET['user'])) {
       scene.add(gridHelper);
 
       ldraw_loader = new THREE.LDrawLoader();
-      ldraw_loader.setPartsLibraryPath(
-        'https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/'
-      );
-      ldraw_loader.preloadMaterials(
-        'https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/colors/ldcfgalt.ldr'
-      );
+      ldraw_loader.preloadMaterials('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/colors/ldcfgalt.ldr');
+      ldraw_loader.setPath('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/');
+      ldraw_loader.setPartsLibraryPath("https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/");
       ldraw_loader.displayLines = false;
 
       raycaster = new THREE.Raycaster();
       mouse = new THREE.Vector2();
 
-      window.addEventListener('keydown', function (event) {
-        let activeElement = document.activeElement;
+        //no idea why i'm using a fucking switch case here
+        //TODO: replace this with a human readable if-elseif-else block
+        window.addEventListener('keydown', function (event) {
+            let activeElement = document.activeElement;
 
-        if (activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA") {
-          return;
-        }
+            if (activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA") {
+                console.log('could not change model translation because user is in an input field');
+                return;
+            }
 
-        switch (event.code) {
-          case 'KeyT':
-            moveBlock('t')
-            break
-          case 'KeyR':
-            moveBlock('r')
-            break
-          case 'KeyS':
-            moveBlock('s')
-            break
-          case 'KeyEscape':
-            transformControls.detach(selectedObject);
-            break
-        }
-      })
+            switch (event.code) {
+            case 'KeyT':
+                moveBlock('t')
+                break
+            case 'KeyR':
+                moveBlock('r')
+                break
+            case 'KeyS':
+                moveBlock('s')
+                break
+            case 'KeyEscape':
+                transformControls.detach(selectedObject);
+                break
+            }
+        })
 
       document.getElementById('move-block-t').addEventListener('click', function () {
         if (selectedObject) {
@@ -860,6 +842,8 @@ if (!empty($_GET['user'])) {
 
         blockGroup.name = `ldraw_${makeid(10)}`;
 
+        blockGroup.ldraw = part;
+
         blockGroup.userData.block_id = Date.now();
 
         blockGroup.add(loadedGroup);
@@ -899,6 +883,8 @@ if (!empty($_GET['user'])) {
       blockList.appendChild(listItem);
     }
 
+    // TODO: stop double encoding json
+    // @3/20/25 8:49 AM
     function generateSceneJSON() {
       let gr8brikid = {
         gr8brikid: [{
@@ -919,6 +905,7 @@ if (!empty($_GET['user'])) {
         });
 
         if (meshChild) {
+            let ldraw = group.ldraw.replace("parts/", "");
           const blockData = {
             partName: meshChild.userData.partName,
             color: meshChild.material.color.getHexString(),
@@ -938,6 +925,7 @@ if (!empty($_GET['user'])) {
               z: group.scale.z
             },
             blockID: group.name,
+            ldraw: ldraw,
           };
           sceneData.blocks.push(blockData);
         }
@@ -982,32 +970,26 @@ if (!empty($_GET['user'])) {
 
 
     function onWindowResize() {
-
-      camera.aspect = window.innerWidth / window.innerHeight;
-
-      camera.updateProjectionMatrix();
-
-      renderer.setSize(window.innerWidth, window.innerHeight);
-
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
     function moveBlock(mode) {
-      if (mode === "t") {
-        transformControls.setMode('translate');
-        tooltip('Changed to drag blocks');
-      }
+        if (mode === "t") {
+            transformControls.setMode('translate');
+            tooltip('Changed to drag blocks');
+        }
 
-      if (mode === "r") {
-        transformControls.setMode('rotate');
-        tooltip('Changed to rotate blocks');
-      }
+        if (mode === "r") {
+            transformControls.setMode('rotate');
+            tooltip('Changed to rotate blocks');
+        }
 
-      if (mode === "s") {
-        transformControls.setMode('scale');
-        tooltip(
-          'Changed to scale blocks (UNSUPPORTED BY API, WILL NOT DISPLAY AFTER UPLOADING TO DATABASE)'
-        );
-      }
+        if (mode === "s") {
+            transformControls.setMode('scale');
+            tooltip('Changed to secret scale blocks');
+        }
     }
 
     function animate() {
@@ -1034,13 +1016,11 @@ if (!empty($_GET['user'])) {
 
 
     function render() {
-
       renderer.render(scene, camera);
-
       renderer.outputColorSpace = THREE.SRGBColorSpace;
-
     }
 
+    // TODO: replace all of these styles with inline at the top of the page
     function tooltip(text) {
       const tooltip = document.createElement('div');
 
@@ -1069,7 +1049,7 @@ if (!empty($_GET['user'])) {
   <!-- LDRAW.ORG CC BY 2.0 PARTS LIBRARY ATTRIBUTION -->
   <div
     style="display: block; position: absolute; bottom: 0px; right: 0px; width: 175px; padding: 2px; border: #838A92 1px solid; background-color: #F3F7F8;">
-    <a href="http://www.ldraw.org"><img style="width: 145px" src="files/ldraw_org_logo/Stamp145.png"></a>
+    <a href="http://www.ldraw.org"><img style="width: 145px" src="https://threejs.org/examples/models/ldraw/ldraw_org_logo/Stamp145.png"></a>
     <a href="http://www.google.com/chromebook/" target="_blank">
       <img
         src="https://lh3.googleusercontent.com/1GkePzki6ZaVDoZOECVzvrrOu9jDOwinjdGafhaAjj9pfO9yFzqPqeuYOqIQ41JlwOlyNhAOrPSGGbioBeVd_eiH0cn_1X6uRWf-uA"
