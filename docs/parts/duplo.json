@@ -1,946 +1,1121 @@
 [
     {
-        "id": "67db0e681645b4.23285827",
-        "name": "=Duplo Pitchfork",
+        "id": "67e1bfdd76a8e8.86495150",
+        "name": "Duplo Pitchfork",
         "file": "10531.dat"
     },
     {
-        "id": "67db0e681665b7.22176416",
+        "id": "67e1bfdd771f31.14506325",
+        "name": "Duplo Car Base  2 x  6 with Wheels with Fake Bolts",
+        "file": "10715.dat"
+    },
+    {
+        "id": "67e1bfdd772d60.53687705",
         "name": "Duplo Car Base  2 x  6 with Red Wheels with Fake Bolts",
         "file": "10715p01.dat"
     },
     {
-        "id": "67db0e68166ad7.76370251",
+        "id": "67e1bfdd773ba9.82620990",
         "name": "Duplo Car Base  2 x  6 with Yellow Wheels with Fake Bolts",
         "file": "10715p02.dat"
     },
     {
-        "id": "67db0e68182534.40847726",
+        "id": "67e1bfdd7cbc37.54241260",
         "name": "Duplo Arch  2 x  4 x  2",
         "file": "11198.dat"
     },
     {
-        "id": "67db0e68191909.13552220",
+        "id": "67e1bfdd7f8467.89499298",
         "name": "~Duplo Car Base  2 x  6 with Bottom Tube",
         "file": "11248.dat"
     },
     {
-        "id": "67db0e681a2570.28276346",
+        "id": "67e1bfdd816d45.93521713",
         "name": "Duplo Door Frame  2 x  4 x  3 with Thick Top Rim",
         "file": "11345.dat"
     },
     {
-        "id": "67db0e681a2c03.90608711",
+        "id": "67e1bfdd817ad4.21507892",
         "name": "Duplo Car Base  2 x  6 with Mudguards",
         "file": "11377.dat"
     },
     {
-        "id": "67db0e681c5204.44183997",
+        "id": "67e1bfdd896f09.80090917",
         "name": "~Duplo Axle for Wheel Rim 11 x 17",
         "file": "12588.dat"
     },
     {
-        "id": "67db0e681c5882.27461563",
+        "id": "67e1bfdd897d14.13280884",
         "name": "~Duplo Wheel Rim 11 x 17",
         "file": "12589.dat"
     },
     {
-        "id": "67db0e681c5de4.70265392",
+        "id": "67e1bfdd898ba1.85384045",
         "name": "Duplo Wheel 11 x 17 with Black Tyre 11 \/ 45 x 17 and Black Attached Axle",
         "file": "12589c01.dat"
     },
     {
-        "id": "67db0e681c6320.18500840",
+        "id": "67e1bfdd899998.38496445",
         "name": "Duplo Wheel 11 x 17 with Dark Azure Tyre 11 \/ 45 x 17 and Black Attached Axle",
         "file": "12589c02.dat"
     },
     {
-        "id": "67db0e681c6898.75497180",
+        "id": "67e1bfdd89a713.07303760",
         "name": "Duplo Wheel 11 x 17 with Red Tyre 11 \/ 45 x 17 and Black Attached Axle",
         "file": "12589c03.dat"
     },
     {
-        "id": "67db0e681c6dc1.01095762",
+        "id": "67e1bfdd89b801.91654867",
         "name": "~Duplo Tyre 11 \/ 45 x 17",
         "file": "12590.dat"
     },
     {
-        "id": "67db0e681c7ee7.12014085",
+        "id": "67e1bfdd89e424.09401885",
         "name": "Duplo Fence with  6 Posts",
         "file": "12602.dat"
     },
     {
-        "id": "67db0e681df513.19663272",
+        "id": "67e1bfdd8d7e05.35913586",
         "name": "Duplo Train Crossing Gate Crossbar",
         "file": "13359.dat"
     },
     {
-        "id": "67db0e681dfa84.16596299",
+        "id": "67e1bfdd8d8f54.00353290",
         "name": "Duplo Train Crossing Gate Crossbar with Red Stripes Pattern",
         "file": "13359p01.dat"
     },
     {
-        "id": "67db0e6820c1b9.84588717",
+        "id": "67e1bfdd95a286.18017093",
+        "name": "Duplo Car Base  2 x  6 with Bottom Tube with Wheels with Fake Bolts",
+        "file": "14639.dat"
+    },
+    {
+        "id": "67e1bfdd95b002.44723543",
         "name": "Duplo Car Base  2 x  6 with Bottom Tube, with Red Wheels with Fake Bolts",
         "file": "14639p01.dat"
     },
     {
-        "id": "67db0e6820c749.79505290",
+        "id": "67e1bfdd95be69.19597499",
         "name": "Duplo Car Base  2 x  6 with Bottom Tube, with Yellow Wheels with Fake Bolts",
         "file": "14639p02.dat"
     },
     {
-        "id": "67db0e6820cca5.59798175",
+        "id": "67e1bfdd95cc11.06245127",
         "name": "Duplo Car Base  2 x  6 with Bottom Tube, with Lavender Wheels with Fake Bolts",
         "file": "14639p03.dat"
     },
     {
-        "id": "67db0e6820d1d0.09327158",
+        "id": "67e1bfdd95db81.69227077",
         "name": "Duplo Car Base  2 x  6 with Bottom Tube, with Light Bluish Grey Wheels with Fake Bolts",
         "file": "14639p04.dat"
     },
     {
-        "id": "67db0e6820d6f7.00075141",
+        "id": "67e1bfdd95ec41.09400442",
         "name": "Duplo Car Base  2 x  6 with Bottom Tube, with White Wheels with Fake Bolts",
         "file": "14639p05.dat"
     },
     {
-        "id": "67db0e6820dc05.71798720",
+        "id": "67e1bfdd95f9a0.20552207",
         "name": "Duplo Car Base  2 x  6 with Bottom Tube, with Medium Azure Wheels with Fake Bolts",
         "file": "14639p06.dat"
     },
     {
-        "id": "67db0e6820e175.25241460",
+        "id": "67e1bfdd960784.44255339",
         "name": "Duplo Car Base  2 x  6 with Bottom Tube, with Orange Wheels with Fake Bolts",
         "file": "14639p07.dat"
     },
     {
-        "id": "67db0e6820e6e0.93468179",
+        "id": "67e1bfdd9614c4.37358529",
         "name": "Duplo Car Base  2 x  6 with Bottom Tube, with Light Aqua Wheels with Fake Bolts Pattern",
         "file": "14639p08.dat"
     },
     {
-        "id": "67db0e68244d00.70401117",
+        "id": "67e1bfdda2ccf8.70080504",
         "name": "Duplo Propeller  3 Blade  4 Diameter",
         "file": "15211.dat"
     },
     {
-        "id": "67db0e682489e0.46098832",
+        "id": "67e1bfdda37fb2.70432647",
         "name": "Duplo Car Base  4 x  8",
         "file": "15314.dat"
     },
     {
-        "id": "67db0e68248f30.48945587",
+        "id": "67e1bfdda38e06.77448980",
+        "name": "~Duplo Wheel Rim 16 x 21",
+        "file": "15315.dat"
+    },
+    {
+        "id": "67e1bfdda39bd8.22068664",
+        "name": "Duplo Wheel 16 x 21 with Black Tyre 11 \/ 45 x 17 and Black Attached Axle",
+        "file": "15315c01.dat"
+    },
+    {
+        "id": "67e1bfdda3a993.69465843",
+        "name": "~Duplo Axle for Wheel Rim 16 x 21",
+        "file": "15316.dat"
+    },
+    {
+        "id": "67e1bfdda3b811.79034215",
+        "name": "~Duplo Tyre 13 \/ 50 x 21",
+        "file": "15317.dat"
+    },
+    {
+        "id": "67e1bfdda3c649.57028785",
         "name": "Duplo Shower Head on Stand with  1 x  1 Base",
         "file": "15327.dat"
     },
     {
-        "id": "67db0e68266961.99455476",
+        "id": "67e1bfdda70970.25064135",
+        "name": "Duplo Hook with Thick Bracing",
+        "file": "15449.dat"
+    },
+    {
+        "id": "67e1bfdda71b89.06081507",
+        "name": "Duplo Crane Base  2 x  2 with Hook Holder",
+        "file": "15450.dat"
+    },
+    {
+        "id": "67e1bfdda8a166.23422305",
         "name": "Duplo Plant Flower  4 x  4 x  1 with  5 Round Petals and  4 Top Studs",
         "file": "15515.dat"
     },
     {
-        "id": "67db0e68282333.40047799",
+        "id": "67e1bfddad6d71.58104243",
         "name": "Duplo Flag Wavy  2 x  5 without Slits",
         "file": "15793.dat"
     },
     {
-        "id": "67db0e6828fba3.24994862",
+        "id": "67e1bfddb02615.40304639",
         "name": "Duplo Cone  2 x  2 x  2 Square Base with Bottom Tube",
         "file": "16195.dat"
     },
     {
-        "id": "67db0e682a6b09.33288404",
+        "id": "67e1bfddb3d549.00040422",
         "name": "Duplo Roof Spire  3 x  3 x  3",
         "file": "16375.dat"
     },
     {
-        "id": "67db0e68330f52.08955744",
+        "id": "67e1bfddcbc5f6.62681318",
         "name": "Duplo Door  1 x  4 x  3 with Two Rounded Panes and Handle",
         "file": "18816.dat"
     },
     {
-        "id": "67db0e68336f19.58324492",
+        "id": "67e1bfddcca648.84677168",
         "name": "Duplo Door Frame  2 x  4 x  3 with Thin Top Rim",
         "file": "18857.dat"
     },
     {
-        "id": "67db0e6843f944.88008708",
+        "id": "67e1bfde0a8a24.66384619",
+        "name": "Duplo Arm  3L with Locking Ring",
+        "file": "21996.dat"
+    },
+    {
+        "id": "67e1bfde0ae9f7.37955657",
         "name": "Duplo Door  1 x  4 x  4 with Four Panes",
         "file": "2205.dat"
     },
     {
-        "id": "67db0e6843ff89.79496191",
+        "id": "67e1bfde0af8d1.09162375",
         "name": "Duplo Window  1 x  4 x  2 with Four Panes",
         "file": "2206.dat"
     },
     {
-        "id": "67db0e68440549.66148202",
+        "id": "67e1bfde0b0863.73408046",
         "name": "Duplo Building  6 x  8 x  6 with Front Windows",
         "file": "2207.dat"
     },
     {
-        "id": "67db0e68440ac9.78943361",
+        "id": "67e1bfde0b15b3.00884243",
         "name": "Duplo Building  6 x  8 x  6 with Front Windows with White Doors and Windows",
         "file": "2207c01.dat"
     },
     {
-        "id": "67db0e684412c7.30306882",
+        "id": "67e1bfde0b27f4.98691231",
         "name": "Duplo Building  6 x  8 x  6 with Front Windows with Firehouse Pattern",
         "file": "2207p01.dat"
     },
     {
-        "id": "67db0e68441868.60761402",
+        "id": "67e1bfde0b3608.53100526",
         "name": "Duplo Building  6 x  8 x  6 with Front Windows with Firehouse Pattern with White Doors and Windows",
         "file": "2207p01c01.dat"
     },
     {
-        "id": "67db0e68441fd0.06698078",
+        "id": "67e1bfde0b46f8.10450703",
         "name": "Duplo Door  1 x  4 x  6 with Six Panes",
         "file": "2208.dat"
     },
     {
-        "id": "67db0e68442692.30431192",
+        "id": "67e1bfde0b55b3.57926087",
         "name": "Duplo Door  1 x  3 x  6 with Four Panes",
         "file": "2209.dat"
     },
     {
-        "id": "67db0e68442c05.33707752",
+        "id": "67e1bfde0b6325.01160162",
         "name": "Duplo Building  6 x  8 x  6 with Door and Window",
         "file": "2210.dat"
     },
     {
-        "id": "67db0e68443142.97977700",
+        "id": "67e1bfde0b70c3.21894703",
         "name": "Duplo Building  6 x  8 x  6 with Door and Window with White Doors and Window",
         "file": "2210c01.dat"
     },
     {
-        "id": "67db0e68444197.77838823",
+        "id": "67e1bfde0b9eb9.37630404",
         "name": "Duplo Fence with  5 Posts",
         "file": "2214.dat"
     },
     {
-        "id": "67db0e6849cf05.65359791",
+        "id": "67e1bfde188a83.51880879",
+        "name": "Duplo Baseplate 16 x 24 with 93 Stud Irregular Gap",
+        "file": "2296.dat"
+    },
+    {
+        "id": "67e1bfde18fb04.57420144",
+        "name": "Duplo Baseplate 16 x 24 with 93 Stud Irregular Gap with Blue Pond Pattern",
+        "file": "2296p01.dat"
+    },
+    {
+        "id": "67e1bfde1908d2.94383359",
         "name": "~Duplo Plant Bush Half Shell",
         "file": "2297.dat"
     },
     {
-        "id": "67db0e6849ece3.74400963",
+        "id": "67e1bfde1950d0.00506970",
         "name": "~Duplo Plant Bush Insert",
         "file": "2298.dat"
     },
     {
-        "id": "67db0e684a17d5.12837802",
+        "id": "67e1bfde19c3d6.59076432",
         "name": "~Duplo Car Base  2 x  6",
         "file": "2312.dat"
     },
     {
-        "id": "67db0e684a1d38.72402652",
+        "id": "67e1bfde19d157.00182916",
         "name": "~Duplo Car Base  2 x  6 Wheel",
         "file": "2313a.dat"
     },
     {
-        "id": "67db0e684a2290.50215963",
+        "id": "67e1bfde19df84.47305107",
         "name": "~Duplo Car Base  2 x  6 Wheel with Fake Bolts",
         "file": "2313b.dat"
     },
     {
-        "id": "67db0e684a7612.02598835",
+        "id": "67e1bfde1a7735.93935503",
         "name": "~Duplo Door Frame  2 x  4 x  3 with Raised Door Outline (Obsolete)",
         "file": "2332.dat"
     },
     {
-        "id": "67db0e684aafb3.27617919",
+        "id": "67e1bfde1aced4.89011021",
         "name": "~Duplo Door Frame  2 x  4 x  3 with Raised Door Outline",
         "file": "2332a.dat"
     },
     {
-        "id": "67db0e684ab618.69091408",
+        "id": "67e1bfde1ade06.57254489",
         "name": "Duplo Door Frame  2 x  4 x  3 with Raised Door Outline (Complete)",
         "file": "2332ac01.dat"
     },
     {
-        "id": "67db0e68657345.15473277",
+        "id": "67e1bfde69e155.41943066",
         "name": "Duplo Door  1 x  4 x  3 with Cutout",
         "file": "27382.dat"
     },
     {
-        "id": "67db0e68657d52.45443647",
+        "id": "67e1bfde6a0f83.69976945",
         "name": "Duplo Cabinet  2 x  4 x  5",
         "file": "27395.dat"
     },
     {
-        "id": "67db0e689e8af7.08181111",
+        "id": "67e1bfdf1a79e3.19248588",
         "name": "Duplo Fence  1 x  6 x  2",
         "file": "31021.dat"
     },
     {
-        "id": "67db0e689e9030.55105571",
+        "id": "67e1bfdf1a8799.95141191",
         "name": "Duplo Fence  1 x  6 x  2 with Red Stripes Pattern",
         "file": "31021p01.dat"
     },
     {
-        "id": "67db0e689e96f4.43593729",
+        "id": "67e1bfdf1a9913.18054388",
+        "name": "Duplo Window  1 x  4 x  3 with Curved Top with Four Panes",
+        "file": "31022.dat"
+    },
+    {
+        "id": "67e1bfdf1aa791.29085143",
         "name": "Duplo Door  1 x  4 x  4 with Curved Top with Four Panes",
         "file": "31023.dat"
     },
     {
-        "id": "67db0e689ea7a6.24985720",
+        "id": "67e1bfdf1ab665.77972886",
+        "name": "Duplo Baseplate  8 x 12",
+        "file": "31043.dat"
+    },
+    {
+        "id": "67e1bfdf1adaf1.78436647",
         "name": "Duplo Furniture Table Round  4 x  4 x  1.5",
         "file": "31066.dat"
     },
     {
-        "id": "67db0e689f4d88.67371628",
+        "id": "67e1bfdf1aecd6.78220847",
+        "name": "Duplo Baseplate 12 x 16 with 12 x  4 Stud Gap",
+        "file": "31074.dat"
+    },
+    {
+        "id": "67e1bfdf1cb8b7.63514705",
+        "name": "Duplo Roof Sloped 33  4 x  4 with  9 Bottom Tubes with Awning Overhang",
+        "file": "31170.dat"
+    },
+    {
+        "id": "67e1bfdf1cc7d7.04041329",
         "name": "Duplo Door  1 x  4 x  4 with Flat Top with  9 Panes",
         "file": "31171.dat"
     },
     {
-        "id": "67db0e689f8285.87397364",
+        "id": "67e1bfdf1d5231.96074234",
         "name": "Duplo Kettle with Open Handles",
         "file": "31330.dat"
     },
     {
-        "id": "67db0e689f87a3.44271249",
+        "id": "67e1bfdf1d6166.78940620",
         "name": "Duplo Dish",
         "file": "31333.dat"
     },
     {
-        "id": "67db0e68a08e58.11158371",
+        "id": "67e1bfdf204231.37100427",
         "name": "Duplo Gear 24 Tooth Crown",
         "file": "31622.dat"
     },
     {
-        "id": "67db0e68a09404.77021077",
+        "id": "67e1bfdf205096.31062575",
         "name": "Duplo Axle  8 with Gear  8 Tooth",
         "file": "31623.dat"
     },
     {
-        "id": "67db0e68a09947.40039410",
+        "id": "67e1bfdf205e44.93393125",
         "name": "Duplo Gearbox",
         "file": "31624.dat"
     },
     {
-        "id": "67db0e68a0a103.87305216",
+        "id": "67e1bfdf206ed3.14708537",
         "name": "Duplo Worm Gear",
         "file": "31625.dat"
     },
     {
-        "id": "67db0e68a11b19.19613675",
+        "id": "67e1bfdf21f219.31053480",
         "name": "Duplo Flag Wavy  3 x  4 with Post",
         "file": "31925.dat"
     },
     {
-        "id": "67db0e68afb846.13887207",
+        "id": "67e1bfdf49ddc4.80064220",
         "name": "Duplo Chair with  4 Studs and Rounded Backrest",
         "file": "34277.dat"
     },
     {
-        "id": "67db0e68b51a62.18434196",
+        "id": "67e1bfdf524231.08042780",
+        "name": "Duplo Roof Sloped 33  4 x  4 with  5 Bottom Tubes with Awning Overhang",
+        "file": "35132.dat"
+    },
+    {
+        "id": "67e1bfdf59c1f3.33489816",
         "name": "Duplo Train Buffer Stop",
         "file": "35967.dat"
     },
     {
-        "id": "67db0e68ec5731.77673399",
+        "id": "67e1bfe00048e8.56070862",
         "name": "Duplo Support Column  2 x  3 x  3 with  2 Top Studs",
         "file": "41969.dat"
     },
     {
-        "id": "67db0e68ec96d1.93753501",
+        "id": "67e1bfe000f580.91898819",
         "name": "Duplo Car Base  2 x  4",
         "file": "41989.dat"
     },
     {
-        "id": "67db0e68eeefa1.67765337",
+        "id": "67e1bfe0052f58.59631168",
         "name": "~Duplo Vehicle Base  2 x  4 with Stub Axles",
         "file": "42092.dat"
     },
     {
-        "id": "67db0e68eef4e4.39611975",
+        "id": "67e1bfe0053c77.32801317",
         "name": "Duplo Vehicle Base  4 x  4 with  2 x  4 Studs and Black Wheels",
         "file": "42093.dat"
     },
     {
-        "id": "67db0e68f1ca01.51007590",
+        "id": "67e1bfe00e0f27.46607998",
         "name": "Duplo Vehicle Cement Mixer Bucket",
         "file": "42235.dat"
     },
     {
-        "id": "67db0e68f29e76.77324605",
+        "id": "67e1bfe0101b32.95475598",
         "name": "~Duplo Door  1 x  4 x  3 with Large Window (Obsolete)",
         "file": "4247.dat"
     },
     {
-        "id": "67db0e68f2a996.72781168",
+        "id": "67e1bfe01035a4.01075352",
         "name": "Duplo Door  1 x  4 x  3 with Arched Top with Large Window",
         "file": "4247a.dat"
     },
     {
-        "id": "67db0e68f2aeb7.78155117",
+        "id": "67e1bfe01042d0.98091305",
         "name": "Duplo Door  1 x  4 x  3 with Arched Top with Large Window with Blue \"POLICE\" Pattern",
         "file": "4247ap01.dat"
     },
     {
-        "id": "67db0e68f2b4a8.78331179",
+        "id": "67e1bfe0105140.27633608",
         "name": "Duplo Door  1 x  4 x  3 with Arched Top with Large Window with Red \"CAMPING\" Pattern",
         "file": "4247ap02.dat"
     },
     {
-        "id": "67db0e68f2baf1.10122582",
+        "id": "67e1bfe0108bf6.70547297",
         "name": "Duplo Door  1 x  4 x  3 with Arched Top with Large Window with Blue \"FIRE CHIEF\" Pattern",
         "file": "4247ap03.dat"
     },
     {
-        "id": "67db0e68f2e737.08294623",
+        "id": "67e1bfe0115722.20219251",
         "name": "~Duplo Door Frame  2 x  4 x  3 with Flat Rim Back Panel",
         "file": "4252.dat"
     },
     {
-        "id": "67db0e68f2f233.58341569",
+        "id": "67e1bfe0117572.65630253",
         "name": "~Duplo Door Frame  2 x  4 x  3 with Flat Rim",
         "file": "4253.dat"
     },
     {
-        "id": "67db0e68f301a9.90211050",
+        "id": "67e1bfe011bc92.94650748",
         "name": "Duplo Door Frame  2 x  4 x  3 with Flat Rim (Complete)",
         "file": "4253c01.dat"
     },
     {
-        "id": "67db0e6904a319.08818158",
+        "id": "67e1bfe0149d12.12010619",
+        "name": "Duplo Baseplate 24 x 24",
+        "file": "4268.dat"
+    },
+    {
+        "id": "67e1bfe023d616.36651653",
         "name": "Duplo Sign Post Base Short",
         "file": "4375.dat"
     },
     {
-        "id": "67db0e6904c838.54144098",
+        "id": "67e1bfe0242850.50584753",
         "name": "Duplo Cone  2 x  2 x  1",
         "file": "4378a.dat"
     },
     {
-        "id": "67db0e6904ce75.90632216",
+        "id": "67e1bfe02435f9.53628184",
         "name": "Duplo Cone  2 x  2 x  1.5",
         "file": "4378b.dat"
     },
     {
-        "id": "67db0e690d7e83.43770743",
+        "id": "67e1bfe03bf1d3.95228769",
         "name": "~Duplo Support  2 x  4 x  3 Base",
         "file": "4537.dat"
     },
     {
-        "id": "67db0e690d8590.08652991",
+        "id": "67e1bfe03c01d7.65491453",
         "name": "~Duplo Support  2 x  4 x  3 Top",
         "file": "4538.dat"
     },
     {
-        "id": "67db0e6917d225.02762021",
+        "id": "67e1bfe05b9754.59291788",
         "name": "Duplo Hook Short with Cross Bar and String Hole",
         "file": "4663.dat"
     },
     {
-        "id": "67db0e691912b7.09750707",
+        "id": "67e1bfe05ef5d4.47425400",
         "name": "Figure Duplo Child Arm",
         "file": "47198.dat"
     },
     {
-        "id": "67db0e691917d6.52519128",
+        "id": "67e1bfe05f0646.42332052",
         "name": "Figure Duplo Child Arm with Nougat Hand Pattern",
         "file": "47198p01.dat"
     },
     {
-        "id": "67db0e69191ce7.15591928",
+        "id": "67e1bfe05f1477.96350510",
         "name": "Figure Duplo Child Arm with Medium Nougat Hand Pattern",
         "file": "47198p02.dat"
     },
     {
-        "id": "67db0e69192214.78029125",
+        "id": "67e1bfe05f21d6.19486924",
         "name": "Figure Duplo Child Arm with Reddish Brown Hand Pattern",
         "file": "47198p03.dat"
     },
     {
-        "id": "67db0e69192705.94031063",
+        "id": "67e1bfe05f2ef0.73097206",
         "name": "Figure Duplo Child Arm with Yellow Hand Pattern",
         "file": "47198p04.dat"
     },
     {
-        "id": "67db0e69192cb8.71309880",
+        "id": "67e1bfe05f3df4.46812597",
         "name": "Figure Duplo Child Cap",
         "file": "47199.dat"
     },
     {
-        "id": "67db0e691965b7.07987016",
+        "id": "67e1bfe05fb634.35896184",
         "name": "Figure Duplo Child Hair with 2 Plaits",
         "file": "47200.dat"
     },
     {
-        "id": "67db0e69196cf6.31080850",
+        "id": "67e1bfe05fc889.27152244",
         "name": "Figure Duplo Child Torso",
         "file": "47203.dat"
     },
     {
-        "id": "67db0e69197763.82453869",
+        "id": "67e1bfe05fdbe0.24266814",
         "name": "Figure Duplo Child Torso with Top with \"SKATE\" Pattern",
         "file": "47203p01.dat"
     },
     {
-        "id": "67db0e691983e4.44161901",
+        "id": "67e1bfe05ff1a7.60014284",
         "name": "Figure Duplo Child Torso with Top with Pink and Lilac Flowers Pattern",
         "file": "47203p02.dat"
     },
     {
-        "id": "67db0e69198cd3.92208663",
+        "id": "67e1bfe06004b9.85621678",
         "name": "Figure Duplo Child Torso with Sweat Over Green Shirt with \"8\" Pattern",
         "file": "47203p03.dat"
     },
     {
-        "id": "67db0e69199275.83297716",
+        "id": "67e1bfe06015d2.01213872",
         "name": "Figure Duplo Child Hips",
         "file": "47204.dat"
     },
     {
-        "id": "67db0e691997a6.43116605",
+        "id": "67e1bfe0602338.43604957",
         "name": "Figure Duplo Child Legs",
         "file": "47205.dat"
     },
     {
-        "id": "67db0e69199d29.09548419",
+        "id": "67e1bfe06030f5.47072805",
         "name": "Figure Duplo Child Head",
         "file": "47206.dat"
     },
     {
-        "id": "67db0e6919a533.48497075",
+        "id": "67e1bfe0604268.60261646",
         "name": "Figure Duplo Child Head with Brown Eyes and Smile Pattern",
         "file": "47206p01.dat"
     },
     {
-        "id": "67db0e6919af13.20506482",
+        "id": "67e1bfe0605782.24486723",
         "name": "Figure Duplo Child Head with Brown Eyes, Eyelashes and Lopsided Smile Pattern",
         "file": "47206p02.dat"
     },
     {
-        "id": "67db0e6919b885.73386193",
+        "id": "67e1bfe0606687.76600547",
         "name": "Figure Duplo Hips Hinge Bar",
         "file": "47207.dat"
     },
     {
-        "id": "67db0e691abc65.68060910",
+        "id": "67e1bfe0632939.61468328",
         "name": "~Figure Duplo Arm Left Forward Bent",
         "file": "47380.dat"
     },
     {
-        "id": "67db0e691ac155.70203569",
+        "id": "67e1bfe0633661.63526999",
         "name": "Figure Duplo Arm Left Forward Bent with Nougat Hand Pattern",
         "file": "47380p01.dat"
     },
     {
-        "id": "67db0e691ac643.86843143",
+        "id": "67e1bfe0634388.72052021",
         "name": "Figure Duplo Arm Left Forward Bent with Medium Nougat Hand Pattern",
         "file": "47380p02.dat"
     },
     {
-        "id": "67db0e691acb32.76229187",
+        "id": "67e1bfe06352b5.53905381",
         "name": "Figure Duplo Arm Left Forward Bent with Dark Bluish Grey Hand Pattern",
         "file": "47380p03.dat"
     },
     {
-        "id": "67db0e691ad056.96587407",
+        "id": "67e1bfe0635fc7.58868184",
         "name": "Figure Duplo Arm Left Forward Bent with Reddish Brown Hand Pattern",
         "file": "47380p04.dat"
     },
     {
-        "id": "67db0e691ad542.91598495",
+        "id": "67e1bfe0636ce2.34912941",
         "name": "~Figure Duplo Arm Right Forward Bent",
         "file": "47389.dat"
     },
     {
-        "id": "67db0e691ada49.11201185",
+        "id": "67e1bfe0637a08.40068691",
         "name": "Figure Duplo Arm Right Forward Bent with Nougat Hand Pattern",
         "file": "47389p01.dat"
     },
     {
-        "id": "67db0e691ae034.31627937",
+        "id": "67e1bfe0638723.88607444",
         "name": "Figure Duplo Arm Right Forward Bent with Medium Nougat Hand Pattern",
         "file": "47389p02.dat"
     },
     {
-        "id": "67db0e691ae535.71720426",
+        "id": "67e1bfe0639653.86601010",
         "name": "Figure Duplo Arm Right Forward Bent with Dark Bluish Grey Hand Pattern",
         "file": "47389p03.dat"
     },
     {
-        "id": "67db0e691aea66.37019269",
+        "id": "67e1bfe063a3f6.22642772",
         "name": "Figure Duplo Arm Right Forward Bent with Reddish Brown Hand Pattern",
         "file": "47389p04.dat"
     },
     {
-        "id": "67db0e691b0015.47749492",
+        "id": "67e1bfe063e134.37297462",
         "name": "~Figure Duplo Head Adult",
         "file": "47391.dat"
     },
     {
-        "id": "67db0e691b08a7.81305699",
+        "id": "67e1bfe063f278.25312176",
         "name": "Figure Duplo Head Adult with Brown Eyes and Lopsided Open Mouth Pattern",
         "file": "47391p01.dat"
     },
     {
-        "id": "67db0e691b0e00.08155458",
+        "id": "67e1bfe0640023.87617268",
         "name": "Figure Duplo Adult Torso",
         "file": "47392.dat"
     },
     {
-        "id": "67db0e691b1518.51115857",
+        "id": "67e1bfe0641182.72032657",
         "name": "Figure Duplo Adult Torso with Vest Open over White Shirt Pattern",
         "file": "47392p01.dat"
     },
     {
-        "id": "67db0e691b1ba7.94034632",
+        "id": "67e1bfe0642127.74949697",
         "name": "Figure Duplo Adult Hips",
         "file": "47393.dat"
     },
     {
-        "id": "67db0e691b2128.31742975",
+        "id": "67e1bfe0642eb8.02545813",
         "name": "Figure Duplo Adult Legs",
         "file": "47394.dat"
     },
     {
-        "id": "67db0e691b5964.28577359",
+        "id": "67e1bfe064c591.55051728",
         "name": "Duplo Cone  2 x  2 x  2 Square Base without Bottom Tube",
         "file": "47408.dat"
     },
     {
-        "id": "67db0e691b5eb4.31986122",
+        "id": "67e1bfe064d562.44048177",
         "name": "Duplo Cone  2 x  2 x  2 Square Base without Bottom Tube with Reflective White Stripes Pattern",
         "file": "47408p01.dat"
     },
     {
-        "id": "67db0e691b6417.39476072",
+        "id": "67e1bfe064e393.46632868",
         "name": "Duplo Cone  2 x  2 x  2 Square Base without Bottom Tube with Black Stripes Pattern",
         "file": "47408p02.dat"
     },
     {
-        "id": "67db0e691c54c3.15801716",
+        "id": "67e1bfe06781e5.16279677",
         "name": "Figure Duplo Child Girl with Green Legs, Medium Blue Top with Flowers and Black Hair Pattern",
         "file": "47510p01.dat"
     },
     {
-        "id": "67db0e691c59e3.25575960",
+        "id": "67e1bfe0678f80.70864615",
         "name": "Figure Duplo Child Boy with Cap",
         "file": "47511.dat"
     },
     {
-        "id": "67db0e691c5f06.50760898",
+        "id": "67e1bfe0679ec3.63063565",
         "name": "Figure Duplo Child Boy with Medium Blue Legs, Blue Top with \"SKATE\" and Lime Cap Pattern",
         "file": "47511p01.dat"
     },
     {
-        "id": "67db0e691ec550.98055227",
+        "id": "67e1bfe06e90a4.12068845",
         "name": "Duplo Window  1 x  4 x  3 with Arched Top with 4 Panes",
         "file": "4809.dat"
     },
     {
-        "id": "67db0e691fb274.92724741",
+        "id": "67e1bfe0710e51.41194028",
         "name": "Duplo Furniture Chair  2 x  2 x  2 with One Middle Stud",
         "file": "4839.dat"
     },
     {
-        "id": "67db0e69222221.82666759",
+        "id": "67e1bfe077e309.25597279",
+        "name": "Duplo Cupboard  2 x  2 x  1.5",
+        "file": "4890.dat"
+    },
+    {
+        "id": "67e1bfe077f018.57509343",
         "name": "Duplo Drawer  2 x  2",
         "file": "4891.dat"
     },
     {
-        "id": "67db0e692286a4.77098222",
+        "id": "67e1bfe078d222.32945005",
         "name": "Duplo Shower Head on Stand with  1 x  2 Base",
         "file": "4894.dat"
     },
     {
-        "id": "67db0e6922b7f6.08321135",
+        "id": "67e1bfe0796c48.76707235",
         "name": "Duplo Sign Post Tall",
         "file": "4913.dat"
     },
     {
-        "id": "67db0e69268e22.29178347",
+        "id": "67e1bfe07ee546.12569672",
+        "name": "Duplo Baseplate 12 x 16 with  6 x 16 Stud Gap",
+        "file": "50384.dat"
+    },
+    {
+        "id": "67e1bfe085cbe1.62716697",
         "name": "Duplo Train Track Point Rail with Red Tongue (Turning Right)",
         "file": "51560-f1.dat"
     },
     {
-        "id": "67db0e69269334.59752976",
+        "id": "67e1bfe085d907.41973292",
         "name": "Duplo Train Track Point Rail with Red Tongue (Turning Left)",
         "file": "51560-f2.dat"
     },
     {
-        "id": "67db0e6926b4c9.59255299",
+        "id": "67e1bfe0866b67.93999091",
         "name": "Duplo Arch  2 x 10 x  2",
         "file": "51704.dat"
     },
     {
-        "id": "67db0e6926ba43.87175701",
+        "id": "67e1bfe08678c4.10262105",
         "name": "Duplo Flagpole \/ Antenna  1 x  9",
         "file": "51708.dat"
     },
     {
-        "id": "67db0e6926cf04.61749014",
+        "id": "67e1bfe086b445.81001682",
         "name": "Duplo Flag Wavy  2 x  5 with Slits",
         "file": "51725.dat"
     },
     {
-        "id": "67db0e69270971.66925197",
+        "id": "67e1bfe0877ba2.72546477",
         "name": "~Duplo Train Track Point Rail",
         "file": "51943.dat"
     },
     {
-        "id": "67db0e69271272.50131629",
+        "id": "67e1bfe0878e68.79905582",
         "name": "~Duplo Train Track Point Tongue",
         "file": "51944.dat"
     },
     {
-        "id": "67db0e6927ad23.29285862",
-        "name": "=Duplo Plant Flower with  5 Petals and  1 Top Stud",
+        "id": "67e1bfe089d929.45753796",
+        "name": "Duplo Plant Flower with  5 Petals and  1 Top Stud",
         "file": "52639.dat"
     },
     {
-        "id": "67db0e69304e96.45786278",
+        "id": "67e1bfe0a83128.65249198",
         "name": "Duplo Pitchfork",
         "file": "58086.dat"
     },
     {
-        "id": "67db0e6941ba86.66289030",
+        "id": "67e1bfe0e8d7d2.68767898",
         "name": "Duplo Door Frame  2 x  4 x  3 with Completely Open Back",
         "file": "61649.dat"
     },
     {
-        "id": "67db0e694997c6.86755382",
+        "id": "67e1bfe11726f7.55043864",
         "name": "Duplo Tyre 25\/ 53 x 19",
         "file": "6292.dat"
     },
     {
-        "id": "67db0e694bdb26.24821309",
+        "id": "67e1bfe11fe0f5.15583885",
         "name": "Figure Duplo Cap Adult",
         "file": "63351.dat"
     },
     {
-        "id": "67db0e694c7da1.22066073",
+        "id": "67e1bfe121dbc7.16333743",
+        "name": "Duplo Windscreen  4 x  4 x  2 Curved",
+        "file": "6345.dat"
+    },
+    {
+        "id": "67e1bfe123eda2.17532788",
         "name": "Duplo Windscreen  6 x  6 x  4 Inverted",
         "file": "6361.dat"
     },
     {
-        "id": "67db0e694c8825.73330331",
+        "id": "67e1bfe124da87.96413197",
         "name": "Figure Duplo Adult Male with Cap",
         "file": "63710.dat"
     },
     {
-        "id": "67db0e694c8d40.45280830",
+        "id": "67e1bfe124e851.62072025",
         "name": "Figure Duplo Adult Male with Medium Blue Legs, Dark Red Top and Blue Baseball Cap Pattern",
         "file": "63710p01.dat"
     },
     {
-        "id": "67db0e694c9288.51251512",
+        "id": "67e1bfe125fad4.25505328",
         "name": "Duplo Train Track Straight  4 x  8",
         "file": "6377.dat"
     },
     {
-        "id": "67db0e694c97d6.81862366",
+        "id": "67e1bfe1260878.25238675",
         "name": "Duplo Train Track Curved",
         "file": "6378.dat"
     },
     {
-        "id": "67db0e694ce7e7.31316969",
+        "id": "67e1bfe1274d86.94775319",
         "name": "Duplo Train Track Level Crossing",
         "file": "6391.dat"
     },
     {
-        "id": "67db0e694d2c83.99319482",
+        "id": "67e1bfe1280015.08784062",
         "name": "Duplo Train Level Crossing Gate Base",
         "file": "6405.dat"
     },
     {
-        "id": "67db0e694d5318.04562297",
+        "id": "67e1bfe1284f12.90225167",
         "name": "Duplo Train Level Crossing Gate Crossbar",
         "file": "6406.dat"
     },
     {
-        "id": "67db0e694d5f37.54041006",
+        "id": "67e1bfe1286a15.12761661",
         "name": "~Duplo Train Engine Hood  2 x  2 Base with Front Lantern",
         "file": "6409.dat"
     },
     {
-        "id": "67db0e694d6505.24244686",
+        "id": "67e1bfe1287785.44639611",
         "name": "Duplo Train Engine Hood  2 x  2 with Yellow Top (Complete)",
         "file": "6409c01.dat"
     },
     {
-        "id": "67db0e694de1a8.48333587",
+        "id": "67e1bfe129cbd0.80162925",
         "name": "Duplo Building Wall  4 x  8 x  6 with Open Back and Door and Window Opening",
         "file": "6431.dat"
     },
     {
-        "id": "67db0e694decd1.14329385",
+        "id": "67e1bfe129e779.38949586",
         "name": "Duplo Building Wall  4 x  8 x  6 with Open Back and White Door and Window",
         "file": "6431c01.dat"
     },
     {
-        "id": "67db0e694df1f7.18602463",
+        "id": "67e1bfe129f515.66791691",
         "name": "Duplo Building Wall  4 x  8 x  6 with Open Back and Yellow Door and Window",
         "file": "6431c02.dat"
     },
     {
-        "id": "67db0e694e5652.33628349",
+        "id": "67e1bfe12a02c5.75187429",
+        "name": "Duplo Building Wall  4 x  8 x  6 with Open Back and White Arched Door and Window",
+        "file": "6431c03.dat"
+    },
+    {
+        "id": "67e1bfe12a1132.20395572",
+        "name": "Duplo Arch  4 x 10 x  3 with  7 x  3 Cutout",
+        "file": "6436.dat"
+    },
+    {
+        "id": "67e1bfe12a1ef7.30783651",
+        "name": "Duplo Arch  4 x 10 x  3 with  7 x  3 Transparent Clear Sunroof",
+        "file": "6436c01.dat"
+    },
+    {
+        "id": "67e1bfe12b23f6.42506947",
         "name": "Duplo Train Track Point Lever",
         "file": "6442.dat"
     },
     {
-        "id": "67db0e694e71a0.75100191",
+        "id": "67e1bfe12b6907.66790361",
         "name": "Duplo Train Track Point Lever with Double-Ended Arrow Pattern",
         "file": "6442p01.dat"
     },
     {
-        "id": "67db0e694e76c1.29194668",
+        "id": "67e1bfe12b7679.91719143",
         "name": "Duplo Train Track Point Lever with Single-Ended Arrow Pattern",
         "file": "6442p02.dat"
     },
     {
-        "id": "67db0e694eb879.85524831",
+        "id": "67e1bfe12c1689.17774309",
         "name": "Duplo Crate  3 x  3",
         "file": "6446.dat"
     },
     {
-        "id": "67db0e694ff552.81070330",
+        "id": "67e1bfe12f4621.72172125",
+        "name": "Duplo Baseplate 16 x 24",
+        "file": "6475.dat"
+    },
+    {
+        "id": "67e1bfe12fe018.85965336",
         "name": "Duplo Chair with  4 Studs and Squared Backrest",
         "file": "6478.dat"
     },
     {
-        "id": "67db0e695016f4.41826763",
+        "id": "67e1bfe1304a23.17131449",
         "name": "Duplo Furniture Table  3 x  4 x  1.5 with Four Studs on Top",
         "file": "6479.dat"
     },
     {
-        "id": "67db0e69513721.39906900",
+        "id": "67e1bfe1330396.74803864",
+        "name": "Duplo Arm  3L with Locking Ring and Red Locking Finger Pattern",
+        "file": "65082p01.dat"
+    },
+    {
+        "id": "67e1bfe133ab97.47865392",
         "name": "Duplo Plant Flower with  5 Petals and  1 Top Stud",
         "file": "6510.dat"
     },
     {
-        "id": "67db0e69519bd5.27789515",
+        "id": "67e1bfe133b8c1.19763910",
+        "name": "Duplo Door  1 x  4 x  4 with Flat Top with Two Long Panes",
+        "file": "65111.dat"
+    },
+    {
+        "id": "67e1bfe135c603.57942710",
         "name": "Duplo Axle  8",
         "file": "6521.dat"
     },
     {
-        "id": "67db0e6951a112.89512112",
+        "id": "67e1bfe135d3f7.05721016",
         "name": "Duplo Axle  6",
         "file": "6522.dat"
     },
     {
-        "id": "67db0e6951a646.55862011",
+        "id": "67e1bfe135e152.25498370",
         "name": "Duplo Axle  5 with Gear  8 Tooth",
         "file": "6523.dat"
     },
     {
-        "id": "67db0e6951ab68.65204041",
+        "id": "67e1bfe135eec2.81428044",
         "name": "Duplo Beam  7",
         "file": "6524.dat"
     },
     {
-        "id": "67db0e6951b5d1.59159268",
+        "id": "67e1bfe1360aa3.50929869",
         "name": "Duplo Beam 11",
         "file": "6525.dat"
     },
     {
-        "id": "67db0e6951bc58.92718739",
+        "id": "67e1bfe1361a03.66958197",
         "name": "Duplo Beam  3 x  0.5 Liftarm with Axle",
         "file": "6526.dat"
     },
     {
-        "id": "67db0e6951c414.92194486",
+        "id": "67e1bfe13629c1.02998741",
         "name": "Duplo Wheel with 2 Belt Groves",
         "file": "6527.dat"
     },
     {
-        "id": "67db0e6951ca83.25493206",
+        "id": "67e1bfe1363797.36180691",
+        "name": "Duplo Stool with  4 Studs",
+        "file": "65273.dat"
+    },
+    {
+        "id": "67e1bfe1364590.84793512",
         "name": "Duplo Gear 24 Tooth",
         "file": "6529.dat"
     },
     {
-        "id": "67db0e6951dcb6.11547147",
+        "id": "67e1bfe13670c8.64420996",
         "name": "Duplo Gear 40 Tooth",
         "file": "6530.dat"
     },
     {
-        "id": "67db0e695de486.98338053",
+        "id": "67e1bfe14ad9d8.66549207",
+        "name": "Duplo Baseplate 12 x 16",
+        "file": "6851.dat"
+    },
+    {
+        "id": "67e1bfe16770d5.59307432",
         "name": "Duplo Support  2 x  4 x  3",
         "file": "73351.dat"
     },
     {
-        "id": "67db0e695f4b26.84110881",
+        "id": "67e1bfe16bed12.47327685",
         "name": "Duplo Plant Bush",
         "file": "74587.dat"
     },
     {
-        "id": "67db0e695f6375.14335980",
+        "id": "67e1bfe16c51d8.74015504",
+        "name": "Duplo Car Base  2 x  6 with Wheels",
+        "file": "74656.dat"
+    },
+    {
+        "id": "67e1bfe16c5ed0.47189104",
         "name": "Duplo Car Base  2 x  6 with Red Wheels",
         "file": "74656p01.dat"
     },
     {
-        "id": "67db0e695f68a5.47178137",
+        "id": "67e1bfe16c6e10.49225109",
         "name": "Duplo Car Base  2 x  6 with Yellow Wheels",
         "file": "74656p02.dat"
     },
     {
-        "id": "67db0e695f6db3.20940963",
+        "id": "67e1bfe16c7af8.90247546",
         "name": "Duplo Car Base  2 x  6 with Black Wheels",
         "file": "74656p03.dat"
     },
     {
-        "id": "67db0e69756ec6.91814086",
+        "id": "67e1bfe1bc18f5.01389084",
+        "name": "Duplo Door  1 x  4 x  3 Wooden with Handle",
+        "file": "87653.dat"
+    },
+    {
+        "id": "67e1bfe1c94cb7.31646812",
+        "name": "Duplo Door  1 x  4 x  4 with Flat Top with  4 Same Size Panes",
+        "file": "89849.dat"
+    },
+    {
+        "id": "67e1bfe1ca5515.03051652",
         "name": "Duplo Window  1 x  4 x  3 with Flat Top with 4 Same Size Panes",
         "file": "90265.dat"
     },
     {
-        "id": "67db0e6977f497.37469396",
+        "id": "67e1bfe1d12e59.69797907",
+        "name": "Duplo Turntable Base  4 x  4",
+        "file": "92005.dat"
+    },
+    {
+        "id": "67e1bfe1d1d9a4.23455621",
         "name": "Duplo Door Frame  2 x  4 x  4",
         "file": "92094.dat"
     },
     {
-        "id": "67db0e6984ad73.04272788",
+        "id": "67e1bfe20330d9.58337667",
         "name": "Duplo Support Column  2 x  2 x  4",
         "file": "93353.dat"
     },
     {
-        "id": "67db0e69a31a64.57824710",
+        "id": "67e1bfe2539bd9.17679026",
+        "name": "Duplo Roof Spire Half  4.5 x  2 x  4",
+        "file": "98238.dat"
+    },
+    {
+        "id": "67e1bfe257c026.79379495",
         "name": "Duplo Door  1 x  4 x  3 Wooden with Handle",
         "file": "98459.dat"
     },
     {
-        "id": "67db0e69a32074.88743285",
+        "id": "67e1bfe257ce88.24425304",
         "name": "Duplo Fence  1 x 10 x  2 with Clip and Bar",
         "file": "98460.dat"
     },
     {
-        "id": "67db0e69ad1a83.99522021",
+        "id": "67e1bfe27a01b1.90208783",
         "name": "Duplo Door  1 x  4 x  3 with Arched Top with Porthole",
         "file": "u826.dat"
     },
     {
-        "id": "67db0e69ad2135.14280802",
+        "id": "67e1bfe27a1155.31629028",
         "name": "Duplo Door  1 x  4 x  3 with Arched Top with Porthole with Yellow \"BOAT YARD\" Pattern",
         "file": "u826p01.dat"
     },
     {
-        "id": "67db0e69bc20e6.75539084",
+        "id": "67e1bfe2a4bdf8.93729198",
         "name": "Figure Duplo Bust Tall Body",
         "file": "u9491.dat"
     },
     {
-        "id": "67db0e69bc2633.12348255",
+        "id": "67e1bfe2a4cbd6.10268176",
         "name": "Figure Duplo Bust Tall Head",
         "file": "u9492.dat"
     },
     {
-        "id": "67db0e69bc2db2.18148256",
+        "id": "67e1bfe2a4dc01.27743813",
         "name": "Figure Duplo Bust Tall Head with Smile, Eyes Looking Left and Freckles on Nose Pattern",
         "file": "u9492p01.dat"
     },
     {
-        "id": "67db0e69bcda51.61323148",
+        "id": "67e1bfe2a4f6a1.75052815",
+        "name": "Figure Duplo Bust Hair Female with Short Bangs",
+        "file": "u9493.dat"
+    },
+    {
+        "id": "67e1bfe2a6dd26.73777974",
         "name": "~Duplo Train Engine Hood  2 x  2 - Top",
         "file": "u9507.dat"
     },
     {
-        "id": "67db0e69bdd012.14293744",
+        "id": "67e1bfe2a8a435.38179909",
+        "name": "~Sunroof for Duplo Arch  4 x 10 x  3",
+        "file": "u9540.dat"
+    },
+    {
+        "id": "67e1bfe2ac6206.10061331",
         "name": "Duplo Arch  2 x  3 x  3",
         "file": "u977.dat"
     }
