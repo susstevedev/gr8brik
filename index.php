@@ -183,6 +183,30 @@
       padding: 5px 5px 5px 5px;
     }
 
+    #preloaded-logo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+    }
+
+    #preloaded-logo .img {
+        background-image: url("/img/logo.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 200px;
+        height: 200px;
+        z-index: 999999;
+        border-radius: 50%;
+    }
+
     @media (max-width: 768px) {
       #left-container {
         position: fixed;
@@ -212,7 +236,7 @@
 
 <body>
   <div id="top-container">
-    <span id="link-home"><img src="/img/logo.jpg" id="logo-img" /><a href="http://www.gr8brik.rf.gd"><span>&nbsp;Gr8brik&nbsp;</span></a></span>
+    <span id="link-home"><img src="/img/logo.jpg" id="logo-img" /><a href="/"><span>&nbsp;Gr8brik&nbsp;</span></a></span>
     <a href="http://www.gr8brik.rf.gd/acc/login" id="username-field"></a>
   </div>
 
@@ -248,15 +272,25 @@
     <label for="part-type-filter">Filter by</label>
 
     <select id="part-type-filter" style="display: inline-block;">
-      <option value="all">All Types</option>
-      <option value="brick" selected>Bricks</option>
-      <option value="plate">Plates</option>
-      <option value="tile">Tiles</option>
-      <option value="slope">Slopes</option>
-      <option value="minifig">Minifigs</option>
-      <option value="duplo">Duplo</option>
-      <option value="animal">Animals</option>
-      <option value="misc">Miscellaneous</option>
+        <!-- <option value="all">All Types</option> -->
+        <option value="brick" selected>Bricks</option>
+        <option value="plate">Plates</option>
+        <option value="tile">Tiles</option>
+        <option value="slope">Slopes</option>
+        <option value="minifig">Minifigs</option>
+        <option value="duplo">Duplo</option>
+        <option value="animal">Animals</option>
+        <option value="technic">Technic</option>
+        <option value="wedge">Wedges</option>
+        <option value="hinge">Hinges</option>
+        <option value="clip_&_bar">Clips & Bars</option>
+        <option value="connector">Connectors</option>
+        <option value="wheel_&_tyre">Wheels & Tyres</option>
+        <option value="train">Train Parts</option>
+        <option value="panel">Panels</option>
+        <option value="round_&_curved">Round & Curved</option>
+        <!-- <option value="modified">Modified</option> -->
+        <option value="other">Miscellaneous</option>
     </select><br />
 
     <input type="text" id="search-parts" placeholder="search parts..." /><br />
@@ -279,7 +313,16 @@
     </div>
   </div>
 
+  <div id="preloaded-logo">
+    <div class="img"></div>
+  </div>
+
   <script>
+    window.addEventListener('beforeunload', function (e) {
+        e.preventDefault();
+        e.returnValue = '';
+    });
+
     var partColor = "#ff0000"; // red
     $(document).ready(function () {
       //const urlParams = new URLSearchParams(window.location.search);
@@ -375,7 +418,7 @@
         let sceneJSON = generateSceneJSON();
 
         if (sceneJSON) {
-          const jsonData = JSON.stringify(sceneJSON);
+          const jsonData = sceneJSON;
           console.log(jsonData);
 
           const date = new Date();
@@ -435,23 +478,25 @@
       });
 
       $("#search-parts").on("keyup", function () {
-        let value = $(this).val().toLowerCase();
-        let list = $("#select-block li");
+          let value = $(this).val().toLowerCase().replace(/\s+/g, " ").trim();
+          let list = $("#select-block li");
 
-        list.sort(function (a, b) {
-          let textA = $(a).text().toLowerCase();
-          let textB = $(b).text().toLowerCase();
-          let matchA = textA.indexOf(value) > -1 ? 0 : 1;
-          let matchB = textB.indexOf(value) > -1 ? 0 : 1;
-          return matchA - matchB;
-        });
+          list.sort(function (a, b) {
+              let textA = $(a).text().toLowerCase().replace(/\s+/g, " ").trim();
+              let textB = $(b).text().toLowerCase().replace(/\s+/g, " ").trim();
 
-        $("#select-block").html(list);
-        list.each(function () {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-        });
+              let matchA = textA.indexOf(value) > -1 ? 0 : 1;
+              let matchB = textB.indexOf(value) > -1 ? 0 : 1;
+
+              return matchA - matchB;
+          });
+
+          $("#select-block").html(list);
+          list.each(function () {
+              let text = $(this).text().toLowerCase().replace(/\s+/g, " ").trim();
+              $(this).toggle(text.indexOf(value) > -1);
+          });
       });
-
 
       $(document).on("click", ".scene-block-item", function () {
         let id = $(this).data("id");
@@ -579,8 +624,9 @@
         1, 10000);
       camera.position.set(250, 150, 500);
       scene = new THREE.Scene();
+      scene.background = new THREE.Color(0xF5F5F5);
 
-      const sunlight = new THREE.DirectionalLight(0xffffff, 2.5);
+      /*const sunlight = new THREE.DirectionalLight(0xffffff, 2.5);
       sunlight.position.set(10, 15, 10);
       scene.add(sunlight);
 
@@ -596,12 +642,43 @@
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setClearColor(0xF5F5F5);
-      container.appendChild(renderer.domElement);
+      container.appendChild(renderer.domElement);*/
+
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
+
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.screenSpacePanning = true;
+    controls.minDistance = 10;
+    controls.maxDistance = 1000;
+    controls.maxPolarAngle = Math.PI / 2;
+
+    const sunlight = new THREE.DirectionalLight(0xffffff, 3);
+    sunlight.position.set(10, 15, 10);
+    scene.add(sunlight);
+
+    const ambientlight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientlight);
+
+    pointlight = new THREE.PointLight(0xffffff, 1.2, 500);
+    pointlight.position.set(-1000, 1200, 1500);
+    pointlight.castShadow = true;
+    scene.add(pointlight);
+
+    const spotlight = new THREE.SpotLight(0xffffff, 2);
+    spotlight.position.set(-50, 100, 50);
+    spotlight.angle = Math.PI / 6;
+    spotlight.penumbra = 0.3;
+    spotlight.castShadow = true;
+    scene.add(spotlight);
 
       transformControls = new THREE.TransformControls(camera, renderer.domElement);
       scene.add(transformControls);
 
-      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      //controls = new THREE.OrbitControls(camera, renderer.domElement);
 
       const stud_size = 20; // 1 stud = 20
       const grid_size = stud_size * 16; // studs wide
@@ -620,17 +697,14 @@
       raycaster = new THREE.Raycaster();
       mouse = new THREE.Vector2();
 
-        //no idea why i'm using a fucking switch case here
-        //TODO: replace this with a human readable if-elseif-else block
-        window.addEventListener('keydown', function (event) {
-            let activeElement = document.activeElement;
+    window.addEventListener('keydown', function (event) {
+        let activeElement = document.activeElement;
 
-            if (activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA") {
-                console.log('could not change model translation because user is in an input field');
-                return;
-            }
+        if (activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA") {
+            return;
+        }
 
-            switch (event.code) {
+        switch (event.code) {
             case 'KeyT':
                 moveBlock('t')
                 break
@@ -640,11 +714,16 @@
             case 'KeyS':
                 moveBlock('s')
                 break
-            case 'KeyEscape':
+            case 'Escape':
                 transformControls.detach(selectedObject);
                 break
-            }
-        })
+            case 'Delete':
+                transformControls.detach(selectedObject);
+                scene.remove(selectedObject);
+                tooltip('Deleted block')
+                break
+        }
+    })
 
       document.getElementById('move-block-t').addEventListener('click', function () {
         if (selectedObject) {
@@ -695,7 +774,7 @@
         }
       });
 
-      let deleted_objects = [];
+      /*let deleted_objects = [];
 
       window.addEventListener("keydown", function (event) {
         if (event.key === "Delete") {
@@ -746,7 +825,7 @@
             }
           });
         }
-      });
+      });*/
 
     }
 
@@ -1043,6 +1122,14 @@
           tooltip.remove();
         }, 5000);
       }
+    }
+
+    window.onload = function() {
+        setTimeout(() => {
+            if (document.getElementById("preloaded-logo")) {
+                document.getElementById("preloaded-logo").style.display = "none";
+            }
+        }, 1000);
     }
   </script>
 

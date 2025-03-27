@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creation</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/LDrawLoader.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"></script>
     <style>
         body { 
+            font-family: Verdana, sans-serif;
             margin: 0; 
             overflow: hidden;
-            background-color: #333333;
+            background-color: #D3D3D3;
             color: #FAFAFA;
         }
         #loading { 
@@ -19,11 +21,20 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
+            background-color: #DDD;
+            color: #000;
             padding: 10px 20px;
-            font-size: 18px;
-            border-radius: 5px;
+            font-size: 20px;
+        }
+        #stats { 
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #DDD;
+            color: #000;
+            padding: 10px 20px;
+            font-size: 20px;
+            display: none;
         }
     </style>
 </head>
@@ -31,71 +42,96 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const viewerContainer = document.getElementById("viewer");
+            const loadingScreen = document.getElementById("loading");
 
             const urlParams = new URLSearchParams(window.location.search);
             const model_file = urlParams.get("model");
 
+            if (!model_file) {
+                console.error("invalid creation file");
+                loadingScreen.innerText = "Creation not found";
+                return;
+            }
+
             fetch(`cre/${model_file}`)
                 .then(response => {
+                    if (!response.ok) throw new Error(`Database response error (${response.status})`);
                     return response.text();
                 })
                 .then(text => {
-                    return JSON.parse(text);
+                    try {
+                        return JSON.parse(text);
+                    } catch (error) {
+                        throw new Error("Invalid creation json: " + error.message);
+                    }
                 })
                 .then(model_data => {
+                    if (!model_data.blocks || model_data.blocks.length === 0) {
+                        throw new Error("No blocks located in the scene");
+                    }
+
                     const scene = new THREE.Scene();
-                    scene.background = new THREE.Color(0x333333);
+                    scene.background = new THREE.Color(0xd3d3d3);
 
                     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
                     camera.position.set(250, 150, 500);
 
-                    const renderer = new THREE.WebGLRenderer();
+                    const renderer = new THREE.WebGLRenderer({ antialias: true });
+                    renderer.outputColorSpace = THREE.SRGBColorSpace;
+                    renderer.shadowMap.enabled = true;
                     renderer.setSize(window.innerWidth, window.innerHeight);
                     viewerContainer.appendChild(renderer.domElement);
+                    renderer.physicallyCorrectLights = true;
 
                     const controls = new THREE.OrbitControls(camera, renderer.domElement);
                     controls.enableDamping = true;
                     controls.dampingFactor = 0.05;
-                    controls.screenSpacePanning = true;
                     controls.minDistance = 10;
                     controls.maxDistance = 1000;
                     controls.maxPolarAngle = Math.PI / 2;
 
+                    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+                    scene.add(ambientLight);
+
                     const sunlight = new THREE.DirectionalLight(0xffffff, 3);
                     sunlight.position.set(10, 15, 10);
+                    sunlight.castShadow = true;
                     scene.add(sunlight);
 
-                    const ambientlight = new THREE.AmbientLight(0xffffff, 0.5);
-                    scene.add(ambientlight);
-
-                    pointlight = new THREE.PointLight(0xffffff, 1.2, 500);
-                    pointlight.position.set(-1000, 1200, 1500);
+                    const pointlight = new THREE.PointLight(0xffffff, 1.2, 500);
+                    pointlight.position.set(250, 500, 250);
                     pointlight.castShadow = true;
                     scene.add(pointlight);
 
-                    const spotlight = new THREE.SpotLight(0xffffff, 2);
-                    spotlight.position.set(-50, 100, 50);
-                    spotlight.angle = Math.PI / 6;
-                    spotlight.penumbra = 0.3;
-                    spotlight.castShadow = true;
-                    scene.add(spotlight);
-
                     const lDrawLoader = new THREE.LDrawLoader();
-                    lDrawLoader.setPath('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/');
-                    lDrawLoader.smoothNormals = true;
-                    lDrawLoader.displayLines = false;
-
+                    lDrawLoader.preloadMaterials('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/colors/ldcfgalt.ldr' );
+                    lDrawLoader.setPath('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/');
+                    lDrawLoader.setPartsLibraryPath("https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/");
+                    
                     window.addEventListener('resize', onWindowResize, true);
+
+                    let totalBlocks = model_data.blocks.length;
+                    let loadedBlocks = 0;
+                    let failedBlocks = 0;
+                    let loadComplete = false;
 
                     async function loadPartsSequentially(blocks) {
                         for (const block of blocks) {
                             await new Promise(resolve => {
-                                lDrawLoader.load(`/parts/${block.ldraw}`,
+                                if (!block.ldraw) {
+                                    console.warn("skipping invalid block ", block);
+                                    failedBlocks++;
+                                    return resolve();
+                                }
+
+                                lDrawLoader.load(`complete/ldraw/parts/${block.ldraw}`,
                                     function (loaded_model) {
                                         loaded_model.traverse((child) => {
                                             if (child.isMesh) {
+                                                let colorHex = `#${block.color ? block.color.replace(/^#/, '') : 'ffffff'}`;
                                                 child.material = new THREE.MeshStandardMaterial({
-                                                    color: new THREE.Color(`#${block.color}`)
+                                                    color: new THREE.Color(colorHex),
+                                                    colorSpace: THREE.SRGBColorSpace
                                                 });
                                             }
                                         });
@@ -103,26 +139,52 @@
                                         loaded_model.position.set(block.position.x, block.position.y, block.position.z);
                                         loaded_model.rotation.set(block.rotation.x, block.rotation.y, block.rotation.z);
                                         scene.add(loaded_model);
+
+                                        loadedBlocks++;
+                                        console.log(`${loadedBlocks} out of ${totalBlocks} blocks added`);
+
                                         resolve();
                                     },
                                     undefined,
                                     function (error) {
-                                        console.error(block.ldraw, error);
+                                        console.error(`failed to load ${block.ldraw}`, error);
+                                        failedBlocks++;
                                         resolve();
                                     }
                                 );
                             });
                         }
-                        document.getElementById("loading").remove();
-                        viewerContainer.style.display = "block";
+
+                        loadComplete = true;
+                        showViewer();
                     }
+
+                    function showViewer() {
+                        if (!loadComplete) return;
+
+                        console.log(`finished with ${loadedBlocks} loaded, ${failedBlocks} failed`);
+                        loadingScreen.style.display = "none";
+                        viewerContainer.style.display = "block";
+                        document.getElementById("stats").style.display = "block";
+                        document.getElementById("stats").innerText = `Viewing ${model_file}`;
+                        document.title = `Creation ${model_file} - Gr8brik Model Viewer`;
+                    }
+
+                    setTimeout(() => {
+                        if (!loadComplete) {
+                            console.warn("timeout reached, showing viewer anyway...");
+                            loadComplete = true;
+                            showViewer();
+                        }
+                    }, 30000);
+
+                    viewerContainer.style.display = "none";
                     loadPartsSequentially(model_data.blocks);
 
                     function onWindowResize() {
                         camera.aspect = window.innerWidth / window.innerHeight;
                         camera.updateProjectionMatrix();
                         renderer.setSize(window.innerWidth, window.innerHeight);
-                        console.log('resized window')
                     }
 
                     function animate() {
@@ -132,12 +194,14 @@
                     }
                     animate();
                 })
-            .catch(error => {
-                console.error(error);
-            });
+                .catch(error => {
+                    console.error(error);
+                    loadingScreen.innerText = `An error occurred: ${error.message}`;
+                });
         });
     </script>
     <div id="loading">Loading...</div>
+    <div id="stats">Loading...</div>
     <div id="viewer" style="width: 100vw; height: 100vh; display: none;"></div>
 </body>
 </html>
