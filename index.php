@@ -49,7 +49,7 @@
       border: 1px;
       overflow-y: scroll;
       overflow-x: hidden;
-      transition: transform 0.3s ease-in-out;
+      transition: all 0.2s ease-in-out;
     }
 
     .btn,
@@ -220,15 +220,18 @@
 
       .mobile-toggle {
         position: fixed;
-        top: 10px;
+        top: 30px;
         right: 10px;
         background: #333333;
         color: white;
         padding: 10px;
-        border: none;
+        border: 2px rgba(0, 0, 0, 0.16) solid;
+        border-radius: 2px;
         cursor: pointer;
         z-index: 1100;
         display: inline-block;
+        // from https://getcssscan.com/css-box-shadow-examples (number #12)
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
       }
     }
   </style>
@@ -328,6 +331,17 @@
       //const urlParams = new URLSearchParams(window.location.search);
       //const userId = urlParams.get('user');
 
+      $(document).on('click', 'a', function(event) {            
+        let url = $(this).attr("href");
+
+        if (!url || url.match("^http")) {
+            event.preventDefault();
+            console.log('Invalid URL')
+        } else {
+            return;
+        }
+    });
+
       function login() {
         //if (userId) {
           $.ajax({
@@ -356,10 +370,12 @@
       }
       login();
 
-      let displayedParts = [];
+        let displayed_parts = [];
+        let current_type = '';
 
       function loadParts(type) {
-        console.log(`Loading ${type} parts...`);
+        console.log(`loading ${type} category`);
+        current_type = type;
 
         $.ajax({
           url: `https://susstevedev.github.io/gr8brik-new/parts/${type}.json`,
@@ -367,11 +383,11 @@
           dataType: 'json',
           success: function (data) {
             console.log(`${type} parts loaded`);
-            displayedParts = data;
+            displayed_parts = data;
             displayParts();
           },
           error: function (err) {
-            console.error('Failed to load parts:', err);
+            console.error('error loading parts ', err);
             tooltip('Failed to load parts');
           }
         });
@@ -379,7 +395,7 @@
 
       function displayParts() {
         $('#select-block').html('');
-        displayedParts.forEach(part => {
+        displayed_parts.forEach(part => {
           $('#select-block').append(
             `<li id="${part.file}" value="${part.file}">${part.name}</li>`
           );
@@ -515,9 +531,9 @@
       setInterval(function () {
         let allParts = [];
         $('#select-block').html('');
-        loadParts('brick');
+        loadParts(current_type);
         tooltip('Reloaded parts list');
-      }, 300000);
+      }, 30000);
     });
   </script>
   <script>
