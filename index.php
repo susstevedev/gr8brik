@@ -1,3 +1,4 @@
+<!-- GR8BRIK VERSION 3-30-2025 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -528,12 +529,12 @@
         }
       });
 
-      setInterval(function () {
+      /*setInterval(function () {
         let allParts = [];
         $('#select-block').html('');
         loadParts(current_type);
         tooltip('Reloaded parts list');
-      }, 30000);
+      }, 30000);*/
     });
   </script>
   <script>
@@ -564,17 +565,7 @@
       });
     });
 
-    var container,
-      camera,
-      scene,
-      renderer,
-      pointLight,
-      controls,
-      gui,
-      guiData,
-      ldraw_loader,
-      raycaster,
-      mouse;
+    var container, camera, scene, renderer, sunlight, moonlight, controls, grid_helper, ldraw_loader, raycaster, mouse = null;
 
     var selectedObject = null;
     var previousSelectedObject = null;
@@ -633,113 +624,76 @@
     }
 
     function init() {
-      container = document.createElement('div');
+        container = document.createElement('div');
 
-      document.body.appendChild(container);
-      camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight,
-        1, 10000);
-      camera.position.set(250, 150, 500);
-      scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xF5F5F5);
+        document.body.appendChild(container);
+        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.set(250, 150, 500);
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xF5F5F5);
 
-      /*const sunlight = new THREE.DirectionalLight(0xffffff, 2.5);
-      sunlight.position.set(10, 15, 10);
-      scene.add(sunlight);
+        sunlight = new THREE.DirectionalLight(0xffffff, 2.5);
+        sunlight.position.set(250, 500, -250);
+        sunlight.castShadow = true;
+        scene.add(sunlight);
 
-      var ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-      scene.add(ambientLight);
+        moonlight = new THREE.DirectionalLight(0xffffff, 2.5);
+        moonlight.position.set(-250, 500, 250);
+        moonlight.castShadow = true;
+        scene.add(moonlight);
 
-      pointLight = new THREE.PointLight(0xffffff, 1);
-      pointLight.position.set(-1000, 1200, 1500);
-      pointLight.castShadow = true;
-      scene.add(pointLight);
+        renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
 
-      renderer = new THREE.WebGLRenderer();
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setClearColor(0xF5F5F5);
-      container.appendChild(renderer.domElement);*/
+        transformControls = new THREE.TransformControls(camera, renderer.domElement);
+        scene.add(transformControls);
 
-    renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    container.appendChild(renderer.domElement);
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.screenSpacePanning = true;
-    controls.minDistance = 10;
-    controls.maxDistance = 1000;
-    controls.maxPolarAngle = Math.PI / 2;
+        const stud_size = 20; // 1 stud = 20
+        const grid_size = stud_size * 16; // studs wide
+        const divisions = 16; // 1 division per stud
 
-    const sunlight = new THREE.DirectionalLight(0xffffff, 3);
-    sunlight.position.set(10, 15, 10);
-    scene.add(sunlight);
+        grid_helper = new THREE.GridHelper(grid_size, divisions, 0xffffff, 0x888888);
+        scene.add(grid_helper);
 
-    const ambientlight = new THREE.AmbientLight(0xffffff, 0.5);
-    scene.add(ambientlight);
+        ldraw_loader = new THREE.LDrawLoader();
+        ldraw_loader.preloadMaterials('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/colors/ldcfgalt.ldr');
+        ldraw_loader.setPath('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/');
+        ldraw_loader.setPartsLibraryPath("https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/");
+        ldraw_loader.displayLines = false;
 
-    pointlight = new THREE.PointLight(0xffffff, 1.2, 500);
-    pointlight.position.set(-1000, 1200, 1500);
-    pointlight.castShadow = true;
-    scene.add(pointlight);
+        raycaster = new THREE.Raycaster();
+        mouse = new THREE.Vector2();
 
-    const spotlight = new THREE.SpotLight(0xffffff, 2);
-    spotlight.position.set(-50, 100, 50);
-    spotlight.angle = Math.PI / 6;
-    spotlight.penumbra = 0.3;
-    spotlight.castShadow = true;
-    scene.add(spotlight);
+        window.addEventListener('keydown', function (event) {
+            let activeElement = document.activeElement;
 
-      transformControls = new THREE.TransformControls(camera, renderer.domElement);
-      scene.add(transformControls);
+            if (activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA") {
+                return;
+            }
 
-      //controls = new THREE.OrbitControls(camera, renderer.domElement);
-
-      const stud_size = 20; // 1 stud = 20
-      const grid_size = stud_size * 16; // studs wide
-      const divisions = 16; // 1 division per stud
-
-      const gridHelper = new THREE.GridHelper(grid_size, divisions, 0xffffff,
-        0x888888);
-      scene.add(gridHelper);
-
-      ldraw_loader = new THREE.LDrawLoader();
-      ldraw_loader.preloadMaterials('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/colors/ldcfgalt.ldr');
-      ldraw_loader.setPath('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/');
-      ldraw_loader.setPartsLibraryPath("https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/");
-      ldraw_loader.displayLines = false;
-
-      raycaster = new THREE.Raycaster();
-      mouse = new THREE.Vector2();
-
-    window.addEventListener('keydown', function (event) {
-        let activeElement = document.activeElement;
-
-        if (activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA") {
-            return;
-        }
-
-        switch (event.code) {
-            case 'KeyT':
-                moveBlock('t')
-                break
-            case 'KeyR':
-                moveBlock('r')
-                break
-            case 'KeyS':
-                moveBlock('s')
-                break
-            case 'Escape':
-                transformControls.detach(selectedObject);
-                break
-            case 'Delete':
-                transformControls.detach(selectedObject);
-                scene.remove(selectedObject);
-                tooltip('Deleted block')
-                break
-        }
-    })
+            switch (event.code) {
+                case 'KeyT':
+                    moveBlock('t')
+                    break
+                case 'KeyR':
+                    moveBlock('r')
+                    break
+                case 'KeyS':
+                    moveBlock('s')
+                    break
+                case 'Escape':
+                    transformControls.detach(selectedObject);
+                    break
+                case 'Delete':
+                    transformControls.detach(selectedObject);
+                    scene.remove(selectedObject);
+                    tooltip('Deleted block')
+                    break
+            }
+        })
 
       document.getElementById('move-block-t').addEventListener('click', function () {
         if (selectedObject) {
@@ -768,27 +722,60 @@
         controls.enabled = !event.value;
       });
 
-      transformControls.addEventListener('objectChange', function () {
+    /*transformControls.addEventListener('objectChange', function () {
         if (selectedObject) {
+            selectedObject.position.set(
+                snapToGrid(selectedObject.position.x, 10), 
+                snapToGrid(selectedObject.position.y, 4), 
+                snapToGrid(selectedObject.position.z, 10)
+            );
 
-          let position = new THREE.Euler(
-            snapToGrid(selectedObject.position.x, 10), //width
-            snapToGrid(selectedObject.position.y, 4), //height
-            snapToGrid(selectedObject.position.z, 10)
-          );
-          selectedObject.position.copy(position);
+            selectedObject.rotation.set(
+                Math.round(selectedObject.rotation.x / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
+                Math.round(selectedObject.rotation.y / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
+                Math.round(selectedObject.rotation.z / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45)
+            );
 
-          let rotation = new THREE.Euler(
-            Math.round(selectedObject.rotation.x / THREE.MathUtils.degToRad(45)) *
-            THREE.MathUtils.degToRad(45),
-            Math.round(selectedObject.rotation.y / THREE.MathUtils.degToRad(45)) *
-            THREE.MathUtils.degToRad(45),
-            Math.round(selectedObject.rotation.z / THREE.MathUtils.degToRad(45)) *
-            THREE.MathUtils.degToRad(45)
-          );
-          selectedObject.rotation.copy(rotation);
+            selectedObject.updateMatrixWorld(true);
         }
-      });
+        if(blockGroups) {
+            blockGroups.forEach(function (group) {
+                let meshChild = null;
+                group.traverse(function (child) {
+                    if (child.isMesh) {
+                        meshChild = child;
+                    }
+                });
+
+                if (meshChild) {
+                    group.updateMatrixWorld(true);
+                }
+            });
+        }
+    }); */
+
+    transformControls.addEventListener('objectChange', function () {
+        if (selectedObject) {
+            selectedObject.position.set(
+                snapToGrid(selectedObject.position.x, 10), 
+                snapToGrid(selectedObject.position.y, 4), 
+                snapToGrid(selectedObject.position.z, 10)
+            );
+
+            selectedObject.rotation.set(
+                Math.round(selectedObject.rotation.x / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
+                Math.round(selectedObject.rotation.y / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
+                Math.round(selectedObject.rotation.z / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45)
+            );
+
+            selectedObject.updateMatrixWorld(true);
+
+            let index = blockGroups.findIndex(g => g.name === selectedObject.name);
+            if (index !== -1) {
+                blockGroups[index] = selectedObject;
+            }
+        }
+    });
 
       /*let deleted_objects = [];
 
@@ -913,7 +900,7 @@
           return;
         }
 
-        console.log("loaded group:", loadedGroup);
+        console.log("loaded group:", JSON.stringify(loadedGroup));
 
         loadedGroup.traverse((child) => {
           if (child.isMesh) {
@@ -939,7 +926,7 @@
 
         blockGroup.ldraw = part;
 
-        blockGroup.userData.block_id = Date.now();
+        //blockGroup.userData.block_id = Date.now();
 
         blockGroup.add(loadedGroup);
 
@@ -954,10 +941,10 @@
         blockGroup.position.copy(position);
 
         scene.add(blockGroup);
-        console.log("block group added:", blockGroup);
+        console.log("block group added:", JSON.stringify(blockGroup));
         tooltip(`Added block ${part}`)
         selectedObject = blockGroup;
-        transformControls.attach(selectedObject);
+        transformControls.attach(blockGroup);
         blocks.push(blockGroup);
         blockGroups.push(blockGroup);
         updateBlockList(partName, partColor, blocks.length, blockGroup.userData.block_id);
@@ -981,57 +968,58 @@
     // TODO: stop double encoding json
     // @3/20/25 8:49 AM
     function generateSceneJSON() {
-      let gr8brikid = {
-        gr8brikid: [{
-          gr8brikid: makeid(5)
-        }]
-      };
+      let gr8brikid = makeid(5);
 
       const sceneData = {
         blocks: []
       };
 
+      if (selectedObject) {
+        transformControls.detach(selectedObject);
+        selectedObject = null;
+    }
+
       blockGroups.forEach(function (group) {
-        let meshChild = null;
+        let mesh_child = null;
         group.traverse(function (child) {
           if (child.isMesh) {
-            meshChild = child;
+            mesh_child = child;
           }
         });
 
-        if (meshChild) {
+        if (mesh_child) {
             let ldraw = group.ldraw.replace("parts/", "");
-          const blockData = {
-            partName: meshChild.userData.partName,
-            color: meshChild.material.color.getHexString(),
-            position: {
-              x: group.position.x,
-              y: group.position.y,
-              z: group.position.z
-            },
-            rotation: {
-              x: group.rotation.x,
-              y: group.rotation.y,
-              z: group.rotation.z
-            },
-            scale: {
-              x: group.scale.x,
-              y: group.scale.y,
-              z: group.scale.z
-            },
-            blockID: group.name,
-            ldraw: ldraw,
-          };
+            const blockData = {
+                partName: group.userData.partName,
+                color: mesh_child.material.color.getHexString(),
+                position: {
+                    x: group.position.x,
+                    y: group.position.y,
+                    z: group.position.z
+                },
+                rotation: {
+                    x: group.rotation.x,
+                    y: group.rotation.y,
+                    z: group.rotation.z
+                },
+                scale: {
+                    x: group.scale.x,
+                    y: group.scale.y,
+                    z: group.scale.z
+                },
+                blockID: group.name,
+                ldraw: ldraw,
+            };
           sceneData.blocks.push(blockData);
         }
       });
 
-      return JSON.stringify(sceneData, null, 2);
+      return JSON.stringify(sceneData, null, 1);
     }
 
     var selectedObjects = [];
 
-    function onMouseClick(event) {
+    /*function onMouseClick(event) {
       event.preventDefault();
 
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -1061,8 +1049,38 @@
           selectedObject = null;
         }
       }
-    }
+    }*/
 
+    function onMouseClick(event) {
+        event.preventDefault();
+
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, camera);
+        var intersects = raycaster.intersectObjects(scene.children, true);
+
+        if (intersects.length > 0) {
+            var object = intersects[0].object;
+            while (object.parent && !object.userData.isBlock) {
+                object = object.parent;
+            }
+
+            if (object.userData.isBlock) {
+                if (selectedObject) {
+                    transformControls.detach(selectedObject);
+                }
+
+                selectedObject = blockGroups.find(g => g.name === object.name) || object;
+                transformControls.attach(selectedObject);
+            }
+        } else {
+            if (selectedObject) {
+                transformControls.detach(selectedObject);
+                selectedObject = null;
+            }
+        }
+    }
 
     function onWindowResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
