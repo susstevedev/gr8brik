@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 3-30-2025 -->
+<!-- GR8BRIK VERSION 4-01-2025 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -293,7 +293,6 @@
         <option value="train">Train Parts</option>
         <option value="panel">Panels</option>
         <option value="round_&_curved">Round & Curved</option>
-        <!-- <option value="modified">Modified</option> -->
         <option value="other">Miscellaneous</option>
     </select><br />
 
@@ -327,11 +326,8 @@
         e.returnValue = '';
     });
 
-    var partColor = "#ff0000"; // red
+    var partColor = "#ff0000";
     $(document).ready(function () {
-      //const urlParams = new URLSearchParams(window.location.search);
-      //const userId = urlParams.get('user');
-
       $(document).on('click', 'a', function(event) {            
         let url = $(this).attr("href");
 
@@ -344,7 +340,6 @@
     });
 
       function login() {
-        //if (userId) {
           $.ajax({
             url: "/ajax/user.php",
             method: "GET",
@@ -365,9 +360,6 @@
               tooltip(response.error);
             }
           });
-        /*} else {
-          tooltip("Please login to save creations.");
-        }*/
       }
       login();
 
@@ -528,13 +520,6 @@
           tooltip('Block selected');
         }
       });
-
-      /*setInterval(function () {
-        let allParts = [];
-        $('#select-block').html('');
-        loadParts(current_type);
-        tooltip('Reloaded parts list');
-      }, 30000);*/
     });
   </script>
   <script>
@@ -707,8 +692,12 @@
         }
       });
 
-      window.addEventListener('resize', onWindowResize, true);
-      window.addEventListener('click', onMouseClick, true);
+    // this doesn't work because of the ui
+    // someone fix this idk
+    //window.addEventListener('pointerdown', onMouseClick, true);
+
+    window.addEventListener('resize', onWindowResize, true);
+    window.addEventListener('click', onMouseClick, true);
 
       transformControls.addEventListener('mouseDown', function () {
         controls.enabled = false;
@@ -722,114 +711,24 @@
         controls.enabled = !event.value;
       });
 
-    /*transformControls.addEventListener('objectChange', function () {
-        if (selectedObject) {
-            selectedObject.position.set(
-                snapToGrid(selectedObject.position.x, 10), 
-                snapToGrid(selectedObject.position.y, 4), 
-                snapToGrid(selectedObject.position.z, 10)
-            );
+        transformControls.addEventListener('objectChange', function () {
+            if (selectedObject) {
+                selectedObject.position.set(
+                    snapToGrid(selectedObject.position.x, 10), 
+                    snapToGrid(selectedObject.position.y, 4), 
+                    snapToGrid(selectedObject.position.z, 10)
+                );
 
-            selectedObject.rotation.set(
-                Math.round(selectedObject.rotation.x / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
-                Math.round(selectedObject.rotation.y / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
-                Math.round(selectedObject.rotation.z / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45)
-            );
+                selectedObject.rotation.set(
+                    Math.round(selectedObject.rotation.x / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
+                    Math.round(selectedObject.rotation.y / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
+                    Math.round(selectedObject.rotation.z / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45)
+                );
 
-            selectedObject.updateMatrixWorld(true);
-        }
-        if(blockGroups) {
-            blockGroups.forEach(function (group) {
-                let meshChild = null;
-                group.traverse(function (child) {
-                    if (child.isMesh) {
-                        meshChild = child;
-                    }
-                });
-
-                if (meshChild) {
-                    group.updateMatrixWorld(true);
-                }
-            });
-        }
-    }); */
-
-    transformControls.addEventListener('objectChange', function () {
-        if (selectedObject) {
-            selectedObject.position.set(
-                snapToGrid(selectedObject.position.x, 10), 
-                snapToGrid(selectedObject.position.y, 4), 
-                snapToGrid(selectedObject.position.z, 10)
-            );
-
-            selectedObject.rotation.set(
-                Math.round(selectedObject.rotation.x / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
-                Math.round(selectedObject.rotation.y / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
-                Math.round(selectedObject.rotation.z / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45)
-            );
-
-            selectedObject.updateMatrixWorld(true);
-
-            let index = blockGroups.findIndex(g => g.name === selectedObject.name);
-            if (index !== -1) {
-                blockGroups[index] = selectedObject;
+                selectedObject.updateMatrixWorld(true);
             }
-        }
-    });
-
-      /*let deleted_objects = [];
-
-      window.addEventListener("keydown", function (event) {
-        if (event.key === "Delete") {
-          if (document.activeElement.tagName === "INPUT" || document.activeElement.tagName ===
-            "TEXTAREA") {
-            return;
-          }
-
-          if (!selectedObject) {
-            tooltip('No block selected');
-            return;
-          }
-
-          let object_id = selectedObject.userData.block_id;
-          let block_index = blocks.findIndex(block => block.userData.block_id === Number(
-            object_id));
-
-          transformControls.detach(selectedObject);
-          scene.remove(selectedObject);
-          $(`#block-list li[data-id="${block_index}"]`).remove();
-
-          if (selectedObject.geometry) {
-            selectedObject.geometry.dispose();
-          }
-
-          if (selectedObject.material) {
-            if (Array.isArray(selectedObject.material)) {
-              selectedObject.material.forEach(mat => mat.dispose());
-            } else {
-              selectedObject.material.disposes();
-            }
-          }
-
-          if (block_index !== -1) {
-            blocks.splice(block_index, 1);
-          }
-
-          deleted_objects.push(selectedObject);
-          selectedObject = null;
-
-          tooltip('Selected block deleted');
-
-          requestAnimationFrame(() => {
-            let exists = scene.children.some(obj => obj.id === object_id);
-            if (exists) {
-              console.error(`${object_id} was not fully deleted`);
-              tooltip('Block was not fully deleted due to an error');
-            }
-          });
-        }
-      });*/
-
+            updateSceneData();
+        });
     }
 
     function changeBlockColor(color) {
@@ -871,87 +770,85 @@
     let blockGroups = [];
 
     function addBlock() {
-      if (!ldraw_loader || typeof ldraw_loader.load !== 'function') {
-        console.error('ldrawloader is not initialized');
-        return;
-      }
-
-      if (!part) {
-        console.error('peice is undefined');
-        tooltip('Please select a block')
-        return;
-      }
-
-      if (!partColor) {
-        console.error('color is undefined/invalid');
-        tooltip('Please select a color for the current block')
-        return;
-      }
-
-      transformControls.detach(selectedObject);
-      console.log("Loading part:", part);
-
-      ldraw_loader.load(part, function (loadedGroup) {
-        ldraw_loader.smoothNormals = true;
-        ldraw_loader.displayLines = false;
-
-        if (!loadedGroup) {
-          console.error("group is undefined");
-          return;
+        if (!ldraw_loader || typeof ldraw_loader.load !== 'function') {
+            console.error('ldrawloader is not initialized');
+            return;
         }
 
-        console.log("loaded group:", JSON.stringify(loadedGroup));
+        if (!part) {
+            console.error('piece is undefined');
+            tooltip('Please select a block');
+            return;
+        }
 
-        loadedGroup.traverse((child) => {
-          if (child.isMesh) {
-            child.material = new THREE.MeshPhysicalMaterial({
-              color: new THREE.Color(partColor || "#ffffff"),
-              roughness: 0.05,
-              metalness: 0.0,
-              clearcoat: 1.0,
-              clearcoatRoughness: 0.05,
-              reflectivity: 0.9
+        if (!partColor) {
+            console.error('color is undefined/invalid');
+            tooltip('Please select a color for the current block');
+            return;
+        }
+
+        transformControls.detach(selectedObject);
+        console.log("Loading part:", part);
+
+        ldraw_loader.load(part, function (loadedGroup) {
+            ldraw_loader.smoothNormals = true;
+            ldraw_loader.displayLines = false;
+
+            if (!loadedGroup) {
+                console.error("group is undefined");
+                return;
+            }
+
+            console.log("loaded group:", JSON.stringify(loadedGroup));
+
+            let blockGroup = new THREE.Group();
+            blockGroup.name = `ldraw_${makeid(10)}`;
+            blockGroup.ldraw = part;
+
+            loadedGroup.traverse((child) => {
+                if (child.isMesh) {
+                    child.material = new THREE.MeshPhysicalMaterial({
+                        color: new THREE.Color(partColor || "#ffffff"),
+                        roughness: 0.05,
+                        metalness: 0.0,
+                        clearcoat: 1.0,
+                        clearcoatRoughness: 0.05,
+                        reflectivity: 0.9
+                    });
+                    child.material.needsUpdate = true;
+                    child.userData.selectable = true;
+                }
             });
-            child.material.needsUpdate = true;
-            child.userData.selectable = true;
-          }
+
+            blockGroup.add(loadedGroup);
+
+            blockGroup.rotation.x = Math.PI;
+            let position = new THREE.Vector3(
+                snapToGrid(blockGroup.position.x, 10),
+                snapToGrid(blockGroup.position.y, 4),
+                snapToGrid(blockGroup.position.z, 10)
+            );
+            blockGroup.position.copy(position);
+
+            blockGroup.userData.isBlock = true;
+            blockGroup.userData.partName = partName;
+
+            scene.add(blockGroup);
+
+            console.log("block group added:", JSON.stringify(blockGroup));
+            tooltip(`Added block ${part}`);
+
+            selectedObject = blockGroup;
+            transformControls.attach(blockGroup);
+
+            blocks.push(blockGroup);
+            blockGroups.push(blockGroup);
+
+            updateBlockList(partName, partColor, blocks.length, blockGroup.userData.block_id);
+            
+        }, undefined, function (error) {
+            console.error('error loading piece:', error);
         });
-
-        loadedGroup.userData.isBlock = true;
-        loadedGroup.userData.partName = partName;
-
-        let blockGroup = new THREE.Group();
-
-        blockGroup.name = `ldraw_${makeid(10)}`;
-
-        blockGroup.ldraw = part;
-
-        //blockGroup.userData.block_id = Date.now();
-
-        blockGroup.add(loadedGroup);
-
-        blockGroup.rotation.x = Math.PI;
-
-        let position = new THREE.Vector3(
-          snapToGrid(blockGroup.position.x, 10), //width
-          snapToGrid(blockGroup.position.y, 4), //height
-          snapToGrid(blockGroup.position.z, 10)
-        );
-
-        blockGroup.position.copy(position);
-
-        scene.add(blockGroup);
-        console.log("block group added:", JSON.stringify(blockGroup));
-        tooltip(`Added block ${part}`)
-        selectedObject = blockGroup;
-        transformControls.attach(blockGroup);
-        blocks.push(blockGroup);
-        blockGroups.push(blockGroup);
-        updateBlockList(partName, partColor, blocks.length, blockGroup.userData.block_id);
-
-      }, undefined, function (error) {
-        console.error('error loading peice:', error);
-      });
     }
 
     function updateBlockList(part, color, count, id) {
@@ -1017,39 +914,29 @@
       return JSON.stringify(sceneData, null, 1);
     }
 
-    var selectedObjects = [];
+    function updateSceneData() {
+        if (blockGroups && blockGroups.length > 0) {
+            blockGroups.forEach(function (group) {
+                let mesh_child = null;
+                group.traverse(function (child) {
+                    if (child.isMesh) {
+                        mesh_child = child;
+                    }
+                });
 
-    /*function onMouseClick(event) {
-      event.preventDefault();
-
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-      raycaster.setFromCamera(mouse, camera);
-      var intersects = raycaster.intersectObjects(scene.children, true);
-
-      if (intersects.length > 0) {
-        var object = intersects[0].object;
-
-        while (object.parent && !object.userData.isBlock) {
-          object = object.parent;
+                if (mesh_child != null) {
+                    group.updateMatrixWorld(true);
+                    mesh_child.updateMatrixWorld(true);
+                    console.log('updated block data for', group.name);
+                }
+            });
         }
 
-        if (object.userData.isBlock) {
-          if (selectedObject) {
-            transformControls.detach(selectedObject);
-          }
-
-          selectedObject = object;
-          transformControls.attach(selectedObject);
-        }
-      } else {
         if (selectedObject) {
-          transformControls.detach(selectedObject);
-          selectedObject = null;
+            selectedObject.updateMatrixWorld(true);
+            console.log('updated selected block data:', selectedObject.name);
         }
-      }
-    }*/
+    }
 
     function onMouseClick(event) {
         event.preventDefault();
@@ -1058,27 +945,69 @@
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
         raycaster.setFromCamera(mouse, camera);
-        var intersects = raycaster.intersectObjects(scene.children, true);
+        let intersects = raycaster.intersectObjects(scene.children, true);
 
         if (intersects.length > 0) {
-            var object = intersects[0].object;
-            while (object.parent && !object.userData.isBlock) {
-                object = object.parent;
-            }
+            console.log('block found...')
+            selectObject(intersects[0].object);
+        }
+    }
 
-            if (object.userData.isBlock) {
-                if (selectedObject) {
-                    transformControls.detach(selectedObject);
+    /*function selectObject(object) {
+        deselectObject();
+
+        //let found_group = blockGroups.find(g => g === object.parent);
+        //let group = found_group || object.parent || object;
+
+        blockGroups.forEach(function (object) {
+            let mesh_child = null;
+            object.traverse(function (child) {
+                if (child.isMesh && object.userData.isBlock) {
+                    let group = object;
+                    transformControls.attach(group);
+                    selectedObject = group;
+                } else {
+                    deselectObject();
                 }
+            });
+        });
 
-                selectedObject = blockGroups.find(g => g.name === object.name) || object;
-                transformControls.attach(selectedObject);
-            }
+        if (group) {
+            group.traverse(child => {
+                console.log("checking object ", child);
+                if (child.isMesh && group.userData.isBlock) {
+                    transformControls.attach(group);
+                    selectedObject = group;
+                }
+            });
         } else {
-            if (selectedObject) {
-                transformControls.detach(selectedObject);
-                selectedObject = null;
-            }
+            console.warn("no valid objects in scene");
+        }
+    } */
+
+    function selectObject(object) {
+        /*if (controls != event.value && selectedObject === null) {
+            deselectObject();
+        }*/
+
+        while (object.parent && !object.userData.isBlock) {
+            object = object.parent;
+        }
+
+        if (object.userData.isBlock && transformControls.enabled) {
+            deselectObject();
+            selectedObject = object;
+            transformControls.attach(object);
+        } else {
+            deselectObject();
+            console.log("object is not a block");
+        }
+    }
+
+    function deselectObject() {
+        if (selectedObject) {
+            transformControls.detach(selectedObject);
+            selectedObject = null;
         }
     }
 
@@ -1133,29 +1062,28 @@
       renderer.outputColorSpace = THREE.SRGBColorSpace;
     }
 
-    // TODO: replace all of these styles with inline at the top of the page
     function tooltip(text) {
-      const tooltip = document.createElement('div');
+        const tooltip = document.createElement('div');
 
-      tooltip.textContent = text;
-      tooltip.setAttribute('id', 'tooltip');
+        tooltip.textContent = text;
+        tooltip.setAttribute('id', 'tooltip');
 
-      tooltip.style.position = 'absolute';
-      tooltip.style.zIndex = '99999999' + Date.now();
-      tooltip.style.right = '0px';
-      tooltip.style.top = '0px';
-      tooltip.style.backgroundColor = '#ddd';
-      tooltip.style.color = '#000';
-      tooltip.style.padding = '5px 5px 5px 5px';
-      tooltip.style.borderRadius = '0px';
+        tooltip.style.position = 'absolute';
+        tooltip.style.zIndex = '99999999' + Date.now();
+        tooltip.style.right = '0px';
+        tooltip.style.top = '0px';
+        tooltip.style.backgroundColor = '#ddd';
+        tooltip.style.color = '#000';
+        tooltip.style.padding = '5px 5px 5px 5px';
+        tooltip.style.borderRadius = '0px';
 
-      document.body.appendChild(tooltip);
+        document.body.appendChild(tooltip);
 
-      if (tooltip) {
-        setTimeout(() => {
-          tooltip.remove();
-        }, 5000);
-      }
+        if (tooltip) {
+            setTimeout(() => {
+            tooltip.remove();
+            }, 5000);
+        }
     }
 
     window.onload = function() {
@@ -1168,18 +1096,16 @@
   </script>
 
   <!-- LDRAW.ORG CC BY 2.0 PARTS LIBRARY ATTRIBUTION -->
-  <div
-    style="display: block; position: absolute; bottom: 0px; right: 0px; width: 175px; padding: 2px; border: #838A92 1px solid; background-color: #F3F7F8;">
-    <a href="http://www.ldraw.org"><img style="width: 145px" src="https://threejs.org/examples/models/ldraw/ldraw_org_logo/Stamp145.png"></a>
-    <a href="http://www.google.com/chromebook/" target="_blank">
-      <img
-        src="https://lh3.googleusercontent.com/1GkePzki6ZaVDoZOECVzvrrOu9jDOwinjdGafhaAjj9pfO9yFzqPqeuYOqIQ41JlwOlyNhAOrPSGGbioBeVd_eiH0cn_1X6uRWf-uA"
-        style="width: 50px; height: 50px; float: right;" />
-    </a>
+  <div style="display: block; position: absolute; bottom: 0px; right: 0px; width: 175px; padding: 2px; border: #838A92 1px solid; background-color: #F3F7F8;">
+        <a href="http://www.ldraw.org">
+            <img style="width: 145px" src="https://threejs.org/examples/models/ldraw/ldraw_org_logo/Stamp145.png">
+        </a>
+        <a href="http://www.google.com/chromebook/" target="_blank">
+            <img src="https://lh3.googleusercontent.com/1GkePzki6ZaVDoZOECVzvrrOu9jDOwinjdGafhaAjj9pfO9yFzqPqeuYOqIQ41JlwOlyNhAOrPSGGbioBeVd_eiH0cn_1X6uRWf-uA" style="width: 50px; height: 50px; float: right;" />
+        </a>
     <br />
     <a href="http://www.ldraw.org/" style="color:#000;">This software uses the LDraw Parts Library</a>
   </div>
 
 </body>
-
 </html>
