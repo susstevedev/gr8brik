@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 4-01-2025 -->
+<!-- GR8BRIK VERSION 4-02-2025 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -247,7 +247,7 @@
   <div id="info">
     <p style="height: 1vh;"></p>
     <a href="https://www.gr8brik.rf.gd/" target="_blank" rel="noopener">Gr8brik beta</a><b
-      style="color:blue;"> - March 2025</b><br />
+      style="color:blue;"> - April 2025</b><br />
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
@@ -276,7 +276,6 @@
     <label for="part-type-filter">Filter by</label>
 
     <select id="part-type-filter" style="display: inline-block;">
-        <!-- <option value="all">All Types</option> -->
         <option value="brick" selected>Bricks</option>
         <option value="plate">Plates</option>
         <option value="tile">Tiles</option>
@@ -610,6 +609,7 @@
 
     function init() {
         container = document.createElement('div');
+        container.classList.add("scene");
 
         document.body.appendChild(container);
         camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
@@ -953,42 +953,14 @@
         }
     }
 
-    /*function selectObject(object) {
-        deselectObject();
-
-        //let found_group = blockGroups.find(g => g === object.parent);
-        //let group = found_group || object.parent || object;
-
-        blockGroups.forEach(function (object) {
-            let mesh_child = null;
-            object.traverse(function (child) {
-                if (child.isMesh && object.userData.isBlock) {
-                    let group = object;
-                    transformControls.attach(group);
-                    selectedObject = group;
-                } else {
-                    deselectObject();
-                }
-            });
-        });
-
-        if (group) {
-            group.traverse(child => {
-                console.log("checking object ", child);
-                if (child.isMesh && group.userData.isBlock) {
-                    transformControls.attach(group);
-                    selectedObject = group;
-                }
-            });
-        } else {
-            console.warn("no valid objects in scene");
-        }
-    } */
-
     function selectObject(object) {
-        /*if (controls != event.value && selectedObject === null) {
-            deselectObject();
-        }*/
+        // using this instead of document.activeElement because it works with div elements
+        let target = event.target;
+        let container = document.querySelector(".scene");
+
+        if (!container.contains(target)) {
+            return;
+        }
 
         while (object.parent && !object.userData.isBlock) {
             object = object.parent;
