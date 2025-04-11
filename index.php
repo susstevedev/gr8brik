@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 4-02-2025 -->
+<!-- GR8BRIK VERSION 4-11-2025 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -246,8 +246,9 @@
 
   <div id="info">
     <p style="height: 1vh;"></p>
-    <a href="https://www.gr8brik.rf.gd/" target="_blank" rel="noopener">Gr8brik beta</a><b
-      style="color:blue;"> - April 2025</b><br />
+    <a href="https://www.gr8brik.rf.gd/" target="_blank">Gr8brik beta</a>
+    <b style="color:blue;"> - April 2025</b>
+    <b style="color:blue;"> - <a href="https://www.gr8brik.rf.gd/old-modeler" target="_blank">Old modeler</a></b><br />
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
@@ -327,16 +328,15 @@
 
     var partColor = "#ff0000";
     $(document).ready(function () {
-      $(document).on('click', 'a', function(event) {            
-        let url = $(this).attr("href");
 
-        if (!url || url.match("^http")) {
-            event.preventDefault();
-            console.log('Invalid URL')
-        } else {
-            return;
-        }
-    });
+        $(document).on('click', 'a', function(event) { 
+            event.preventDefault();           
+            let url = $(this).attr("href");
+
+            if (url || url.match("^http")) {
+                window.location.href = url;
+            }
+        });
 
       function login() {
           $.ajax({
@@ -692,12 +692,9 @@
         }
       });
 
-    // this doesn't work because of the ui
-    // someone fix this idk
-    //window.addEventListener('pointerdown', onMouseClick, true);
-
     window.addEventListener('resize', onWindowResize, true);
-    window.addEventListener('click', onMouseClick, true);
+    window.addEventListener('pointerdown', onMouseClick, true);
+    //window.addEventListener('click', onMouseClick, true);
 
       transformControls.addEventListener('mouseDown', function () {
         controls.enabled = false;
@@ -939,7 +936,14 @@
     }
 
     function onMouseClick(event) {
-        event.preventDefault();
+        let target = event.target;
+        let container = document.querySelector(".scene");
+
+        if (!container.contains(target)) {
+            return;
+        } else {
+            event.preventDefault();
+        }
 
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -948,32 +952,26 @@
         let intersects = raycaster.intersectObjects(scene.children, true);
 
         if (intersects.length > 0) {
-            console.log('block found...')
             selectObject(intersects[0].object);
         }
     }
 
     function selectObject(object) {
-        // using this instead of document.activeElement because it works with div elements
-        let target = event.target;
-        let container = document.querySelector(".scene");
-
-        if (!container.contains(target)) {
-            return;
-        }
-
         while (object.parent && !object.userData.isBlock) {
             object = object.parent;
         }
 
-        if (object.userData.isBlock && transformControls.enabled) {
-            deselectObject();
-            selectedObject = object;
-            transformControls.attach(object);
-        } else {
-            deselectObject();
-            console.log("object is not a block");
+        if (!object.userData.isBlock || !transformControls.enabled) {
+            return;
         }
+
+        if (object === selectedObject) {
+            return;
+        }
+
+        deselectObject();
+        selectedObject = object;
+        transformControls.attach(object);
     }
 
     function deselectObject() {
