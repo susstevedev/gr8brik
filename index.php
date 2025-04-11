@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 4-11-2025 -->
+<!-- GR8BRIK VERSION 4-11-2025 V2 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -644,9 +644,9 @@
         scene.add(grid_helper);
 
         ldraw_loader = new THREE.LDrawLoader();
-        ldraw_loader.preloadMaterials('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/colors/ldcfgalt.ldr');
-        ldraw_loader.setPath('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/');
-        ldraw_loader.setPartsLibraryPath("https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/");
+        ldraw_loader.preloadMaterials('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/colors/ldconfig.ldr');
+        ldraw_loader.setPath('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/');
+        ldraw_loader.setPartsLibraryPath("https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/");
         ldraw_loader.displayLines = false;
 
         raycaster = new THREE.Raycaster();
