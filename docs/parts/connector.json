@@ -1,356 +1,361 @@
 [
     {
-        "id": "67e1bfdd7a1049.78303169",
+        "id": "67f9500ab6cea3.04603885",
         "name": "~Electric Mindstorms EV3 SD-card Connector",
         "file": "11034.dat"
     },
     {
-        "id": "67e1bfdd7a1e00.95782752",
+        "id": "67f9500ab6e1c0.46241100",
         "name": "~Electric Mindstorms EV3 Cable Connector Quad Socket",
         "file": "11035.dat"
     },
     {
-        "id": "67e1bfde2b4f05.08365430",
+        "id": "67f9500bc8c495.63878562",
         "name": "Constraction Torso  5 x 10 with Partial Gear and Connector",
         "file": "24190.dat"
     },
     {
-        "id": "67e1bfde48c353.85409283",
+        "id": "67f9500bf20ec3.78405286",
         "name": "Plant Tree Palm Trunk with Long Indented Connector",
         "file": "2536a.dat"
     },
     {
-        "id": "67e1bfde48d0d2.18316359",
+        "id": "67f9500bf21ca8.57632464",
         "name": "Plant Tree Palm Trunk with Short Indented Connector",
         "file": "2536b.dat"
     },
     {
-        "id": "67e1bfde62a126.47588624",
+        "id": "67f9500c237982.90511391",
         "name": "Monorail Wheel Connector",
         "file": "2697.dat"
     },
     {
-        "id": "67e1bfde792130.81210672",
+        "id": "67f9500c3fd104.81766231",
         "name": "~Electric Power Functions 2.0 Boost Move Hub Connector Holder",
         "file": "28944.dat"
     },
     {
-        "id": "67e1bfde7bdfc3.48625821",
+        "id": "67f9500c43a9e1.83966073",
         "name": "~Electric Train Track  9V Power Connector Top (Needs Work)",
         "file": "2912.dat"
     },
     {
-        "id": "67e1bfde7c29c4.82784018",
+        "id": "67f9500c43fef2.02045655",
         "name": "~Electric Train Track  9V Power Connector",
         "file": "2913.dat"
     },
     {
-        "id": "67e1bfde7c3787.00731300",
+        "id": "67f9500c440e84.93775610",
         "name": "Electric Train Track  9V Power Connector (Complete)",
         "file": "2913c01.dat"
     },
     {
-        "id": "67e1bfdf29f205.55914056",
+        "id": "67f9500d17d318.77114199",
         "name": "Constraction Connector  3 x  2 with Single Round Ball Socket",
         "file": "32174.dat"
     },
     {
-        "id": "67e1bfdf2c8429.68784941",
+        "id": "67f9500d1b8247.02752878",
         "name": "Znap Connector Offset Holes",
         "file": "32207.dat"
     },
     {
-        "id": "67e1bfdf2cbb31.05560006",
+        "id": "67f9500d1bd945.38672022",
         "name": "Znap Connector  3 x  3 - 4 Way",
         "file": "32211.dat"
     },
     {
-        "id": "67e1bfdf2cc9e1.12425624",
+        "id": "67f9500d1bed63.25629751",
         "name": "Znap Connector  1 x  3 -  2 Way Axial",
         "file": "32212.dat"
     },
     {
-        "id": "67e1bfdf2d3354.83987806",
+        "id": "67f9500d1c7679.95208111",
         "name": "Znap Connector  3 x  3 -  4 Way Axial",
         "file": "32221.dat"
     },
     {
-        "id": "67e1bfdf2d4fb8.44786723",
+        "id": "67f9500d1c9f98.24341504",
         "name": "Znap Connector  3 x  3 -  4 Way Rotating Section",
         "file": "32227.dat"
     },
     {
-        "id": "67e1bfdf2d5e84.02145497",
+        "id": "67f9500d1cb847.82289493",
         "name": "Znap Connector  3 x  3 - 4 Way Core Section",
         "file": "32228.dat"
     },
     {
-        "id": "67e1bfdf4362b5.76926771",
+        "id": "67f9500d3989b9.29600864",
         "name": "Scala Support End  2 x  4 with Connector",
         "file": "33268c01.dat"
     },
     {
-        "id": "67e1bfdf43cb35.02013317",
+        "id": "67f9500d39fe60.55651747",
         "name": "Znap Connector  3 x  3 -  3 Way with Pin",
         "file": "33298.dat"
     },
     {
-        "id": "67e1bfdf48e557.44545300",
+        "id": "67f9500d3fd9f9.84325610",
         "name": "~Turntable  4 x  4 Dimpled Top with Connector with Black Inside",
         "file": "3404bc01.dat"
     },
     {
-        "id": "67e1bfdf48f2f5.84074979",
+        "id": "67f9500d3fe7f0.82026146",
         "name": "~Turntable  4 x  4 Dimpled Top with Connector with Red Inside",
         "file": "3404bc02.dat"
     },
     {
-        "id": "67e1bfdf494062.49628555",
+        "id": "67f9500d403924.24278383",
         "name": "~Turntable  4 x  4 Round Top w. Connector w. Black Inside",
         "file": "3404dc01.dat"
     },
     {
-        "id": "67e1bfdf494e04.39519736",
+        "id": "67f9500d404a92.87075229",
         "name": "~Turntable  4 x  4 Round Top w. Connector w. Red Inside",
         "file": "3404dc02.dat"
     },
     {
-        "id": "67e1bfdfd50679.12006994",
+        "id": "67f9500df3b9c1.70971894",
         "name": "~_Technic Angle Connector #6 (90 degree) Black (Obsolete)",
         "file": "4107767.dat"
     },
     {
-        "id": "67e1bfdfdb3fb5.95873592",
+        "id": "67f9500e0a9153.84695896",
         "name": "~_Znap Connector  3 x  3 -  4 Way Closed with Rotating Section Black\/Yellow (Obsolete)",
         "file": "4140643.dat"
     },
     {
-        "id": "67e1bfe0076152.57226891",
+        "id": "67f9500e4cdf22.54254943",
         "name": "~_Technic Angle Connector #1 Light Bluish Grey (Obsolete)",
         "file": "4211550.dat"
     },
     {
-        "id": "67e1bfe02160f2.10699839",
+        "id": "67f9500e7b98f3.63578977",
         "name": "~Electric 4.5V 3 C-Cell Battery Box Polarity Switch 2 x 4 Connector Side",
         "file": "4353.dat"
     },
     {
-        "id": "67e1bfe0355311.81676637",
+        "id": "67f9500ea8ba37.82435611",
         "name": "~_Technic Connector Block  3 x  3 Triangular with Axlehole Black (Obsolete)",
         "file": "4497946.dat"
     },
     {
-        "id": "67e1bfe0366db1.46791859",
+        "id": "67f9500eaac583.61754280",
         "name": "~_Technic Angle Connector #5 (112.5 degree) White (Obsolete)",
         "file": "4506697.dat"
     },
     {
-        "id": "67e1bfe061aeb9.41234565",
+        "id": "67f9500ee80228.82793615",
         "name": "Constraction Connector  5 x  2 with Double Round Ball Sockets",
         "file": "47296.dat"
     },
     {
-        "id": "67e1bfe080a226.90910763",
+        "id": "67f9500f160149.40802498",
         "name": "Constraction Connector  7 x  2 with Double Round Ball Sockets",
         "file": "50898.dat"
     },
     {
-        "id": "67e1bfe0844dc0.29487558",
+        "id": "67f9500f1a0526.46708283",
         "name": "Train Track 12V Electric Cable Connector",
         "file": "511c01.dat"
     },
     {
-        "id": "67e1bfe0971551.66867270",
+        "id": "67f9500f2a7413.57600428",
         "name": "~Electric Mindstorms NXT Cable Connector Socket",
         "file": "54732.dat"
     },
     {
-        "id": "67e1bfe09722d1.55401831",
+        "id": "67f9500f2a8215.87331892",
         "name": "~Electric Mindstorms EV3 Cable Connector Socket",
         "file": "54732b.dat"
     },
     {
-        "id": "67e1bfe0a3d9c9.59323693",
+        "id": "67f9500f371778.87464786",
         "name": "Constraction Head Connector Block Eye\/Brain Stalk",
         "file": "57536.dat"
     },
     {
-        "id": "67e1bfe0a90c19.72187499",
+        "id": "67f9500f3c7826.52609820",
         "name": "~Electric Power Functions Connector Top (Needs Work)",
         "file": "58124.dat"
     },
     {
-        "id": "67e1bfe0a91923.68905741",
+        "id": "67f9500f3c86d7.61205487",
         "name": "Electric Power Functions Connector with PF Bottom",
         "file": "58124c01.dat"
     },
     {
-        "id": "67e1bfe0a92618.43197725",
+        "id": "67f9500f3c9428.51439481",
         "name": "Electric Power Functions Connector with 9V Bottom",
         "file": "58124c02.dat"
     },
     {
-        "id": "67e1bfe0a93305.93299100",
+        "id": "67f9500f3ca249.93812118",
         "name": "Electric Power Functions Connector with PF Bottom and Flat Top",
         "file": "58124c03.dat"
     },
     {
-        "id": "67e1bfe0a94917.25746334",
+        "id": "67f9500f3cb038.26761903",
         "name": "~Electric Power Functions Connector Bottom (PF Type)(Needs Work)",
         "file": "58125a.dat"
     },
     {
-        "id": "67e1bfe0a95690.31323503",
+        "id": "67f9500f3cbd76.90105398",
         "name": "~Electric Power Functions Connector Bottom (9V Type)(Needs Work)",
         "file": "58125b.dat"
     },
     {
-        "id": "67e1bfe0b7e4e0.93081029",
+        "id": "67f9500f4bee75.09698713",
         "name": "Constraction Connector  3 x  2 with Single Angled Ball Socket",
         "file": "60176.dat"
     },
     {
-        "id": "67e1bfe0cd4f48.66461192",
+        "id": "67f9500f672fb4.78081932",
         "name": "Constraction Connector  5 x  2 with Double Angled Ball Sockets and Closed Axle Holes",
         "file": "61053.dat"
     },
     {
-        "id": "67e1bfe0cd5df3.47737578",
+        "id": "67f9500f673f95.22640229",
         "name": "Constraction Connector  7 x  2 with Double Angled Ball Sockets",
         "file": "61054.dat"
     },
     {
-        "id": "67e1bfe1283106.96117958",
+        "id": "67f9500fc2e482.92251641",
         "name": "~Electric Power Functions Sensor Connector Top (Needs Work)",
         "file": "64056.dat"
     },
     {
-        "id": "67e1bfe129d9f6.33845798",
+        "id": "67f9500fc56187.00488033",
         "name": "Constraction Connector  7 x  2 with Double Angled Ball Sockets and Perpendicular Axle\/Pin Holes",
         "file": "64311.dat"
     },
     {
-        "id": "67e1bfe147d3a9.07073598",
+        "id": "67f9500fe18197.89574303",
         "name": "Constraction Connector  3 x  2 with Single Round Ball Socket with Straight Closed Sides",
         "file": "67695.dat"
     },
     {
-        "id": "67e1bfe1496f56.64109251",
+        "id": "67f9500fe33370.89094272",
         "name": "~Scala Support Beam Connector with Pin",
         "file": "6808.dat"
     },
     {
-        "id": "67e1bfe1497d47.01561459",
+        "id": "67f9500fe34096.33065815",
         "name": "~Scala Support Connector with Hole and Extended Connector",
         "file": "6809.dat"
     },
     {
-        "id": "67e1bfe149a9a3.67344729",
+        "id": "67f9500fe37193.87800669",
         "name": "~Scala Support Connector with Hole and Scala Stud",
         "file": "6810.dat"
     },
     {
-        "id": "67e1bfe1744fa5.70847132",
+        "id": "67f95010183f01.41830664",
         "name": "Znap Connector  3 x  3 -  4 Way Closed w. Rotating Section",
         "file": "76319.dat"
     },
     {
-        "id": "67e1bfe1c7fdb2.63088699",
+        "id": "67f9501c046425.19343268",
         "name": "Constraction Connector  5 x  2 with Double Angled Ball Sockets and Open Axle Holes",
         "file": "89650.dat"
     },
     {
-        "id": "67e1bfe1c80c47.72381159",
+        "id": "67f9501c0718d1.79461779",
         "name": "Constraction Connector  7 x  2 with Double Angled Ball Sockets and Open Axle Holes",
         "file": "89651.dat"
     },
     {
-        "id": "67e1bfe1ce36c6.96901789",
+        "id": "67f9501d057ec0.21448539",
         "name": "Constraction Connector  2 x  5 with Double Ball Sockets and Middle Ball Joint",
         "file": "90622.dat"
     },
     {
-        "id": "67e1bfe2053915.12779724",
+        "id": "67f95024bf27c1.28905145",
         "name": "Constraction Connector  3 x  2 with Single Round Ball Socket with Straight Opened Sides",
         "file": "93571.dat"
     },
     {
-        "id": "67e1bfe25806f7.53529593",
+        "id": "67f95036ccec82.56817089",
         "name": "Constraction Connector  2 x  2 with Double Reinforced Ball Sockets",
         "file": "98565.dat"
     },
     {
-        "id": "67e1bfe25cad48.72261722",
+        "id": "67f9503783b256.76947086",
         "name": "~Electric Mindstorms EV3 Sensor Shell Connector and Side Panels",
         "file": "99377.dat"
     },
     {
-        "id": "67e1bfe2620ad1.72380326",
+        "id": "67f95038837bb6.94586539",
         "name": "~| BuWizz Extension Connector",
         "file": "t1002.dat"
     },
     {
-        "id": "67e1bfe2621907.55931603",
+        "id": "67f95038859b75.13601680",
         "name": "~| BuWizz Micro-USB Connector",
         "file": "t1003.dat"
     },
     {
-        "id": "67e1bfe26226c4.59179470",
+        "id": "67f9503887a7b2.51523936",
         "name": "~| LifeLite eLite LED Connector Socket",
         "file": "t1004.dat"
     },
     {
-        "id": "67e1bfe2673c48.84695775",
+        "id": "67f95039837365.89651956",
         "name": "~| Circuit Cubes Connector Socket  2 Points Straight",
         "file": "t1061.dat"
     },
     {
-        "id": "67e1bfe2679730.00877212",
+        "id": "67f950399110d0.47015467",
         "name": "~| Circuit Cubes Connector Socket  2 Points Bent",
         "file": "t1065.dat"
     },
     {
-        "id": "67e1bfe2806a93.28538552",
+        "id": "67f9503a160094.01168535",
+        "name": "~| BuWizz 3.0 USB-C Connector",
+        "file": "t1118.dat"
+    },
+    {
+        "id": "67f9503e4ade21.33382289",
         "name": "~Electric Lightbrick  2 x  4 Metal Connector",
         "file": "u9073.dat"
     },
     {
-        "id": "67e1bfe28fcc45.27024936",
+        "id": "67f950415f4424.82321535",
         "name": "~Electric Power Functions Coiled Cable With Dark Bluish Grey Functions Connector With PF Bottom",
         "file": "u9190c01.dat"
     },
     {
-        "id": "67e1bfe28fdc63.33502755",
+        "id": "67f95041623bc3.18969878",
         "name": "~Electric Power Functions Coiled Cable With Dark Bluish Grey Functions Connector With PF Bottom",
         "file": "u9190c02.dat"
     },
     {
-        "id": "67e1bfe28fec38.29647835",
+        "id": "67f95041648d73.03143092",
         "name": "~Electric Power Functions Coiled Cable with Dark Bluish Grey Functions Connector with PF Bottom",
         "file": "u9190c03.dat"
     },
     {
-        "id": "67e1bfe2957de4.26571317",
+        "id": "67f95042976f50.25377610",
         "name": "~Turntable  4 x  4 Centre Connector",
         "file": "u9260.dat"
     },
     {
-        "id": "67e1bfe2958b38.57213541",
+        "id": "67f9504299ec69.86690849",
         "name": "~Turntable  4 x  4 Centre Connector Underside",
         "file": "u9261.dat"
     },
     {
-        "id": "67e1bfe2972507.79778485",
+        "id": "67f95042d20dc8.94286185",
         "name": "~Electric Motor  4.5V Top Connector",
         "file": "u9292.dat"
     },
     {
-        "id": "67e1bfe2973335.82963803",
+        "id": "67f95042d46199.45522655",
         "name": "~Electric Motor  4.5V Front Connector",
         "file": "u9293.dat"
     },
     {
-        "id": "67e1bfe29feee0.16882762",
+        "id": "67f950465a9762.35878265",
         "name": "~Electric Powered Up 6 Port Hub Micro-USB Connector",
         "file": "u9401.dat"
     }
