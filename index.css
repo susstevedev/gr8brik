@@ -1,0 +1,249 @@
+body {
+    font-family: Verdana, sans-serif;
+    font-size: 16px;
+    background-color: #000;
+    color: #fff;
+    margin: 0px;
+    overflow: hidden;
+  }
+
+  #info {
+    color: #000;
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+    display: block;
+  }
+
+  #info a {
+    color: #f00;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer
+  }
+
+  #left-container {
+    display: block;
+    pointer-events: auto;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 20%;
+    height: 100%;
+    background-color: #333333;
+    color: #FAFAFA;
+    font-size: 20px;
+    padding: 5px;
+    border: 1px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .btn,
+  .btn-alt {
+    transition: all 0.2s ease-in-out;
+    background-color: #87CEEB;
+    padding: 6px 16px;
+    text-align: center;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.10);
+    background-color: #add8e6;
+    cursor: pointer;
+  }
+
+  .btn-disabled {
+    background-image: linear-gradient(#D3D3D3, #808080);
+  }
+
+  .btn-disabled:hover {
+    cursor: not-allowed;
+    background-image: linear-gradient(#808080, #D3D3D3);
+  }
+
+  .tab-button {
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.10);
+    background-color: #d3d3d3;
+    color: #000;
+    cursor: pointer;
+    padding: 6px;
+    text-align: center;
+    border: none;
+  }
+
+  #save-popup {
+    display: none;
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px #D3D3D3 solid;
+    background-color: #121212;
+    color: #ffffff;
+    position: fixed;
+    z-index: 9999;
+    margin: auto;
+    width: 50%;
+    height: 25%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
+    transition: all 0.5s ease-in-out;
+    text-align: center;
+  }
+
+  #username-field {
+    display: none;
+    position: fixed;
+    right: 10px !important;
+    top: 5px !important;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  #link-home {
+    position: fixed;
+    left: 10px !important;
+    top: 5px !important;
+    text-align: center;
+    display: flex;
+  }
+
+  #link-home a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  #top-container {
+    background-color: #333333;
+    color: #fff;
+    z-index: 1000;
+    position: fixed;
+    margin-right: 15%;
+    width: 100%;
+    height: 5%;
+    padding: 2px 2px 2px 2px;
+  }
+
+    #tooltip {
+        position: absolute;
+        z-index: 99999999;
+        right: 0;
+        top: 0;
+        background-color: #ddd;
+        color: #000;
+        padding: 5px;
+        border-radius: 0px;
+    }
+
+    .mobile-toggle {
+        position: fixed;
+        top: 50px;
+        right: 25px;
+        background: #333333;
+        color: white;
+        padding: 15px;
+        border: 2px rgba(0, 0, 0, 0.16) solid;
+        border-radius: 2px;
+        z-index: 1100;
+        display: inline-block;
+        transition: all 0.2s ease-in-out;
+        /* from https://getcssscan.com/css-box-shadow-examples (number #12) */
+        box-shadow: 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+      }
+
+    .mobile-toggle:hover {
+        background: #252424;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0px 0px 0px 0px, rgba(2, 2, 2, 0.06) 2px 2px 2px 2px;
+    }
+
+  #logo-img {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+  }
+
+  #select-block {
+    display: block;
+  }
+
+  #select-block li,
+  #block-list li {
+    padding: 20px 20px 20px 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+  #block-list {
+    display: none;
+  }
+
+  #search-parts,
+  #save-popup input[type=text] {
+    border: none;
+    border-radius: 2px;
+    width: 75%;
+    height: 30px;
+    outline: 0;
+  }
+
+  #save-popup textarea {
+    border: none;
+    border-radius: 2px;
+    outline: 0;
+    padding: 5px 5px 5px 5px;
+  }
+
+  #preloaded-logo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+  }
+
+  #preloaded-logo .img {
+      background-image: url("/img/logo.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 200px;
+      height: 200px;
+      z-index: 999999;
+      border-radius: 50%;
+  }
+
+@media (max-width: 768px) {
+    #left-container {
+      left: -999px;
+      top: 0;
+      height: 100%;
+      padding: 10px;
+      z-index: 1000;
+      width: 50%;
+    }
+
+    #save-popup {
+        width: 100%;
+        height: 100%;
+      }
+
+    .mobile-toggle {
+      top: 30px;
+      right: 10px;
+    }
+}

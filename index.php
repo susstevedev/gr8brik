@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 4-12-2025 (SUBOBJECT AND TEXTURES BETA 1.0) -->
+<!-- GR8BRIK VERSION 4-12-2025 (SUBOBJECT AND TEXTURES BETA 2.0) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,234 +8,7 @@
     content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.js"></script>
-  <style>
-    body {
-      font-family: Verdana, sans-serif;
-      font-size: 16px;
-      background-color: #000;
-      color: #fff;
-      margin: 0px;
-      overflow: hidden;
-    }
-
-    #info {
-      color: #000;
-      position: absolute;
-      top: 10px;
-      width: 100%;
-      text-align: center;
-      z-index: 100;
-      display: block;
-    }
-
-    #info a {
-      color: #f00;
-      font-weight: bold;
-      text-decoration: underline;
-      cursor: pointer
-    }
-
-    #left-container {
-      display: block;
-      pointer-events: auto;
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 20%;
-      height: 100%;
-      background-color: #333333;
-      color: #FAFAFA;
-      font-size: 20px;
-      padding: 5px;
-      border: 1px;
-      overflow-y: scroll;
-      overflow-x: hidden;
-      transition: all 0.2s ease-in-out;
-    }
-
-    .btn,
-    .btn-alt {
-      transition: all 0.2s ease-in-out;
-      background-color: #87CEEB;
-      padding: 6px 16px;
-      text-align: center;
-      border: none;
-      border-radius: 2px;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.10);
-      background-color: #add8e6;
-      cursor: pointer;
-    }
-
-    .btn-disabled {
-      background-image: linear-gradient(#D3D3D3, #808080);
-    }
-
-    .btn-disabled:hover {
-      cursor: not-allowed;
-      background-image: linear-gradient(#808080, #D3D3D3);
-    }
-
-    .tab-button {
-      box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.10);
-      background-color: #d3d3d3;
-      color: #000;
-      cursor: pointer;
-      padding: 6px;
-      text-align: center;
-      border: none;
-    }
-
-    #save-popup {
-      display: none;
-      border-radius: 15px;
-      padding: 10px;
-      border: 1px #D3D3D3 solid;
-      background-color: #121212;
-      color: #ffffff;
-      position: fixed;
-      z-index: 9999;
-      margin: auto;
-      width: 50%;
-      height: 25%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
-      transition: all 0.5s ease-in-out;
-      text-align: center;
-    }
-
-    #username-field {
-      display: none;
-      position: fixed;
-      right: 10px !important;
-      top: 5px !important;
-      text-align: center;
-      color: #fff;
-      text-decoration: none;
-    }
-
-    #link-home {
-      position: fixed;
-      left: 10px !important;
-      top: 5px !important;
-      text-align: center;
-      display: flex;
-    }
-
-    #link-home a {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    #top-container {
-      background-color: #333333;
-      color: #fff;
-      z-index: 1000;
-      position: fixed;
-      margin-right: 15%;
-      width: 100%;
-      height: 5%;
-      padding: 2px 2px 2px 2px;
-    }
-
-    #logo-img {
-      border-radius: 50%;
-      width: 25px;
-      height: 25px;
-    }
-
-    .mobile-toggle {
-      display: none;
-    }
-
-    #select-block {
-      display: block;
-    }
-
-    #select-block li,
-    #block-list li {
-      padding: 20px 20px 20px 20px;
-      border: none;
-      cursor: pointer;
-    }
-
-    #block-list {
-      display: none;
-    }
-
-    #search-parts,
-    #save-popup input[type=text] {
-      border: none;
-      border-radius: 2px;
-      width: 75%;
-      height: 30px;
-      outline: 0;
-    }
-
-    #save-popup textarea {
-      border: none;
-      border-radius: 2px;
-      outline: 0;
-      padding: 5px 5px 5px 5px;
-    }
-
-    #preloaded-logo {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: #ffffff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 99999;
-    }
-
-    #preloaded-logo .img {
-        background-image: url("/img/logo.jpg");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        width: 200px;
-        height: 200px;
-        z-index: 999999;
-        border-radius: 50%;
-    }
-
-    @media (max-width: 768px) {
-      #left-container {
-        position: fixed;
-        left: -250px;
-        top: 0;
-        height: 100%;
-        padding: 10px;
-        z-index: 1000;
-        width: 50%;
-      }
-
-      .mobile-toggle {
-        position: fixed;
-        top: 30px;
-        right: 10px;
-        background: #333333;
-        color: white;
-        padding: 10px;
-        border: 2px rgba(0, 0, 0, 0.16) solid;
-        border-radius: 2px;
-        cursor: pointer;
-        z-index: 1100;
-        display: inline-block;
-        // from https://getcssscan.com/css-box-shadow-examples (number #12)
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 
 <body>
@@ -343,21 +116,29 @@
             url: "/ajax/user.php",
             method: "GET",
             data: {
-              ajax: true
+                ajax: true
             },
             success: function (response) {
-              document.title = response.user + " | " + document.title;
-              $("#username-field").show().text(response.user);
-              $("#username-field").attr("href", "/acc/creations");
-              tooltip('Logged in as ' + response.user);
+                document.title = response.user + " | " + document.title;
+                $("#username-field").show().text(response.user);
+                $("#username-field").attr("href", "/acc/creations");
+                tooltip('Logged in as ' + response.user);
             },
             error: function (jqXHR, textStatus, errorThrown) {
+            try {
               var response = JSON.parse(jqXHR.responseText);
-              console.error('Server status code: ' + textStatus + ' ' +
-                jqXHR.status + ' ' + errorThrown + ' ' + response.error);
-              document.title = "Guest | " + document.title;
-              tooltip(response.error);
+              console.error('Error logging in: ' + textStatus + ' ' + jqXHR.status + ' ' + errorThrown);
+              if (response && response.error) {
+                console.error('Error logging in: ' + response.error);
+                tooltip(response.error);
+              }
+            } catch (e) {
+              console.error('Failed to parse error: ', e);
+              console.error('Raw: ', jqXHR.responseText);
+              tooltip('An unknown error occured while logging in');
             }
+            document.title = "Guest | " + document.title;
+          }
           });
       }
       login();
@@ -520,6 +301,9 @@
         }
       });
     });
+
+
+    $("#left-container").resizable();
   </script>
   <script>
     const studSize = 1000;
@@ -533,7 +317,7 @@
     document.getElementById("toggleMenu").addEventListener("click", function () {
       var left = document.getElementById("left-container");
       if (left.style.left === "0px" || left.style.left === "") {
-        left.style.left = "-250px";
+        left.style.left = "-999px";
       } else {
         left.style.left = "0px";
       }
@@ -588,7 +372,7 @@
 
       for (var x = 0; x < gridSize; x += studSize) {
         for (var z = 0; z < gridSize; z += studSize) {
-          studVertices.push(x + studSize / 2, 0.01, z + studSize / 2); // Raised slightly to avoid overlap
+          studVertices.push(x + studSize / 2, 0.01, z + studSize / 2);
         }
       }
 
@@ -615,14 +399,14 @@
         camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
         camera.position.set(250, 150, 500);
         scene = new THREE.Scene();
-        scene.background = new THREE.Color(0xF5F5F5);
+        scene.background = new THREE.Color(0x888888);
 
-        sunlight = new THREE.DirectionalLight(0xffffff, 2.5);
+        sunlight = new THREE.DirectionalLight(0xffffff, 5);
         sunlight.position.set(250, 500, -250);
         sunlight.castShadow = true;
         scene.add(sunlight);
 
-        moonlight = new THREE.DirectionalLight(0xffffff, 2.5);
+        moonlight = new THREE.DirectionalLight(0xffffff, 5);
         moonlight.position.set(-250, 500, 250);
         moonlight.castShadow = true;
         scene.add(moonlight);
@@ -640,16 +424,17 @@
         const grid_size = stud_size * 16; // studs wide
         const divisions = 16; // 1 division per stud
 
-        grid_helper = new THREE.GridHelper(grid_size, divisions, 0xffffff, 0x888888);
+        grid_helper = new THREE.GridHelper(grid_size, divisions, 0x888888, 0xF5F5F5);
         scene.add(grid_helper);
 
         ldraw_loader = new THREE.LDrawLoader();
         ldraw_loader.preloadMaterials('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/colors/ldconfig.ldr');
         ldraw_loader.setPath('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/');
         ldraw_loader.setPartsLibraryPath("https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/");
+        ldraw_loader.smoothNormals = false;
         ldraw_loader.displayLines = true;
         ldraw_loader.separateObjects = true;
-
+        
         raycaster = new THREE.Raycaster();
         mouse = new THREE.Vector2();
 
@@ -710,7 +495,7 @@
       });
 
         transformControls.addEventListener('objectChange', function () {
-            if (selectedObject) {
+            if (selectedObject && !selectedObject.userData.noSnap) {
                 selectedObject.position.set(
                     snapToGrid(selectedObject.position.x, 10), 
                     snapToGrid(selectedObject.position.y, 4), 
@@ -790,8 +575,6 @@
         console.log("Loading part:", part);
 
         ldraw_loader.load(part, function (loadedGroup) {
-            ldraw_loader.smoothNormals = true;
-            ldraw_loader.displayLines = true;
 
             if (!loadedGroup) {
                 console.error("Loaded group does not exist.");
@@ -807,16 +590,32 @@
 
             loadedGroup.traverse((child) => {
                 if (child.isMesh) {
-                    child.material = new THREE.MeshPhysicalMaterial({
-                        color: new THREE.Color(partColor || "#ffffff"),
-                        roughness: 0.05,
-                        metalness: 0.0,
-                        clearcoat: 1.0,
-                        clearcoatRoughness: 0.05,
-                        reflectivity: 0.9
-                    });
+                    const wireframe = new THREE.LineSegments(new THREE.EdgesGeometry(child.geometry), new THREE.LineBasicMaterial({ color: 0x000000 }));
 
+                    child.add(wireframe);
+                    child.material = new THREE.MeshPhysicalMaterial({
+                      color: new THREE.Color(partColor || "#000000"),
+                      roughness: 0.05,
+                      metalness: 0.0,
+                      clearcoat: 1.0,
+                      clearcoatRoughness: 0.05,
+                      reflectivity: 0.9
+                    });
+                    
                     const transformedMesh = subobjectPosition(child);
+                    const isTiny = isSmall(transformedMesh, 15);
+
+                    if(isTiny === true) {
+                      child.userData.noSnap = true;
+                    } else if(isTiny === false) {
+                        child.userData.noSnap = false;
+                        let position = new THREE.Vector3(
+                          snapToGrid(blockGroup.position.x, 10),
+                          snapToGrid(blockGroup.position.y, 4),
+                          snapToGrid(blockGroup.position.z, 10)
+                      );
+                      child.position.copy(position);
+                    }
 
                     transformedMesh.material.needsUpdate = true;
                     transformedMesh.userData.selectable = true;
@@ -888,6 +687,15 @@
         return m;
     }
 
+    function isSmall(g, scale) {
+      const boundingBox = new THREE.Box3().setFromObject(g);
+      const size = new THREE.Vector3();
+      boundingBox.getSize(size);
+
+      return size.x < scale || size.y < scale || size.z < scale;
+  }
+
+
     function generateSceneJSON() {
       let gr8brikid = makeid(5);
 
@@ -938,13 +746,25 @@
       return JSON.stringify(sceneData, null, 1);
     }
 
-    function updateSceneData() {
+    /*function updateSceneData() {
         if (blockGroups && blockGroups.length > 0) {
             blockGroups.forEach(function (group) {
                 let mesh_child = null;
                 group.traverse(function (child) {
                     if (child.isMesh) {
                         mesh_child = child;
+
+                        if(isSmall(mesh_child, 15) === true) {
+                          mesh_child.userData.noSnap = true;
+                        } else if(isSmall(mesh_child, 15) === false) {
+                            mesh_child.userData.noSnap = false;
+                            let position = new THREE.Vector3(
+                              snapToGrid(blockGroup.position.x, 10),
+                              snapToGrid(blockGroup.position.y, 4),
+                              snapToGrid(blockGroup.position.z, 10)
+                          );
+                          mesh_child.position.copy(position);
+                        }
                     }
                 });
 
@@ -958,7 +778,37 @@
         if (selectedObject) {
             selectedObject.updateMatrixWorld(true);
         }
-    }
+    }*/
+
+    function updateSceneData() {
+      if (blockGroups && blockGroups.length > 0) {
+          blockGroups.forEach(function (g) {
+              let hasTinyMesh = false;
+
+              g.traverse(function (child) {
+                  if (child.isMesh && isSmall(child, 15)) {
+                      hasTinyMesh = true;
+                  }
+              });
+
+              g.userData.noSnap = hasTinyMesh;
+
+              if (!g.userData.noSnap) {
+                g.position.set(
+                      snapToGrid(g.position.x, 10),
+                      snapToGrid(g.position.y, 4),
+                      snapToGrid(g.position.z, 10)
+                  );
+              }
+
+              g.updateMatrixWorld(true);
+          });
+      }
+
+      if (selectedObject) {
+          selectedObject.updateMatrixWorld(true);
+      }
+  }
 
     function onMouseClick(event) {
         let target = event.target;
@@ -1062,15 +912,6 @@
 
         tooltip.textContent = text;
         tooltip.setAttribute('id', 'tooltip');
-
-        tooltip.style.position = 'absolute';
-        tooltip.style.zIndex = '99999999' + Date.now();
-        tooltip.style.right = '0px';
-        tooltip.style.top = '0px';
-        tooltip.style.backgroundColor = '#ddd';
-        tooltip.style.color = '#000';
-        tooltip.style.padding = '5px 5px 5px 5px';
-        tooltip.style.borderRadius = '0px';
 
         document.body.appendChild(tooltip);
 
