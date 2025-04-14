@@ -100,6 +100,8 @@
     });
 
     var partColor = "#ff0000";
+    const start_url = 'http://www.gr8brik.rf.gd';
+
     $(document).ready(function () {
 
         $(document).on('click', 'a', function(event) { 
@@ -113,7 +115,7 @@
 
       function login() {
           $.ajax({
-            url: "/ajax/user.php",
+            url: start_url + "/ajax/user.php",
             method: "GET",
             data: {
                 ajax: true
@@ -220,7 +222,7 @@
           let screenshot = capture();
 
           $.ajax({
-            url: "/ajax/build.php",
+            url: start_url + "/ajax/build.php",
             type: "POST",
             data: {
               save_build: true,
@@ -399,17 +401,27 @@
         camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
         camera.position.set(250, 150, 500);
         scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x888888);
+        scene.background = new THREE.Color(0x333333);
 
-        sunlight = new THREE.DirectionalLight(0xffffff, 5);
+        sunlight = new THREE.DirectionalLight(0xffffff, 2);
         sunlight.position.set(250, 500, -250);
         sunlight.castShadow = true;
         scene.add(sunlight);
 
-        moonlight = new THREE.DirectionalLight(0xffffff, 5);
+        moonlight = new THREE.DirectionalLight(0xffffff, 2);
         moonlight.position.set(-250, 500, 250);
         moonlight.castShadow = true;
         scene.add(moonlight);
+
+        toplight = new THREE.DirectionalLight(0xffffff, 4);
+        toplight.position.set(0, 250, 0);
+        toplight.castShadow = true;
+        scene.add(toplight);
+
+        bottomlight = new THREE.DirectionalLight(0xffffff, 4);
+        bottomlight.position.set(0, -250, 0);
+        bottomlight.castShadow = true;
+        scene.add(bottomlight);
 
         renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -419,19 +431,21 @@
         scene.add(transformControls);
 
         controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
 
         const stud_size = 20; // 1 stud = 20
         const grid_size = stud_size * 16; // studs wide
         const divisions = 16; // 1 division per stud
 
-        grid_helper = new THREE.GridHelper(grid_size, divisions, 0x888888, 0xF5F5F5);
+        grid_helper = new THREE.GridHelper(grid_size, divisions, 0x333333, 0xF5F5F5);
         scene.add(grid_helper);
 
         ldraw_loader = new THREE.LDrawLoader();
         ldraw_loader.preloadMaterials('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/colors/ldconfig.ldr');
         ldraw_loader.setPath('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/');
         ldraw_loader.setPartsLibraryPath("https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/");
-        ldraw_loader.smoothNormals = false;
+        ldraw_loader.smoothNormals = true;
         ldraw_loader.displayLines = true;
         ldraw_loader.separateObjects = true;
         
