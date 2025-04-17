@@ -1,9 +1,10 @@
-<!-- GR8BRIK VERSION 4-12-2025 (SUBOBJECT AND TEXTURES BETA 2.0) -->
+<!-- GR8BRIK VERSION 4-14-2025 (SUBOBJECT AND TEXTURES BETA 2.1) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Modeler | GR8BRIK</title>
   <meta charset="utf-8">
+  <!-- <base href="/mod/new/"> -->
   <meta name="viewport"
     content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -14,7 +15,7 @@
 <body>
   <div id="top-container">
     <span id="link-home"><img src="/img/logo.jpg" id="logo-img" /><a href="/"><span>&nbsp;Gr8brik&nbsp;</span></a></span>
-    <a href="http://www.gr8brik.rf.gd/acc/login" id="username-field"></a>
+    <a href="https://www.gr8brik.rf.gd/acc/login" id="username-field"></a>
   </div>
 
   <div id="info">
@@ -36,12 +37,10 @@
   <div id="left-container">
     <p style="height: 1vh;"></p>
 
-    <button class="btn" title="Save creation to our database of LEGO(R) made by others."
-      id="save-popup-open">Save Creation</button><br />
-    <button class="btn" title="Change controls to arrows to move blocks up and down, side-by-side."
-      id="move-block-t">Drag</button>
-    <button class="btn" title="Change controls to rotate blocks, in all directions."
-      id="move-block-r">Rotate</button>
+    <button class="btn" title="Save creation to our database of LEGO(R) made by others." id="save-popup-open">Save Creation</button><br />
+    <button class="btn" title="Change controls to arrows to move blocks up and down, side-by-side." id="move-block-t">Drag</button>
+    <button class="btn" title="Change controls to rotate blocks, in all directions." id="move-block-r">Rotate</button><br />
+    <button id="duplicate-block" class="btn" title="Copy the block that was last added and paste it">Duplicate Block</button>
     <hr />
 
     <label for="color-picker">Color</label>
@@ -100,7 +99,7 @@
     });
 
     var partColor = "#ff0000";
-    const start_url = 'http://www.gr8brik.rf.gd';
+    const start_url = 'https://www.gr8brik.rf.gd';
 
     $(document).ready(function () {
 
@@ -314,6 +313,10 @@
 
     document.getElementById("color-picker").addEventListener("click", function () {
       console.log("color picker clicked");
+    });
+
+    document.getElementById("duplicate-block").addEventListener("click", function () {
+      addBlock();
     });
 
     document.getElementById("toggleMenu").addEventListener("click", function () {
@@ -665,6 +668,7 @@
             blockGroups.push(blockGroup);
 
             updateBlockList(partName, partColor, blocks.length, blockGroup.userData.block_id);
+            updateSceneData();
             
         }, undefined, function (error) {
             console.error('error loading piece:', error);
