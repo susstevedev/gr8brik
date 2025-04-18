@@ -41,7 +41,9 @@
     <button class="btn" title="Change controls to arrows to move blocks up and down, side-by-side." id="move-block-t">Drag</button>
     <button class="btn" title="Change controls to rotate blocks, in all directions." id="move-block-r">Rotate</button><br />
     <button id="duplicate-block" class="btn" title="Copy the block that was last added and paste it">Duplicate Block</button><br />
-    <a id="cre-export" title="Download creation data as a json file" class="btn">Export Creation</a>
+    <button id="importBtn" class="btn">Import</button>
+    <a id="cre-export" title="Download creation data as a json file" class="btn">Export</a>
+    <input type="file" id="cre-import" accept=".json" style="display: none;">
     <hr />
 
     <label for="color-picker">Color</label>
@@ -307,7 +309,7 @@
     });
 
 
-    $("#left-container").resizable();
+    //$("#left-container").resizable();
   </script>
   <script>
     const studSize = 1000;
@@ -349,10 +351,88 @@
         this.download = `creation-${Date.now()}.json`;
     });
 
+    document.getElementById("importBtn").addEventListener("click", function () {
+      document.getElementById("cre-import").click();
+    });
+
+    document.getElementById("cre-import").addEventListener("change", function (event) {
+        let file = event.target.files[0];
+        if (!file) {
+            console.error("No file selected");
+            tooltip("No file selected.");
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            try {
+                const jsonData = JSON.parse(e.target.result);
+                loadSceneFromJSON(jsonData);
+            } catch (err) {
+                tooltip("Invalid JSON file.");
+                console.error(err);
+            }
+            event.target.value = "";
+        };
+        reader.readAsText(file);
+    });
+
+    async function loadSceneFromJSON(data) {
+      if (!data || !data.blocks || !Array.isArray(data.blocks)) {
+          console.error("Invalid JSON data.");
+          tooltip("No file selected.");
+          return;
+      }
+      
+      return new Promise(resolve => {
+          data.blocks.forEach(block => {
+            let b = {
+                name: block.partName,
+                color: block.color,
+                position: block.position,
+                rotation: block.rotation,
+                scale: block.scale,
+                id: block.blockID,
+                ldraw: block.ldraw
+            };
+
+              part = 'parts/' + b.name;
+              partName = b.name;
+              partColor = '#' + b.color;
+              addBlock();
+
+              let prev_length = blockGroups.length;
+              let interval = setInterval(() => {
+                if (blockGroups.length > prev_length) {
+                    clearInterval(interval);
+                    const newPart = blockGroups[blockGroups.length - 1];
+
+                    newPart.position.set(b.position.x, b.position.y, b.position.z);
+                    newPart.rotation.set(b.rotation.x, b.rotation.y, b.rotation.z);
+                    newPart.scale.set(b.scale.x, b.scale.y, b.scale.z);
+                    newPart.name = b.id;
+
+                    resolve();
+                }
+            }, 1000);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                console.warn("Timeout while loading ", b.name);
+                resolve();
+            }, 10000);
+          });
+          console.log("Creation imported.");
+          tooltip("Creation imported.")
+      });
+    }
+
     var container, camera, scene, renderer, sunlight, moonlight, controls, grid_helper, ldraw_loader, raycaster, mouse = null;
 
     var selectedObject = null;
     var previousSelectedObject = null;
+    let blocks = [];
+    let blockGroups = [];
 
     init();
     animate();
@@ -399,7 +479,6 @@
       var group = new THREE.Group();
       group.add(grid);
       group.add(studs);
-
       return group;
     }
 
@@ -446,7 +525,7 @@
 
         controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
+        controls.dampingFactor = 0.1;
 
         const stud_size = 20; // 1 stud = 20
         const grid_size = stud_size * 16; // studs wide
@@ -576,9 +655,6 @@
       }
       return result;
     }
-
-    let blocks = [];
-    let blockGroups = [];
 
     function addBlock() {
         if (!ldraw_loader || typeof ldraw_loader.load !== 'function') {
