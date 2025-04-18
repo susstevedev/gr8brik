@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 4-14-2025 (SUBOBJECT AND TEXTURES BETA 2.1) -->
+<!-- GR8BRIK VERSION 4-18-2025 (SUBOBJECT AND TEXTURES BETA 2.2) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +40,8 @@
     <button class="btn" title="Save creation to our database of LEGO(R) made by others." id="save-popup-open">Save Creation</button><br />
     <button class="btn" title="Change controls to arrows to move blocks up and down, side-by-side." id="move-block-t">Drag</button>
     <button class="btn" title="Change controls to rotate blocks, in all directions." id="move-block-r">Rotate</button><br />
-    <button id="duplicate-block" class="btn" title="Copy the block that was last added and paste it">Duplicate Block</button>
+    <button id="duplicate-block" class="btn" title="Copy the block that was last added and paste it">Duplicate Block</button><br />
+    <a id="cre-export" title="Download creation data as a json file" class="btn">Export Creation</a>
     <hr />
 
     <label for="color-picker">Color</label>
@@ -103,14 +104,16 @@
 
     $(document).ready(function () {
 
-        $(document).on('click', 'a', function(event) { 
-            event.preventDefault();           
-            let url = $(this).attr("href");
+      $(document).on('click', 'a', function(event) { 
+          if ($(this).attr("download")) return;
 
-            if (url || url.match("^http")) {
-                window.location.href = url;
-            }
-        });
+          event.preventDefault();           
+          let url = $(this).attr("href");
+
+          if (url && url.match("^http")) {
+              window.location.href = url;
+          }
+      });
 
       function login() {
           $.ajax({
@@ -336,6 +339,14 @@
         document.getElementById('block-list').style.display = is1 ? 'none' :
           'block';
       });
+    });
+
+    document.getElementById("cre-export").addEventListener("click", function () {
+        let jsonData = generateSceneJSON();
+        let jsonBlob = new Blob([jsonData], { type: "application/json" });
+
+        this.href = URL.createObjectURL(jsonBlob);
+        this.download = `creation-${Date.now()}.json`;
     });
 
     var container, camera, scene, renderer, sunlight, moonlight, controls, grid_helper, ldraw_loader, raycaster, mouse = null;

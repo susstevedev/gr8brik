@@ -47,8 +47,10 @@ body {
   .btn-alt {
     transition: all 0.2s ease-in-out;
     background-color: #87CEEB;
+    color: #000;
     padding: 6px 16px;
     text-align: center;
+    font-size: 13px;
     border: none;
     border-radius: 2px;
     cursor: pointer;
