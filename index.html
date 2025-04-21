@@ -307,9 +307,6 @@
         }
       });
     });
-
-
-    //$("#left-container").resizable();
   </script>
   <script>
     const studSize = 1000;
@@ -380,107 +377,46 @@
     async function loadSceneFromJSON(data) {
       if (!data || !data.blocks || !Array.isArray(data.blocks)) {
           console.error("Invalid JSON data.");
-          tooltip("No file selected.");
+          tooltip("Invalid JSON.");
           return;
       }
-      
-      return new Promise(resolve => {
-          data.blocks.forEach(block => {
-            let b = {
-                name: block.partName,
-                color: block.color,
-                position: block.position,
-                rotation: block.rotation,
-                scale: block.scale,
-                id: block.blockID,
-                ldraw: block.ldraw
-            };
 
-              part = 'parts/' + b.name;
-              partName = b.name;
-              partColor = '#' + b.color;
-              addBlock();
+      for (const block of data.blocks) {
+          try {
+              partName = block.partName;
+              partColor = '#' + block.color;
+              customPosition = block.position;
 
-              let prev_length = blockGroups.length;
-              let interval = setInterval(() => {
-                if (blockGroups.length > prev_length) {
-                    clearInterval(interval);
-                    const newPart = blockGroups[blockGroups.length - 1];
+              if (!partName.startsWith('parts/')) {
+                  part = 'parts/' + partName;
+              } else {
+                  part = partName;
+              }
 
-                    newPart.position.set(b.position.x, b.position.y, b.position.z);
-                    newPart.rotation.set(b.rotation.x, b.rotation.y, b.rotation.z);
-                    newPart.scale.set(b.scale.x, b.scale.y, b.scale.z);
-                    newPart.name = b.id;
+              let success = addBlock();
 
-                    resolve();
-                }
-            }, 1000);
+              if(success) {
+                part, partName, partColor, customPosition = null;
+              }
+          } catch (err) {
+            console.warn(`Failed to add block: ${block.partName}`, err);
+            tooltip(`Failed to load ${block.partName}`);
+            continue;
+          }
+      }
 
-            setTimeout(() => {
-                clearInterval(interval);
-                console.warn("Timeout while loading ", b.name);
-                resolve();
-            }, 10000);
-          });
-          console.log("Creation imported.");
-          tooltip("Creation imported.")
-      });
-    }
+      console.log("Creation imported.");
+      tooltip("Creation imported.");
+  }
 
     var container, camera, scene, renderer, sunlight, moonlight, controls, grid_helper, ldraw_loader, raycaster, mouse = null;
 
-    var selectedObject = null;
-    var previousSelectedObject = null;
+    var selectedObject, previousSelectedObject, customPosition = null;
     let blocks = [];
     let blockGroups = [];
 
     init();
     animate();
-
-    function createCustomGrid(gridSize, studSize, divisions) {
-      var gridMaterial = new THREE.LineBasicMaterial({
-        color: 0x333333
-      });
-      var gridGeometry = new THREE.BufferGeometry();
-      var gridVertices = [];
-      var spacing = gridSize / (divisions - 1);
-
-      for (var x = 0; x <= divisions; x++) {
-        gridVertices.push(x * spacing, 0, 0);
-        gridVertices.push(x * spacing, 0, gridSize);
-      }
-      for (var z = 0; z <= divisions; z++) {
-        gridVertices.push(0, 0, z * spacing);
-        gridVertices.push(gridSize, 0, z * spacing);
-      }
-
-      gridGeometry.setAttribute('position', new THREE.Float32BufferAttribute(
-        gridVertices, 3));
-      var grid = new THREE.LineSegments(gridGeometry, gridMaterial);
-
-      var studMaterial = new THREE.PointsMaterial({
-        color: 0x666666,
-        size: studSize * 0.5,
-        sizeAttenuation: false
-      });
-      var studGeometry = new THREE.BufferGeometry();
-      var studVertices = [];
-
-      for (var x = 0; x < gridSize; x += studSize) {
-        for (var z = 0; z < gridSize; z += studSize) {
-          studVertices.push(x + studSize / 2, 0.01, z + studSize / 2);
-        }
-      }
-
-      studGeometry.setAttribute('position', new THREE.Float32BufferAttribute(
-        studVertices, 3));
-      var studs = new THREE.Points(studGeometry, studMaterial);
-
-      var group = new THREE.Group();
-      group.add(grid);
-      group.add(studs);
-      return group;
-    }
 
     function snapToGrid(value, gridSize) {
       return Math.round(value / gridSize) * gridSize;
@@ -587,7 +523,6 @@
 
     window.addEventListener('resize', onWindowResize, true);
     window.addEventListener('pointerdown', onMouseClick, true);
-    //window.addEventListener('click', onMouseClick, true);
 
       transformControls.addEventListener('mouseDown', function () {
         controls.enabled = false;
@@ -705,7 +640,6 @@
                       clearcoatRoughness: 0.05,
                       reflectivity: 0.9
                     });
-                    
                     const transformedMesh = subobjectPosition(child);
                     const isTiny = isSmall(transformedMesh, 15);
 
@@ -734,14 +668,12 @@
             });
 
             blockGroup.rotation.x = Math.PI;
-            let position = new THREE.Vector3(
-                snapToGrid(blockGroup.position.x, 10),
-                snapToGrid(blockGroup.position.y, 4),
-                snapToGrid(blockGroup.position.z, 10)
-            );
+
+            let basePos = customPosition ?? previousSelectedObject?.position ?? blockGroup.position;
+            let position = new THREE.Vector3(snapToGrid(basePos.x, 10), snapToGrid(basePos.y, 4), snapToGrid(basePos.z, 10));
+
             blockGroup.position.copy(position);
 
-            //blockGroup.userData.isBlock = true;
             blockGroup.userData.partName = partName;
 
             scene.add(blockGroup);
@@ -851,40 +783,6 @@
       return JSON.stringify(sceneData, null, 1);
     }
 
-    /*function updateSceneData() {
-        if (blockGroups && blockGroups.length > 0) {
-            blockGroups.forEach(function (group) {
-                let mesh_child = null;
-                group.traverse(function (child) {
-                    if (child.isMesh) {
-                        mesh_child = child;
-
-                        if(isSmall(mesh_child, 15) === true) {
-                          mesh_child.userData.noSnap = true;
-                        } else if(isSmall(mesh_child, 15) === false) {
-                            mesh_child.userData.noSnap = false;
-                            let position = new THREE.Vector3(
-                              snapToGrid(blockGroup.position.x, 10),
-                              snapToGrid(blockGroup.position.y, 4),
-                              snapToGrid(blockGroup.position.z, 10)
-                          );
-                          mesh_child.position.copy(position);
-                        }
-                    }
-                });
-
-                if (mesh_child != null) {
-                    group.updateMatrixWorld(true);
-                    mesh_child.updateMatrixWorld(true);
-                }
-            });
-        }
-
-        if (selectedObject) {
-            selectedObject.updateMatrixWorld(true);
-        }
-    }*/
-
     function updateSceneData() {
       if (blockGroups && blockGroups.length > 0) {
           blockGroups.forEach(function (g) {
@@ -957,6 +855,7 @@
     function deselectObject() {
         if (selectedObject) {
             transformControls.detach(selectedObject);
+            previousSelectedObject = selectedObject;
             selectedObject = null;
         }
     }
