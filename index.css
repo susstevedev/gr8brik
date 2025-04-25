@@ -152,12 +152,14 @@ body {
         position: fixed;
         top: 50px;
         right: 25px;
+        width: 50px;
         background: #333333;
         color: white;
         padding: 15px;
         border: 2px rgba(0, 0, 0, 0.16) solid;
         border-radius: 2px;
         z-index: 1100;
+        text-align: center;
         display: inline-block;
         transition: all 0.2s ease-in-out;
         /* from https://getcssscan.com/css-box-shadow-examples (number #12) */

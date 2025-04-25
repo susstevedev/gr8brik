@@ -34,6 +34,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" />
 
   <button id="toggleMenu" class="mobile-toggle">☰</button>
+  <a id="takeScreenshot" class="mobile-toggle" style="top: 150px; padding-right: 0px; padding-left: 0px;">&#128247;</a>
   <div id="left-container">
     <p style="height: 1vh;"></p>
 
@@ -112,7 +113,7 @@
           event.preventDefault();           
           let url = $(this).attr("href");
 
-          if (url && url.match("^http")) {
+          if (url && url.match("^http" || "^https")) {
               window.location.href = url;
           }
       });
@@ -176,7 +177,7 @@
         $('#select-block').html('');
         displayed_parts.forEach(part => {
           $('#select-block').append(
-            `<li id="${part.file}" value="${part.file}">${part.name}</li>`
+            `<li id="${part.file}" value="${part.file}"><img src="https://library.ldraw.org/images/library/official/parts/${part.file.split(".")[0]}.png" loading="lazy" width="45px" height="45px" /><br /><small>${part.name}</small></li>`
           );
         });
       }
@@ -319,6 +320,12 @@
 
     document.getElementById("duplicate-block").addEventListener("click", function () {
       addBlock();
+    });
+
+    document.getElementById("takeScreenshot").addEventListener("click", function () {
+      let blob = new Blob([capture()], { type: "image/png" });
+      this.href = URL.createObjectURL(blob);
+      this.download = `creation-screenshot-${Date.now()}.png`;
     });
 
     document.getElementById("toggleMenu").addEventListener("click", function () {
@@ -621,6 +628,18 @@
                 return;
             }
 
+            let texturename = `${part.split("/").pop().split(".")[0]}.png`;
+            let texturepath = `https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/parts/textures/${texturename}`;
+            let textureloader = new THREE.TextureLoader();
+            var parttexture = null;
+
+            textureloader.load(texturepath, function (texturemap) {
+              var parttexture = texturemap;
+            }, undefined, function (err) {
+              console.warn("Could not load part texture ", err);
+              var parttexture = null;
+            });
+
             let blockGroup = new THREE.Group();
             blockGroup.name = `ldraw_${makeid(10)}`;
             blockGroup.ldraw = part;
@@ -632,14 +651,22 @@
                     const wireframe = new THREE.LineSegments(new THREE.EdgesGeometry(child.geometry), new THREE.LineBasicMaterial({ color: 0x000000 }));
 
                     child.add(wireframe);
-                    child.material = new THREE.MeshPhysicalMaterial({
+
+                    var materials = {
                       color: new THREE.Color(partColor || "#000000"),
                       roughness: 0.05,
                       metalness: 0.0,
                       clearcoat: 1.0,
                       clearcoatRoughness: 0.05,
                       reflectivity: 0.9
-                    });
+                    };
+
+                    if (parttexture) {
+                      materials.map = parttexture;
+                    }
+
+                    child.material = new THREE.MeshPhysicalMaterial(materials);
+
                     const transformedMesh = subobjectPosition(child);
                     const isTiny = isSmall(transformedMesh, 15);
 
@@ -692,6 +719,31 @@
         }, undefined, function (error) {
             console.error('error loading piece:', error);
         });
+    }
+
+    function loadPartText(part) {
+      const partPath = `https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/${part}`;
+      fetch(partPath)
+        .then(res => res.text())
+        .then(text => {
+          const textures = extractTextures(text);
+          return textures;
+        });
+    }
+
+    function extractTextures(text) {
+      const lines = text.split('\n');
+      const textures = [];
+
+      for (const line of lines) {
+        if (line.startsWith('0 !TEXMAP START')) {
+          const parts = line.trim().split(/\s+/);
+          const filename = parts[parts.length - 1];
+          textures.push(filename);
+        }
+      }
+
+      return textures;
     }
 
     function updateBlockList(part, color, count, id) {
