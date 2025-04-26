@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 4-18-2025 (SUBOBJECT AND TEXTURES BETA 2.2) -->
+<!-- GR8BRIK VERSION 4-26-2025 (SUBOBJECT AND TEXTURES BETA 2.4) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +9,22 @@
     content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.js"></script>
-  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" type="text/css" href="index.css?v=4262025">
 </head>
 
 <body>
   <div id="top-container">
     <span id="link-home"><img src="/img/logo.jpg" id="logo-img" /><a href="/"><span>&nbsp;Gr8brik&nbsp;</span></a></span>
-    <a href="https://www.gr8brik.rf.gd/acc/login" id="username-field"></a>
+    <!-- <a href="https://www.gr8brik.rf.gd/acc/login" id="username-field">Login</a> -->
+
+    <span class="username-container">
+      <span id="username-field">Login</span>
+      <div id="username-content">
+        <a href="#" class="username-link" onclick="">Option 1</a>
+        <a href="#" class="username-link" onclick="">Option 2</a>
+        <a href="#" class="username-link" onclick="">Option 3</a>
+      </div>
+    </span>
   </div>
 
   <div id="info">
@@ -33,8 +42,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" />
 
-  <button id="toggleMenu" class="mobile-toggle">☰</button>
-  <a id="takeScreenshot" class="mobile-toggle" style="top: 150px; padding-right: 0px; padding-left: 0px;">&#128247;</a>
+  <button id="toggleMenu" class="mobile-toggle">&#x2630;</button>
+  <a id="takeScreenshot" class="mobile-toggle" style="top: 155px; height: 25px; padding-right: 0px; padding-left: 0px;">&#x1F4F7;</a>
   <div id="left-container">
     <p style="height: 1vh;"></p>
 
@@ -314,6 +323,15 @@
     let partList = document.getElementById('blk');
     let colList = document.getElementById('select-color');
 
+    document.getElementById("username-field").addEventListener("click", function () {
+      var content = document.getElementById("username-content");
+      if (content.style.display === "block" || content.style.display === "") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+
     document.getElementById("color-picker").addEventListener("click", function () {
       console.log("color picker clicked");
     });
@@ -425,6 +443,14 @@
     init();
     animate();
 
+    function isDark() {
+        if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return true;
+        } else {
+          return false;
+        }
+    }
+
     function snapToGrid(value, gridSize) {
       return Math.round(value / gridSize) * gridSize;
     }
@@ -437,7 +463,12 @@
         camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
         camera.position.set(250, 150, 500);
         scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x333333);
+
+        if(isDark() === true) {
+          scene.background = new THREE.Color(0x333333);
+        } else {
+          scene.background = new THREE.Color(0xF5F5F5);
+        }
 
         sunlight = new THREE.DirectionalLight(0xffffff, 2);
         sunlight.position.set(250, 500, -250);
@@ -474,7 +505,11 @@
         const grid_size = stud_size * 16; // studs wide
         const divisions = 16; // 1 division per stud
 
-        grid_helper = new THREE.GridHelper(grid_size, divisions, 0x333333, 0xF5F5F5);
+        if(isDark() === true) {
+          grid_helper = new THREE.GridHelper(grid_size, divisions, 0x333333, 0xF5F5F5);
+        } else {
+          grid_helper = new THREE.GridHelper(grid_size, divisions, 0xF5F5F50, 0x333333);
+        }
         scene.add(grid_helper);
 
         ldraw_loader = new THREE.LDrawLoader();
@@ -509,9 +544,7 @@
                     transformControls.detach(selectedObject);
                     break
                 case 'Delete':
-                    transformControls.detach(selectedObject);
-                    scene.remove(selectedObject);
-                    tooltip('Deleted block')
+                    deleteBlock(selectedObject);
                     break
             }
         })
@@ -578,6 +611,32 @@
 
       console.log(`block color changed to ${color}`);
       tooltip(`Block color changed`);
+    }
+
+    function deleteBlock(block) {
+        if (block) {
+            if (block.isMesh) {
+                scene.remove(block);
+                block.updateMatrixWorld(true);
+                tooltip('Deleted block');
+            } else {
+              tooltip('Block is not a valid mesh')
+            }
+
+            if (blockGroups && blockGroups.length > 0) {
+                blockGroups.forEach(function (g) {
+                    g.remove(block);
+                    g.updateMatrixWorld(true);
+                });
+            }
+
+            if (selectedObject === block) {
+                transformControls.detach(block);
+                selectedObject = null;
+            }
+        } else {
+          tooltip('No block found');
+        }
     }
 
     function capture() {

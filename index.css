@@ -39,8 +39,13 @@ body {
     padding: 5px;
     border: 2px rgba(0, 0, 0, 0.16) solid;
     overflow-y: scroll;
-    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     transition: all 0.2s ease-in-out;
+  }
+
+  #left-container::-webkit-scrollbar {
+    display: none;
   }
 
   .btn,
@@ -103,14 +108,36 @@ body {
   }
 
   #username-field {
-    display: none;
-    position: fixed;
-    right: 10px !important;
-    top: 5px !important;
+    cursor: pointer;
     text-align: center;
     color: #fff;
     text-decoration: none;
   }
+
+  .username-container {
+    position: fixed;
+    top: 5px;
+    right: 10px;
+    z-index: 9999;
+  }
+
+  #username-content {
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    top: 20px;
+    right: 0px;
+    background: #333;
+    padding: 5px;
+  }
+
+  .username-link {
+    display: block;
+    text-align: right;
+    margin: 5px 0;
+    color: #fff;
+    text-decoration: none;
+  }  
 
   #link-home {
     position: fixed;
@@ -153,6 +180,7 @@ body {
         top: 50px;
         right: 25px;
         width: 50px;
+        height: 55px;
         background: #333333;
         color: white;
         padding: 15px;
@@ -163,18 +191,18 @@ body {
         display: inline-block;
         transition: all 0.2s ease-in-out;
         /* from https://getcssscan.com/css-box-shadow-examples (number #12) */
-        box-shadow: 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
       }
 
     .mobile-toggle:hover {
         background: #252424;
         color: white;
         cursor: pointer;
-        box-shadow: 0px 0px 0px 0px, rgba(2, 2, 2, 0.06) 2px 2px 2px 2px;
+        box-shadow: rgba(2, 2, 2, 0.06) 2px 2px 2px 2px;
     }
 
   #logo-img {
-    border-radius: 50%;
+    border-radius: 10px;
     width: 25px;
     height: 25px;
   }
