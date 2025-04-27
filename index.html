@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 4-26-2025 (SUBOBJECT AND TEXTURES BETA 2.4) -->
+<!-- GR8BRIK VERSION 4-27-2025 (SUBOBJECT AND TEXTURES BETA 2.4) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +14,7 @@
 
 <body>
   <div id="top-container">
-    <span id="link-home"><img src="/img/logo.jpg" id="logo-img" /><a href="/"><span>&nbsp;Gr8brik&nbsp;</span></a></span>
+    <span id="link-home"><img src="/img/logo.jpg" id="logo-img" /><a href="/"><span>&nbsp;Gr8brik&nbsp;</span></a><span class="tag">BETA</span></span>
     <!-- <a href="https://www.gr8brik.rf.gd/acc/login" id="username-field">Login</a> -->
 
     <span class="username-container">
@@ -30,8 +30,7 @@
   <div id="info">
     <p style="height: 1vh;"></p>
     <a href="https://www.gr8brik.rf.gd/" target="_blank">Gr8brik beta</a>
-    <b style="color:blue;"> - April 2025</b>
-    <b style="color:blue;"> - <a href="https://www.gr8brik.rf.gd/old-modeler" target="_blank">Old modeler</a></b><br />
+    <b style="color:blue;">Build April 27, 2025</b>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
@@ -727,7 +726,7 @@
                     child.material = new THREE.MeshPhysicalMaterial(materials);
 
                     const transformedMesh = subobjectPosition(child);
-                    const isTiny = isSmall(transformedMesh, 15);
+                    const isTiny = isSmall(transformedMesh, 19);
 
                     if(isTiny === true) {
                       child.userData.noSnap = true;
@@ -900,7 +899,7 @@
               let hasTinyMesh = false;
 
               g.traverse(function (child) {
-                  if (child.isMesh && isSmall(child, 15)) {
+                  if (child.isMesh && isSmall(child, 19)) {
                       hasTinyMesh = true;
                   }
               });
@@ -1047,12 +1046,9 @@
   </script>
 
   <!-- LDRAW.ORG CC BY 2.0 PARTS LIBRARY ATTRIBUTION -->
-  <div style="display: block; position: absolute; bottom: 0px; right: 0px; width: 175px; padding: 2px; border: #838A92 1px solid; background-color: #F3F7F8;">
+  <div class="ldraw-logo">
         <a href="http://www.ldraw.org">
             <img style="width: 145px" src="https://threejs.org/examples/models/ldraw/ldraw_org_logo/Stamp145.png">
-        </a>
-        <a href="http://www.google.com/chromebook/" target="_blank">
-            <img src="https://lh3.googleusercontent.com/1GkePzki6ZaVDoZOECVzvrrOu9jDOwinjdGafhaAjj9pfO9yFzqPqeuYOqIQ41JlwOlyNhAOrPSGGbioBeVd_eiH0cn_1X6uRWf-uA" style="width: 50px; height: 50px; float: right;" />
         </a>
     <br />
     <a href="http://www.ldraw.org/" style="color:#000;">This software uses the LDraw Parts Library</a>

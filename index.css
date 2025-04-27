@@ -207,6 +207,31 @@ body {
     height: 25px;
   }
 
+  .ldraw-logo {
+    display: block; 
+    position: absolute;
+    bottom: 0px; 
+    right: 0px; 
+    width: 175px; 
+    padding: 3px; 
+    /* 
+    border: #838A92 1px solid;
+    box-shadow: rgba(4, 80, 143, 0.06) 3px 3px 3px 3px; 
+    */
+    border: none;
+    background-color: #F3F7F8;
+    box-shadow: 0px 0px 4px 4px rgb(5, 84, 116);
+  }
+
+  .tag {
+    padding: 5px 5px 5px 5px;
+    color: #fff;
+    background-color: green;
+    text-transform: uppercase;
+    border-radius: 5px;
+    box-shadow: rgba(255, 255, 255, 0.06) 2px 2px 2px 2px;
+  }
+
   #select-block {
     display: block;
   }
