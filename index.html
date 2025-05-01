@@ -29,8 +29,7 @@
 
   <div id="info">
     <p style="height: 1vh;"></p>
-    <a href="https://www.gr8brik.rf.gd/" target="_blank">Gr8brik beta</a>
-    <b style="color:blue;">Build April 27, 2025</b>
+    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">Gr8brik beta</a> - Build May 1st, 2025</p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
@@ -442,12 +441,29 @@
     init();
     animate();
 
+    function getCookie(name) {
+        var cookies = document.cookie;
+        var parts = cookies.split(name + "=");
+        var cookieValue = null;
+        if (parts.length == 2) {
+            cookieValue = parts.pop().split(";").shift();
+        }
+        return cookieValue;
+    }
+
     function isDark() {
         if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
           return true;
         } else {
           return false;
         }
+    }
+
+    function dampingEnabled() {
+      if(getCookie('damping') != null) {
+        return true
+      }
+      return false;
     }
 
     function snapToGrid(value, gridSize) {
@@ -497,8 +513,10 @@
         scene.add(transformControls);
 
         controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.1;
+        if(dampingEnabled() === true) {
+          controls.enableDamping = true;
+          controls.dampingFactor = 0.1;
+        }
 
         const stud_size = 20; // 1 stud = 20
         const grid_size = stud_size * 16; // studs wide
@@ -686,17 +704,17 @@
                 return;
             }
 
-            let texturename = `${part.split("/").pop().split(".")[0]}.png`;
+            /*let texturename = `${part.split("/").pop().split(".")[0]}.png`;
             let texturepath = `https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/parts/textures/${texturename}`;
             let textureloader = new THREE.TextureLoader();
             var parttexture = null;
 
             textureloader.load(texturepath, function (texturemap) {
               var parttexture = texturemap;
-            }, undefined, function (err) {
-              console.warn("Could not load part texture ", err);
+            }, undefined, function (error) {
+              console.warn("Could not load part texture ", error);
               var parttexture = null;
-            });
+            });*/
 
             let blockGroup = new THREE.Group();
             blockGroup.name = `ldraw_${makeid(10)}`;
@@ -706,10 +724,11 @@
 
             loadedGroup.traverse((child) => {
                 if (child.isMesh) {
-                    const wireframe = new THREE.LineSegments(new THREE.EdgesGeometry(child.geometry), new THREE.LineBasicMaterial({ color: 0x000000 }));
+                    /*const wireframe = new THREE.LineSegments(new THREE.EdgesGeometry(child.geometry), new THREE.LineBasicMaterial({ color: 0x000000 }));
 
-                    child.add(wireframe);
+                    child.add(wireframe);*/
 
+                    child.geometry = generateUVMap(child.geometry);
                     var materials = {
                       color: new THREE.Color(partColor || "#000000"),
                       roughness: 0.05,
@@ -719,9 +738,9 @@
                       reflectivity: 0.9
                     };
 
-                    if (parttexture) {
+                    /*if (parttexture) {
                       materials.map = parttexture;
-                    }
+                    }*/
 
                     child.material = new THREE.MeshPhysicalMaterial(materials);
 
@@ -732,12 +751,12 @@
                       child.userData.noSnap = true;
                     } else if(isTiny === false) {
                         child.userData.noSnap = false;
-                        let position = new THREE.Vector3(
+                        /*let position = new THREE.Vector3(
                           snapToGrid(blockGroup.position.x, 10),
                           snapToGrid(blockGroup.position.y, 4),
                           snapToGrid(blockGroup.position.z, 10)
                       );
-                      child.position.copy(position);
+                      child.position.copy(position);*/
                     }
 
                     transformedMesh.material.needsUpdate = true;
@@ -754,16 +773,14 @@
 
             blockGroup.rotation.x = Math.PI;
 
-            let basePos = customPosition ?? previousSelectedObject?.position ?? blockGroup.position;
+            /*let basePos = customPosition ?? previousSelectedObject?.position ?? blockGroup.position;
             let position = new THREE.Vector3(snapToGrid(basePos.x, 10), snapToGrid(basePos.y, 4), snapToGrid(basePos.z, 10));
 
-            blockGroup.position.copy(position);
+            blockGroup.position.copy(position);*/
 
             blockGroup.userData.partName = partName;
 
             scene.add(blockGroup);
-
-            tooltip(`Added block ${part}`);
 
             selectedObject = blockGroup;
             transformControls.attach(blockGroup);
@@ -771,37 +788,31 @@
             blocks.push(blockGroup);
             blockGroups.push(blockGroup);
 
+            tooltip(`Added block ${part}`);
+
+            const texturename = `${part.split("/").pop().split(".")[0]}.png`;
+            const texturepath = `https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/parts/textures/${texturename}`;
+            //const texturepath = 'https://d1xez26aurxsp6.cloudfront.net/users/qXBby2/avatars/680a924dab4ba.png';
+            const textureLoader = new THREE.TextureLoader();
+
+            textureLoader.load(texturepath, (texturemap) => {
+                texturemap.colorSpace = THREE.SRGBColorSpace;
+                blockGroup.traverse(child => {
+                    if (child.isMesh && child.material) {
+                        child.material.map = texturemap;
+                        child.material.needsUpdate = true;
+                    }
+                });
+            }, undefined, (err) => {
+                console.warn("Texture load failed or doesn't exist:", err);
+            });
+
             updateBlockList(partName, partColor, blocks.length, blockGroup.userData.block_id);
             updateSceneData();
             
         }, undefined, function (error) {
             console.error('error loading piece:', error);
         });
-    }
-
-    function loadPartText(part) {
-      const partPath = `https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/${part}`;
-      fetch(partPath)
-        .then(res => res.text())
-        .then(text => {
-          const textures = extractTextures(text);
-          return textures;
-        });
-    }
-
-    function extractTextures(text) {
-      const lines = text.split('\n');
-      const textures = [];
-
-      for (const line of lines) {
-        if (line.startsWith('0 !TEXMAP START')) {
-          const parts = line.trim().split(/\s+/);
-          const filename = parts[parts.length - 1];
-          textures.push(filename);
-        }
-      }
-
-      return textures;
     }
 
     function updateBlockList(part, color, count, id) {
@@ -840,6 +851,27 @@
       boundingBox.getSize(size);
 
       return size.x < scale || size.y < scale || size.z < scale;
+  }
+
+  function generateUVMap(geometry) {
+    geometry.computeBoundingBox();
+    geometry.computeVertexNormals();
+
+    const uvs = [];
+
+    const position = geometry.attributes.position;
+    const box = geometry.boundingBox;
+
+    for (let i = 0; i < position.count; i++) {
+      const x = position.getX(i);
+      const y = position.getY(i);
+      const u = (x - box.min.x) / (box.max.x - box.min.x);
+      const v = (y - box.min.y) / (box.max.y - box.min.y);
+      uvs.push(u, v);
+    }
+
+    geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
+    return geometry;
   }
 
 

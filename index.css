@@ -18,11 +18,11 @@ body {
     display: block;
   }
 
-  #info a {
+  #info a, #info b, #info p {
     color: #f00;
     font-weight: bold;
     text-decoration: underline;
-    cursor: pointer
+    cursor: pointer;
   }
 
   #left-container {
