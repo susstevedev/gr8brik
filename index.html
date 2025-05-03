@@ -451,6 +451,15 @@
         return cookieValue;
     }
 
+    function toggleGlobalSnap() {
+      if(scene.userData.noSnap === true) {
+        scene.userData.noSnap = false;
+      } else {
+        scene.userData.noSnap = true;
+      }
+      scene.updateMatrixWorld(true);
+    }
+
     function isDark() {
         if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
           return true;
@@ -478,6 +487,7 @@
         camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
         camera.position.set(250, 150, 500);
         scene = new THREE.Scene();
+        scene.userData.noSnap = false;
 
         if(isDark() === true) {
           scene.background = new THREE.Color(0x333333);
@@ -594,7 +604,8 @@
       });
 
         transformControls.addEventListener('objectChange', function () {
-            if (selectedObject && !selectedObject.userData.noSnap) {
+            //if (selectedObject && !selectedObject.userData.noSnap || !scene.userData.noSnap) {
+            if (selectedObject && !(selectedObject.userData.noSnap || scene.userData.noSnap)) {
                 selectedObject.position.set(
                     snapToGrid(selectedObject.position.x, 10), 
                     snapToGrid(selectedObject.position.y, 4), 
@@ -608,6 +619,7 @@
                 );
 
                 selectedObject.updateMatrixWorld(true);
+                scene.updateMatrixWorld(true);
             }
             updateSceneData();
         });
@@ -697,7 +709,7 @@
         console.log("Loading part:", part);
 
         ldraw_loader.load(part, function (loadedGroup) {
-
+        
             if (!loadedGroup) {
                 console.error("Loaded group does not exist.");
                 tooltip('Please select a block with valid mesh data');
@@ -938,7 +950,7 @@
 
               g.userData.noSnap = hasTinyMesh;
 
-              if (!g.userData.noSnap) {
+              if (!g.userData.noSnap || !scene.userData.noSnap) {
                 g.position.set(
                       snapToGrid(g.position.x, 10),
                       snapToGrid(g.position.y, 4),
@@ -947,6 +959,7 @@
               }
 
               g.updateMatrixWorld(true);
+              scene.updateMatrixWorld(true);
           });
       }
 
