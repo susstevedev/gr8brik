@@ -94,11 +94,11 @@ body {
 
   #save-popup {
     display: none;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 10px;
     border: 1px #D3D3D3 solid;
-    background-color: #121212;
-    color: #ffffff;
+    background-color: #fff;
+    color: #000;
     position: fixed;
     z-index: 9999;
     margin: auto;
@@ -227,7 +227,8 @@ body {
     */
     border: none;
     background-color: #F3F7F8;
-    box-shadow: 0px 0px 4px 4px rgb(5, 84, 116);
+    /* box-shadow: 0px 0px 4px 4px rgb(5, 84, 116); */
+	box-shadow: rgba(30, 30, 30, 0.06) 0px 0px 4px 4px;
   }
 
   .tag {
@@ -235,8 +236,8 @@ body {
     color: #fff;
     background-color: green;
     text-transform: uppercase;
-    border-radius: 5px;
-    box-shadow: rgba(255, 255, 255, 0.06) 2px 2px 2px 2px;
+    border-radius: 2px;
+    box-shadow: rgba(25, 25, 25, 0.06) 2px 2px 2px 2px;
   }
 
   #select-block {
@@ -256,15 +257,14 @@ body {
 
   #search-parts,
   #save-popup input[type=text] {
-    border: none;
+    border: 1px solid #000;
     border-radius: 2px;
     width: 75%;
     height: 30px;
-    outline: 0;
   }
 
   #save-popup textarea {
-    border: none;
+    border: 1px solid #000;
     border-radius: 2px;
     outline: 0;
     padding: 5px 5px 5px 5px;

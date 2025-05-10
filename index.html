@@ -1,15 +1,15 @@
-<!-- GR8BRIK VERSION 4-27-2025 (SUBOBJECT AND TEXTURES BETA 2.4) -->
+<!-- GR8BRIK VERSION 5-10-2025 (SUBOBJECT AND TEXTURES BETA 2.6) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Modeler | GR8BRIK</title>
+  <title>Gr8brik Modeler</title>
   <meta charset="utf-8">
   <!-- <base href="/mod/new/"> -->
   <meta name="viewport"
     content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.js"></script>
-  <link rel="stylesheet" type="text/css" href="index.css?v=4262025">
+  <link rel="stylesheet" type="text/css" href="index.css?v=5102025_test1">
 </head>
 
 <body>
@@ -45,12 +45,14 @@
   <div id="left-container">
     <p style="height: 1vh;"></p>
 
-    <button class="btn" title="Save creation to our database of LEGO(R) made by others." id="save-popup-open">Save Creation</button><br />
+    <br /><button class="btn" title="Save creation to our database of LEGO(R) made by others." id="save-popup-open">Save Creation</button><br />
     <button class="btn" title="Change controls to arrows to move blocks up and down, side-by-side." id="move-block-t">Drag</button>
     <button class="btn" title="Change controls to rotate blocks, in all directions." id="move-block-r">Rotate</button><br />
     <button id="duplicate-block" class="btn" title="Copy the block that was last added and paste it">Duplicate Block</button><br />
+	<button id="delete-block" class="btn" title="Remove a block from the scene, along with all records of it">Delete Block</button><br />
     <button id="importBtn" class="btn">Import</button>
-    <a id="cre-export" title="Download creation data as a json file" class="btn">Export</a>
+    <a id="cre-export" title="Download creation data as a json file" class="btn">Export</a><br />
+	<a id="cre-export-ldd" title="Download creation data as a lxf file" class="btn">Export for Lego&copy; Digital Designer</a>
     <input type="file" id="cre-import" accept=".json" style="display: none;">
     <hr />
 
@@ -96,7 +98,7 @@
     <h3><span>Save Creation</span></h3>
     <div id="save-popup-form">
       <input class="w3-input w3-border" type="text" name="name" placeholder="Name"><br /><br />
-      <textarea name="desc" rows="4" cols="50" placeholder="Description"></textarea><br /><br />
+      <textarea name="desc" xrows="4" xcols="50" placeholder="Description"></textarea><br /><br />
       <button class="btn" title="Finish saving" id="download-json">Save Creation</button>
     </div>
   </div>
@@ -135,7 +137,6 @@
                 ajax: true
             },
             success: function (response) {
-                document.title = response.user + " | " + document.title;
                 $("#username-field").show().text(response.user);
                 $("#username-field").attr("href", "/acc/creations");
                 tooltip('Logged in as ' + response.user);
@@ -153,7 +154,6 @@
               console.error('Raw: ', jqXHR.responseText);
               tooltip('An unknown error occured while logging in');
             }
-            document.title = "Guest | " + document.title;
           }
           });
       }
@@ -341,6 +341,10 @@
     document.getElementById("duplicate-block").addEventListener("click", function () {
       addBlock();
     });
+	
+	document.getElementById("delete-block").addEventListener("click", function () {
+		deleteBlock(selectedObject);
+	});
 
     document.getElementById("takeScreenshot").addEventListener("click", function () {
       let blob = new Blob([capture()], { type: "image/png" });
@@ -375,6 +379,14 @@
 
         this.href = URL.createObjectURL(jsonBlob);
         this.download = `creation-${Date.now()}.json`;
+    });
+	
+	document.getElementById("cre-export-ldd").addEventListener("click", function () {
+        let legoData = generateSceneLXFML();
+        let blob = new Blob([legoData], { type: "application/text" });
+
+        this.href = URL.createObjectURL(blob);
+        this.download = `ldd-creation-${Date.now()}.lxfml`;
     });
 
     document.getElementById("importBtn").addEventListener("click", function () {
@@ -482,13 +494,6 @@
         }
     }
 
-    function dampingEnabled() {
-      if(getCookie('dampingDisable') != null) {
-        return false
-      }
-      return true;
-    }
-
     function snapToGrid(value, gridSize) {
       return Math.round(value / gridSize) * gridSize;
     }
@@ -508,26 +513,6 @@
         } else {
           scene.background = new THREE.Color(0xF5F5F5);
         }
-
-        /*sunlight = new THREE.DirectionalLight(0xffffff, 2);
-        sunlight.position.set(250, 500, -250);
-        sunlight.castShadow = true;
-        scene.add(sunlight);
-
-        moonlight = new THREE.DirectionalLight(0xffffff, 2);
-        moonlight.position.set(-250, 500, 250);
-        moonlight.castShadow = true;
-        scene.add(moonlight);
-
-        toplight = new THREE.DirectionalLight(0xffffff, 4);
-        toplight.position.set(0, 250, 0);
-        toplight.castShadow = true;
-        scene.add(toplight);
-
-        bottomlight = new THREE.DirectionalLight(0xffffff, 4);
-        bottomlight.position.set(0, -250, 0);
-        bottomlight.castShadow = true;
-        scene.add(bottomlight); */
 
         const sunlight = new THREE.DirectionalLight(0xffffff, 3);
         sunlight.position.set(10, 15, 10);
@@ -557,10 +542,6 @@
         scene.add(transformControls);
 
         controls = new THREE.OrbitControls(camera, renderer.domElement);
-        if(dampingEnabled() === true) {
-          controls.enableDamping = true;
-          controls.dampingFactor = 0.08;
-        }
 
         const stud_size = 20; // 1 stud = 20
         const grid_size = stud_size * 16; // studs wide
@@ -958,6 +939,201 @@
       return JSON.stringify(sceneData, null, 1);
     }
 
+    function generateSceneLXFML() {
+      let sceneBricks = '';
+      let boneRefs = [];
+      let refID = 0;
+      let totalPosition = new THREE.Vector3();
+      let count = 0;
+
+      if (selectedObject) {
+        transformControls.detach(selectedObject);
+        selectedObject = null;
+      }
+	  
+	  const legoColors = {
+		  "ffffff": 1,
+		  "ff0000": 21,
+		  "00ff00": 28,
+		  "0000ff": 23,
+		  "ffff00": 14,
+		  "000000": 26,
+		  "a0a5a9": 194,
+		};
+
+
+      blockGroups.forEach(function (group) {
+        group.traverse(function (child) {
+          if (child.isMesh) {
+            totalPosition.add(group.position);
+            count++;
+          }
+        });
+      });
+
+      const centerOffset = count > 0 ? totalPosition.divideScalar(count) : new THREE.Vector3();
+
+      blockGroups.forEach(function (group) {
+        let mesh_child = null;
+        group.traverse(function (child) {
+          if (child.isMesh) {
+            mesh_child = child;
+          }
+        });
+
+        if (mesh_child) {
+		 let ldraw = group.ldraw.replace("parts/", "").replace(".dat", "");
+		 const boneID = refID;
+		 let colorID = legoColors[mesh_child.material.color.getHexString().toLowerCase()] ?? 26; // Default to black if unknown
+
+          let adjustedMatrix = group.matrixWorld.clone();
+          let newPosition = new THREE.Vector3().setFromMatrixPosition(adjustedMatrix).sub(centerOffset);
+          adjustedMatrix.setPosition(newPosition);
+
+          sceneBricks += `
+            <Brick refID="${refID}" designID="${ldraw}" itemNos="${ldraw}">
+              <Part refID="${refID}" designID="${ldraw}" materials="${colorID},0" decoration="0">
+                <Bone refID="${refID}" transformation="${LXFMLMatrix(adjustedMatrix)}"></Bone>
+              </Part>
+            </Brick>`;
+
+          boneRefs.push(boneID);
+          refID++;
+        }
+      });
+
+      const boneRefString = boneRefs.join(',');
+
+      const sceneData = `
+        <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+        <LXFML versionMajor="5" versionMinor="0" name="testing">
+          <Meta>
+            <Application name="LEGO Digital Designer" versionMajor="4" versionMinor="3"/>
+            <Brand name="LDD"/>
+            <BrickSet version="2670"/>
+          </Meta>
+		  <Model name="Gr8brik Creation">
+			<Meta key="use-ldraw" value="true"/>
+		  </Model>
+          <Cameras>
+            <Camera refID="0" fieldOfView="80" distance="120" transformation="1,0,0,0,1,0,0,0,1,0,0,120"/>
+          </Cameras>
+          <Bricks cameraRef="0">
+            ${sceneBricks}
+          </Bricks>
+          <RigidSystems>
+            <RigidSystem>
+              <Rigid refID="0" transformation="1,0,0,0,1,0,0,0,1,0,0,0" boneRefs="${boneRefString}"/>
+            </RigidSystem>
+          </RigidSystems>
+          <GroupSystems>
+            <GroupSystem></GroupSystem>
+          </GroupSystems>
+          <BuildingInstructions></BuildingInstructions>
+        </LXFML>
+      `;
+
+      return sceneData.replace(/\s+/g, ' ').trim();
+    }
+
+    function LXFMLMatrix(matrix4) {
+      const lduPerUnit = 0.04;
+
+      const converted = matrix4.clone();
+      const rotateToLDD = new THREE.Matrix4().makeRotationX(-Math.PI / 2);
+      converted.premultiply(rotateToLDD);
+
+      const position = new THREE.Vector3();
+      const quaternion = new THREE.Quaternion();
+      const scale = new THREE.Vector3();
+      converted.decompose(position, quaternion, scale);
+
+      position.multiplyScalar(lduPerUnit);
+      converted.compose(position, quaternion, scale);
+      const e = converted.transpose().elements;
+
+      return [
+        e[0], e[4], e[8],    // X
+        e[1], e[5], e[9],    // Y
+        e[2], e[6], e[10],   // Z
+        e[3], e[7], e[11]    // position
+      ].map(v => v.toFixed(10)).join(',');
+    }
+
+    /*function generateSceneLXFML() {
+      let sceneBricks = '';
+      let refID = 1;
+
+      if (selectedObject) {
+          transformControls.detach(selectedObject);
+          selectedObject = null;
+      }
+
+      blockGroups.forEach(function (group) {
+        let mesh_child = null;
+        group.traverse(function (child) {
+          if (child.isMesh) {
+            mesh_child = child;
+          }
+        });
+
+        if (mesh_child) {
+            let ldraw = group.ldraw.replace("parts/", "");
+
+            sceneBricks += `
+            <Brick refID="${refID}" designID="${ldraw}" itemNos="${ldraw}">
+              <Part refID="${refID}" designID="${ldraw}" materials="26,0" decoration="0">
+                <Bone refID="${refID}" transformation="${LXFMLMatrix(group.matrixWorld)}">
+                </Bone>
+              </Part>
+            </Brick>`;
+
+            let refID = refID + 1;
+          };
+      });
+
+      const sceneData = `
+        <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+          <LXFML versionMajor="5" versionMinor="0" name="testing">
+            <Meta>
+                <Application name="LEGO Digital Designer" versionMajor="4" versionMinor="3"/>
+                <Brand name="LDD"/>
+                <BrickSet version="2670"/>
+              </Meta>
+              <Cameras>
+                <Camera refID="0" fieldOfView="80" distance="120" transformation="1,0,0,0,1,0,0,0,1,0,0,120"/>
+              </Cameras>
+              <Bricks cameraRef="0">
+                ${sceneBricks}
+              </Bricks>
+              <RigidSystems>
+                <RigidSystem>
+                  <Rigid refID="0" transformation="1,0,0,0,1,0,0,0,1,-3.5999999046325684,0,-5.2000002861022949" boneRefs="0"/>
+                </RigidSystem>
+              </RigidSystems>
+              <GroupSystems>
+                <GroupSystem>
+                </GroupSystem>
+              </GroupSystems>
+              <BuildingInstructions>
+              </BuildingInstructions>
+            </LXFML>
+          `;
+
+      return sceneData.replace(/\s+/g, ' ').trim();
+    }
+
+    function LXFMLMatrix(matrix4) {
+      const m = matrix4.clone().transpose().elements;
+
+      return [
+        m[0], m[4], m[8],   // row 1 (X basis)
+        m[1], m[5], m[9],   // row 2 (Y basis)
+        m[2], m[6], m[10],  // row 3 (Z basis)
+        m[3], m[7], m[11]   // translation
+      ].map(v => v.toFixed(10)).join(',');
+    } */
+
     function updateSceneData() {
       if (blockGroups && blockGroups.length > 0) {
           blockGroups.forEach(function (g) {
@@ -1008,29 +1184,33 @@
         if (intersects.length > 0) {
             selectObject(intersects[0].object);
 
-            window.addEventListener('pointerdown', function (event) {
-              if (event.button === 0 && selectedObject && selectedObject === intersects[0].object) {
+            /*window.addEventListener('pointerdown', function (event) {
+              if(event.button === 0) {
                 if(scene.userData.canDrag === true) {
                   scene.userData.canDrag = false;
-                  window.removeEventListener('mousemove', onMouseMove, true);
-                  transformControls.detach(selectedObject);
-                  selectedObject = undefined;
+                  if(selectedObject && selectedObject != intersects[0].object) {
+                    transformControls.detach(selectedObject);
+                    selectedObject = undefined;
+                  }
                 } else {
                   scene.userData.canDrag = true;
-                  window.addEventListener('mousemove', onMouseMove, true);
                 }
               }
-            }, true);
+            }, true);*/
         }
      }
 
-      const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+      /*const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
       const intersectionPoint = new THREE.Vector3();
       const offset = new THREE.Vector3();
 
       function onMouseMove(event) {
         const container = document.querySelector(".scene");
         if (!container.contains(event.target)) {
+          return;
+        }
+
+        if(scene.userData.canDrag != true) {
           return;
         }
 
@@ -1061,7 +1241,7 @@
         scene.updateMatrixWorld(true);
 
         updateSceneData();
-    }
+    }*/
  
      function selectObject(object) {
         while (object.parent && !object.userData.isBlock) {
