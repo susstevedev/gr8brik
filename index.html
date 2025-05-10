@@ -86,7 +86,9 @@
     <hr />
 
     <span id="select-block"></span>
-    <ul id="block-list"></ul>
+    <ul id="block-list">
+      <div class="warn">Gr8brik treats some items as groups</div>
+    </ul>
   </div>
 
   <div id="save-popup">
@@ -305,14 +307,16 @@
         let id = $(this).data("id");
         transformControls.detach(selectedObject);
         selectedObject = null;
-        let sceneBlock = blocks.find(block => block.userData.block_id === Number(
-          id));
 
-        if (sceneBlock) {
-          transformControls.attach(sceneBlock);
-          selectedObject = sceneBlock;
-          tooltip('Block selected');
-        }
+        if (blockGroups && blockGroups.length > 0) {
+          blockGroups.forEach(function (g) {
+            if (g.name == id) {
+              transformControls.attach(g);
+              selectedObject = g;
+              tooltip('Block selected');
+            }
+          });
+      }
       });
     });
   </script>
@@ -356,10 +360,12 @@
     document.querySelectorAll('.tab-button').forEach(button => {
       button.addEventListener('click', function () {
         const is1 = this.id === 'tab1';
+        var search = document.getElementById("search-parts");
         document.getElementById('select-block').style.display = is1 ? 'block' :
           'none';
         document.getElementById('block-list').style.display = is1 ? 'none' :
           'block';
+        search.readOnly = is1 ? false : true;
       });
     });
 
@@ -461,18 +467,26 @@
     }
 
     function isDark() {
-        if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return true;
+        if(getCookie('mode')) {
+          if(getCookie('mode') === 'dark') {
+            return true;
+          } else {
+            return false;
+          }
         } else {
-          return false;
+          if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            return true;
+          } else {
+            return false;
+          }
         }
     }
 
     function dampingEnabled() {
-      if(getCookie('damping') != null) {
-        return true
+      if(getCookie('dampingDisable') != null) {
+        return false
       }
-      return false;
+      return true;
     }
 
     function snapToGrid(value, gridSize) {
@@ -495,7 +509,7 @@
           scene.background = new THREE.Color(0xF5F5F5);
         }
 
-        sunlight = new THREE.DirectionalLight(0xffffff, 2);
+        /*sunlight = new THREE.DirectionalLight(0xffffff, 2);
         sunlight.position.set(250, 500, -250);
         sunlight.castShadow = true;
         scene.add(sunlight);
@@ -513,7 +527,27 @@
         bottomlight = new THREE.DirectionalLight(0xffffff, 4);
         bottomlight.position.set(0, -250, 0);
         bottomlight.castShadow = true;
-        scene.add(bottomlight);
+        scene.add(bottomlight); */
+
+        const sunlight = new THREE.DirectionalLight(0xffffff, 3);
+        sunlight.position.set(10, 15, 10);
+        sunlight.castShadow = true;
+        scene.add(sunlight);
+
+        const ambientlight = new THREE.AmbientLight(0xffffff, 1);
+        scene.add(ambientlight);
+
+        const pointlight = new THREE.PointLight(0xffffff, 1, 500);
+        pointlight.position.set(50, 100, -50);
+        pointlight.castShadow = true;
+        scene.add(pointlight);
+
+        const spotlight = new THREE.SpotLight(0xffffff, 2);
+        spotlight.position.set(-50, 100, 50);
+        spotlight.angle = Math.PI / 6;
+        spotlight.penumbra = 0.3;
+        spotlight.castShadow = true;
+        scene.add(spotlight);
 
         renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -525,7 +559,7 @@
         controls = new THREE.OrbitControls(camera, renderer.domElement);
         if(dampingEnabled() === true) {
           controls.enableDamping = true;
-          controls.dampingFactor = 0.1;
+          controls.dampingFactor = 0.08;
         }
 
         const stud_size = 20; // 1 stud = 20
@@ -543,8 +577,10 @@
         ldraw_loader.preloadMaterials('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/colors/ldconfig.ldr');
         ldraw_loader.setPath('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/');
         ldraw_loader.setPartsLibraryPath("https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/");
-        ldraw_loader.smoothNormals = true;
+        ldraw_loader.smoothNormals = false;
+        ldraw_loader.flatColors = true;
         ldraw_loader.displayLines = true;
+        ldraw_loader.conditionalLines = true
         ldraw_loader.separateObjects = true;
         
         raycaster = new THREE.Raycaster();
@@ -573,6 +609,18 @@
                 case 'Delete':
                     deleteBlock(selectedObject);
                     break
+                case 'ArrowUp':
+                    selectedObject.rotation.x -= THREE.MathUtils.degToRad(45);
+                    break;
+                case 'ArrowDown':
+                    selectedObject.rotation.x += THREE.MathUtils.degToRad(45);
+                    break;
+                case 'ArrowLeft':
+                    selectedObject.rotation.y -= THREE.MathUtils.degToRad(45);
+                    break;
+                case 'ArrowRight':
+                    selectedObject.rotation.y += THREE.MathUtils.degToRad(45);
+                    break;
             }
         })
 
@@ -590,6 +638,7 @@
 
     window.addEventListener('resize', onWindowResize, true);
     window.addEventListener('pointerdown', onMouseClick, true);
+    //window.addEventListener('mousemove', onMouseMove, true);
 
       transformControls.addEventListener('mouseDown', function () {
         controls.enabled = false;
@@ -604,7 +653,6 @@
       });
 
         transformControls.addEventListener('objectChange', function () {
-            //if (selectedObject && !selectedObject.userData.noSnap || !scene.userData.noSnap) {
             if (selectedObject && !(selectedObject.userData.noSnap || scene.userData.noSnap)) {
                 selectedObject.position.set(
                     snapToGrid(selectedObject.position.x, 10), 
@@ -716,18 +764,6 @@
                 return;
             }
 
-            /*let texturename = `${part.split("/").pop().split(".")[0]}.png`;
-            let texturepath = `https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/parts/textures/${texturename}`;
-            let textureloader = new THREE.TextureLoader();
-            var parttexture = null;
-
-            textureloader.load(texturepath, function (texturemap) {
-              var parttexture = texturemap;
-            }, undefined, function (error) {
-              console.warn("Could not load part texture ", error);
-              var parttexture = null;
-            });*/
-
             let blockGroup = new THREE.Group();
             blockGroup.name = `ldraw_${makeid(10)}`;
             blockGroup.ldraw = part;
@@ -736,25 +772,20 @@
 
             loadedGroup.traverse((child) => {
                 if (child.isMesh) {
-                    /*const wireframe = new THREE.LineSegments(new THREE.EdgesGeometry(child.geometry), new THREE.LineBasicMaterial({ color: 0x000000 }));
-
-                    child.add(wireframe);*/
-
                     child.geometry = generateUVMap(child.geometry);
+
                     var materials = {
                       color: new THREE.Color(partColor || "#000000"),
-                      roughness: 0.05,
-                      metalness: 0.0,
-                      clearcoat: 1.0,
-                      clearcoatRoughness: 0.05,
+                      roughness: 0.2,
+                      metalness: 0.2,
+                      clearcoat: 0.9,
+                      clearcoatRoughness: 0.2,
                       reflectivity: 0.9
                     };
 
-                    /*if (parttexture) {
-                      materials.map = parttexture;
-                    }*/
-
-                    child.material = new THREE.MeshPhysicalMaterial(materials);
+                    child.material = new THREE.MeshStandardMaterial(materials);
+                    child.castShadow = true;
+                    child.receiveShadow = true;
 
                     const transformedMesh = subobjectPosition(child);
                     const isTiny = isSmall(transformedMesh, 19);
@@ -763,12 +794,6 @@
                       child.userData.noSnap = true;
                     } else if(isTiny === false) {
                         child.userData.noSnap = false;
-                        /*let position = new THREE.Vector3(
-                          snapToGrid(blockGroup.position.x, 10),
-                          snapToGrid(blockGroup.position.y, 4),
-                          snapToGrid(blockGroup.position.z, 10)
-                      );
-                      child.position.copy(position);*/
                     }
 
                     transformedMesh.material.needsUpdate = true;
@@ -784,11 +809,7 @@
             });
 
             blockGroup.rotation.x = Math.PI;
-
-            /*let basePos = customPosition ?? previousSelectedObject?.position ?? blockGroup.position;
-            let position = new THREE.Vector3(snapToGrid(basePos.x, 10), snapToGrid(basePos.y, 4), snapToGrid(basePos.z, 10));
-
-            blockGroup.position.copy(position);*/
+            blockGroup.position.y = 32;
 
             blockGroup.userData.partName = partName;
 
@@ -819,7 +840,7 @@
                 console.warn("Texture load failed or doesn't exist:", err);
             });
 
-            updateBlockList(partName, partColor, blocks.length, blockGroup.userData.block_id);
+            updateBlockList(partName, partColor, blocks.length, blockGroup.name);
             updateSceneData();
             
         }, undefined, function (error) {
@@ -986,8 +1007,61 @@
 
         if (intersects.length > 0) {
             selectObject(intersects[0].object);
+
+            window.addEventListener('pointerdown', function (event) {
+              if (event.button === 0 && selectedObject && selectedObject === intersects[0].object) {
+                if(scene.userData.canDrag === true) {
+                  scene.userData.canDrag = false;
+                  window.removeEventListener('mousemove', onMouseMove, true);
+                  transformControls.detach(selectedObject);
+                  selectedObject = undefined;
+                } else {
+                  scene.userData.canDrag = true;
+                  window.addEventListener('mousemove', onMouseMove, true);
+                }
+              }
+            }, true);
         }
      }
+
+      const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+      const intersectionPoint = new THREE.Vector3();
+      const offset = new THREE.Vector3();
+
+      function onMouseMove(event) {
+        const container = document.querySelector(".scene");
+        if (!container.contains(event.target)) {
+          return;
+        }
+
+        event.preventDefault();
+
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, camera);
+
+        if (!selectedObject) {
+          return;
+        }
+
+        const has_intersection = raycaster.ray.intersectPlane(plane, intersectionPoint);
+        if (!has_intersection) {
+          return;
+        }
+
+        selectedObject.position.copy(intersectionPoint).add(offset);
+
+        const snap = !selectedObject.userData.noSnap || scene.userData.noSnap;
+        if (snap) {
+            applySnap(selectedObject);
+        }
+
+        selectedObject.updateMatrixWorld(true);
+        scene.updateMatrixWorld(true);
+
+        updateSceneData();
+    }
  
      function selectObject(object) {
         while (object.parent && !object.userData.isBlock) {
@@ -1001,18 +1075,47 @@
         if (object === selectedObject) {
             return;
         }
- 
-        deselectObject();
+
+        transformControls.detach(selectedObject);
         selectedObject = object;
         transformControls.attach(object);
     }
  
-    function deselectObject() {
-        if (selectedObject) {
-            transformControls.detach(selectedObject);
-            previousSelectedObject = selectedObject;
+    /*function deselectObject(obj) {
+        if (obj !== null) {
+            transformControls.detach(obj);
+            previousSelectedObject = obj;
             selectedObject = null;
         }
+    } */
+    
+    /*function canDrag() {
+      if(scene.userData.canDrag) {
+              scene.userData.canDrag = false;
+              window.removeEventListener('mousemove', onMouseMove, true);
+              deselectObject(selectedObject);
+            } else {
+              scene.userData.canDrag = true;
+              window.addEventListener('mousemove', onMouseMove, true);
+            }
+      } */
+
+    function applySnap(obj) {
+        obj.position.set(
+            snapToGrid(obj.position.x, 10),
+            snapToGrid(obj.position.y, 4),
+            snapToGrid(obj.position.z, 10)
+        );
+
+        function snapAngle(angle) {
+          return Math.round(angle / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45);
+        }
+
+        obj.rotation.set(
+            snapAngle(obj.rotation.x),
+            snapAngle(obj.rotation.y),
+            snapAngle(obj.rotation.z)
+        );
     }
 
     function onWindowResize() {
@@ -1039,7 +1142,7 @@
     }
 
     function animate() {
-      THREE.ShaderChunk.encodings_fragment = THREE.ShaderChunk.colorspace_fragment;
+      //THREE.ShaderChunk.encodings_fragment = THREE.ShaderChunk.colorspace_fragment;
 
       document.addEventListener('DOMContentLoaded', function () {
         const stats = new Stats();

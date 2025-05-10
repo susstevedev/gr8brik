@@ -87,6 +87,11 @@ body {
     border: none;
   }
 
+  .tab-button:hover {
+    background-color: #808080;
+    color: #fff;
+  }
+
   #save-popup {
     display: none;
     border-radius: 15px;
@@ -118,13 +123,13 @@ body {
     position: fixed;
     top: 5px;
     right: 10px;
-    z-index: 9999;
+    z-index: 99999999;
   }
 
   #username-content {
     display: none;
     position: absolute;
-    z-index: 9999;
+    z-index: 99999999;
     top: 20px;
     right: 0px;
     background: #333;
@@ -132,11 +137,13 @@ body {
   }
 
   .username-link {
+    position: sticky;
     display: block;
     text-align: right;
     margin: 5px 0;
     color: #fff;
     text-decoration: none;
+    z-index: 99999999;
   }  
 
   #link-home {
