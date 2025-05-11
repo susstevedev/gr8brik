@@ -9,7 +9,7 @@
     content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.js"></script>
-  <link rel="stylesheet" type="text/css" href="index.css?v=5102025_test1">
+  <link rel="stylesheet" type="text/css" href="index.css?v=5112025_test1">
 </head>
 
 <body>
@@ -186,7 +186,7 @@
         $('#select-block').html('');
         displayed_parts.forEach(part => {
           $('#select-block').append(
-            `<li id="${part.file}" value="${part.file}"><img src="https://library.ldraw.org/images/library/official/parts/${part.file.split(".")[0]}.png" loading="lazy" width="45px" height="45px" /><br /><small>${part.name}</small></li>`
+            `<li id="${part.file}" value="${part.file}"><img src="https://library.ldraw.org/images/library/official/parts/${part.file.split(".")[0]}.png" loading="lazy" width="45px" height="45px" /><br /><small>${part.name}</small><br /><small class="part-list-number">${part.file.split(".")[0]}</small></li>`
           );
         });
       }
@@ -283,24 +283,26 @@
       });
 
       $("#search-parts").on("keyup", function () {
-          let value = $(this).val().toLowerCase().replace(/\s+/g, " ").trim();
-          let list = $("#select-block li");
+			if(event.which == 13) {
+			  let value = $(this).val().toLowerCase().replace(/\s+/g, " ").trim();
+			  let list = $("#select-block li");
 
-          list.sort(function (a, b) {
-              let textA = $(a).text().toLowerCase().replace(/\s+/g, " ").trim();
-              let textB = $(b).text().toLowerCase().replace(/\s+/g, " ").trim();
+			  list.sort(function (a, b) {
+				  let textA = $(a).text().toLowerCase().replace(/\s+/g, " ").trim();
+				  let textB = $(b).text().toLowerCase().replace(/\s+/g, " ").trim();
 
-              let matchA = textA.indexOf(value) > -1 ? 0 : 1;
-              let matchB = textB.indexOf(value) > -1 ? 0 : 1;
+				  let matchA = textA.indexOf(value) > -1 ? 0 : 1;
+				  let matchB = textB.indexOf(value) > -1 ? 0 : 1;
 
-              return matchA - matchB;
-          });
+				  return matchA - matchB;
+			  });
 
-          $("#select-block").html(list);
-          list.each(function () {
-              let text = $(this).text().toLowerCase().replace(/\s+/g, " ").trim();
-              $(this).toggle(text.indexOf(value) > -1);
-          });
+			  $("#select-block").html(list);
+			  list.each(function () {
+				  let text = $(this).text().toLowerCase().replace(/\s+/g, " ").trim();
+				  $(this).toggle(text.indexOf(value) > -1);
+			  });
+			}
       });
 
       $(document).on("click", ".scene-block-item", function () {
@@ -801,7 +803,7 @@
                       reflectivity: 0.9
                     };
 
-                    child.material = new THREE.MeshStandardMaterial(materials);
+                    child.material = new THREE.MeshPhysicalMaterial(materials);
                     child.castShadow = true;
                     child.receiveShadow = true;
 
