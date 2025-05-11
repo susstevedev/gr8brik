@@ -415,7 +415,7 @@
         reader.readAsText(file);
     });
 
-    async function loadSceneFromJSON(data) {
+    /*async function loadSceneFromJSON(data) {
       if (!data || !data.blocks || !Array.isArray(data.blocks)) {
           console.error("Invalid JSON data.");
           tooltip("Invalid JSON.");
@@ -424,21 +424,29 @@
 
       for (const block of data.blocks) {
           try {
-              partName = block.partName;
-              partColor = '#' + block.color;
-              customPosition = block.position;
+				partName = block.partName;
+				partColor = '#' + block.color;
+				partPosition = block.position;
+				partRotation = block.position; */
 
-              if (!partName.startsWith('parts/')) {
+              /*if (!partName.startsWith('parts/')) {
                   part = 'parts/' + partName;
               } else {
                   part = partName;
-              }
+              }*/
+			  
+			  //let part = 'parts/' + partName.replace("parts/", "").replace(".dat", "") + '.dat';
+			  
+			  
+				/*part = 'parts/' + block.ldraw; */
+				
+				/*if (!partName.includes("parts/")) {
+					let part = 'parts/' + partName;
+				}*/
 
-              let success = addBlock();
-
-              if(success) {
-                part, partName, partColor, customPosition = null;
-              }
+				/*if(addBlock()) {
+					part, partName, partColor, partPosition, partRotation = null;
+				}
           } catch (err) {
             console.warn(`Failed to add block: ${block.partName}`, err);
             tooltip(`Failed to load ${block.partName}`);
@@ -448,9 +456,38 @@
 
       console.log("Creation imported.");
       tooltip("Creation imported.");
-  }
+  }*/
+  
+	  async function loadSceneFromJSON(data) {
+		if (!data || !data.blocks || !Array.isArray(data.blocks)) {
+			console.error("Invalid JSON data.");
+			tooltip("Invalid JSON.");
+			return;
+		}
 
-    var container, camera, scene, renderer, sunlight, moonlight, controls, grid_helper, ldraw_loader, raycaster, mouse = null;
+		for (const block of data.blocks) {
+			partName = block.partName;
+			partColor = '#' + block.color;
+			partPosition = block.position;
+			partRotation = block.rotation;
+
+			part = 'parts/' + block.ldraw;
+
+			try {
+				await new Promise((resolve, reject) => {
+					addBlock(resolve, reject);
+				});
+			} catch (err) {
+				console.warn(`Failed to add block: ${block.partName}`, err);
+				tooltip(`Failed to load ${block.partName}`);
+			}
+		}
+
+		console.log("Creation imported.");
+		tooltip("Creation imported.");
+	}
+
+    var container, camera, scene, renderer, sunlight, controls, grid_helper, ldraw_loader, raycaster, mouse, partRotation, partPosition = null;
 
     var selectedObject, previousSelectedObject, customPosition = null;
     let blocks = [];
@@ -715,7 +752,7 @@
       return result;
     }
 
-    function addBlock() {
+    function addBlock(throwSuccess, throwError) {
         if (!ldraw_loader || typeof ldraw_loader.load !== 'function') {
             console.error('Ldrawloader is not initialized');
             tooltip('Ldraw loader seems to be broken! Please check your internet connection.');
@@ -788,21 +825,26 @@
             subobjects.forEach(mesh => {
                 blockGroup.add(mesh);
             });
-
-            blockGroup.rotation.x = Math.PI;
-            blockGroup.position.y = 32;
-
+			
+			if(partPosition && partRotation) {
+				blockGroup.position.set(partPosition.x, partPosition.y, partPosition.z);
+				blockGroup.rotation.set(partRotation.x, partRotation.y, partRotation.z);
+			} else {
+				blockGroup.position.y = objectSize(blockGroup).y;
+				blockGroup.rotation.x = Math.PI;
+			}
+			
             blockGroup.userData.partName = partName;
-
             scene.add(blockGroup);
-
+			
             selectedObject = blockGroup;
             transformControls.attach(blockGroup);
-
+			
             blocks.push(blockGroup);
             blockGroups.push(blockGroup);
 
             tooltip(`Added block ${part}`);
+			throwSuccess()
 
             const texturename = `${part.split("/").pop().split(".")[0]}.png`;
             const texturepath = `https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/parts/textures/${texturename}`;
@@ -826,6 +868,7 @@
             
         }, undefined, function (error) {
             console.error('error loading piece:', error);
+			throwError(error);
         });
     }
 
@@ -858,6 +901,18 @@
         m.updateMatrix();
         return m;
     }
+	
+	function objectSize(obj) {
+		if (!obj) {
+			return new THREE.Vector3(0, 0, 0);
+		}
+
+		const b = new THREE.Box3().setFromObject(obj);
+		const s = new THREE.Vector3();
+		b.getSize(s);
+
+		return s;
+	}
 
     function isSmall(g, scale) {
       const boundingBox = new THREE.Box3().setFromObject(g);
@@ -1037,26 +1092,26 @@
     }
 
     function LXFMLMatrix(matrix4) {
-      const lduPerUnit = 0.04;
+      const unit = 0.04;
 
       const converted = matrix4.clone();
-      const rotateToLDD = new THREE.Matrix4().makeRotationX(-Math.PI / 2);
-      converted.premultiply(rotateToLDD);
+      const rotation = new THREE.Matrix4().makeRotationX(Math.PI / 1);
+      converted.premultiply(rotation);
 
       const position = new THREE.Vector3();
       const quaternion = new THREE.Quaternion();
       const scale = new THREE.Vector3();
       converted.decompose(position, quaternion, scale);
 
-      position.multiplyScalar(lduPerUnit);
+      position.multiplyScalar(unit);
       converted.compose(position, quaternion, scale);
-      const e = converted.transpose().elements;
+      const element = converted.transpose().elements;
 
       return [
-        e[0], e[4], e[8],    // X
-        e[1], e[5], e[9],    // Y
-        e[2], e[6], e[10],   // Z
-        e[3], e[7], e[11]    // position
+        element[0], element[4], element[8],    // X
+        element[1], element[5], element[9],    // Y
+        element[2], element[6], element[10],   // Z
+        element[3], element[7], element[11]    // position
       ].map(v => v.toFixed(10)).join(',');
     }
 
