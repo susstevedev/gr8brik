@@ -1,12 +1,11 @@
-<!-- GR8BRIK VERSION 5-10-2025 (SUBOBJECT AND TEXTURES BETA 2.6) -->
+<!-- GR8BRIK VERSION 5-11-2025 (SUBOBJECT AND TEXTURES BETA 2.7) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Gr8brik Modeler</title>
   <meta charset="utf-8">
   <!-- <base href="/mod/new/"> -->
-  <meta name="viewport"
-    content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.js"></script>
   <link rel="stylesheet" type="text/css" href="index.css?v=5112025_test1">
@@ -29,7 +28,7 @@
 
   <div id="info">
     <p style="height: 1vh;"></p>
-    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">Gr8brik beta</a> - Build May 1st, 2025</p>
+    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">Gr8brik beta</a> - Build May 11th, 2025</p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
@@ -379,16 +378,30 @@
         let jsonData = generateSceneJSON();
         let jsonBlob = new Blob([jsonData], { type: "application/json" });
 
-        this.href = URL.createObjectURL(jsonBlob);
+        let url = URL.createObjectURL(jsonBlob);
+		this.href = url;
         this.download = `creation-${Date.now()}.json`;
+		
+		setTimeout(() => {
+			URL.revokeObjectURL(url);
+			this.removeAttribute("href");
+			this.removeAttribute("download");
+		}, 1000);
     });
 	
 	document.getElementById("cre-export-ldd").addEventListener("click", function () {
         let legoData = generateSceneLXFML();
         let blob = new Blob([legoData], { type: "application/text" });
 
-        this.href = URL.createObjectURL(blob);
+		let url = URL.createObjectURL(blob);
+		this.href = url;
         this.download = `ldd-creation-${Date.now()}.lxfml`;
+		
+		setTimeout(() => {
+			URL.revokeObjectURL(url);
+			this.removeAttribute("href");
+			this.removeAttribute("download");
+		}, 1000);
     });
 
     document.getElementById("importBtn").addEventListener("click", function () {
@@ -1012,7 +1025,7 @@
 		  "ffffff": 1,
 		  "ff0000": 21,
 		  "00ff00": 28,
-		  "0000ff": 23,
+		  "0000ff": 24,
 		  "ffff00": 14,
 		  "000000": 26,
 		  "a0a5a9": 194,
@@ -1027,8 +1040,16 @@
           }
         });
       });
-
-      const centerOffset = count > 0 ? totalPosition.divideScalar(count) : new THREE.Vector3();
+	  
+	  const centerOffset = count > 0 ? totalPosition.divideScalar(count) : new THREE.Vector3();
+	  
+	 /*const rotationx = new THREE.Matrix4().makeRotationX(Math.PI);
+	 const rotationz = new THREE.Matrix4().makeRotationZ(Math.PI);
+	 const creRotation = new THREE.Matrix4().multiply(rotationx).multiply(rotationz);*/
+	 
+	 /* const rotationx = new THREE.Matrix4().makeRotationX(Math.PI);
+	const rotationz = new THREE.Matrix4().makeRotationZ(Math.PI);
+	const creRotation = new THREE.Matrix4().multiply(rotationx).multiply(rotationz); */
 
       blockGroups.forEach(function (group) {
         let mesh_child = null;
@@ -1043,9 +1064,19 @@
 		 const boneID = refID;
 		 let colorID = legoColors[mesh_child.material.color.getHexString().toLowerCase()] ?? 26; // Default to black if unknown
 
-          let adjustedMatrix = group.matrixWorld.clone();
+          /*let adjustedMatrix = group.matrixWorld.clone();
+		  adjustedMatrix.premultiply(creRotation);
+		  
           let newPosition = new THREE.Vector3().setFromMatrixPosition(adjustedMatrix).sub(centerOffset);
-          adjustedMatrix.setPosition(newPosition);
+          adjustedMatrix.setPosition(newPosition);*/
+		  
+		  mesh_child.rotation.x += Math.PI;
+		  mesh_child.rotation.z += Math.PI;
+		  console.log('Updated Matrix for Mesh after Rotation:', mesh_child.matrixWorld);
+		  let adjustedMatrix = mesh_child.matrixWorld.clone();
+		  let newPosition = new THREE.Vector3().setFromMatrixPosition(adjustedMatrix).sub(centerOffset);
+		  console.log('New Position for Mesh:', newPosition);
+		  adjustedMatrix.setPosition(newPosition);
 
           sceneBricks += `
             <Brick refID="${refID}" designID="${ldraw}" itemNos="${ldraw}">
@@ -1097,7 +1128,12 @@
       const unit = 0.04;
 
       const converted = matrix4.clone();
-      const rotation = new THREE.Matrix4().makeRotationX(Math.PI / 1);
+      rotationz = new THREE.Matrix4().makeRotationZ(Math.PI);
+	  const rotationx = new THREE.Matrix4().makeRotationX(Math.PI / 1);
+	  
+	  const rotation = new THREE.Matrix4();
+	  rotation.multiply(rotationx);
+	  rotation.multiply(rotationz);
       converted.premultiply(rotation);
 
       const position = new THREE.Vector3();
@@ -1116,6 +1152,7 @@
         element[3], element[7], element[11]    // position
       ].map(v => v.toFixed(10)).join(',');
     }
+	
 
     /*function generateSceneLXFML() {
       let sceneBricks = '';
