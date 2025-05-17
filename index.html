@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@latest/dist/jszip.min.js" integrity="sha256-rMfkFFWoB2W1/Zx+4bgHim0WC7vKRVrq6FTeZclH1Z4=" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="index.css?v=5112025_test1">
 </head>
 
@@ -113,7 +114,7 @@
     });
 
     var partColor = "#ff0000";
-    const start_url = 'https://www.gr8brik.rf.gd';
+    const start_url = 'http://www.gr8brik.rf.gd';
 
     $(document).ready(function () {
 
@@ -375,6 +376,8 @@
     });
 
     document.getElementById("cre-export").addEventListener("click", function () {
+		event.preventDefault();
+		
         let jsonData = generateSceneJSON();
         let jsonBlob = new Blob([jsonData], { type: "application/json" });
 
@@ -390,18 +393,32 @@
     });
 	
 	document.getElementById("cre-export-ldd").addEventListener("click", function () {
+		event.preventDefault();
+	
         let legoData = generateSceneLXFML();
-        let blob = new Blob([legoData], { type: "application/text" });
-
-		let url = URL.createObjectURL(blob);
-		this.href = url;
-        this.download = `ldd-creation-${Date.now()}.lxfml`;
+		let zip = new JSZip();
+		zip.file("IMAGE100.LXFML", legoData);
+		let elm = this;
 		
-		setTimeout(() => {
-			URL.revokeObjectURL(url);
-			this.removeAttribute("href");
-			this.removeAttribute("download");
-		}, 1000);
+		zip.generateAsync({ type: "blob" }).then(function (blob) {
+			let url = URL.createObjectURL(blob);
+			let date = getDate();
+			/*elm.href = url;
+			elm.download = `ldd-creation-${date}.lxf`; */
+			
+			let a = document.createElement("a");
+			a.href = url;
+			a.download = `ldd-creation-${date}.lxf`;
+			document.body.appendChild(a);
+			a.click();
+			document.body.removeChild(a);
+			
+			setTimeout(() => {
+				URL.revokeObjectURL(url);
+				/*elm.removeAttribute("href");
+				elm.removeAttribute("download");*/
+			}, 10000);
+		});
     });
 
     document.getElementById("importBtn").addEventListener("click", function () {
@@ -549,6 +566,15 @@
     function snapToGrid(value, gridSize) {
       return Math.round(value / gridSize) * gridSize;
     }
+	
+	function getDate() {
+		const today = new Date();
+		const yyyy = today.getFullYear();
+		const mm = String(today.getMonth() + 1).padStart(2, '0');
+		const dd = String(today.getDate()).padStart(2, '0');
+
+		return `${yyyy}-${mm}-${dd}`;
+	}
 
     function init() {
         container = document.createElement('div');
@@ -1026,7 +1052,7 @@
 		  "ff0000": 21,
 		  "00ff00": 28,
 		  "0000ff": 24,
-		  "ffff00": 14,
+		  "ffff00": 24,
 		  "000000": 26,
 		  "a0a5a9": 194,
 		};
@@ -1040,16 +1066,6 @@
           }
         });
       });
-	  
-	  const centerOffset = count > 0 ? totalPosition.divideScalar(count) : new THREE.Vector3();
-	  
-	 /*const rotationx = new THREE.Matrix4().makeRotationX(Math.PI);
-	 const rotationz = new THREE.Matrix4().makeRotationZ(Math.PI);
-	 const creRotation = new THREE.Matrix4().multiply(rotationx).multiply(rotationz);*/
-	 
-	 /* const rotationx = new THREE.Matrix4().makeRotationX(Math.PI);
-	const rotationz = new THREE.Matrix4().makeRotationZ(Math.PI);
-	const creRotation = new THREE.Matrix4().multiply(rotationx).multiply(rotationz); */
 
       blockGroups.forEach(function (group) {
         let mesh_child = null;
@@ -1062,21 +1078,18 @@
         if (mesh_child) {
 		 let ldraw = group.ldraw.replace("parts/", "").replace(".dat", "");
 		 const boneID = refID;
-		 let colorID = legoColors[mesh_child.material.color.getHexString().toLowerCase()] ?? 26; // Default to black if unknown
-
-          /*let adjustedMatrix = group.matrixWorld.clone();
-		  adjustedMatrix.premultiply(creRotation);
-		  
-          let newPosition = new THREE.Vector3().setFromMatrixPosition(adjustedMatrix).sub(centerOffset);
-          adjustedMatrix.setPosition(newPosition);*/
-		  
-		  mesh_child.rotation.x += Math.PI;
-		  mesh_child.rotation.z += Math.PI;
-		  console.log('Updated Matrix for Mesh after Rotation:', mesh_child.matrixWorld);
-		  let adjustedMatrix = mesh_child.matrixWorld.clone();
-		  let newPosition = new THREE.Vector3().setFromMatrixPosition(adjustedMatrix).sub(centerOffset);
-		  console.log('New Position for Mesh:', newPosition);
-		  adjustedMatrix.setPosition(newPosition);
+		 let colorID = legoColors[mesh_child.material.color.getHexString().toLowerCase()] ?? 26;
+		 
+		 let adjustedMatrix = mesh_child.matrixWorld.clone();
+		 
+		 const globalrot = new THREE.Matrix4().makeRotationX(Math.PI / 1);
+		 adjustedMatrix.premultiply(globalrot);
+		 
+		 const flipmatrix = new THREE.Matrix4().makeRotationX(Math.PI);
+		 adjustedMatrix.multiply(flipmatrix);
+		 
+		 const translationMatrix = new THREE.Matrix4().makeTranslation(-20, 0, 0); // 1 LDU
+		 adjustedMatrix.multiply(translationMatrix);
 
           sceneBricks += `
             <Brick refID="${refID}" designID="${ldraw}" itemNos="${ldraw}">
@@ -1126,15 +1139,13 @@
 
     function LXFMLMatrix(matrix4) {
       const unit = 0.04;
-
       const converted = matrix4.clone();
-      rotationz = new THREE.Matrix4().makeRotationZ(Math.PI);
-	  const rotationx = new THREE.Matrix4().makeRotationX(Math.PI / 1);
 	  
-	  const rotation = new THREE.Matrix4();
-	  rotation.multiply(rotationx);
-	  rotation.multiply(rotationz);
-      converted.premultiply(rotation);
+	  const rotx = new THREE.Matrix4().makeRotationX(Math.PI / 1);
+	  
+	  const rot = new THREE.Matrix4();
+	  rot.multiply(rotx);
+      converted.premultiply(rot);
 
       const position = new THREE.Vector3();
       const quaternion = new THREE.Quaternion();
@@ -1142,14 +1153,16 @@
       converted.decompose(position, quaternion, scale);
 
       position.multiplyScalar(unit);
+	  position.x -= 0.8;
+	  
       converted.compose(position, quaternion, scale);
-      const element = converted.transpose().elements;
+      const elm = converted.transpose().elements;
 
       return [
-        element[0], element[4], element[8],    // X
-        element[1], element[5], element[9],    // Y
-        element[2], element[6], element[10],   // Z
-        element[3], element[7], element[11]    // position
+        elm[0], elm[4], elm[8],    // X
+        elm[1], elm[5], elm[9],    // Y
+        elm[2], elm[6], elm[10],   // Z
+        elm[3], elm[7], elm[11]    // position
       ].map(v => v.toFixed(10)).join(',');
     }
 	
