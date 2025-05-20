@@ -307,7 +307,8 @@
 
       $(document).on("click", ".scene-block-item", function () {
         let id = $(this).data("id");
-        transformControls.detach(selectedObject);
+		
+        /* transformControls.detach(selectedObject);
         selectedObject = null;
 
         if (blockGroups && blockGroups.length > 0) {
@@ -317,9 +318,19 @@
               selectedObject = g;
               tooltip('Block selected');
             }
-          });
-      }
-      });
+          }); */
+		  
+		if(scene.getObjectByProperty('uuid', id)) {
+			part = scene.getObjectByProperty('uuid', id);
+			
+			transformControls.detach(selectedObject);
+			selectedObject = null;
+			
+			transformControls.attach(part);
+            selectedObject = part;
+            tooltip('Part selected');
+		}
+		});
     });
   </script>
   <script>
@@ -375,6 +386,7 @@
       });
     });
 
+	/*
     document.getElementById("cre-export").addEventListener("click", function () {
 		event.preventDefault();
 		
@@ -391,6 +403,29 @@
 			this.removeAttribute("download");
 		}, 1000);
     });
+	*/
+	
+	document.getElementById("cre-export").addEventListener("click", function () {
+		event.preventDefault();
+	
+        let jsonData = generateSceneJSON();
+		let jsonBlob = new Blob([jsonData], { type: "application/json" });
+		let elm = this;
+		
+		let url = URL.createObjectURL(jsonBlob);
+		let date = getDate();
+			
+		let a = document.createElement("a");
+		a.href = url;
+		a.download = `json-creation-${date}.json`;
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
+			
+		setTimeout(() => {
+			URL.revokeObjectURL(url);
+		}, 10000);
+    });
 	
 	document.getElementById("cre-export-ldd").addEventListener("click", function () {
 		event.preventDefault();
@@ -403,8 +438,6 @@
 		zip.generateAsync({ type: "blob" }).then(function (blob) {
 			let url = URL.createObjectURL(blob);
 			let date = getDate();
-			/*elm.href = url;
-			elm.download = `ldd-creation-${date}.lxf`; */
 			
 			let a = document.createElement("a");
 			a.href = url;
@@ -415,8 +448,6 @@
 			
 			setTimeout(() => {
 				URL.revokeObjectURL(url);
-				/*elm.removeAttribute("href");
-				elm.removeAttribute("download");*/
 			}, 10000);
 		});
     });
@@ -446,49 +477,6 @@
         };
         reader.readAsText(file);
     });
-
-    /*async function loadSceneFromJSON(data) {
-      if (!data || !data.blocks || !Array.isArray(data.blocks)) {
-          console.error("Invalid JSON data.");
-          tooltip("Invalid JSON.");
-          return;
-      }
-
-      for (const block of data.blocks) {
-          try {
-				partName = block.partName;
-				partColor = '#' + block.color;
-				partPosition = block.position;
-				partRotation = block.position; */
-
-              /*if (!partName.startsWith('parts/')) {
-                  part = 'parts/' + partName;
-              } else {
-                  part = partName;
-              }*/
-			  
-			  //let part = 'parts/' + partName.replace("parts/", "").replace(".dat", "") + '.dat';
-			  
-			  
-				/*part = 'parts/' + block.ldraw; */
-				
-				/*if (!partName.includes("parts/")) {
-					let part = 'parts/' + partName;
-				}*/
-
-				/*if(addBlock()) {
-					part, partName, partColor, partPosition, partRotation = null;
-				}
-          } catch (err) {
-            console.warn(`Failed to add block: ${block.partName}`, err);
-            tooltip(`Failed to load ${block.partName}`);
-            continue;
-          }
-      }
-
-      console.log("Creation imported.");
-      tooltip("Creation imported.");
-  }*/
   
 	  async function loadSceneFromJSON(data) {
 		if (!data || !data.blocks || !Array.isArray(data.blocks)) {
@@ -519,9 +507,8 @@
 		tooltip("Creation imported.");
 	}
 
-    var container, camera, scene, renderer, sunlight, controls, grid_helper, ldraw_loader, raycaster, mouse, partRotation, partPosition = null;
+    var container, camera, scene, renderer, sunlight, controls, grid_helper, ldraw_loader, raycaster, mouse, partRotation, partPosition, selectedObject, previousSelectedObject, customPosition = null;
 
-    var selectedObject, previousSelectedObject, customPosition = null;
     let blocks = [];
     let blockGroups = [];
 
@@ -581,36 +568,20 @@
         container.classList.add("scene");
 
         document.body.appendChild(container);
-        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
-        camera.position.set(250, 150, 500);
+		
+        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
+        camera.position.set(250, 250, 250);
+				
         scene = new THREE.Scene();
+		scene.background = new THREE.Color(0xffffff);
         scene.userData.noSnap = false;
-
-        if(isDark() === true) {
-          scene.background = new THREE.Color(0x333333);
-        } else {
-          scene.background = new THREE.Color(0xF5F5F5);
-        }
-
-        const sunlight = new THREE.DirectionalLight(0xffffff, 3);
-        sunlight.position.set(10, 15, 10);
-        sunlight.castShadow = true;
-        scene.add(sunlight);
-
-        const ambientlight = new THREE.AmbientLight(0xffffff, 1);
-        scene.add(ambientlight);
-
-        const pointlight = new THREE.PointLight(0xffffff, 1, 500);
-        pointlight.position.set(50, 100, -50);
-        pointlight.castShadow = true;
-        scene.add(pointlight);
-
-        const spotlight = new THREE.SpotLight(0xffffff, 2);
-        spotlight.position.set(-50, 100, 50);
-        spotlight.angle = Math.PI / 6;
-        spotlight.penumbra = 0.3;
-        spotlight.castShadow = true;
-        scene.add(spotlight);
+		
+		const ambient_lighting = new THREE.AmbientLight(0xdddddd, 1);
+        scene.add(ambient_lighting);
+		
+		const directional_lighting = new THREE.DirectionalLight(0xffffff, 3);
+        directional_lighting.position.set(10, 15, 10);
+        scene.add(directional_lighting);
 
         renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -624,23 +595,14 @@
         const stud_size = 20; // 1 stud = 20
         const grid_size = stud_size * 16; // studs wide
         const divisions = 16; // 1 division per stud
-
-        if(isDark() === true) {
-          grid_helper = new THREE.GridHelper(grid_size, divisions, 0x333333, 0xF5F5F5);
-        } else {
-          grid_helper = new THREE.GridHelper(grid_size, divisions, 0xF5F5F50, 0x333333);
-        }
+		
+		grid_helper = new THREE.GridHelper(grid_size, divisions, 0xffffff, 0x000000);
         scene.add(grid_helper);
 
         ldraw_loader = new THREE.LDrawLoader();
         ldraw_loader.preloadMaterials('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/colors/ldconfig.ldr');
         ldraw_loader.setPath('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/');
         ldraw_loader.setPartsLibraryPath("https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/");
-        ldraw_loader.smoothNormals = false;
-        ldraw_loader.flatColors = true;
-        ldraw_loader.displayLines = true;
-        ldraw_loader.conditionalLines = true
-        ldraw_loader.separateObjects = true;
         
         raycaster = new THREE.Raycaster();
         mouse = new THREE.Vector2();
@@ -697,7 +659,6 @@
 
     window.addEventListener('resize', onWindowResize, true);
     window.addEventListener('pointerdown', onMouseClick, true);
-    //window.addEventListener('mousemove', onMouseMove, true);
 
       transformControls.addEventListener('mouseDown', function () {
         controls.enabled = false;
@@ -730,6 +691,12 @@
             }
             updateSceneData();
         });
+		
+		// DO NOT REMOVE! THIS UPDATES THE SCENE EVERY 50 SECONDS SO CREATION SAVING WORKS!
+		
+		setTimeout(() => {
+			scene.updateMatrixWorld();
+		}, 50);
     }
 
     function changeBlockColor(color) {
@@ -827,12 +794,12 @@
             blockGroup.name = `ldraw_${makeid(10)}`;
             blockGroup.ldraw = part;
 
-            let subobjects = [];
+            //let subobjects = [];
 
-            loadedGroup.traverse((child) => {
-                if (child.isMesh) {
-                    child.geometry = generateUVMap(child.geometry);
-
+            /*loadedGroup.traverse((child) => {
+				const clone = child.clone();
+			
+                if (clone.isMesh) {
                     var materials = {
                       color: new THREE.Color(partColor || "#000000"),
                       roughness: 0.2,
@@ -841,30 +808,64 @@
                       clearcoatRoughness: 0.2,
                       reflectivity: 0.9
                     };
+					
+					if (clone.material && clone.material.map) {
+						console.log('part has texture');
+					} else {
+						clone.material = new THREE.MeshStandardMaterial(materials);
+					}
 
-                    child.material = new THREE.MeshPhysicalMaterial(materials);
-                    child.castShadow = true;
-                    child.receiveShadow = true;
-
-                    const transformedMesh = subobjectPosition(child);
-                    const isTiny = isSmall(transformedMesh, 19);
-
-                    if(isTiny === true) {
-                      child.userData.noSnap = true;
-                    } else if(isTiny === false) {
-                        child.userData.noSnap = false;
-                    }
-
-                    transformedMesh.material.needsUpdate = true;
-                    transformedMesh.userData.selectable = true;
-                    transformedMesh.userData.isBlock = true;
-
-                    subobjects.push(transformedMesh);
+                    clone.userData.selectable = true;
+                    clone.userData.isBlock = true;					
+					blockGroup.add(clone);
                 }
-            });
+            }); */
+			
+			
+            /*if (loadedGroup.isMesh) {
+                var materials = {
+                    color: new THREE.Color(partColor || "#000000"),
+                    roughness: 0.2,
+                    metalness: 0.2,
+                    clearcoat: 0.9,
+                    clearcoatRoughness: 0.2,
+                    reflectivity: 0.9
+                };
+					
+				if (loadedGroup.material && loadedGroup.material.map) {
+					console.log('part has texture');
+				} else {
+					loadedGroup.material = new THREE.MeshStandardMaterial(materials);
+				}
 
-            subobjects.forEach(mesh => {
-                blockGroup.add(mesh);
+                loadedGroup.userData.selectable = true;
+                loadedGroup.userData.isBlock = true;					
+				blockGroup.add(loadedGroup);
+            } */
+			
+			loadedGroup.traverse((child) => {			
+                if (child.isMesh) {
+                    var materials = {
+                      color: new THREE.Color(partColor || "#000000"),
+                      roughness: 0.2,
+                      metalness: 0.2,
+                      clearcoat: 0.9,
+                      clearcoatRoughness: 0.2,
+                      reflectivity: 0.9
+                    };
+					
+					if (child.material && child.material.map) {
+						console.log('part has texture');
+					} else {
+						child.material = new THREE.MeshStandardMaterial(materials);
+					}
+
+                    child.userData.selectable = true;
+                    child.userData.isBlock = true;
+					let clone = child.clone();
+					
+					blockGroup.add(clone);
+                }
             });
 			
 			if(partPosition && partRotation) {
@@ -885,11 +886,10 @@
             blockGroups.push(blockGroup);
 
             tooltip(`Added block ${part}`);
-			throwSuccess()
 
-            const texturename = `${part.split("/").pop().split(".")[0]}.png`;
+            /* const texturename = `${part.split("/").pop().split(".")[0]}.png`;
             const texturepath = `https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/parts/textures/${texturename}`;
-            //const texturepath = 'https://d1xez26aurxsp6.cloudfront.net/users/qXBby2/avatars/680a924dab4ba.png';
+            const texturepath = 'https://d1xez26aurxsp6.cloudfront.net/users/qXBby2/avatars/680a924dab4ba.png';
             const textureLoader = new THREE.TextureLoader();
 
             textureLoader.load(texturepath, (texturemap) => {
@@ -902,10 +902,11 @@
                 });
             }, undefined, (err) => {
                 console.warn("Texture load failed or doesn't exist:", err);
-            });
+            }); */
 
-            updateBlockList(partName, partColor, blocks.length, blockGroup.name);
-            updateSceneData();
+            updateBlockList(partName, partColor, blocks.length, blockGroup.uuid);
+            //updateSceneData();
+			throwSuccess();
             
         }, undefined, function (error) {
             console.error('error loading piece:', error);
@@ -983,6 +984,13 @@
     geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
     return geometry;
   }
+  
+	function createGroup(gname, gelm) {
+		let group = new THREE.Group();
+        group.name = gname;
+		group.add(gelm);
+        return group;
+	}
 
 
     function generateSceneJSON() {
@@ -1165,84 +1173,10 @@
         elm[3], elm[7], elm[11]    // position
       ].map(v => v.toFixed(10)).join(',');
     }
-	
-
-    /*function generateSceneLXFML() {
-      let sceneBricks = '';
-      let refID = 1;
-
-      if (selectedObject) {
-          transformControls.detach(selectedObject);
-          selectedObject = null;
-      }
-
-      blockGroups.forEach(function (group) {
-        let mesh_child = null;
-        group.traverse(function (child) {
-          if (child.isMesh) {
-            mesh_child = child;
-          }
-        });
-
-        if (mesh_child) {
-            let ldraw = group.ldraw.replace("parts/", "");
-
-            sceneBricks += `
-            <Brick refID="${refID}" designID="${ldraw}" itemNos="${ldraw}">
-              <Part refID="${refID}" designID="${ldraw}" materials="26,0" decoration="0">
-                <Bone refID="${refID}" transformation="${LXFMLMatrix(group.matrixWorld)}">
-                </Bone>
-              </Part>
-            </Brick>`;
-
-            let refID = refID + 1;
-          };
-      });
-
-      const sceneData = `
-        <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-          <LXFML versionMajor="5" versionMinor="0" name="testing">
-            <Meta>
-                <Application name="LEGO Digital Designer" versionMajor="4" versionMinor="3"/>
-                <Brand name="LDD"/>
-                <BrickSet version="2670"/>
-              </Meta>
-              <Cameras>
-                <Camera refID="0" fieldOfView="80" distance="120" transformation="1,0,0,0,1,0,0,0,1,0,0,120"/>
-              </Cameras>
-              <Bricks cameraRef="0">
-                ${sceneBricks}
-              </Bricks>
-              <RigidSystems>
-                <RigidSystem>
-                  <Rigid refID="0" transformation="1,0,0,0,1,0,0,0,1,-3.5999999046325684,0,-5.2000002861022949" boneRefs="0"/>
-                </RigidSystem>
-              </RigidSystems>
-              <GroupSystems>
-                <GroupSystem>
-                </GroupSystem>
-              </GroupSystems>
-              <BuildingInstructions>
-              </BuildingInstructions>
-            </LXFML>
-          `;
-
-      return sceneData.replace(/\s+/g, ' ').trim();
-    }
-
-    function LXFMLMatrix(matrix4) {
-      const m = matrix4.clone().transpose().elements;
-
-      return [
-        m[0], m[4], m[8],   // row 1 (X basis)
-        m[1], m[5], m[9],   // row 2 (Y basis)
-        m[2], m[6], m[10],  // row 3 (Z basis)
-        m[3], m[7], m[11]   // translation
-      ].map(v => v.toFixed(10)).join(',');
-    } */
 
     function updateSceneData() {
-      if (blockGroups && blockGroups.length > 0) {
+      /*
+	  if (blockGroups && blockGroups.length > 0) {
           blockGroups.forEach(function (g) {
               let hasTinyMesh = false;
 
@@ -1265,11 +1199,13 @@
               g.updateMatrixWorld(true);
               scene.updateMatrixWorld(true);
           });
-      }
-
+      } 
+	  
       if (selectedObject) {
           selectedObject.updateMatrixWorld(true);
       }
+	  */
+	scene.updateMatrixWorld(true);
   }
 
     function onMouseClick(event) {
@@ -1290,65 +1226,8 @@
 
         if (intersects.length > 0) {
             selectObject(intersects[0].object);
-
-            /*window.addEventListener('pointerdown', function (event) {
-              if(event.button === 0) {
-                if(scene.userData.canDrag === true) {
-                  scene.userData.canDrag = false;
-                  if(selectedObject && selectedObject != intersects[0].object) {
-                    transformControls.detach(selectedObject);
-                    selectedObject = undefined;
-                  }
-                } else {
-                  scene.userData.canDrag = true;
-                }
-              }
-            }, true);*/
         }
      }
-
-      /*const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
-      const intersectionPoint = new THREE.Vector3();
-      const offset = new THREE.Vector3();
-
-      function onMouseMove(event) {
-        const container = document.querySelector(".scene");
-        if (!container.contains(event.target)) {
-          return;
-        }
-
-        if(scene.userData.canDrag != true) {
-          return;
-        }
-
-        event.preventDefault();
-
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-        raycaster.setFromCamera(mouse, camera);
-
-        if (!selectedObject) {
-          return;
-        }
-
-        const has_intersection = raycaster.ray.intersectPlane(plane, intersectionPoint);
-        if (!has_intersection) {
-          return;
-        }
-
-        selectedObject.position.copy(intersectionPoint).add(offset);
-
-        const snap = !selectedObject.userData.noSnap || scene.userData.noSnap;
-        if (snap) {
-            applySnap(selectedObject);
-        }
-
-        selectedObject.updateMatrixWorld(true);
-        scene.updateMatrixWorld(true);
-
-        updateSceneData();
-    }*/
  
      function selectObject(object) {
         while (object.parent && !object.userData.isBlock) {
@@ -1367,27 +1246,8 @@
         selectedObject = object;
         transformControls.attach(object);
     }
- 
-    /*function deselectObject(obj) {
-        if (obj !== null) {
-            transformControls.detach(obj);
-            previousSelectedObject = obj;
-            selectedObject = null;
-        }
-    } */
-    
-    /*function canDrag() {
-      if(scene.userData.canDrag) {
-              scene.userData.canDrag = false;
-              window.removeEventListener('mousemove', onMouseMove, true);
-              deselectObject(selectedObject);
-            } else {
-              scene.userData.canDrag = true;
-              window.addEventListener('mousemove', onMouseMove, true);
-            }
-      } */
 
-    function applySnap(obj) {
+    /*function applySnap(obj) {
         obj.position.set(
             snapToGrid(obj.position.x, 10),
             snapToGrid(obj.position.y, 4),
@@ -1403,7 +1263,7 @@
             snapAngle(obj.rotation.y),
             snapAngle(obj.rotation.z)
         );
-    }
+    } */
 
     function onWindowResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
@@ -1429,8 +1289,6 @@
     }
 
     function animate() {
-      //THREE.ShaderChunk.encodings_fragment = THREE.ShaderChunk.colorspace_fragment;
-
       document.addEventListener('DOMContentLoaded', function () {
         const stats = new Stats();
 
