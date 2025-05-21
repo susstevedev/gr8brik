@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 5-11-2025 (SUBOBJECT AND TEXTURES BETA 2.7) -->
+<!-- GR8BRIK VERSION 5-21-2025 (SUBOBJECT AND TEXTURES BETA 2.8) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -186,7 +186,7 @@
         $('#select-block').html('');
         displayed_parts.forEach(part => {
           $('#select-block').append(
-            `<li id="${part.file}" value="${part.file}"><img src="https://library.ldraw.org/images/library/official/parts/${part.file.split(".")[0]}.png" loading="lazy" width="45px" height="45px" /><br /><small>${part.name}</small><br /><small class="part-list-number">${part.file.split(".")[0]}</small></li>`
+            `<li id="${part.file}" value="${part.file}"><img src="https://library.ldraw.org/images/library/official/parts/${part.file.split(".")[0]}.png" loading="lazy" width="45px" xheight="45px" /><br /><small>${part.name}</small><br /><small class="part-list-number">${part.file.split(".")[0]}</small></li>`
           );
         });
       }
@@ -843,7 +843,7 @@
 				blockGroup.add(loadedGroup);
             } */
 			
-			loadedGroup.traverse((child) => {			
+			/*loadedGroup.traverse((child) => {			
                 if (child.isMesh) {
                     var materials = {
                       color: new THREE.Color(partColor || "#000000"),
@@ -866,7 +866,22 @@
 					
 					blockGroup.add(clone);
                 }
-            });
+            }); */
+			
+			loadedGroup.traverse((child) => {
+				if (child.isMesh && !child.material.map) {
+					child.material = new THREE.MeshStandardMaterial({
+						color: new THREE.Color(partColor || "#000000"),
+						/*roughness: 0.2,
+						metalness: 0.2,
+						clearcoat: 0.9,
+						clearcoatRoughness: 0.2,
+						reflectivity: 0.9 */
+					});
+					child.userData.isBlock = true;
+				}
+			});
+			blockGroup.add(loadedGroup);
 			
 			if(partPosition && partRotation) {
 				blockGroup.position.set(partPosition.x, partPosition.y, partPosition.z);
@@ -885,7 +900,7 @@
             blocks.push(blockGroup);
             blockGroups.push(blockGroup);
 
-            tooltip(`Added block ${part}`);
+            tooltip(`Added part ${part.replace("parts/", "")}`);
 
             /* const texturename = `${part.split("/").pop().split(".")[0]}.png`;
             const texturepath = `https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/parts/textures/${texturename}`;
@@ -1175,7 +1190,6 @@
     }
 
     function updateSceneData() {
-      /*
 	  if (blockGroups && blockGroups.length > 0) {
           blockGroups.forEach(function (g) {
               let hasTinyMesh = false;
@@ -1204,8 +1218,6 @@
       if (selectedObject) {
           selectedObject.updateMatrixWorld(true);
       }
-	  */
-	scene.updateMatrixWorld(true);
   }
 
     function onMouseClick(event) {
