@@ -675,10 +675,15 @@
       }
 
       selectedObject.traverse((child) => {
-        if (child.isMesh) {
+        /*if (child.isMesh && !child.material.map) {
           child.material.color.set(color);
           child.material.needsUpdate = true;
-        }
+        }*/
+		if (child.isMesh && child.material && !Array.isArray(child.material)) {
+			child.material.color.set(color);
+			child.material.map.encoding = THREE.LinearEncoding;
+			child.material.needsUpdate = true;
+		}
       });
 
       console.log(`block color changed to ${color}`);
@@ -1007,7 +1012,7 @@
             let ldraw = group.ldraw.replace("parts/", "");
             const blockData = {
                 partName: group.userData.partName,
-                color: mesh_child.material.color.getHexString(),
+                color: mesh_child.material.color.getHexString().toLowerCase() ?? '#ffffff',
                 position: {
                     x: group.position.x,
                     y: group.position.y,
@@ -1221,7 +1226,7 @@
             object = object.parent;
         }
  
-        if (!object.userData.isBlock || !transformControls.enabled) {
+        if (!object.userData.isBlock && transformControls.enabled) {
             return;
         }
  
@@ -1230,8 +1235,10 @@
         }
 
         transformControls.detach(selectedObject);
-        selectedObject = object;
+		selectedObject = null;
+        
         transformControls.attach(object);
+		selectedObject = object;
     }
 
     /*function applySnap(obj) {
