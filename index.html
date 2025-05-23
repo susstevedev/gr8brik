@@ -29,7 +29,7 @@
 
   <div id="info">
     <p style="height: 1vh;"></p>
-    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">Gr8brik beta</a> - Build May 11th, 2025</p>
+    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">Gr8brik beta</a> - Build May 23rd, 2025</p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
@@ -39,27 +39,30 @@
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/TransformControls.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
   <button id="toggleMenu" class="mobile-toggle">&#x2630;</button>
   <a id="takeScreenshot" class="mobile-toggle" style="top: 155px; height: 25px; padding-right: 0px; padding-left: 0px;">&#x1F4F7;</a>
   <div id="left-container">
     <p style="height: 1vh;"></p>
+	
+	<span>Progress</span><br />
+    <button class="btn" title="Save creation to our database of LEGO(R) made by others." id="save-popup-open"><i class="fa fa-database" aria-hidden="true"></i>Save to Cloud</button><br />
+    <button id="importBtn" class="btn"><i class="fa fa-download" aria-hidden="true"></i>Import</button>
+    <a id="cre-export" title="Download creation data as a json file" class="btn"><i class="fa fa-upload" aria-hidden="true"></i>Export</a><br />
+	<a id="cre-export-ldd" title="Download creation data as a lxf file" class="btn"><i class="fa fa-floppy-o" aria-hidden="true"></i>Export as LXF</a>
+    <input type="file" id="cre-import" accept=".json" style="display: none;"><hr />
+	
+	<span>Edit tools</span><br />
+	<button class="btn" title="Change controls to arrows to move blocks up and down, side-by-side." id="move-block-t"><i class="fa fa-arrows-alt" aria-hidden="true"></i>Drag</button>
+    <button class="btn" title="Change controls to rotate blocks, in all directions." id="move-block-r"><i class="fa fa-refresh" aria-hidden="true"></i>Rotate</button><br />
+	<button id="duplicate-block" class="btn" title="Copy the block that was last added and paste it"><i class="fa fa-files-o" aria-hidden="true"></i>Duplicate Block</button><br />
+	<button id="delete-block" class="btn" title="Remove a block from the scene, along with all records of it"><i class="fa fa-trash" aria-hidden="true"></i>Delete Block</button><hr />
 
-    <br /><button class="btn" title="Save creation to our database of LEGO(R) made by others." id="save-popup-open">Save Creation</button><br />
-    <button class="btn" title="Change controls to arrows to move blocks up and down, side-by-side." id="move-block-t">Drag</button>
-    <button class="btn" title="Change controls to rotate blocks, in all directions." id="move-block-r">Rotate</button><br />
-    <button id="duplicate-block" class="btn" title="Copy the block that was last added and paste it">Duplicate Block</button><br />
-	<button id="delete-block" class="btn" title="Remove a block from the scene, along with all records of it">Delete Block</button><br />
-    <button id="importBtn" class="btn">Import</button>
-    <a id="cre-export" title="Download creation data as a json file" class="btn">Export</a><br />
-	<a id="cre-export-ldd" title="Download creation data as a lxf file" class="btn">Export for Lego&copy; Digital Designer</a>
-    <input type="file" id="cre-import" accept=".json" style="display: none;">
-    <hr />
+    <span>Color</span><br />
+    <input type="text" id="color-picker" /><hr />
 
-    <label for="color-picker">Color</label>
-    <input type="text" id="color-picker" /><br />
-
-    <label for="part-type-filter">Filter by</label>
+    <span>Filter</span><br />
 
     <select id="part-type-filter" style="display: inline-block;">
         <option value="brick" selected>Bricks</option>
@@ -81,11 +84,11 @@
         <option value="other">Miscellaneous</option>
     </select><br />
 
-    <input type="text" id="search-parts" placeholder="search parts..." /><br />
+    <input type="text" id="search-parts" placeholder="search parts..." /><hr />
 
     <button id="tab1" class="tab-button">Add blocks</button>
     <button id="tab2" class="tab-button">Scene blocks</button>
-    <hr />
+    
 
     <span id="select-block"></span>
     <ul id="block-list">
@@ -159,12 +162,20 @@
       }
       login();
 
-        let displayed_parts = [];
-        let current_type = '';
+      let displayed_parts = [];
+      let current_type = '';
+	  let cached_parts = {};
 
       function loadParts(type) {
         console.log(`loading ${type} category`);
-        current_type = type;
+		current_type = type;
+		
+		if (cached_parts[type]) {
+			console.log(`${type} parts loaded from cache`);
+			displayed_parts = cached_parts[type];
+			displayParts();
+			return;
+		}
 
         $.ajax({
           url: `https://susstevedev.github.io/gr8brik-new/parts/${type}.json`,
@@ -173,6 +184,7 @@
           success: function (data) {
             console.log(`${type} parts loaded`);
             displayed_parts = data;
+			cached_parts[type] = data;
             displayParts();
           },
           error: function (err) {
@@ -182,14 +194,22 @@
         });
       }
 
-      function displayParts() {
+      /*function displayParts() {
         $('#select-block').html('');
         displayed_parts.forEach(part => {
           $('#select-block').append(
             `<li id="${part.file}" value="${part.file}"><img src="https://library.ldraw.org/images/library/official/parts/${part.file.split(".")[0]}.png" loading="lazy" width="45px" xheight="45px" /><br /><small>${part.name}</small><br /><small class="part-list-number">${part.file.split(".")[0]}</small></li>`
           );
         });
-      }
+      } */
+	  
+	 function displayParts() {
+		let appended = '';
+		displayed_parts.forEach(part => {
+			appended += `<li id="${part.file}" value="${part.file}"><img src="https://library.ldraw.org/images/library/official/parts/${part.file.split(".")[0]}.png" loading="lazy" width="45px" xheight="45px" /><br /><small>${part.name}</small><br /><small class="part-list-number">${part.file.split(".")[0]}</small></li>`;
+		});
+		$('#select-block').html(appended);
+	}
 
       $('#part-type-filter').on('change', function () {
         let selectedType = $(this).val();
@@ -675,13 +695,8 @@
       }
 
       selectedObject.traverse((child) => {
-        /*if (child.isMesh && !child.material.map) {
-          child.material.color.set(color);
-          child.material.needsUpdate = true;
-        }*/
 		if (child.isMesh && child.material && !Array.isArray(child.material)) {
 			child.material.color.set(color);
-			child.material.map.encoding = THREE.LinearEncoding;
 			child.material.needsUpdate = true;
 		}
       });
