@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 5-21-2025 (SUBOBJECT AND TEXTURES BETA 2.8) -->
+<!-- GR8BRIK VERSION 5-23-2025 (SUBOBJECT AND TEXTURES BETA 2.8) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,7 +114,7 @@
     });
 
     var partColor = "#ff0000";
-    const start_url = 'http://www.gr8brik.rf.gd';
+    const start_url = 'https://gr8brik.rf.gd';
 
     $(document).ready(function () {
 
@@ -307,18 +307,6 @@
 
       $(document).on("click", ".scene-block-item", function () {
         let id = $(this).data("id");
-		
-        /* transformControls.detach(selectedObject);
-        selectedObject = null;
-
-        if (blockGroups && blockGroups.length > 0) {
-          blockGroups.forEach(function (g) {
-            if (g.name == id) {
-              transformControls.attach(g);
-              selectedObject = g;
-              tooltip('Block selected');
-            }
-          }); */
 		  
 		if(scene.getObjectByProperty('uuid', id)) {
 			part = scene.getObjectByProperty('uuid', id);
@@ -385,25 +373,6 @@
         search.readOnly = is1 ? false : true;
       });
     });
-
-	/*
-    document.getElementById("cre-export").addEventListener("click", function () {
-		event.preventDefault();
-		
-        let jsonData = generateSceneJSON();
-        let jsonBlob = new Blob([jsonData], { type: "application/json" });
-
-        let url = URL.createObjectURL(jsonBlob);
-		this.href = url;
-        this.download = `creation-${Date.now()}.json`;
-		
-		setTimeout(() => {
-			URL.revokeObjectURL(url);
-			this.removeAttribute("href");
-			this.removeAttribute("download");
-		}, 1000);
-    });
-	*/
 	
 	document.getElementById("cre-export").addEventListener("click", function () {
 		event.preventDefault();
@@ -716,30 +685,33 @@
       tooltip(`Block color changed`);
     }
 
-    function deleteBlock(block) {
-        if (block) {
-            if (block.isMesh) {
-                scene.remove(block);
-                block.updateMatrixWorld(true);
-                tooltip('Deleted block');
+    function deleteBlock(part) {
+        if (part) {
+            if (part.isMesh) {
+                if (part.parent) {
+					part.parent.remove(part);
+				}
+                part.updateMatrixWorld(true);
+                tooltip('Deleted part');
             } else {
-              tooltip('Block is not a valid mesh')
+              tooltip('Part is not a valid mesh')
             }
 
             if (blockGroups && blockGroups.length > 0) {
                 blockGroups.forEach(function (g) {
-                    g.remove(block);
+                    g.remove(part);
                     g.updateMatrixWorld(true);
                 });
             }
 
-            if (selectedObject === block) {
-                transformControls.detach(block);
+            if (selectedObject === part) {
+                transformControls.detach(part);
                 selectedObject = null;
             }
         } else {
-          tooltip('No block found');
+          tooltip('No part found');
         }
+		scene.updateMatrixWorld(true);
     }
 
     function capture() {
@@ -869,15 +841,21 @@
             }); */
 			
 			loadedGroup.traverse((child) => {
-				if (child.isMesh && !child.material.map) {
+				if (child.isMesh && !child.material.map && !child.isLineSegments) {
 					child.material = new THREE.MeshStandardMaterial({
 						color: new THREE.Color(partColor || "#000000"),
-						/*roughness: 0.2,
-						metalness: 0.2,
-						clearcoat: 0.9,
-						clearcoatRoughness: 0.2,
-						reflectivity: 0.9 */
 					});
+					child.userData.isBlock = true;
+					
+					transformControls.attach(child);
+					selectedObject = child;
+				} 
+				
+				if (child.isLineSegments) {
+					child.visible = false;
+				}
+				
+				if (child.material && child.material.map && child.isMesh && !child.isLineSegments) {
 					child.userData.isBlock = true;
 				}
 			});
@@ -893,9 +871,6 @@
 			
             blockGroup.userData.partName = partName;
             scene.add(blockGroup);
-			
-            selectedObject = blockGroup;
-            transformControls.attach(blockGroup);
 			
             blocks.push(blockGroup);
             blockGroups.push(blockGroup);
