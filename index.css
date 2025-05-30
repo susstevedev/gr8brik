@@ -104,7 +104,7 @@ select, option {
     color: #fff;
   }
 
-  #save-popup {
+  #save-popup, #import-popup, #export-popup {
     display: none;
     border-radius: 10px;
     padding: 10px;

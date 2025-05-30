@@ -32,9 +32,10 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/ColladaLoader.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/dat.gui@latest/build/dat.gui.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/dat.gui@latest/build/dat.gui.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/TransformControls.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" />
@@ -47,12 +48,14 @@
 	
 	<span>Progress</span><br />
     <button class="btn" title="Save creation data to database" id="save-popup-open"><i class="fa fa-database" aria-hidden="true"></i>Save to Cloud</button><br />
-    <button id="importBtn" class="btn"><i class="fa fa-download" aria-hidden="true"></i>Import</button>
+	<button id="import-popup-open" class="btn"><i class="fa fa-download" aria-hidden="true"></i>Import...</button>
+	<button id="export-popup-open" class="btn"><i class="fa fa-upload" aria-hidden="true"></i>Export...</button><hr />
+	
+    <!-- <button id="importBtn" class="btn"><i class="fa fa-download" aria-hidden="true"></i>Import</button>
     <a id="cre-export" title="Download creation data as a json file" class="btn"><i class="fa fa-upload" aria-hidden="true"></i>Export</a><br />
 	<button id="import-btn-three" title="Import creation data from threejs json" class="btn"><i class="fa fa-cubes" aria-hidden="true"></i>Import Threejs</button><br />
 	<a id="cre-export-ldd" title="Download creation data as a lxf file" class="btn"><i class="fa fa-floppy-o" aria-hidden="true"></i>Export as LXF</a>
-	<button id="cre-export-three" title="Download creation data as a threejs data" class="btn"><i class="fa fa-cubes" aria-hidden="true"></i>Export as Threejs</button><br />
-    <input type="file" id="cre-import" accept=".json" style="display: none;"><input type="file" id="cre-import-three" accept=".json" style="display: none;"><hr />
+	<button id="cre-export-three" title="Download creation data as a threejs data" class="btn"><i class="fa fa-cubes" aria-hidden="true"></i>Export as Threejs</button><br /><hr /> -->
 	
 	<span>Edit tools</span><br />
 	<button class="btn" title="Change controls to arrows to move blocks up and down, side-by-side." id="move-block-t"><i class="fa fa-arrows-alt" aria-hidden="true"></i>Drag</button>
@@ -90,6 +93,8 @@
     <button id="tab1" class="tab-button">Add blocks</button>
     <button id="tab2" class="tab-button">Scene blocks</button><br /><br />
     
+	<input type="file" id="cre-import" accept=".json" style="display: none;"><input type="file" id="cre-import-three" accept=".json" style="display: none;">
+	<span id="cre-export" style="display: none;"></span><span id="cre-export-ldd" style="display: none;"></span><span id="cre-export-three" style="display: none;"></span><span id="cre-export-dae" style="display: none;"></span>
 
     <span id="select-block"></span>
     <ul id="block-list">
@@ -104,6 +109,37 @@
       <p><input class="w3-input w3-border" type="text" name="name" placeholder="Name"></p>
       <p><textarea name="desc" rows="4" cols="32" placeholder="Description"></textarea></p>
       <p><button class="btn" title="Finish saving" id="download-json">Save Creation</button></p>
+    </div>
+  </div>
+  
+  <div id="import-popup">
+    <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
+    <h3><span style="color: #fff;">Import Model</span></h3>
+    <div id="import-popup-form">
+		<select id="import-format" style="display: inline-block;">
+			<option value="cloud" selected>From account</option>
+			<option value="json">GR8BRIK json</option>
+			<option value="three">ThreeJS</option>
+		</select><br />
+		<p><button class="btn" title="Finish importing" id="import-finish">Select file</button></p>
+		
+      <!--<p><input class="w3-input w3-border" type="text" name="name" placeholder="Name"></p>
+      <p><textarea name="desc" rows="4" cols="32" placeholder="Description"></textarea></p>
+      <p><button class="btn" title="Finish saving" id="download-json">Save Creation</button></p> -->
+    </div>
+  </div>
+  
+  <div id="export-popup">
+    <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
+    <h3><span style="color: #fff;">Export Model</span></h3>
+    <div id="export-popup-form">
+		<select id="export-format" style="display: inline-block;">
+			<option value="json">GR8BRIK json</option>
+			<option value="three">ThreeJS</option>
+			<option value="lxf">Lego Digital Designer</option>
+			<option value="dae">Collada dae</option>
+		</select><br />
+		<p><button class="btn" title="Finish exporting" id="export-finish">Download file</button></p>
     </div>
   </div>
 
@@ -245,9 +281,8 @@
 			addBlock();
 		});
 		
-		// list for items that are already in the SCENE
-		// todo change the event listener to document.getElementById("scene-block-item").addEventListener("click", function (e)
-		document.addEventListener("click", function (e) {
+		// list for items that are already in the scene
+		document.querySelector("#block-list").addEventListener("click", function (e) {
 			if (e.target.matches(".scene-block-item")) {
 				const id = e.target.getAttribute("data-id");
 				const obj = scene.getObjectByProperty('uuid', id);
@@ -273,6 +308,8 @@
 				const name = document.querySelector("#save-popup input[name='name']").value.trim();
 				const desc = document.querySelector("#save-popup textarea[name='desc']").value.trim();
 				const screenshot = capture();
+				
+				this.innerHTML = `<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>`;
 
 				fetch(start_url + "/ajax/build.php", {
 					method: "POST",
@@ -286,21 +323,76 @@
 					})
 				})
 				.then(res => res.json())
-				.then(response => tooltip(response.success))
+				.then(response => {
+					tooltip(response.success);
+					this.innerText = "Save Creation";
+					this.disabled = true;
+				})
 				.catch(async err => {
 					try {
 						const res = await err.response.json();
 						tooltip(res.error);
+						this.innerText = "Try again";
 					} catch {
 						tooltip("An unknown error occurred.");
+						this.innerText = "Try again";
 					}
 				});
+			} else {
+				tooltip('Problem while generating scene');
+			}
+		});
+		
+		// import modal
+		document.getElementById("import-finish").addEventListener("click", function () {
+			const format = document.getElementById("import-format").value;
+			if(format === "cloud") {
+				tooltip('Gr8brik models from your account cannot be imported yet.');
+				return;
+			}
+			if(format === "three") {
+				document.getElementById("cre-import-three").click();
+			}
+			if(format === "json") {
+				document.getElementById("cre-import").click();
+			}
+			if(format === "lxf") {
+				document.getElementById("cre-export-ldd").click();
+			}
+		});
+		
+		// export model
+		document.getElementById("export-finish").addEventListener("click", function () {
+			const format = document.getElementById("export-format").value;
+			if(format === "three") {
+				document.getElementById("cre-export-three").click();
+			}
+			if(format === "json") {
+				document.getElementById("cre-export").click();
+			}
+			if(format === "dae") {
+				const collada = new THREE.ColladaExporter();
+				const collada_data = collada.parse(scene);
+				const blob = new Blob([collada_data.data], { type: 'model/vnd.collada+xml' });
+				const url = URL.createObjectURL(blob);
+				const date = getDate();
+
+				const a = document.createElement('a');
+				a.href = url;
+				a.download = `collada-${date}.dae`;
+				a.click();
+
+				setTimeout(() => {
+					URL.revokeObjectURL(url);
+				}, 10000);
 			}
 		});
 
 		document.getElementById("part-type-filter").addEventListener("change", function () {
 			loadParts(this.value);
 		});
+		
+		// save to cloud menu open and close
 
 		document.getElementById("save-popup-open").addEventListener("click", function () {
 			document.getElementById("save-popup").style.display = "block";
@@ -308,6 +400,24 @@
 
 		document.querySelector("#save-popup .btn-alt").addEventListener("click", function () {
 			document.getElementById("save-popup").style.display = "none";
+		});
+		
+		// import popup open and close
+		document.getElementById("import-popup-open").addEventListener("click", function () {
+			document.getElementById("import-popup").style.display = "block";
+		});
+
+		document.querySelector("#import-popup .btn-alt").addEventListener("click", function () {
+			document.getElementById("import-popup").style.display = "none";
+		});
+		
+		// export popup open and close
+		document.getElementById("export-popup-open").addEventListener("click", function () {
+			document.getElementById("export-popup").style.display = "block";
+		});
+
+		document.querySelector("#export-popup .btn-alt").addEventListener("click", function () {
+			document.getElementById("export-popup").style.display = "none";
 		});
 
 	});
@@ -588,46 +698,37 @@
       });
     });
 	
-	document.getElementById("cre-export").addEventListener("click", function () {
-		event.preventDefault();
-	
-        let jsonData = generateSceneJSON();
-		let jsonBlob = new Blob([jsonData], { type: "application/json" });
-		let elm = this;
+	document.getElementById("cre-export").addEventListener("click", () => {
+        const jsonData = generateSceneJSON();
+		const jsonBlob = new Blob([jsonData], { type: "application/json" });
+		const elm = this;
 		
-		let url = URL.createObjectURL(jsonBlob);
-		let date = getDate();
-			
-		let a = document.createElement("a");
+		const url = URL.createObjectURL(jsonBlob);
+		const date = getDate();
+		const a = document.createElement("a");
 		a.href = url;
 		a.download = `json-creation-${date}.json`;
-		document.body.appendChild(a);
 		a.click();
-		document.body.removeChild(a);
 			
 		setTimeout(() => {
 			URL.revokeObjectURL(url);
 		}, 10000);
     });
 	
-	document.getElementById("cre-export-ldd").addEventListener("click", function () {
-		event.preventDefault();
-	
-        let legoData = generateSceneLXFML();
-		let zip = new JSZip();
+	document.getElementById("cre-export-ldd").addEventListener("click", () => {
+		console.log('clicked');
+        const legoData = generateSceneLXFML();
+		const zip = new JSZip();
 		zip.file("IMAGE100.LXFML", legoData);
-		let elm = this;
+		const elm = this;
 		
 		zip.generateAsync({ type: "blob" }).then(function (blob) {
-			let url = URL.createObjectURL(blob);
-			let date = getDate();
-			
-			let a = document.createElement("a");
+			const url = URL.createObjectURL(blob);
+			const date = getDate();
+			const a = document.createElement("a");
 			a.href = url;
 			a.download = `ldd-creation-${date}.lxf`;
-			document.body.appendChild(a);
 			a.click();
-			document.body.removeChild(a);
 			
 			setTimeout(() => {
 				URL.revokeObjectURL(url);
@@ -655,9 +756,9 @@
 	});
 
 
-    document.getElementById("importBtn").addEventListener("click", function () {
+    /*document.getElementById("importBtn").addEventListener("click", function () {
       document.getElementById("cre-import").click();
-    });
+    }); */
 
     document.getElementById("cre-import").addEventListener("change", function (event) {
         let file = event.target.files[0];
@@ -710,9 +811,10 @@
 		tooltip("Creation imported.");
 	}
 	
-	document.getElementById("import-btn-three").addEventListener("click", function () {
+	/*document.getElementById("import-btn-three").addEventListener("click", function () {
 		document.getElementById("cre-import-three").click();
-    });
+    }); */
+	
 	document.getElementById("cre-import-three").addEventListener("change", function (event) {
         let file = event.target.files[0];
         if (!file) {
