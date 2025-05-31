@@ -32,7 +32,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
-  <script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/ColladaLoader.js"></script>
+  <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/ColladaLoader.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js"></script>
   <!-- <script src="https://cdn.jsdelivr.net/npm/dat.gui@latest/build/dat.gui.min.js"></script> -->
@@ -370,6 +370,9 @@
 			if(format === "json") {
 				document.getElementById("cre-export").click();
 			}
+			if(format === "lxf") {
+				document.getElementById("cre-export-ldd").click();
+			}
 			if(format === "dae") {
 				const collada = new THREE.ColladaExporter();
 				const collada_data = collada.parse(scene);
@@ -646,9 +649,15 @@
     });
   </script>
   <script>
+	const three_version = '0.176.0';
     const studSize = 1000;
     let partList = document.getElementById('blk');
     let colList = document.getElementById('select-color');
+	
+	/*import * as THREE from `https://cdn.jsdelivr.net/npm/three@${three_version}/build/three.module.js`;
+	window.THREE = THREE;
+	
+	import { OBJExporter } from `https://cdn.jsdelivr.net/npm/three@${three_version}/examples/jsm/exporters/OBJExporter.js`; */
 
     document.getElementById("username-field").addEventListener("click", function () {
       var content = document.getElementById("username-content");
@@ -725,14 +734,13 @@
 		zip.generateAsync({ type: "blob" }).then(function (blob) {
 			const url = URL.createObjectURL(blob);
 			const date = getDate();
+			
 			const a = document.createElement("a");
 			a.href = url;
 			a.download = `ldd-creation-${date}.lxf`;
 			a.click();
 			
-			setTimeout(() => {
-				URL.revokeObjectURL(url);
-			}, 10000);
+			URL.revokeObjectURL(url);
 		});
     });
 	
@@ -876,6 +884,17 @@
       }
       scene.updateMatrixWorld(true);
     }
+	
+	function toggleGridDamping() {
+		if(scene.userData.gridDampingDisable === true) {
+			scene.userData.gridDampingDisable = false;
+			controls.enableDamping = true;
+		} else {
+			scene.userData.gridDampingDisable = true;
+			controls.enableDamping = false;
+		}
+		scene.updateMatrixWorld(true);
+	}
 
     function isDark() {
         if(getCookie('mode')) {
@@ -892,15 +911,6 @@
           }
         }
     }
-	
-	function isJson(data) {
-		try {
-			JSON.parse(data);
-			return true;
-		} catch (e) {
-			return false;
-		}
-	}
 
     function snapToGrid(value, gridSize) {
       return Math.round(value / gridSize) * gridSize;
@@ -947,8 +957,10 @@
         scene.add(transformControls);
 
         controls = new THREE.OrbitControls(camera, renderer.domElement);
-		controls.enableDamping = true;
-		controls.dampingFactor = 0.2;
+		if(!scene.userData.gridDampingDisable) {
+			controls.enableDamping = true;
+			controls.dampingFactor = 0.2;
+		}
 
         const stud_size = 20; // 1 stud = 20
         const grid_size = stud_size * 16; // studs wide
@@ -1053,13 +1065,7 @@
                 scene.updateMatrixWorld(true);
             }
             updateSceneData();
-        });
-		
-		// DO NOT REMOVE! THIS UPDATES THE SCENE EVERY 50 SECONDS SO CREATION SAVING WORKS!
-		
-		setTimeout(() => {
-			updateSceneData();
-		}, 50);
+        });		
     }
 
     /*function changeBlockColor(color) {
@@ -1132,6 +1138,7 @@
           tooltip('No part found');
         }
 		scene.updateMatrixWorld(true);
+		updateSceneData();
     }
 
     function capture() {
@@ -1317,7 +1324,6 @@
             updateBlockList(partName, partColor, blocks.length, blockGroup.uuid);
             updateSceneData();
 			throwSuccess();
-            
         }, undefined, function (error) {
             console.error('error loading piece:', error);
 			throwError(error);
@@ -1404,7 +1410,6 @@
 
 
     function generateSceneJSON() {
-	  updateSceneData();
       let gr8brikid = makeid(5);
 
       const sceneData = {
@@ -1472,7 +1477,7 @@
         selectedObject = null;
       }
 	  
-	  const legoColors = {
+	  /*const legoColors = {
 		  "ffffff": 1,
 		  "ff0000": 21,
 		  "00ff00": 28,
@@ -1480,8 +1485,35 @@
 		  "ffff00": 24,
 		  "000000": 26,
 		  "a0a5a9": 194,
+		  "0055BF": 23
+		}; */
+		
+		const lego_color_map = {
+		  "FF0000": 21, // Bright Red
+		  "00FF00": 28, // Bright Green
+		  "0000FF": 23, // Bright Blue
+		  "FFFF00": 24, // Bright Yellow
+		  "00FFFF": 107, // Bright Light Blue (closest to Cyan)
+		  "FF00FF": 221, // Bright Magenta
+		  "000000": 0, // Black
+		  "FFFFFF": 15, // White
+		  "808080": 7, // Light Gray
+		  "FFA500": 25, // Orange
+		  "800080": 268, // Dark Purple (closest)
+		  "FFC0CB": 222, // Light Pink
+		  "A52A2A": 70, // Reddish Brown
+		  "FFD700": 297, // Warm Gold
+		  "C0C0C0": 179, // Silver
+		  "8B0000": 320, // Dark Red
+		  "006400": 288, // Dark Green
+		  "00008B": 272, // Earth Blue
+		  "C91A09": 21, // Bright Red
+		  "A0BCAC": 151, // Sand Green
+		  "7789A5": 212, // Sand Blue
+		  "958A73": 19, // Tan
+		  "A3A2A4": 208, // Light Bluish Gray
+		  "635F61": 194 // Dark Bluish Gray
 		};
-
 
       blockGroups.forEach(function (group) {
         group.traverse(function (child) {
@@ -1506,7 +1538,8 @@
 		 let colorID = 21;
 		 
 		 if(!mesh_child.material.map && !mesh_child.isLineSegments) {
-			colorID = legoColors[mesh_child.material.color.getHexString().toLowerCase()] ?? 26;
+			const hex = mesh_child.material.color.getHexString().toUpperCase();
+			colorID = lego_color_map[hex] ?? 26;
 		}
 		 
 		 let adjustedMatrix = mesh_child.matrixWorld.clone();
@@ -1598,9 +1631,11 @@
     function updateSceneData() {
 	  if (blockGroups && blockGroups.length > 0) {
           blockGroups.forEach(function (g) {
+			  g.updateMatrixWorld(true);
               let hasTinyMesh = false;
 
               g.traverse(function (child) {
+				  child.updateMatrixWorld(true);
                   if (child.isMesh && isSmall(child, 19)) {
                       hasTinyMesh = true;
                   }
@@ -1615,8 +1650,6 @@
                       snapToGrid(g.position.z, 10)
                   );
               }
-
-              g.updateMatrixWorld(true);
           });
 		  scene.updateMatrixWorld(true);
       } 
