@@ -587,8 +587,10 @@
 
       $("#color-picker").spectrum({
         color: "#ff0000",
+        preferredFormat: "hex",
         showInput: true,
         showPalette: true,
+        maxSelectionSize: 4,
         palette: [
           ["#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF"],
           ["#000000", "#FFFFFF", "#808080", "#FFA500", "#800080", "#FFC0CB"],
@@ -596,9 +598,9 @@
           ["#C91A09", "#A0BCAC", "#7789A5", "#958A73", "#A3A2A4", "#635F61"]
         ],
         change: function (color) {
-          console.log(`selected color is ${color.toHexString()}`);
+          console.log(`Changed selected color to ${color.toName() || color.toHexString()}`);
           partColor = color.toHexString();
-          if (color) {
+          if (color && selectedObject) {
             changeBlockColor(color.toHexString());
           }
         }
@@ -834,26 +836,36 @@
         const reader = new FileReader();
 		
         reader.onload = function (e) {
-            try {				
-				const data = JSON.parse(e.target.result).scene;
-                const loader = new THREE.ObjectLoader();
-				const object = loader.parse(data);
-				
-				object.children.forEach(function(child) {
-					child.userData.noSnap = true;
-					child.userData.isBlock = true;
-					scene.add(child);
-				});
-				
-				if(selectedObject) {
-					transformControls.detach(selectedObject);
-					selectedObject = null;
-				}
-            } catch (err) {
-                tooltip(`error: ${err}`);
-                console.error(err);
+          try {				
+            const data = JSON.parse(e.target.result);
+            const loader = new THREE.ObjectLoader();
+
+            let object;
+
+            if (data.metadata && data.metadata.type && data.metadata.type === "App" && data.object) {
+                object = loader.parse(data.object);
+            } else {
+                object = loader.parse(data);
             }
-            event.target.value = "";
+            
+            object.children.forEach(function(child) {
+              child.userData.noSnap = true;
+              child.userData.isBlock = true;
+              child.userData.partName = object.ldraw;
+              child.ldraw = object.ldraw;
+              scene.add(child);
+            });
+            
+            if(selectedObject) {
+              transformControls.detach(selectedObject);
+              selectedObject = null;
+            }
+          } catch (err) {
+            tooltip(`error: ${err}`);
+            console.error(err);
+          }
+          event.target.value = "";
+          updateSceneData();
         };
         reader.readAsText(file);
     });
@@ -925,46 +937,51 @@
 		return `${yyyy}-${mm}-${dd}`;
 	}
 
-    function init() {
-        container = document.createElement('div');
-        container.classList.add("scene");
+  function init() {
+    // Scene container
+    container = document.createElement('div');
+    container.classList.add("scene");
+    document.body.appendChild(container);
 
-        document.body.appendChild(container);
-		
-        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-        camera.position.set(250, 250, 250);
-				
-        scene = new THREE.Scene();
-		if(isDark) {
+    // Scene
+    scene = new THREE.Scene();
+    scene.userData.noSnap = false;
+    if(isDark) {
 			scene.background = new THREE.Color(0x252424);
 		} else {
 			scene.background = new THREE.Color(0xfafafa);
 		}
-        scene.userData.noSnap = false;
+
+    // WebGl renderer
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
 		
+    // Camera
+    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
+    camera.position.set(250, 250, 250);
+		
+    // Lighting
 		const ambient_lighting = new THREE.AmbientLight(0xdddddd, 1);
-        scene.add(ambient_lighting);
-		
+    scene.add(ambient_lighting);
+
 		const directional_lighting = new THREE.DirectionalLight(0xdddddd, 3);
-        directional_lighting.position.set(10, 15, 10);
-        scene.add(directional_lighting);
+    directional_lighting.position.set(10, 15, 10);
+    scene.add(directional_lighting);
 
-        renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        container.appendChild(renderer.domElement);
+    transformControls = new THREE.TransformControls(camera, renderer.domElement);
+    scene.add(transformControls);
 
-        transformControls = new THREE.TransformControls(camera, renderer.domElement);
-        scene.add(transformControls);
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-        controls = new THREE.OrbitControls(camera, renderer.domElement);
-		if(!scene.userData.gridDampingDisable) {
+		/*if(!scene.userData.gridDampingDisable) {
 			controls.enableDamping = true;
 			controls.dampingFactor = 0.2;
-		}
+		} */
 
-        const stud_size = 20; // 1 stud = 20
-        const grid_size = stud_size * 16; // studs wide
-        const divisions = 16; // 1 division per stud
+    const stud_size = 20; // 1 stud = 20
+    const grid_size = stud_size * 16; // studs wide
+    const divisions = 16; // 1 division per stud
 		
 		if(isDark) {
 			grid_helper = new THREE.GridHelper(grid_size, divisions, 0x242424, 0xfafafa);
@@ -974,51 +991,51 @@
 			scene.add(grid_helper);
 		}
 
-        ldraw_loader = new THREE.LDrawLoader();
-        ldraw_loader.preloadMaterials('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/colors/ldconfig.ldr');
-        ldraw_loader.setPath('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/');
-        ldraw_loader.setPartsLibraryPath("https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/");
+    ldraw_loader = new THREE.LDrawLoader();
+    ldraw_loader.preloadMaterials('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/colors/ldconfig.ldr');
+    ldraw_loader.setPath('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/');
+    ldraw_loader.setPartsLibraryPath("https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/");
         
-        raycaster = new THREE.Raycaster();
-        mouse = new THREE.Vector2();
+    raycaster = new THREE.Raycaster();
+    mouse = new THREE.Vector2();
 
-        window.addEventListener('keydown', function (event) {
-            let activeElement = document.activeElement;
+    window.addEventListener('keydown', function (event) {
+      let activeElement = document.activeElement;
 
-            if (activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA") {
-                return;
-            }
+      if (activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA") {
+        return;
+      }
 
-            switch (event.code) {
-                case 'KeyT':
-                    moveBlock('t')
-                    break
-                case 'KeyR':
-                    moveBlock('r')
-                    break
-                case 'KeyS':
-                    moveBlock('s')
-                    break
-                case 'Escape':
-                    transformControls.detach(selectedObject);
-                    break
-                case 'Delete':
-                    deleteBlock(selectedObject);
-                    break
-                case 'ArrowUp':
-                    selectedObject.rotation.x -= THREE.MathUtils.degToRad(45);
-                    break;
-                case 'ArrowDown':
-                    selectedObject.rotation.x += THREE.MathUtils.degToRad(45);
-                    break;
-                case 'ArrowLeft':
-                    selectedObject.rotation.y -= THREE.MathUtils.degToRad(45);
-                    break;
-                case 'ArrowRight':
-                    selectedObject.rotation.y += THREE.MathUtils.degToRad(45);
-                    break;
-            }
-        })
+      switch (event.code) {
+        case 'KeyT':
+          moveBlock('t')
+          break
+        case 'KeyR':
+          moveBlock('r')
+          break
+        case 'KeyS':
+          moveBlock('s')
+          break
+        case 'Escape':
+          transformControls.detach(selectedObject);
+          break
+        case 'Delete':
+          deleteBlock(selectedObject);
+          break
+        case 'ArrowUp':
+          selectedObject.rotation.x -= THREE.MathUtils.degToRad(45);
+          break;
+        case 'ArrowDown':
+          selectedObject.rotation.x += THREE.MathUtils.degToRad(45);
+          break;
+        case 'ArrowLeft':
+          selectedObject.rotation.y -= THREE.MathUtils.degToRad(45);
+          break;
+        case 'ArrowRight':
+          selectedObject.rotation.y += THREE.MathUtils.degToRad(45);
+          break;
+        }
+      })
 
       document.getElementById('move-block-t').addEventListener('click', function () {
         if (selectedObject) {
@@ -1032,8 +1049,8 @@
         }
       });
 
-    window.addEventListener('resize', onWindowResize, true);
-    window.addEventListener('pointerdown', onMouseClick, true);
+      window.addEventListener('resize', onWindowResize, true);
+      window.addEventListener('pointerdown', onMouseClick, true);
 
       transformControls.addEventListener('mouseDown', function () {
         controls.enabled = false;
@@ -1047,25 +1064,25 @@
         controls.enabled = !event.value;
       });
 
-        transformControls.addEventListener('objectChange', function () {
-            if (selectedObject && !(selectedObject.userData.noSnap || scene.userData.noSnap)) {
-                selectedObject.position.set(
-                    snapToGrid(selectedObject.position.x, 10), 
-                    snapToGrid(selectedObject.position.y, 4), 
-                    snapToGrid(selectedObject.position.z, 10)
-                );
+      transformControls.addEventListener('objectChange', function () {
+        if (selectedObject && !(selectedObject.userData.noSnap || scene.userData.noSnap)) {
+          selectedObject.position.set(
+            snapToGrid(selectedObject.position.x, 10), 
+            snapToGrid(selectedObject.position.y, 4), 
+            snapToGrid(selectedObject.position.z, 10)
+          );
 
-                selectedObject.rotation.set(
-                    Math.round(selectedObject.rotation.x / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
-                    Math.round(selectedObject.rotation.y / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
-                    Math.round(selectedObject.rotation.z / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45)
-                );
+          selectedObject.rotation.set(
+            Math.round(selectedObject.rotation.x / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
+            Math.round(selectedObject.rotation.y / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
+            Math.round(selectedObject.rotation.z / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45)
+          );
 
-                selectedObject.updateMatrixWorld(true);
-                scene.updateMatrixWorld(true);
-            }
-            updateSceneData();
-        });		
+          selectedObject.updateMatrixWorld(true);
+          scene.updateMatrixWorld(true);
+        }
+        updateSceneData();
+      });		
     }
 
     /*function changeBlockColor(color) {
@@ -1096,19 +1113,24 @@
 				if (Array.isArray(child.material)) {
 					child.material.forEach((mat) => {
 						if (mat.color) {
-							mat.color.set(color);
-							mat.needsUpdate = true;
-						}
+              if (mat.map) {
+                  mat.color.set("#ffffff");
+              } else {
+                  mat.color.set(color);
+              }
+            }
 					});
+          updateSceneData();
 				} else if (child.material.color) {
 					child.material.color.set(color);
 					child.material.needsUpdate = true;
+          updateSceneData();
 				}
 			}
 		});
 
-		console.log(`part color changed to ${color}`);
-		tooltip(`Part color changed`);
+		console.log(`Part color changed to ${color}`);
+		tooltip(`Part color changed to ${color}`);
 	}
 
     function deleteBlock(part) {
@@ -1159,23 +1181,23 @@
       return result;
     }
 
+    // Last cleaned up 6/2/2025 by susstevedev
     function addBlock(throwSuccess, throwError) {
-        if (!ldraw_loader || typeof ldraw_loader.load !== 'function') {
-            console.error('Ldrawloader is not initialized');
-            tooltip('Ldraw loader seems to be broken! Please check your internet connection.');
+        if (!ldraw_loader) {
+            console.error('LdrawLoader is missing!');
+            tooltip('Error setting LdrawLoader. Please refresh the page and try again.');
             return;
         }
 
         if (!part) {
-            console.error('piece is undefined');
-            tooltip('Please select a block');
+            console.error('No part is selected!');
+            tooltip('Please select a part.');
             return;
         }
 
         if (!partColor) {
-            console.error('Color is not set.');
-            tooltip('Please select a color for the current block');
-            return;
+            console.warn('Part color is not set! Setting color as white.');
+            partColor = "#ffffff";
         }
 
         transformControls.detach(selectedObject);
@@ -1192,113 +1214,44 @@
             let blockGroup = new THREE.Group();
             blockGroup.name = `ldraw_${makeid(10)}`;
             blockGroup.ldraw = part;
-
-            //let subobjects = [];
-
-            /*loadedGroup.traverse((child) => {
-				const clone = child.clone();
 			
-                if (clone.isMesh) {
-                    var materials = {
-                      color: new THREE.Color(partColor || "#000000"),
-                      roughness: 0.2,
-                      metalness: 0.2,
-                      clearcoat: 0.9,
-                      clearcoatRoughness: 0.2,
-                      reflectivity: 0.9
-                    };
-					
-					if (clone.material && clone.material.map) {
-						console.log('part has texture');
-					} else {
-						clone.material = new THREE.MeshStandardMaterial(materials);
-					}
+            loadedGroup.traverse((child) => {
+              if (child.isMesh && !child.material.map && !child.isLineSegments && !Array.isArray(child.material)) {
 
-                    clone.userData.selectable = true;
-                    clone.userData.isBlock = true;					
-					blockGroup.add(clone);
-                }
-            }); */
-			
-			
-            /*if (loadedGroup.isMesh) {
-                var materials = {
+                  child.material = new THREE.MeshStandardMaterial({
                     color: new THREE.Color(partColor || "#000000"),
-                    roughness: 0.2,
-                    metalness: 0.2,
-                    clearcoat: 0.9,
-                    clearcoatRoughness: 0.2,
-                    reflectivity: 0.9
-                };
-					
-				if (loadedGroup.material && loadedGroup.material.map) {
-					console.log('part has texture');
-				} else {
-					loadedGroup.material = new THREE.MeshStandardMaterial(materials);
-				}
+                  });
 
-                loadedGroup.userData.selectable = true;
-                loadedGroup.userData.isBlock = true;					
-				blockGroup.add(loadedGroup);
-            } */
-			
-			/*loadedGroup.traverse((child) => {			
-                if (child.isMesh) {
-                    var materials = {
-                      color: new THREE.Color(partColor || "#000000"),
-                      roughness: 0.2,
-                      metalness: 0.2,
-                      clearcoat: 0.9,
-                      clearcoatRoughness: 0.2,
-                      reflectivity: 0.9
-                    };
-					
-					if (child.material && child.material.map) {
-						console.log('part has texture');
-					} else {
-						child.material = new THREE.MeshStandardMaterial(materials);
-					}
+                  child.userData.isBlock = true;
+                  child.userData.isTexture = false;
+                  
+                  transformControls.attach(child);
+                  selectedObject = child;
+              }
+              
+              if (child.isLineSegments) {
+                child.visible = false;
+              }
 
-                    child.userData.selectable = true;
-                    child.userData.isBlock = true;
-					let clone = child.clone();
-					
-					blockGroup.add(clone);
-                }
-            }); */
-			
-			loadedGroup.traverse((child) => {
-				if (child.isMesh && !child.material.map && !child.isLineSegments && !Array.isArray(child.material)) {
-					child.material = new THREE.MeshStandardMaterial({
-						color: new THREE.Color(partColor || "#000000"),
-					});
-					child.userData.isBlock = true;
-					
-					transformControls.attach(child);
-					selectedObject = child;
-				} 
-				
-				if (child.isLineSegments) {
-					child.visible = false;
-				}
-				
-				if (child.material && child.material.map && child.isMesh && !child.isLineSegments) {
-					child.userData.isBlock = true;
-				}
-			});
-			blockGroup.add(loadedGroup);
-			
-			if(partPosition && partRotation) {
-				blockGroup.position.set(partPosition.x, partPosition.y, partPosition.z);
-				blockGroup.rotation.set(partRotation.x, partRotation.y, partRotation.z);
-			} else {
-				blockGroup.position.y = objectSize(blockGroup).y;
-				blockGroup.rotation.x = Math.PI;
-			}
-			
+              if (child.material && child.material.map && child.isMesh && !child.isLineSegments) {
+                child.userData.isBlock = true;
+                child.userData.isTexture = true;
+              }
+            });
+
+            blockGroup.add(loadedGroup);
+              
+            if(partPosition && partRotation) {
+              blockGroup.position.set(partPosition.x, partPosition.y, partPosition.z);
+              blockGroup.rotation.set(partRotation.x, partRotation.y, partRotation.z);
+            } else {
+              blockGroup.position.y = objectSize(blockGroup).y;
+              blockGroup.rotation.x = Math.PI;
+            }
+              
             blockGroup.userData.partName = partName;
             scene.add(blockGroup);
-			
+              
             blocks.push(blockGroup);
             blockGroups.push(blockGroup);
 
@@ -1323,11 +1276,11 @@
 
             updateBlockList(partName, partColor, blocks.length, blockGroup.uuid);
             updateSceneData();
-			throwSuccess();
-        }, undefined, function (error) {
-            console.error('error loading piece:', error);
-			throwError(error);
-        });
+            throwSuccess();
+      }, undefined, function (error) {
+          console.error('error loading piece:', error);
+          throwError(error);
+      });
     }
 
     function updateBlockList(part, color, count, id) {
@@ -1403,11 +1356,10 @@
   
 	function createGroup(gname, gelm) {
 		let group = new THREE.Group();
-        group.name = gname;
+    group.name = gname;
 		group.add(gelm);
-        return group;
+    return group;
 	}
-
 
     function generateSceneJSON() {
       let gr8brikid = makeid(5);
