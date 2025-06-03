@@ -683,9 +683,13 @@
 	});
 
     document.getElementById("takeScreenshot").addEventListener("click", function () {
-      let blob = new Blob([capture()], { type: "image/png" });
-      this.href = URL.createObjectURL(blob);
-      this.download = `creation-screenshot-${Date.now()}.png`;
+      let url = capture();
+      let date = getDate();
+      let a = document.createElement("a");
+
+      a.href = url;
+      a.download = `creation-screenshot-${date}.PNG`;
+      a.click();
     });
 
     document.getElementById("toggleMenu").addEventListener("click", function () {
@@ -870,7 +874,7 @@
         reader.readAsText(file);
     });
 
-    var container, camera, scene, renderer, sunlight, controls, grid_helper, ldraw_loader, raycaster, mouse, partRotation, partPosition, selectedObject, previousSelectedObject, customPosition = null;
+    var container, camera, scene, renderer, lighting, controls, grid_helper, ldraw_loader, raycaster, mouse, partRotation, partPosition, selectedObject, customPosition = null;
 
     let blocks = [];
     let blockGroups = [];
@@ -896,17 +900,6 @@
       }
       scene.updateMatrixWorld(true);
     }
-	
-	function toggleGridDamping() {
-		if(scene.userData.gridDampingDisable === true) {
-			scene.userData.gridDampingDisable = false;
-			controls.enableDamping = true;
-		} else {
-			scene.userData.gridDampingDisable = true;
-			controls.enableDamping = false;
-		}
-		scene.updateMatrixWorld(true);
-	}
 
     function isDark() {
         if(getCookie('mode')) {
@@ -953,7 +946,7 @@
 		}
 
     // WebGl renderer
-    renderer = new THREE.WebGLRenderer();
+    renderer = new THREE.WebGLRenderer({alpha: true});
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
 		
@@ -965,19 +958,18 @@
 		const ambient_lighting = new THREE.AmbientLight(0xdddddd, 1);
     scene.add(ambient_lighting);
 
-		const directional_lighting = new THREE.DirectionalLight(0xdddddd, 3);
+		const directional_lighting = new THREE.DirectionalLight(0xdddddd, 1);
     directional_lighting.position.set(10, 15, 10);
     scene.add(directional_lighting);
+
+    lighting = new THREE.DirectionalLight(0xffffff, 2);
+    lighting.position.copy(camera.position);
+    scene.add(lighting);
 
     transformControls = new THREE.TransformControls(camera, renderer.domElement);
     scene.add(transformControls);
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
-
-		/*if(!scene.userData.gridDampingDisable) {
-			controls.enableDamping = true;
-			controls.dampingFactor = 0.2;
-		} */
 
     const stud_size = 20; // 1 stud = 20
     const grid_size = stud_size * 16; // studs wide
@@ -991,10 +983,13 @@
 			scene.add(grid_helper);
 		}
 
+    const ldraw_path = "https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/";
     ldraw_loader = new THREE.LDrawLoader();
-    ldraw_loader.preloadMaterials('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/colors/ldconfig.ldr');
-    ldraw_loader.setPath('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/');
-    ldraw_loader.setPartsLibraryPath("https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/");
+    /*ldraw_loader.preloadMaterials('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/colors/ldconfig.ldr');
+    ldraw_loader.setPath('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/'); 
+    ldraw_loader.setPartsLibraryPath("https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/"); */
+    ldraw_loader.setPath(ldraw_path);
+    ldraw_loader.setPartsLibraryPath(ldraw_path);
         
     raycaster = new THREE.Raycaster();
     mouse = new THREE.Vector2();
@@ -1164,8 +1159,13 @@
     }
 
     function capture() {
+      let original = scene.background;
+      scene.background = null;
+
       renderer.render(scene, camera);
       let screenshot = renderer.domElement.toDataURL("image/png");
+
+      scene.background = original;
       return screenshot;
     }
 
@@ -1204,7 +1204,6 @@
         console.log("Loading part:", part);
 
         ldraw_loader.load(part, function (loadedGroup) {
-        
             if (!loadedGroup) {
                 console.error("Loaded group does not exist.");
                 tooltip('Please select a block with valid mesh data');
@@ -1428,17 +1427,6 @@
         transformControls.detach(selectedObject);
         selectedObject = null;
       }
-	  
-	  /*const legoColors = {
-		  "ffffff": 1,
-		  "ff0000": 21,
-		  "00ff00": 28,
-		  "0000ff": 24,
-		  "ffff00": 24,
-		  "000000": 26,
-		  "a0a5a9": 194,
-		  "0055BF": 23
-		}; */
 		
 		const lego_color_map = {
 		  "FF0000": 21, // Bright Red
@@ -1521,15 +1509,13 @@
 
       const sceneData = `
         <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-        <LXFML versionMajor="5" versionMinor="0" name="testing">
+        <LXFML versionMajor="5" versionMinor="0" name="Imported Gr8brik Creation">
           <Meta>
             <Application name="LEGO Digital Designer" versionMajor="4" versionMinor="3"/>
             <Brand name="LDD"/>
             <BrickSet version="2670"/>
           </Meta>
-		  <Model name="Gr8brik Creation">
-			<Meta key="use-ldraw" value="true"/>
-		  </Model>
+		  <Model name="Imported Gr8brik Creation"></Model>
           <Cameras>
             <Camera refID="0" fieldOfView="80" distance="120" transformation="1,0,0,0,1,0,0,0,1,0,0,120"/>
           </Cameras>
@@ -1652,24 +1638,6 @@
 		selectedObject = object;
     }
 
-    /*function applySnap(obj) {
-        obj.position.set(
-            snapToGrid(obj.position.x, 10),
-            snapToGrid(obj.position.y, 4),
-            snapToGrid(obj.position.z, 10)
-        );
-
-        function snapAngle(angle) {
-          return Math.round(angle / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45);
-        }
-
-        obj.rotation.set(
-            snapAngle(obj.rotation.x),
-            snapAngle(obj.rotation.y),
-            snapAngle(obj.rotation.z)
-        );
-    } */
-
     function onWindowResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
@@ -1693,6 +1661,7 @@
         }
     }
 
+    // Last refactor 6/3/2025 by susstevedev
     function animate() {
       document.addEventListener('DOMContentLoaded', function () {
         const stats = new Stats();
@@ -1710,13 +1679,8 @@
 
       requestAnimationFrame(animate);
       controls.update();
-      render();
-    }
-
-
-    function render() {
+      lighting.position.copy(camera.position);
       renderer.render(scene, camera);
-      renderer.outputColorSpace = THREE.SRGBColorSpace;
     }
 
     function tooltip(text) {
@@ -1728,10 +1692,10 @@
 
         if (tooltip) {
             setTimeout(() => {
-				tooltip.style.animation = 'toright 0.5s ease-out forwards';
-				setTimeout(() => {
-					tooltip.remove();
-				}, 500);
+				      tooltip.style.animation = 'toright 0.5s ease-out forwards';
+				      setTimeout(() => {
+					      tooltip.remove();
+				      }, 500);
             }, 5000);
         }
     }
