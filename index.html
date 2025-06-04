@@ -1012,7 +1012,7 @@
           moveBlock('s')
           break
         case 'Escape':
-          transformControls.detach(selectedObject);
+          deselect(selectedObject);
           break
         case 'Delete':
           deleteBlock(selectedObject);
@@ -1128,39 +1128,39 @@
 		tooltip(`Part color changed to ${color}`);
 	}
 
-    function deleteBlock(part) {
-        if (part) {
-            if (part.isMesh) {
-                if (part.parent) {
-					part.parent.remove(part);
+  function deleteBlock(part) {
+    if (part) {
+      if (part.isMesh) {
+        if (part.parent) {
+				  part.parent.remove(part);
 				}
-                part.updateMatrixWorld(true);
-                tooltip('Deleted part');
-            } else {
-              tooltip('Part is not a valid mesh')
-            }
+        part.updateMatrixWorld(true);
+        tooltip('Deleted part');
+      } else {
+        tooltip('Part is not a valid mesh')
+      }
 
-            if (blockGroups && blockGroups.length > 0) {
-                blockGroups.forEach(function (g) {
-                    g.remove(part);
-                    g.updateMatrixWorld(true);
-                });
-            }
+      if (blockGroups && blockGroups.length > 0) {
+        blockGroups.forEach(function (g) {
+          g.remove(part);
+          g.updateMatrixWorld(true);
+        });
+      }
 
-            if (selectedObject === part) {
-                transformControls.detach(part);
-                selectedObject = null;
-            }
-        } else {
-          tooltip('No part found');
-        }
+      if (selectedObject === part) {
+          deselect(part);
+      }
+  } else {
+      tooltip('No part found');
+  }
 		scene.updateMatrixWorld(true);
 		updateSceneData();
-    }
+  }
 
     function capture() {
       let original = scene.background;
       scene.background = null;
+      deselect(selectedObject);
 
       renderer.render(scene, camera);
       let screenshot = renderer.domElement.toDataURL("image/png");
@@ -1600,43 +1600,89 @@
     function onMouseClick(event) {
         let target = event.target;
         let container = document.querySelector(".scene");
+        const rect = container.getBoundingClientRect();
  
         if (!container.contains(target)) {
             return;
         } else {
             event.preventDefault();
         }
- 
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
  
         raycaster.setFromCamera(mouse, camera);
-        let intersects = raycaster.intersectObjects(scene.children, true);
+        //let intersects = raycaster.intersectObjects(scene.children, true);
+        let intersects = raycaster.intersectObjects(scene.children.filter(obj => obj.visible), true);
 
         if (intersects.length > 0) {
             selectObject(intersects[0].object);
+        } else {
+            deselect(selectedObject);
         }
      }
  
-     function selectObject(object) {
-        while (object.parent && !object.userData.isBlock) {
-            object = object.parent;
+     function selectObject(obj) {
+        while (obj.parent && !obj.userData.isBlock) {
+            obj = obj.parent;
         }
  
-        if (!object.userData.isBlock && transformControls.enabled) {
+        if (!obj.userData.isBlock && transformControls.enabled) {
             return;
         }
  
-        if (object === selectedObject) {
+        if (obj === selectedObject) {
             return;
         }
 
         transformControls.detach(selectedObject);
-		selectedObject = null;
+		    selectedObject = null;
         
-        transformControls.attach(object);
-		selectedObject = object;
+        transformControls.attach(obj);
+		    selectedObject = obj;
+        
+        if(obj.material) {
+          obj.material.opacity = 1;
+          obj.material.transparent = false;
+          obj.material.needsUpdate = true;
+        }
     }
+
+    function deselect(obj) {
+      transformControls.detach(obj);
+		  selectedObject = null;
+    }
+
+    // Edit of onMouseClick for hovering
+    document.addEventListener('mousemove', function(event) {
+        let target = event.target;
+        let container = document.querySelector(".scene");
+        let lastHover = null;
+        const rect = container.getBoundingClientRect();
+ 
+        if (!container.contains(target)) {
+            document.body.style.cursor = 'auto';
+            return;
+        } else {
+            event.preventDefault();
+        }
+
+        mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, camera);
+        let intersects = raycaster.intersectObjects(scene.children.filter(obj => obj.visible), true);
+
+        if (intersects.length > 0 && intersects[0].object !== selectedObject && intersects[0].object.userData.isBlock) {
+            container.style.cursor = 'pointer';
+            let obj = intersects[0].object;
+            obj.material.opacity = 0.5;
+            obj.material.transparent = true;
+            obj.material.needsUpdate = true;            
+        } else {
+            container.style.cursor = 'auto';
+        }
+    });
 
     function onWindowResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
