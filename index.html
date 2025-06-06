@@ -9,7 +9,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jszip@latest/dist/jszip.min.js" integrity="sha256-rMfkFFWoB2W1/Zx+4bgHim0WC7vKRVrq6FTeZclH1Z4=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="index.css?v=652025_test1">
+  <link rel="stylesheet" type="text/css" href="index.css?v=652025_test2">
 </head>
 
 <body>
@@ -42,7 +42,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
   <button id="toggleMenu" class="mobile-toggle">&#x2630;</button>
-  <a id="takeScreenshot" class="mobile-toggle" style="top: 155px; height: 25px; padding-right: 0px; padding-left: 0px;">&#x1F4F7;</a>
+  <a id="takeScreenshot" class="mobile-toggle" style="top: 155px; height: 25px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-camera" aria-hidden="true" alt="screenshot"></i></a>
   <div id="left-container">
     <p style="height: 2vh;"></p>
     
@@ -1005,7 +1005,7 @@
     // Scene
     scene = new THREE.Scene();
     scene.userData.noSnap = false;
-    if(isDark) {
+    if(isDark()) {
 			scene.background = new THREE.Color(0x252424);
 		} else {
 			scene.background = new THREE.Color(0xfafafa);
@@ -1037,13 +1037,13 @@
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.dampingFactor = 0.08;
+    controls.dampingFactor = 0.2;
 
     const stud_size = 20; // 1 stud = 20
     const grid_size = stud_size * 16; // studs wide
     const divisions = 16; // 1 division per stud
 		
-		if(isDark) {
+		if(isDark()) {
 			grid_helper = new THREE.GridHelper(grid_size, divisions, 0x242424, 0xfafafa);
 			scene.add(grid_helper);
 		} else {
@@ -1285,8 +1285,11 @@
             loadedGroup.traverse((child) => {
               if (child.isMesh && !child.material.map && !child.isLineSegments && !Array.isArray(child.material)) {
 
-                  child.material = new THREE.MeshStandardMaterial({
+                  child.material = new THREE.MeshPhysicalMaterial({
                     color: new THREE.Color(partColor || "#000000"),
+                    roughness: 0.2,
+                    metalness: 0.1,
+                    reflectivity: 0.5,
                   });
 
                   child.userData.isBlock = true;
