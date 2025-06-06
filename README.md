@@ -16,6 +16,7 @@ GR8BRIK is an all-in-browser online LEGO CAD tool that runs entirely in your bro
 * [jQuery](https://jquery.com/) - DOM utilities (being phased out though)
 * [Spectrum.js](https://bgrins.github.io/spectrum/) - Color picker UI
 * [LDraw](http://www.ldraw.org/) - LEGO CAD part library
+* [FontAwesome v4](https://fontawesome.com/v4/) - Icons
 
 ## license & credits
 
