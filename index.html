@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 6-5-2025 (SUBOBJECT AND TEXTURES BETA 2.9) -->
+<!-- GR8BRIK VERSION 6-7-2025 (SUBOBJECT AND TEXTURES BETA 2.9.1) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +28,7 @@
 
   <div id="info">
     <!-- <p style="height: 1vh;"></p> -->
-    <p"><a href="https://www.gr8brik.rf.gd/" target="_blank">Gr8brik beta</a> - Build June 5th, 2025</p>
+    <p"><a href="https://www.gr8brik.rf.gd/" target="_blank">Gr8brik beta</a> - Build June 7th, 2025</p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
@@ -42,7 +42,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
   <button id="toggleMenu" class="mobile-toggle">&#x2630;</button>
-  <a id="takeScreenshot" class="mobile-toggle" style="top: 155px; height: 25px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-camera" aria-hidden="true" alt="screenshot"></i></a>
+  <button id="takeScreenshot" class="mobile-toggle" style="top: 155px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-camera" aria-hidden="true" alt="screenshot"></i></button>
+  <button id="getPriceInfo" class="mobile-toggle" style="top: 255px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-money" aria-hidden="true" alt="get price info"></i></button>
+  
   <div id="left-container">
     <p style="height: 2vh;"></p>
     
@@ -147,6 +149,7 @@
   <div id="settings-popup">
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: #fff;">Modeler Settings</span></h3>
+    <h4>Coming soon! Stay tuned!</h4>
 		<p><button class="btn" title="Finish editing settings" id="settings-finish">Save</button></p>
     </div>
   </div>
@@ -1051,13 +1054,11 @@
 			scene.add(grid_helper);
 		}
 
-    const ldraw_path = "https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/";
+    const ldraw_path = "https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/";
     ldraw_loader = new THREE.LDrawLoader();
-    /*ldraw_loader.preloadMaterials('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/colors/ldconfig.ldr');
-    ldraw_loader.setPath('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/'); 
-    ldraw_loader.setPartsLibraryPath("https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/"); */
-    ldraw_loader.setPath(ldraw_path);
-    ldraw_loader.setPartsLibraryPath(ldraw_path);
+    ldraw_loader.preloadMaterials(ldraw_path + 'colors/ldconfig.ldr');
+    ldraw_loader.setPath(ldraw_path + 'actual/');
+    ldraw_loader.setPartsLibraryPath(ldraw_path + 'actual/');
         
     raycaster = new THREE.Raycaster();
     mouse = new THREE.Vector2();
@@ -1422,6 +1423,23 @@
 
     geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
     return geometry;
+  }
+
+  function getPriceInfo() {
+    if(selectObject) {
+      let part = selectedObject.parent.userData.fileName.replace("parts/", "").replace(".dat", "");
+
+      fetch(`parts.php?part_price=true&part=${part}`)
+        .then(res => res.json())
+        .then(data => {
+          const price = data.part_prices?.USD?.new;
+          if (price !== undefined) {
+            console.log("new price in united states dollars: $" + price);
+          } else {
+            console.warn(`price data unavailable for ${part}`);
+          }
+        });
+		}
   }
   
 	function createGroup(gname, gelm) {
@@ -1825,6 +1843,7 @@
       controls.update();
       lighting.position.copy(camera.position);
       renderer.render(scene, camera);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
     }
 
     function tooltip(text) {

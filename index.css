@@ -1,31 +1,31 @@
 :root {
-  --ui-text-color: #fff;
-  --ui-color-light: #fafafa;
-  --ui-color-dark: #242424;
+  --ui-text-color: #000;
+  --ui-color: #fafafa;
+  --ui-anti-color: #242424;
 }
 
 body {
     font-family: Verdana, sans-serif;
     font-size: 16px;
-    background-color: var(--ui-color-light);
+    background-color: var(--ui-color);
     color: var(--ui-text-color);
     margin: 0px;
     overflow: hidden;
   }
   
 select, option {
-	background-color: #242424;
-	color: #ffffff;
+	background-color: var(--ui-color);
+	color: var(--ui-text-color);
 	border-radius: 0px;
 }
 
   #search-parts {
-	background-color: #242424;
-	color: #ffffff;
+	  background-color: var(--ui-color);
+	  color: var(--ui-text-color);
   }
 
   #info {
-    color: #fff;
+    color: var(--ui-text-color);
     padding: 5px 5px 5px 5px;
     position: absolute;
     top: 10px;
@@ -55,7 +55,7 @@ select, option {
 	  backdrop-filter: blur(15px);
 	  -webkit-backdrop-filter: blur(15px);
     /* color: #FAFAFA; */
-    color: var(--page-text-color);
+    color: var(--ui-text-color);
     font-size: 20px;
     padding: 5px;
     border: 2px rgba(0, 0, 0, 0.16) solid;
@@ -81,7 +81,7 @@ select, option {
     border-radius: 2px;
     cursor: pointer;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	font-weight: 200;
+	  font-weight: 200;
   }
 
   .btn:hover {
@@ -123,7 +123,7 @@ select, option {
 	background-color: transparent;
 	backdrop-filter: blur(15px);
 	-webkit-backdrop-filter: blur(15px);
-    color: #000;
+    color: var(--ui-text-color);
     position: fixed;
     z-index: 9999;
     margin: auto;
@@ -184,7 +184,7 @@ select, option {
   }
 
   #link-home a {
-    color: #fff;
+    color: var(--ui-anti-color);
     text-decoration: none;
   }
 
@@ -194,7 +194,7 @@ select, option {
 	  backdrop-filter: blur(15px);
 	  -webkit-backdrop-filter: blur(15px);
     border: 2px rgba(0, 0, 0, 0.16) solid;
-    color: #fff;
+    color: var(--ui-text-color);
     z-index: 1000;
     position: fixed;
     margin-right: 15%;
@@ -203,21 +203,20 @@ select, option {
     padding: 2px 2px 2px 2px;
   }
 
-    #tooltip {
-        position: absolute;
-        z-index: 99999999;
-        right: 0;
-        top: 0;
-        background: linear-gradient(to right, rgba(255, 255, 255, 0.5) 35%);
+  #tooltip {
+    position: absolute;
+    z-index: 99999999;
+    right: 0;
+    top: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.5) 35%);
 		backdrop-filter: blur(15px);
 		-webkit-backdrop-filter: blur(15px);
-        color: #fff;
-        padding: 15px 15px 15px 15px;
-        border-radius: 5px;
-		
+    color: var(--ui-text-color);
+    padding: 15px 15px 15px 15px;
+    border-radius: 5px;
 		animation: fromright 0.5s ease-out forwards;
 		transition: transform 0.5s ease;
-    }
+  }
 
     .mobile-toggle {
         position: fixed;
@@ -265,7 +264,7 @@ select, option {
     border: none;
     background-color: #F3F7F8;
     /* box-shadow: 0px 0px 4px 4px rgb(5, 84, 116); */
-	box-shadow: rgba(30, 30, 30, 0.06) 0px 0px 4px 4px;
+	  box-shadow: rgba(30, 30, 30, 0.06) 0px 0px 4px 4px;
   }
 
   .tag {
@@ -284,14 +283,14 @@ select, option {
   }
   
   .hover-only {
-	display: none;
-	/*word-wrap: ellipsis;
-	width: 15px;
-	display: block; */
+    display: none;
+    /*word-wrap: ellipsis;
+    width: 15px;
+    display: block; */
   }
   
   #select-block span:hover .hover-only {
-	display: flex;
+	  display: flex;
   }
 
   #select-block span,
@@ -365,6 +364,14 @@ select, option {
         transform: translateX(100%);
         opacity: 0;
     }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ui-text-color: #fff;
+    --ui-color: #242424;
+    --ui-anti-color: #fafafa;
+  }
 }
 
 @media (max-width: 768px) {
