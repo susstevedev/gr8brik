@@ -9,33 +9,22 @@
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jszip@latest/dist/jszip.min.js" integrity="sha256-rMfkFFWoB2W1/Zx+4bgHim0WC7vKRVrq6FTeZclH1Z4=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="index.css?v=652025_test2">
+  <link rel="stylesheet" type="text/css" href="index.css?v=672025_test1">
 </head>
 
 <body>
   <div id="top-container">
     <span id="link-home"><img src="/img/logo.jpg" id="logo-img" /><a href="/"><span>&nbsp;Gr8brik&nbsp;</span></a><span class="tag">BETA</span></span>
-    <!-- <a href="https://www.gr8brik.rf.gd/acc/login" id="username-field">Login</a> -->
-
-    <span class="username-container">
-      <span id="username-field">Login</span>
-      <div id="username-content">
-        <a href="/acc/creations" class="username-link">My creations</a>
-        <a href="/user/" id="profile-link" class="username-link">My profile</a>
-      </div>
-    </span>
+    <a href="https://www.gr8brik.rf.gd/acc/login" id="username-field">Login</a>
   </div>
 
   <div id="info">
-    <!-- <p style="height: 1vh;"></p> -->
     <p"><a href="https://www.gr8brik.rf.gd/" target="_blank">Gr8brik beta</a> - Build June 7th, 2025</p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
-  <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/ColladaLoader.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/dat.gui@latest/build/dat.gui.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/TransformControls.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" />
@@ -53,12 +42,6 @@
     <button class="btn" title="Save creation data to database" id="save-popup-open"><i class="fa fa-database" aria-hidden="true"></i>Save to Cloud</button><br />
     <button id="import-popup-open" class="btn"><i class="fa fa-download" aria-hidden="true"></i>Import...</button>
     <button id="export-popup-open" class="btn"><i class="fa fa-upload" aria-hidden="true"></i>Export...</button><hr />
-	
-    <!-- <button id="importBtn" class="btn"><i class="fa fa-download" aria-hidden="true"></i>Import</button>
-    <a id="cre-export" title="Download creation data as a json file" class="btn"><i class="fa fa-upload" aria-hidden="true"></i>Export</a><br />
-    <button id="import-btn-three" title="Import creation data from threejs json" class="btn"><i class="fa fa-cubes" aria-hidden="true"></i>Import Threejs</button><br />
-    <a id="cre-export-ldd" title="Download creation data as a lxf file" class="btn"><i class="fa fa-floppy-o" aria-hidden="true"></i>Export as LXF</a>
-    <button id="cre-export-three" title="Download creation data as a threejs data" class="btn"><i class="fa fa-cubes" aria-hidden="true"></i>Export as Threejs</button><br /><hr /> -->
     
     <span>Edit tools</span><br />
     <button class="btn" title="Change controls to arrows to move blocks up and down, side-by-side." id="move-block-t"><i class="fa fa-arrows-alt" aria-hidden="true"></i>Drag</button>
@@ -125,10 +108,6 @@
 			<option value="three">ThreeJS</option>
 		</select><br />
 		<p><button class="btn" title="Finish importing" id="import-finish">Select file</button></p>
-		
-      <!--<p><input class="w3-input w3-border" type="text" name="name" placeholder="Name"></p>
-      <p><textarea name="desc" rows="4" cols="32" placeholder="Description"></textarea></p>
-      <p><button class="btn" title="Finish saving" id="download-json">Save Creation</button></p> -->
     </div>
   </div>
   
@@ -149,7 +128,8 @@
   <div id="settings-popup">
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: #fff;">Modeler Settings</span></h3>
-    <h4>Coming soon! Stay tuned!</h4>
+    <input type="checkbox" id="smooth-normals-enable">
+    <label for="smooth-normals">Enable smooth normals</label>
 		<p><button class="btn" title="Finish editing settings" id="settings-finish">Save</button></p>
     </div>
   </div>
@@ -187,11 +167,13 @@
 			fetch(start_url + "/ajax/user.php?ajax=true")
 				.then(res => res.json())
 				.then(response => {
-					const field = document.getElementById("username-field");
-					field.style.display = "inline";
-					field.textContent = response.user;
-					field.setAttribute("href", "/acc/creations");
-					tooltip('Logged in as ' + response.user);
+          if(response.success) {
+            const field = document.getElementById("username-field");
+            //field.style.display = "inline";
+            field.innerText = response.user;
+            field.setAttribute("href", "/acc/creations");
+            tooltip('Logged in as ' + response.user);
+          }
 				})
 				.catch(async (err) => {
 					try {
@@ -205,11 +187,9 @@
 		}
 		login();
 		
-		
 		let displayed_parts = [];
 		let current_type = '';
 		let cached_parts = {};
-		
 		
 		// load parts from url
 		function loadParts(type) {
@@ -244,13 +224,14 @@
 			displayed_parts.forEach(part => {
 				const span = document.createElement("span");
 				span.id = part.file;
+        span.title = part.name;
 				span.setAttribute("value", part.file);
 				span.innerHTML = `
 					<img src="https://library.ldraw.org/images/library/official/parts/${part.file.split(".")[0]}.png" loading="lazy" width="45px" />
 					<br />
 					<small class="part-list-number">${part.file.split(".")[0]}</small>
 					&nbsp;
-					<small class="hover-only">${part.name}</small>
+					<!-- <small class="hover-only">${part.name}</small> -->
 				`;
 				container.appendChild(span);
 			});
@@ -265,11 +246,19 @@
 				const items = Array.from(document.querySelectorAll("#select-block span"));
 
 				items.forEach(item => {
-					const text = item.textContent.toLowerCase().replace(/\s+/g, " ").trim();
+					//const text = item.textContent.toLowerCase().replace(/\s+/g, " ").trim();
+          const text = (item.title || "").toLowerCase().replace(/\s+/g, " ").trim();
 					item.style.display = text.includes(value) ? 'flex' : 'none';
 				});
 			}
 		});
+
+    // hover effects
+    document.querySelectorAll("#select-block span").forEach(function (elm) {
+        elm.addEventListener("mouseover", function (event) {
+            alert('test');
+        });
+    });
 		
 		// add a new block
 		document.getElementById("select-block").addEventListener("click", function (e) {
@@ -970,6 +959,29 @@
       scene.updateMatrixWorld(true);
     }
 
+    // toggle smooth normals
+    document.getElementById("smooth-normals-enable").addEventListener("click", function () {
+      ldraw_loader.smoothNormals = this.checked;
+
+      scene.traverse((child) => {
+        if (child.isMesh && child.userData.isBlock && child.geometry) {
+          child.geometry.computeVertexNormals();
+          child.geometry.attributes.normal.needsUpdate = true;
+
+          if (Array.isArray(child.material)) {
+            child.material.forEach(mat => {
+              mat.flatShading = !ldraw_loader.smoothNormals;
+              mat.needsUpdate = true;
+            });
+          } else {
+            child.material.flatShading = !ldraw_loader.smoothNormals;
+            child.material.needsUpdate = true;
+          }
+        }
+      });
+      scene.updateMatrixWorld(true);
+    });
+
     function isDark() {
         if(getCookie('mode')) {
           if(getCookie('mode') === 'dark') {
@@ -1017,6 +1029,10 @@
     // WebGl renderer
     renderer = new THREE.WebGLRenderer({alpha: true});
     renderer.setSize(window.innerWidth, window.innerHeight);
+    // set pixel ratio
+    // @the_an0nym on mecabricks/discord/youtube pointed out how if your screen resolution isn't 100% (and in some cases just always), the scene looks buggy
+    // https://discord.com/channels/1307420772377165884/1323840015087702026/1381346420535201998
+    renderer.setPixelRatio(window.devicePixelRatio);
     container.appendChild(renderer.domElement);
 		
     // Camera
