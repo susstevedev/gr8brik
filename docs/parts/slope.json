@@ -1,116 +1,121 @@
 [
     {
-        "id": "67f9500b081958.44161688",
+        "id": "68485c7e936ec4.62122853",
         "name": "Duplo Slope  2 x  3 x  2 Shingled",
         "file": "15580.dat"
     },
     {
-        "id": "67f9500b5bec38.89932796",
+        "id": "68485c7eb75c78.57945602",
+        "name": "Duplo Slope  4 x  4 x  2 Shingled",
+        "file": "18814.dat"
+    },
+    {
+        "id": "68485c7ecebf80.67426309",
         "name": "Slope Curved  4 x  2 x  0.667 Double with Fresnel Lens",
         "file": "1942.dat"
     },
     {
-        "id": "67f9500c97bb23.37155242",
+        "id": "68485c9a386290.90437990",
         "name": "~Glass for Window  4 x 10 x  2 Slope Double",
         "file": "30264.dat"
     },
     {
-        "id": "67f9500c9c1262.59259182",
+        "id": "68485c9b2e0246.92762111",
         "name": "~Window  4 x 10 x  2 Slope Double",
         "file": "30343.dat"
     },
     {
-        "id": "67f9500c9c2102.09361340",
+        "id": "68485c9b315123.58340352",
         "name": "Window  4 x 10 x  2 Slope Double with Trans Dark Blue Glass",
         "file": "30343c01.dat"
     },
     {
-        "id": "67f9500c9c40e9.63465293",
+        "id": "68485c9b34a876.12105455",
         "name": "Window  4 x 10 x  2 Slope Double with Trans Light Blue Glass",
         "file": "30343c02.dat"
     },
     {
-        "id": "67f9500d49e925.72428112",
+        "id": "68485cb95925d1.97079066",
         "name": "Duplo Slope 17  3 x  2",
         "file": "35114.dat"
     },
     {
-        "id": "67f9500e727ed8.18545168",
+        "id": "68485cd903c610.61184463",
         "name": "Fabuland Roof Slope without Top Hole (Complete) Red",
         "file": "4320c01.dat"
     },
     {
-        "id": "67f9500e72a8a0.94528816",
+        "id": "68485cd9059816.96005161",
         "name": "Fabuland Roof Slope without Top Hole (Complete) Green",
         "file": "4320c02.dat"
     },
     {
-        "id": "67f9500e72c8f3.41672296",
+        "id": "68485cd90757f5.15577490",
         "name": "Fabuland Roof Slope with Top Hole (Complete) Red",
         "file": "4320c03.dat"
     },
     {
-        "id": "67f9500e72ea63.32967564",
+        "id": "68485cd9076ef7.21155818",
         "name": "Fabuland Roof Slope with Top Hole (Complete) Green",
         "file": "4320c04.dat"
     },
     {
-        "id": "67f9500e730aa7.91364677",
+        "id": "68485cd90940b6.52352604",
         "name": "Fabuland Roof Slope without Top Hole (Complete) Light Grey",
         "file": "4320c05.dat"
     },
     {
-        "id": "67f9500e7384c5.44958378",
+        "id": "68485cd90f9c49.52133761",
         "name": "Fabuland Roof Slope without Top Hole",
         "file": "4323.dat"
     },
     {
-        "id": "67f9500ef22f94.51516258",
+        "id": "68485cdf5c7e36.30793742",
         "name": "Wedge  4 x  4 Quadruple Convex Slope Center",
         "file": "47757.dat"
     },
     {
-        "id": "67f9500f16fef3.21987915",
+        "id": "68485cdfcc0969.20046511",
         "name": "Slope Curved  2 x  2 x  0.667 with Stud Notch Right",
         "file": "5093.dat"
     },
     {
-        "id": "67f9500f17e227.59436392",
+        "id": "68485cdfcfe305.91133662",
         "name": "Slope Curved  2 x  2 x  0.667 with Stud Notch Left",
         "file": "5095.dat"
     },
     {
-        "id": "67f9500fc1f309.29654860",
+        "id": "68485ce3bc3399.87995742",
         "name": "Duplo Slope  2 x  3 x  2",
         "file": "63871.dat"
     },
     {
-        "id": "67f9500fcad2e7.92487222",
+        "id": "68485ce3ee41b0.49839735",
         "name": "Duplo Slope  2 x  2 x  1.5",
         "file": "6474.dat"
     },
     {
-        "id": "67f9500fe206d6.28628696",
+        "id": "68485ce49fed76.14470938",
         "name": "Slope Homemaker Awning  2 x  6",
         "file": "678.dat"
     },
     {
-        "id": "67f9500feb4cd9.38965706",
+        "id": "68485ce4c929f5.18337517",
         "name": "Duplo Slope  2 x  2 x  2",
         "file": "70676.dat"
     },
     {
-        "id": "67f9501090ab34.23016159",
+        "id": "68485ce6056ec3.94990539",
         "name": "Slope 10 x  2 x  2 Curved with Rounded Corner - Left",
         "file": "77180.dat"
     },
     {
-        "id": "67f9501092a012.69583664",
+        "id": "68485ce6058639.86253788",
         "name": "Slope 10 x  2 x  2 Curved with Rounded Corner - Right",
         "file": "77182.dat"
     },
     {
-        "id": "67f95011842001.24370225",
+        "id": "68485ce6168be4.28950070",
         "name": "Fabuland Roof Slope with Top Hole",
         "file": "789.dat"
     }
