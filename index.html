@@ -51,6 +51,8 @@
 
     <span>Color</span><br />
     <input type="text" id="color-picker" /><hr />
+    <div id="this-will-be-a-text-box-soon-that-contains-the-current-object-material-number"></div>
+    <span id="obj-colors"></span>
 
     <span>Filter</span><br />
 
@@ -128,7 +130,7 @@
   <div id="settings-popup">
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: #fff;">Modeler Settings</span></h3>
-    <input type="checkbox" id="smooth-normals-enable">
+    <input type="checkbox" id="smooth-normals-enable" checked>
     <label for="smooth-normals">Enable smooth normals</label>
 		<p><button class="btn" title="Finish editing settings" id="settings-finish">Save</button></p>
     </div>
@@ -932,7 +934,7 @@
         reader.readAsText(file);
     });
 
-    var container, camera, scene, renderer, lighting, controls, grid_helper, ldraw_loader, raycaster, mouse, partRotation, partPosition, selectedObject, customPosition = null;
+    var container, camera, scene, renderer, lighting, controls, grid_helper, ldraw_loader, raycaster, mouse, partRotation, partPosition, selectedObject, customPosition, selectedMap = null;
 
     let blocks = [];
     let blockGroups = [];
@@ -960,6 +962,7 @@
     }
 
     // toggle smooth normals
+    // todo make this actually work
     document.getElementById("smooth-normals-enable").addEventListener("click", function () {
       ldraw_loader.smoothNormals = this.checked;
 
@@ -998,9 +1001,9 @@
         }
     }
 
-    function snapToGrid(value, gridSize) {
-      return Math.round(value / gridSize) * gridSize;
-    }
+  function snapToGrid(value, gridSize) {
+    return Math.round(value / gridSize) * gridSize;
+  }
 	
 	function getDate() {
 		const today = new Date();
@@ -1191,15 +1194,18 @@
 		selectedObject.traverse((child) => {
 			if (child.isMesh && child.material) {
 				if (Array.isArray(child.material)) {
-					child.material.forEach((mat) => {
-						if (mat.color) {
-              if (mat.map) {
-                  mat.color.set("#ffffff");
-              } else {
-                  mat.color.set(color);
-              }
-            }
-					});
+          let map;
+          if(selectedMap) {
+            map = child.material[selectedMap];
+          } else {
+            mat = child.material[1];
+          }
+          
+          if (mat && mat.color && !mat.map) {
+            mat.color.set(color);
+            mat.needsUpdate = true;
+            selectedMap = null;
+          }
           updateSceneData();
 				} else if (child.material.color) {
 					child.material.color.set(color);
@@ -1242,32 +1248,65 @@
 		updateSceneData();
   }
 
-    function capture() {
-      let original = scene.background;
-      scene.background = null;
-      deselect(selectedObject);
+  function capture() {
+    let thumb = new THREE.Scene();
+    thumb.background = null;
 
-      renderer.render(scene, camera);
-      let screenshot = renderer.domElement.toDataURL("image/png");
+    let count = 0;
 
-      scene.background = original;
-      return screenshot;
+    scene.traverse(function (object) {
+      if (object.isMesh) {
+        let cloned = clone_mesh_clean(object);
+        if (cloned) {
+          thumb.add(cloned);
+          if(object.userData.isBlock) {
+            cloned.rotation.z += Math.PI;
+            cloned.rotation.y += Math.PI;
+          }
+          console.log(cloned);
+          count++;
+        }
+      }
+    });
+
+    if (count === 0) {
+      console.warn("scene is empty");
+      return null;
     }
 
-    function makeid(length) {
+    let light2 = new THREE.DirectionalLight(0xffffff, 1);
+    light2.position.set(250, 250, 250);
+    thumb.add(light2);
+
+    let camera2 = camera.clone();
+
+    let ambient2 = new THREE.AmbientLight(0xdddddd);
+    thumb.add(ambient2);
+
+    let renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+    renderer.setClearColor(0x000000, 0); // transparent
+    renderer.setSize(500, 500);
+    renderer.render(thumb, camera2);
+
+    let thumbnail = renderer.domElement.toDataURL("image/png");
+    return thumbnail;
+  }
+
+  function makeid(length) {
       let result = '';
       const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      const charactersLength = characters.length;
       let counter = 0;
+
       while (counter < length) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
         counter += 1;
       }
+
       return result;
-    }
+  }
 
     // Last cleaned up 6/2/2025 by susstevedev
-    function addBlock(throwSuccess, throwError) {
+  function addBlock(throwSuccess, throwError) {
         if (!ldraw_loader) {
             console.error('LdrawLoader is missing!');
             tooltip('Error setting LdrawLoader. Please refresh the page and try again.');
@@ -1368,37 +1407,37 @@
           console.error('error loading piece:', error);
           throwError(error);
       });
-    }
+  }
 
-    function updateBlockList(part, color, count, id) {
-      let blockList = document.getElementById('block-list');
+  function updateBlockList(part, color, count, id) {
+    let blockList = document.getElementById('block-list');
+    let listItem = document.createElement('li');
 
-      let listItem = document.createElement('li');
-      listItem.classList.add('scene-block-item');
-      listItem.setAttribute('data-id', id);
-      listItem.textContent = `${part} (${color}, Num ${count})`;
+    listItem.classList.add('scene-block-item');
+    listItem.setAttribute('data-id', id);
+    listItem.textContent = `${part} (${color}, Num ${count})`;
 
-      blockList.appendChild(listItem);
-    }
+    blockList.appendChild(listItem);
+  }
 
-    function subobjectPosition(g) {
-        g.updateMatrixWorld(true);
+  function subobjectPosition(g) {
+      g.updateMatrixWorld(true);
 
-        const position = new THREE.Vector3();
-        const quaternion = new THREE.Quaternion();
-        const scale = new THREE.Vector3();
+      const position = new THREE.Vector3();
+      const quaternion = new THREE.Quaternion();
+      const scale = new THREE.Vector3();
 
-        g.matrixWorld.decompose(position, quaternion, scale);
+      g.matrixWorld.decompose(position, quaternion, scale);
 
-        const m = g.clone();
+      const m = g.clone();
 
-        m.position.copy(position);
-        m.quaternion.copy(quaternion);
-        m.scale.copy(scale);
+      m.position.copy(position);
+      m.quaternion.copy(quaternion);
+      m.scale.copy(scale);
 
-        m.updateMatrix();
-        return m;
-    }
+      m.updateMatrix();
+      return m;
+  }
 	
 	function objectSize(obj) {
 		if (!obj) {
@@ -1412,12 +1451,12 @@
 		return s;
 	}
 
-    function isSmall(g, scale) {
-      const boundingBox = new THREE.Box3().setFromObject(g);
-      const size = new THREE.Vector3();
-      boundingBox.getSize(size);
+  function isSmall(g, scale) {
+    const boundingBox = new THREE.Box3().setFromObject(g);
+    const size = new THREE.Vector3();
+    boundingBox.getSize(size);
 
-      return size.x < scale || size.y < scale || size.z < scale;
+    return size.x < scale || size.y < scale || size.z < scale;
   }
 
   function generateUVMap(geometry) {
@@ -1466,58 +1505,52 @@
 	}
 
     function generateSceneJSON() {
-      let gr8brikid = makeid(5);
-
-      const sceneData = {
+      let sceneData = {
         blocks: []
       };
 
       if (selectedObject) {
-        transformControls.detach(selectedObject);
-        selectedObject = null;
-    }
+          transformControls.detach(selectedObject);
+          selectedObject = null;
+      }
 
       blockGroups.forEach(function (group) {
-			let mesh_child = null;
-			let mesh_child_color = null;
-			
-			group.traverse(function (child) {
-			  if (child.isMesh) {
-				mesh_child = child;
-			  }
+        let group_color = null;
+        console.log("blockGroups:", blockGroups);
+          if (group && group.isMesh) {
+             group.traverse(function (child) {
+              if (child && child.isMesh) {
 
-			if (mesh_child) {
-				if(!mesh_child.material.map && !mesh_child.isLineSegments) {
-					mesh_child_color = mesh_child.material.color.getHexString().toLowerCase() ?? null;
-				}
-					
-				let ldraw = group.ldraw.replace("parts/", "");
-				const blockData = {
-					partName: mesh_child.userData.partName,
-					color: mesh_child_color,
-					position: {
-						x: mesh_child.position.x,
-						y: mesh_child.position.y + mesh_child.scale.y,
-						z: mesh_child.position.z
-					},
-					rotation: {
-						x: mesh_child.rotation.x + Math.PI,
-						y: mesh_child.rotation.y,
-						z: mesh_child.rotation.z
-					},
-					scale: {
-						x: mesh_child.scale.x,
-						y: mesh_child.scale.y,
-						z: mesh_child.scale.z
-					},
-					blockID: group.name,
-					ldraw: ldraw,
-				};
-			  sceneData.blocks.push(blockData);
-			}
-		  });
-	  });
-
+                if (!child.material.map && !child.isLineSegments) {
+                  group_color = child.material.color.getHexString().toLowerCase();
+                }
+              
+                let blockData = {
+                  partName: group.userData.partName,
+                  color: group_color,
+                  position: {
+                    x: group.position.x,
+                    y: group.position.y,
+                    z: group.position.z
+                  },
+                  rotation: {
+                    x: group.rotation.x + Math.PI,
+                    y: group.rotation.y,
+                    z: group.rotation.z
+                  },
+                  scale: {
+                    x: group.scale.x,
+                    y: group.scale.y,
+                    z: group.scale.z
+                  },
+                  blockID: group.name,
+                  ldraw: group.ldraw.replace("parts/", ""),
+                };
+                sceneData.blocks.push(blockData);
+              }
+             });
+          }
+      });
       return JSON.stringify(sceneData, null, 1);
     }
 
@@ -1532,33 +1565,6 @@
         transformControls.detach(selectedObject);
         selectedObject = null;
       }
-		
-		/*const lego_color_map = {
-		  "FF0000": 21, // Bright Red
-		  "00FF00": 28, // Bright Green
-		  "0000FF": 23, // Bright Blue
-		  "FFFF00": 24, // Bright Yellow
-		  "00FFFF": 107, // Bright Light Blue (closest to Cyan)
-		  "FF00FF": 221, // Bright Magenta
-		  "000000": 0, // Black
-		  "FFFFFF": 15, // White
-		  "808080": 7, // Light Gray
-		  "FFA500": 25, // Orange
-		  "800080": 268, // Dark Purple (closest)
-		  "FFC0CB": 222, // Light Pink
-		  "A52A2A": 70, // Reddish Brown
-		  "FFD700": 297, // Warm Gold
-		  "C0C0C0": 179, // Silver
-		  "8B0000": 320, // Dark Red
-		  "006400": 288, // Dark Green
-		  "00008B": 272, // Earth Blue
-		  "C91A09": 21, // Bright Red
-		  "A0BCAC": 151, // Sand Green
-		  "7789A5": 212, // Sand Blue
-		  "958A73": 19, // Tan
-		  "A3A2A4": 208, // Light Bluish Gray
-		  "635F61": 194 // Dark Bluish Gray
-		};*/
 
     const lego_color_map = {
       "C91A09": 21, // Bright Red
@@ -1608,25 +1614,25 @@
         });
 
         if (mesh_child) {
-		 let ldraw = group.ldraw.replace("parts/", "").replace(".dat", "");
-		 const boneID = refID;
-		 let colorID = 21;
+          let ldraw = group.ldraw.replace("parts/", "").replace(".dat", "");
+          const boneID = refID;
+          let colorID = 21;
+            
+          if(!mesh_child.material.map && !mesh_child.isLineSegments) {
+            const hex = mesh_child.material.color.getHexString().toUpperCase();
+            colorID = lego_color_map[hex] ?? 26;
+          }
 		 
-		 if(!mesh_child.material.map && !mesh_child.isLineSegments) {
-			const hex = mesh_child.material.color.getHexString().toUpperCase();
-			colorID = lego_color_map[hex] ?? 26;
-		}
-		 
-		 let adjustedMatrix = mesh_child.matrixWorld.clone();
-		 
-		 const globalrot = new THREE.Matrix4().makeRotationX(Math.PI / 1);
-		 adjustedMatrix.premultiply(globalrot);
-		 
-		 const flipmatrix = new THREE.Matrix4().makeRotationX(Math.PI);
-		 adjustedMatrix.multiply(flipmatrix);
-		 
-		 const translationMatrix = new THREE.Matrix4().makeTranslation(-20, 0, 0); // 1 LDU
-		 adjustedMatrix.multiply(translationMatrix);
+          let adjustedMatrix = mesh_child.matrixWorld.clone();
+          
+          const globalrot = new THREE.Matrix4().makeRotationX(Math.PI / 1);
+          adjustedMatrix.premultiply(globalrot);
+          
+          const flipmatrix = new THREE.Matrix4().makeRotationX(Math.PI);
+          adjustedMatrix.multiply(flipmatrix);
+          
+          const translationMatrix = new THREE.Matrix4().makeTranslation(-20, 0, 0); // 1 LDU
+          adjustedMatrix.multiply(translationMatrix);
 
           sceneBricks += `
             <Brick refID="${refID}" designID="${ldraw}" itemNos="${ldraw}">
@@ -1676,10 +1682,10 @@
       const unit = 0.04;
       const converted = matrix4.clone();
 	  
-	  const rotx = new THREE.Matrix4().makeRotationX(Math.PI / 1);
+	    const rotx = new THREE.Matrix4().makeRotationX(Math.PI / 1);
 	  
-	  const rot = new THREE.Matrix4();
-	  rot.multiply(rotx);
+	    const rot = new THREE.Matrix4();
+	    rot.multiply(rotx);
       converted.premultiply(rot);
 
       const position = new THREE.Vector3();
@@ -1688,7 +1694,7 @@
       converted.decompose(position, quaternion, scale);
 
       position.multiplyScalar(unit);
-	  position.x -= 0.8;
+	    position.x -= 0.8;
 	  
       converted.compose(position, quaternion, scale);
       const elm = converted.transpose().elements;
@@ -1702,21 +1708,21 @@
     }
 
     function updateSceneData() {
-	  if (blockGroups && blockGroups.length > 0) {
+	    if (blockGroups && blockGroups.length > 0) {
           blockGroups.forEach(function (g) {
-			  g.updateMatrixWorld(true);
-              let hasTinyMesh = false;
+			      g.updateMatrixWorld(true);
+            let hasTinyMesh = false;
 
-              g.traverse(function (child) {
-				  child.updateMatrixWorld(true);
+            g.traverse(function (child) {
+				      child.updateMatrixWorld(true);
                   if (child.isMesh && isSmall(child, 19)) {
                       hasTinyMesh = true;
                   }
-              });
+            });
 
-              g.userData.noSnap = hasTinyMesh;
+            g.userData.noSnap = hasTinyMesh;
 
-              if (!g.userData.noSnap || !scene.userData.noSnap) {
+            if (!g.userData.noSnap || !scene.userData.noSnap) {
                 g.position.set(
                       snapToGrid(g.position.x, 10),
                       snapToGrid(g.position.y, 4),
@@ -1724,13 +1730,61 @@
                   );
               }
           });
-		  scene.updateMatrixWorld(true);
+		    scene.updateMatrixWorld(true);
       } 
 	  
       if (selectedObject) {
           selectedObject.updateMatrixWorld(true);
       }
   }
+
+  /* 
+  Clone mesh data and not anything like transform controls because idk how to remove it
+  */
+  function clone_mesh_clean(obj) {
+      if (!obj.isMesh) { 
+        return null;
+      }
+
+      const mat = obj.material.clone();
+      const geometry = obj.geometry.clone();
+
+      const obj_clone = new THREE.Mesh(geometry, mat);
+      obj_clone.position.copy(obj.position);
+      obj_clone.rotation.copy(obj.rotation);
+      obj_clone.scale.copy(obj.scale);
+      obj_clone.name = obj.name;
+
+      return obj_clone;
+  }
+
+  /* function updateMaterials() {
+    if(!selectedObject) {
+      return;
+    }
+
+    displayedColors = document.getElementById("obj-colors");
+    displayedColors.innerHTML = "";
+
+		selectedObject.traverse((child) => {
+			if (child.isMesh && child.material) {
+				if (Array.isArray(child.material)) {
+          child.material.forEach((mat, index) => {
+            console.log(mat);
+            if (mat && mat.color instanceof THREE.Color && typeof mat.color.getHexString === "function") {
+              const colorHex = `#${mat.color.getHexString()}`;
+              const span = document.createElement("span");
+              console.log(`Subpart ${index}: ${colorHex}`);
+              span.style.backgroundColor = colorHex;
+              span.style.padding = "2px 2px 2px 2px";
+              displayedColors.appendChild(span);
+            }
+          });
+				}
+			}
+		});
+    updateSceneData();
+  } */
 
     function onMouseClick(event) {
         let target = event.target;
@@ -1773,48 +1827,14 @@
         transformControls.attach(obj);
 		    selectedObject = obj;
         
-        if(obj.material) {
-          obj.material.opacity = 1;
-          obj.material.transparent = false;
-          obj.material.needsUpdate = true;
-        }
+        partColor = `#${obj.material.color.getHexString()}`;
+        $("#your-color-input").spectrum("set", partColor);
     }
 
     function deselect(obj) {
       transformControls.detach(obj);
 		  selectedObject = null;
     }
-
-    // Edit of onMouseClick for hovering
-    /*document.addEventListener('mousemove', function(event) {
-        let target = event.target;
-        let container = document.querySelector(".scene");
-        let lastHover = null;
-        const rect = container.getBoundingClientRect();
- 
-        if (!container.contains(target)) {
-            document.body.style.cursor = 'auto';
-            return;
-        } else {
-            event.preventDefault();
-        }
-
-        mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-        mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-
-        raycaster.setFromCamera(mouse, camera);
-        let intersects = raycaster.intersectObjects(scene.children.filter(obj => obj.visible), true);
-
-        if (intersects.length > 0 && intersects[0].object !== selectedObject && intersects[0].object.userData.isBlock) {
-            container.style.cursor = 'pointer';
-            let obj = intersects[0].object;
-            obj.material.opacity = 0.5;
-            obj.material.transparent = true;
-            obj.material.needsUpdate = true;            
-        } else {
-            container.style.cursor = 'auto';
-        }
-    }); */
 
     function onWindowResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
