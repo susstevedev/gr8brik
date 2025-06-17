@@ -4,60 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/TrackballControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"></script>
     <style>
         body { 
             font-family: Verdana, sans-serif;
             margin: 0; 
             overflow: hidden;
-            color: #FAFAFA;
+            color: #fafafa;
+            background-color: #d3d3d3;
         }
-        #loading { 
+
+        .box {
             position: absolute;
+            /* background-color: #ddd;
+            color: #000; */
+            background-color: rgba(0, 0, 0, 0.2);
+		    backdrop-filter: blur(15px);
+		    -webkit-backdrop-filter: blur(15px);
+            padding: 10px 20px;
+            font-size: 20px;
+            border-radius: 4px;
+        }
+
+        #watermark {
+            position: absolute;
+            display: none;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.2);
+		    backdrop-filter: blur(15px);
+		    -webkit-backdrop-filter: blur(15px);
+            bottom: 0px;
+            right: 0px;
+            padding: 6px 16px;
+        }
+
+        #loading {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 75%;
-            background-color: #DDD;
-            color: #000;
-            padding: 10px 20px;
-            font-size: 20px;
         }
-        #stats { 
-            position: absolute;
+
+        #stats {
             top: 0;
             left: 0;
-            background-color: #DDD;
-            color: #000;
-            padding: 10px 20px;
-            font-size: 20px;
             display: none;
         }
+
         #username {
-            position: absolute;
             top: 50px;
             left: 0;
-            background-color: #DDD;
-            color: #000;
-            padding: 10px 20px;
-            font-size: 20px;
             display: none;
         }
+
         button {
             position: absolute;
             bottom: 25%;
             left: 50%;
             transform: translate(-50%, -50%);
             transition: all 0.2s ease-in-out;
-            background-color: #87CEEB;
+            background-color: #87ceeb;
             padding: 6px 16px;
             text-align: center;
             border: none;
             cursor: pointer;
         }
+
         #retry {
             display: none;
+        }
+
+        #viewer {
+            background-color: #333;
+        }
+
+        a {
+            color: #d3d3d3;
         }
     </style>
 </head>
@@ -70,6 +93,8 @@
 
             const viewer = document.getElementById("viewer");
             const loading = document.getElementById("loading");
+            const wmark = document.getElementById("watermark");
+
             const model_file = new URLSearchParams(window.location.search).get("model");
 
             const stat_username = document.getElementById("username");
@@ -81,7 +106,6 @@
                 return;
             }
 
-            //fetch(`cre/${model_file}`)
             fetch(`/ajax/build.php?buildId=${model_file}&fetch=true`)
                 .then(response => {
                     if (!response.ok) {
@@ -124,32 +148,24 @@
                 function load_model_data(model_data) {
                     const scene = new THREE.Scene();
 
-                    const camera = createCamera();
+                    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 10000);
+                    camera.position.set(250, 250, 250);
 
-                    const renderer = new THREE.WebGLRenderer({canvas: viewer});
+                    const renderer = new THREE.WebGLRenderer({canvas: viewer, antialias: true, alpha: true});
                     renderer.setSize(window.innerWidth, window.innerHeight);
 
-                    var controls;
+                    const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-                    const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
-                    scene.add(ambientLight);
-
-                    const sunlight = new THREE.DirectionalLight(0xffffff, 3.5);
-                    sunlight.position.set(10, 15, 10);
-                    scene.add(sunlight);
-
-                    const pointlight = new THREE.PointLight(0xffffff, 1.5, 500);
-                    pointlight.position.set(250, 500, 250);
-                    scene.add(pointlight);
+                    const ambient = new THREE.AmbientLight(0xdddddd);
+                    scene.add(ambient);
+                    
+                    const directional = new THREE.DirectionalLight(0xffffff, 3);
+                    directional.position.set(10, 20, 10);
+                    scene.add(directional);
 
                     const lDrawLoader = new THREE.LDrawLoader();
-                    lDrawLoader.preloadMaterials('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/colors/ldconfig.ldr' );
-                    lDrawLoader.setPath('https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/');
                     lDrawLoader.setPartsLibraryPath("https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/");
                     lDrawLoader.smoothNormals = true;
-                    lDrawLoader.flatColors = false;
-                    lDrawLoader.displayLines = false;
-                    lDrawLoader.conditionalLines = false
                     lDrawLoader.separateObjects = true;
                     
                     let totalBlocks = model_data.blocks.length;
@@ -157,7 +173,7 @@
                     let failedBlocks = 0;
                     let loadComplete = false;
 
-                    async function loadPartsSequentially(blocks) {
+                    async function loadParts(blocks) {
                         for (const block of blocks) {
                             await new Promise(resolve => {
                                 if (!block.ldraw) {
@@ -166,14 +182,27 @@
                                     return resolve();
                                 }
 
-                                lDrawLoader.load(`parts/${block.ldraw}`,
+                                lDrawLoader.load(`https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/parts/${block.ldraw}`,
                                     function (loaded_model) {
                                         loaded_model.traverse((child) => {
-                                            if (child.isMesh) {
-                                                let colorHex = `#${block.color ? block.color.replace(/^#/, '') : 'ffffff'}`;
+                                            let colorHex = `${block.color ? block.color.replace(/^#/, '') : 'ffffff'}`;
+                                            if (child.isMesh && !child.material.map && !child.isLineSegments) {
                                                 child.material = new THREE.MeshStandardMaterial({
-                                                    color: new THREE.Color(colorHex)
+                                                    color: new THREE.Color(`#${colorHex}`),
+                                                    roughness: 0.3,
+                                                    metalness: 0.1
                                                 });
+                                            }
+
+                                            if (child.isLineSegments) {
+                                                child.visible = false;
+                                            }
+
+                                            if (child.isMesh && child.material.map) {
+                                                if(Array.isArray(child.material)) {
+                                                    child.material[0].color = new THREE.Color(`#${colorHex}`);
+                                                    child.material.needsUpdate = true;
+                                                }
                                             }
                                         });
 
@@ -209,7 +238,7 @@
                     }, 50000);
 
                     viewer.style.display = "none";
-                    loadPartsSequentially(model_data.blocks);
+                    loadParts(model_data.blocks);
 
                     function showViewer() {
                         if (!loadComplete) { 
@@ -220,32 +249,16 @@
                         loading.style.display = "none";
                         viewer.style.display = "block";
 
+                        wmark.style.display = "block";
+                        wmark.innerText = "gr8brik.rf.gd";
+
                         stat_name.style.display = "block";
                         stat_name.innerHTML += `&nbsp;${JSON.parse(window.creation_data).name}`;
 
                         stat_username.style.display = "block";
-                        stat_username.innerHTML += `&nbsp;<a href="/user/${JSON.parse(window.creation_data).username}">${JSON.parse(window.creation_data).username}</a> on ${JSON.parse(window.creation_data).date}`;
+                        stat_username.innerHTML += `&nbsp;<a href="/user/${JSON.parse(window.creation_data).userid}" target="_blank">${JSON.parse(window.creation_data).username}</a> on ${JSON.parse(window.creation_data).date}`;
 
                         animate();
-                    }
-                    
-                    function createCamera() {
-                        const aspect = window.innerWidth / window.innerHeight;
-                        const frustum = 100;
-
-                        const camera = new THREE.OrthographicCamera(
-                            (frustum * aspect) / -2,
-                            (frustum * aspect) / 2,
-                            frustum / 2,
-                            frustum / -2,
-                            1,
-                            10000
-                        );
-
-                        camera.position.set(0, 0, 500);
-                        camera.lookAt(0, 0, 0);
-
-                        return camera;
                     }
 
                     window.addEventListener('resize', () => {
@@ -264,18 +277,8 @@
                     function animate() {
                         requestAnimationFrame(animate);
 
-                        // fix trackballcontrols being dumb
-                        // it would only update on zoom
                         if (controls) {
                             controls.update();
-                        } else {
-                            const box = renderer.domElement.getBoundingClientRect();
-
-                            if (box.left != box.right && box.bottom != box.top) {
-                                controls = new THREE.TrackballControls(camera, renderer.domElement);
-                                controls.staticMoving = true;
-                                controls.update();
-                            }
                         }
 
                         renderer.render(scene, camera);
@@ -284,10 +287,11 @@
                 }
         });
     </script>
-    <div id="loading">Loading...</div>
+    <div id="loading" class="box">Loading...</div>
     <button id="retry">Retry</button>
-    <div id="stats">Viewing</div>
-    <div id="username">By</div>
+    <div id="stats" class="box">Viewing</div>
+    <div id="username" class="box">By</div>
+    <div id="watermark"></div>
     <canvas id="viewer" style="width: 100vw; height: 100vh; display: none;"></canvas>
 </body>
 </html>
