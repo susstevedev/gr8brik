@@ -1,38 +1,41 @@
-<!-- GR8BRIK VERSION 6-7-2025 (SUBOBJECT AND TEXTURES BETA 2.9.1) -->
+<!-- GR8BRIK VERSION 6-15-2025 (SUBOBJECT AND TEXTURES BETA 3.0) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Gr8brik Modeler</title>
+  <title>GR8BRIK Modeler</title>
   <meta charset="utf-8">
   <!-- <base href="/mod/new/"> -->
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jszip@latest/dist/jszip.min.js" integrity="sha256-rMfkFFWoB2W1/Zx+4bgHim0WC7vKRVrq6FTeZclH1Z4=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="index.css?v=672025_test1">
-</head>
-
-<body>
-  <div id="top-container">
-    <span id="link-home"><img src="/img/logo.jpg" id="logo-img" /><a href="/"><span>&nbsp;Gr8brik&nbsp;</span></a><span class="tag">BETA</span></span>
-    <a href="https://www.gr8brik.rf.gd/acc/login" id="username-field">Login</a>
-  </div>
-
-  <div id="info">
-    <p"><a href="https://www.gr8brik.rf.gd/" target="_blank">Gr8brik beta</a> - Build June 7th, 2025</p>
-  </div>
-
   <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/TransformControls.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/RGBELoader.js"></script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="index.css?v=6162025_test1">
+</head>
+
+<body>
+  <div id="top-container">
+    <span id="link-home"><img src="/img/logo.jpg" id="logo-img" /><a href="/"><span>&nbsp;GR8BRIK&nbsp;</span></a><span class="tag">BETA</span></span>
+    <a href="https://www.gr8brik.rf.gd/acc/login" id="username-field">Login</a>
+  </div>
+
+  <div id="info">
+    <p"><a href="https://www.gr8brik.rf.gd/" target="_blank">GR8BRIK beta</a> - Build June 15th, 2025</p>
+  </div>
 
   <button id="toggleMenu" class="mobile-toggle">&#x2630;</button>
   <button id="takeScreenshot" class="mobile-toggle" style="top: 155px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-camera" aria-hidden="true" alt="screenshot"></i></button>
   <button id="getPriceInfo" class="mobile-toggle" style="top: 255px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-money" aria-hidden="true" alt="get price info"></i></button>
+  <button id="resetCamera" class="mobile-toggle" style="top: 355px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-refresh" aria-hidden="true" alt="reset camera location"></i></button>
   
   <div id="left-container">
     <p style="height: 2vh;"></p>
@@ -46,12 +49,11 @@
     <span>Edit tools</span><br />
     <button class="btn" title="Change controls to arrows to move blocks up and down, side-by-side." id="move-block-t"><i class="fa fa-arrows-alt" aria-hidden="true"></i>Drag</button>
     <button class="btn" title="Change controls to rotate blocks, in all directions." id="move-block-r"><i class="fa fa-refresh" aria-hidden="true"></i>Rotate</button><br />
-    <button id="duplicate-block" class="btn" title="Copy the block that was last added and paste it"><i class="fa fa-files-o" aria-hidden="true"></i>Duplicate Block</button><br />
+    <button id="duplicate-part" class="btn" title="Copy the block that was last added and paste it"><i class="fa fa-files-o" aria-hidden="true"></i>Duplicate Block</button><br />
     <button id="delete-block" class="btn" title="Remove a block from the scene, along with all records of it"><i class="fa fa-trash" aria-hidden="true"></i>Delete Block</button><hr />
 
     <span>Color</span><br />
-    <input type="text" id="color-picker" /><hr />
-    <div id="this-will-be-a-text-box-soon-that-contains-the-current-object-material-number"></div>
+    <input type="text" id="color-picker" /><input type="number" id="selected-map" min="0" max="50" step="1" value="0"><hr />
     <span id="obj-colors"></span>
 
     <span>Filter</span><br />
@@ -59,6 +61,7 @@
     <select id="part-type-filter" style="display: inline-block;">
         <option value="brick" selected>Bricks</option>
         <option value="plate">Plates</option>
+        <option value="baseplate">Baseplates</option>
         <option value="tile">Tiles</option>
         <option value="slope">Slopes</option>
         <option value="minifig">Minifigs</option>
@@ -78,15 +81,15 @@
 
     <input type="text" id="search-parts" placeholder="search parts..." /><hr />
 
-    <button id="tab1" class="tab-button">Add blocks</button>
-    <button id="tab2" class="tab-button">Scene blocks</button><br /><br />
+    <button id="tab1" class="tab-button">Parts list</button>
+    <button id="tab2" class="tab-button">Parts in scene</button><br /><br />
     
-	  <input type="file" id="cre-import" accept=".json" style="display: none;"><input type="file" id="cre-import-three" accept=".json" style="display: none;">
-	  <span id="cre-export" style="display: none;"></span><span id="cre-export-ldd" style="display: none;"></span><span id="cre-export-three" style="display: none;"></span><span id="cre-export-dae" style="display: none;"></span>
+	  <input type="file" id="cre-import" accept=".json,.gr8" style="display: none;"><input type="file" id="cre-import-three" accept=".json" style="display: none;">
+	  <span id="cre-export" style="display: none;"></span><span id="cre-export-gr8" style="display: none;"></span><span id="cre-export-ldd" style="display: none;"></span><span id="cre-export-three" style="display: none;"></span><span id="cre-export-dae" style="display: none;"></span>
 
     <span id="select-block"></span>
     <ul id="block-list">
-      <div class="warn">Gr8brik treats some items as groups</div>
+      <div class="warn">GR8BRIK treats some items as groups</div>
     </ul>
   </div>
 
@@ -106,7 +109,7 @@
     <div id="import-popup-form">
 		<select id="import-format" style="display: inline-block;">
 			<option value="cloud" selected>From account</option>
-			<option value="json">GR8BRIK json</option>
+			<option value="json">GR8BRIK</option>
 			<option value="three">ThreeJS</option>
 		</select><br />
 		<p><button class="btn" title="Finish importing" id="import-finish">Select file</button></p>
@@ -118,10 +121,11 @@
     <h3><span style="color: #fff;">Export Model</span></h3>
     <div id="export-popup-form">
 		<select id="export-format" style="display: inline-block;">
-			<option value="json">GR8BRIK json</option>
-			<option value="three">ThreeJS</option>
-			<option value="lxf">Lego Digital Designer</option>
-			<option value="dae">Collada dae</option>
+      <option value="gr8">GR8BRIK (.gr8)</option>
+			<option value="json">GR8BRIK (.json)</option>
+			<option value="three">ThreeJS (.json)</option>
+			<option value="lxf">Lego Digital Designer (.lxf)</option>
+			<option value="dae">Collada (.dae)</option>
 		</select><br />
 		<p><button class="btn" title="Finish exporting" id="export-finish">Download file</button></p>
     </div>
@@ -349,7 +353,7 @@
 		document.getElementById("import-finish").addEventListener("click", function () {
 			const format = document.getElementById("import-format").value;
 			if(format === "cloud") {
-				tooltip('Gr8brik models from your account cannot be imported yet.');
+				tooltip('GR8BRIK models from your account cannot be imported yet.');
 				return;
 			}
 			if(format === "three") {
@@ -371,6 +375,9 @@
 			}
 			if(format === "json") {
 				document.getElementById("cre-export").click();
+			}
+      if(format === "gr8") {
+				document.getElementById("cre-export-gr8").click();
 			}
 			if(format === "lxf") {
 				document.getElementById("cre-export-ldd").click();
@@ -715,11 +722,6 @@
     const studSize = 1000;
     let partList = document.getElementById('blk');
     let colList = document.getElementById('select-color');
-	
-	/*import * as THREE from `https://cdn.jsdelivr.net/npm/three@${three_version}/build/three.module.js`;
-	window.THREE = THREE;
-	
-	import { OBJExporter } from `https://cdn.jsdelivr.net/npm/three@${three_version}/examples/jsm/exporters/OBJExporter.js`; */
 
     document.getElementById("username-field").addEventListener("click", function () {
       var content = document.getElementById("username-content");
@@ -734,8 +736,15 @@
       console.log("color picker clicked");
     });
 
-    document.getElementById("duplicate-block").addEventListener("click", function () {
-      addBlock();
+    document.getElementById("duplicate-part").addEventListener("click", function () {
+      if(selectedObject) {
+        duplicatePart();
+      }
+    });
+
+    document.getElementById("selected-map").addEventListener("input", function () {
+      console.log(`Selected material number is ${this.value}`);
+      selectedMap = this.value;
     });
 	
 	document.getElementById("delete-block").addEventListener("click", function () {
@@ -788,7 +797,24 @@
 		setTimeout(() => {
 			URL.revokeObjectURL(url);
 		}, 10000);
-    });
+  });
+
+  document.getElementById("cre-export-gr8").addEventListener("click", () => {
+    const fileData = generateSceneJSON();
+		const dataBlob = new Blob([fileData], { type: "application/json" });
+		const elm = this;
+		
+		const url = URL.createObjectURL(dataBlob);
+		const date = getDate();
+		const a = document.createElement("a");
+		a.href = url;
+		a.download = `gr8brik-creation-${date}.gr8`;
+		a.click();
+			
+		setTimeout(() => {
+			URL.revokeObjectURL(url);
+		}, 10000);
+  });
 	
 	document.getElementById("cre-export-ldd").addEventListener("click", () => {
 		console.log('clicked');
@@ -934,7 +960,7 @@
         reader.readAsText(file);
     });
 
-    var container, camera, scene, renderer, lighting, controls, grid_helper, ldraw_loader, raycaster, mouse, partRotation, partPosition, selectedObject, customPosition, selectedMap = null;
+    var container, camera, scene, renderer, controls, grid_helper, ldraw_loader, raycaster, mouse, partRotation, partPosition, selectedObject, customPosition, selectedMap = null;
 
     let blocks = [];
     let blockGroups = [];
@@ -1050,16 +1076,23 @@
     directional_lighting.position.set(10, 15, 10);
     scene.add(directional_lighting);
 
-    lighting = new THREE.DirectionalLight(0xffffff, 2);
+    /*const lighting = new THREE.DirectionalLight(0xffffff, 2);
     lighting.position.copy(camera.position);
-    scene.add(lighting);
+    scene.add(lighting); */
+
+    const rgbe_loader = new THREE.RGBELoader();
+    //https://polyhaven.com/a/autumn_field_puresky
+    rgbe_loader.load('https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-new/lib/autumn_field_puresky_1k.hdr', function (texture) {
+      texture.mapping = THREE.EquirectangularReflectionMapping;
+      scene.environment = texture;
+    });
 
     transformControls = new THREE.TransformControls(camera, renderer.domElement);
     scene.add(transformControls);
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.dampingFactor = 0.2;
+    controls.dampingFactor = 0.8;
 
     const stud_size = 20; // 1 stud = 20
     const grid_size = stud_size * 16; // studs wide
@@ -1194,20 +1227,27 @@
 		selectedObject.traverse((child) => {
 			if (child.isMesh && child.material) {
 				if (Array.isArray(child.material)) {
-          let map;
-          if(selectedMap) {
-            map = child.material[selectedMap];
+          let mat;
+          if (selectedMap != null) {
+            if (child.material[selectedMap]) {
+              mat = child.material[selectedMap];
+            } else {
+              selectedMap = null;
+              tooltip('Invalid multi color map selected');
+              return;
+            }
           } else {
-            mat = child.material[1];
+            mat = child.material[0];
           }
-          
+
           if (mat && mat.color && !mat.map) {
             mat.color.set(color);
             mat.needsUpdate = true;
-            selectedMap = null;
           }
+
+          selectedMap = null;
           updateSceneData();
-				} else if (child.material.color) {
+        } else if (child.material.color) {
 					child.material.color.set(color);
 					child.material.needsUpdate = true;
           updateSceneData();
@@ -1343,13 +1383,15 @@
 
                   child.material = new THREE.MeshPhysicalMaterial({
                     color: new THREE.Color(partColor || "#000000"),
-                    roughness: 0.2,
-                    metalness: 0.1,
                     reflectivity: 0.5,
+                    roughness: 0.4,
+                    metalness: 0.1,
+                    envMapIntensity: 0.5,
                   });
 
                   child.userData.isBlock = true;
                   child.userData.isTexture = false;
+                  child.userData.parentName = partName;
                   
                   transformControls.attach(child);
                   selectedObject = child;
@@ -1362,6 +1404,7 @@
               if (child.material && child.material.map && child.isMesh && !child.isLineSegments) {
                 child.userData.isBlock = true;
                 child.userData.isTexture = true;
+                child.userData.parentName = partName;
               }
             });
 
@@ -1481,7 +1524,7 @@
   }
 
   function getPriceInfo() {
-    if(selectObject) {
+    if(selectedObject) {
       let part = selectedObject.parent.userData.fileName.replace("parts/", "").replace(".dat", "");
 
       fetch(`parts.php?part_price=true&part=${part}`)
@@ -1496,6 +1539,15 @@
         });
 		}
   }
+
+  function duplicatePart() {
+    if(selectedObject) {
+      part = `parts/${selectedObject.userData.parentName}`;
+      partName = selectedObject.userData.parentName;
+      partColor = `#${selectedObject.material.color.getHexString().toLowerCase()}`;
+      addBlock();
+    }
+  }
   
 	function createGroup(gname, gelm) {
 		let group = new THREE.Group();
@@ -1503,55 +1555,68 @@
 		group.add(gelm);
     return group;
 	}
-
+  
     function generateSceneJSON() {
       let sceneData = {
+        metadata: {
+          file_version: 1.1,
+          name: "My Model",
+          description: null
+        },
+        camera: camera.clone().toJSON(),
+        light: directional_lighting.clone().toJSON(),
         blocks: []
       };
 
       if (selectedObject) {
-          transformControls.detach(selectedObject);
-          selectedObject = null;
+        transformControls.detach(selectedObject);
+        selectedObject = null;
       }
 
       blockGroups.forEach(function (group) {
-        let group_color = null;
-        console.log("blockGroups:", blockGroups);
-          if (group && group.isMesh) {
-             group.traverse(function (child) {
-              if (child && child.isMesh) {
+        if (!group || !group.userData.partName) {
+          return;
+        }
 
-                if (!child.material.map && !child.isLineSegments) {
-                  group_color = child.material.color.getHexString().toLowerCase();
-                }
-              
-                let blockData = {
-                  partName: group.userData.partName,
-                  color: group_color,
-                  position: {
-                    x: group.position.x,
-                    y: group.position.y,
-                    z: group.position.z
-                  },
-                  rotation: {
-                    x: group.rotation.x + Math.PI,
-                    y: group.rotation.y,
-                    z: group.rotation.z
-                  },
-                  scale: {
-                    x: group.scale.x,
-                    y: group.scale.y,
-                    z: group.scale.z
-                  },
-                  blockID: group.name,
-                  ldraw: group.ldraw.replace("parts/", ""),
-                };
-                sceneData.blocks.push(blockData);
-              }
-             });
+        let group_color = null;
+        let mesh_child = null;
+
+        group.traverse(function (child) {
+          if (child.isMesh) {
+            // saving the child object because using the group itself doesn't work
+            // todo update block groups in the updateSceneData() function
+            // 6/14/2025
+            mesh_child = child;
+            mesh_color = child.material.color.getHexString().toLowerCase();
           }
+        });
+
+        const blockData = {
+          partName: group.userData.partName,
+          color: mesh_color,
+          position: {
+            x: mesh_child.position.x,
+            y: mesh_child.position.y,
+            z: mesh_child.position.z
+          },
+          rotation: {
+            x: mesh_child.rotation.x + Math.PI,
+            y: mesh_child.rotation.y,
+            z: mesh_child.rotation.z
+          },
+          scale: {
+            x: mesh_child.scale.x,
+            y: mesh_child.scale.y,
+            z: mesh_child.scale.z
+          },
+          blockID: group.name,
+          ldraw: group.ldraw.replace("parts/", ""),
+        };
+
+        sceneData.blocks.push(blockData);
       });
-      return JSON.stringify(sceneData, null, 1);
+
+      return JSON.stringify(sceneData, null, 2);
     }
 
     function generateSceneLXFML() {
@@ -1650,13 +1715,13 @@
 
       const sceneData = `
         <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-        <LXFML versionMajor="5" versionMinor="0" name="Imported Gr8brik Creation">
+        <LXFML versionMajor="5" versionMinor="0" name="Imported GR8BRIK Creation">
           <Meta>
             <Application name="LEGO Digital Designer" versionMajor="4" versionMinor="3"/>
             <Brand name="LDD"/>
             <BrickSet version="2670"/>
           </Meta>
-		  <Model name="Imported Gr8brik Creation"></Model>
+		  <Model name="Imported GR8BRIK Creation"></Model>
           <Cameras>
             <Camera refID="0" fieldOfView="80" distance="120" transformation="1,0,0,0,1,0,0,0,1,0,0,120"/>
           </Cameras>
@@ -1709,29 +1774,29 @@
 
     function updateSceneData() {
 	    if (blockGroups && blockGroups.length > 0) {
-          blockGroups.forEach(function (g) {
-			      g.updateMatrixWorld(true);
-            let hasTinyMesh = false;
+        blockGroups.forEach(function (g) {
+			    g.updateMatrixWorld(true);
+          let hasTinyMesh = false;
 
-            g.traverse(function (child) {
-				      child.updateMatrixWorld(true);
-                  if (child.isMesh && isSmall(child, 19)) {
-                      hasTinyMesh = true;
-                  }
-            });
-
-            g.userData.noSnap = hasTinyMesh;
-
-            if (!g.userData.noSnap || !scene.userData.noSnap) {
-                g.position.set(
-                      snapToGrid(g.position.x, 10),
-                      snapToGrid(g.position.y, 4),
-                      snapToGrid(g.position.z, 10)
-                  );
+          g.traverse(function (child) {
+				    child.updateMatrixWorld(true);
+              if (child.isMesh && isSmall(child, 19)) {
+                hasTinyMesh = true;
               }
           });
+
+          g.userData.noSnap = hasTinyMesh;
+
+          if (!g.userData.noSnap || !scene.userData.noSnap) {
+            g.position.set(
+                snapToGrid(g.position.x, 10),
+                snapToGrid(g.position.y, 4),
+                snapToGrid(g.position.z, 10)
+            );
+          }
+        });
 		    scene.updateMatrixWorld(true);
-      } 
+      }
 	  
       if (selectedObject) {
           selectedObject.updateMatrixWorld(true);
@@ -1827,8 +1892,8 @@
         transformControls.attach(obj);
 		    selectedObject = obj;
         
-        partColor = `#${obj.material.color.getHexString()}`;
-        $("#your-color-input").spectrum("set", partColor);
+        /* partColor = `#${obj.material.color.getHexString()}`;
+        $("#your-color-input").spectrum("set", partColor); */
     }
 
     function deselect(obj) {
@@ -1859,6 +1924,11 @@
         }
     }
 
+    document.getElementById("resetCamera").addEventListener("click", function () {
+      camera.position.set(250, 250, 250);
+      scene.updateMatrixWorld();
+    });
+
     // Last refactor 6/3/2025 by susstevedev
     function animate() {
       document.addEventListener('DOMContentLoaded', function () {
@@ -1877,7 +1947,7 @@
 
       requestAnimationFrame(animate);
       controls.update();
-      lighting.position.copy(camera.position);
+      //lighting.position.copy(camera.position);
       renderer.render(scene, camera);
       renderer.outputColorSpace = THREE.SRGBColorSpace;
     }

@@ -2,10 +2,13 @@
   --ui-text-color: #000;
   --ui-color: #fafafa;
   --ui-anti-color: #242424;
+  --ui-anti-text: #fff;
+  --ui-trans-color: rgba(0, 0, 0, 0.5) 35%;
+  --ui-button-blue: #87ceeb;
 }
 
 body {
-    font-family: Verdana, sans-serif;
+    font-family: 'Arial Narrow', Arial, sans-serif;
     font-size: 16px;
     background-color: var(--ui-color);
     color: var(--ui-text-color);
@@ -74,14 +77,13 @@ select, option {
     transition: all 0.2s ease-in-out;
     background-color: #87CEEB;
     color: #000;
-    padding: 6px 16px;
+    padding: 10px;
+    margin-bottom: 5px;
     text-align: center;
     font-size: 13px;
     border: none;
     border-radius: 2px;
     cursor: pointer;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	  font-weight: 200;
   }
 
   .btn:hover {
@@ -101,17 +103,17 @@ select, option {
 
   .tab-button {
     box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.10);
-    background-color: #d3d3d3;
-    color: #000;
+    background-color: var(--ui-button-blue);
+    color: var(--ui-anti-text);
     cursor: pointer;
     padding: 6px;
+    border-radius: 5px;
     text-align: center;
-    border: none;
+    border: 1px solid var(--ui-anti-text);
   }
 
   .tab-button:hover {
-    background-color: #808080;
-    color: #fff;
+    background-color: var(--ui-anti-color);
   }
 
   #save-popup, #import-popup, #export-popup, #settings-popup {
@@ -119,10 +121,9 @@ select, option {
     border-radius: 10px;
     padding: 10px;
     border: 1px #D3D3D3 solid;
-    /* background-color: #fff; */
-	background-color: transparent;
-	backdrop-filter: blur(15px);
-	-webkit-backdrop-filter: blur(15px);
+	  background-color: transparent;
+	  backdrop-filter: blur(15px);
+	  -webkit-backdrop-filter: blur(15px);
     color: var(--ui-text-color);
     position: fixed;
     z-index: 9999;
@@ -181,41 +182,46 @@ select, option {
     z-index: 99999999;
     right: 0;
     top: 0;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.5) 35%);
+    background: linear-gradient(to right, var(--ui-trans-color));
 		backdrop-filter: blur(15px);
 		-webkit-backdrop-filter: blur(15px);
-    color: var(--ui-text-color);
+    color: var(--ui-color);
     padding: 15px 15px 15px 15px;
     border-radius: 5px;
 		animation: fromright 0.5s ease-out forwards;
 		transition: transform 0.5s ease;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.10);
   }
 
-    .mobile-toggle {
-        position: fixed;
-        top: 50px;
-        right: 25px;
-        width: 50px;
-        height: 55px;
-        background: #333333;
-        color: white;
-        padding: 15px;
-        border: 2px rgba(0, 0, 0, 0.16) solid;
-        border-radius: 2px;
-        z-index: 1100;
-        text-align: center;
-        display: inline-block;
-        transition: all 0.2s ease-in-out;
-        /* from https://getcssscan.com/css-box-shadow-examples (number #12) */
-        box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-      }
+  .mobile-toggle {
+      position: fixed;
+      top: 50px;
+      right: 25px;
+      width: 50px;
+      height: 55px;
+      /*background: #333333; */
+      color: var(--ui-text-color);
+      background-color: transparent;
+	    backdrop-filter: blur(15px);
+	    -webkit-backdrop-filter: blur(15px);
+      padding: 15px;
+      border: 2px rgba(0, 0, 0, 0.16) solid;
+      border-radius: 2px;
+      z-index: 1100;
+      text-align: center;
+      display: inline-block;
+      transition: all 0.2s ease-in-out;
+      /* from https://getcssscan.com/css-box-shadow-examples (number #12) */
+      box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  }
 
-    .mobile-toggle:hover {
-        background: #242424;
-        color: white;
-        cursor: pointer;
-        box-shadow: rgba(2, 2, 2, 0.06) 2px 2px 2px 2px;
-    }
+  .mobile-toggle:hover {
+      /* background: #242424;
+      color: white; */
+      background-color: var(--ui-color);
+      cursor: pointer;
+      box-shadow: rgba(2, 2, 2, 0.06) 2px 2px 2px 2px;
+  }
 
   #logo-img {
     border-radius: 10px;
@@ -229,15 +235,11 @@ select, option {
     bottom: 0px; 
     right: 0px; 
     width: 175px; 
-    padding: 3px; 
-    /* 
-    border: #838A92 1px solid;
-    box-shadow: rgba(4, 80, 143, 0.06) 3px 3px 3px 3px; 
-    */
+    padding: 3px;
     border: none;
     background-color: #F3F7F8;
-    /* box-shadow: 0px 0px 4px 4px rgb(5, 84, 116); */
 	  box-shadow: rgba(30, 30, 30, 0.06) 0px 0px 4px 4px;
+    border-radius: 2px;
   }
 
   .tag {
@@ -266,9 +268,12 @@ select, option {
   #select-block span,
   #block-list li {
 	  margin-left: 5px;
+    margin-bottom: 5px;
     padding: 15px 15px 15px 15px;
-	  border: 1px solid #000;
+	  border: 1px solid var(--ui-anti-color);
+    border-radius: 5px;
     cursor: pointer;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.10);
   }
 
   #block-list {
@@ -341,6 +346,8 @@ select, option {
     --ui-text-color: #fff;
     --ui-color: #242424;
     --ui-anti-color: #fafafa;
+    --ui-anti-text: #000;
+    --ui-trans-color: rgba(255, 255, 255, 0.5) 35%;
   }
 }
 
