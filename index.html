@@ -1,8 +1,8 @@
-<!-- GR8BRIK VERSION 6-15-2025 (SUBOBJECT AND TEXTURES BETA 3.0) -->
+<!-- GR8BRIK VERSION 6-22-2025 (SUBOBJECT AND TEXTURES BETA 3.1) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>GR8BRIK Modeler</title>
+  <title>Modeler - GR8BRIK</title>
   <meta charset="utf-8">
   <!-- <base href="/mod/new/"> -->
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -19,7 +19,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-  <link rel="stylesheet" type="text/css" href="index.css?v=6162025_test1">
+  <link rel="stylesheet" type="text/css" href="index.css?v=6222025_test1">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
   </div>
 
   <div id="info">
-    <p"><a href="https://www.gr8brik.rf.gd/" target="_blank">GR8BRIK beta</a> - Build June 15th, 2025</p>
+    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">GR8BRIK beta</a> - Build June 21st, 2025</p>
   </div>
 
   <button id="toggleMenu" class="mobile-toggle">&#x2630;</button>
@@ -994,9 +994,6 @@
 
       scene.traverse((child) => {
         if (child.isMesh && child.userData.isBlock && child.geometry) {
-          child.geometry.computeVertexNormals();
-          child.geometry.attributes.normal.needsUpdate = true;
-
           if (Array.isArray(child.material)) {
             child.material.forEach(mat => {
               mat.flatShading = !ldraw_loader.smoothNormals;
