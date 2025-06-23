@@ -6,6 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/RGBELoader.js"></script>
     <style>
         body { 
             font-family: Verdana, sans-serif;
@@ -163,6 +164,13 @@
                     directional.position.set(10, 20, 10);
                     scene.add(directional);
 
+                    //https://polyhaven.com/a/autumn_field_puresky
+                    const rgbe_loader = new THREE.RGBELoader();
+                    rgbe_loader.load('https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-new/lib/autumn_field_puresky_1k.hdr', function (texture) {
+                        texture.mapping = THREE.EquirectangularReflectionMapping;
+                        scene.environment = texture;
+                    });
+
                     const lDrawLoader = new THREE.LDrawLoader();
                     lDrawLoader.setPartsLibraryPath("https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/");
                     lDrawLoader.smoothNormals = true;
@@ -189,8 +197,11 @@
                                             if (child.isMesh && !child.material.map && !child.isLineSegments) {
                                                 child.material = new THREE.MeshStandardMaterial({
                                                     color: new THREE.Color(`#${colorHex}`),
+                                                    //flatShading: true,
+                                                    reflectivity: 0.5,
                                                     roughness: 0.3,
-                                                    metalness: 0.1
+                                                    metalness: 0.1,
+                                                    envMapIntensity: 0.5,
                                                 });
                                             }
 
