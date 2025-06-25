@@ -1577,12 +1577,24 @@
         let group_color = null;
         let mesh_child = null;
 
+        let pos = new THREE.Vector3();
+        let rot = new THREE.Quaternion();
+        let scale = new THREE.Vector3();
+        let euler = new THREE.Euler();
+
         group.traverse(function (child) {
           if (child.isMesh) {
             // saving the child object because using the group itself doesn't work
             // todo update block groups in the updateSceneData() function
             // 6/14/2025
             mesh_child = child;
+            
+            mesh_child.updateMatrixWorld(true);
+            mesh_child.getWorldPosition(pos);
+            mesh_child.getWorldQuaternion(rot);
+            mesh_child.getWorldScale(scale);
+            euler.setFromQuaternion(rot);
+
             if (!Array.isArray(child.material)) {
               mesh_color = child.material.color.getHexString().toLowerCase();
             } else {
@@ -1594,7 +1606,7 @@
         const blockData = {
           partName: group.userData.partName,
           color: mesh_color,
-          position: {
+          /*position: {
             x: mesh_child.position.x,
             y: mesh_child.position.y,
             z: mesh_child.position.z
@@ -1608,6 +1620,23 @@
             x: mesh_child.scale.x,
             y: mesh_child.scale.y,
             z: mesh_child.scale.z
+          }, */
+
+          // use matrixes because child objects only store local location values and not global ones
+          position: {
+            x: pos.x,
+            y: pos.y,
+            z: pos.z
+          },
+          rotation: {
+            x: euler.x,
+            y: euler.y,
+            z: euler.z
+          },
+          scale: {
+            x: scale.x,
+            y: scale.y,
+            z: scale.z
           },
           blockID: group.name,
           ldraw: group.ldraw.replace("parts/", ""),
