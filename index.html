@@ -16,7 +16,8 @@
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/TransformControls.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/RGBELoader.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-new/lib/ColladaExporter-modded.js?v=6262025_test2"></script>
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <link rel="stylesheet" type="text/css" href="index.css?v=6222025_test1">
@@ -384,7 +385,7 @@
 			}
 			if(format === "dae") {
 				const collada = new THREE.ColladaExporter();
-				const collada_data = collada.parse(scene);
+				const collada_data = collada.parse(filter_objects_peices());
 				const blob = new Blob([collada_data.data], { type: 'model/vnd.collada+xml' });
 				const url = URL.createObjectURL(blob);
 				const date = getDate();
@@ -1297,8 +1298,9 @@
         if (cloned) {
           thumb.add(cloned);
           if(object.userData.isBlock) {
-            cloned.rotation.z += Math.PI;
-            cloned.rotation.y += Math.PI;
+            cloned.rotation.setFromQuaternion(cloned.quaternion);
+            /* cloned.rotation.z += Math.PI;
+            cloned.rotation.y += Math.PI; */
           }
           console.log(cloned);
           count++;
@@ -1835,7 +1837,7 @@
   /* 
   Clone mesh data and not anything like transform controls because idk how to remove it
   */
-  function clone_mesh_clean(obj) {
+  /* function clone_mesh_clean(obj) {
       if (!obj.isMesh) { 
         return null;
       }
@@ -1850,6 +1852,76 @@
       obj_clone.name = obj.name;
 
       return obj_clone;
+  } */
+
+  function clone_mesh_clean(obj) {
+    if (!obj.isMesh) {
+      return null;
+    }
+
+    const mat = obj.material.clone();
+    const geometry = obj.geometry.clone();
+    const obj_clone = new THREE.Mesh(geometry, mat);
+
+    obj.updateMatrixWorld(true);
+    obj.getWorldPosition(obj_clone.position);
+    obj.getWorldQuaternion(obj_clone.quaternion);
+    obj.getWorldScale(obj_clone.scale);
+
+    obj_clone.name = obj.name;
+
+    return obj_clone;
+  }
+
+  function filter_objects_peices() {
+    /*const clone = scene.clone(true);
+    clone.traverse((child) => {
+      if (child.isMesh && !child.userData.isBlock) {
+        child.parent?.remove(child);
+      }
+    });
+    return clone; */
+    let thumb = new THREE.Scene();
+
+    scene.traverse(function (object) {
+      if (object.isMesh && object.userData.isBlock) {
+        const hexColor = object.material?.color || new THREE.Color(0xff00ff);
+        let cloned = clone_mesh_clean(object);
+        if (cloned) {
+          if(cloned.material && cloned.material.color) {
+            apply_vertex_from_hex(cloned, hexColor);
+            cloned.material.vertexColors = true;
+          }
+          thumb.add(cloned);
+          cloned.rotation.setFromQuaternion(cloned.quaternion);
+          /* cloned.rotation.z += Math.PI;
+          cloned.rotation.y += Math.PI; */
+        }
+      }
+    });
+    return thumb;
+  }
+
+  function apply_vertex_from_hex(mesh, hex) {
+    const geometry = mesh.geometry;
+    const color = new THREE.Color(hex);
+
+    const count = geometry.attributes.position.count;
+    const colors = new Float32Array(count * 3);
+
+    for (let i = 0; i < count; i++) {
+      colors[i * 3 + 0] = color.r;
+      colors[i * 3 + 1] = color.g;
+      colors[i * 3 + 2] = color.b;
+    }
+
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+    if (Array.isArray(mesh.material)) {
+      mesh.material.forEach(mat => mat.vertexColors = true);
+    } else {
+      mesh.material.vertexColors = true;
+    }
   }
 
   /* function updateMaterials() {
