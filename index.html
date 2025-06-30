@@ -926,10 +926,10 @@
           const content = e.target.result;
 
           ldraw_loader.parse(content, function (creation) {
-            //scene.add(creation);
             const converted = ldrawToJSON(creation);
-            console.log("converted:" + JSON.stringify(converted, null, 2));
+            console.log("converted: " + JSON.stringify(converted, null, 2));
             loadSceneFromJSON(converted);
+            //scene.rotation.x += Math.PI;
           });
         } catch (err) {
           tooltip("Invalid LDraw file.");
@@ -1066,7 +1066,7 @@
         reader.readAsText(file);
     });
 
-    var container, camera, scene, renderer, controls, grid_helper, ldraw_loader, raycaster, mouse, partRotation, partPosition, selectedObject, customPosition, selectedMap, selectedExport = null;
+    var container, camera, scene, renderer, controls, grid_helper, ldraw_loader, loading_manager, mouse, partRotation, partPosition, selectedObject, customPosition, selectedMap, selectedExport = null;
 
     let blocks = [];
     let blockGroups = [];
@@ -1209,8 +1209,18 @@
 			scene.add(grid_helper);
 		}
 
+    loading_manager = new THREE.LoadingManager();
+
+    loading_manager.setURLModifier((url) => {
+      return url;
+    });
+
+    loading_manager.onError = (url) => {
+      console.warn("missing part " + url);
+    };
+
     const ldraw_path = "https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/";
-    ldraw_loader = new THREE.LDrawLoader();
+    ldraw_loader = new THREE.LDrawLoader(loading_manager);
     ldraw_loader.preloadMaterials(ldraw_path + 'colors/ldconfig.ldr');
     ldraw_loader.setPath(ldraw_path + 'actual/');
     ldraw_loader.setPartsLibraryPath(ldraw_path + 'actual/');
