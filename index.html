@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 6-23-2025 (SUBOBJECT AND TEXTURES BETA 3.1) -->
+<!-- GR8BRIK VERSION 6-28-2025 (SUBOBJECT AND TEXTURES BETA 3.2) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +16,7 @@
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/TransformControls.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/RGBELoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.127.0/examples/js/exporters/GLTFExporter.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-new/lib/ColladaExporter-modded.js?v=6262025_test3"></script>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" />
@@ -30,7 +31,7 @@
   </div>
 
   <div id="info">
-    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">GR8BRIK beta</a> - Build June 23rd, 2025</p>
+    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">GR8BRIK beta</a> - Build June 28th, 2025</p>
   </div>
 
   <button id="toggleMenu" class="mobile-toggle">&#x2630;</button>
@@ -127,6 +128,7 @@
 			<option value="three">ThreeJS (.json)</option>
 			<option value="lxf">Lego Digital Designer (.lxf)</option>
 			<option value="dae">Collada (.dae)</option>
+      <option value="glb">GL Transmission Format (.gltf)</option>
 		</select><br />
 		<p><button class="btn" title="Finish exporting" id="export-finish">Download file</button></p>
     </div>
@@ -371,6 +373,7 @@
 		// export model
 		document.getElementById("export-finish").addEventListener("click", function () {
 			const format = document.getElementById("export-format").value;
+      selectedExport = document.getElementById("export-format").value;
 			if(format === "three") {
 				document.getElementById("cre-export-three").click();
 			}
@@ -399,6 +402,28 @@
 					URL.revokeObjectURL(url);
 				}, 10000);
 			}
+      // gltfexporter is async
+      if (format === "glb") {
+        const exporter = new THREE.GLTFExporter();
+        const date = getDate();
+
+        exporter.parse(
+          filter_objects_peices(),
+          function (result) {
+            const blob = new Blob([JSON.stringify(result, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `gltf-${date}.gltf`;
+            a.click();
+
+            setTimeout(() => 
+              URL.revokeObjectURL(url), 
+            10000);
+          },
+          { binary: false }
+        );
+      }
 		});
 
 		document.getElementById("part-type-filter").addEventListener("change", function () {
@@ -961,7 +986,7 @@
         reader.readAsText(file);
     });
 
-    var container, camera, scene, renderer, controls, grid_helper, ldraw_loader, raycaster, mouse, partRotation, partPosition, selectedObject, customPosition, selectedMap = null;
+    var container, camera, scene, renderer, controls, grid_helper, ldraw_loader, raycaster, mouse, partRotation, partPosition, selectedObject, customPosition, selectedMap, selectedExport = null;
 
     let blocks = [];
     let blockGroups = [];
@@ -1874,13 +1899,6 @@
   }
 
   function filter_objects_peices() {
-    /*const clone = scene.clone(true);
-    clone.traverse((child) => {
-      if (child.isMesh && !child.userData.isBlock) {
-        child.parent?.remove(child);
-      }
-    });
-    return clone; */
     let thumb = new THREE.Scene();
 
     scene.traverse(function (object) {
@@ -1888,14 +1906,12 @@
         const hexColor = object.material?.color || new THREE.Color(0xff00ff);
         let cloned = clone_mesh_clean(object);
         if (cloned) {
-          if(cloned.material && cloned.material.color) {
+          if(cloned.material && cloned.material.color && selectedExport === "dae") {
             apply_vertex_from_hex(cloned, hexColor);
             cloned.material.vertexColors = true;
           }
           thumb.add(cloned);
           cloned.rotation.setFromQuaternion(cloned.quaternion);
-          /* cloned.rotation.z += Math.PI;
-          cloned.rotation.y += Math.PI; */
         }
       }
     });
