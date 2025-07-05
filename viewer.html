@@ -147,116 +147,110 @@
                 });
 
                 function load_model_data(model_data) {
-                    const scene = new THREE.Scene();
+                    var scene = new THREE.Scene();
 
-                    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 10000);
-                    camera.position.set(250, 250, 250);
-
-                    const renderer = new THREE.WebGLRenderer({canvas: viewer, antialias: true, alpha: true});
+                    var renderer = new THREE.WebGLRenderer({canvas: viewer, antialias: true, alpha: true});
                     renderer.setSize(window.innerWidth, window.innerHeight);
 
-                    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+                    var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 10000);
+                    camera.position.set(250, 250, 250);
 
-                    const ambient = new THREE.AmbientLight(0xdddddd);
+                    var ambient = new THREE.AmbientLight(0xdddddd);
                     scene.add(ambient);
                     
-                    const directional = new THREE.DirectionalLight(0xffffff, 3);
-                    directional.position.set(10, 20, 10);
+                    var directional = new THREE.DirectionalLight(0xffffff, 3);
+                    directional.position.set(250, 250, 250);
                     scene.add(directional);
-
-                    //https://polyhaven.com/a/autumn_field_puresky
-                    const rgbe_loader = new THREE.RGBELoader();
-                    rgbe_loader.load('https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-new/lib/autumn_field_puresky_1k.hdr', function (texture) {
-                        texture.mapping = THREE.EquirectangularReflectionMapping;
-                        scene.environment = texture;
-                    });
-
-                    const lDrawLoader = new THREE.LDrawLoader();
-                    lDrawLoader.setPartsLibraryPath("https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/");
-                    lDrawLoader.smoothNormals = true;
-                    lDrawLoader.separateObjects = true;
                     
-                    let totalBlocks = model_data.blocks.length;
-                    let loadedBlocks = 0;
-                    let failedBlocks = 0;
-                    let loadComplete = false;
+                    var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-                    async function loadParts(blocks) {
+                    var loader = new THREE.LDrawLoader();
+                    var ldr_path = "https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/";
+
+                    loader.preloadMaterials(ldr_path + 'colors/ldconfig.ldr');
+                    loader.setPath(ldr_path + 'actual/parts/');
+                    loader.setPartsLibraryPath(ldr_path + 'actual/');
+                    
+                    var total = model_data.blocks.length;
+                    var complete = false;
+
+                    /*async function loadParts(blocks) {
                         for (const block of blocks) {
                             await new Promise(resolve => {
                                 if (!block.ldraw) {
-                                    console.warn("skipping invalid block ", block);
+                                    console.warn("skipping invalid part ", block);
                                     failedBlocks++;
                                     return resolve();
                                 }
 
-                                lDrawLoader.load(`https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/parts/${block.ldraw}`,
-                                    function (loaded_model) {
-                                        loaded_model.traverse((child) => {
+                                loader.load(`https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/parts/${block.ldraw}`,
+                                    function (group) {
+                                        group.traverse((child) => {
                                             let colorHex = `${block.color ? block.color.replace(/^#/, '') : 'ffffff'}`;
-                                            if (child.isMesh && !child.material.map && !child.isLineSegments) {
-                                                child.material = new THREE.MeshStandardMaterial({
+                                            if (child.isMesh && !Array.isArray(child.material)) {
+                                                child.material = new THREE.MeshLambertMaterial({
                                                     color: new THREE.Color(`#${colorHex}`),
-                                                    //flatShading: true,
-                                                    reflectivity: 0.5,
-                                                    roughness: 0.3,
-                                                    metalness: 0.1,
-                                                    envMapIntensity: 0.5,
                                                 });
-                                            }
-
-                                            if (child.isLineSegments) {
-                                                child.visible = false;
-                                            }
-
-                                            if (child.isMesh && child.material.map) {
-                                                if(Array.isArray(child.material)) {
-                                                    child.material[0].color = new THREE.Color(`#${colorHex}`);
-                                                    child.material.needsUpdate = true;
-                                                }
                                             }
                                         });
 
-                                        loaded_model.position.set(block.position.x, block.position.y, block.position.z);
-                                        loaded_model.rotation.set(block.rotation.x, block.rotation.y, block.rotation.z);
-                                        scene.add(loaded_model);
-
-                                        loadedBlocks++;
-                                        console.log(`${loadedBlocks} out of ${totalBlocks} blocks added`);
+                                        group.position.set(block.position.x, block.position.y, block.position.z);
+                                        group.rotation.set(block.rotation.x, block.rotation.y, block.rotation.z);
+                                        scene.add(group);
 
                                         resolve();
                                     },
                                     undefined,
                                     function (error) {
-                                        console.error(`failed to load ${block.ldraw}`, error);
-                                        failedBlocks++;
                                         resolve();
                                     }
                                 );
                             });
                         }
 
-                        loadComplete = true;
+                        complete = true;
                         showViewer();
                     }
 
-                    setTimeout(() => {
-                        if (!loadComplete) {
-                            console.warn("timeout reached, showing viewer anyway...");
-                            loadComplete = true;
-                            showViewer();
-                        }
-                    }, 50000);
-
                     viewer.style.display = "none";
-                    loadParts(model_data.blocks);
+                    loadParts(model_data.blocks); */
 
-                    function showViewer() {
-                        if (!loadComplete) { 
+                    function loadParts(blocks, index = 0) {
+                        if (index === blocks.length) {
+                            showViewer();
                             return;
                         }
-                            
-                        console.log(`finished with ${loadedBlocks} loaded, ${failedBlocks} failed`);
+
+                        const block = blocks[index];
+
+                        if (!block.ldraw) {
+                            console.warn("skipping invalid part " + block);
+                            loadParts(blocks, index + 1);
+                            return;
+                        }
+
+                        loader.load(`${block.ldraw}`, function (group) {
+                            group.traverse((child) => {
+                                let colorHex = `${block.color ? block.color.replace(/^#/, '') : 'ffffff'}`;
+                                if (child.isMesh && !Array.isArray(child.material)) {
+                                    child.material = new THREE.MeshLambertMaterial({color: new THREE.Color(`#${colorHex}`)});
+                                }
+                            });
+
+                            group.position.set(block.position.x, block.position.y, block.position.z);
+                            group.rotation.set(block.rotation.x, block.rotation.y, block.rotation.z);
+                            scene.add(group);
+
+                            loadParts(blocks, index + 1);
+                        }, undefined, function (error) {
+                            console.warn(`Failed to load block ${block.ldraw}`, error);
+                            loadParts(blocks, index + 1);
+                        });
+                    }
+
+                    loadParts(model_data.blocks);
+
+                    function showViewer() {     
                         loading.style.display = "none";
                         viewer.style.display = "block";
 
