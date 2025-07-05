@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 6-28-2025 (SUBOBJECT AND TEXTURES BETA 3.2) -->
+<!-- GR8BRIK VERSION 7-5-2025 (SUBOBJECT AND TEXTURES BETA 3.3.2) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,27 +17,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/RGBELoader.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.127.0/examples/js/exporters/GLTFExporter.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-new/lib/ColladaExporter-modded.js?v=6262025_test3"></script>
+  <script src="https://cdn.jsdelivr.net/gh/susstevedev/gr8brik/lib/ColladaExporter-modded.js?v=6262025_test3"></script>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-  <link rel="stylesheet" type="text/css" href="index.css?v=6222025_test1">
+  <link rel="stylesheet" type="text/css" href="index.css?v=742025_test2">
 </head>
 
 <body>
   <div id="top-container">
-    <span id="link-home"><img src="/img/logo.jpg" id="logo-img" /><a href="/"><span>&nbsp;GR8BRIK&nbsp;</span></a><span class="tag">BETA</span></span>
-    <a href="https://www.gr8brik.rf.gd/acc/login" id="username-field">Login</a>
+    <span id="link-home"><img src="/img/logo.jpg" id="logo-img" /><a href="/" target="_blank"><span>&nbsp;GR8BRIK&nbsp;</span></a><span class="tag">BETA</span></span>
+    <a href="https://www.gr8brik.rf.gd/acc/login" target="_blank" id="username-field">Login</a>
   </div>
 
   <div id="info">
-    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">GR8BRIK beta</a> - Build June 28th, 2025</p>
+    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">GR8BRIK beta</a> - Build July 5th, 2025</p>
   </div>
 
   <button id="toggleMenu" class="mobile-toggle">&#x2630;</button>
-  <button id="takeScreenshot" class="mobile-toggle" style="top: 155px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-camera" aria-hidden="true" alt="screenshot"></i></button>
-  <button id="getPriceInfo" class="mobile-toggle" style="top: 255px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-money" aria-hidden="true" alt="get price info"></i></button>
-  <button id="resetCamera" class="mobile-toggle" style="top: 355px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-refresh" aria-hidden="true" alt="reset camera location"></i></button>
+  <button id="takeScreenshot" class="mobile-toggle" style="top: 155px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-camera" aria-hidden="true" title="Take a screenshot"></i></button>
+  <button id="getPriceInfo" class="mobile-toggle" style="top: 255px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-money" aria-hidden="true" title="Get price info"></i></button>
+  <button id="resetCamera" class="mobile-toggle" style="top: 355px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-refresh" aria-hidden="true" title="Reset the camera location"></i></button>
   
   <div id="left-container">
     <p style="height: 2vh;"></p>
@@ -55,7 +55,7 @@
     <button id="delete-block" class="btn" title="Remove a block from the scene, along with all records of it"><i class="fa fa-trash" aria-hidden="true"></i>Delete Block</button><hr />
 
     <span>Color</span><br />
-    <input type="text" id="color-picker" /><input type="number" id="selected-map" min="0" max="50" step="1" value="0"><hr />
+    <input type="text" id="color-picker" /><input type="number" title="Selected material layer. Most textured LDraw parts have more than three layers." id="selected-map" min="0" max="50" step="1" value="0"><hr />
     <span id="obj-colors"></span>
 
     <span>Filter</span><br />
@@ -181,7 +181,6 @@
 				.then(response => {
           if(response.success) {
             const field = document.getElementById("username-field");
-            //field.style.display = "inline";
             field.innerText = response.user;
             field.setAttribute("href", "/acc/creations");
             tooltip('Logged in as ' + response.user);
@@ -191,9 +190,9 @@
 					try {
 						const res = await err.response.json();
 						tooltip(res.error);
-						console.error("Login error:", res.error);
+						console.error("An error occured while authenticating " + res.error);
 					} catch {
-						tooltip('An unknown error occurred while logging in');
+						tooltip('An error occured while authenticating');
 					}
 				});
 		}
@@ -215,7 +214,7 @@
 				return;
 			}
 
-			fetch(`https://susstevedev.github.io/gr8brik-new/parts/${type}.json`)
+			fetch(`https://susstevedev.github.io/gr8brik/parts/${type}.json`)
 				.then(res => res.json())
 				.then(data => {
 					console.log(`${type} parts loaded`);
@@ -251,7 +250,6 @@
 		
 		loadParts('brick');
 		
-		// search function
 		/*document.getElementById("search-parts").addEventListener("keyup", function (event) {
 			if (event.key === "Enter") {
 				const value = this.value.toLowerCase().replace(/\s+/g, " ").trim();
@@ -265,7 +263,7 @@
 			}
 		}); */
 
-    document.getElementById("search-parts").addEventListener("keyup", function (event) {
+    /*document.getElementById("search-parts").addEventListener("keyup", function (event) {
       if (event.key === "Enter") {
         const value = this.value.toLowerCase().replace(/\s+/g, " ").trim();
         const items = Array.from(document.querySelectorAll("#select-block span"));
@@ -277,6 +275,42 @@
 
           const matches = titleText.includes(value) || smallText.includes(value);
           item.style.display = matches ? "flex" : "none";
+        });
+      }
+    }); */
+
+	// New search function
+	// This will be slightly slower though as it stores an array of simi matching parts and exact matches for those parts, then goes through them and pushes the exact maches to the top
+    document.getElementById("search-parts").addEventListener("keyup", function (event) {
+      if (event.key === "Enter") {
+        const value = this.value.toLowerCase().replace(/\s+/g, " ").trim();
+        const items = Array.from(document.querySelectorAll("#select-block span"));
+
+        const exact_match = [];
+        const simi_match = [];
+
+        items.forEach(item => {
+          const title_txt = (item.title || "").toLowerCase().replace(/\s+/g, " ").trim();
+          const part_num_elm = item.querySelector("small.part-list-number");
+          const small_txt = part_num_elm ? part_num_elm.textContent.toLowerCase().trim() : "";
+
+          const exact = title_txt === value || small_txt === value;
+          const simi = title_txt.includes(value) || small_txt.includes(value);
+
+          if (exact) {
+            exact_match.push(item);
+          } else if (simi) {
+            simi_match.push(item);
+          } else {
+            item.style.display = "none";
+          }
+        });
+
+        const container = document.getElementById("select-block");
+
+        exact_match.concat(simi_match).forEach(item => {
+          item.style.display = "flex";
+          container.appendChild(item);
         });
       }
     });
@@ -497,186 +531,7 @@
 	});
 
 
-	// comment mess
     $(document).ready(function () {
-
-      /*$(document).on('click', 'a', function(event) { 
-			event.preventDefault();
-			if ($(this).attr("download")) { 
-				return;
-			}
-       
-			let url = $(this).attr("href");
-			if (url && url.match("^http" || "^https")) {
-				window.location.href = url;
-			}
-      }); */
-
-      /*function login() {
-          $.ajax({
-            url: start_url + "/ajax/user.php",
-            method: "GET",
-            data: {
-                ajax: true
-            },
-            success: function (response) {
-                $("#username-field").show().text(response.user);
-                $("#username-field").attr("href", "/acc/creations");
-                tooltip('Logged in as ' + response.user);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-            try {
-              var response = JSON.parse(jqXHR.responseText);
-              console.error('Error logging in: ' + textStatus + ' ' + jqXHR.status + ' ' + errorThrown);
-              if (response && response.error) {
-                console.error('Error logging in: ' + response.error);
-                tooltip(response.error);
-              }
-            } catch (e) {
-              console.error('Failed to parse error: ', e);
-              console.error('Raw: ', jqXHR.responseText);
-              tooltip('An unknown error occured while logging in');
-            }
-          }
-          });
-      }
-      login(); */
-
-      /*let displayed_parts = [];
-      let current_type = '';
-	  let cached_parts = {};
-
-      function loadParts(type) {
-        console.log(`loading ${type} category`);
-		current_type = type;
-		
-		if (cached_parts[type]) {
-			console.log(`${type} parts loaded from cache`);
-			displayed_parts = cached_parts[type];
-			displayParts();
-			return;
-		}
-
-        $.ajax({
-          url: `https://susstevedev.github.io/gr8brik-new/parts/${type}.json`,
-          method: 'GET',
-          dataType: 'json',
-          success: function (data) {
-            console.log(`${type} parts loaded`);
-            displayed_parts = data;
-			cached_parts[type] = data;
-            displayParts();
-          },
-          error: function (err) {
-            console.error('error loading parts ', err);
-            tooltip('Failed to load parts');
-          }
-        });
-      } */
-	  
-	 /*function displayParts() {
-		let appended = '';
-		displayed_parts.forEach(part => {
-			appended += `<span id="${part.file}" value="${part.file}"><img src="https://library.ldraw.org/images/library/official/parts/${part.file.split(".")[0]}.png" loading="lazy" width="45px" /><br /><small class="part-list-number">${part.file.split(".")[0]}</small>&nbsp;<small class="hover-only">${part.name}</small></span>`;
-		});
-		$('#select-block').html(appended);
-	} */
-
-      /*$('#part-type-filter').on('change', function () {
-        let selectedType = $(this).val();
-        loadParts(selectedType);
-      }); */
-
-      //loadParts('brick');
-
-      /*$(document).on("click", "#select-block span", function () {
-        let selectedPart = $(this).attr("value");
-        if (!selectedPart) {
-          console.error("selected part is not valid");
-          return;
-        }
-
-        part = 'parts/' + selectedPart;
-        partName = selectedPart;
-        console.log("selected peice: ", selectedPart);
-        addBlock();
-      }); */
-
-      /*$(document).on("click", "#save-popup .btn-alt", function () {
-        $("#save-popup").hide();
-      });
-
-      $(document).on("click", "#save-popup-open", function () {
-        $("#save-popup").fadeIn();
-      }); */
-
-      /*$(document).on("click", "#download-json", function () {
-		let original_text = "Save Creation";
-		
-        let sceneJSON = generateSceneJSON();
-
-        if (sceneJSON) {
-          const jsonData = sceneJSON;
-          console.log(jsonData);
-
-          const date = new Date();
-          date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
-          document.cookie = "localsave=" + btoa(jsonData) + "; expires=" + date
-            .toUTCString() + "";
-
-          let name = $("#save-popup input[name='name']").val().trim();
-          let desc = $("#save-popup textarea[name='desc']").val().trim();
-          let screenshot = capture();
-
-          $.ajax({
-            url: start_url + "/ajax/build.php",
-            type: "POST",
-            data: {
-              save_build: true,
-              creation: jsonData,
-              name: name,
-              desc: desc,
-              screenshot: screenshot
-            },
-            success: function (response) {
-              console.log(`OK: ${response.success}`);
-              tooltip(response.success);
-            },
-            error: function (xhr, status, error) {
-              try {
-                var response = JSON.parse(xhr.responseText);
-                console.error(`ERR: ${response.error} (${error}).`);
-                tooltip(response.error);
-              } catch (e) {
-                console.error("Invalid error response:", xhr.responseText);
-                tooltip("An unknown error occurred.");
-              }
-            }
-          });
-        }
-      }); */
-
-      /*$("#color-picker").spectrum({
-        color: "#ff0000",
-        preferredFormat: "hex",
-        showInput: true,
-        showPalette: true,
-        maxSelectionSize: 4,
-        palette: [
-          ["#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF"],
-          ["#000000", "#FFFFFF", "#808080", "#FFA500", "#800080", "#FFC0CB"],
-          ["#A52A2A", "#FFD700", "#C0C0C0", "#8B0000", "#006400", "#00008B"],
-          ["#C91A09", "#A0BCAC", "#7789A5", "#958A73", "#A3A2A4", "#635F61"]
-        ],
-        change: function (color) {
-          console.log(`Changed selected color to ${color.toName() || color.toHexString()}`);
-          partColor = color.toHexString();
-          if (color && selectedObject) {
-            changeBlockColor(color.toHexString());
-          }
-        }
-      }); */
-
       $("#color-picker").spectrum({
         color: partColor,
         preferredFormat: "hex",
@@ -908,11 +763,6 @@
 		URL.revokeObjectURL(url);
 	});
 
-
-    /*document.getElementById("importBtn").addEventListener("click", function () {
-      document.getElementById("cre-import").click();
-    }); */
-
     document.getElementById("cre-import").addEventListener("change", function (event) {
         let file = event.target.files[0];
         if (!file) {
@@ -1074,7 +924,7 @@
         reader.readAsText(file);
     });
 
-    var container, camera, scene, renderer, controls, grid_helper, ldraw_loader, loading_manager, mouse, partRotation, partPosition, selectedObject, customPosition, selectedMap, selectedExport = null;
+    var container, camera, scene, renderer, controls, grid_helper, ldraw_loader, loading_manager, mouse, partRotation, partPosition, selectedObject, customPosition, selectedMap, selectedExport, named_parts = null;
 
     let blocks = [];
     let blockGroups = [];
@@ -1207,7 +1057,7 @@
 
     const rgbe_loader = new THREE.RGBELoader();
     //https://polyhaven.com/a/autumn_field_puresky
-    rgbe_loader.load('https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-new/lib/autumn_field_puresky_1k.hdr', function (texture) {
+    rgbe_loader.load('https://cdn.jsdelivr.net/gh/susstevedev/gr8brik/lib/autumn_field_puresky_1k.hdr', function (texture) {
       texture.mapping = THREE.EquirectangularReflectionMapping;
       scene.environment = texture;
     });
@@ -1231,7 +1081,7 @@
 			scene.add(grid_helper);
 		}
 
-    /*loading_manager = new THREE.LoadingManager();
+    loading_manager = new THREE.LoadingManager();
 
     loading_manager.setURLModifier((url) => {
       return url;
@@ -1240,29 +1090,66 @@
     loading_manager.onError = (url) => {
       console.warn("missing part " + url);
       loading_manager.itemEnd(url);
-    }; */
+    };
+	
+	named_parts = new Map();
+	
+	/* loading_manager.setURLModifier((url) => {
+		const cleanName = url.split("/").pop().toLowerCase();
+
+		if (
+		!cleanName.startsWith("s/") && 
+		!cleanName.startsWith("p/") && 
+		!cleanName.startsWith("48/") && 
+		!cleanName.startsWith("7/") && 
+		!cleanName.startsWith("8/") && 
+		!cleanName.includes("stud") && 
+		!cleanName.includes("-") && 
+		cleanName.endsWith(".dat") &&
+		/^[0-9]/.test(cleanName)) {
+			if (!named_parts.has(cleanName)) {
+			  named_parts.set(cleanName, {
+				url,
+				type: cleanName,
+			  });
+			}
+		}
+
+		return url;
+	}); */
+	
+	/*loading_manager.setURLModifier((url) => {
+		const fileName = url.split("/").pop().toLowerCase();
+
+		const primitive = url.includes("/p/") || url.includes("/48/") || url.includes("/7/") || url.includes("/8/");
+		const subp = url.includes("/s/");
+
+		const real =
+			!primitive &&
+			!subp &&
+			!fileName.includes("stud") &&
+			!fileName.includes("-") &&
+			fileName.endsWith(".dat") &&
+			/^[0-9]/.test(fileName);
+
+		if (real && !named_parts.has(fileName)) {
+			named_parts.set(fileName, {
+				url,
+				type: fileName,
+			});
+		}
+
+		return url;
+	}); */
 
     const ldraw_path = "https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/";
-    //ldraw_loader = new THREE.LDrawLoader(loading_manager);
-    ldraw_loader = new THREE.LDrawLoader(loading_manager);
+    ldraw_loader = new THREE.LDrawLoader();
     ldraw_loader.preloadMaterials(ldraw_path + 'colors/ldconfig.ldr');
     ldraw_loader.setPath(ldraw_path + 'actual/');
     ldraw_loader.setPartsLibraryPath(ldraw_path + 'actual/');
-
-    /* ldraw_loader.loadLibraryFile = function(fileName, onLoad, onProgress, onError) {
-      original_part(
-        fileName,
-        onLoad,
-        onProgress,
-        (err) => {
-          console.warn(`fallback for missing part ${fileName}`);
-          //onLoad('empty.dat'); 
-          ldraw_loader.load('empty.dat');
-        }
-      );
-    };
-
-    let original_part = ldraw_loader.loadLibraryFile.bind(ldraw_loader); */
+	
+	// lifesaver thanks chatgpt
+	ldraw_loader.separateObjects = true;
         
     raycaster = new THREE.Raycaster();
     mouse = new THREE.Vector2();
@@ -1399,10 +1286,13 @@
 
           selectedMap = null;
           updateSceneData();
+		  updateBLItems();
         } else if (child.material.color) {
-					child.material.color.set(color);
-					child.material.needsUpdate = true;
-          updateSceneData();
+			child.material.color.set(color);
+			child.material.needsUpdate = true;
+			updateSceneData();
+			updateBLItems();
+          
 				}
 			}
 		});
@@ -1415,7 +1305,9 @@
     if (part) {
       if (part.isMesh || part.isGroup) {
         if (part.parent) {
-				  part.parent.remove(part);
+          transformControls.detach(selectedObject);
+          selectedObject = null;
+		  part.parent.remove(part);
         }
         part.updateMatrixWorld(true);
         tooltip('Deleted part');
@@ -1423,12 +1315,19 @@
         tooltip('Part is not a valid mesh')
       }
 
-      if (blockGroups && blockGroups.length > 0) {
+      /*if (blockGroups && blockGroups.length > 0) {
         blockGroups.forEach(function (g) {
-          g.remove(part);
-          g.updateMatrixWorld(true);
+		  if(g.uuid === part.parent.uuid) {
+			  if(g.part) {
+				g.remove(part);
+			  }
+			  g.updateMatrixWorld(true);
+			  updateBLItem(g.userData.partName, color, g.userData.sceneCount, g.uuid);
+		  }
         });
-      }
+      } */
+	  
+	  updateBLItems();
 
       if (selectedObject === part) {
           deselect(part);
@@ -1545,10 +1444,18 @@
                     metalness: 0.1,
                     envMapIntensity: 0.5,
                   });
+				  
+				  /* const parts_arr = Array.from(named_parts.entries());
+				  let part_name_child = null;
+				  parts_arr.forEach(([key, value]) => {
+					console.log(`${key}: ${value.type}`);
+					part_name_child = value.type;
+				  }); */
 
                   child.userData.isBlock = true;
                   child.userData.isTexture = false;
-                  child.userData.parentName = partName;
+				  child.userData.parentName = partName;
+                  child.userData.ldraw = child.parent.userData.fileName;
                   
                   transformControls.attach(child);
                   selectedObject = child;
@@ -1557,7 +1464,8 @@
               if (child.material && child.material.map && child.isMesh && !child.isLineSegments) {
                 child.userData.isBlock = true;
                 child.userData.isTexture = true;
-                child.userData.parentName = partName;
+				child.userData.parentName = partName;
+                child.userData.ldraw = child.parent.userData.fileName;
               }
 
               let display_lines = scene.userData.displayLines;
@@ -1589,6 +1497,7 @@
               
             blocks.push(blockGroup);
             blockGroups.push(blockGroup);
+            blockGroup.sceneCount = blocks.length;
 
             tooltip(`Added part ${part.replace("parts/", "")}`);
 
@@ -1609,7 +1518,7 @@
                 console.warn("Texture load failed or doesn't exist:", err);
             }); */
 
-            updateBlockList(partName, partColor, blocks.length, blockGroup.uuid);
+            updateBLItems();
             updateSceneData();
             throwSuccess();
       }, undefined, function (error) {
@@ -1618,7 +1527,7 @@
       });
   }
 
-  function updateBlockList(part, color, count, id) {
+  /*function updateBlockList(part, color, count, id) {
     let blockList = document.getElementById('block-list');
     let listItem = document.createElement('li');
 
@@ -1628,6 +1537,74 @@
 
     blockList.appendChild(listItem);
   }
+
+  function removeBLItem(id) {
+    let item = document.querySelector(`li[data-id="${id}"]`);
+    if (item) {
+      item.remove();
+    }
+  } 
+
+  function updateBLItem(part, color, count, id) {
+    removeBLItem(id);
+    updateBlockList(part, color, count, id);
+    console.log('updated block list');
+  } */
+  
+  function getBLItems() {
+	  const items = [];
+	  scene.traverse(obj => {
+		if (obj.isMesh || obj.isGroup) {
+			if(obj.userData.isBlock || obj.isGroup) {
+				items.push(obj);
+			}
+		}
+	  });
+	  return items;
+  }
+	
+	function updateBLItems() {
+		const items = getBLItems();
+		const blockList = document.getElementById('block-list');
+		blockList.innerHTML = "";
+		
+		items.forEach(obj => {
+			const item = renderBLItem(obj, 0);
+			blockList.appendChild(item);
+		});
+	}
+	
+	function renderBLItem(obj, level = 0) {
+		const id = obj.uuid;
+		const color = obj.material?.color?.getHexString?.() || "No material";
+		
+		let part;
+		if (obj.userData.isBlock) {
+			part = `Part ${obj.parentName || obj.parent.parentName || obj.parent.parent.parentName} (Group ${level})`;
+		} else {
+			part = obj.name || `Group ${level}`;
+		}
+
+		const li = document.createElement('li');
+		li.classList.add('scene-block-item');
+		li.setAttribute('data-id', id);
+		li.textContent = `${part} (${color})`;
+
+		if (obj.children && obj.children.length > 0) {
+			const ul = document.createElement('ul');
+
+			obj.children.forEach(child => {
+				if (child.isMesh || child.isGroup) {
+					const childLi = renderBLItem(child, level + 1);
+					ul.appendChild(childLi);
+				}
+			});
+
+			li.appendChild(ul);
+		}
+
+		return li;
+	}
 
   function subobjectPosition(g) {
       g.updateMatrixWorld(true);
@@ -1722,7 +1699,7 @@
     return group;
 	}
   
-    function generateSceneJSON() {
+    /* function generateSceneJSON() {
       let sceneData = {
         metadata: {
           file_version: 1.2,
@@ -1763,7 +1740,7 @@
             mesh_child.getWorldQuaternion(rot);
             mesh_child.getWorldScale(scale);
             euler.setFromQuaternion(rot);
-
+			
             if (Array.isArray(child.material)) {
               mesh_color = child.material[0].color.getHexString().toLowerCase();
             } else {
@@ -1775,21 +1752,6 @@
         const blockData = {
           partName: group.userData.partName,
           color: mesh_color || 'c91a09',
-          /*position: {
-            x: mesh_child.position.x,
-            y: mesh_child.position.y,
-            z: mesh_child.position.z
-          },
-          rotation: {
-            x: mesh_child.rotation.x + Math.PI,
-            y: mesh_child.rotation.y,
-            z: mesh_child.rotation.z
-          },
-          scale: {
-            x: mesh_child.scale.x,
-            y: mesh_child.scale.y,
-            z: mesh_child.scale.z
-          }, */
 
           // use matrixes because child objects only store local location values and not global ones
           position: {
@@ -1808,14 +1770,91 @@
             z: scale.z
           },
           blockID: group.name,
-          ldraw: group.ldraw.replace("parts/", ""),
+          //ldraw: group.ldraw.replace("parts/", ""),
+		  ldraw: mesh_child.userData.ldraw,
         };
 
         sceneData.blocks.push(blockData);
       });
 
       return JSON.stringify(sceneData, null, 2);
-    }
+    } */
+	
+	function generateSceneJSON() {
+	  let sceneData = {
+		metadata: {
+		  file_version: 1.2,
+		  name: "My Model",
+		  description: null
+		},
+		camera: camera.position,
+		blocks: []
+	  };
+
+	  if (selectedObject) {
+		transformControls.detach(selectedObject);
+		selectedObject = null;
+	  }
+
+	  blockGroups.forEach(function (group) {
+		if (!group) {
+			return;
+		}
+
+		const meshes = [];
+
+		group.traverse(function (child) {
+		  if (child.isMesh && child.userData.isBlock) {
+			meshes.push(child);
+		  }
+		});
+
+		meshes.forEach(mesh_child => {
+		  const pos = new THREE.Vector3();
+		  const rot = new THREE.Quaternion();
+		  const scale = new THREE.Vector3();
+		  const euler = new THREE.Euler();
+
+		  mesh_child.updateMatrixWorld(true);
+		  mesh_child.getWorldPosition(pos);
+		  mesh_child.getWorldQuaternion(rot);
+		  mesh_child.getWorldScale(scale);
+		  euler.setFromQuaternion(rot);
+
+		  if (Array.isArray(mesh_child.material)) {
+             mesh_color = mesh_child.material[0].color.getHexString().toLowerCase();
+           } else {
+             mesh_color = mesh_child.material.color.getHexString().toLowerCase();
+           }
+
+		  const blockData = {
+			partName: group.userData.partName,
+			color: mesh_color,
+			position: {
+			  x: pos.x,
+			  y: pos.y,
+			  z: pos.z
+			},
+			rotation: {
+			  x: euler.x,
+			  y: euler.y,
+			  z: euler.z
+			},
+			scale: {
+			  x: scale.x,
+			  y: scale.y,
+			  z: scale.z
+			},
+			blockID: group.name,
+			ldraw: mesh_child.userData.ldraw.replace("parts/", ""),
+		  };
+
+		  sceneData.blocks.push(blockData);
+		});
+	  });
+
+	  return JSON.stringify(sceneData, null, 2);
+	}
 
     function generateSceneLXFML() {
       let sceneBricks = '';
@@ -2259,7 +2298,7 @@
             <img style="width: 145px" src="https://threejs.org/examples/models/ldraw/ldraw_org_logo/Stamp145.png">
         </a>
     <br />
-    <a href="http://www.ldraw.org/" style="color:#000;">This software uses the LDraw Parts Library</a>
+    <a href="http://www.ldraw.org/" style="color:#000;">This software uses the LDraw Parts Library &amp; LDrawLoader.js</a>
   </div>
 
 </body>
