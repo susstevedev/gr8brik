@@ -1,11 +1,26 @@
 body {
+    --ui-text-color: #000;
+    --ui-color: #fafafa;
+    --ui-anti-color: #242424;
+    --ui-anti-text: #fff;
+    --ui-trans-color: rgba(0, 0, 0, 0.5) 35%;
+    --ui-button-blue: #87ceeb;
+
     font-family: 'Arial Narrow', Arial, sans-serif;
     font-size: 16px;
     background-color: var(--ui-color);
     color: var(--ui-text-color);
     margin: 0px;
     overflow: hidden;
-  }
+}
+
+body.dark {
+  --ui-text-color: #fff;
+  --ui-color: #242424;
+  --ui-anti-color: #fafafa;
+  --ui-anti-text: #000;
+  --ui-trans-color: rgba(255, 255, 255, 0.5);
+}
   
 select, option {
 	background-color: var(--ui-color);
@@ -326,7 +341,8 @@ select, option {
         opacity: 0;
     }
 }
-:root {
+
+/* :root {
     --ui-text-color: #000;
     --ui-color: #fafafa;
     --ui-anti-color: #242424;
@@ -335,7 +351,7 @@ select, option {
     --ui-button-blue: #87ceeb;
 }
 
-@media (prefers-color-scheme: dark) {
+ @media (prefers-color-scheme: dark) {
   :root {
     --ui-text-color: #fff;
     --ui-color: #242424;
@@ -343,7 +359,7 @@ select, option {
     --ui-anti-text: #000;
     --ui-trans-color: rgba(255, 255, 255, 0.5) 35%;
   }
-}
+} */
 
 @media (max-width: 768px) {
     #left-container {
