@@ -140,12 +140,16 @@
 
   <div id="settings-popup">
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
-    <h3><span style="color: #fff;">Modeler Settings</span></h3>
+    <h3><span style="color: var(--ui-text-color);">Modeler Settings</span></h3>
     <input type="checkbox" id="smooth-normals-enable" checked>
     <label for="smooth-normals-enable">Enable smooth normals</label><br />
     <input type="checkbox" id="display-lines-enable">
-    <label for="display-lines-enable">Enable lines on objects</label>
-		<p><button class="btn" title="Finish editing settings" id="settings-finish">Save</button></p>
+    <label for="display-lines-enable">Enable lines on objects</label><br />
+
+    <hr />
+
+		<button class="btn" title="Load autosave from device" onclick="read_autosave();"><i class="fa fa-floppy-o" aria-hidden="true"></i>Recover Autosave</button><br />
+    <button class="btn" title="Clear autosave from device" onclick="clear_autosave();"><i class="fa fa-trash" aria-hidden="true"></i>Trash Autosave</button><br />
     </div>
   </div>
 
@@ -367,10 +371,12 @@
 		document.getElementById("download-json").addEventListener("click", function () {
 			const sceneJSON = generateSceneJSON();
 			if (sceneJSON) {
-				const jsonData = sceneJSON;
-				const date = new Date();
-				date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
-				document.cookie = "localsave=" + btoa(jsonData) + "; expires=" + date.toUTCString();
+        autosave();
+
+        if (selectedObject) {
+          transformControls.detach(selectedObject);
+          selectedObject = null;
+        }
 
 				const name = document.querySelector("#save-popup input[name='name']").value.trim();
 				const desc = document.querySelector("#save-popup textarea[name='desc']").value.trim();
@@ -383,7 +389,7 @@
 					headers: { "Content-Type": "application/x-www-form-urlencoded" },
 					body: new URLSearchParams({
 						save_build: true,
-						creation: jsonData,
+						creation: sceneJSON,
 						name,
 						desc,
 						screenshot
@@ -1097,7 +1103,7 @@
 
     // toggle smooth normals
     // todo make this actually work
-    document.getElementById("smooth-normals-enable").addEventListener("click", function () {
+    document.getElementById("smooth-normals-enable").addEventListener("change", function () {
       ldraw_loader.smoothNormals = this.checked;
 
       scene.traverse((child) => {
@@ -1116,12 +1122,12 @@
       scene.updateMatrixWorld(true);
     });
 
-    document.getElementById("display-lines-enable").addEventListener("click", function () {
+    document.getElementById("display-lines-enable").addEventListener("change", function () {
       const displayLines = this.checked;
       scene.userData.displayLines = displayLines;
 
       scene.traverse((obj) => {
-        if (obj.isMesh && obj.userData.isCustomLine) {
+        if (obj.isLineSegments && obj.userData && obj.userData.ldr_line === true) {
           obj.visible = displayLines;
         }
       });
@@ -1204,12 +1210,12 @@
     directional_lighting.position.set(250, 250, 250);
     scene.add(directional_lighting);
 
-    /* const rgbe_loader = new THREE.RGBELoader();
+    const rgbe_loader = new THREE.RGBELoader();
     //https://polyhaven.com/a/autumn_field_puresky
     rgbe_loader.load('https://cdn.jsdelivr.net/gh/susstevedev/gr8brik/lib/autumn_field_puresky_1k.hdr', function (texture) {
       texture.mapping = THREE.EquirectangularReflectionMapping;
       scene.environment = texture;
-    }); */
+    });
 
     transformControls = new THREE.TransformControls(camera, renderer.domElement);
     scene.add(transformControls);
@@ -1575,6 +1581,8 @@
             let blockGroup = new THREE.Group();
             blockGroup.name = `ldraw_${makeid(10)}`;
             blockGroup.ldraw = part;
+
+            let display_lines = scene.userData.displayLines;
 			
             loadedGroup.traverse((child) => {
               if (child.isLineSegments && child.parent.isGroup) {
@@ -1587,24 +1595,18 @@
                   const pos2 = child.getWorldPosition(pos);
                   console.log(pos2);
 
-                  /* child.material = new THREE.MeshPhysicalMaterial({
+                  child.material = new THREE.MeshPhysicalMaterial({
                     color: new THREE.Color(partColor || "#000000"),
                     reflectivity: 0.5,
                     roughness: 0.4,
                     metalness: 0.1,
                     envMapIntensity: 0.5,
-                  }); */
-
-                  child.material = new THREE.MeshLambertMaterial({
-                    color: new THREE.Color(partColor || "#000000"),
                   });
 
                   child.userData.isBlock = true;
                   child.userData.isTexture = false;
-				          child.userData.parentName = partName;
-                  child.userData.id = makeid(15);
                   child.userData.ldraw = child.parent.userData.fileName || partName;
-                  child.userData.original_mat = child.material;
+                  child.userData.ldr_line = false;
                   
                   transformControls.attach(child);
                   selectedObject = child;
@@ -1613,24 +1615,24 @@
               if (child.material && child.material.map && child.isMesh && !child.isLineSegments) {
                 child.userData.isBlock = true;
                 child.userData.isTexture = true;
-				        child.userData.parentName = partName;
-                child.userData.id = makeid(15);
                 child.userData.ldraw = child.parent.userData.fileName || partName;
-                child.userData.original_mat = child.material;
+				        child.userData.ldr_line = false;
               }
 
-              let display_lines = scene.userData.displayLines;
+				      child.userData.parentName = partName;
+              child.userData.id = makeid(15);
+              child.userData.original_mat = child.material;
 
-              if (display_lines && child.material && child.isMesh && !child.isLineSegments) {
+              if (child.material && child.isMesh && !child.isLineSegments) {
                 const edges = new THREE.EdgesGeometry(child.geometry); 
                 const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial( { color: 0x000000 } ) );
-                child.userData.isCustomLine = true;
+                line.userData.ldr_line = true;
                 child.add(line);
 
                 if(display_lines != true) {
                   line.visible = false;
                 }
-              }  
+              }
             });
 
             blockGroup.add(loadedGroup);
@@ -1953,13 +1955,14 @@
         description: null
       },
       camera: camera.position,
+      settings: JSON.stringify(scene.userData),
       blocks: []
 	  };
 
-	  if (selectedObject) {
+	  /* if (selectedObject) {
       transformControls.detach(selectedObject);
       selectedObject = null;
-	  }
+	  } */
 
 	  blockGroups.forEach(function (group) {
       if (!group) {
@@ -2203,6 +2206,54 @@
       if (selectedObject) {
           selectedObject.updateMatrixWorld(true);
       }
+
+      if(scene.children.length != 0) {
+        autosave();
+      }
+  }
+
+  function autosave() {
+    const jsonData = generateSceneJSON();
+		const date = new Date();
+		date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
+		document.cookie = "localsave=" + JSON.stringify(JSON.parse(jsonData)) + "; expires=" + date.toUTCString();
+  }
+
+  function read_autosave() {
+    const saved = getCookie("localsave");
+
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        loadSceneFromJSON(parsed);
+        camera.position.x = parsed.camera.x;
+        camera.position.y = parsed.camera.y;
+        camera.position.z = parsed.camera.z;
+        scene.userData = parsed.settings;
+        console.log(parsed.camera);
+      } catch (e) {
+        console.warn("failed to load autosave " + e);
+      }
+    }
+  }
+
+  function clear_autosave() {
+    const saved = getCookie("localsave");
+
+    if (saved) {
+      try {
+        let parsed = JSON.parse(saved);
+        parsed.blocks = null;
+        parsed.camera = null;
+        const date = new Date();
+        date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
+        document.cookie = "localsave=" + JSON.stringify(parsed) + "; expires=" + date.toUTCString();
+
+        tooltip('Cleared autosave');
+      } catch (e) {
+        console.warn("failed to load autosave " + e);
+      }
+    }
   }
 
   /* 
