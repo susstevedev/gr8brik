@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 7-5-2025 (SUBOBJECT AND TEXTURES BETA 3.3.2) -->
+<!-- GR8BRIK VERSION 7-17-2025 (SUBOBJECT AND TEXTURES BETA 3.3.2) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +32,7 @@
   </div>
 
   <div id="info">
-    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">GR8BRIK beta</a> - Build July 5th, 2025</p>
+    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">GR8BRIK beta</a> - Build July 17th, 2025</p>
   </div>
 
   <button id="toggleMenu" class="mobile-toggle">&#x2630;</button>
@@ -399,7 +399,7 @@
 				.then(response => {
 					tooltip(response.success);
 					this.innerText = "Save Creation";
-					this.disabled = true;
+					//this.disabled = true;
 				})
 				.catch(async err => {
 					try {
@@ -2021,7 +2021,7 @@
       });
 	  });
 
-	  return JSON.stringify(sceneData, null, 2);
+	  return JSON.stringify(sceneData);
 	}
 
     function generateSceneLXFML() {
@@ -2306,18 +2306,53 @@
     return obj_clone;
   }
 
+  /* function normalize_color(color) {
+    if(!color) {
+      return;
+    }
+
+    let r = color.r;
+    let g = color.g;
+    let b = color.b;
+
+    const max_rgb = Math.max(r, g, b);
+    if (max_rgb < 0.1) {
+      const boost = 1.0 / max_rgb;
+      r = Math.min(1.0, r * boost);
+      g = Math.min(1.0, g * boost);
+      b = Math.min(1.0, b * boost);
+    }
+
+    return new THREE.Color(r, g, b);
+  } */
+
+  /*function brighten_color(color) {
+    // 0.6 is brightness
+    return new THREE.Color(
+      Math.max(color.r, 0.6),
+      Math.max(color.g, 0.6),
+      Math.max(color.b, 0.6)
+    );
+  } */
+
   function filter_objects_peices() {
     let thumb = new THREE.Scene();
 
     scene.traverse(function (object) {
       if (object.isMesh && object.userData.isBlock) {
-        const hexColor = object.material?.color || new THREE.Color(0xff00ff);
+        const hexColor = object.material?.color || object.material?.map || new THREE.Color(0xffffff);
         let cloned = clone_mesh_clean(object);
         if (cloned) {
           if(cloned.material && cloned.material.color && selectedExport === "dae") {
             apply_vertex_from_hex(cloned, hexColor);
             cloned.material.vertexColors = true;
-          } else if (!cloned.material) {
+          } else if (cloned.material && Array.isArray(cloned.material)) {
+            cloned.material.forEach(mat => {
+              if (mat?.color) {
+                mat.color = mat.color.getHexString();
+              }
+            });
+          } else {
             cloned.material = new THREE.MeshPhysicalMaterial({ color: hexColor, metalness: 0, roughness: 1 });
           }
           thumb.add(cloned);
