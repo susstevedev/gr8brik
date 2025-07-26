@@ -96,6 +96,12 @@
     </ul>
   </div>
 
+  <dialog class="dialog" display="none">
+    <button class="dialogbtn" autofocus>Close</button>
+    <p>Text</p>
+  </dialog>
+  <button class="dialogbtn" display="none">Show</button>
+
   <div id="save-popup">
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: #fff;">Save Creation</span></h3>
@@ -1224,13 +1230,58 @@
   function ldrawToJSON(group) {
     const blocks = [];
 
-    group.traverse(function (child) {
-      if (child.isGroup && child.parent && child.parent.userData && child.parent.userData.fileName) {
-        const ldraw_data = child.parent.userData;
+    const ldraw_code_to_hex = {
+      // row 1
+      4:   "C91A09",   // Bright Red
+      14:  "F8CC00",   // Bright Yellow
+      12:  "0020A0",   // Bright Blue
+      28:  "005700",   // Dark Green
+      10:  "FE8A18",   // Bright Orange
+      124: "D941BB",   // Bright Violet
 
+      // row 2
+      0:   "000000",   // Black
+      15:  "FFFFFF",   // White
+      294: "747371",   // Dark Stone Grey
+      295: "A3A2A4",   // Medium Stone Grey
+      5:   "958A73",   // Dark Tan
+      8:   "6C5C4D",   // Brown
+
+      // row 3
+      308: "812A00",   // Dark Brown
+      23:  "5883C1",   // Medium Blue
+      37:  "4B974B",   // Sand Green
+      59:  "A52A2A",   // Dark Red
+      38:  "B36D2C",   // Dark Orange
+      223: "FCB7BC",   // Bright Pink
+
+      // row 4
+      212: "60C0E0",   // Bright Light Blue
+      226: "FBE696",   // Earth Yellow
+      36:  "84B68D",   // Bright Green
+      335: "92B28B",   // Lime Green
+      26:  "002A5A",   // Dark Blue
+      334: "DDDD22"    // Vibrant Yellow
+    };
+
+    group.traverse(function (child) {
+      if (child?.isGroup && child?.parent && child?.parent?.userData && child?.parent?.userData?.fileName) {
+        console.log(child?.userData);
+        console.log(child?.parent?.userData?.fileName)
+
+        const ldraw_data = child?.parent?.userData;
         const fileName = ldraw_data.fileName || "3001.dat";
-        const partName = fileName.substring(fileName.lastIndexOf("/") + 1);
-        const colorCode = ldraw_data.colorCode?.toString(16).padStart(6, "0") || "ffffff";
+        let colorHex;
+
+        if(child?.parent?.userData?.colorCode) {          
+          let colorCode = child.parent.userData.colorCode;
+          if (!(colorCode in ldraw_code_to_hex)) {
+            console.warn("Unknown color code color:", colorCode);
+          }
+          colorHex = ldraw_code_to_hex[colorCode] ?? "ffffff";
+        } else {
+          colorHex = "ffffff";
+        }
 
         const worldPos = new THREE.Vector3();
         child.parent.getWorldPosition(worldPos);
@@ -1242,10 +1293,10 @@
         child.parent.scale.set(1, 1, 1);
 
         blocks.push({
-          color: colorCode,
+          color: colorHex,
           position: { x: worldPos.x, y: worldPos.y, z: worldPos.z },
           rotation: { x: euler.x, y: euler.y, z: euler.z },
-          ldraw: partName
+          ldraw: fileName
         });
       }
     });
@@ -2782,6 +2833,18 @@
       renderer.render(scene, camera);
       renderer.outputColorSpace = THREE.SRGBColorSpace;
     }
+
+    const dialogelm = document.querySelector(".dialog");
+    const showButton = document.querySelector(".dialog + .dialogbtn");
+    const closeButton = document.querySelector(".dialog .dialogbtn");
+
+    showButton.addEventListener("click", () => {
+      dialogelm.showModal();
+    });
+
+    closeButton.addEventListener("click", () => {
+      dialogelm.close();
+    });
 
     function tooltip(text) {
         const tooltip = document.createElement('div');
