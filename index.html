@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 7-17-2025 (SUBOBJECT AND TEXTURES BETA 3.3.2) -->
+<!-- GR8BRIK VERSION 7-25-2025 (SUBOBJECT AND TEXTURES BETA 3.3.4) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +32,7 @@
   </div>
 
   <div id="info">
-    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">GR8BRIK beta</a> - Build July 17th, 2025</p>
+    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">GR8BRIK beta</a> - Build July 25th, 2025</p>
   </div>
 
   <button id="toggleMenu" class="mobile-toggle">&#x2630;</button>
@@ -145,6 +145,8 @@
     <label for="smooth-normals-enable">Enable smooth normals</label><br />
     <input type="checkbox" id="display-lines-enable">
     <label for="display-lines-enable">Enable lines on objects</label><br />
+    <input type="checkbox" id="pbr-enable">
+    <label for="display-lines-enable">Enable PBR shading for objects</label><br />
 
     <hr />
 
@@ -803,7 +805,7 @@
 		URL.revokeObjectURL(url);
 	});
 
-  function exportSceneToMPD(name) {
+  /* function exportSceneToMPD(name) {
     const lines = [];
 
     const ldraw_color_map = {
@@ -844,6 +846,8 @@
     lines.push(`0 !LICENSE Redistributable under CCAL version 2.0`);
     lines.push(`0`);
 
+    scene.updateMatrixWorld(true);
+
     scene.traverse(child => {
       if (!child.isMesh || !child.userData.ldraw || !child.userData.isBlock) {
         return;
@@ -876,28 +880,222 @@
       const y = pos.y;
       const z = pos.z; */
 
-      const scaleFactor = 1000 / 0.4;
+      //const scaleFactor = 1000 / 0.4;
 
       //const matrix = new THREE.Matrix3().setFromMatrix4(obj.matrixWorld);
       //const rot = matrix.elements.map(n => n.toFixed(5));
       //const e = matrix.elements;
 
-      const e = obj.matrixWorld.elements;
+      //const e = obj.matrixWorld.elements; */
 
-      const rot = [
+      /*const rot = [
         e[0], e[4], e[8],  e[12] * scaleFactor,
         e[1], e[5], e[9],  e[13] * scaleFactor,
         e[2], e[6], e[10], e[14] * scaleFactor,
-      ].map(n => n.toFixed(5));
+      ].map(n => n.toFixed(5)); */
 
       /* const x = (pos.x * scaleFactor).toFixed(2);
       const y = (pos.y * scaleFactor).toFixed(2);
       const z = (pos.z * scaleFactor).toFixed(2); */
 
       //const line = `1 ${color} ${x} ${y} ${z} ${rot.join(' ')} ${file}`;
-      const line = `1 ${color} ${rot.join(' ')} ${file}`;
+      //const line = `1 ${color} ${rot.join(' ')} ${file}`;
+
+      // const rot = [
+       // e[0], e[4], e[8],  e[12],
+      //  e[1], e[5], e[9],  e[13],
+     //   e[2], e[6], e[10], e[14],
+     // ].map(n => n.toFixed(5));
+
+     // const line = `1 ${color} ${rot[3]} ${rot[7]} ${rot[11]} ${rot[0]} ${rot[1]} ${rot[2]} ${rot[4]} ${rot[5]} ${rot[6]} ${rot[8]} ${rot[9]} ${rot[10]} ${file}`;
+
+      //const x = (e[12] * scaleFactor).toFixed(2);
+      //const y = (e[13] * scaleFactor).toFixed(2);
+      //const z = (-e[14] * scaleFactor).toFixed(2);
+
+     // const a = e[0].toFixed(5), b = e[4].toFixed(5), c = e[8].toFixed(5);
+    //  const d = e[1].toFixed(5), e2 = e[5].toFixed(5), f = e[9].toFixed(5);
+     // const g = e[2].toFixed(5), h = e[6].toFixed(5), i = e[10].toFixed(5);
+
+     // const line = `1 ${color} ${x} ${y} ${z} ${a} ${b} ${c} ${d} ${e2} ${f} ${g} ${h} ${i} ${file}`;
+      //lines.push(line);
+    /* }); */
+
+    /* let result =  lines.join('\n');
+    const date = getDate();
+
+    const blob = new Blob([result], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `creation-${date}.mpd`;
+    a.click();
+
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
+  } */
+
+  
+  function exportSceneToMPD(name) {
+    const lines = [];
+
+    /*const ldraw_color_map = {
+      "C91A09": 4, // Bright Red
+      "F8CC00": 14, // Bright Yellow
+      "0020A0": 12, // Bright Blue
+      "005700": 28, // Dark Green
+      "FE8A18": 10, // Bright Orange
+      "D941BB": 124, // Bright Violet / Dark Purple
+
+      "000000": 0, // Black
+      "FFFFFF": 15, // White
+      "747371": 294, // Dark Stone Grey / Dark Bluish Grey
+      "A3A2A4": 295, // Medium Stone Grey / Light Bluish Grey
+      "958A73": 5, // Brick Yellow / Tan
+      "6C5C4D": 8, // Dark Stone Grey / Dark Brown
+
+      "812A00": 308, // Reddish Brown
+      "5883C1": 23, // Medium Blue
+      "4B974B": 37, // Sand Green
+      "A52A2A": 59, // Dark Red
+      "B36D2C": 38, // Dark Orange
+      "FCB7BC": 223, // Bright Pink
+
+      "60C0E0": 212, // Bright Light Blue
+      "FBE696": 226, // Light Yellow
+      "84B68D": 36, // Bright Green
+      "92B28B": 335, // Bright Yellowish Green / Lime
+      "002A5A": 26, // Dark Blue
+      "DDDD22": 334, // Vibrant Yellow
+    }; */
+
+    const ldraw_color_map = {
+      // row 1
+      "C91A09":  4,   // Bright Red
+      "F8CC00": 14,   // Bright Yellow
+      "0020A0": 12,   // Bright Blue
+      "005700": 28,   // Dark Green
+      "FE8A18": 10,   // Bright Orange
+      "D941BB":124,   // Bright Violet
+
+      // row 2
+      "000000":  0,   // Black
+      "FFFFFF": 15,   // White
+      "747371":294,   // Dark Stone Grey
+      "A3A2A4":295,   // Medium Stone Grey
+      "958A73":  5,   // Dark Tan
+      "6C5C4D":  8,   // Brown
+
+      // row 3
+      "812A00":308,   // Dark Brown
+      "5883C1": 23,   // Medium Blue
+      "4B974B": 37,   // Sand Green
+      "A52A2A": 59,   // Dark Red
+      "B36D2C": 38,   // Dark Orange
+      "FCB7BC":223,   // Bright Pink
+
+      // row 4
+      "60C0E0":212,   // Bright Light Blue
+      "FBE696":226,   // Earth Yellow
+      "84B68D": 36,   // Bright Green
+      "92B28B":335,   // Lime Green
+      "002A5A": 26,   // Dark Blue
+      "DDDD22":334    // Vibrant Yellow
+    };
+
+    lines.push(`0 FILE ${name}.ldr`);
+    lines.push(`0 ${name}`);
+    lines.push(`0 Name: ${name}.ldr`);
+    lines.push(`0 Author: Exported from Three.js`);
+    lines.push(`0 !LDRAW_ORG Model`);
+    lines.push(`0 !LICENSE Redistributable under CCAL version 2.0`);
+    lines.push(`0`);
+
+    /*scene.updateMatrixWorld(true);
+
+    scene.traverse(child => {
+      if (!child.isMesh || !child.userData.ldraw || !child.userData.isBlock) {
+        return;
+      }
+
+      const obj = child.clone();
+      obj.applyMatrix4(new THREE.Matrix4().makeScale(1, 1, -1));
+      obj.updateMatrixWorld(true);
+
+      let color_code = 16;
+      if(obj.material && !Array.isArray(obj.material)) {
+        const hex = obj.material.color.getHexString() || "ffffff";
+        color_code = ldraw_color_map[hex.toUpperCase()];
+      }
+
+      const file = obj.userData.ldraw.replace("parts/", "");
+      const color = color_code;
+
+      const line = toLDrawLine(obj.matrixWorld, color, file);
       lines.push(line);
-    });
+    }); */
+
+    // before traversal:
+  scene.updateMatrixWorld(true);
+
+  scene.traverse(child => {
+    if (!child.isMesh || !child.userData.ldraw) { 
+      return;
+    }
+
+    // –– COLOR LOOKUP ––
+    let hex = child.material.color.getHexString().toUpperCase();
+    if (!(hex in ldraw_color_map)) {
+      console.warn("Unknown hex color:", hex);
+    }
+    const color_code = ldraw_color_map[hex] ?? 16;
+
+    // –– PART FILENAME ––
+    const partName = child.userData.ldraw.replace("parts/", "");
+
+    // –– POSITION ––
+    /* const scaleFactor = 1000 / 0.4;          // meters→LDU
+    const pos = new THREE.Vector3();
+    child.getWorldPosition(pos);
+    const x = (pos.x * scaleFactor).toFixed(2);
+    const y = (pos.y * scaleFactor).toFixed(2);
+    // flip Z to match LDraw’s left‑handed Z‑up
+    const z = (-pos.z * scaleFactor).toFixed(2); */
+
+    const pos = new THREE.Vector3();
+    child.getWorldPosition(pos);
+    const x = (pos.x).toFixed(2);
+    const y = (pos.y).toFixed(2);
+    const z = (pos.z).toFixed(2);
+
+    // –– ROTATION ––
+    // Pull the 3×3 from matrixWorld directly:
+    const e = child.matrixWorld.elements;
+    // Three.js stores matrices column-major, so the 3×3 is:
+    //  [ e[0]  e[4]  e[8] ]
+    //  [ e[1]  e[5]  e[9] ]
+    //  [ e[2]  e[6]  e[10]]
+    // To write row-major “a b c d e f g h i”, we reorder:
+    const a =  e[0].toFixed(5),
+    b =  e[4].toFixed(5),
+    c =  e[8].toFixed(5),
+    d =  e[1].toFixed(5),
+    ee = e[5].toFixed(5),
+    f =  e[9].toFixed(5),
+    g =  e[2].toFixed(5),
+    h =  e[6].toFixed(5),
+    i =  e[10].toFixed(5);
+
+    // –– EMIT LINE ––
+    const line = [
+      `1`, color_code,
+      x, y, z,
+      a, b, c,
+      d, ee, f,
+      g, h, i,
+      partName
+    ].join(" ");
+    lines.push(line);
+  });
 
     let result =  lines.join('\n');
     const date = getDate();
@@ -911,6 +1109,35 @@
 
     setTimeout(() => URL.revokeObjectURL(url), 10000);
   }
+
+  /* function toLDrawLine(matrix4, colorCode, partName) {
+    matrix4 = matrix4.clone();
+
+    matrix4.multiply(new THREE.Matrix4().makeScale(1, 1, -1));
+
+    const pos = new THREE.Vector3();
+    const quat = new THREE.Quaternion();
+    const scl = new THREE.Vector3();
+    matrix4.decompose(pos, quat, scl);
+    matrix4.compose(pos, quat, scl);
+
+    const e = matrix4.transpose().elements;
+
+    //const scaleFactor = 1000 / 0.4; // meters to ldu
+    //const tx = (e[3] * scaleFactor).toFixed(2);
+    //const ty = (e[7] * scaleFactor).toFixed(2);
+    //const tz = (e[11] * scaleFactor).toFixed(2);
+
+    const tx = (e[3]).toFixed(2);
+    const ty = (e[7]).toFixed(2);
+    const tz = (e[11]).toFixed(2);
+
+    const r11 = e[0].toFixed(5), r12 = e[1].toFixed(5), r13 = e[2].toFixed(5);
+    const r21 = e[4].toFixed(5), r22 = e[5].toFixed(5), r23 = e[6].toFixed(5);
+    const r31 = e[8].toFixed(5), r32 = e[9].toFixed(5), r33 = e[10].toFixed(5);
+    
+    return `1 ${colorCode} ${tx} ${ty} ${tz} ` + [r11, r12, r13, r21, r22, r23, r31, r32, r33].join(' ') + ` ${partName}`;
+  } */
 
 
     document.getElementById("cre-import").addEventListener("change", function (event) {
@@ -991,6 +1218,7 @@
 
 		console.log("Creation imported.");
 		tooltip("Creation imported.");
+    updateSceneData();
 	}
 
   function ldrawToJSON(group) {
@@ -1129,6 +1357,31 @@
       scene.traverse((obj) => {
         if (obj.isLineSegments && obj.userData && obj.userData.ldr_line === true) {
           obj.visible = displayLines;
+        }
+      });
+
+      scene.updateMatrixWorld(true);
+    });
+
+    document.getElementById("pbr-enable").addEventListener("change", function () {
+      const highRes = this.checked;
+      scene.userData.highRes = highRes;
+
+      scene.traverse(function (obj) {
+        if (obj?.userData && obj?.userData?.isBlock === true) {
+          if(highRes) {
+            obj.material = new THREE.MeshPhysicalMaterial({
+              color: new THREE.Color(obj?.material?.color),
+              reflectivity: 0.5,
+              roughness: 0.4,
+              metalness: 0.1,
+              envMapIntensity: 0.5,
+            });
+          } else {
+            obj.material = new THREE.MeshLambertMaterial({
+              color: new THREE.Color(obj?.material?.color)
+            });
+          }
         }
       });
 
@@ -1381,11 +1634,12 @@
           );
 
           const final_rot = new THREE.Euler(original_rot.x + snapped_rot.x, original_rot.y + snapped_rot.y, original_rot.z + snapped_rot.z);
-
           selectedObject.rotation.copy(final_rot);
-
           selectedObject.updateMatrixWorld(true);
           scene.updateMatrixWorld(true);
+
+          partPosition = selectedObject?.pos || null;
+			    partRotation = null; // default im not fucking around with rotation rn
         }
         updateSceneData();
       });
@@ -1595,13 +1849,19 @@
                   const pos2 = child.getWorldPosition(pos);
                   console.log(pos2);
 
-                  child.material = new THREE.MeshPhysicalMaterial({
-                    color: new THREE.Color(partColor || "#000000"),
-                    reflectivity: 0.5,
-                    roughness: 0.4,
-                    metalness: 0.1,
-                    envMapIntensity: 0.5,
-                  });
+                  if(scene?.userData?.highRes === true) {
+                    child.material = new THREE.MeshPhysicalMaterial({
+                      color: new THREE.Color(partColor || "#000000"),
+                      reflectivity: 0.5,
+                      roughness: 0.4,
+                      metalness: 0.1,
+                      envMapIntensity: 0.5,
+                    });
+                  } else {
+                    child.material = new THREE.MeshLambertMaterial({
+                      color: new THREE.Color(partColor || "#ffffff")
+                    });
+                  }
 
                   child.userData.isBlock = true;
                   child.userData.isTexture = false;
@@ -1707,11 +1967,11 @@
   function getBLItems() {
 	  const items = [];
 	  scene.traverse(obj => {
-		if (obj.isMesh || obj.isGroup) {
-			if(obj.userData.isBlock || obj.isGroup) {
-				items.push(obj);
-			}
-		}
+      if (obj?.isMesh || obj?.userData?.isBlock) {
+        if(obj?.userData?.fileName || obj?.parent?.userData?.fileName) {
+          items.push(obj);
+        }
+      }
 	  });
 	  return items;
   }
@@ -1729,11 +1989,12 @@
 	
 	function renderBLItem(obj, level = 0) {
 		const id = obj.uuid;
-		const color = obj.material?.color?.getHexString?.() || "No material";
+		const color = obj.material?.color?.toName?.() || obj.material?.color?.getHexString?.() || "No material";
 		
 		let part;
 		if (obj.userData.isBlock) {
-			part = `Part ${obj.parentName || obj.parent.parentName || obj.parent.parent.parentName} (Group ${level})`;
+			//part = `Part ${obj.parentName || obj.parent.parentName || obj.parent.parent.parentName} (Group ${level})`;
+      part = `Part ${obj?.userData?.fileName || obj?.parent?.userData?.fileName}`;
 		} else {
 			part = obj.name || `Group ${level}`;
 		}
@@ -2493,7 +2754,9 @@
     }
 
     document.getElementById("resetCamera").addEventListener("click", function () {
-      camera.position.set(250, 250, 250);
+      /* camera.position.set(250, 250, 250);
+      camera.rotation.set(0, 0, 0); */
+      controls.reset();
       scene.updateMatrixWorld();
     });
 
