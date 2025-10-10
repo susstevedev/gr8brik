@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/RGBELoader.js"></script>
     <style>
         body { 
@@ -18,11 +18,8 @@
 
         .box {
             position: absolute;
-            /* background-color: #ddd;
-            color: #000; */
-            background-color: rgba(0, 0, 0, 0.2);
-		    backdrop-filter: blur(15px);
-		    -webkit-backdrop-filter: blur(15px);
+            background-color: #ddd;
+            color: #000;
             padding: 10px 20px;
             font-size: 20px;
             border-radius: 4px;
@@ -31,10 +28,8 @@
         #watermark {
             position: absolute;
             display: none;
-            color: #fff;
-            background-color: rgba(0, 0, 0, 0.2);
-		    backdrop-filter: blur(15px);
-		    -webkit-backdrop-filter: blur(15px);
+            background-color: #ddd;
+            color: #000;
             bottom: 0px;
             right: 0px;
             padding: 6px 16px;
@@ -86,6 +81,22 @@
     </style>
 </head>
 <body>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const newScript = document.createElement("script");
+
+        if (typeof WebAssembly != "object" && typeof WebAssembly.instantiate != "function" || navigator.userAgent.includes('PaleMoon') || navigator.userAgent.includes('Mypal')) {
+            alert("Your browser is not supported. Please upgrade to a mainstream/modern browser.");
+            newScript.src = null;
+            document.getElementById("viewer").remove();
+        } else {
+        	newScript.src = "https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"; 
+        }
+
+        document.head.appendChild(newScript);
+    });
+    </script>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('retry').onclick = function() {
@@ -153,7 +164,12 @@
                     renderer.setSize(window.innerWidth, window.innerHeight);
 
                     var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 10000);
-                    camera.position.set(250, 250, 250);
+                    
+                    if(model_data.camera) {
+                        camera.position.set(model_data.camera.x, model_data.camera.y, model_data.camera.z);
+                    } else {
+                        camera.position.set(250, 250, 250);
+                    }
 
                     var ambient = new THREE.AmbientLight(0xdddddd);
                     scene.add(ambient);
@@ -168,52 +184,11 @@
                     var ldr_path = "https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/";
 
                     loader.preloadMaterials(ldr_path + 'colors/ldconfig.ldr');
-                    loader.setPath(ldr_path + 'actual/parts/');
                     loader.setPartsLibraryPath(ldr_path + 'actual/');
+                    loader.setPath(ldr_path + 'actual/parts/');
                     
                     var total = model_data.blocks.length;
                     var complete = false;
-
-                    /*async function loadParts(blocks) {
-                        for (const block of blocks) {
-                            await new Promise(resolve => {
-                                if (!block.ldraw) {
-                                    console.warn("skipping invalid part ", block);
-                                    failedBlocks++;
-                                    return resolve();
-                                }
-
-                                loader.load(`https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/parts/${block.ldraw}`,
-                                    function (group) {
-                                        group.traverse((child) => {
-                                            let colorHex = `${block.color ? block.color.replace(/^#/, '') : 'ffffff'}`;
-                                            if (child.isMesh && !Array.isArray(child.material)) {
-                                                child.material = new THREE.MeshLambertMaterial({
-                                                    color: new THREE.Color(`#${colorHex}`),
-                                                });
-                                            }
-                                        });
-
-                                        group.position.set(block.position.x, block.position.y, block.position.z);
-                                        group.rotation.set(block.rotation.x, block.rotation.y, block.rotation.z);
-                                        scene.add(group);
-
-                                        resolve();
-                                    },
-                                    undefined,
-                                    function (error) {
-                                        resolve();
-                                    }
-                                );
-                            });
-                        }
-
-                        complete = true;
-                        showViewer();
-                    }
-
-                    viewer.style.display = "none";
-                    loadParts(model_data.blocks); */
 
                     function loadParts(blocks, index = 0) {
                         if (index === blocks.length) {
@@ -231,6 +206,11 @@
 
                         loader.load(`${block.ldraw}`, function (group) {
                             group.traverse((child) => {
+                                if (child.isLineSegments) {
+                                    child.visible = false;
+                                    return;
+                                }
+
                                 let colorHex = `${block.color ? block.color.replace(/^#/, '') : 'ffffff'}`;
                                 if (child.isMesh && !Array.isArray(child.material)) {
                                     child.material = new THREE.MeshLambertMaterial({color: new THREE.Color(`#${colorHex}`)});
@@ -243,7 +223,19 @@
 
                             loadParts(blocks, index + 1);
                         }, undefined, function (error) {
-                            console.warn(`Failed to load block ${block.ldraw}`, error);
+                            console.warn(`Failed to load block ${block.ldraw}` + error);
+                            
+                            for (const key in error) {
+                                console.error(`Error property '${key}':` + error[key]);
+                            }
+                            if (error.stack) {
+                                console.error("Error stack:", error.stack);
+                            }
+                            if (error instanceof DOMException) {
+                                console.error("DOMException name:" + error.name);
+                                console.error("DOMException code:" + error.code);
+                            }
+                            
                             loadParts(blocks, index + 1);
                         });
                     }
