@@ -1,10 +1,12 @@
+/* The mess that runs the entire modeler */
+
 window.addEventListener('beforeunload', function (e) {
     e.preventDefault();
     e.returnValue = '';
 });
 
 var partColor = "#C91A09";
-const start_url = 'https://corsproxy.io/?url=https://gr8brik.rf.gd';
+const start_url = 'https://gr8brik.rf.gd';
 
 $(document).ready(function () {
     $("#color-picker").spectrum({
@@ -80,6 +82,7 @@ function login() {
                 field.innerText = response.user;
                 field.setAttribute("href", "/acc/creations");
                 tooltip('Logged in as ' + response.user);
+                ui_login(response.user, reponse.avatar ?? 'img/logo.png');
             }
         })
         .catch(async (err) => {
@@ -93,6 +96,12 @@ function login() {
         });
 }
 login();
+
+/* UI auth */
+function ui_login(username, avatar) {
+    document.querySelector('#settings-account-auth-username').textContent = username;
+    document.querySelector('#settings-account-auth-username').textContent = avatar;
+}
 
 let displayed_parts = [];
 let current_type = '';
@@ -136,7 +145,7 @@ function displayParts() {
         span.title = part.name;
         span.setAttribute("value", part.file);
         span.innerHTML = `
-					<img src="https://corsproxy.io/?url=https://library.ldraw.org/media/ldraw/official/parts/${part.file.split(".")[0]}.png" loading="lazy" width="45px" />
+					<img src="https://library.ldraw.org/media/ldraw/official/parts/${part.file.split(".")[0]}.png" loading="lazy" width="45px" />
 					<br />
 					<small class="part-list-number">${part.file.split(".")[0]}</small>
 					&nbsp;
@@ -454,7 +463,9 @@ document.querySelector("#export-popup .btn-alt").addEventListener("click", funct
 
 // settings popup open and close
 document.getElementById("settings-popup-open").addEventListener("click", function () {
-    document.getElementById("settings-popup").style.display = "block";
+    //document.getElementById("settings-popup").style.display = "block";
+    let elm = document.getElementById("settings-popup");
+    elm.style.display = (elm.style.display === "none") ? "block" : "none";
 });
 
 document.querySelector("#settings-popup .btn-alt").addEventListener("click", function () {
@@ -522,11 +533,11 @@ document.getElementById("delete-block").addEventListener("click", function () {
 
 document.getElementById("takeScreenshot").addEventListener("click", function () {
     let url = capture();
-    let date = getDate();
+    let date = new Date();
     let a = document.createElement("a");
 
     a.href = url;
-    a.download = `creation-screenshot-${date}.PNG`;
+    a.download = `creation-screenshot-${date}.webp`;
     a.click();
 });
 
@@ -1736,11 +1747,17 @@ function deleteBlock(part) {
     updateSceneData();
 }
 
+/* Screenshot function */
 function capture() {
     let thumb = new THREE.Scene();
     thumb.background = null;
 
     let count = 0;
+	
+	if(selectedObject) {
+		transformControls.detach(selectedObject);
+		transformControls.visible = false;
+	}
 
     scene.traverse(function (object) {
         if (object.isMesh) {
@@ -1774,11 +1791,16 @@ function capture() {
 
     let renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
     renderer.setClearColor(0x000000, 0); // transparent
-    renderer.setSize(500, 500);
+    renderer.setSize(600, 600);
     renderer.render(thumb, camera2);
 
-    let thumbnail = renderer.domElement.toDataURL("image/png");
+    let thumbnail = renderer.domElement.toDataURL("image/webp");
     return thumbnail;
+	
+	if(selectedObject) {
+		transformControls.attach(selectedObject);
+		transformControls.visible = true;
+	}
 }
 
 function makeid(length) {
@@ -2782,7 +2804,7 @@ function moveBlock(mode) {
 
     if (mode === "s") {
         transformControls.setMode('scale');
-        tooltip('Changed to the secret scale parts 🤫');
+        tooltip('Changed to the secret scale parts');
     }
 }
 

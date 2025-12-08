@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 8-10-2025 (NEW EDITION) -->
+<!-- GR8BRIK VERSION 12-07-2025 (MISC IMPROVEMENTS) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,35 +30,45 @@
   <div id="top-container">
     <span id="link-home"><img src="img/logo.png" id="logo-img" /><a href="/" target="_blank"><span>&nbsp;Gr8Brik&nbsp;</span></a><span class="tag">Beta</span></span>
     <span class="menu-main">
-      <button class="menu-item" id="menu-file">Saving</button>
-      <button class="menu-item" id="menu-edit">Tools</button>
-      <button class="menu-item" id="settings-popup-open">Settings</button>
+      <button class="menu-item" id="menu-file"><i class="fa fa-hdd-o" aria-hidden="true"></i>Saving</button>
+      <button class="menu-item" id="menu-edit"><i class="fa fa-clipboard" aria-hidden="true"></i>Tools</button>
+      <button class="menu-item" id="settings-popup-open"><i class="fa fa-sliders" aria-hidden="true"></i>Settings</button>
+      <button class="menu-item" id="menu-help"><i class="fa fa-sliders" aria-hidden="true"></i><a href="/docs/">Help</a></button>
     </span>
     <span class="dropdown-main">
-      <span class="dropdown-item" id="dropdown-file">
-        <span id="save-popup-open">Cloud saving</span>
+      <span class="dropdown-element" id="dropdown-file">
+        <div class="dropdown-item" id="save-popup-open"><i class="fa fa-database" aria-hidden="true"></i>Save to cloud</div>
+        <div class="dropdown-item" id="import-popup-open"><i class="fa fa-download" aria-hidden="true"></i>Import...</div>
+        <div class="dropdown-item" id="export-popup-open"><i class="fa fa-upload" aria-hidden="true"></i>Export...</div>
       </span>
-      <span class="dropdown-item" id="dropdown-edit">
-        <span id=""></span>
+      <span class="dropdown-element" id="dropdown-edit">
+        <div class="dropdown-item" id="move-block-t"><i class="fa fa-arrows-alt" aria-hidden="true"></i>Drag</div>
+        <div class="dropdown-item" id="move-block-r"><i class="fa fa-refresh" aria-hidden="true"></i>Rotate</div>
+        <div class="dropdown-item" id="duplicate-part"><i class="fa fa-files-o" aria-hidden="true"></i>Duplicate part</div>
+        <div class="dropdown-item" id="delete-block"><i class="fa fa-trash" aria-hidden="true"></i>Delete part</div>
       </span>
     </span>
-    <a href="https://www.gr8brik.rf.gd/acc/login" target="_blank" id="username-field">Login</a>
+    <a href="https://gr8brik.rf.gd/acc/login" target="_blank" id="username-field">Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
   </div>
 
-  <!--
-  <div id="info">
-    <p><a href="https://www.gr8brik.rf.gd/" target="_blank">Gr8Brik beta</a> - Build July 25th, 2025</p>
-  </div>
-  -->
+	<div class="mobile-toggle-contain">
+      <button id="toggleMenu" class="mobile-toggle" style="top: 60px; padding-right: 0px; padding-left: 0px;">
+		<i class="fa fa-bars" aria-hidden="true" title="Reset the camera location"></i>
+	  </button>
+	
+	  <button id="takeScreenshot" class="mobile-toggle" style="top: 160px; padding-right: 0px; padding-left: 0px;">
+		<i class="fa fa-camera" aria-hidden="true" title="Take a screenshot"></i>
+	  </button>
 
-  <button id="toggleMenu" class="mobile-toggle">&#x2630;</button>
-  <button id="takeScreenshot" class="mobile-toggle" style="top: 155px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-camera" aria-hidden="true" title="Take a screenshot"></i></button>
-  <button id="getPriceInfo" class="mobile-toggle" style="top: 255px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-money" aria-hidden="true" title="Get price info"></i></button>
-  <button id="resetCamera" class="mobile-toggle" style="top: 355px; padding-right: 0px; padding-left: 0px;"><i class="fa fa-refresh" aria-hidden="true" title="Reset the camera location"></i></button>
+	  <button id="resetCamera" class="mobile-toggle" style="top: 260px; padding-right: 0px; padding-left: 0px;">
+		<i class="fa fa-refresh" aria-hidden="true" title="Reset the camera location"></i>
+	  </button>
+	</div>
   
   <div id="left-container">
     <p style="height: 2vh;"></p>
-    
+
+    <!--
     <button class="btn" title="Settings for the modeler" id="settings-popup-open"><i class="fa fa-cog" aria-hidden="true"></i>Settings</button><br />
     <span>Progress</span><br />
     <button class="btn" title="Save creation data to database" id="save-popup-open"><i class="fa fa-database" aria-hidden="true"></i>Save to Cloud</button><br />
@@ -70,17 +80,21 @@
     <button class="btn" title="Change controls to rotate blocks, in all directions." id="move-block-r"><i class="fa fa-refresh" aria-hidden="true"></i>Rotate</button><br />
     <button id="duplicate-part" class="btn" title="Copy the block that was last added and paste it"><i class="fa fa-files-o" aria-hidden="true"></i>Duplicate Block</button><br />
     <button id="delete-block" class="btn" title="Remove a block from the scene, along with all records of it"><i class="fa fa-trash" aria-hidden="true"></i>Delete Block</button><hr />
+    -->
 
     <span>Color</span><br />
-    <input type="text" id="color-picker" /><input type="number" title="Selected material layer. Most textured LDraw parts have more than three layers." id="selected-map" min="0" max="50" step="1" value="0"><hr />
+    <input type="text" id="color-picker" /><br />
+	<span class="sub">Selected layer</span><br />
+	<span class="sub"><em>Most textured parts have more than three layers.</em></span><br />
+	<input type="number" title="Selected material layer. Most textured LDraw parts have more than three layers. Currently an alpha feature." id="selected-map" min="0" max="50" step="1" value="0"><hr />
     <span id="obj-colors"></span>
 
     <span>Filter</span><br />
 
     <span style="font-size: 14px;">CDN</span>
     <select id="part-library-filter" style="display: inline-block;">
-        <option id="parts-lib-1" value="https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/" selected>Gr8Brik (default, most stable)</option>
-        <option id="parts-lib-2" value="https://corsproxy.io/?url=https://library.ldraw.org/library/official/">Ldraw</option>
+        <option id="parts-lib-1" value="https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/" selected>susstevedev/gr8brik-ldraw-fork (default, most stable)</option>
+        <option id="parts-lib-2" value="https://library.ldraw.org/library/official/">Ldraw.org library (UNSTABLE, USE AT OWN RISK)</option>
     </select><br />
 
     <span style="font-size: 14px;">Category</span>
@@ -113,9 +127,11 @@
 	  <input type="file" id="cre-import" accept=".json,.gr8" style="display: none;"><input type="file" id="cre-import-three" accept=".json" style="display: none;"><input type="file" id="cre-import-ldr" accept=".ldr,.dat" style="display: none;">
 	  <span id="cre-export" style="display: none;"></span><span id="cre-export-gr8" style="display: none;"></span><span id="cre-export-ldd" style="display: none;"></span><span id="selected-object-export-three" style="display: none;"></span><span id="cre-export-three" style="display: none;"></span><span id="cre-export-dae" style="display: none;"></span>
 
+    <b class="geometry-important">Part geometry is from the LDraw.org library.</b>
     <span id="select-block"></span>
+
     <ul id="block-list">
-      <div class="warn">GR8BRIK treats some items as groups</div>
+      <div class="groups-important">Gr8Brik treats some parts as groups and some parts as groups.</div>
     </ul>
   </div>
 
@@ -166,6 +182,17 @@
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: var(--ui-text-color);">Modeler Settings</span></h3>
 
+    <p><span style="color: var(--ui-text-color);"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Account</span></p>
+
+    <div id="settings-account-auth">
+      <img style="width: 30px; height: 30px; border-radius: 50%;" alt="Profile icon for your account" src="img/logo.png"></img>
+      <span id="settings-account-auth-username" style="bottom: 10px; position: relative;">JohnDoe1</span>
+    </div>
+
+    <p>Modeler account intergration is coming soon along with GitHub login.</p>
+
+    <hr />
+
     <p><span style="color: var(--ui-text-color);"><i class="fa fa-paint-brush" aria-hidden="true"></i>&nbsp;Display</span></p>
 
     <input type="checkbox" id="smooth-normals-enable" checked>
@@ -187,14 +214,21 @@
 		<button class="btn" title="Load autosave from device" id="read_autosave"><i class="fa fa-floppy-o" aria-hidden="true"></i>Recover Autosave</button><br />
     <button class="btn" title="Clear autosave from device" id="clear_autosave"><i class="fa fa-trash" aria-hidden="true"></i>Trash Autosave</button><br />
 
-		<button class="btn" title="Load settings from device" id="read_settings"><i class="fa fa-floppy-o" aria-hidden="true"></i>Recover Settings</button><br />
-    <button class="btn" title="Clear settings from device" id="clear_settings"><i class="fa fa-trash" aria-hidden="true"></i>Trash Settings</button><br />
+		<button class="btn" title="Load settings from device" id="read_settings">
+      <i class="fa fa-sliders" aria-hidden="true"></i>
+      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      Recover Settings
+    </button><br />
 
-    <hr />
+    <button class="btn" title="Clear settings from device" id="clear_settings">
+      <i class="fa fa-sliders" aria-hidden="true"></i>
+      <i class="fa fa-trash" aria-hidden="true"></i>
+      Trash Settings
+    </button><br /><hr />
 
-    <b>Build September 28th, 2025</b><br />
+    <b>Build December 7th, 2025</b><br />
     <b>Created by susstevedev on github</b><br />
-    <b>2023 - 2025 Gr8Brik.rf.gd. All rights reserved by InfinityFree and the Gr8Brik team.</b>
+    <b>2023 - 2025 Gr8brik. All rights reserved.</b>
     </div>
   </div>
 
