@@ -3,8 +3,8 @@ body {
   --ui-color: #fafafa;
   --ui-anti-color: #242424;
   --ui-anti-text: #fff;
-  --ui-trans-color: rgba(0, 0, 0, 0.5) 35%;
   --ui-button-blue: #87ceeb;
+  --ui-elm-noglass: rgba(36, 36, 36, 0.8);
 
   font-family: 'Arial Narrow', Arial, sans-serif;
   font-size: 16px;
@@ -19,7 +19,6 @@ body.dark {
   --ui-color: #242424;
   --ui-anti-color: #fafafa;
   --ui-anti-text: #000;
-  --ui-trans-color: rgba(255, 255, 255, 0.5);
 }
 
 select {
@@ -154,22 +153,28 @@ option {
   display: none;
   border-radius: 10px;
   padding: 10px;
-  background-color: transparent;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  /* background-color: var(--ui-color); */
+  background: var(--ui-elm-noglass);
   border: 1px var(--ui-anti-text) solid;
   color: var(--ui-text-color);
   position: fixed;
   z-index: 9999;
   margin: auto;
   width: 75%;
-  height: auto;
+  height: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
   text-align: center;
   animation: fadeInFromNone 0.1s ease-in-out;
+  overflow-y: auto;
+}
+
+.ui-popup-contain.trans {
+  background-color: transparent;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
 @keyframes fadeInFromNone {
@@ -373,11 +378,21 @@ option {
 #select-block span {
   margin-left: 5px;
   margin-bottom: 5px;
-  padding: 15px 15px 15px 15px;
-  border: 1px solid var(--ui-anti-color);
-  border-radius: 5px;
+  color: var(--ui-text-color);
+  padding: 15px;
+  border-radius: 2px;
+  border: 2px rgba(0, 0, 0, 0.16) solid;
+  transition: all 0.2s ease-in-out;
+}
+
+#select-block span:hover {
   cursor: pointer;
-  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.10);
+  opacity: 0.8 !important;
+  box-shadow: rgba(2, 2, 2, 0.06) 2px 2px 2px 2px;
+}
+
+#select-block span img {
+  background: transparent !important;
 }
 
 #block-list li {
@@ -423,7 +438,7 @@ option {
 }
 
 #preloaded-logo .img {
-  background-image: url("/img/logo.jpg");
+  background-image: url("img/logo.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

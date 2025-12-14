@@ -127,15 +127,14 @@
 	  <input type="file" id="cre-import" accept=".json,.gr8" style="display: none;"><input type="file" id="cre-import-three" accept=".json" style="display: none;"><input type="file" id="cre-import-ldr" accept=".ldr,.dat" style="display: none;">
 	  <span id="cre-export" style="display: none;"></span><span id="cre-export-gr8" style="display: none;"></span><span id="cre-export-ldd" style="display: none;"></span><span id="selected-object-export-three" style="display: none;"></span><span id="cre-export-three" style="display: none;"></span><span id="cre-export-dae" style="display: none;"></span>
 
-    <b class="geometry-important">Part geometry is from the LDraw.org library.</b>
     <span id="select-block"></span>
 
     <ul id="block-list">
-      <div class="groups-important">Gr8Brik treats some parts as groups and some parts as groups.</div>
+      <div class="groups-important">Gr8brik treats some parts as groups and vice-versa.</div>
     </ul>
   </div>
 
-  <div id="save-popup">
+  <div class="ui-popup-contain" id="save-popup">
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: #fff;">Save Creation</span></h3>
     <div id="save-popup-form">
@@ -145,7 +144,7 @@
     </div>
   </div>
   
-  <div id="import-popup">
+  <div class="ui-popup-contain" id="import-popup">
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: #fff;">Import Model</span></h3>
     <div id="import-popup-form">
@@ -159,7 +158,7 @@
     </div>
   </div>
   
-  <div id="export-popup">
+  <div class="ui-popup-contain" id="export-popup">
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: #fff;">Export Model</span></h3>
     <div id="export-popup-form">
@@ -178,7 +177,7 @@
     </div>
   </div>
 
-  <div id="settings-popup">
+  <div class="ui-popup-contain" id="settings-popup">
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: var(--ui-text-color);">Modeler Settings</span></h3>
 
@@ -186,7 +185,7 @@
 
     <div id="settings-account-auth">
       <img style="width: 30px; height: 30px; border-radius: 50%;" alt="Profile icon for your account" src="img/logo.png"></img>
-      <span id="settings-account-auth-username" style="bottom: 10px; position: relative;">JohnDoe1</span>
+      <span id="settings-account-auth-username" style="bottom: 10px; position: relative;">Username</span>
     </div>
 
     <p>Modeler account intergration is coming soon along with GitHub login.</p>
@@ -195,17 +194,26 @@
 
     <p><span style="color: var(--ui-text-color);"><i class="fa fa-paint-brush" aria-hidden="true"></i>&nbsp;Display</span></p>
 
+    <h5><span style="color: var(--ui-text-color);">Parts</span></h5>
+
     <input type="checkbox" id="smooth-normals-enable" checked>
     <label for="smooth-normals-enable">Enable smooth normals</label><br />
 
     <input type="checkbox" id="display-lines-enable">
-    <label for="display-lines-enable">Enable lines on objects</label><br />
+    <label for="display-lines-enable">Enable lines</label><br />
 
-    <input type="checkbox" id="pbr-enable">
-    <label for="display-lines-enable">Enable PBR shading for objects</label><br />
+    <input type="checkbox" id="pbr-enable" checked>
+    <label for="display-lines-enable">Enable PBR shading (applies only to new parts)</label><br />
+
+    <h5><span style="color: var(--ui-text-color);">User interface</span></h5>
+
+    <input type="checkbox" id="trans-enable" checked>
+    <label for="trans-enable">Enable transparent UI elements*</label><br />
+
+    <h5><span style="color: var(--ui-text-color);">Other</span></h5>
 
     <input type="checkbox" id="hdr-enable">
-    <label for="hdr-enable">Enable HDRI lighting</label><br />
+    <label for="hdr-enable">Enable HDRI lighting (applies only to new parts)</label><br />
 
     <hr />
 
@@ -226,9 +234,9 @@
       Trash Settings
     </button><br /><hr />
 
-    <b>Build December 7th, 2025</b><br />
-    <b>Created by susstevedev on github</b><br />
-    <b>2023 - 2025 Gr8brik. All rights reserved.</b>
+    <p>Version <b>December 14th, 2025</b></p>
+    <p>Created by <a href="https://github.com/susstevedev">susstevedev</a> on GitHub.</p>
+    <p>2023 - 2025 Gr8brik. All rights reserved.</p>
     </div>
   </div>
 

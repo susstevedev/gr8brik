@@ -223,15 +223,20 @@ document.getElementById("search-parts").addEventListener("keyup", function (even
 });
 
 // hover effects
-document.querySelectorAll("#select-block span").forEach(function (elm) {
+/*document.querySelectorAll("#select-block span").forEach(function (elm) {
     elm.addEventListener("mouseover", function (event) {
         alert('test');
     });
-});
+});*/
 
-// add a new block
+// add a new part
 document.getElementById("select-block").addEventListener("click", function (e) {
     const span = e.target.closest("span");
+
+    const original_img = span.querySelector('img').getAttribute("src");
+    console.log(original_img);
+    span.querySelector('img').setAttribute("src", "img/load.gif");
+    console.log(span.querySelector('img').getAttribute("src"));
 
     if (!span) {
         return;
@@ -240,14 +245,17 @@ document.getElementById("select-block").addEventListener("click", function (e) {
     const selectedPart = span.getAttribute("value");
 
     if (!selectedPart) {
-        console.error("selected part is not valid");
         return;
     }
 
     part = 'parts/' + selectedPart;
     partName = selectedPart;
-    console.log("selected piece:", selectedPart);
+    console.log("selected part: " + selectedPart);
+
     addBlock();
+    setTimeout(() => {
+        span.querySelector('img').setAttribute("src", original_img);
+    }, 1000);
 });
 
 // list for items that are already in the scene
@@ -1866,6 +1874,7 @@ function addBlock(throwSuccess, throwError) {
                     child.material = new THREE.MeshPhysicalMaterial({
                         color: new THREE.Color(partColor || "#ffffff"),
                         reflectivity: 0.5,
+                        shininess: 75,
                         roughness: 0.4,
                         metalness: 0.1,
                         envMapIntensity: 0.5,
@@ -1952,30 +1961,6 @@ function addBlock(throwSuccess, throwError) {
         throwError(error);
     });
 }
-
-/*function updateBlockList(part, color, count, id) {
-    let blockList = document.getElementById('block-list');
-    let listItem = document.createElement('li');
-
-    listItem.classList.add('scene-block-item');
-    listItem.setAttribute('data-id', id);
-    listItem.textContent = `${part} (${color}, Num ${count})`;
-
-    blockList.appendChild(listItem);
-}
-
-function removeBLItem(id) {
-    let item = document.querySelector(`li[data-id="${id}"]`);
-    if (item) {
-    item.remove();
-    }
-} 
-
-function updateBLItem(part, color, count, id) {
-    removeBLItem(id);
-    updateBlockList(part, color, count, id);
-    console.log('updated block list');
-} */
 
 function getBLItems() {
     const items = [];
@@ -2547,6 +2532,7 @@ function read_settings() {
         }
     }
 }
+read_settings();
 
 function save_settings() {
     const jsonData = JSON.stringify(scene.userData);
