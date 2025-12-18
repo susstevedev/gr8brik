@@ -172,7 +172,7 @@ option {
 }
 
 .ui-popup-contain.trans {
-  background-color: transparent;
+  background-color: transparent !important;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
 }

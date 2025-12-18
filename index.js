@@ -1381,6 +1381,34 @@ document.getElementById("pbr-enable").addEventListener("change", function () {
     save_settings();
 });
 
+document.getElementById("trans-enable").addEventListener("change", function () {
+    const ui_trans = this.checked;
+    scene.userData.ui_trans = ui_trans;
+
+    if(scene.userData.ui_trans) {
+        //document.getElementsByClassName('ui-popup-contain').classList.add('trans');
+
+        // Source - https://stackoverflow.com/a/24219779
+        // Posted by James Hill, modified by community. See post 'Timeline' for change history
+        // Retrieved 2025-12-18, License - CC BY-SA 3.0
+
+        let element = document.getElementsByClassName('ui-popup-contain');
+
+        for(let i = 0; i < element.length; i++) {
+            element[i].classList.add('trans');
+        }
+    } else {
+        let element = document.getElementsByClassName('ui-popup-contain');
+
+        for(let i = 0; i < element.length; i++) {
+            element[i].classList.remove('trans');
+        }
+    }
+
+    scene.updateMatrixWorld(true);
+    save_settings();
+});
+
 document.getElementById("hdr-enable").addEventListener("change", function () {
     const use_hdri = this.checked;
     scene.userData.use_hdri = use_hdri;
@@ -1458,6 +1486,14 @@ function init() {
         scene.background = new THREE.Color(0xd3d3d3);
     } */
 
+    if(scene.userData.ui_trans) {
+        let element = document.getElementsByClassName('ui-popup-contain');
+
+        for(let i = 0; i < element.length; i++) {
+            element[i].classList.add('trans');
+        }
+    }
+
     // WebGl renderer
     renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -1518,7 +1554,7 @@ function init() {
     ldraw_loader.setPath(ldraw_path + 'actual/');
     ldraw_loader.setPartsLibraryPath(ldraw_path + 'actual/');
 
-    // lifesaver thanks chatgpt
+    // lifesaver thanks ldrawloader devs
     ldraw_loader.separateObjects = true;
 
     raycaster = new THREE.Raycaster();
@@ -1575,7 +1611,6 @@ function init() {
     });
 
     window.addEventListener('resize', onWindowResize, true);
-    //window.addEventListener('pointerdown', onMouseClick, true);
 
     transformControls.addEventListener('mouseDown', function () {
         controls.enabled = false;
@@ -1588,26 +1623,6 @@ function init() {
     transformControls.addEventListener('dragging-changed', function (event) {
         controls.enabled = !event.value;
     });
-
-    /* transformControls.addEventListener('objectChange', function () {
-        if (selectedObject && !(selectedObject.userData.noSnap || scene.userData.noSnap)) {
-        selectedObject.position.set(
-            snapToGrid(selectedObject.position.x, 10), 
-            snapToGrid(selectedObject.position.y, 4), 
-            snapToGrid(selectedObject.position.z, 10)
-        );
-
-        selectedObject.rotation.set(
-            Math.round(selectedObject.rotation.x / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
-            Math.round(selectedObject.rotation.y / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45),
-            Math.round(selectedObject.rotation.z / THREE.MathUtils.degToRad(45)) * THREE.MathUtils.degToRad(45)
-        );
-
-        selectedObject.updateMatrixWorld(true);
-        scene.updateMatrixWorld(true);
-        }
-        updateSceneData();
-    });		*/
 
     let original_pos = new THREE.Vector3();
     let original_rot = new THREE.Euler();
@@ -1655,23 +1670,6 @@ function init() {
     });
 
 }
-
-/*function changeBlockColor(color) {
-if (!selectedObject) {
-    tooltip("No part selected");
-    return;
-}
-
-selectedObject.traverse((child) => {
-    //if (child.isMesh && child.material && !Array.isArray(child.material)) {
-        child.material.color.set(color);
-        child.material.needsUpdate = true;
-    //}
-});
-
-console.log(`part color changed to ${color}`);
-tooltip(`Part color changed`);
-} */
 
 function changeBlockColor(color) {
     if (!selectedObject) {
