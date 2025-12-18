@@ -480,6 +480,18 @@ document.querySelector("#settings-popup .btn-alt").addEventListener("click", fun
     document.getElementById("settings-popup").style.display = "none";
 });
 
+
+/* Welcome popup */
+document.querySelector("#welcome-popup .btn-alt").addEventListener("click", function () {
+    document.getElementById("welcome-popup").style.display = "none";
+});
+
+document.querySelector("#welcome-popup .close.btn").addEventListener("click", function () {
+    document.getElementById("welcome-popup").style.display = "none";
+});
+
+/* Other */
+
 document.getElementById("clear_autosave").addEventListener("click", function () {
     clear_autosave();
 });
