@@ -82,7 +82,7 @@ function login() {
                 field.innerText = response.user;
                 field.setAttribute("href", "/acc/creations");
                 tooltip('Logged in as ' + response.user);
-                ui_login(response.user, reponse.avatar ?? 'img/logo.png');
+                ui_login(response.user ?? 'Guest User', reponse.pfp ?? 'img/logo.png');
             }
         })
         .catch(async (err) => {
@@ -90,17 +90,19 @@ function login() {
                 const res = await err.response.json();
                 tooltip(res.error);
                 console.error("An error occured while authenticating " + res.error);
+				ui_login('Guest User', 'img/logo.png');
             } catch {
                 tooltip('An error occured while authenticating');
+				ui_login('Guest User', 'img/logo.png');
             }
         });
 }
 login();
 
 /* UI auth */
-function ui_login(username, avatar) {
+function ui_login(username, pfp) {
     document.querySelector('#settings-account-auth-username').textContent = username;
-    document.querySelector('#settings-account-auth-username').textContent = avatar;
+    document.querySelector('#settings-account-auth-pfp').textContent = pfp;
 }
 
 let displayed_parts = [];
@@ -471,9 +473,11 @@ document.querySelector("#export-popup .btn-alt").addEventListener("click", funct
 
 // settings popup open and close
 document.getElementById("settings-popup-open").addEventListener("click", function () {
-    //document.getElementById("settings-popup").style.display = "block";
+    document.getElementById("settings-popup").style.display = "block";
+    /*
     let elm = document.getElementById("settings-popup");
     elm.style.display = (elm.style.display === "none") ? "block" : "none";
+    */
 });
 
 document.querySelector("#settings-popup .btn-alt").addEventListener("click", function () {
@@ -511,26 +515,38 @@ document.getElementById("read_settings").addEventListener("click", function () {
 // file menu
 document.querySelector("#menu-file").addEventListener("click", function () {
     let elm = document.getElementById("dropdown-file");
-    elm.style.display = (elm.style.display === "none") ? "block" : "none";
+    //elm.style.display = (elm.style.display === "none") ? "block" : "none";
+
+    // i dont like how shorthand looks
+    if (elm.style.display === "block") {
+        elm.style.display = "none";
+    } else {
+        elm.style.display = "block";
+    }
 });
 
 document.querySelector("#menu-edit").addEventListener("click", function () {
     let elm = document.getElementById("dropdown-edit");
-    elm.style.display = (elm.style.display === "none") ? "block" : "none";
+
+    if (elm.style.display === "block") {
+        elm.style.display = "none";
+    } else {
+        elm.style.display = "block";
+    }
 });
 
 const studSize = 1000;
 let partList = document.getElementById('blk');
 let colList = document.getElementById('select-color');
 
-document.getElementById("username-field").addEventListener("click", function () {
+/*document.getElementById("username-field").addEventListener("click", function () {
     var content = document.getElementById("username-content");
     if (content.style.display === "block" || content.style.display === "") {
         content.style.display = "none";
     } else {
         content.style.display = "block";
     }
-});
+});*/
 
 document.getElementById("color-picker").addEventListener("click", function () {
     console.log("color picker clicked");
