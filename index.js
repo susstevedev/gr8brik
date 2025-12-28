@@ -1115,13 +1115,15 @@ document.getElementById("cre-import-ldr").addEventListener("change", async funct
                         partName = filename;
                         console.log(part);
 
-                        partColor = '#' + child?.material?.color?.getHexString();
+                        partColor = child?.material?.color?.getHexString();
 
                         partPosition = child.position.clone();
                         partRotation = child.rotation.clone();
+                        console.log(partRotation + partPosition);
 
-                        addBlock();
-                        child.visible = false;
+						addBlockV2(part, partColor, partPosition, partRotation)
+						
+						child.visible = false;
                     }
                     if (child.isLineSegments) {
                         child.visible = false;
@@ -1129,7 +1131,14 @@ document.getElementById("cre-import-ldr").addEventListener("change", async funct
                 });
 
                 scene.add(creation);
-                scene.rotation.x += Math.PI;
+                //scene.rotation.x += Math.PI;
+
+                /*scene.traverse(function (child) {
+                    if (child?.isGroup && child?.parent && child?.parent?.userData && child?.parent?.userData?.fileName) {
+                        child.rotation.x += Math.PI;
+                    }
+                });*/
+
             });
 
         } catch (err) {
@@ -1984,6 +1993,143 @@ function addBlock(throwSuccess, throwError) {
         throwSuccess();
     }, undefined, function (error) {
         console.error('error loading piece:', error);
+        throwError(error);
+    });
+}
+
+function addBlockV2(part, partColor, partPosition, partRotation, throwSuccess, throwError) {
+    if (!ldraw_loader) {
+        console.error('LdrawLoader is missing or not loaded yet.');
+        tooltip('Something really, really, weird has occured.');
+        return;
+    }
+
+    if (!part) {
+        console.error('No part is selected!');
+        tooltip('Please select a part.');
+        return;
+    }
+
+    if (!partColor) {
+        console.warn('Part color is not set. Setting color as white.');
+        partColor = "#ffffff";
+    }
+
+    transformControls.detach(selectedObject);
+    console.log("Loading part:", part);
+
+    ldraw_loader.load(part, function (loadedGroup) {
+        if (!loadedGroup) {
+            console.error("Loaded group does not exist.");
+            tooltip('Please select a block with valid mesh data');
+            return;
+        }
+
+        let blockGroup = new THREE.Group();
+        blockGroup.name = `ldraw_${makeid(10)}`;
+        blockGroup.ldraw = part;
+
+        let display_lines = scene.userData.displayLines;
+
+        loadedGroup.traverse((child) => {
+            if (child.isLineSegments && child.parent.isGroup) {
+                child.visible = false;
+                return;
+            }
+
+            if (child.isMesh && !child.material.map && !child.isLineSegments && !Array.isArray(child.material)) {
+                const pos = new THREE.Vector3();
+                const pos2 = child.getWorldPosition(pos);
+                console.log(pos2);
+
+                if (scene?.userData?.highRes === true) {
+                    child.material = new THREE.MeshPhysicalMaterial({
+                        color: new THREE.Color(partColor || "#ffffff"),
+                        reflectivity: 0.5,
+                        shininess: 75,
+                        roughness: 0.4,
+                        metalness: 0.1,
+                        envMapIntensity: 0.5,
+                    });
+                } else {
+                    child.material = new THREE.MeshPhongMaterial({
+                        color: new THREE.Color(partColor || "#ffffff")
+                    });
+                }
+
+                child.userData.isBlock = true;
+                child.userData.isTexture = false;
+                child.userData.ldraw = child.parent.userData.fileName || partName;
+                child.userData.ldr_line = false;
+
+                transformControls.attach(child);
+                selectedObject = child;
+            }
+
+            if (child.material && child.material.map && child.isMesh && !child.isLineSegments) {
+                child.userData.isBlock = true;
+                child.userData.isTexture = true;
+                child.userData.ldraw = child.parent.userData.fileName || partName;
+                child.userData.ldr_line = false;
+            }
+
+            child.userData.parentName = partName;
+            child.userData.id = makeid(15);
+            child.userData.original_mat = child.material;
+
+            if (child.material && child.isMesh && !child.isLineSegments) {
+                const edges = new THREE.EdgesGeometry(child.geometry);
+                const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000 }));
+                line.userData.ldr_line = true;
+                child.add(line);
+
+                if (display_lines != true) {
+                    line.visible = false;
+                }
+            }
+        });
+
+        blockGroup.add(loadedGroup);
+
+        if (partPosition && partRotation) {
+            blockGroup.position.set(partPosition.x, partPosition.y, partPosition.z);
+            blockGroup.rotation.set(partRotation.x, partRotation.y, partRotation.z);
+        } else {
+            blockGroup.position.y = objectSize(blockGroup).y;
+            blockGroup.rotation.x = Math.PI;
+        }
+
+        blockGroup.userData.partName = partName;
+        scene.add(blockGroup);
+
+        blocks.push(blockGroup);
+        blockGroups.push(blockGroup);
+        blockGroup.sceneCount = blocks.length;
+
+        tooltip(`Added part ${part.replace("parts/", "")}`);
+
+        /* const texturename = `${part.split("/").pop().split(".")[0]}.png`;
+        const texturepath = `https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/parts/textures/${texturename}`;
+        const texturepath = 'https://d1xez26aurxsp6.cloudfront.net/users/qXBby2/avatars/680a924dab4ba.png';
+        const textureLoader = new THREE.TextureLoader();
+
+        textureLoader.load(texturepath, (texturemap) => {
+            texturemap.colorSpace = THREE.SRGBColorSpace;
+            blockGroup.traverse(child => {
+                if (child.isMesh && child.material) {
+                    child.material.map = texturemap;
+                    child.material.needsUpdate = true;
+                }
+            });
+        }, undefined, (err) => {
+            console.warn("Texture load failed or doesn't exist:", err);
+        }); */
+
+        updateBLItems();
+        updateSceneData();
+        throwSuccess();
+    }, undefined, function (error) {
+        console.error(error);
         throwError(error);
     });
 }
