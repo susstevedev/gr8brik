@@ -1,5 +1,10 @@
 /* The mess that runs the entire modeler */
 
+// !!! WILL BREAK THINGS !!!
+// Used for debugging sometimes
+
+//'use strict';
+
 window.addEventListener('beforeunload', function (e) {
     e.preventDefault();
     e.returnValue = '';
@@ -224,21 +229,12 @@ document.getElementById("search-parts").addEventListener("keyup", function (even
     }
 });
 
-// hover effects
-/*document.querySelectorAll("#select-block span").forEach(function (elm) {
-    elm.addEventListener("mouseover", function (event) {
-        alert('test');
-    });
-});*/
-
 // add a new part
 document.getElementById("select-block").addEventListener("click", function (e) {
     const span = e.target.closest("span");
 
     const original_img = span.querySelector('img').getAttribute("src");
-    console.log(original_img);
     span.querySelector('img').setAttribute("src", "img/load.gif");
-    console.log(span.querySelector('img').getAttribute("src"));
 
     if (!span) {
         return;
@@ -252,12 +248,8 @@ document.getElementById("select-block").addEventListener("click", function (e) {
 
     part = 'parts/' + selectedPart;
     partName = selectedPart;
-    console.log("selected part: " + selectedPart);
 
-    addBlock();
-    setTimeout(() => {
-        span.querySelector('img').setAttribute("src", original_img);
-    }, 1000);
+    addBlockV2(part, partColor, partPosition, partRotation, span, original_img);
 });
 
 // list for items that are already in the scene
@@ -1115,13 +1107,13 @@ document.getElementById("cre-import-ldr").addEventListener("change", async funct
                         partName = filename;
                         console.log(part);
 
-                        partColor = child?.material?.color?.getHexString();
+                        partColor = '#' + child?.material?.color?.getHexString();
 
                         partPosition = child.position.clone();
                         partRotation = child.rotation.clone();
                         console.log(partRotation + partPosition);
 
-						addBlockV2(part, partColor, partPosition, partRotation)
+						addBlockV2(part, partColor, partPosition, partRotation, null, null);
 						
 						child.visible = false;
                     }
@@ -1169,7 +1161,8 @@ async function loadSceneFromJSON(data) {
 
         try {
             await new Promise((resolve, reject) => {
-                addBlock(resolve, reject);
+                //addBlock(resolve, reject);
+                addBlockV2(part, partColor, partPosition, partRotation, null, null, resolve, reject);
             });
         } catch (err) {
             console.warn(`Failed to add block: ${block.ldraw}`, err);
@@ -1328,7 +1321,7 @@ document.getElementById("cre-import-three").addEventListener("change", function 
     reader.readAsText(file);
 });
 
-var container, camera, scene, renderer, controls, grid_helper, directional_lighting, ambient_lighting, ldraw_loader, loading_manager, mouse, partRotation, partPosition, selectedObject, customPosition, selectedMap, selectedExport, named_parts = null;
+var container, camera, scene, renderer, controls, transformControls, grid_helper, directional_lighting, ambient_lighting, ldraw_loader, loading_manager, mouse, raycaster, partRotation, partPosition, selectedObject, customPosition, selectedMap, selectedExport, named_parts = null;
 
 let blocks = [];
 let blockGroups = [];
@@ -1515,15 +1508,8 @@ function init() {
     scene.userData.displayLines = false;
     read_settings();
 
-    /* if (isDark()) {
-        scene.background = new THREE.Color(0x252424);
-        //scene.background = new THREE.Color(0x3d3d3d);
-    } else {
-        //scene.background = new THREE.Color(0xfafafa);
-        scene.background = new THREE.Color(0xd3d3d3);
-    } */
-
-    if(scene.userData.ui_trans) {
+    // transparent ui
+    if(scene.userData.ui_trans || scene.userData.ui_trans === undefined || scene.userData.ui_trans === null) {
         let element = document.getElementsByClassName('ui-popup-contain');
 
         for(let i = 0; i < element.length; i++) {
@@ -1585,13 +1571,13 @@ function init() {
 
     named_parts = new Map();
 
+    // loader config
+    // please read ldrawloader docs before changing these values
     const ldraw_path = "https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/";
     ldraw_loader = new THREE.LDrawLoader();
     ldraw_loader.preloadMaterials(ldraw_path + 'colors/ldconfig.ldr');
     ldraw_loader.setPath(ldraw_path + 'actual/');
     ldraw_loader.setPartsLibraryPath(ldraw_path + 'actual/');
-
-    // lifesaver thanks ldrawloader devs
     ldraw_loader.separateObjects = true;
 
     raycaster = new THREE.Raycaster();
@@ -1997,7 +1983,10 @@ function addBlock(throwSuccess, throwError) {
     });
 }
 
-function addBlockV2(part, partColor, partPosition, partRotation, throwSuccess, throwError) {
+
+
+/* addBlock version 2 */
+function addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, throwSuccess, throwError) {
     if (!ldraw_loader) {
         console.error('LdrawLoader is missing or not loaded yet.');
         tooltip('Something really, really, weird has occured.');
@@ -2127,17 +2116,38 @@ function addBlockV2(part, partColor, partPosition, partRotation, throwSuccess, t
 
         updateBLItems();
         updateSceneData();
-        throwSuccess();
+
+        if(partSpan && partSpan !== null && partSpan !== undefined) {
+            partSpan.querySelector('img').setAttribute("src", originalPSImg);
+        }
+        console.log(partSpan);
+
+        throwSuccess();     
     }, undefined, function (error) {
         console.error(error);
         throwError(error);
     });
 }
 
+function throwSuccess() {
+    console.log('This is a success callback used so the browser console doesn\'t throw a fit.')
+}
+
+function throwError() {
+    console.log('This is an throwError callback used so the browser console doesn\'t throw a fit.')
+}
+
+function spanImg(original_img, span) {
+    if(partSpan && partSpan !== null && partSpan !== undefined) {
+        partSpan.querySelector('img').setAttribute("src", originalPSImg);
+    }
+    console.log(partSpan);
+}
+
 function getBLItems() {
     const items = [];
     scene.traverse(obj => {
-        if (obj?.isMesh || obj?.userData?.isBlock) {
+        if (obj?.isMesh || obj?.userData?.isBlock || obj?.userData?.ldraw) {
             if (obj?.userData?.fileName || obj?.parent?.userData?.fileName) {
                 items.push(obj);
             }
@@ -2159,14 +2169,11 @@ function updateBLItems() {
 
 function renderBLItem(obj, level = 0) {
     const id = obj.uuid;
-    const color = obj.material?.color?.toName?.() || obj.material?.color?.getHexString?.() || "No material";
+    const color = obj.material?.color?.toName?.() || '#' + obj.material?.color?.getHexString?.() || "No material";
 
     let part;
-    if (obj.userData.isBlock) {
-        //part = `Part ${obj.parentName || obj.parent.parentName || obj.parent.parent.parentName} (Group ${level})`;
+    if (obj.userData.isBlock && obj.userData.ldraw) {
         part = `Part ${obj?.userData?.fileName || obj?.parent?.userData?.fileName}`;
-    } else {
-        part = obj.name || `Group ${level}`;
     }
 
     const li = document.createElement('li');
