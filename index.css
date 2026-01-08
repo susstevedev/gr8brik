@@ -172,6 +172,14 @@ option {
   text-align: center;
   animation: fadeInFromNone 0.1s ease-in-out;
   overflow-y: auto;
+  
+  a, a:visited {
+	color: var(--ui-button-blue);
+  }
+  
+  a:hover, a:visited:hover {
+	color: var(--ui-anti-text);
+  }
 }
 
 .ui-popup-contain.trans {

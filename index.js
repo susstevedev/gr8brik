@@ -1712,14 +1712,29 @@ function changeBlockColor(color) {
                         tooltip('Invalid multi color map selected');
                         return;
                     }
-                } else {
-                    mat = child.material[0];
+                } else {					
+					if(child.userData.main_mat_uuid != undefined) {
+						mat = child.material[child.userData.main_mat_index];
+						selectedMap = child.userData.main_mat_index;
+					} else {
+						mat = child.material[0];
+						selectedMap = 0;
+					}
                 }
 
                 if (mat && mat.color && !mat.map) {
-                    mat.color.set(color);
-                    mat.needsUpdate = true;
+                    /*mat.color.set(color);
+                    mat.needsUpdate = true;*/
+					
+					let cloned_mat = mat.clone();
+					cloned_mat.color.set(color);
+					child.material[child.userData.main_mat_index] = cloned_mat;
+					mat = child.material[child.userData.main_mat_index];
+					cloned_mat = mat;
+					console.log(cloned_mat.color.getHexString().toLowerCase());
                 }
+				
+				document.querySelector('#selected-map').value = selectedMap;
 
                 selectedMap = null;
                 updateSceneData();
@@ -1729,7 +1744,6 @@ function changeBlockColor(color) {
                 child.material.needsUpdate = true;
                 updateSceneData();
                 updateBLItems();
-
             }
         }
     });
@@ -2060,6 +2074,21 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
                 child.userData.isTexture = true;
                 child.userData.ldraw = child.parent.userData.fileName || partName;
                 child.userData.ldr_line = false;
+				
+				// main color uuid, for minifig textures
+				if (Array.isArray(child.material)) {
+					child.material.forEach((mat) => {
+						console.log(mat.name);
+						if(mat.name === " Main_Colour") {
+							mat.name = mat.name + '_' + makeid(5);
+							child.userData.main_mat_uuid = mat.uuid;
+							
+							var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
+							child.userData.main_mat_index = index;
+							console.log(index);
+						}
+					});
+				}
             }
 
             child.userData.parentName = partName;
