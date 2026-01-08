@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/RGBELoader.js"></script>
     <style>
         body { 
@@ -76,12 +76,12 @@
         }
 
         a {
-            color: #d3d3d3;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <script>
+    <!-- <script>
     document.addEventListener("DOMContentLoaded", function () {
         const newScript = document.createElement("script");
 
@@ -95,7 +95,7 @@
 
         document.head.appendChild(newScript);
     });
-    </script>
+    </script> -->
     
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -118,7 +118,7 @@
                 return;
             }
 
-            fetch(`/ajax/build.php?buildId=${model_file}&fetch=true`)
+            fetch(`/ajax/build?buildId=${model_file}&fetch=1`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Server returned the error code ${response.status}`);
@@ -134,7 +134,7 @@
                     }
                 })
                 .then(creation_data => {
-                    fetch(`/cre/${creation_data.model}`)
+                    fetch(`${creation_data.model}`)
                         .then(response => {
                             if (!response.ok) {
                                 throw new Error(`Server returned the error code ${response.status}`);
@@ -242,7 +242,9 @@
 
                     loadParts(model_data.blocks);
 
-                    function showViewer() {     
+                    function showViewer() {
+                        document.title = `${JSON.parse(window.creation_data).name} | gr8brik.rf.gd`;
+                        
                         loading.style.display = "none";
                         viewer.style.display = "block";
 
@@ -250,7 +252,8 @@
                         wmark.innerText = "gr8brik.rf.gd";
 
                         stat_name.style.display = "block";
-                        stat_name.innerHTML += `&nbsp;${JSON.parse(window.creation_data).name}`;
+                        //stat_name.innerHTML += `&nbsp;${JSON.parse(window.creation_data).name}`;
+                        stat_name.innerHTML += `&nbsp;<a href="/build/${JSON.parse(window.creation_data).modelid}" target="_blank">${JSON.parse(window.creation_data).name}</a>`;
 
                         stat_username.style.display = "block";
                         stat_username.innerHTML += `&nbsp;<a href="/user/${JSON.parse(window.creation_data).userid}" target="_blank">${JSON.parse(window.creation_data).username}</a> on ${JSON.parse(window.creation_data).date}`;
@@ -258,7 +261,7 @@
                         animate();
                     }
 
-                    window.addEventListener('resize', () => {
+                    /*window.addEventListener('resize', () => {
                         const aspect = window.innerWidth / window.innerHeight;
                         const frustum = 100;
 
@@ -269,7 +272,15 @@
                         camera.updateProjectionMatrix();
 
                         renderer.setSize(window.innerWidth, window.innerHeight);
-                    });
+                    });*/
+                    
+                    window.addEventListener('resize', onWinResize, true);
+                    
+                    function onWinResize() {
+                        camera.aspect = window.innerWidth / window.innerHeight;
+                        camera.updateProjectionMatrix();
+                        renderer.setSize(window.innerWidth, window.innerHeight);
+                    }
 
                     function animate() {
                         requestAnimationFrame(animate);
