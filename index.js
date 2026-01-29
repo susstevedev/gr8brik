@@ -1411,7 +1411,7 @@ document.getElementById("pbr-enable").addEventListener("change", function () {
     save_settings();
 });
 
-document.getElementById("trans-enable").addEventListener("change", function () {
+/*document.getElementById("trans-enable").addEventListener("change", function () {
     const ui_trans = this.checked;
     scene.userData.ui_trans = ui_trans;
 
@@ -1422,27 +1422,85 @@ document.getElementById("trans-enable").addEventListener("change", function () {
         // Posted by James Hill, modified by community. See post 'Timeline' for change history
         // Retrieved 2025-12-18, License - CC BY-SA 3.0
 
-        let element = document.getElementsByClassName('ui-popup-contain');
+        let elements = document.querySelectorAll('.ui-canbe-trans');
 
-        for(let i = 0; i < element.length; i++) {
-            element[i].classList.add('trans');
-        }
+        //for(let i = 0; i < element.length; i++) {
+            //element[i].classList.add('trans');
+        //}
+
+        elements.forEach(element => {
+            element.classList.add('trans');
+        });
     } else {
-        let element = document.getElementsByClassName('ui-popup-contain');
+        //let element = document.getElementsByClassName('ui-canbe-trans');
+        let elements = document.querySelectorAll('.ui-canbe-trans');
 
-        for(let i = 0; i < element.length; i++) {
-            element[i].classList.remove('trans');
-        }
+        //for(let i = 0; i < element.length; i++) {
+            //element[i].classList.remove('trans');
+        //}
+
+        elements.forEach(element => {
+            element.classList.add('trans');
+        });
     }
 
     scene.updateMatrixWorld(true);
     save_settings();
+});*/
+
+document.getElementById("trans-enable").addEventListener("change", function () {
+    const ui_trans = this.checked;
+    scene.userData.ui_trans = ui_trans;
+
+    applyTransparent(scene.userData.ui_trans);
 });
 
 document.getElementById("hdr-enable").addEventListener("change", function () {
     const use_hdri = this.checked;
     scene.userData.use_hdri = use_hdri;
 
+    /*if(scene.userData.use_hdri) {
+        const rgbe_loader = new THREE.RGBELoader();
+        //https://polyhaven.com/a/autumn_field_puresky
+        rgbe_loader.load('https://cdn.jsdelivr.net/gh/susstevedev/gr8brik/lib/autumn_field_puresky_1k.hdr', function (texture) {
+            texture.mapping = THREE.EquirectangularReflectionMapping;
+            scene.environment = texture;
+        });
+        scene.updateMatrixWorld(true);
+        save_settings();
+    } else {
+        scene.environment = null;
+        scene.updateMatrixWorld(true);
+        save_settings();
+    }*/
+
+    applyHdri(scene.userData.use_hdri);
+});
+
+function applyTransparent(ui_trans) {
+    if(ui_trans) {
+        // Source - https://stackoverflow.com/a/24219779
+        // Posted by James Hill, modified by community. See post 'Timeline' for change history
+        // Retrieved 2025-12-18, License - CC BY-SA 3.0
+
+        let elements = document.querySelectorAll('.ui-canbe-trans');
+
+        elements.forEach(element => {
+            element.classList.add('trans');
+        });
+    } else {
+        let elements = document.querySelectorAll('.ui-canbe-trans');
+
+        elements.forEach(element => {
+            element.classList.remove('trans');
+        });
+    }
+
+    scene.updateMatrixWorld(true);
+    save_settings();
+}
+
+function applyHdri(use_hdri) {
     if(use_hdri) {
         const rgbe_loader = new THREE.RGBELoader();
         //https://polyhaven.com/a/autumn_field_puresky
@@ -1457,7 +1515,7 @@ document.getElementById("hdr-enable").addEventListener("change", function () {
         scene.updateMatrixWorld(true);
         save_settings();
     }
-});
+}
 
 function isDark() {
     if (getCookie('mode')) {
@@ -1508,13 +1566,28 @@ function init() {
     scene.userData.displayLines = false;
     read_settings();
 
+    THREE.Cache.enabled = false;
+
     // transparent ui
     if(scene.userData.ui_trans || scene.userData.ui_trans === undefined || scene.userData.ui_trans === null) {
-        let element = document.getElementsByClassName('ui-popup-contain');
+        /*let element = document.getElementsByClassName('ui-popup-contain');
 
         for(let i = 0; i < element.length; i++) {
             element[i].classList.add('trans');
-        }
+        }*/
+
+        applyTransparent(scene.userData.ui_trans);
+    }
+
+    //hdri
+    if(scene.userData.use_hdri || scene.userData.use_hdri === undefined || scene.userData.use_hdri === null) {
+        /*let element = document.getElementsByClassName('ui-popup-contain');
+
+        for(let i = 0; i < element.length; i++) {
+            element[i].classList.add('trans');
+        }*/
+
+        applyHdri(scene.userData.use_hdri);
     }
 
     // WebGl renderer
@@ -1713,25 +1786,41 @@ function changeBlockColor(color) {
                         return;
                     }
                 } else {					
-					if(child.userData.main_mat_uuid != undefined) {
+					/*if(child.userData.main_mat_uuid != undefined) {
 						mat = child.material[child.userData.main_mat_index];
 						selectedMap = child.userData.main_mat_index;
 					} else {
 						mat = child.material[0];
 						selectedMap = 0;
-					}
+					}*/
+
+                    if(child.userData.main_mat_name != undefined) {
+                        mat = child.material[child.userData.main_mat_index];
+                        selectedMap = child.userData.main_mat_index;
+                    } else {
+                        mat = child.material[0];
+                        selectedMap = 0;
+                    }
                 }
 
                 if (mat && mat.color && !mat.map) {
                     /*mat.color.set(color);
                     mat.needsUpdate = true;*/
 					
-					let cloned_mat = mat.clone();
-					cloned_mat.color.set(color);
-					child.material[child.userData.main_mat_index] = cloned_mat;
-					mat = child.material[child.userData.main_mat_index];
-					cloned_mat = mat;
-					console.log(cloned_mat.color.getHexString().toLowerCase());
+					//let cloned_mat = mat.clone();
+					//cloned_mat.color.set(color);
+                    //cloned_mat.color = new THREE.Color(color || "#ffffff");
+					//child.material[child.userData.main_mat_index] = mat.clone();
+
+                    console.log(child.material[child.userData.main_mat_index]);
+                    child.material[selectedMap].color = new THREE.Color(color || "#ffffff");
+                    console.log(selectedMap);
+                    child.material[selectedMap].needsUpdate = true;
+
+					/*mat = child.material[child.userData.main_mat_index];
+					cloned_mat = mat;*/
+
+					//console.log(cloned_mat.color.getHexString().toLowerCase());
                 }
 				
 				document.querySelector('#selected-map').value = selectedMap;
@@ -2079,14 +2168,29 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
 				if (Array.isArray(child.material)) {
 					child.material.forEach((mat) => {
 						console.log(mat.name);
-						if(mat.name === " Main_Colour") {
-							mat.name = mat.name + '_' + makeid(5);
+						if(mat.name.includes("Main_Colour")) {
+                        //if(mat.name === " Main_Colour") {
+                            var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
+
+                            child.material[index] = mat.clone();
+                            child.material[index].needsUpdate = true;
+
+							mat.name = child.material[index].name + '_' + makeid(5);
+
 							child.userData.main_mat_uuid = mat.uuid;
+                            child.userData.main_mat_name = mat.name;
 							
-							var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
 							child.userData.main_mat_index = index;
 							console.log(index);
-						}
+
+                            if(partColor) {
+                                child.material[index].color = new THREE.Color(partColor || "#ffffff");
+                            }
+						} else {
+                            var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
+                            child.material[index] = mat.clone();
+                            child.material[index].needsUpdate = true;
+                        }
 					});
 				}
             }
@@ -2432,10 +2536,10 @@ function generateSceneJSON() {
         blocks: []
     };
 
-    /* if (selectedObject) {
-    transformControls.detach(selectedObject);
-    selectedObject = null;
-    } */
+    /*if (selectedObject && transformControls) {
+        transformControls.detach(selectedObject);
+        selectedObject = null;
+    }*/
 
     blockGroups.forEach(function (group) {
         if (!group) {
@@ -2463,8 +2567,10 @@ function generateSceneJSON() {
             euler.setFromQuaternion(rot);
 
             // Colors
+
+            //one is usually the index for most of the part that isn't a texture
             if (Array.isArray(mesh_child.material)) {
-                mesh_color = mesh_child.material[0].color.getHexString().toLowerCase();
+                mesh_color = mesh_child.material[1].color.getHexString().toLowerCase();
             } else {
                 mesh_color = mesh_child.material.color.getHexString().toLowerCase();
             }
@@ -2970,7 +3076,7 @@ function selectObject(obj) {
     transformControls.attach(obj);
     selectedObject = obj;
 
-    partColor = `#${obj.material.color.getHexString()}`;
+    partColor = `#${obj?.material?.color?.getHexString()}` || `#${obj?.material[1]?.color?.getHexString()}` || '#ffffff';
     $("#color-picker").spectrum("set", partColor);
 }
 

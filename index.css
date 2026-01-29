@@ -1,10 +1,11 @@
 body {
   --ui-text-color: #000;
-  --ui-color: #fafafa;
+  /*--ui-color: #fafafa;*/
+  --ui-color: #d3d3d3;
   --ui-anti-color: #242424;
   --ui-anti-text: #fff;
   --ui-button-blue: #87ceeb;
-  --ui-elm-noglass: rgba(36, 36, 36, 0.8);
+  --ui-elm-noglass: rgba(211, 211, 211, 0.8);
 
   font-family: 'Arial Narrow', Arial, sans-serif;
   font-size: 16px;
@@ -17,8 +18,10 @@ body {
 body.dark {
   --ui-text-color: #fff;
   --ui-color: #242424;
-  --ui-anti-color: #fafafa;
+  /* --ui-anti-color: #fafafa; */
+  --ui-anti-color: #d3d3d3;
   --ui-anti-text: #000;
+  --ui-elm-noglass: rgba(36, 36, 36, 0.8);
 }
 
 select {
@@ -75,9 +78,7 @@ option {
   top: 0;
   width: 20%;
   height: 100%;
-  background-color: transparent;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  background: var(--ui-elm-noglass);
   color: var(--ui-text-color);
   font-size: 20px;
   padding: 5px;
@@ -186,6 +187,12 @@ option {
   background-color: transparent !important;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+}
+
+.trans {
+	background-color: transparent !important;
+	backdrop-filter: blur(15px);
+	-webkit-backdrop-filter: blur(15px);
 }
 
 @keyframes fadeInFromNone {
