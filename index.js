@@ -1105,15 +1105,16 @@ document.getElementById("cre-import-ldr").addEventListener("change", async funct
 
                         part = 'parts/' + filename;
                         partName = filename;
-                        console.log(part);
 
-                        partColor = '#' + child?.material?.color?.getHexString();
+                        //if(child?.material?.color) {
+                            let childColor = '#' + child?.material?.color?.getHexString();
+                        //}
 
                         partPosition = child.position.clone();
                         partRotation = child.rotation.clone();
-                        console.log(partRotation + partPosition);
+                        console.log(child);
 
-						addBlockV2(part, partColor, partPosition, partRotation, null, null);
+						addBlockV2(part, childColor, partPosition, partRotation, null, null);
 						
 						child.visible = false;
                     }
@@ -1122,12 +1123,17 @@ document.getElementById("cre-import-ldr").addEventListener("change", async funct
                     }
                 });
 
+                console.log(creation.rotation.x);
+                creation.rotation.x += creation.rotation.x / 2;
+                console.log(creation.rotation.x);
+
                 scene.add(creation);
                 //scene.rotation.x += Math.PI;
 
                 /*scene.traverse(function (child) {
-                    if (child?.isGroup && child?.parent && child?.parent?.userData && child?.parent?.userData?.fileName) {
-                        child.rotation.x += Math.PI;
+                    if (child?.userData?.ldraw) {
+                        child.rotation.x -= Math.PI;
+                        console.log(child.userData.ldraw);
                     }
                 });*/
 
@@ -2138,7 +2144,6 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
                     child.material = new THREE.MeshPhysicalMaterial({
                         color: new THREE.Color(partColor || "#ffffff"),
                         reflectivity: 0.5,
-                        shininess: 75,
                         roughness: 0.4,
                         metalness: 0.1,
                         envMapIntensity: 0.5,
