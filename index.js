@@ -80,6 +80,7 @@ document.addEventListener('click', function (event) {
 // todo have this run ever 10 seconds if user is not signed in
 function login() {
     fetch(start_url + "/ajax/user.php?ajax=true")
+    //fetch('user.json')
         .then(res => res.json())
         .then(response => {
             if (response.success) {
@@ -87,7 +88,7 @@ function login() {
                 field.innerText = response.user;
                 field.setAttribute("href", "/acc/creations");
                 tooltip('Logged in as ' + response.user);
-                ui_login(response.user ?? 'Guest User', reponse.pfp ?? 'img/logo.png');
+                ui_login(response.user ?? 'Guest User', response.pfp ?? 'img/logo.png');
             }
         })
         .catch(async (err) => {
@@ -99,6 +100,7 @@ function login() {
             } catch {
                 tooltip('An error occured while authenticating');
 				ui_login('Guest User', 'img/logo.png');
+                console.error("An error occured while authenticating " + err);
             }
         });
 }
@@ -107,7 +109,7 @@ login();
 /* UI auth */
 function ui_login(username, pfp) {
     document.querySelector('#settings-account-auth-username').textContent = username;
-    document.querySelector('#settings-account-auth-pfp').textContent = pfp;
+    document.querySelector('#settings-account-auth-pfp').src = pfp;
 }
 
 let displayed_parts = [];
