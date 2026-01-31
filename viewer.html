@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/RGBELoader.js"></script>
     <style>
         body { 
@@ -18,6 +18,16 @@
 
         .box {
             position: absolute;
+            background-color: rgba(36, 36, 36, 0.8);
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 20px;
+            border-radius: 0px;
+            box-shadow: rgba(30, 30, 30, 0.06) 0px 0px 4px 4px;
+        }
+        
+        .box-load {
+            position: absolute;
             background-color: #ddd;
             color: #000;
             padding: 10px 20px;
@@ -28,11 +38,19 @@
         #watermark {
             position: absolute;
             display: none;
-            background-color: #ddd;
-            color: #000;
+            background-color: rgba(36, 36, 36, 0.8);
+            color: #fff;
             bottom: 0px;
             right: 0px;
             padding: 6px 16px;
+        }
+        
+        #watermark img {
+            width: 20px;
+            height: 20px;
+            border-radius: 15px;
+            border: 1px solid #000;
+            filter: invert(100%);
         }
 
         #loading {
@@ -52,6 +70,20 @@
             top: 50px;
             left: 0;
             display: none;
+            font-size: 15px;
+        }
+        
+        #date-v2 {
+            top: 100px;
+            left: 0;
+            display: none;
+            font-size: 15px;
+        }
+        
+        #username img {
+            width: 20px;
+            height: 20px;
+            border-radius: 6px;
         }
 
         button {
@@ -76,31 +108,112 @@
         }
 
         a {
-            color: #333;
+            color: #fff;
+        }
+        
+        a:visited:hover {
+            color: #fff;
+        }
+        
+        a:visited {
+            color: #fff;
+        }
+        
+        a:hover {
+            color: #fff;
         }
     </style>
 </head>
 <body>
-    <!-- <script>
+    <script>
     document.addEventListener("DOMContentLoaded", function () {
         const newScript = document.createElement("script");
 
         if (typeof WebAssembly != "object" && typeof WebAssembly.instantiate != "function" || navigator.userAgent.includes('PaleMoon') || navigator.userAgent.includes('Mypal')) {
-            alert("Your browser is not supported. Please upgrade to a mainstream/modern browser.");
-            newScript.src = null;
-            document.getElementById("viewer").remove();
+            alert("Your browser is either Palemoon or does not support WASM. It might fail to load objects (lights, parts, etc) in the scene.");
+            newScript.src = "https://cdn.jsdelivr.net/npm/three@0.120.0/examples/js/loaders/LDrawLoader.js";
         } else {
         	newScript.src = "https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"; 
         }
 
         document.head.appendChild(newScript);
     });
-    </script> -->
+    </script>
     
+    <!--<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const newScript = document.createElement("script");
+       	newScript.src = "https://cdn.jsdelivr.net/npm/three@0.124.0/build/three.min.js"; 
+        document.head.appendChild(newScript);
+    });
+    </script>-->
+
     <script>
+        let default_player_config = {
+        	debug:"false",
+         	player_redesign_trans:"true",
+            player_redesign: "true",
+            webgl: {
+            	lighting: {
+             		use_hdri: "true",
+                	erm: "false",
+               	}
+           },
+           model: {
+               allow_legacy_model: "true",
+               smooth_normals: "true",
+               lines: "false"
+		   }
+        };
+                
+        window.globalPlayerConfig ??= {};
+        
+        console.log("[app] before merge", window.globalPlayerConfig);
+        
+        for (const [key, value] of Object.entries(default_player_config)) {
+          if (!(key in window.globalPlayerConfig)) {
+            window.globalPlayerConfig[key] = value;
+          }
+        }
+        
+        //mergeDefaults(window.globalPlayerConfig, default_player_config);
+        
+        console.log("[app] after merge", window.globalPlayerConfig);
+        
+        /*function mergeDefaults(target, defaults) {
+          for (const [key, value] of Object.entries(defaults)) {
+            if (
+              value &&
+              typeof value === "object" &&
+              !Array.isArray(value)
+            ) {
+              target[key] ??= {};
+              mergeDefaults(target[key], value);
+            } else {
+              target[key] ??= value;
+            }
+          }
+        }*/
+                
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('retry').onclick = function() {
                 window.location.reload();
+            }
+            
+        	const version_string = "Gr8brik Viewer 01-28-26";
+       		const version_num = "012820261-1327";
+                    
+            console.log(window.globalPlayerConfig);
+            
+            let debug;
+            if(window.globalPlayerConfig.debug === "true") {
+                // debug/dev mode toggle
+				// when changed, the viewer will display information in the browser console
+           		debug = true;
+            }
+                
+          	if(typeof window.globalPlayerConfig.player_redesign === "boolean") {
+            	console.log('Player redesign flags coming soon');
             }
 
             const viewer = document.getElementById("viewer");
@@ -109,6 +222,7 @@
 
             const model_file = new URLSearchParams(window.location.search).get("model");
 
+            const stat_date = document.getElementById("date-v2");
             const stat_username = document.getElementById("username");
             const stat_name = document.getElementById("stats");
 
@@ -146,7 +260,8 @@
                                 const model_data = JSON.parse(text);
                                 load_model_data(model_data);
                             } catch (error) {
-                                throw new Error(`Invalid model data JSON: ${error.message}`);
+                                alert(error);
+                                throw new Error('Invalid model data: ' + error);
                             }
                         })
                 })
@@ -171,12 +286,21 @@
                         camera.position.set(250, 250, 250);
                     }
 
-                    var ambient = new THREE.AmbientLight(0xdddddd);
+                    var ambient = new THREE.AmbientLight(0xffffff);
                     scene.add(ambient);
                     
-                    var directional = new THREE.DirectionalLight(0xffffff, 3);
-                    directional.position.set(250, 250, 250);
+                    var directional = new THREE.DirectionalLight(0xffffff, 2.5);
+                    directional.position.set(camera.position.x, camera.position.y, camera.position.z);
                     scene.add(directional);
+                    
+                    var directional2 = new THREE.DirectionalLight(0xffffff, 2.5);
+                    directional2.position.set(camera.position.x - camera.position.x * 2, camera.position.y - camera.position.y * 2, camera.position.z - camera.position.z * 2);
+                    scene.add(directional2);
+                    
+                    if(debug === true) {
+                            console.log(camera.position.x - camera.position.x * 2, camera.position.y - camera.position.y * 2, camera.position.z - camera.position.z * 2);
+                    		console.log(camera.position.x, camera.position.y, camera.position.z);
+                    }
                     
                     var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
@@ -187,8 +311,24 @@
                     loader.setPartsLibraryPath(ldr_path + 'actual/');
                     loader.setPath(ldr_path + 'actual/parts/');
                     
-                    var total = model_data.blocks.length;
+                    var rgbe_loader = new THREE.RGBELoader();
+                    
+                     if(window.globalPlayerConfig.webgl.lighting.use_hdri === "true") {
+                        rgbe_loader.load('https://cdn.jsdelivr.net/gh/susstevedev/gr8brik/lib/autumn_field_puresky_1k.hdr', function (texture) {
+                            if(window.globalPlayerConfig.webgl.lighting.erm === "true") {
+                    			texture.mapping = THREE.EquirectangularReflectionMapping;
+                            }
+                    		scene.environment = texture;
+                    	});
+               	 	}
+                    
+                    let total = 0
+                    if(model_data.blocks) {
+                        total = model_data?.blocks?.length;
+                    }
+                    
                     var complete = false;
+                    var partsIntersecting = [];
 
                     function loadParts(blocks, index = 0) {
                         if (index === blocks.length) {
@@ -199,80 +339,241 @@
                         const block = blocks[index];
 
                         if (!block.ldraw) {
-                            console.warn("skipping invalid part " + block);
+                            if(debug === true) {
+                            	console.warn("skipping invalid part " + block);
+                            }
                             loadParts(blocks, index + 1);
                             return;
                         }
 
-                        loader.load(`${block.ldraw}`, function (group) {
-                            group.traverse((child) => {
-                                if (child.isLineSegments) {
-                                    child.visible = false;
-                                    return;
-                                }
+                        try {
+                            loader.load(`${block.ldraw}`, function (group) {
+                                group.traverse((child) => {
+                                    if (child.isLineSegments) {
+                                        child.visible = false;
+                                        return;
+                                    }
 
-                                let colorHex = `${block.color ? block.color.replace(/^#/, '') : 'ffffff'}`;
-                                if (child.isMesh && !Array.isArray(child.material)) {
-                                    child.material = new THREE.MeshLambertMaterial({color: new THREE.Color(`#${colorHex}`)});
-                                }
+                                    let colorHex = `${block.color ? block.color.replace(/^#/, '') : 'ffffff'}`;
+                                    if (child.isMesh && !Array.isArray(child.material)) {
+                                        //child.material = new THREE.MeshLambertMaterial({color: new THREE.Color(`#${colorHex}`)});
+                                        child.material = new THREE.MeshPhysicalMaterial({
+                                                color: new THREE.Color(`#${colorHex}`),
+                                                reflectivity: 0.5,
+                                                roughness: 0.4,
+                                                metalness: 0.1,
+                                                envMapIntensity: 1.0,
+                                    	});
+                                    }
+                                    
+                                    console.log(child.userData);
+                                    if(child.isMesh && child.userData.fileName) {
+                                    	let childBB = new THREE.Box3().setFromObject(child);
+                                        childBB.cloneid = child.id;
+                                    	partsIntersecting.push(childBB);
+                                    }
+                                    
+                                    /*if(child.isMesh) {
+                                        for (var vertexIndex = 0; vertexIndex < child.geometry.attributes.position.array.length; vertexIndex++) {
+                                            var localVertex = new THREE.Vector3().fromBufferAttribute(child.geometry.attributes.position, vertexIndex).clone();
+                                            var globalVertex = localVertex.applyMatrix4(child.matrix);
+                                            var directionVector = globalVertex.sub(child.position);
+
+                                            var ray = new THREE.Raycaster(child.position, directionVector.clone().normalize());
+                                            var collisionResults = ray.intersectObjects(collidableMeshList);
+                                            if (collisionResults.length > 0 && collisionResults[0].distance < directionVector.length()) {
+                                               child.material = new THREE.MeshPhysicalMaterial({
+                                                        color: new THREE.Color("#800080"),
+                                                        reflectivity: 0.5,
+                                                        roughness: 0.4,
+                                                        metalness: 0.1,
+                                                        envMapIntensity: 0.5,
+                                                        opacity: 0.5,
+                                                        transparent: true,
+                                                });
+                                            }
+                                        }
+                                    }*/
+                                    
+                                    /*scene.traverse((obj) => {
+                                        let inObj = obj.containsBox(childBB);
+                                        
+                                        if(inObj) {
+                                            child.material = new THREE.MeshPhysicalMaterial({
+                                                    color: new THREE.Color("#800080"),
+                                                    reflectivity: 0.5,
+                                                    roughness: 0.4,
+                                                    metalness: 0.1,
+                                                    envMapIntensity: 0.5,
+                                                    opacity: 0.5,
+                                                    transparent: true,
+                                            });
+                                        }
+                                    });*/
+                                });
+
+                                group.position.set(block.position.x, block.position.y, block.position.z);
+                                group.rotation.set(block.rotation.x, block.rotation.y, block.rotation.z);
+                                scene.add(group);
+
+                                loadParts(blocks, index + 1);
                             });
+                        }
+                       	//}, undefined, function (error) {
+                        catch(error) {
+                                console.warn(`Failed to load block ${block.ldraw} ` + error);
+                                console.log(block.ldraw);
 
-                            group.position.set(block.position.x, block.position.y, block.position.z);
-                            group.rotation.set(block.rotation.x, block.rotation.y, block.rotation.z);
-                            scene.add(group);
+                            	if(debug === true) {
+                                    for (const key in error) {
+                                        console.error(`Error property '${key}':` + error[key]);
+                                    }
+                                    if (error.stack) {
+                                        console.error("Error stack:", error.stack);
+                                    }
+                                    if (error instanceof DOMException) {
+                                        console.error("DOMException name:" + error.name);
+                                        console.error("DOMException code:" + error.code);
+                                    }
+                                }
 
-                            loadParts(blocks, index + 1);
-                        }, undefined, function (error) {
-                            console.warn(`Failed to load block ${block.ldraw}` + error);
-                            
-                            for (const key in error) {
-                                console.error(`Error property '${key}':` + error[key]);
-                            }
-                            if (error.stack) {
-                                console.error("Error stack:", error.stack);
-                            }
-                            if (error instanceof DOMException) {
-                                console.error("DOMException name:" + error.name);
-                                console.error("DOMException code:" + error.code);
-                            }
-                            
-                            loadParts(blocks, index + 1);
-                        });
+                                loadParts(blocks, index + 1);
+                        //});
+                    	}
+                    }
+                    
+                    function legacyModelLoader(obj, total, index = 0) {
+                        if(index === total) {
+                            console.log(scene.children);
+                            camera.position.set(1, 1, 1);
+                            animate();
+                            return;
+                        }
+                       	
+                        const objLoader = new THREE.ObjectLoader();
+                        
+                        obj.intersect.object.geometries.forEach(g => {
+                        	if (g.type === 'PlaneBufferGeometry') {
+                           		g.type = 'PlaneGeometry';
+                         	}
+                            if (g.type === 'Geometry') {
+                           		g.type = 'BufferGeometry';
+                                //g = new THREE.BufferGeometry().fromGeometry(g);
+                         	}
+                         });
+                        
+                        obj.intersect.object.materials.color = obj.color;
+                        obj.intersect.object.geometries[0].width = obj.intersect.object.geometries[0].width / 2;
+                        obj.intersect.object.geometries[0].height = obj.intersect.object.geometries[0].height / 2;
+                        const mesh = objLoader.parse(obj.intersect.object);
+
+                        scene.add(mesh);
+                        console.log("Object loaded:" + obj);
+                        legacyModelLoader(obj, total, index + 1);
                     }
 
-                    loadParts(model_data.blocks);
+                    if(!window.globalPlayerConfig.model.allow_legacy_model === "true") {
+                    	loadParts(model_data.blocks);
+                    } else {
+                        if(model_data[0]?.intersect?.object?.metadata?.generator && model_data[0]?.intersect?.object?.metadata?.generator == "Object3D.toJSON") {
+                            console.log('yes it\'s legacy bruh');
+                            //showViewer();
+                            let legacyTotal = model_data.length;
+                            
+                            model_data.forEach(part => {
+                            	legacyModelLoader(part, legacyTotal);
+                            });
+                            //showViewer();
+                            
+                            document.title = `${JSON.parse(window.creation_data).name} | gr8brik.rf.gd`;
+                        
+                            viewer.style.display = "block";
+                            loading.innerText = "This model can never be viewed again due to Geometry being replaced with BufferGeometry. If you want to view it, download the model and set up a threejs evirorment with a version below 124";
 
-                    function showViewer() {
+                            wmark.style.display = "block";
+                            wmark.innerHTML = "<img src='https://gr8brik.rf.gd/img/logo/simplev2.png' alt='Logo' title='Logo' /> gr8brik.rf.gd";
+
+                            stat_name.style.display = "block";
+                            stat_name.innerHTML += `&nbsp;<a href="/build/${JSON.parse(window.creation_data).modelid}" target="_blank">${JSON.parse(window.creation_data).name}</a>`;
+
+                            stat_username.style.display = "block";
+                            stat_username.innerHTML += `&nbsp; <a href="/user/${JSON.parse(window.creation_data).userid}" target="_blank"><img src='https://gr8brik.rf.gd/acc/users/pfps/${JSON.parse(window.creation_data).userid}.webp' alt='User icon' title='User icon' />${JSON.parse(window.creation_data).username}</a>`;
+
+                            stat_date.style.display = "block";
+                            stat_date.innerHTML += `&nbsp;${JSON.parse(window.creation_data).date}`;
+
+                            animate();
+                        } else {
+                            loadParts(model_data.blocks);
+                        }
+                    }
+
+                    window.showViewer = function() {
                         document.title = `${JSON.parse(window.creation_data).name} | gr8brik.rf.gd`;
                         
                         loading.style.display = "none";
                         viewer.style.display = "block";
 
                         wmark.style.display = "block";
-                        wmark.innerText = "gr8brik.rf.gd";
+                        wmark.innerHTML = "<img src='https://gr8brik.rf.gd/img/logo/simplev2.png' alt='Logo' title='Logo' /> gr8brik.rf.gd";
 
                         stat_name.style.display = "block";
-                        //stat_name.innerHTML += `&nbsp;${JSON.parse(window.creation_data).name}`;
                         stat_name.innerHTML += `&nbsp;<a href="/build/${JSON.parse(window.creation_data).modelid}" target="_blank">${JSON.parse(window.creation_data).name}</a>`;
 
                         stat_username.style.display = "block";
-                        stat_username.innerHTML += `&nbsp;<a href="/user/${JSON.parse(window.creation_data).userid}" target="_blank">${JSON.parse(window.creation_data).username}</a> on ${JSON.parse(window.creation_data).date}`;
+                        stat_username.innerHTML += `&nbsp; <a href="/user/${JSON.parse(window.creation_data).userid}" target="_blank"><img src='https://gr8brik.rf.gd/acc/users/pfps/${JSON.parse(window.creation_data).userid}.webp' alt='User icon' title='User icon' />${JSON.parse(window.creation_data).username}</a>`;
+                        
+                        stat_date.style.display = "block";
+                        stat_date.innerHTML += `&nbsp;${JSON.parse(window.creation_data).date}`;
 
                         animate();
+                        
+                       	intersectingCheck();
                     }
+                    
+      				/*window.intersectingCheck = function() { 
+                        console.log(partsIntersecting);
+                        partsIntersecting.forEach(obj => {
+                        const others = partsIntersecting.filter(other => other !== obj)
 
-                    /*window.addEventListener('resize', () => {
-                        const aspect = window.innerWidth / window.innerHeight;
-                        const frustum = 100;
+                          partsIntersecting.forEach(other => {
+                            if (obj.intersectsBox(other)) {
+                                let OGobj = scene.getObjectById(obj.cloneid);
+                                console.log(OGobj + ' is inside another part');
+                                
+                                OGobj.material.transparent = true;
+                                OGobj.material.opacity = 0.25;
+                                OGobj.material.needsUpdate = true;
+                                
+                                scene.updateMatrixWorld(true);
+                                OGobj.updateMatrixWorld(true);
+                            }
+                          });
+                        });
+                    }*/
+                    
+                    window.intersectingCheck = function() { 
+                        console.log(partsIntersecting);
+                        scene.traverse((obj) => {
+                          const others = partsIntersecting.filter(other => other !== obj)
 
-                        camera.left = (-frustum * aspect) / 2;
-                        camera.right = (frustum * aspect) / 2;
-                        camera.top = frustum / 2;
-                        camera.bottom = -frustum / 2;
-                        camera.updateProjectionMatrix();
-
-                        renderer.setSize(window.innerWidth, window.innerHeight);
-                    });*/
+                          others.forEach(other => {
+                            if (obj.intersectsBox(other)) {
+                                let OGobj = scene.getObjectById(obj.cloneid);
+                                if(debug === true) {
+                                	console.log(OGobj + ' is inside another part');
+                                }
+                                
+                                OGobj.material.transparent = true;
+                                OGobj.material.opacity = 0.25;
+                                OGobj.material.needsUpdate = true;
+                                
+                                scene.updateMatrixWorld(true);
+                                OGobj.updateMatrixWorld(true);
+                            }
+                          });
+                        });
+                    }
                     
                     window.addEventListener('resize', onWinResize, true);
                     
@@ -293,12 +594,22 @@
                     }
                     animate();
                 }
+            
+			if(window.globalPlayerConfig.player_redesign_trans === "false") {
+                let elements = document.querySelectorAll('.box');
+                
+                elements.forEach(e => {
+                	e.classList.add("box-load");
+                	e.classList.remove("box");
+                });
+			}
         });
     </script>
-    <div id="loading" class="box">Loading...</div>
+    <div id="loading" class="box-load">Loading...</div>
     <button id="retry">Retry</button>
     <div id="stats" class="box">Viewing</div>
     <div id="username" class="box">By</div>
+    <div id="date-v2" class="box">Created</div>
     <div id="watermark"></div>
     <canvas id="viewer" style="width: 100vw; height: 100vh; display: none;"></canvas>
 </body>
