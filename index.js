@@ -251,7 +251,7 @@ document.getElementById("select-block").addEventListener("click", function (e) {
     part = 'parts/' + selectedPart;
     partName = selectedPart;
 
-    addBlockV2(part, partColor, partPosition, partRotation, span, original_img);
+    addBlockV2(part, partColor, partPosition, partRotation, span, original_img, part, null, null);
 });
 
 // list for items that are already in the scene
@@ -1116,7 +1116,7 @@ document.getElementById("cre-import-ldr").addEventListener("change", async funct
                         partRotation = child.rotation.clone();
                         console.log(child);
 
-						addBlockV2(part, childColor, partPosition, partRotation, null, null);
+						addBlockV2(part, childColor, partPosition, partRotation, part, null, null);
 						
 						child.visible = false;
                     }
@@ -1659,6 +1659,7 @@ function init() {
     ldraw_loader.preloadMaterials(ldraw_path + 'colors/ldconfig.ldr');
     ldraw_loader.setPath(ldraw_path + 'actual/');
     ldraw_loader.setPartsLibraryPath(ldraw_path + 'actual/');
+    //ldraw_loader.setFileMap(named_parts);
     ldraw_loader.separateObjects = true;
 
     raycaster = new THREE.Raycaster();
@@ -1689,15 +1690,19 @@ function init() {
                 break
             case 'ArrowUp':
                 selectedObject.rotation.x -= THREE.MathUtils.degToRad(45);
+                updateSceneData();
                 break;
             case 'ArrowDown':
                 selectedObject.rotation.x += THREE.MathUtils.degToRad(45);
+                updateSceneData();
                 break;
             case 'ArrowLeft':
                 selectedObject.rotation.y -= THREE.MathUtils.degToRad(45);
+                updateSceneData();
                 break;
             case 'ArrowRight':
                 selectedObject.rotation.y += THREE.MathUtils.degToRad(45);
+                updateSceneData();
                 break;
         }
     })
@@ -2097,7 +2102,15 @@ function addBlock(throwSuccess, throwError) {
 
 
 /* addBlock version 2 */
-function addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, throwSuccess, throwError) {
+function addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, throwSuccess, throwError) {
+	const FILE_LOCATION_TRY_PARTS = 0;
+	const FILE_LOCATION_TRY_P = 1;
+	const FILE_LOCATION_TRY_MODELS = 2;
+	const FILE_LOCATION_AS_IS = 3;
+	const FILE_LOCATION_TRY_RELATIVE = 4;
+	const FILE_LOCATION_TRY_ABSOLUTE = 5;
+	const FILE_LOCATION_NOT_FOUND = 6;	
+				
     if (!ldraw_loader) {
         console.error('LdrawLoader is missing or not loaded yet.');
         tooltip('Something really, really, weird has occured.');
@@ -2118,7 +2131,12 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
     transformControls.detach(selectedObject);
     console.log("Loading part:", part);
 
-    ldraw_loader.load(part, function (loadedGroup) {
+    if(!fileName || fileName === undefined || fileName === null) {
+        fileName = part;
+    }
+	console.log(fileName);
+
+    ldraw_loader.load(fileName, function (loadedGroup) {
         if (!loadedGroup) {
             console.error("Loaded group does not exist.");
             tooltip('Please select a block with valid mesh data');
@@ -2260,12 +2278,119 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
         if(partSpan && partSpan !== null && partSpan !== undefined) {
             partSpan.querySelector('img').setAttribute("src", originalPSImg);
         }
-        console.log(partSpan);
 
-        throwSuccess();     
+        throwSuccess();
     }, undefined, function (error) {
-        console.error(error);
-        throwError(error);
+        if(error.code === 20 || error.code === "20") {
+            /*let part_urls = [
+                'parts/',
+                'p/',
+                'parts/p/',
+                'p/48/',
+                'p/8/',
+                'parts/s/',
+            ];
+
+            part_urls.forEach((url, count) => {
+				if(count != 7) {
+					let partmain = part.replace('parts/', "");
+					let fileName2 = url + partmain;
+					console.log('RETRY. Part location: ' + fileName2);
+					
+					addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName2, throwSuccess, throwError);
+				} else {
+					throw new Error('An error has occured');
+				}
+			}); */
+			
+			function addBlockLocation(locationState, triedLowerCase) {
+				let fileName2 = fileName.replace('parts/', '');
+				let subobjectURL = fileName2;
+				
+				if (locationState === FILE_LOCATION_NOT_FOUND) {
+					throw new Error('Subobject "' + fileName + '" could not be loaded.');
+				}
+				
+				switch ( locationState ) {
+					case FILE_LOCATION_AS_IS:
+						locationState = locationState + 1;
+						break;
+					case FILE_LOCATION_TRY_PARTS:
+						subobjectURL = 'parts/' + subobjectURL;
+						locationState = locationState + 1;
+						break;
+					case FILE_LOCATION_TRY_P:
+						subobjectURL = 'p/' + subobjectURL;
+						locationState = locationState + 1;
+						break;
+					case FILE_LOCATION_TRY_MODELS:
+						subobjectURL = 'models/' + subobjectURL;
+						locationState = locationState + 1;
+						break;
+					case FILE_LOCATION_TRY_RELATIVE:
+						subobjectURL = fileName.substring( 0, fileName.lastIndexOf( '/' ) + 1 ) + subobjectURL;
+						locationState = locationState + 1;
+						break;
+					case FILE_LOCATION_TRY_ABSOLUTE:
+						if ( triedLowerCase ) {
+							// Try absolute path
+							locationState = FILE_LOCATION_NOT_FOUND;
+						} else {
+							// Next attempt is lower case
+							fileName = fileName.toLowerCase();
+							subobjectURL = fileName2;
+							triedLowerCase = true;
+							locationState = FILE_LOCATION_TRY_PARTS;
+						}
+						break;
+				}
+				
+				addBlockV2(
+				part,
+				partColor,
+				partPosition,
+				partRotation,
+				partSpan,
+				originalPSImg,
+				subobjectURL,
+				() => {
+					console.log('done');
+					return;
+				},
+				() => {
+					addBlockLocation(locationState, triedLowerCase);
+					return;
+				},
+				);
+			}
+			
+			if(!throwError || throwError === null || throwError === undefined) {
+				addBlockLocation(FILE_LOCATION_TRY_PARTS, false);
+			}
+        } else {
+            console.error(error);
+			tooltip(error);
+			if(partSpan && partSpan !== null && partSpan !== undefined) {
+				partSpan.querySelector('img').setAttribute("src", originalPSImg);
+			}
+		
+            if(throwError !== undefined) {
+                throwError(error);
+            }
+        }
+
+        // from ldrawloader
+        // maybe fixes 404s stopping the script in palemoon and basilisk
+        /*if ( fileName.startsWith( 's/' ) ) {
+            fileName = 'parts/' + fileName;
+            addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, throwSuccess, throwError);
+        } else if ( fileName.startsWith( '48/' ) ) {
+            fileName = 'p/' + fileName;
+            addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, throwSuccess, throwError);
+        } else {
+            fileName = fileName;
+            addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, throwSuccess, throwError);
+        }*/
     });
 }
 

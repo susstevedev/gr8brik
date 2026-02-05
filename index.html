@@ -6,21 +6,72 @@
   <meta charset="utf-8">
   <!-- <base href="/mod/new/"> -->
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  
+  <script>
+	var supportsES6 = function() {
+	  try {
+		new Function("(a = 0) => a");
+		return true;
+	  }
+	  catch (err) {
+		return false;
+	  }
+	}();
+	
+	var scripts = [
+		'es5/index.js',
+		'es5/three.min.js',
+		'es5/LdrawLoader.js',
+		'es5/OrbitControls',
+		'es5/TransformControls.js',
+		'es5/RGBELoader.js',
+		'es5/GLTFExporter.js',
+	];
+	
+	const query = window.location.search;
+	const params = new URLSearchParams(query);
+	const use_es5 = params.get("es5");
+	console.log(use_es5);
+	
+	if(!supportsES6 || use_es5 == 1 || use_es5 == true) {
+		scripts.forEach(function(src) {
+			var script = document.createElement('script');
+			script.src = src;
+			script.async = false;
+			document.head.appendChild(script);
+		});
+	}
+  </script>
+  
+  <!-- ES5 FIXES -->
+  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.14/es5-shim.min.js"></script>
+  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.14/es5-sham.min.js"></script>
+  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
+  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.5/es6-shim.min.js"></script>
+  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.5/es6-sham.min.js"></script>
 
+  <!-- NON-THREEJS RELATED SCRIPTS -->
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/jszip@latest/dist/jszip.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js" crossorigin="anonymous"></script>
+  
+  <!-- THREEJS RELATED SCRIPTS | ES6 -->
   <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js" crossorigin="anonymous"></script>
+  
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/TransformControls.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/RGBELoader.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.127.0/examples/js/exporters/GLTFExporter.js" crossorigin="anonymous"></script>
+  
   <script src="https://cdn.jsdelivr.net/gh/susstevedev/gr8brik/lib/ColladaExporter-modded.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/gh/GitHubDragonFly/GitHubDragonFly.github.io/viewers/static/js/exporters/OBJExporter.js" crossorigin="anonymous"></script>
+  
+  <!-- MAIN | ES6 -->
   <script src="index.js" defer></script>
   
+  <!-- STYLES -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" crossorigin="anonymous" >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="index.css">
