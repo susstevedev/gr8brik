@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 01-31-2026 (MISC IMPROVEMENTS) -->
+<!-- GR8BRIK VERSION 02-12-2026 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,40 +78,42 @@
 </head>
 
 <body>
-  <div id="top-container">
-    <span id="link-home"><img src="img/logo.png" id="logo-img" /><a href="/" target="_blank"><span>&nbsp;Gr8Brik&nbsp;</span></a><span class="tag">Beta</span></span>
+  <div id="top-container" class="ui-canbe-trans">
+    <span id="link-home"><img src="img/logo.png" id="logo-img" /><a href="https://gr8brik.rf.gd/" target="_blank"><span>&nbsp;Gr8Brik&nbsp;</span></a><span class="tag">Beta</span></span>
     <span class="menu-main">
       <button class="menu-item" id="menu-file"><i class="fa fa-hdd-o" aria-hidden="true"></i>Saving</button>
       <button class="menu-item" id="menu-edit"><i class="fa fa-clipboard" aria-hidden="true"></i>Tools</button>
       <button class="menu-item" id="settings-popup-open"><i class="fa fa-sliders" aria-hidden="true"></i>Settings</button>
-      <button class="menu-item" id="menu-help"><i class="fa fa-sliders" aria-hidden="true"></i><a href="/docs/">Help</a></button>
+      <button class="menu-item" id="menu-help"><i class="fa fa-sliders" aria-hidden="true"></i><a href="https://gr8brik.rf.gd/docs/" target="_blank">Help</a></button>
     </span>
     <span class="dropdown-main">
-      <span class="dropdown-element" id="dropdown-file">
+      <span class="dropdown-element ui-canbe-trans" id="dropdown-file">
         <div class="dropdown-item" id="save-popup-open"><i class="fa fa-database" aria-hidden="true"></i>Save to cloud</div>
         <div class="dropdown-item" id="import-popup-open"><i class="fa fa-download" aria-hidden="true"></i>Import...</div>
         <div class="dropdown-item" id="export-popup-open"><i class="fa fa-upload" aria-hidden="true"></i>Export...</div>
       </span>
-      <span class="dropdown-element" id="dropdown-edit">
+      <span class="dropdown-element ui-canbe-trans" id="dropdown-edit">
         <div class="dropdown-item" id="move-block-t"><i class="fa fa-arrows-alt" aria-hidden="true"></i>Drag</div>
         <div class="dropdown-item" id="move-block-r"><i class="fa fa-refresh" aria-hidden="true"></i>Rotate</div>
         <div class="dropdown-item" id="duplicate-part"><i class="fa fa-files-o" aria-hidden="true"></i>Duplicate part</div>
         <div class="dropdown-item" id="delete-block"><i class="fa fa-trash" aria-hidden="true"></i>Delete part</div>
+        <div class="dropdown-item" id="read_autosave"><i class="fa fa-trash" aria-hidden="true"></i>Recover autosave</div>
       </span>
     </span>
+    <span id="color-picker-topbar"></span>
     <a href="https://gr8brik.rf.gd/acc/login" target="_blank" id="username-field">Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
   </div>
 
 	<div class="mobile-toggle-contain">
-      <button id="toggleMenu" class="mobile-toggle" style="top: 60px; padding-right: 0px; padding-left: 0px;">
+      <button id="toggleMenu" class="mobile-toggle ui-canbe-trans" style="top: 60px; padding-right: 0px; padding-left: 0px;">
 		<i class="fa fa-bars" aria-hidden="true" title="Reset the camera location"></i>
 	  </button>
 	
-	  <button id="takeScreenshot" class="mobile-toggle" style="top: 160px; padding-right: 0px; padding-left: 0px;">
+	  <button id="takeScreenshot" class="mobile-toggle ui-canbe-trans" style="top: 160px; padding-right: 0px; padding-left: 0px;">
 		<i class="fa fa-camera" aria-hidden="true" title="Take a screenshot"></i>
 	  </button>
 
-	  <button id="resetCamera" class="mobile-toggle" style="top: 260px; padding-right: 0px; padding-left: 0px;">
+	  <button id="resetCamera" class="mobile-toggle ui-canbe-trans" style="top: 260px; padding-right: 0px; padding-left: 0px;">
 		<i class="fa fa-refresh" aria-hidden="true" title="Reset the camera location"></i>
 	  </button>
 	</div>
@@ -134,7 +136,7 @@
     -->
 
     <span>Color</span><br />
-    <input type="text" id="color-picker" /><br />
+    <span id="color-picker-sidebar"></span><br />
 	<span class="sub">Selected layer</span><br />
 	<span class="sub"><em>Most textured parts have more than three layers.</em></span><br />
 	<input type="number" title="Selected material layer. Most textured LDraw parts have more than three layers. Currently an alpha feature." id="selected-map" min="0" max="50" step="1" value="0"><hr />
@@ -142,10 +144,10 @@
 
     <span>Filter</span><br />
 
-    <span style="font-size: 14px;">Parts lib</span>
+    <span style="font-size: 14px;">Parts repo/lib</span>
     <select id="part-library-filter" style="display: inline-block;">
-        <option id="parts-lib-1" value="https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/" selected>susstevedev/gr8brik-ldraw-fork (default, most stable)</option>
-        <option id="parts-lib-2" value="https://library.ldraw.org/library/official/">Ldraw.org library (UNSTABLE, USE AT OWN RISK)</option>
+        <option id="parts-lib-1" value="https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/" selected>Default</option>
+        <option id="parts-lib-2" value="https://library.ldraw.org/library/official/">Ldraw.org offical</option>
     </select><br />
 
     <span style="font-size: 14px;">Category</span>
@@ -168,6 +170,7 @@
         <option value="panel">Panels</option>
         <option value="round_&_curved">Round & Curved</option>
         <option value="other">Miscellaneous</option>
+		<option id="usr-custom" value="customparts.php">User Custom Parts</option>
     </select><br />
 
     <input type="text" id="search-parts" placeholder="search parts..." /><hr />
@@ -294,9 +297,9 @@
       Trash Settings
     </button><br /><hr />
 
-    <p>Version <b>January 31st, 2026</b></p>
+    <p>Version <b>Febuary 12th, 2026</b></p>
     <p>Created by <a href="https://github.com/susstevedev/gr8brik/graphs/contributors">susstevedev and other contributors</a> on GitHub.</p>
-    <p>2023 - 2026 Gr8brik. All rights reserved.</p>
+    <p>2023 - 2026 Gr8brik Legacy, Gr8brik & Gr8brik+. All rights reserved.</p>
     </div>
   </div>
 

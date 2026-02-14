@@ -25,9 +25,13 @@ body.dark {
 }
 
 select {
-  color: var(--ui-text-color) !important;
-  background-color: var(--ui-color) !important;
-  border: var(--ui-text-color) 1px solid;
+  color: var(--ui-anti-text) !important;
+  background-color: var(--ui-button-blue) !important;
+  border: var(--ui-anti-text) 1px solid;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  border-radius: 2px;
+  transition: opacity 0.2s ease-in-out;
 }
 
 select:hover {
@@ -185,14 +189,14 @@ option {
 
 .ui-popup-contain.trans {
   background-color: transparent !important;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .trans {
 	background-color: transparent !important;
-	backdrop-filter: blur(15px);
-	-webkit-backdrop-filter: blur(15px);
+	backdrop-filter: blur(10px) !important;
+	-webkit-backdrop-filter: blur(10px);
 }
 
 @keyframes fadeInFromNone {
@@ -280,6 +284,7 @@ option {
   font-size: 1em;
   border-radius: 2px;
   box-shadow: rgba(30, 30, 30, 0.06) 0px 0px 4px 4px;
+  animation: popin 0.3s ease-out;
 }
 
 .dropdown-item {
@@ -490,6 +495,17 @@ option {
   }
 }
 
+@keyframes popin {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @media (max-width: 768px) {
   #left-container {
     left: -999px;
@@ -508,5 +524,10 @@ option {
   .mobile-toggle {
     top: 30px;
     right: 10px;
+  }
+
+  .ui-popup-contain {
+    width: 100%;
+    height: 100%;
   }
 }

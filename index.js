@@ -13,6 +13,38 @@ window.addEventListener('beforeunload', function (e) {
 var partColor = "#C91A09";
 const start_url = 'https://gr8brik.rf.gd';
 
+let default_player_config = {
+    debug:"false",
+    allowed_settings: {
+        trans: "true",
+    },
+    topbar: {
+        show_color_picker: "false",
+    }
+};
+                
+window.globalPlayerConfig ??= {};
+
+console.log("[APP] Before config merge", window.globalPlayerConfig);
+
+for (const [key, value] of Object.entries(default_player_config)) {
+    if (!(key in window.globalPlayerConfig)) {
+        window.globalPlayerConfig[key] = value;
+    }
+}
+
+console.log("[APP] After config merge", window.globalPlayerConfig);
+
+if(window.globalPlayerConfig.topbar.show_color_picker == "false") {
+    $("#color-picker-sidebar").innerHTML = `<input type="text" id="color-picker" />`;
+    console.log("sidebar");
+}
+
+if(window.globalPlayerConfig.topbar.show_color_picker == "true") {
+    $("#color-picker-topbar").innerHTML = `<input type="text" id="color-picker" />`;
+    console.log("topbar");
+}
+
 $(document).ready(function () {
     $("#color-picker").spectrum({
         color: partColor,
@@ -128,18 +160,53 @@ function loadParts(type) {
         return;
     }
 
-    fetch(`https://susstevedev.github.io/gr8brik/parts/${type}.json`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(`${type} parts loaded`);
-            displayed_parts = data;
-            cached_parts[type] = data;
-            displayParts();
-        })
-        .catch(err => {
-            console.error('error loading parts ', err);
-            tooltip('Failed to load parts');
-        });
+	if(type !== "customparts.php") {
+		fetch(`https://susstevedev.github.io/gr8brik/parts/${type}.json`)
+			.then(res => res.json())
+			.then(data => {
+				console.log(`${type} parts loaded`);
+				displayed_parts = data;
+				cached_parts[type] = data;
+				displayParts();
+			})
+			.catch(err => {
+				console.error('error loading parts ', err);
+				tooltip('Failed to load parts');
+			});
+	} else {
+		fetch(`customparts.php`)
+			.then(res => res.json())
+			.then(data => {
+				console.log(`Custom parts loaded`);
+				tooltip('Custom parts loaded');
+				displayed_parts = data;
+				cached_parts[type] = data;
+				
+				const container = document.getElementById("select-block");
+				container.innerHTML = '';
+				//displayed_parts = displayed_parts.sort((a, b) => a.name.length - b.name.length);
+
+				displayed_parts.forEach(part => {
+					console.log(part);
+					const span = document.createElement("span");
+					span.id = part.reference;
+					span.title = part.name;
+					span.setAttribute("value", part.part);
+					span.innerHTML = `
+								<img src="${part.texture}" loading="lazy" width="45px" />
+								<br />
+								<small class="part-list-number">${part.reference}</small>
+								&nbsp;
+								<!-- <small class="hover-only">${part.name}</small> -->
+							`;
+					container.appendChild(span);
+				});
+			})
+			.catch(err => {
+				console.error('error loading parts ', err);
+				tooltip('Failed to load parts');
+			});
+	}
 }
 
 // display parts function
@@ -235,9 +302,6 @@ document.getElementById("search-parts").addEventListener("keyup", function (even
 document.getElementById("select-block").addEventListener("click", function (e) {
     const span = e.target.closest("span");
 
-    const original_img = span.querySelector('img').getAttribute("src");
-    span.querySelector('img').setAttribute("src", "img/load.gif");
-
     if (!span) {
         return;
     }
@@ -247,6 +311,9 @@ document.getElementById("select-block").addEventListener("click", function (e) {
     if (!selectedPart) {
         return;
     }
+
+    const original_img = span.querySelector('img').getAttribute("src");
+    span.querySelector('img').setAttribute("src", "img/load.gif");
 
     part = 'parts/' + selectedPart;
     partName = selectedPart;
@@ -532,19 +599,6 @@ document.querySelector("#menu-edit").addEventListener("click", function () {
 const studSize = 1000;
 let partList = document.getElementById('blk');
 let colList = document.getElementById('select-color');
-
-/*document.getElementById("username-field").addEventListener("click", function () {
-    var content = document.getElementById("username-content");
-    if (content.style.display === "block" || content.style.display === "") {
-        content.style.display = "none";
-    } else {
-        content.style.display = "block";
-    }
-});*/
-
-document.getElementById("color-picker").addEventListener("click", function () {
-    console.log("color picker clicked");
-});
 
 document.getElementById("duplicate-part").addEventListener("click", function () {
     if (selectedObject) {
@@ -1170,7 +1224,7 @@ async function loadSceneFromJSON(data) {
         try {
             await new Promise((resolve, reject) => {
                 //addBlock(resolve, reject);
-                addBlockV2(part, partColor, partPosition, partRotation, null, null, resolve, reject);
+                addBlockV2(part, partColor, partPosition, partRotation, null, null, part, resolve, reject);
             });
         } catch (err) {
             console.warn(`Failed to add block: ${block.ldraw}`, err);
@@ -1862,6 +1916,17 @@ function deleteBlock(part) {
                 selectedObject = null;
                 part.parent.remove(part);
             }
+
+            if (part.geometry) {
+                part.geometry.dispose();
+                console.log('disposed geometry');
+            }
+
+            if (part.material && !Array.isArray(part.material)) {
+                part.material.dispose();
+                console.log('disposed material');
+            }
+
             part.updateMatrixWorld(true);
             tooltip('Deleted part');
         } else {
@@ -2098,8 +2163,6 @@ function addBlock(throwSuccess, throwError) {
         throwError(error);
     });
 }
-
-
 
 /* addBlock version 2 */
 function addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, throwSuccess, throwError) {
@@ -2394,14 +2457,6 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
     });
 }
 
-function throwSuccess() {
-    console.log('This is a success callback used so the browser console doesn\'t throw a fit.')
-}
-
-function throwError() {
-    console.log('This is an throwError callback used so the browser console doesn\'t throw a fit.')
-}
-
 function spanImg(original_img, span) {
     if(partSpan && partSpan !== null && partSpan !== undefined) {
         partSpan.querySelector('img').setAttribute("src", originalPSImg);
@@ -2575,87 +2630,6 @@ document.getElementById("part-library-filter").addEventListener("change", functi
     ldraw_loader.setPartsLibraryPath(new_ldraw_path);
 });
 
-/* function generateSceneJSON() {
-let sceneData = {
-    metadata: {
-    file_version: 1.2,
-    name: "My Model",
-    description: null
-    },
-    camera: camera.position,
-    blocks: []
-};
-
-if (selectedObject) {
-    transformControls.detach(selectedObject);
-    selectedObject = null;
-}
-
-blockGroups.forEach(function (group) {
-    if (!group || !group.userData.partName) {
-    return;
-    }
-
-    let group_color = null;
-    let mesh_child = null;
-
-    let pos = new THREE.Vector3();
-    let rot = new THREE.Quaternion();
-    let scale = new THREE.Vector3();
-    let euler = new THREE.Euler();
-
-    group.traverse(function (child) {
-    if (child.isMesh) {
-        // saving the child object because using the group itself doesn't work
-        // todo update block groups in the updateSceneData() function
-        // 6/14/2025
-        mesh_child = child;
-        
-        mesh_child.updateMatrixWorld(true);
-        mesh_child.getWorldPosition(pos);
-        mesh_child.getWorldQuaternion(rot);
-        mesh_child.getWorldScale(scale);
-        euler.setFromQuaternion(rot);
-        
-        if (Array.isArray(child.material)) {
-        mesh_color = child.material[0].color.getHexString().toLowerCase();
-        } else {
-        mesh_color = child.material.color.getHexString().toLowerCase();
-        }
-    }
-    });
-
-    const blockData = {
-    partName: group.userData.partName,
-    color: mesh_color || 'c91a09',
-
-    // use matrixes because child objects only store local location values and not global ones
-    position: {
-        x: pos.x,
-        y: pos.y,
-        z: pos.z
-    },
-    rotation: {
-        x: euler.x,
-        y: euler.y,
-        z: euler.z
-    },
-    scale: {
-        x: scale.x,
-        y: scale.y,
-        z: scale.z
-    },
-    blockID: group.name,
-    //ldraw: group.ldraw.replace("parts/", ""),
-    ldraw: mesh_child.userData.ldraw,
-    };
-
-    sceneData.blocks.push(blockData);
-});
-
-return JSON.stringify(sceneData, null, 2);
-} */
-
 function generateSceneJSON() {
     let sceneData = {
         metadata: {
@@ -2667,11 +2641,6 @@ function generateSceneJSON() {
         settings: JSON.stringify(scene.userData),
         blocks: []
     };
-
-    /*if (selectedObject && transformControls) {
-        transformControls.detach(selectedObject);
-        selectedObject = null;
-    }*/
 
     blockGroups.forEach(function (group) {
         if (!group) {
@@ -2902,14 +2871,6 @@ function updateSceneData() {
             });
 
             g.userData.noSnap = hasTinyMesh;
-
-            /*if (!g.userData.noSnap || !scene.userData.noSnap) {
-                g.position.set(
-                    snapToGrid(g.position.x, 10),
-                    snapToGrid(g.position.y, 4),
-                    snapToGrid(g.position.z, 10)
-                );
-            } */
         });
         scene.updateMatrixWorld(true);
     }
@@ -2940,7 +2901,6 @@ function read_autosave() {
             camera.position.x = parsed.camera.x;
             camera.position.y = parsed.camera.y;
             camera.position.z = parsed.camera.z;
-            //scene.userData = parsed.settings;
             console.log(parsed.camera);
         } catch (e) {
             console.warn("failed to load autosave " + e);
@@ -3005,25 +2965,8 @@ function clear_settings() {
 }
 
 /* 
-Clone mesh data and not anything like transform controls because idk how to remove it
+Clone mesh data and not anything else like transform controls
 */
-/* function clone_mesh_clean(obj) {
-    if (!obj.isMesh) { 
-        return null;
-    }
-
-    const mat = obj.material.clone();
-    const geometry = obj.geometry.clone();
-
-    const obj_clone = new THREE.Mesh(geometry, mat);
-    obj_clone.position.copy(obj.position);
-    obj_clone.rotation.copy(obj.rotation);
-    obj_clone.scale.copy(obj.scale);
-    obj_clone.name = obj.name;
-
-    return obj_clone;
-} */
-
 function clone_mesh_clean(obj) {
     if (!obj.isMesh || !obj.geometry) {
         return null;
@@ -3053,35 +2996,6 @@ function clone_mesh_clean(obj) {
 
     return obj_clone;
 }
-
-/* function normalize_color(color) {
-    if(!color) {
-    return;
-    }
-
-    let r = color.r;
-    let g = color.g;
-    let b = color.b;
-
-    const max_rgb = Math.max(r, g, b);
-    if (max_rgb < 0.1) {
-    const boost = 1.0 / max_rgb;
-    r = Math.min(1.0, r * boost);
-    g = Math.min(1.0, g * boost);
-    b = Math.min(1.0, b * boost);
-    }
-
-    return new THREE.Color(r, g, b);
-} */
-
-/*function brighten_color(color) {
-    // 0.6 is brightness
-    return new THREE.Color(
-    Math.max(color.r, 0.6),
-    Math.max(color.g, 0.6),
-    Math.max(color.b, 0.6)
-    );
-} */
 
 function filter_objects_peices() {
     let thumb = new THREE.Scene();
@@ -3138,34 +3052,6 @@ function generate_missing() {
     const mat = new THREE.MeshBasicMaterial({ color: 0xff00ff, wireframe: true });
     return new THREE.Mesh(geo, mat);
 }
-
-/* function updateMaterials() {
-    if(!selectedObject) {
-    return;
-    }
-
-    displayedColors = document.getElementById("obj-colors");
-    displayedColors.innerHTML = "";
-
-        selectedObject.traverse((child) => {
-            if (child.isMesh && child.material) {
-                if (Array.isArray(child.material)) {
-        child.material.forEach((mat, index) => {
-            console.log(mat);
-            if (mat && mat.color instanceof THREE.Color && typeof mat.color.getHexString === "function") {
-            const colorHex = `#${mat.color.getHexString()}`;
-            const span = document.createElement("span");
-            console.log(`Subpart ${index}: ${colorHex}`);
-            span.style.backgroundColor = colorHex;
-            span.style.padding = "2px 2px 2px 2px";
-            displayedColors.appendChild(span);
-            }
-        });
-                }
-            }
-        });
-    updateSceneData();
-} */
 
 window.addEventListener('pointerdown', function (event) {
     let target = event.target;
@@ -3276,10 +3162,8 @@ function tooltip(text) {
 
     if (tooltip) {
         setTimeout(() => {
-            setTimeout(() => {
-                tooltip.remove();
-            }, 500);
-        }, 5000);
+            tooltip.remove();
+        }, 5500);
     }
 }
 
@@ -3288,5 +3172,5 @@ window.onload = function () {
         if (document.getElementById("preloaded-logo")) {
             document.getElementById("preloaded-logo").style.display = "none";
         }
-    }, 1000);
+    }, 500);
 }
