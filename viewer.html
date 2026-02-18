@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js"></script>
-    <!--<script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/RGBELoader.js"></script>
+    
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/"
+      }
+    }
+    </script>
+    
+    <!--<script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/controls/OrbitControls.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/LDrawLoader.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/RGBELoader.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/exporters/GLTFExporter.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/GLTFLoader.js"></script>-->
     <style>
-        body { 
+        body {
             font-family: Verdana, sans-serif;
             margin: 0; 
             overflow: hidden;
@@ -127,33 +139,27 @@
 <body>
     <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const newScript = document.createElement("script");
-
-        if (typeof WebAssembly != "object" && typeof WebAssembly.instantiate != "function" || navigator.userAgent.includes('PaleMoon') || navigator.userAgent.includes('Mypal')) {
-            alert("Your browser is either Palemoon or does not support WASM. It might fail to load objects (lights, parts, etc) in the scene.");
-            newScript.src = "https://cdn.jsdelivr.net/npm/three@0.120.0/examples/js/loaders/LDrawLoader.js";
-        } else {
-        	newScript.src = "https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js"; 
+         if (typeof WebAssembly != "object" && typeof WebAssembly.instantiate != "function" || !navigator.userAgent) {
+            alert("Your browser does not support WebAssembly. It might fail to load objects (lights, parts, etc) in the scene.");
         }
-
-        document.head.appendChild(newScript);
     });
     </script>
-    
-    <!--<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const newScript = document.createElement("script");
-       	newScript.src = "https://cdn.jsdelivr.net/npm/three@0.124.0/build/three.min.js"; 
-        document.head.appendChild(newScript);
-    });
-    </script>-->
 
-    <script>
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls as OrbitControls } from 'three/addons/controls/OrbitControls.js';
+		import { LDrawLoader as LDrawLoader } from 'three/addons/loaders/LDrawLoader.js';
+		import { RGBELoader as RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+        import { GLTFExporter as GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
+        import { GLTFLoader as GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+        import { LDrawConditionalLineMaterial } from 'three/addons/materials/LDrawConditionalLineMaterial.js';
+        
         let default_player_config = {
         	debug:"false",
          	player_redesign_trans:"true",
             player_redesign: "true",
             webgl: {
+                warn_unsupported: "true",
             	lighting: {
              		use_hdri: "true",
                 	erm: "false",
@@ -162,38 +168,25 @@
            model: {
                allow_legacy_model: "true",
                smooth_normals: "true",
-               lines: "false"
+               lines: "false", // legacy lines
+   			   _lines: {
+                   enabled: "false",
+                   custom: "false"
+               }
 		   }
         };
                 
         window.globalPlayerConfig ??= {};
         
-        console.log("[app] before merge", window.globalPlayerConfig);
+        console.log("[VIEWER] before merge", window.globalPlayerConfig);
         
         for (const [key, value] of Object.entries(default_player_config)) {
           if (!(key in window.globalPlayerConfig)) {
             window.globalPlayerConfig[key] = value;
           }
         }
-        
-        //mergeDefaults(window.globalPlayerConfig, default_player_config);
-        
-        console.log("[app] after merge", window.globalPlayerConfig);
-        
-        /*function mergeDefaults(target, defaults) {
-          for (const [key, value] of Object.entries(defaults)) {
-            if (
-              value &&
-              typeof value === "object" &&
-              !Array.isArray(value)
-            ) {
-              target[key] ??= {};
-              mergeDefaults(target[key], value);
-            } else {
-              target[key] ??= value;
-            }
-          }
-        }*/
+                
+        console.log("[VIEWER] after merge", window.globalPlayerConfig);
                 
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('retry').onclick = function() {
@@ -202,6 +195,7 @@
             
         	const version_string = "Gr8brik Viewer 01-28-26";
        		const version_num = "012820261-1327";
+            window.modelIsLegacy = false;
                     
             console.log(window.globalPlayerConfig);
             
@@ -236,6 +230,7 @@
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Server returned the error code ${response.status}`);
+                        console.error(response);
                     }
                     return response.text();
                 })
@@ -244,14 +239,16 @@
                         window.creation_data = text;
                         return JSON.parse(creation_data);
                     } catch (error) {
-                        throw new Error('Invalid creation data JSON returned');
+                        //throw new Error('Invalid creation data JSON returned');
+                        console.error(response);
                     }
                 })
                 .then(creation_data => {
                     fetch(`${creation_data.model}`)
                         .then(response => {
                             if (!response.ok) {
-                                throw new Error(`Server returned the error code ${response.status}`);
+                                //throw new Error(`Server returned the error code ${response.status}`);
+								console.error(response);
                             }
                             return response.text();
                         })
@@ -261,7 +258,8 @@
                                 load_model_data(model_data);
                             } catch (error) {
                                 alert(error);
-                                throw new Error('Invalid model data: ' + error);
+                                console.error(error);
+                                //throw new Error('Invalid model data: ' + error);
                             }
                         })
                 })
@@ -302,16 +300,17 @@
                     		console.log(camera.position.x, camera.position.y, camera.position.z);
                     }
                     
-                    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+                    var controls = new OrbitControls(camera, renderer.domElement);
 
-                    var loader = new THREE.LDrawLoader();
+                    var loader = new LDrawLoader();
                     var ldr_path = "https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/";
 
                     loader.preloadMaterials(ldr_path + 'colors/ldconfig.ldr');
+                    loader.setConditionalLineMaterial(LDrawConditionalLineMaterial);
                     loader.setPartsLibraryPath(ldr_path + 'actual/');
                     loader.setPath(ldr_path + 'actual/parts/');
                     
-                    var rgbe_loader = new THREE.RGBELoader();
+                    var rgbe_loader = new RGBELoader();
                     
                      if(window.globalPlayerConfig.webgl.lighting.use_hdri === "true") {
                         rgbe_loader.load('https://cdn.jsdelivr.net/gh/susstevedev/gr8brik/lib/autumn_field_puresky_1k.hdr', function (texture) {
@@ -335,7 +334,7 @@
                             showViewer();
                             return;
                         }
-
+                        
                         const block = blocks[index];
 
                         if (!block.ldraw) {
@@ -346,70 +345,40 @@
                             return;
                         }
 
-                        try {
+                        //try {
                             loader.load(`${block.ldraw}`, function (group) {
                                 group.traverse((child) => {
-                                    if (child.isLineSegments) {
+                                    if (window.globalPlayerConfig.model._lines.enabled === "false" && child.isLineSegments && child.userData.ldr_line != true) {
                                         child.visible = false;
                                         return;
                                     }
 
                                     let colorHex = `${block.color ? block.color.replace(/^#/, '') : 'ffffff'}`;
                                     if (child.isMesh && !Array.isArray(child.material)) {
-                                        //child.material = new THREE.MeshLambertMaterial({color: new THREE.Color(`#${colorHex}`)});
                                         child.material = new THREE.MeshPhysicalMaterial({
-                                                color: new THREE.Color(`#${colorHex}`),
-                                                reflectivity: 0.5,
-                                                roughness: 0.4,
-                                                metalness: 0.1,
-                                                envMapIntensity: 1.0,
+                                        	color: new THREE.Color(`#${colorHex}`),
+                                         	reflectivity: 0.5,
+                                            roughness: 0.4,
+                                            metalness: 0.1,
+                                            envMapIntensity: 1.0,
                                     	});
+										
+                                        if(window.globalPlayerConfig.model._lines.enabled === "true" && window.globalPlayerConfig.model._lines.custom === "true") {
+                                            const edges = new THREE.EdgesGeometry(child.geometry, 10);
+                                            const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000 }));
+                                            line.userData.ldr_line = true;
+                                            line.visible = true;
+                                            child.add(line);
+                                        }
                                     }
-                                    
+
                                     console.log(child.userData);
+                                    console.log(child.children);
                                     if(child.isMesh && child.userData.fileName) {
                                     	let childBB = new THREE.Box3().setFromObject(child);
                                         childBB.cloneid = child.id;
                                     	partsIntersecting.push(childBB);
                                     }
-                                    
-                                    /*if(child.isMesh) {
-                                        for (var vertexIndex = 0; vertexIndex < child.geometry.attributes.position.array.length; vertexIndex++) {
-                                            var localVertex = new THREE.Vector3().fromBufferAttribute(child.geometry.attributes.position, vertexIndex).clone();
-                                            var globalVertex = localVertex.applyMatrix4(child.matrix);
-                                            var directionVector = globalVertex.sub(child.position);
-
-                                            var ray = new THREE.Raycaster(child.position, directionVector.clone().normalize());
-                                            var collisionResults = ray.intersectObjects(collidableMeshList);
-                                            if (collisionResults.length > 0 && collisionResults[0].distance < directionVector.length()) {
-                                               child.material = new THREE.MeshPhysicalMaterial({
-                                                        color: new THREE.Color("#800080"),
-                                                        reflectivity: 0.5,
-                                                        roughness: 0.4,
-                                                        metalness: 0.1,
-                                                        envMapIntensity: 0.5,
-                                                        opacity: 0.5,
-                                                        transparent: true,
-                                                });
-                                            }
-                                        }
-                                    }*/
-                                    
-                                    /*scene.traverse((obj) => {
-                                        let inObj = obj.containsBox(childBB);
-                                        
-                                        if(inObj) {
-                                            child.material = new THREE.MeshPhysicalMaterial({
-                                                    color: new THREE.Color("#800080"),
-                                                    reflectivity: 0.5,
-                                                    roughness: 0.4,
-                                                    metalness: 0.1,
-                                                    envMapIntensity: 0.5,
-                                                    opacity: 0.5,
-                                                    transparent: true,
-                                            });
-                                        }
-                                    });*/
                                 });
 
                                 group.position.set(block.position.x, block.position.y, block.position.z);
@@ -417,10 +386,8 @@
                                 scene.add(group);
 
                                 loadParts(blocks, index + 1);
-                            });
-                        }
-                       	//}, undefined, function (error) {
-                        catch(error) {
+                            //});
+                       	}, undefined, function (error) {
                                 console.warn(`Failed to load block ${block.ldraw} ` + error);
                                 console.log(block.ldraw);
 
@@ -438,11 +405,10 @@
                                 }
 
                                 loadParts(blocks, index + 1);
-                        //});
-                    	}
+                        });
                     }
                     
-                    function legacyModelLoader(obj, total, index = 0) {
+                    function legacyModelLoader(objs, total, index = 0) {
                         if(index === total) {
                             console.log(scene.children);
                             camera.position.set(1, 1, 1);
@@ -452,24 +418,95 @@
                        	
                         const objLoader = new THREE.ObjectLoader();
                         
-                        obj.intersect.object.geometries.forEach(g => {
-                        	if (g.type === 'PlaneBufferGeometry') {
-                           		g.type = 'PlaneGeometry';
-                         	}
-                            if (g.type === 'Geometry') {
-                           		g.type = 'BufferGeometry';
-                                //g = new THREE.BufferGeometry().fromGeometry(g);
-                         	}
-                         });
-                        
-                        obj.intersect.object.materials.color = obj.color;
-                        obj.intersect.object.geometries[0].width = obj.intersect.object.geometries[0].width / 2;
-                        obj.intersect.object.geometries[0].height = obj.intersect.object.geometries[0].height / 2;
-                        const mesh = objLoader.parse(obj.intersect.object);
+                        objs.forEach(obj => {
+                            /*function geoPatch(obj) {
+                                obj.intersect.object.geometries.forEach(g => {
+                                    if (g.type === 'PlaneBufferGeometry') {
+                                        g.type = 'PlaneGeometry';
+                                        return g;
+                                    }
 
-                        scene.add(mesh);
-                        console.log("Object loaded:" + obj);
-                        legacyModelLoader(obj, total, index + 1);
+                                    if (g.type === 'Geometry') {
+                                        //g.type = 'BufferGeometry';
+                                        //g = new THREE.BufferGeometry().fromGeometry(g);
+                                        const bufferGeometry = new THREE.BufferGeometry();
+                                        let geometry = g;
+                                        console.log(geometry);
+
+                                        bufferGeometry.uuid = g.uuid; 
+                                        bufferGeometry.name = g.name;
+                                        if(g.userData) {
+                                            bufferGeometry.userData = JSON.parse(JSON.stringify(g.userData));
+                                        }
+
+                                        // 1. Convert Vertices
+                                        const vertices = [];
+                                        geometry.data.vertices.forEach(v => {
+                                            vertices.push(v.x, v.y, v.z);
+                                        });
+                                        bufferGeometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+                                        // 2. Convert Faces
+                                        const indices = [];
+                                        geometry.data.faces.forEach(f => {
+                                            indices.push(f.a, f.b, f.c);
+                                        });
+                                        bufferGeometry.setIndex(indices);
+
+                                        // 3. Convert Normals
+                                        if (geometry.data.normals && geometry.data.normals.length > 0) {                                   
+                                            const normals = [];
+                                            geometry.data.normals.forEach(n => {
+                                                normals.push(n.x, n.y, n.z);
+                                            });
+                                            bufferGeometry.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
+                                        } else {
+                                            bufferGeometry.computeVertexNormals();
+                                        }
+                                        //g = bufferGeometry;
+                                        console.log(bufferGeometry);
+                                        return bufferGeometry;
+                                    }
+
+                                    //if (g.type === 'Geometry') {
+                                        //g.type = 'BufferGeometry';
+                                        g = new THREE.BufferGeometry().fromGeometry(g);
+                                    //}
+                                 });
+                            }
+                            let obj2 = geoPatch(obj);
+
+                            obj2.intersect.object.materials.color = obj2.color;
+                            obj2.intersect.object.uuid = obj2.intersect.uuid;
+                            /*obj.intersect.object.geometries[0].width = obj.intersect.object.geometries[0].width / 2;
+                            obj.intersect.object.geometries[0].height = obj.intersect.object.geometries[0].height / 2;*/
+                            //if(obj?.intersect?.object?.uuid) {
+                                //const mesh = objLoader.parse(obj2.intersect);
+                                //scene.add(mesh);
+                                //console.log("Object loaded:" + obj);
+                            //}
+                            
+                            const exporter = new GLTFExporter();
+                            exporter.parse(obj.intersect.object, (result) => {
+                                /*if (result instanceof ArrayBuffer) {
+                                    saveArrayBuffer(result, 'scene.glb');
+                                } else {
+                                    const output = JSON.stringify(result, null, 2);
+                                    saveString(output, 'scene.gltf');
+                                }*/
+                                window.output = JSON.stringify(result, null, 2);
+        						window.blob_url = URL.createObjectURL(new Blob([window.output], { type: 'text' }));
+
+                                console.log(window.output);
+                            }, { binary: true });
+                            
+                            const gltfloader = new THREE.GLTFLoader();
+                            gltfloader.load(`${window.blob_url}`, function(scene) {
+                            	scene.add(scene);
+                            });
+                        });
+                        
+                        legacyModelLoader(objs, total, index + 1);
                     }
 
                     if(!window.globalPlayerConfig.model.allow_legacy_model === "true") {
@@ -479,15 +516,18 @@
                             console.log('yes it\'s legacy bruh');
                             //showViewer();
                             let legacyTotal = model_data.length;
+                            window.modelIsLegacy = true;
                             
-                            model_data.forEach(part => {
+                            /* model_data.forEach(part => {
                             	legacyModelLoader(part, legacyTotal);
-                            });
+                            }); */
                             //showViewer();
+                            
+                            legacyModelLoader(model_data, legacyTotal);
                             
                             document.title = `${JSON.parse(window.creation_data).name} | gr8brik.rf.gd`;
                         
-                            viewer.style.display = "block";
+                            /*viewer.style.display = "block";
                             loading.innerText = "This model can never be viewed again due to Geometry being replaced with BufferGeometry. If you want to view it, download the model and set up a threejs evirorment with a version below 124";
 
                             wmark.style.display = "block";
@@ -500,15 +540,16 @@
                             stat_username.innerHTML += `&nbsp; <a href="/user/${JSON.parse(window.creation_data).userid}" target="_blank"><img src='https://gr8brik.rf.gd/acc/users/pfps/${JSON.parse(window.creation_data).userid}.webp' alt='User icon' title='User icon' />${JSON.parse(window.creation_data).username}</a>`;
 
                             stat_date.style.display = "block";
-                            stat_date.innerHTML += `&nbsp;${JSON.parse(window.creation_data).date}`;
+                            stat_date.innerHTML += `&nbsp;${JSON.parse(window.creation_data).date}`;*/
 
                             animate();
+                            showViewer();
                         } else {
                             loadParts(model_data.blocks);
                         }
                     }
 
-                    window.showViewer = function() {
+                    function showViewer() {
                         document.title = `${JSON.parse(window.creation_data).name} | gr8brik.rf.gd`;
                         
                         loading.style.display = "none";
@@ -530,6 +571,8 @@
                         
                        	intersectingCheck();
                     }
+                    
+                    window.showViewer = showViewer;
                     
       				/*window.intersectingCheck = function() { 
                         console.log(partsIntersecting);
@@ -591,6 +634,9 @@
                         }
 
                         renderer.render(scene, camera);
+                        /*if(viewer.style.display === "none" && window.modelIsLegacy === true) {
+                            showViewer();
+                        }*/
                     }
                     animate();
                 }
