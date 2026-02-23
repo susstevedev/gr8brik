@@ -10,17 +10,14 @@ window.addEventListener('beforeunload', function (e) {
     e.returnValue = '';
 });
 
-var partColor = "#C91A09";
+var partColor = '#C91A09';
 const start_url = 'https://gr8brik.rf.gd';
 
 let default_player_config = {
-    debug:"false",
+    debug: "false",
     allowed_settings: {
         trans: "true",
     },
-    topbar: {
-        show_color_picker: "false",
-    }
 };
                 
 window.globalPlayerConfig ??= {};
@@ -35,17 +32,50 @@ for (const [key, value] of Object.entries(default_player_config)) {
 
 console.log("[APP] After config merge", window.globalPlayerConfig);
 
-if(window.globalPlayerConfig.topbar.show_color_picker == "false") {
-    $("#color-picker-sidebar").innerHTML = `<input type="text" id="color-picker" />`;
-    console.log("sidebar");
-}
+let color_palette = [
+                "#C91A09", // Bright Red
+                "#F8CC00", // Bright Yellow
+                "#0020A0", // Bright Blue
+                "#005700", // Dark Green
+                "#FE8A18", // Bright Orange
+                "#D941BB", // Bright Violet
+                "#000000", // Black
+                "#FFFFFF", // White
+                "#747371", // Dark Stone Grey (Dark Bluish Grey)
+                "#A3A2A4", // Medium Stone Grey (Light Bluish Grey)
+                "#958A73", // Dark Tan (Brick Yellow)
+                "#6C5C4D", // Brown
+                "#812A00", // Dark Brown
+                "#5883C1", // Medium Blue
+                "#4B974B", // Sand Green
+                "#A52A2A", // Dark Red
+                "#B36D2C", // Dark Orange
+                "#FCB7BC", // Bright Pink
+                "#60C0E0", // Bright Light Blue
+                "#FBE696", // Earth Yellow (Light Yellow)
+                "#84B68D", // Bright Green
+                "#92B28B", // Lime Green
+                "#002A5A", // Dark Blue
+                "#DDDD22", // Vibrant Yellow
+];
 
-if(window.globalPlayerConfig.topbar.show_color_picker == "true") {
-    $("#color-picker-topbar").innerHTML = `<input type="text" id="color-picker" />`;
-    console.log("topbar");
-}
+/*jscolor.presets.default = {
+    format: 'hexa',
+    palette: color_palette,
+    onChange: updateColorPicker(),
+    value: '#C91A09FF'
+};
 
-$(document).ready(function () {
+function updateColorPicker() {
+    let color = document.getElementById('color-picker').getAttribute("data-current-color");
+
+    console.log(`Changed selected color to ${color}`);
+    if (color && selectedObject) {
+        changeBlockColor(color);
+    }
+}*/
+
+/*$(document).ready(function () {
     $("#color-picker").spectrum({
         color: partColor,
         preferredFormat: "hex",
@@ -94,7 +124,7 @@ $(document).ready(function () {
             }
         },
     });
-});
+}); */
 
 // fix links not working
 document.addEventListener('click', function (event) {
@@ -233,35 +263,6 @@ function displayParts() {
 
 loadParts('brick');
 
-/*document.getElementById("search-parts").addEventListener("keyup", function (event) {
-    if (event.key === "Enter") {
-        const value = this.value.toLowerCase().replace(/\s+/g, " ").trim();
-        const items = Array.from(document.querySelectorAll("#select-block span"));
-
-        items.forEach(item => {
-            //const text = item.textContent.toLowerCase().replace(/\s+/g, " ").trim();
-  const text = (item.title || "").toLowerCase().replace(/\s+/g, " ").trim();
-            item.style.display = text.includes(value) ? 'flex' : 'none';
-        });
-    }
-}); */
-
-/*document.getElementById("search-parts").addEventListener("keyup", function (event) {
-  if (event.key === "Enter") {
-    const value = this.value.toLowerCase().replace(/\s+/g, " ").trim();
-    const items = Array.from(document.querySelectorAll("#select-block span"));
-
-    items.forEach(item => {
-      const titleText = (item.title || "").toLowerCase().replace(/\s+/g, " ").trim();
-      const smallTextEl = item.querySelector("small.part-list-number");
-      const smallText = smallTextEl ? smallTextEl.textContent.toLowerCase().trim() : "";
-
-      const matches = titleText.includes(value) || smallText.includes(value);
-      item.style.display = matches ? "flex" : "none";
-    });
-  }
-}); */
-
 // New search function
 // This will be slightly slower though as it stores an array of simi matching parts and exact matches for those parts, then goes through them and pushes the exact maches to the top
 document.getElementById("search-parts").addEventListener("keyup", function (event) {
@@ -318,7 +319,13 @@ document.getElementById("select-block").addEventListener("click", function (e) {
     part = 'parts/' + selectedPart;
     partName = selectedPart;
 
-    addBlockV2(part, partColor, partPosition, partRotation, span, original_img, part, null, null);
+    if(span.getAttribute("texture")) {
+        const selectedTexture = span.getAttribute("texture");
+
+        addBlockV2(part, partColor, partPosition, partRotation, span, original_img, part, selectedTexture, null, null);
+    } else {
+        addBlockV2(part, partColor, partPosition, partRotation, span, original_img, part, null, null, null);
+    }
 });
 
 // list for items that are already in the scene
@@ -576,9 +583,7 @@ document.getElementById("read_settings").addEventListener("click", function () {
 // file menu
 document.querySelector("#menu-file").addEventListener("click", function () {
     let elm = document.getElementById("dropdown-file");
-    //elm.style.display = (elm.style.display === "none") ? "block" : "none";
 
-    // i dont like how shorthand looks
     if (elm.style.display === "block") {
         elm.style.display = "none";
     } else {
@@ -1170,7 +1175,7 @@ document.getElementById("cre-import-ldr").addEventListener("change", async funct
                         partRotation = child.rotation.clone();
                         console.log(child);
 
-						addBlockV2(part, childColor, partPosition, partRotation, part, null, null);
+						addBlockV2(part, childColor, partPosition, partRotation, part, null, null, null);
 						
 						child.visible = false;
                     }
@@ -1224,7 +1229,7 @@ async function loadSceneFromJSON(data) {
         try {
             await new Promise((resolve, reject) => {
                 //addBlock(resolve, reject);
-                addBlockV2(part, partColor, partPosition, partRotation, null, null, part, resolve, reject);
+                addBlockV2(part, partColor, partPosition, partRotation, null, null, part, null, resolve, reject);
             });
         } catch (err) {
             console.warn(`Failed to add block: ${block.ldraw}`, err);
@@ -2165,7 +2170,7 @@ function addBlock(throwSuccess, throwError) {
 }
 
 /* addBlock version 2 */
-function addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, throwSuccess, throwError) {
+function addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, texture, throwSuccess, throwError) {
 	const FILE_LOCATION_TRY_PARTS = 0;
 	const FILE_LOCATION_TRY_P = 1;
 	const FILE_LOCATION_TRY_MODELS = 2;
@@ -2318,9 +2323,9 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
 
         tooltip(`Added part ${part.replace("parts/", "")}`);
 
-        /* const texturename = `${part.split("/").pop().split(".")[0]}.png`;
+        const texturename = `${part.split("/").pop().split(".")[0]}.png`;
         const texturepath = `https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/parts/textures/${texturename}`;
-        const texturepath = 'https://d1xez26aurxsp6.cloudfront.net/users/qXBby2/avatars/680a924dab4ba.png';
+        //const texturepath = 'https://d1xez26aurxsp6.cloudfront.net/users/qXBby2/avatars/680a924dab4ba.png';
         const textureLoader = new THREE.TextureLoader();
 
         textureLoader.load(texturepath, (texturemap) => {
@@ -2333,7 +2338,7 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
             });
         }, undefined, (err) => {
             console.warn("Texture load failed or doesn't exist:", err);
-        }); */
+        });
 
         updateBLItems();
         updateSceneData();
@@ -2416,6 +2421,7 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
 				partSpan,
 				originalPSImg,
 				subobjectURL,
+                null,
 				() => {
 					console.log('done');
 					return;
