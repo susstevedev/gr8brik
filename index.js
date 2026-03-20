@@ -141,7 +141,8 @@ document.addEventListener('click', function (event) {
 // user login function
 // todo have this run ever 10 seconds if user is not signed in
 function login() {
-    fetch(start_url + "/ajax/user.php?ajax=true")
+	fetch('user.php?ajax=true')
+    //fetch(start_url + "/ajax/user.php?ajax=true")
     //fetch('user.json')
         .then(res => res.json())
         .then(response => {
@@ -222,6 +223,7 @@ function loadParts(type) {
 					span.id = part.reference;
 					span.title = part.name;
 					span.setAttribute("value", part.part);
+					span.setAttribute("texture", part.texture);
 					span.innerHTML = `
 								<img src="${part.texture}" loading="lazy" width="45px" />
 								<br />
@@ -599,6 +601,21 @@ document.querySelector("#menu-edit").addEventListener("click", function () {
     } else {
         elm.style.display = "block";
     }
+});
+
+// Transparency
+document.getElementById("trans-block").addEventListener("click", function () {
+	if(this.checked) {
+		selectedObject.material.transparent = true;
+		selectedObject.material.opacity = 0.5;
+		selectedObject.material.needsUpdate = true;
+		updateSceneData();
+	} else if(!this.checked) {
+		selectedObject.material.opacity = 1;
+		selectedObject.material.transparent = false;
+		selectedObject.material.needsUpdate = true;
+		updateSceneData();
+	}
 });
 
 const studSize = 1000;
@@ -1223,13 +1240,14 @@ async function loadSceneFromJSON(data) {
         partColor = '#' + block.color;
         partPosition = block.position;
         partRotation = block.rotation;
+		partTexture = block.texturedata;
 
         part = 'parts/' + block.ldraw;
 
         try {
             await new Promise((resolve, reject) => {
                 //addBlock(resolve, reject);
-                addBlockV2(part, partColor, partPosition, partRotation, null, null, part, null, resolve, reject);
+                addBlockV2(part, partColor, partPosition, partRotation, null, null, part, partTexture, resolve, reject);
             });
         } catch (err) {
             console.warn(`Failed to add block: ${block.ldraw}`, err);
@@ -2287,6 +2305,39 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
 					});
 				}
             }
+			
+			const textureLoader = new THREE.TextureLoader();
+			if(child.material && child.isMesh && !child.material.map && !child.isLineSegments && texture) {
+				let uvs = generateUVMap(child.geometry);
+				child.geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
+
+				textureLoader.load(texture, (texturemap) => {
+					texturemap.colorSpace = THREE.SRGBColorSpace;
+					child.material.map = texturemap;
+					child.material.color = new THREE.Color("#ffffff");
+					child.material.needsUpdate = true;
+								
+					function toDataURL(url, callback) {
+					  var xhr = new XMLHttpRequest();
+					  xhr.onload = function() {
+						var reader = new FileReader();
+						reader.onloadend = function() {
+						  callback(reader.result);
+						}
+						reader.readAsDataURL(xhr.response);
+					  };
+					  xhr.open('GET', url);
+					  xhr.responseType = 'blob';
+					  xhr.send();
+					}
+
+					toDataURL(texture, function(dataUrl) {
+					  child.userData.textureData = dataUrl;
+					});
+				}, undefined, (err) => {
+					console.warn("Texture load failed or doesn't exist: " + err);
+				});
+			}
 
             child.userData.parentName = partName;
             child.userData.id = makeid(15);
@@ -2322,23 +2373,6 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
         blockGroup.sceneCount = blocks.length;
 
         tooltip(`Added part ${part.replace("parts/", "")}`);
-
-        const texturename = `${part.split("/").pop().split(".")[0]}.png`;
-        const texturepath = `https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/parts/textures/${texturename}`;
-        //const texturepath = 'https://d1xez26aurxsp6.cloudfront.net/users/qXBby2/avatars/680a924dab4ba.png';
-        const textureLoader = new THREE.TextureLoader();
-
-        textureLoader.load(texturepath, (texturemap) => {
-            texturemap.colorSpace = THREE.SRGBColorSpace;
-            blockGroup.traverse(child => {
-                if (child.isMesh && child.material) {
-                    child.material.map = texturemap;
-                    child.material.needsUpdate = true;
-                }
-            });
-        }, undefined, (err) => {
-            console.warn("Texture load failed or doesn't exist:", err);
-        });
 
         updateBLItems();
         updateSceneData();
@@ -2579,8 +2613,9 @@ function generateUVMap(geometry) {
         uvs.push(u, v);
     }
 
-    geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
-    return geometry;
+    //geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
+    //return geometry;
+	return uvs;
 }
 
 function getPriceInfo() {
@@ -2639,9 +2674,9 @@ document.getElementById("part-library-filter").addEventListener("change", functi
 function generateSceneJSON() {
     let sceneData = {
         metadata: {
-            file_version: 1.2,
+            file_version: '1.2.1',
             name: "My Model",
-            description: null
+            description: "My Description"
         },
         camera: camera.position,
         settings: JSON.stringify(scene.userData),
@@ -2674,12 +2709,33 @@ function generateSceneJSON() {
             euler.setFromQuaternion(rot);
 
             // Colors
-
+			
+			let mesh_opacity;
+			let mesh_texture;
+			let mesh_texturedata;
             //one is usually the index for most of the part that isn't a texture
             if (Array.isArray(mesh_child.material)) {
                 mesh_color = mesh_child.material[1].color.getHexString().toLowerCase();
+				
+				if(mesh_child.material[1].transparent) {
+					mesh_opacity = mesh_child[1].material.opacity;
+				}
+				
+				if(mesh_child.material[1].map) {
+					mesh_texture = mesh_child.material[1].map;
+					mesh_texturedata = mesh_child.userData.textureData;
+				}
             } else {
                 mesh_color = mesh_child.material.color.getHexString().toLowerCase();
+				
+				if(mesh_child.material.transparent) {
+					mesh_opacity = mesh_child.material.opacity;
+				}
+				
+				if(mesh_child.material.map) {
+					mesh_texture = mesh_child.material.map;
+					mesh_texturedata = mesh_child.userData.textureData;
+				}
             }
 
             const blockData = {
@@ -2701,6 +2757,9 @@ function generateSceneJSON() {
                 },
                 id: mesh_child.userData.id || mesh_child.uuid,
                 ldraw: mesh_child.userData.ldraw.replace("parts/", ""),
+				texture: mesh_texture || null,
+				texturedata: mesh_texturedata || null,
+				opacity: mesh_opacity || "1.0",
             };
 
             sceneData.blocks.push(blockData);
@@ -3101,7 +3160,10 @@ function selectObject(obj) {
     selectedObject = obj;
 
     partColor = `#${obj?.material?.color?.getHexString()}` || `#${obj?.material[1]?.color?.getHexString()}` || '#ffffff';
-    $("#color-picker").spectrum("set", partColor);
+    //$("#color-picker").spectrum("set", partColor);
+	document.getElementById('color-picker').setAttribute('color', partColor);
+	document.getElementById('color-picker').setAttribute('value', partColor);
+	document.getElementById('color-picker').style.backgroundColor = partColor;
 }
 
 function deselect(obj) {

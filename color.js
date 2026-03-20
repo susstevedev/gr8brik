@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	colorList.style.display = "none";
 	colorList.style.border = "1px solid #d3d3d3"
-	colorList.style.boxShadow = "rgba(2, 2, 2, 0.06) 2px 2px 2px 2px";
 	colorList.style.borderRadius = "2px";
 	colorList.style.gridTemplateColumns = "auto auto auto";
 
@@ -103,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	        span.style.display = "block";
 	        span.style.cursor = 'pointer';
 	        span.style.border = '#d3d3d3 1px solid'
+			span.style.boxShadow = "rgba(2, 2, 2, 0.06) 2px 2px 2px 2px";
 
 	        i += 1;
 	        colorList.appendChild(span);
