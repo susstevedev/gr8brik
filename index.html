@@ -1,8 +1,8 @@
-<!-- GR8BRIK VERSION 02-12-2026 -->
+<!-- GR8BRIK VERSION 03-30-2026 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Modeler - Gr8Brik v3</title>
+  <title>Modeler - Gr8brik</title>
   <meta charset="utf-8">
   <!-- <base href="/mod/new/"> -->
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -72,12 +72,12 @@
   
   <!-- MAIN | ES6 -->
   <script src="color.js" defer></script>
-  <script src="index.js" defer></script>
+  <script src="index.js?v=03-30-26" defer></script>
 
   <!-- STYLES -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" crossorigin="anonymous" >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" type="text/css" href="index.css?v=03-30-26">
 </head>
 
 <body>
@@ -100,7 +100,7 @@
         <div class="dropdown-item" id="move-block-r"><i class="fa fa-refresh" aria-hidden="true"></i>Rotate</div>
         <div class="dropdown-item" id="duplicate-part"><i class="fa fa-files-o" aria-hidden="true"></i>Duplicate part</div>
         <div class="dropdown-item" id="delete-block"><i class="fa fa-trash" aria-hidden="true"></i>Delete part</div>
-        <div class="dropdown-item" id="read_autosave"><i class="fa fa-trash" aria-hidden="true"></i>Recover autosave</div>
+        <div class="dropdown-item" id="read_autosave"><i class="fa fa-floppy-o" aria-hidden="true"></i>Recover autosave</div>
       </span>
     </span>
     <a href="https://gr8brik.rf.gd/acc/login" target="_blank" id="username-field">Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -233,7 +233,7 @@
 			<option value="lxf">Lego Digital Designer (.lxf)</option>
 			<option value="dae">Collada (.dae)</option>
       <option value="obj">Wavefront (.obj)</option>
-      <option value="glb">GL Transmission Format (.gltf)</option>
+      <option value="glb">Graphics Library Transmission Format (.glb)</option>
 		</select><br />
 		<p><button class="btn" title="Finish exporting" id="export-finish">Download file</button></p>
     </div>
@@ -253,6 +253,13 @@
     <p id="settings-account-gh-login-text">GitHub login coming soon.</p>
 
     <hr />
+	
+	<p><span style="color: var(--ui-text-color);"><i class="fa fa-hdd-o" aria-hidden="true"></i>&nbsp;Export & import</span></p>
+	
+	<input type="checkbox" id="export-fullscene-enable">
+    <label for="export-fullscene-enable">Include everything, like textures, lights, and other items when exporting as GLTF</label><br />
+	
+	<hr />
 
     <p><span style="color: var(--ui-text-color);"><i class="fa fa-paint-brush" aria-hidden="true"></i>&nbsp;Display</span></p>
 
@@ -279,7 +286,7 @@
 
     <hr />
 
-    <p><span style="color: var(--ui-text-color);"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Saving and recovery</span></p>
+    <p><span style="color: var(--ui-text-color);"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Saving & recovery</span></p>
 
 		<button class="btn" title="Load autosave from device" id="read_autosave"><i class="fa fa-floppy-o" aria-hidden="true"></i>Recover Autosave</button><br />
     <button class="btn" title="Clear autosave from device" id="clear_autosave"><i class="fa fa-trash" aria-hidden="true"></i>Trash Autosave</button><br />

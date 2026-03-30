@@ -457,15 +457,21 @@ document.getElementById("export-finish").addEventListener("click", function () {
         }, 10000);
     }
 
-    // gltfexporter is async
     if (format === "glb") {
         const exporter = new THREE.GLTFExporter();
         const date = getDate();
-        const scene = filter_objects_peices();
+		
+		let scene_;
+		if(scene.userData.export_full_scene) {
+			scene_ = scene;
+		} else {
+			scene_ = filter_objects_peices();
+		}
+		
         console.log(scene.children.length, "meshes to export");
 
         exporter.parse(
-            scene,
+            scene_,
             function (result) {
                 //const blob = new Blob([JSON.stringify(result, null, 2)], { type: 'application/json' });
                 const blob = new Blob([result], { type: 'model/gltf-binary' });
@@ -1562,6 +1568,14 @@ document.getElementById("hdr-enable").addEventListener("change", function () {
     applyHdri(scene.userData.use_hdri);
 });
 
+document.getElementById("export-fullscene-enable").addEventListener("change", function () {
+    const export_full_scene = this.checked;
+	scene.userData.export_full_scene = export_full_scene;
+
+    scene.updateMatrixWorld(true);
+    save_settings();
+});
+
 function applyTransparent(ui_trans) {
     if(ui_trans) {
         // Source - https://stackoverflow.com/a/24219779
@@ -2316,6 +2330,7 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
 					child.material.map = texturemap;
 					child.material.color = new THREE.Color("#ffffff");
 					child.material.needsUpdate = true;
+					child.userData.main_mat_index = 1;
 								
 					function toDataURL(url, callback) {
 					  var xhr = new XMLHttpRequest();
@@ -2672,14 +2687,19 @@ document.getElementById("part-library-filter").addEventListener("change", functi
 });
 
 function generateSceneJSON() {
+    const scenedata_name = document.querySelector("#save-popup input[name='name']").value.trim();
+    const scenedata_desc = document.querySelector("#save-popup textarea[name='desc']").value.trim();
+
     let sceneData = {
         metadata: {
-            file_version: '1.2.1',
-            name: "My Model",
-            description: "My Description"
+            generator: 'gr8brik_generateSceneJSON',
+            file_version: '1.2.1.1',
+            name: scenedata_name | "My Model",
+            description: scenedata_desc | "My Description"
         },
         camera: camera.position,
         settings: JSON.stringify(scene.userData),
+        macro: null, // not implemented, planned to be a small scripting langauge (eg for custom animations and lighting)
         blocks: []
     };
 
@@ -3040,7 +3060,8 @@ function clone_mesh_clean(obj) {
     let mat;
     if (obj.material) {
         if (Array.isArray(obj.material)) {
-            mat = obj.material.map(m => m.clone());
+            mat_og = obj.material;
+			mat = mat_og.map(m => m.clone());
         } else {
             mat = obj.material.clone();
         }
@@ -3067,7 +3088,7 @@ function filter_objects_peices() {
 
     scene.traverse(function (object) {
         if (object.isMesh && object.userData.isBlock) {
-            const hexColor = object.material?.color || object.material?.map || new THREE.Color(0xffffff);
+			const hexColor = object.material?.color || object.material?.map || new THREE.Color(0xffffff);			
             let cloned = clone_mesh_clean(object);
             if (cloned) {
                 if (cloned.material && cloned.material.color && selectedExport === "dae") {
