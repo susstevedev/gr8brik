@@ -1,7 +1,6 @@
 # GR8BRIK (Beta)
 
-> **This project is currently in beta**
-> Feel free to submit pull requests.
+> **This project is currently in beta**. Feel free to submit pull requests and open issues.
 
 ## what is gr8brik?
 
@@ -26,4 +25,4 @@ GR8BRIK uses components licensed under the MIT License and is itself open source
 
 ## contributing
 
-If you find a bug or have a feature request, please [open an issue](https://github.com/susstevedev/gr8brik/issues) or submit a pr.
+If you find a bug or have a feature request, please [open an issue](https://github.com/susstevedev/gr8brik/issues) or submit a PR.
