@@ -205,6 +205,10 @@ function loadParts(type) {
 				tooltip('Failed to load parts');
 			});
 	} else {
+        if(scene.userData.customParts == false) {
+            return;
+        }
+
 		fetch(`customparts.php`)
 			.then(res => res.json())
 			.then(data => {
@@ -324,9 +328,9 @@ document.getElementById("select-block").addEventListener("click", function (e) {
     if(span.getAttribute("texture")) {
         const selectedTexture = span.getAttribute("texture");
 
-        addBlockV2(part, partColor, partPosition, partRotation, span, original_img, part, selectedTexture, null, null);
+        addBlockV2(part, partColor, partPosition, partRotation, span, original_img, part, selectedTexture, null, null, null);
     } else {
-        addBlockV2(part, partColor, partPosition, partRotation, span, original_img, part, null, null, null);
+        addBlockV2(part, partColor, partPosition, partRotation, span, original_img, part, null, null, null, null);
     }
 });
 
@@ -398,7 +402,7 @@ document.getElementById("download-json").addEventListener("click", function () {
 document.getElementById("import-finish").addEventListener("click", function () {
     const format = document.getElementById("import-format").value;
     if (format === "cloud") {
-        tooltip('GR8BRIK models from your account cannot be imported yet.');
+        tooltip('Gr8brik models from your account cannot be imported yet.');
         return;
     }
     if (format === "three") {
@@ -407,9 +411,12 @@ document.getElementById("import-finish").addEventListener("click", function () {
     if (format === "json") {
         document.getElementById("cre-import").click();
     }
-    if (format === "lxf") {
-        document.getElementById("cre-export-ldd").click();
+    if (format === "gr8z") {
+        document.getElementById("cre-import-gr8z").click();
     }
+    /*if (format === "lxf") {
+        document.getElementById("cre-export-ldd").click();
+    }*/
     if (format === "ldr") {
         document.getElementById("cre-import-ldr").click();
     }
@@ -434,6 +441,10 @@ document.getElementById("export-finish").addEventListener("click", function () {
 
     if (format === "gr8") {
         document.getElementById("cre-export-gr8").click();
+    }
+
+    if (format === "gr8z") {
+        document.getElementById("cre-export-gr8z").click();
     }
 
     if (format === "lxf") {
@@ -706,6 +717,26 @@ document.getElementById("cre-export-gr8").addEventListener("click", () => {
     setTimeout(() => {
         URL.revokeObjectURL(url);
     }, 10000);
+});
+
+document.getElementById("cre-export-gr8z").addEventListener("click", () => {
+    const fileData = generateSceneJSON();
+    const zip = new JSZip();
+    zip.file("creation.gr8", fileData);
+    const elm = this;
+
+    zip.generateAsync({ type: "blob" }).then(function (blob) {
+        const url = URL.createObjectURL(blob);
+        const date = new Date();
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `gr8brik-compressed-creation-${date}.gr8z`;
+        a.click();
+
+        setTimeout(() => {
+            URL.revokeObjectURL(url);
+        }, 10000);
+    });
 });
 
 document.getElementById("cre-export-ldd").addEventListener("click", () => {
@@ -1130,6 +1161,33 @@ document.getElementById("cre-import").addEventListener("change", function (event
     reader.readAsText(file);
 });
 
+document.getElementById("cre-import-gr8z").addEventListener("change", function (event) {
+    let file = event.target.files[0];
+    if (!file) {
+        console.error("No file selected");
+        tooltip("No file selected.");
+        return;
+    }
+
+        try {
+            let zip = new JSZip();
+            zip.loadAsync(file).then(function(zip) {
+                let creation = zip.file("creation.gr8").async("string");
+                creation.then(function(data) {
+                    setTimeout(() => {
+                        console.log(data);
+                        let jsonData = JSON.parse(data);
+                        loadSceneFromJSON(jsonData);
+                    }, 250);
+                });
+            });
+        } catch (err) {
+            tooltip("Invalid JSON file.");
+            console.error(err);
+        }
+        event.target.value = "";
+});
+
 document.getElementById("cre-import-ldr").addEventListener("change", async function (event) {
     let file = event.target.files[0];
     if (!file) {
@@ -1198,7 +1256,7 @@ document.getElementById("cre-import-ldr").addEventListener("change", async funct
                         partRotation = child.rotation.clone();
                         console.log(child);
 
-						addBlockV2(part, childColor, partPosition, partRotation, part, null, null, null);
+						addBlockV2(part, childColor, partPosition, partRotation, part, null, null, null, null);
 						
 						child.visible = false;
                     }
@@ -1241,19 +1299,23 @@ async function loadSceneFromJSON(data) {
         return;
     }
 
+    document.getElementById('ui-loading-file').style.display = "block";
+    document.getElementsByClassName('scene')[0].style.opacity = "0.1";
+
     for (const block of data.blocks) {
         partName = block.ldraw;
         partColor = '#' + block.color;
         partPosition = block.position;
         partRotation = block.rotation;
 		partTexture = block.texturedata;
+        partOpacity = block.opacity;
 
         part = 'parts/' + block.ldraw;
 
         try {
             await new Promise((resolve, reject) => {
                 //addBlock(resolve, reject);
-                addBlockV2(part, partColor, partPosition, partRotation, null, null, part, partTexture, resolve, reject);
+                addBlockV2(part, partColor, partPosition, partRotation, null, null, part, partTexture, partOpacity, resolve, reject);
             });
         } catch (err) {
             console.warn(`Failed to add block: ${block.ldraw}`, err);
@@ -1263,6 +1325,8 @@ async function loadSceneFromJSON(data) {
 
     console.log("Creation imported.");
     tooltip("Creation imported.");
+    document.getElementById('ui-loading-file').style.display = "none";
+    document.getElementsByClassName('scene')[0].style.opacity = "1.0";
     updateSceneData();
 }
 
@@ -1440,8 +1504,13 @@ function toggleGlobalSnap() {
     save_settings();
 }
 
+document.getElementById("snapping-enable").addEventListener("change", function () {
+    const snapping = this.checked;
+    scene.userData.noSnap = snapping;
+    toggleGlobalSnap();
+});
+
 // toggle smooth normals
-// todo make this actually work
 document.getElementById("smooth-normals-enable").addEventListener("change", function () {
     ldraw_loader.smoothNormals = this.checked;
 
@@ -1663,6 +1732,7 @@ function init() {
     scene = new THREE.Scene();
     scene.userData.noSnap = false;
     scene.userData.displayLines = false;
+    scene.userData.customParts = false; // disables custom parts for the time being
     read_settings();
 
     THREE.Cache.enabled = false;
@@ -2202,7 +2272,7 @@ function addBlock(throwSuccess, throwError) {
 }
 
 /* addBlock version 2 */
-function addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, texture, throwSuccess, throwError) {
+function addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, texture, partOpacity, throwSuccess, throwError) {
 	const FILE_LOCATION_TRY_PARTS = 0;
 	const FILE_LOCATION_TRY_P = 1;
 	const FILE_LOCATION_TRY_MODELS = 2;
@@ -2255,6 +2325,11 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
                 return;
             }
 
+            let childOpacity = 1;
+            if(partOpacity != null || partOpacity != undefined || partOpacity <= 1.0) {
+                childOpacity = 0.5;
+            }
+
             if (child.isMesh && !child.material.map && !child.isLineSegments && !Array.isArray(child.material)) {
                 const pos = new THREE.Vector3();
                 const pos2 = child.getWorldPosition(pos);
@@ -2267,6 +2342,8 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
                         roughness: 0.4,
                         metalness: 0.1,
                         envMapIntensity: 0.5,
+                        transparent: true,
+                        opacity: partOpacity,
                     });
                 } else {
                     child.material = new THREE.MeshPhongMaterial({
@@ -2470,6 +2547,7 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
 				partSpan,
 				originalPSImg,
 				subobjectURL,
+                null,
                 null,
 				() => {
 					console.log('done');

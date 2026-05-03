@@ -152,8 +152,8 @@
     <span style="font-size: 14px;">Category</span>
     <select id="part-type-filter" style="display: inline-block;">
         <option value="brick" selected>Bricks</option>
-        <option value="plate">Plates</option>
-        <option value="baseplate">Baseplates</option>
+        <option value="plate">Plates & Baseplates</option>
+        <!-- <option value="baseplate">Baseplates</option> -->
         <option value="tile">Tiles</option>
         <option value="slope">Slopes</option>
         <option value="minifig">Minifigs</option>
@@ -169,7 +169,7 @@
         <option value="panel">Panels</option>
         <option value="round_&_curved">Round & Curved</option>
         <option value="other">Miscellaneous</option>
-		<option id="usr-custom" value="customparts.php">User Custom Parts</option>
+		    <option id="usr-custom" value="customparts.php">User Custom Parts</option>
     </select><br />
 
     <input type="text" id="search-parts" placeholder="search parts..." /><hr />
@@ -177,14 +177,18 @@
     <button id="tab1" class="tab-button">Parts list</button>
     <button id="tab2" class="tab-button">Parts in scene</button><br /><br />
     
-	  <input type="file" id="cre-import" accept=".json,.gr8" style="display: none;"><input type="file" id="cre-import-three" accept=".json" style="display: none;"><input type="file" id="cre-import-ldr" accept=".ldr,.dat" style="display: none;">
-	  <span id="cre-export" style="display: none;"></span><span id="cre-export-gr8" style="display: none;"></span><span id="cre-export-ldd" style="display: none;"></span><span id="selected-object-export-three" style="display: none;"></span><span id="cre-export-three" style="display: none;"></span><span id="cre-export-dae" style="display: none;"></span>
+	  <input type="file" id="cre-import" accept=".json,.gr8" style="display: none;"><input type="file" id="cre-import-gr8z" accept=".zip,.gr8z" style="display: none;"><input type="file" id="cre-import-three" accept=".json" style="display: none;"><input type="file" id="cre-import-ldr" accept=".ldr,.dat" style="display: none;">
+	  <span id="cre-export" style="display: none;"></span><span id="cre-export-gr8" style="display: none;"></span><span id="cre-export-gr8z" style="display: none;"></span><span id="cre-export-ldd" style="display: none;"></span><span id="selected-object-export-three" style="display: none;"></span><span id="cre-export-three" style="display: none;"></span><span id="cre-export-dae" style="display: none;"></span>
 
     <span id="select-block"></span>
 
     <ul id="block-list">
       <div class="groups-important">Gr8brik treats some parts as groups and vice-versa.</div>
     </ul>
+  </div>
+
+  <div id="ui-loading-file" class="ui-loading-file ui-canbe-trans">
+    <p>Loading creation...</p>
   </div>
 
   <div class="ui-popup-contain ui-canbe-trans" id="welcome-popup">
@@ -212,7 +216,8 @@
     <div id="import-popup-form">
 		<select id="import-format" style="display: inline-block;">
 			<option value="cloud" selected>From account</option>
-			<option value="json">GR8BRIK (.json, .gr8)</option>
+			<option value="json">Gr8brik (.json, .gr8)</option>
+      <option value="gr8z">Gr8brik zipped (.gr8z)</option>
 			<option value="three">ThreeJS (.json)</option>
       <option value="ldr">Ldraw (.ldr, .dat, .mpd)</option>
 		</select><br />
@@ -225,8 +230,9 @@
     <h3><span style="color: #fff;">Export Model</span></h3>
     <div id="export-popup-form">
 		<select id="export-format" style="display: inline-block;">
-      <option value="gr8">GR8BRIK (.gr8)</option>
-			<option value="json">GR8BRIK (.json)</option>
+      <option value="gr8">Gr8brik (.gr8)</option>
+      <option value="gr8z">Gr8brik zipped (.gr8z)</option>
+			<option value="json">Gr8brik (.json)</option>
       <option value="mpd">Ldraw (.mpd)</option>
 			<option value="three">ThreeJS (.json)</option>
       <option value="selectedobj">Selected object geometry (.json)</option>
@@ -261,6 +267,14 @@
 	
 	<hr />
 
+  <p><span style="color: var(--ui-text-color);"><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Functional</span></p>
+
+	<h5><span style="color: var(--ui-text-color);">Parts</span></h5>
+	<input type="checkbox" id="snapping-enable" checked>
+  <label for="snapping-enable">Enable snapping to grid</label><br />
+	
+	<hr />
+
     <p><span style="color: var(--ui-text-color);"><i class="fa fa-paint-brush" aria-hidden="true"></i>&nbsp;Display</span></p>
 
     <h5><span style="color: var(--ui-text-color);">Parts</span></h5>
@@ -272,17 +286,17 @@
     <label for="display-lines-enable">Enable lines</label><br />
 
     <input type="checkbox" id="pbr-enable" checked>
-    <label for="display-lines-enable">Enable PBR shading (applies only to new parts)</label><br />
+    <label for="display-lines-enable">Enable PBR</label><br />
 
     <h5><span style="color: var(--ui-text-color);">User interface</span></h5>
 
     <input type="checkbox" id="trans-enable" checked>
     <label for="trans-enable">Enable transparent UI elements</label><br />
 
-    <h5><span style="color: var(--ui-text-color);">Other</span></h5>
+    <h5><span style="color: var(--ui-text-color);">Lighting</span></h5>
 
     <input type="checkbox" id="hdr-enable" checked>
-    <label for="hdr-enable">Enable HDRI lighting (applies only to new parts)</label><br />
+    <label for="hdr-enable">Enable HDRI lighting</label><br />
 
     <hr />
 
