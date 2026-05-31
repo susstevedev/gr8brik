@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   
   <script>
-	var supportsES6 = function() {
+	/*var supportsES6 = function() {
 	  try {
 		new Function("(a = 0) => a");
 		return true;
@@ -40,7 +40,7 @@
 			script.async = false;
 			document.head.appendChild(script);
 		});
-	}
+	}*/
   </script>
   
   <!-- ES5 FIXES -->
@@ -71,7 +71,6 @@
   <script src="https://cdn.jsdelivr.net/gh/GitHubDragonFly/GitHubDragonFly.github.io/viewers/static/js/exporters/OBJExporter.js" crossorigin="anonymous"></script>
   
   <!-- MAIN | ES6 -->
-  <script src="color.js" defer></script>
   <script src="index.js?v=03-30-26" defer></script>
 
   <!-- STYLES -->
@@ -290,6 +289,9 @@
 
     <h5><span style="color: var(--ui-text-color);">User interface</span></h5>
 
+    <input type="checkbox" id="darkmode-enable">
+    <label for="darkmode-enable">Enable dark mode</label><br />
+
     <input type="checkbox" id="trans-enable" checked>
     <label for="trans-enable">Enable transparent UI elements</label><br />
 
@@ -317,9 +319,9 @@
       Trash Settings
     </button><br /><hr />
 
-    <p>Version <b>Febuary 23rd, 2026</b></p>
-    <p>Created by <a href="https://github.com/susstevedev/gr8brik/graphs/contributors">susstevedev and other contributors</a> on GitHub.</p>
-    <p>2023 - 2026 Gr8brik Legacy, Gr8brik & Gr8brik+. All rights reserved.</p>
+    <p>Version <b>May 31st, 2026</b></p>
+    <p>Created and maintained by <a href="https://github.com/susstevedev/gr8brik/graphs/contributors">me and other contributors</a> on GitHub.</p>
+    <p>2023 - 2026 Gr8brik and susstevedev. All rights reserved.</p>
     </div>
   </div>
 
@@ -336,5 +338,7 @@
     <a href="http://www.ldraw.org/" style="color:#000;">This software uses the LDraw Parts Library &amp; LDrawLoader.js</a>
   </div>
 
+  <script src="color.js"></script>
+  <script src="settings.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 	let picker = document.getElementById('color-picker');
 	let colorList = document.getElementById('color-picker-list');
+	let partColor = '#C91A09FF';
 
 	let colorPalette = [
     	"#C91A09", // Bright Red
@@ -29,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
         "#DDDD22", // Vibrant Yellow
 	];
 
-	//picker.setAttribute('color', '#C91A09FF');
 	picker.setAttribute('color', partColor);
 	let color = picker.getAttribute('color');
 	picker.value = color;
@@ -78,8 +78,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	    }
 
 	    partColor = selected;
-	    if (selected && selectedObject) {
-            changeBlockColor(selected);
+	    if (selected) {
+            window.changeBlockColor(selected);
         }
 	});
 

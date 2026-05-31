@@ -25,10 +25,10 @@ body.dark {
 }
 
 select {
-  color: var(--ui-anti-text) !important;
-  background-color: var(--ui-button-blue) !important;
-  border: var(--ui-anti-text) 1px solid;
-  cursor: pointer;
+  color: var(--ui-text-color) !important;
+  background-color: var(--ui-color) !important;
+  border: var(--ui-text-color) 1px solid;
+  /* cursor: pointer; */
   box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   border-radius: 2px;
   transition: opacity 0.2s ease-in-out;
@@ -179,7 +179,7 @@ option {
 }
 
 .ui-popup-contain {
-  border-radius: 10px;
+  border-radius: 2px;
   padding: 10px;
   /* background-color: var(--ui-color); */
   background: var(--ui-elm-noglass);
@@ -211,6 +211,32 @@ option {
   background-color: transparent !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+}
+
+#tooltipAlert {
+  border-radius: 2px;
+  padding: 10px;
+  background: var(--ui-elm-noglass);
+  border: 1px var(--ui-anti-text) solid;
+  color: var(--ui-text-color);
+  position: fixed;
+  z-index: 9999;
+  margin: auto;
+  width: 50%;
+  height: 25%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
+  text-align: center;
+  animation: fadeInFromNone 0.1s ease-in-out;
+  overflow-y: auto;
+
+  .title {
+    text-align: justify;
+    padding: 2px 2px 2px 20px;
+  }
 }
 
 .trans {
@@ -245,13 +271,14 @@ option {
   color: var(--ui-anti-color);
   text-decoration: none;
   float: right;
-  padding-right: 10px;
+  padding-right: 20px;
+  top: 5px;
   position: relative;
 }
 
 #link-home {
   position: fixed;
-  left: 10px !important;
+  left: 20px !important;
   top: 5px !important;
   text-align: center;
   display: flex;
@@ -283,7 +310,7 @@ option {
 
 .menu-main {
   position: relative;
-  left: 150px !important;
+  left: 160px !important;
   top: 5px !important;
   z-index: 1010;
 }

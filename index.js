@@ -1,8 +1,6 @@
 /* The mess that runs the entire modeler */
 
-// !!! WILL BREAK THINGS !!!
 // Used for debugging sometimes
-
 //'use strict';
 
 window.addEventListener('beforeunload', function (e) {
@@ -10,13 +8,20 @@ window.addEventListener('beforeunload', function (e) {
     e.returnValue = '';
 });
 
-var partColor = '#C91A09';
-const start_url = 'https://gr8brik.rf.gd';
+let container, camera, scene, renderer, controls, transformControls, grid_helper, directional_lighting, ambient_lighting, ldraw_loader, loading_manager, mouse, raycaster, mesh_color, partName, partRotation, partPosition, selectedObject, customPosition, selectedMap, selectedExport, named_parts = null;
+
+let partColor = '#C91A09';
+let start_url = 'https://gr8brik.rf.gd';
 
 let default_player_config = {
-    debug: "false",
+    debug: false,
     allowed_settings: {
-        trans: "true",
+        'customParts': true,
+        'displayLines': true,
+        'highRes': true,
+        'nosnap': true,
+        'ui_trans': true,
+        'use_hdri': true,
     },
 };
                 
@@ -148,10 +153,34 @@ function login() {
         .then(response => {
             if (response.success) {
                 const field = document.getElementById("username-field");
-                field.innerText = response.user;
+                field.innerHTML = null;
+
+                const name = document.createElement('span');
+                name.innerText = response.user;
+                name.style.paddingRight = "10px";
+
+                field.appendChild(name);
                 field.setAttribute("href", "/acc/creations");
+
                 tooltip('Logged in as ' + response.user);
-                ui_login(response.user ?? 'Guest User', response.pfp ?? 'img/logo.png');
+                ui_login(response.user ?? 'Username', response.pfp ?? 'img/logo.png');
+
+                if (response.alert != null && response.alert != undefined && response.alert != 0) {
+                    const notification = document.createElement('span');
+                    notification.innerText = response.alert;
+                    notification.style.backgroundColor = "#ff0000";
+                    notification.style.color = "#fff";
+                    notification.style.borderRadius = '15px';
+                    notification.style.paddingLeft = "5px";
+                    notification.style.paddingRight = "5px";
+
+                    field.appendChild(notification);
+                }
+            } else {
+                tooltip(response.error);
+                console.error("An error occured while authenticating " + response.error);
+				ui_login("Username", 'img/logo.png');
+                document.getElementById("username-field").innerHTML = "Login";
             }
         })
         .catch(async (err) => {
@@ -159,15 +188,40 @@ function login() {
                 const res = await err.response.json();
                 tooltip(res.error);
                 console.error("An error occured while authenticating " + res.error);
-				ui_login('Guest User', 'img/logo.png');
+				ui_login('Username', 'img/logo.png');
             } catch {
                 tooltip('An error occured while authenticating');
-				ui_login('Guest User', 'img/logo.png');
+				ui_login('Username', 'img/logo.png');
                 console.error("An error occured while authenticating " + err);
             }
         });
 }
 login();
+
+function getWarnStatus() {
+    //fetch(start_url + "/ajax/user.php?get_warn_status=true")
+    fetch('test.json')
+        .then(res => res.json())
+        .then(response => {
+            if (response.status == "yes" && response.success == true) {
+                tooltipAlert(response.text, response.reason, response.additional, response.button)
+            } else if(response.success == false) {
+                tooltip(response.error);
+                console.error("An error occured while authenticating " + response.error);
+            }
+        })
+        .catch(async (err) => {
+            try {
+                const res = await err.response.json();
+                tooltip(res.error);
+                console.error("An error occured while authenticating " + res.error);
+            } catch {
+                tooltip('An error occured while authenticating');
+                console.error("An error occured while authenticating " + err);
+            }
+        });
+}
+getWarnStatus();
 
 /* UI auth */
 function ui_login(username, pfp) {
@@ -322,8 +376,8 @@ document.getElementById("select-block").addEventListener("click", function (e) {
     const original_img = span.querySelector('img').getAttribute("src");
     span.querySelector('img').setAttribute("src", "img/load.gif");
 
-    part = 'parts/' + selectedPart;
-    partName = selectedPart;
+    part = 'parts/' + span.getAttribute("value");
+    partName = span.getAttribute("value");
 
     if(span.getAttribute("texture")) {
         const selectedTexture = span.getAttribute("texture");
@@ -592,11 +646,13 @@ document.getElementById("read_autosave").addEventListener("click", function () {
 });
 
 document.getElementById("clear_settings").addEventListener("click", function () {
-    clear_settings();
+    //clear_settings();
+    clearSettings(); // new
 });
 
 document.getElementById("read_settings").addEventListener("click", function () {
-    read_settings();
+    //read_settings();
+    readSettings(); // new
 });
 
 // file menu
@@ -1476,7 +1532,8 @@ document.getElementById("cre-import-three").addEventListener("change", function 
     reader.readAsText(file);
 });
 
-var container, camera, scene, renderer, controls, transformControls, grid_helper, directional_lighting, ambient_lighting, ldraw_loader, loading_manager, mouse, raycaster, partRotation, partPosition, selectedObject, customPosition, selectedMap, selectedExport, named_parts = null;
+// moved to start of document
+//var container, camera, scene, renderer, controls, transformControls, grid_helper, directional_lighting, ambient_lighting, ldraw_loader, loading_manager, mouse, raycaster, partRotation, partPosition, selectedObject, customPosition, selectedMap, selectedExport, named_parts = null;
 
 let blocks = [];
 let blockGroups = [];
@@ -1501,7 +1558,7 @@ function toggleGlobalSnap() {
         scene.userData.noSnap = true;
     }
     scene.updateMatrixWorld(true);
-    save_settings();
+    saveSettings();
 }
 
 document.getElementById("snapping-enable").addEventListener("change", function () {
@@ -1528,7 +1585,7 @@ document.getElementById("smooth-normals-enable").addEventListener("change", func
         }
     });
     scene.updateMatrixWorld(true);
-    save_settings();
+    saveSettings();
 });
 
 document.getElementById("display-lines-enable").addEventListener("change", function () {
@@ -1542,7 +1599,7 @@ document.getElementById("display-lines-enable").addEventListener("change", funct
     });
 
     scene.updateMatrixWorld(true);
-    save_settings();
+    saveSettings();
 });
 
 document.getElementById("pbr-enable").addEventListener("change", function () {
@@ -1568,7 +1625,7 @@ document.getElementById("pbr-enable").addEventListener("change", function () {
     });
 
     scene.updateMatrixWorld(true);
-    save_settings();
+    saveSettings();
 });
 
 /*document.getElementById("trans-enable").addEventListener("change", function () {
@@ -1605,7 +1662,7 @@ document.getElementById("pbr-enable").addEventListener("change", function () {
     }
 
     scene.updateMatrixWorld(true);
-    save_settings();
+    saveSettings();
 });*/
 
 document.getElementById("trans-enable").addEventListener("change", function () {
@@ -1627,11 +1684,11 @@ document.getElementById("hdr-enable").addEventListener("change", function () {
             scene.environment = texture;
         });
         scene.updateMatrixWorld(true);
-        save_settings();
+        saveSettings();
     } else {
         scene.environment = null;
         scene.updateMatrixWorld(true);
-        save_settings();
+        saveSettings();
     }*/
 
     applyHdri(scene.userData.use_hdri);
@@ -1642,7 +1699,21 @@ document.getElementById("export-fullscene-enable").addEventListener("change", fu
 	scene.userData.export_full_scene = export_full_scene;
 
     scene.updateMatrixWorld(true);
-    save_settings();
+    saveSettings();
+});
+
+document.getElementById("darkmode-enable").addEventListener("change", function () {
+    const enabled = this.checked;
+	scene.userData.darkmode = enabled;
+
+    if(enabled == true) {
+        document.cookie = "mode=dark; max-age=315360000; path=/";
+    } else {
+        document.cookie = "mode=light; max-age=315360000; path=/";
+    }
+
+    scene.updateMatrixWorld(true);
+    saveSettings();
 });
 
 function applyTransparent(ui_trans) {
@@ -1665,7 +1736,7 @@ function applyTransparent(ui_trans) {
     }
 
     scene.updateMatrixWorld(true);
-    save_settings();
+    saveSettings();
 }
 
 function applyHdri(use_hdri) {
@@ -1677,11 +1748,11 @@ function applyHdri(use_hdri) {
             scene.environment = texture;
         });
         scene.updateMatrixWorld(true);
-        save_settings();
+        saveSettings();
     } else {
         scene.environment = null;
         scene.updateMatrixWorld(true);
-        save_settings();
+        saveSettings();
     }
 }
 
@@ -1730,32 +1801,18 @@ function init() {
 
     // Scene
     scene = new THREE.Scene();
-    scene.userData.noSnap = false;
-    scene.userData.displayLines = false;
-    scene.userData.customParts = false; // disables custom parts for the time being
-    read_settings();
+    window.scene = scene;
+    scene.userData = window.settings;
 
-    THREE.Cache.enabled = false;
+    //THREE.Cache.enabled = false;
 
     // transparent ui
     if(scene.userData.ui_trans || scene.userData.ui_trans === undefined || scene.userData.ui_trans === null) {
-        /*let element = document.getElementsByClassName('ui-popup-contain');
-
-        for(let i = 0; i < element.length; i++) {
-            element[i].classList.add('trans');
-        }*/
-
         applyTransparent(scene.userData.ui_trans);
     }
 
     //hdri
     if(scene.userData.use_hdri || scene.userData.use_hdri === undefined || scene.userData.use_hdri === null) {
-        /*let element = document.getElementsByClassName('ui-popup-contain');
-
-        for(let i = 0; i < element.length; i++) {
-            element[i].classList.add('trans');
-        }*/
-
         applyHdri(scene.userData.use_hdri);
     }
 
@@ -1941,7 +1998,7 @@ function init() {
 
 }
 
-function changeBlockColor(color) {
+window.changeBlockColor = function(color) {
     if (!selectedObject) {
         tooltip("No part selected");
         return;
@@ -2272,6 +2329,7 @@ function addBlock(throwSuccess, throwError) {
 }
 
 /* addBlock version 2 */
+                    //part, partColor, partPosition, partRotation, span, original_img, part, null, null, null, null
 function addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, texture, partOpacity, throwSuccess, throwError) {
 	const FILE_LOCATION_TRY_PARTS = 0;
 	const FILE_LOCATION_TRY_P = 1;
@@ -2326,7 +2384,8 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
             }
 
             let childOpacity = 1;
-            if(partOpacity != null || partOpacity != undefined || partOpacity <= 1.0) {
+            console.log(partOpacity);
+            if(partOpacity != null && partOpacity != undefined && partOpacity <= 1.0) {
                 childOpacity = 0.5;
             }
 
@@ -2343,7 +2402,7 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
                         metalness: 0.1,
                         envMapIntensity: 0.5,
                         transparent: true,
-                        opacity: partOpacity,
+                        opacity: childOpacity,
                     });
                 } else {
                     child.material = new THREE.MeshPhongMaterial({
@@ -2588,6 +2647,10 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
             addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, throwSuccess, throwError);
         }*/
     });
+
+    function throwError(err) {
+        throw new Error(err);
+    }
 }
 
 function spanImg(original_img, span) {
@@ -3331,6 +3394,39 @@ function tooltip(text) {
         setTimeout(() => {
             tooltip.remove();
         }, 5500);
+    }
+}
+
+function tooltipAlert(title, text, additionalText, buttonText) {
+    const tooltip = document.createElement('div');
+    const tooltipTitle = document.createElement('h4');
+    const tooltipText = document.createElement('p');
+    const tooltipTextAdditional = document.createElement('p');
+    const tooltipExit = document.createElement('button');
+
+    tooltipTitle.textContent = title;
+    tooltipText.textContent = text;
+    tooltipTextAdditional.textContent = additionalText;
+    tooltipExit.textContent = buttonText;
+
+    tooltipTitle.setAttribute('class', 'title');
+    tooltipExit.setAttribute('class', 'btn');
+
+    tooltip.appendChild(tooltipTitle);
+    tooltip.appendChild(tooltipText);
+    tooltip.appendChild(tooltipTextAdditional);
+    tooltip.appendChild(tooltipExit);
+
+    tooltip.setAttribute('id', 'tooltipAlert');
+    document.body.appendChild(tooltip);
+
+    if (tooltip && tooltipExit) {
+        tooltipExit.addEventListener('click', function() {
+            tooltip.remove();
+
+            // rerun login function to update user information (logging user out if they get banned)
+            login();
+        }, false);
     }
 }
 
