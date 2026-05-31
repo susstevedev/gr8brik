@@ -22,6 +22,7 @@ let default_player_config = {
         'nosnap': true,
         'ui_trans': true,
         'use_hdri': true,
+        'hideWelcome': true,
     },
 };
                 
@@ -1561,6 +1562,21 @@ function toggleGlobalSnap() {
     saveSettings();
 }
 
+document.getElementById("hide-welcome").addEventListener("change", function () {
+    if (scene.userData.hideWelcome === true) {
+        scene.userData.hideWelcome = false;
+    } else {
+        scene.userData.hideWelcome = true;
+    }
+    scene.updateMatrixWorld(true);
+    saveSettings();
+});
+
+if(scene.userData.hideWelcome === true) {
+    document.getElementById("welcome-popup").remove();
+    document.getElementById("hide-welcome").setAttribute('checked', 'true');
+}
+
 document.getElementById("snapping-enable").addEventListener("change", function () {
     const snapping = this.checked;
     scene.userData.noSnap = snapping;
@@ -1788,9 +1804,11 @@ function getDate() {
 function init() {
     if (isDark()) {
         document.body.classList.add("dark");
+        document.getElementById("darkmode-enable").setAttribute('checked', 'true');
     } else {
         if (document.body.classList.contains("dark")) {
             document.body.classList.remove("dark");
+            document.getElementById("darkmode-enable").setAttribute('checked', 'false');
         }
     }
 
@@ -1809,11 +1827,17 @@ function init() {
     // transparent ui
     if(scene.userData.ui_trans || scene.userData.ui_trans === undefined || scene.userData.ui_trans === null) {
         applyTransparent(scene.userData.ui_trans);
+        document.getElementById("trans-enable").setAttribute('checked', 'true');
+    } else {
+        document.getElementById("trans-enable").setAttribute('checked', 'false');
     }
 
     //hdri
     if(scene.userData.use_hdri || scene.userData.use_hdri === undefined || scene.userData.use_hdri === null) {
         applyHdri(scene.userData.use_hdri);
+        document.getElementById("hdr-enable").setAttribute('checked', 'true');
+    } else {
+        document.getElementById("hdr-enable").setAttribute('checked', 'false');
     }
 
     // WebGl renderer
