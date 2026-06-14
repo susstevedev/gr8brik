@@ -155,7 +155,8 @@ option {
 #import-popup,
 #export-popup,
 #settings-popup,
-#ui-loading-file {
+#ui-loading-file,
+#help-popup {
   display: none;
 }
 
@@ -367,6 +368,10 @@ option {
   padding: 2px 2px 2px 2px;
 }
 
+#top-container a {
+  z-index: 200;
+}
+
 #tooltip {
   position: absolute;
   bottom: 15%;
@@ -468,11 +473,19 @@ option {
 #block-list li {
   margin-left: 5px;
   padding-bottom: 5px;
-  padding-left: 1px;
+  color: var(--ui-text-color);
+  padding: 15px;
   list-style-type: none;
-  border: 1px solid var(--ui-anti-color);
-  border-radius: none;
+  border-radius: 2px;
+  border: 2px rgba(0, 0, 0, 0.16) solid;
+  transition: all 0.2s ease-in-out;
   cursor: pointer;
+}
+
+#block-list li:hover {
+  cursor: pointer;
+  opacity: 0.8 !important;
+  box-shadow: rgba(2, 2, 2, 0.06) 2px 2px 2px 2px;
 }
 
 #block-list {
@@ -480,7 +493,8 @@ option {
 }
 
 #search-parts,
-#save-popup input[type=text] {
+#save-popup input[type=text],
+.ui-popup-contain input[type=text] {
   border: 1px solid #000;
   border-radius: 2px;
   width: 75%;
@@ -514,8 +528,53 @@ option {
   background-size: cover;
   width: 200px;
   height: 200px;
-  z-index: 999999;
+  z-index: 999998;
   border-radius: 50%;
+}
+
+#wgl-disabled {
+  display: none !important;
+  background-color: rgb(175, 175, 175);
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999999;
+  position: absolute;
+}
+
+#wgl-disabled-bg {
+  box-shadow: rgba(30, 30, 30, 0.06) 0px 0px 4px 4px;
+  border-radius: 2px;
+  background-color: rgb(250, 250, 250);
+  width: 50%;
+  height: 25%;
+  top: 25%;
+  left: 25%;
+  position: absolute;
+}
+
+#wgl-disabled-head {
+  color: #000;
+  left: 50%;
+  position: absolute;
+}
+
+#wgl-disabled-txt {
+  color: #000;
+  top: 20%;
+  padding-left: 15%;
+  padding-right: 15%;
+  position: absolute;
+  text-align: center;
+}
+
+#wgl-disabled-img {
+  top: 40%;
+  left: 40%;
+  position: absolute;
+  border: 1px #242424 solid;
 }
 
 @keyframes fromright {

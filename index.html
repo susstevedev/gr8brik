@@ -1,4 +1,4 @@
-<!-- GR8BRIK VERSION 03-30-2026 -->
+<!-- GR8BRIK -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,8 +85,10 @@
     <span class="menu-main">
       <button class="menu-item" id="menu-file"><i class="fa fa-hdd-o" aria-hidden="true"></i>Saving</button>
       <button class="menu-item" id="menu-edit"><i class="fa fa-clipboard" aria-hidden="true"></i>Tools</button>
+      <button class="menu-item" id="undo-action"><i class="fa fa-undo" aria-hidden="true"></i></button>
+      <button class="menu-item" id="redo-action"><i class="fa fa-repeat" aria-hidden="true"></i></button>
       <button class="menu-item" id="settings-popup-open"><i class="fa fa-sliders" aria-hidden="true"></i>Settings</button>
-      <button class="menu-item" id="menu-help"><i class="fa fa-sliders" aria-hidden="true"></i><a href="https://gr8brik.rf.gd/docs/" target="_blank">Help</a></button>
+      <button class="menu-item" id="menu-help"><i class="fa fa-question-circle-o" aria-hidden="true"></i>Help</button>
     </span>
     <span class="dropdown-main">
       <span class="dropdown-element ui-canbe-trans" id="dropdown-file">
@@ -196,6 +198,22 @@
     <div id="dev-welcome-popup-form">
       <p>Would you like to:</p>
       <p><button class="close btn" title="Start a new creation">Start a new creation</button></p>
+      <p><button class="import btn" title="Import an existing creation">Import an existing creation</button></p>
+    </div>
+  </div>
+
+  <div class="ui-popup-contain ui-canbe-trans" id="help-popup">
+    <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
+    <h3><span style="color: var(--ui-text-color);;">Help</span></h3>
+    <div id="dev-help-popup-form">
+      <p><span style="color: var(--ui-text-color);"><i class="fa fa-keyboard-o" aria-hidden="true"></i>&nbsp;Keyboard shortcuts</span></p>
+      <div id="keyboard-shortcuts">
+        <p><b>R</b> - Change to rotate parts mode</p>
+        <p><b>T</b> - Change to drag parts mode</p>
+        <p><b>Del</b> - Delete part and dispose of part data</p>
+        <p><b>Esc</b> - Deselect object</p>
+      </div>
+      <p><button class="close btn" title="Okay, got it">Okay, got it</button></p>
     </div>
   </div>
 
@@ -214,12 +232,14 @@
     <h3><span style="color: #fff;">Import Model</span></h3>
     <div id="import-popup-form">
 		<select id="import-format" style="display: inline-block;">
-			<option value="cloud" selected>From account</option>
+			<option value="cloud" disabled="true" aria-disabled="true">From account</option>
+      <option value="cloud2" onclick="document.getElementById('import-url').style.display='block'" selected>From URL</option>
 			<option value="json">Gr8brik (.json, .gr8)</option>
       <option value="gr8z">Gr8brik zipped (.gr8z)</option>
 			<option value="three">ThreeJS (.json)</option>
       <option value="ldr">Ldraw (.ldr, .dat, .mpd)</option>
 		</select><br />
+    <p><input style='display:none;' type="text" id="import-url" placeholder="Enter a model json url..." /></p>
 		<p><button class="btn" title="Finish importing" id="import-finish">Select file</button></p>
     </div>
   </div>
@@ -303,6 +323,11 @@
     <input type="checkbox" id="hdr-enable" checked>
     <label for="hdr-enable">Enable HDRI lighting</label><br />
 
+    <h5><span style="color: var(--ui-text-color);">Camera</span></h5>
+
+    <input type="checkbox" id="flatcamera-enable">
+    <label for="hdr-enable">Orthographic camera</label><br />
+
     <hr />
 
     <p><span style="color: var(--ui-text-color);"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Saving & recovery</span></p>
@@ -322,7 +347,7 @@
       Trash Settings
     </button><br /><hr />
 
-    <p>Version <b>May 31st, 2026</b></p>
+    <p>Version <b>June 14th, 2026</b></p>
     <p>Created and maintained by <a href="https://github.com/susstevedev/gr8brik/graphs/contributors">me and other contributors</a> on GitHub.</p>
     <p>2023 - 2026 Gr8brik and susstevedev. All rights reserved.</p>
     </div>
@@ -339,6 +364,14 @@
         </a>
     <br />
     <a href="http://www.ldraw.org/" style="color:#000;">This software uses the LDraw Parts Library &amp; LDrawLoader.js</a>
+  </div>
+
+  <div id="wgl-disabled">
+    <div id="wgl-disabled-bg">
+      <h2 id="wgl-disabled-head">Drat!</h2>
+      <p id="wgl-disabled-txt"></p>
+      <img id="wgl-disabled-img" src="img/misc/minifig_minifix.png" width="25%" alt="Minfig with wrench" title="Minfig with wrench" />
+    </div>
   </div>
 
   <script src="color.js"></script>

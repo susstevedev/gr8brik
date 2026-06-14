@@ -8,6 +8,24 @@ window.addEventListener('beforeunload', function (e) {
     e.returnValue = '';
 });
 
+let canvas = document.createElement('canvas');
+let gl = canvas.getContext('webgl2');
+
+if (!gl) {
+    if (typeof WebGL2RenderingContext !== 'undefined') {
+        let err = "WebGL2 is supported, but disabled. This likely means your graphics card does not support it.";
+        console.warn(err);
+    } else {
+        let err = 'WebGL2 is not supported by this browser.';
+        console.warn(err);
+    }
+
+    document.getElementById('wgl-disabled').style.display = "block";
+    document.getElementById('wgl-disabled-txt').innerText = err;
+} else {
+    console.log('WEBGL STATUS: ENABLED');
+}
+
 let container, camera, scene, renderer, controls, transformControls, grid_helper, directional_lighting, ambient_lighting, ldraw_loader, loading_manager, mouse, raycaster, mesh_color, partName, partRotation, partPosition, selectedObject, customPosition, selectedMap, selectedExport, named_parts = null;
 
 let partColor = '#C91A09';
@@ -146,6 +164,7 @@ document.addEventListener('click', function (event) {
 
 // user login function
 // todo have this run ever 10 seconds if user is not signed in
+window.loggedin = false;
 function login() {
 	fetch('user.php?ajax=true')
     //fetch(start_url + "/ajax/user.php?ajax=true")
@@ -177,11 +196,13 @@ function login() {
 
                     field.appendChild(notification);
                 }
+                window.loggedin = true;
             } else {
                 tooltip(response.error);
                 console.error("An error occured while authenticating " + response.error);
 				ui_login("Username", 'img/logo.png');
                 document.getElementById("username-field").innerHTML = "Login";
+                window.loggedin = false;
             }
         })
         .catch(async (err) => {
@@ -190,10 +211,12 @@ function login() {
                 tooltip(res.error);
                 console.error("An error occured while authenticating " + res.error);
 				ui_login('Username', 'img/logo.png');
+                window.loggedin = false;
             } catch {
                 tooltip('An error occured while authenticating');
 				ui_login('Username', 'img/logo.png');
                 console.error("An error occured while authenticating " + err);
+                window.loggedin = false;
             }
         });
 }
@@ -260,7 +283,8 @@ function loadParts(type) {
 				tooltip('Failed to load parts');
 			});
 	} else {
-        if(scene.userData.customParts == false) {
+        if(scene.userData.customParts === false) {
+            console.warn("Custom parts disabled");
             return;
         }
 
@@ -309,14 +333,12 @@ function displayParts() {
     displayed_parts.forEach(part => {
         const span = document.createElement("span");
         span.id = part.file;
-        span.title = part.name;
+        span.title = part.name + " (uid " + part.id + ")";
         span.setAttribute("value", part.file);
         span.innerHTML = `
 					<img src="https://library.ldraw.org/media/ldraw/official/parts/${part.file.split(".")[0]}.png" loading="lazy" width="45px" />
 					<br />
 					<small class="part-list-number">${part.file.split(".")[0]}</small>
-					&nbsp;
-					<!-- <small class="hover-only">${part.name}</small> -->
 				`;
         container.appendChild(span);
     });
@@ -415,6 +437,9 @@ document.getElementById("download-json").addEventListener("click", function () {
             selectedObject = null;
         }
 
+        let params = new URLSearchParams(window.location.search);
+        let build_id = params.get("build_id") || null;
+
         const name = document.querySelector("#save-popup input[name='name']").value.trim();
         const desc = document.querySelector("#save-popup textarea[name='desc']").value.trim();
         const screenshot = capture();
@@ -426,6 +451,7 @@ document.getElementById("download-json").addEventListener("click", function () {
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams({
                 save_build: true,
+                build_id: build_id,
                 creation: sceneJSON,
                 name,
                 desc,
@@ -435,7 +461,7 @@ document.getElementById("download-json").addEventListener("click", function () {
             .then(res => res.json())
             .then(response => {
                 tooltip(response.success);
-                this.innerText = "Save Creation";
+                this.innerText = "Save Creation as a copy";
                 //this.disabled = true;
             })
             .catch(async err => {
@@ -453,12 +479,23 @@ document.getElementById("download-json").addEventListener("click", function () {
     }
 });
 
+let params = new URLSearchParams(window.location.search);
+let build_id = params.get("build_id");
+
+if(build_id !== undefined && build_id !== null) {
+    loadJSONFromCloud(build_id);
+}
+
 // import modal
 document.getElementById("import-finish").addEventListener("click", function () {
     const format = document.getElementById("import-format").value;
     if (format === "cloud") {
         tooltip('Gr8brik models from your account cannot be imported yet.');
         return;
+    }
+    if (format === "cloud2") {
+        let model_id = document.getElementById('import-url').value.split('/').pop();
+        loadJSONFromCloud(model_id);
     }
     if (format === "three") {
         document.getElementById("cre-import-three").click();
@@ -507,6 +544,11 @@ document.getElementById("export-finish").addEventListener("click", function () {
     }
 
     if (format === "dae") {
+        if(!window.loggedin) {
+            alert('Not authenticated');
+            return;
+        }
+
         const collada = new THREE.ColladaExporter();
         const collada_data = collada.parse(filter_objects_peices());
         const blob = new Blob([collada_data.data], { type: 'model/vnd.collada+xml' });
@@ -524,6 +566,11 @@ document.getElementById("export-finish").addEventListener("click", function () {
     }
 
     if (format === "glb") {
+        if(!window.loggedin) {
+            alert('Not authenticated');
+            return;
+        }
+
         const exporter = new THREE.GLTFExporter();
         const date = getDate();
 		
@@ -562,6 +609,11 @@ document.getElementById("export-finish").addEventListener("click", function () {
     }
 
     if (format === "obj") {
+        if(!window.loggedin) {
+            alert('Not authenticated');
+            return;
+        }
+
         const exporter = new THREE.OBJExporter();
         const date = getDate();
         const result = exporter.parse(filter_objects_peices());
@@ -676,6 +728,26 @@ document.querySelector("#menu-edit").addEventListener("click", function () {
         elm.style.display = "block";
     }
 });
+
+// help menu
+document.querySelector("#menu-help").addEventListener("click", function () {
+    let elm = document.getElementById("help-popup");
+
+    if (elm.style.display === "block") {
+        elm.style.display = "none";
+    } else {
+        elm.style.display = "block";
+    }
+});
+
+document.querySelector("#help-popup .btn-alt").addEventListener("click", function () {
+    document.querySelector("#help-popup").style.display = "none";
+});
+
+document.querySelector("#help-popup .close").addEventListener("click", function () {
+    document.querySelector("#help-popup").style.display = "none";
+});
+
 
 // Transparency
 document.getElementById("trans-block").addEventListener("click", function () {
@@ -1218,6 +1290,37 @@ document.getElementById("cre-import").addEventListener("change", function (event
     reader.readAsText(file);
 });
 
+function loadJSONFromCloud(model) {
+    fetch(start_url + `/ajax/build?buildId=${model}&fetch=true`)
+        .then(res => res.json())
+            .then(data => {
+                if (data === null) {
+                    alert('Empty response');
+                }
+                
+                if(data.error) {
+                    tooltip(data.error + ' ' + data.message);
+                }
+
+                let modelData = data.model;
+                tooltip('Importing model "' + data.name + '"');
+
+                if(modelData) {
+                    fetch(start_url + `${data.model}`)
+                        .then(res => res.json())
+                            .then(data => {
+                                if (data === null) {
+                                    alert('Empty model');
+                                }
+
+                                if(data) {
+                                    loadSceneFromJSON(data);
+                                }
+                            });
+                }
+            });
+};
+
 document.getElementById("cre-import-gr8z").addEventListener("change", function (event) {
     let file = event.target.files[0];
     if (!file) {
@@ -1365,7 +1468,7 @@ async function loadSceneFromJSON(data) {
         partPosition = block.position;
         partRotation = block.rotation;
 		partTexture = block.texturedata;
-        partOpacity = block.opacity;
+        partOpacity = block.opacity ?? '1.0';
 
         part = 'parts/' + block.ldraw;
 
@@ -1431,7 +1534,8 @@ function ldrawToJSON(group) {
 
             const ldraw_data = child?.parent?.userData;
 
-            fetch(`https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/${ldraw_data.fileName}`)
+            //fetch(`https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/${ldraw_data.fileName}`)
+            fetch(`https://cdn.githubraw.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/${ldraw_data.fileName}`)
                 .then(res => res)
                 .then(data => {
                     if (data === null) {
@@ -1576,6 +1680,16 @@ if(scene.userData.hideWelcome === true) {
     document.getElementById("welcome-popup").remove();
     document.getElementById("hide-welcome").setAttribute('checked', 'true');
 }
+
+document.getElementById("flatcamera-enable").addEventListener("change", function () {
+    if (scene.userData.flatcamera === true) {
+        scene.userData.hideWelcome = false;
+    } else {
+        scene.userData.flatcamera = true;
+    }
+    scene.updateMatrixWorld(true);
+    saveSettings();
+});
 
 document.getElementById("snapping-enable").addEventListener("change", function () {
     const snapping = this.checked;
@@ -1813,14 +1927,18 @@ function init() {
     }
 
     // Scene container
-    container = document.createElement('div');
-    container.classList.add("scene");
-    document.body.appendChild(container);
+    if(!window.scene) {
+        container = document.createElement('div');
+        container.classList.add("scene");
+        document.body.appendChild(container);
+    }
 
     // Scene
-    scene = new THREE.Scene();
-    window.scene = scene;
-    scene.userData = window.settings;
+    if(!window.scene) {
+        scene = new THREE.Scene();
+        window.scene = scene;
+        scene.userData = window.settings;
+    }
 
     //THREE.Cache.enabled = false;
 
@@ -1849,9 +1967,18 @@ function init() {
     renderer.setPixelRatio(window.devicePixelRatio);
     container.appendChild(renderer.domElement);
 
-    // Camera
-    camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, .1, 100000);
-    camera.position.set(250, 250, 250);
+    if(scene.userData.flatcamera === true) {
+        // Camera
+        camera = new THREE.OrthographicCamera(window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, .1, 100000);
+        camera.zoom = 2;
+        camera.position.set(250, 250, 250);
+        document.getElementById("flatcamera-enable").setAttribute('checked', 'true');
+    } else {
+        // Camera
+        camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, .1, 100000);
+        camera.position.set(250, 250, 250);
+        document.getElementById("flatcamera-enable").setAttribute('checked', 'false');
+    }
 
     // Lighting
     ambient_lighting = new THREE.AmbientLight(0xdddddd, 1);
@@ -1896,7 +2023,7 @@ function init() {
 
     // loader config
     // please read ldrawloader docs before changing these values
-    const ldraw_path = "https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/";
+    const ldraw_path = "https://cdn.githubraw.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/";
     ldraw_loader = new THREE.LDrawLoader();
     ldraw_loader.preloadMaterials(ldraw_path + 'colors/ldconfig.ldr');
     ldraw_loader.setPath(ldraw_path + 'actual/');
@@ -1969,6 +2096,7 @@ function init() {
 
     transformControls.addEventListener('mouseUp', function () {
         controls.enabled = true;
+        statehistory.saveState();
     });
 
     transformControls.addEventListener('dragging-changed', function (event) {
@@ -1988,6 +2116,7 @@ function init() {
     transformControls.addEventListener('objectChange', function () {
         if (selectedObject && !(selectedObject.userData.noSnap || scene.userData.noSnap)) {
             const delta_pos = new THREE.Vector3().subVectors(selectedObject.position, original_pos);
+
             const snapped_pos = new THREE.Vector3(
                 snapToGrid(delta_pos.x, 10),
                 snapToGrid(delta_pos.y, 4),
@@ -2021,6 +2150,105 @@ function init() {
     });
 
 }
+
+class statehistoryManager {
+  constructor(scene) {
+    this.scene = scene;
+    this.undoStack = [];
+    this.redoStack = [];
+    this.saveState();
+    this.maxHistory = 30;
+  }
+
+  saveState() {
+    const snapshot = generateSceneJSON();
+  
+    this.undoStack.push(snapshot);
+    this.redoStack = [];
+
+    if (this.undoStack.length > this.maxHistory) {
+      this.undoStack.shift(); 
+    }
+
+    console.log('Save state');
+  }
+
+  undo() {
+    if (this.undoStack.length <= 1) {
+        return; 
+    }
+    
+    const currentState = this.undoStack.pop();
+    this.redoStack.push(currentState);
+    
+    const previousState = this.undoStack[this.undoStack.length - 1];
+    this.loadState(previousState);
+  }
+
+  redo() {
+    if (this.redoStack.length === 0) {
+        return;
+    }
+    
+    const nextState = this.redoStack.pop();
+    this.undoStack.push(nextState);
+    this.loadState(nextState);
+  }
+
+  loadState(jsonState) {
+    console.log(jsonState);
+
+    /*for (let i = scene.children.length - 1; i >= 0; i--) {
+        const obj = scene.children[i];
+        if (obj?.userData && obj?.userData?.ldraw || 
+            obj?.parent?.userData && obj?.parent?.userData?.ldraw || 
+            obj?.parent?.parent?.userData && obj?.parent?.parent?.userData?.ldraw ||
+            obj?.child?.userData && obj?.child.userData?.ldraw ||
+            obj?.child?.child?.userData && obj?.child?.child?.userData?.ldraw) {
+
+            scene.remove(obj);
+                if (obj.geometry) {
+                    obj.geometry.dispose();
+                }
+
+                if (obj.material) {
+                    if (Array.isArray(obj.material)) {
+                        obj.material.forEach(m => m.dispose());
+                    } else {
+                        obj.material.dispose();
+                    }
+                }
+        }
+    }*/
+    
+    if (blockGroups && blockGroups.length > 0) {
+        blockGroups.forEach(function (g) {
+            scene.remove(g);
+            if (g.geometry) {
+                g.geometry.dispose();
+            }
+            if (g.material) {
+                if (Array.isArray(obj.material)) {
+                    g.material.forEach(m => m.dispose());
+                } else {
+                    g.material.dispose();
+                }
+            }
+            g.updateMatrixWorld(true);
+        });
+        scene.updateMatrixWorld(true);
+    }
+
+    if (selectedObject) {
+        selectedObject = null;
+        transformControls.detach();
+    }
+
+    loadSceneFromJSON(JSON.parse(jsonState));
+    scene.updateMatrixWorld();
+  }
+}
+window.statehistory = new statehistoryManager(scene);
 
 window.changeBlockColor = function(color) {
     if (!selectedObject) {
@@ -2083,11 +2311,13 @@ window.changeBlockColor = function(color) {
                 selectedMap = null;
                 updateSceneData();
                 updateBLItems();
+                statehistory.saveState();
             } else if (child.material.color) {
                 child.material.color.set(color);
                 child.material.needsUpdate = true;
                 updateSceneData();
                 updateBLItems();
+                statehistory.saveState();
             }
         }
     });
@@ -2107,12 +2337,16 @@ function deleteBlock(part) {
 
             if (part.geometry) {
                 part.geometry.dispose();
-                console.log('disposed geometry');
+                if(scene.userData.debug === true) {
+                    console.log('disposed geometry');
+                }
             }
 
             if (part.material && !Array.isArray(part.material)) {
                 part.material.dispose();
-                console.log('disposed material');
+                if(scene.userData.debug === true) {
+                    console.log('disposed material');
+                }
             }
 
             part.updateMatrixWorld(true);
@@ -2120,18 +2354,6 @@ function deleteBlock(part) {
         } else {
             tooltip('Part is not a valid mesh')
         }
-
-        /*if (blockGroups && blockGroups.length > 0) {
-            blockGroups.forEach(function (g) {
-            if(g.uuid === part.parent.uuid) {
-                if(g.part) {
-                    g.remove(part);
-                }
-                g.updateMatrixWorld(true);
-                updateBLItem(g.userData.partName, color, g.userData.sceneCount, g.uuid);
-            }
-            });
-        } */
 
         updateBLItems();
 
@@ -2143,6 +2365,7 @@ function deleteBlock(part) {
     }
     scene.updateMatrixWorld(true);
     updateSceneData();
+    statehistory.saveState();
 }
 
 /* Screenshot function */
@@ -2407,16 +2630,30 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
                 return;
             }
 
+            if (child.isMesh && child.userData && child.userData.filename === 'stud.dat') {
+                child.userData.filename === 'stud-logo.dat';
+            }
+
+            if (child.isMesh && child.userData && child.userData.filename === 'stud2.dat') {
+                child.userData.filename === 'stud2-logo.dat';
+            }
+
             let childOpacity = 1;
             console.log(partOpacity);
-            if(partOpacity != null && partOpacity != undefined && partOpacity <= 1.0) {
-                childOpacity = 0.5;
+            if(partOpacity != null && partOpacity != undefined && partOpacity <= 1.0 && partOpacity <= 1) {
+                childOpacity = partOpacity;
             }
 
             if (child.isMesh && !child.material.map && !child.isLineSegments && !Array.isArray(child.material)) {
                 const pos = new THREE.Vector3();
                 const pos2 = child.getWorldPosition(pos);
                 console.log(pos2);
+
+                const geometry = child.geometry;
+
+                if (!geometry.attributes.uv) {
+                    partUVGen(geometry);
+                }
 
                 if (scene?.userData?.highRes === true) {
                     child.material = new THREE.MeshPhysicalMaterial({
@@ -2481,7 +2718,7 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
             }
 			
 			const textureLoader = new THREE.TextureLoader();
-			if(child.material && child.isMesh && !child.material.map && !child.isLineSegments && texture) {
+			/*if(child.material && child.isMesh && !child.material.map && !child.isLineSegments && texture) {
 				let uvs = generateUVMap(child.geometry);
 				child.geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
 
@@ -2491,6 +2728,69 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
 					child.material.color = new THREE.Color("#ffffff");
 					child.material.needsUpdate = true;
 					child.userData.main_mat_index = 1;
+								
+					function toDataURL(url, callback) {
+					  var xhr = new XMLHttpRequest();
+					  xhr.onload = function() {
+						var reader = new FileReader();
+						reader.onloadend = function() {
+						  callback(reader.result);
+						}
+						reader.readAsDataURL(xhr.response);
+					  };
+					  xhr.open('GET', url);
+					  xhr.responseType = 'blob';
+					  xhr.send();
+					}
+
+					toDataURL(texture, function(dataUrl) {
+					  child.userData.textureData = dataUrl;
+					});
+				}, undefined, (err) => {
+					console.warn("Texture load failed or doesn't exist: " + err);
+				});
+			}*/
+
+            if(child.material && child.isMesh && !child.material.map && !child.isLineSegments && texture && !Array.isArray(child.material)) {
+				textureLoader.load(texture, (texturemap) => {
+					texturemap.colorSpace = THREE.SRGBColorSpace;
+                    texturemap.wrapS = THREE.RepeatWrapping;
+                    texturemap.wrapT = THREE.RepeatWrapping;
+                    texturemap.needsUpdate = true;
+
+                    const decalMat = new THREE.MeshStandardMaterial({ 
+                        map: texturemap,
+                        transparent: true,
+                        alphaTest: 0.5,
+                        side: THREE.FrontSide 
+                    });
+
+                    /*const ogMat = child.material.map;
+
+                    const decalMats = [ogMat, decalMat];
+
+                    const decalGeo = child.geometry.clone();
+
+                    const decalMesh = new THREE.Mesh(decalGeo, decalMats);
+                    decalMesh.position.y += 0.001; 
+                    
+                    child.parent.add(decalMesh);
+                    child.userData.hasTextureLayer = true;*/
+
+                    /*const materials = [child.material, textureMat];
+                    child.material = materials;*/
+
+                    //child.material[1].map = texturemap;
+                    /*child.material[1].map.wrapS = THREE.RepeatWrapping;
+                    child.material[1].map.wrapT = THREE.RepeatWrapping;*/
+
+                    child.material = decalMat;
+					child.material.color = new THREE.Color("#ffffff");
+					child.material.needsUpdate = true;
+
+                    /*child.userData.main_mat_uuid = child.material[0].uuid;
+                    child.userData.main_mat_name = child.material[0].name*/
+					child.userData.main_mat_index = child.material[1];
 								
 					function toDataURL(url, callback) {
 					  var xhr = new XMLHttpRequest();
@@ -2551,6 +2851,7 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
 
         updateBLItems();
         updateSceneData();
+        statehistory.saveState();
 
         if(partSpan && partSpan !== null && partSpan !== undefined) {
             partSpan.querySelector('img').setAttribute("src", originalPSImg);
@@ -2713,13 +3014,21 @@ function renderBLItem(obj, level = 0) {
 
     let part;
     if (obj.userData.isBlock && obj.userData.ldraw) {
-        part = `Part ${obj?.userData?.fileName || obj?.parent?.userData?.fileName}`;
+        //part = `Part ${obj?.userData?.fileName || obj?.parent?.userData?.fileName}`;
+        part = `${obj?.userData?.ldraw?.split(".")[0] || obj?.parent?.userData?.ldraw?.split(".")[0]}`;
+        partIcon = `https://library.ldraw.org/media/ldraw/official/${part}.png`;
+        //<img src="https://library.ldraw.org/media/ldraw/official/parts/3001.png" loading="lazy" width="45px">
     }
+
+    const img = document.createElement('img');
+    img.setAttribute('src', partIcon);
+    img.setAttribute('loading', 'lazy');
+    img.setAttribute('width', '45px');
 
     const li = document.createElement('li');
     li.classList.add('scene-block-item');
     li.setAttribute('data-id', id);
-    li.textContent = `${part} (${color})`;
+    li.innerHTML = `${part} (${color})`;
 
     if (obj.children && obj.children.length > 0) {
         const ul = document.createElement('ul');
@@ -2733,6 +3042,7 @@ function renderBLItem(obj, level = 0) {
 
         li.appendChild(ul);
     }
+    li.appendChild(img);
 
     return li;
 }
@@ -2776,6 +3086,7 @@ function isSmall(g, scale) {
     return size.x < scale || size.y < scale || size.z < scale;
 }
 
+// old function
 function generateUVMap(geometry) {
     geometry.computeBoundingBox();
     geometry.computeVertexNormals();
@@ -2796,6 +3107,31 @@ function generateUVMap(geometry) {
     //geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
     //return geometry;
 	return uvs;
+}
+
+function partUVGen(geometry) {
+    const positions = geometry.attributes.position;
+    const uvArray = [];
+                
+    geometry.computeBoundingBox();
+    const min = geometry.boundingBox.min;
+    const max = geometry.boundingBox.max;
+                
+    const scaleX = 1 / (max.x - min.x);
+    const scaleY = 1 / (max.y - min.y);
+
+    for (let i = 0; i < positions.count; i++) {
+        const x = positions.getX(i);
+        const y = positions.getY(i);
+                    
+
+        const u = (x - min.x) * scaleX;
+        const v = (y - min.y) * scaleY;
+                    
+        uvArray.push(u, v);
+    }
+
+    geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvArray, 2));
 }
 
 function getPriceInfo() {
@@ -2835,6 +3171,7 @@ function duplicatePart() {
         partName = selectedObject.userData.parentName;
         partColor = `#${selectedObject.material.color.getHexString().toLowerCase()}`;
         addBlock();
+        statehistory.saveState();
     }
 }
 
@@ -3127,10 +3464,10 @@ function updateSceneData() {
 
     if (selectedObject) {
         selectedObject.updateMatrixWorld(true);
-    }
 
-    if (scene.children.length != 0) {
-        autosave();
+        if (scene.children.length != 0) {
+            autosave();
+        }
     }
 }
 
@@ -3317,7 +3654,20 @@ window.addEventListener('pointerdown', function (event) {
     mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
 
     raycaster.setFromCamera(mouse, camera);
-    let intersects = raycaster.intersectObjects(scene.children.filter(obj => obj.visible), true);
+
+    const targets = [];
+
+    scene.traverse((obj) => {
+        if (obj.visible && obj.userData?.isBlock && !obj?.isTransformControls) {
+            targets.push(obj);
+        }
+    });
+
+    let intersects = raycaster.intersectObjects(targets, false);
+
+    transformControls.addEventListener('dragging-changed', (event) => {
+        return;
+    });
 
     if (intersects.length > 0) {
         selectObject(intersects[0].object);
@@ -3329,10 +3679,6 @@ window.addEventListener('pointerdown', function (event) {
 function selectObject(obj) {
     while (obj.parent && !obj.userData.isBlock) {
         obj = obj.parent;
-    }
-
-    if (!obj.userData.isBlock && transformControls.enabled) {
-        return;
     }
 
     if (obj === selectedObject) {
@@ -3358,7 +3704,15 @@ function deselect(obj) {
 }
 
 function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    if(scene.userData.flatcamera) {
+        camera.left = window.innerWidth / -2;
+        camera.right = window.innerWidth / 2;
+        camera.top = window.innerHeight / 2;
+        camera.bottom = window.innerHeight / -2;
+        camera.zoom = 2;
+    } else {
+        camera.aspect = window.innerWidth / window.innerHeight;
+    }
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
@@ -3379,6 +3733,14 @@ function moveBlock(mode) {
         tooltip('Changed to the secret scale parts');
     }
 }
+
+document.getElementById("undo-action").addEventListener("click", function () {
+    statehistory.undo();
+});
+
+document.getElementById("redo-action").addEventListener("click", function () {
+    statehistory.redo();
+});
 
 document.getElementById("resetCamera").addEventListener("click", function () {
     controls.reset();

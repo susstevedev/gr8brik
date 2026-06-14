@@ -7,25 +7,19 @@
         return cv;
     }
 
-    window.settings = {
-        customParts: false,
+    let defaults = {
+        customParts: true,
         displayLines: false,
         highRes: true,
         noSnap: false,
         ui_trans: true,
         use_hdri: true,
+        flatcamera: false,
     }
 
-    function setDefaultSettings() {
-        let defaults = {
-            customParts: false,
-            displayLines: false,
-            highRes: true,
-            noSnap: false,
-            ui_trans: true,
-            use_hdri: true,
-        }
+    window.settings = defaults;
 
+    function setDefaultSettings() {
         window.settings = defaults;
 
         if(debug) {
