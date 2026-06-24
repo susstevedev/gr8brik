@@ -265,7 +265,7 @@ function loadParts(type) {
     if (cached_parts[type]) {
         console.log(`${type} parts loaded from cache`);
         displayed_parts = cached_parts[type];
-        displayParts();
+        displayParts(true);
         return;
     }
 
@@ -276,7 +276,7 @@ function loadParts(type) {
 				console.log(`${type} parts loaded`);
 				displayed_parts = data;
 				cached_parts[type] = data;
-				displayParts();
+				displayParts(true);
 			})
 			.catch(err => {
 				console.error('error loading parts ', err);
@@ -325,12 +325,16 @@ function loadParts(type) {
 }
 
 // display parts function
-function displayParts() {
+/*function displayParts() {
     const container = document.getElementById("select-block");
     container.innerHTML = '';
     displayed_parts = displayed_parts.sort((a, b) => a.name.length - b.name.length);
 
     displayed_parts.forEach(part => {
+        if(LOADED_AMOUNT >= MAX_LOAD_AMOUNT) {
+            return;
+        }
+
         const span = document.createElement("span");
         span.id = part.file;
         span.title = part.name + " (uid " + part.id + ")";
@@ -341,16 +345,104 @@ function displayParts() {
 					<small class="part-list-number">${part.file.split(".")[0]}</small>
 				`;
         container.appendChild(span);
+        LOADED_AMOUNT += 1;
     });
+}*/
+
+function displayParts(new_category) {
+    let select_block_contain = document.getElementById("select-block");
+
+    let MAX_LOAD_AMOUNT = 50;
+    let currentIndex = 0;
+    let observer = null;
+    let sentinel = null;
+
+    displayed_parts = displayed_parts.sort((a, b) => a.name.length - b.name.length);
+
+    function prepareParts() {
+        let oldSentinel = document.getElementById('scroll-sentinel');
+        if(oldSentinel) {
+            oldSentinel.remove();
+        };
+
+        sentinel = document.createElement('div');
+        sentinel.id = 'scroll-sentinel';
+        sentinel.style.height = '1px';
+        select_block_contain.appendChild(sentinel);
+
+        observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && currentIndex < displayed_parts.length) {
+                    renderParts();
+                }
+            });
+        }, { rootMargin: '100px' });
+        observer.observe(sentinel);
+    }
+
+    function renderParts() {
+        let currentCount = select_block_contain.children.length - 1;
+        let loadLimit = Math.max(currentCount + MAX_LOAD_AMOUNT, MAX_LOAD_AMOUNT);
+        
+        if (loadLimit > displayed_parts.length) {
+            loadLimit = displayed_parts.length;
+        }
+
+        let startIndex = currentIndex;
+        
+        if (startIndex >= displayed_parts.length) {
+            return;
+        }
+
+        for (let i = startIndex; i < loadLimit; i++) {
+            let part = displayed_parts[i];
+            
+            let span = document.createElement("span");
+            span.id = part.file;
+            span.title = part.name + " (uid " + part.id + ")";
+            span.setAttribute("value", part.file);
+            span.innerHTML = `
+                <img src="https://library.ldraw.org/media/ldraw/official/parts/${part.file.split(".")[0]}.png" loading="lazy" width="45px" />
+                <br />
+                <small class="part-list-number">${part.file.split(".")[0]}</small>
+            `;
+            
+            select_block_contain.insertBefore(span, sentinel);
+        }
+
+        currentIndex = loadLimit;
+
+        if (loadLimit > MAX_LOAD_AMOUNT) {
+            MAX_LOAD_AMOUNT *= 2;
+        }
+
+        if (currentIndex >= displayed_parts.length) {
+            observer.disconnect();
+        }
+    }
+
+    if (new_category) {
+        MAX_LOAD_AMOUNT = 50;
+        currentIndex = 0;
+
+        let existingSpans = select_block_contain.querySelectorAll('span');
+        existingSpans.forEach(span => span.remove());
+
+        prepareParts();
+        renderParts();
+    } else {
+        renderParts();
+    }
 }
 
 loadParts('brick');
 
 // New search function
 // This will be slightly slower though as it stores an array of simi matching parts and exact matches for those parts, then goes through them and pushes the exact maches to the top
-document.getElementById("search-parts").addEventListener("keyup", function (event) {
-    if (event.key === "Enter") {
-        const value = this.value.toLowerCase().replace(/\s+/g, " ").trim();
+function searchParts() {
+    let searchbox = document.getElementById("search-parts");
+
+        const value = searchbox.value.toLowerCase().replace(/\s+/g, " ").trim();
         const items = Array.from(document.querySelectorAll("#select-block span"));
 
         const exact_match = [];
@@ -379,7 +471,16 @@ document.getElementById("search-parts").addEventListener("keyup", function (even
             item.style.display = "flex";
             container.appendChild(item);
         });
+}
+
+document.getElementById("search-parts").addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+        searchParts();
     }
+});
+
+document.getElementById("search-submit").addEventListener("click", function (event) {
+    searchParts();
 });
 
 // add a new part
@@ -2378,17 +2479,16 @@ function capture() {
 	if(selectedObject) {
 		transformControls.detach(selectedObject);
 		transformControls.visible = false;
+        selectedObject = null;
 	}
 
     scene.traverse(function (object) {
-        if (object.isMesh) {
+        if (object?.isMesh && object?.userData.isBlock && !object?.isTransformControls) {
             let cloned = clone_mesh_clean(object);
             if (cloned) {
                 thumb.add(cloned);
                 if (object.userData.isBlock) {
                     cloned.rotation.setFromQuaternion(cloned.quaternion);
-                    /* cloned.rotation.z += Math.PI;
-                    cloned.rotation.y += Math.PI; */
                 }
                 console.log(cloned);
                 count++;
@@ -2412,16 +2512,11 @@ function capture() {
 
     let renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
     renderer.setClearColor(0x000000, 0); // transparent
-    renderer.setSize(600, 600);
+    renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
     renderer.render(thumb, camera2);
 
-    let thumbnail = renderer.domElement.toDataURL("image/webp");
+    let thumbnail = renderer.domElement.toDataURL("image/webp", 0.5);
     return thumbnail;
-	
-	if(selectedObject) {
-		transformControls.attach(selectedObject);
-		transformControls.visible = true;
-	}
 }
 
 function makeid(length) {
@@ -2619,7 +2714,8 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
         }
 
         let blockGroup = new THREE.Group();
-        blockGroup.name = `ldraw_${makeid(10)}`;
+        //blockGroup.name = `ldraw_${makeid(10)}`;
+        blockGroup.name = `ldgroup_${blockGroup.uuid}`;
         blockGroup.ldraw = part;
 
         let display_lines = scene.userData.displayLines;
@@ -2815,7 +2911,8 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
 			}
 
             child.userData.parentName = partName;
-            child.userData.id = makeid(15);
+            //child.userData.id = makeid(15);
+            child.userData.id = child.uuid;
             child.userData.original_mat = child.material;
 
             if (child.material && child.isMesh && !child.isLineSegments) {
@@ -3230,13 +3327,17 @@ function generateSceneJSON() {
             mesh_child.getWorldScale(scale);
             euler.setFromQuaternion(rot);
 
+            const materials = [];
+
             // Colors
-			
 			let mesh_opacity;
 			let mesh_texture;
 			let mesh_texturedata;
+
             //one is usually the index for most of the part that isn't a texture
             if (Array.isArray(mesh_child.material)) {
+                let LAYER_INDEX = 0;
+
                 mesh_color = mesh_child.material[1].color.getHexString().toLowerCase();
 				
 				if(mesh_child.material[1].transparent) {
@@ -3247,6 +3348,19 @@ function generateSceneJSON() {
 					mesh_texture = mesh_child.material[1].map;
 					mesh_texturedata = mesh_child.userData.textureData;
 				}
+                                
+                mesh_child.material.forEach(mat => {
+                    const materialData = {
+                        id: LAYER_INDEX,
+                        obj: mesh_child.userData.id || mesh_child.uuid,
+                        color: mat.color.getHexString().toLowerCase(),
+                        texture: mat.map || null,
+                        texturedata: mesh_child.userData.textureData || null,
+                        opacity: mat.opacity || "1.0",
+                    }
+                    materials.push(materialData);
+                    LAYER_INDEX += 1;
+                });
             } else {
                 mesh_color = mesh_child.material.color.getHexString().toLowerCase();
 				
@@ -3258,6 +3372,15 @@ function generateSceneJSON() {
 					mesh_texture = mesh_child.material.map;
 					mesh_texturedata = mesh_child.userData.textureData;
 				}
+
+                const materialData = {
+                    id: mesh_child.userData.id || mesh_child.uuid,
+                    color: mesh_color,
+                    texture: mesh_texture || null,
+                    texturedata: mesh_texturedata || null,
+                    opacity: mesh_opacity || "1.0",
+                }
+                materials.push(materialData);
             }
 
             const blockData = {
@@ -3279,6 +3402,7 @@ function generateSceneJSON() {
                 },
                 id: mesh_child.userData.id || mesh_child.uuid,
                 ldraw: mesh_child.userData.ldraw.replace("parts/", ""),
+                materials,
 				texture: mesh_texture || null,
 				texturedata: mesh_texturedata || null,
 				opacity: mesh_opacity || "1.0",

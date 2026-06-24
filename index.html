@@ -144,17 +144,10 @@
 
     <span>Filter</span><br />
 
-    <span style="font-size: 14px;">Parts repo/lib</span>
-    <select id="part-library-filter" style="display: inline-block;">
-        <option id="parts-lib-1" value="https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/" selected>Default</option>
-        <option id="parts-lib-2" value="https://library.ldraw.org/library/official/">Ldraw.org offical</option>
-    </select><br />
-
-    <span style="font-size: 14px;">Category</span>
+    <!-- <span style="font-size: 14px;">Category</span> -->
     <select id="part-type-filter" style="display: inline-block;">
         <option value="brick" selected>Bricks</option>
         <option value="plate">Plates & Baseplates</option>
-        <!-- <option value="baseplate">Baseplates</option> -->
         <option value="tile">Tiles</option>
         <option value="slope">Slopes</option>
         <option value="minifig">Minifigs</option>
@@ -171,10 +164,10 @@
         <option value="round_&_curved">Round & Curved</option>
         <option value="other">Miscellaneous</option>
 		    <option id="usr-custom" value="customparts.php">User Custom Parts</option>
-    </select><br />
+    </select><br /><br />
 
-    <input type="text" id="search-parts" placeholder="search parts..." /><hr />
-
+    <input type="text" id="search-parts" placeholder="Search parts (current category only)..." /><span>&nbsp;</span><button id="search-submit" class="btn">Go</button><hr />
+    
     <button id="tab1" class="tab-button">Parts list</button>
     <button id="tab2" class="tab-button">Parts in scene</button><br /><br />
     
@@ -231,7 +224,7 @@
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: #fff;">Import Model</span></h3>
     <div id="import-popup-form">
-		<select id="import-format" style="display: inline-block;">
+		<select id="import-format" style="display: inline-block;" onclick="if(document.querySelector('option[value=cloud2]').selected) { document.getElementById('import-url').style.display='block' } else { document.getElementById('import-url').style.display='none' }">
 			<option value="cloud" disabled="true" aria-disabled="true">From account</option>
       <option value="cloud2" onclick="document.getElementById('import-url').style.display='block'" selected>From URL</option>
 			<option value="json">Gr8brik (.json, .gr8)</option>
@@ -291,6 +284,12 @@
 	<h5><span style="color: var(--ui-text-color);">Parts</span></h5>
 	<input type="checkbox" id="snapping-enable" checked>
   <label for="snapping-enable">Enable snapping to grid</label><br />
+
+  <span style="font-size: 14px;">Parts repo/lib</span>
+  <select id="part-library-filter" style="display: inline-block;">
+        <option id="parts-lib-1" value="https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/" selected>Default</option>
+        <option id="parts-lib-2" value="https://library.ldraw.org/library/official/">Ldraw.org offical</option>
+  </select><br />
 	
 	<hr />
 
@@ -326,7 +325,7 @@
     <h5><span style="color: var(--ui-text-color);">Camera</span></h5>
 
     <input type="checkbox" id="flatcamera-enable">
-    <label for="hdr-enable">Orthographic camera</label><br />
+    <label for="flatcamera-enable">Orthographic camera</label><br />
 
     <hr />
 

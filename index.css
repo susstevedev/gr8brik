@@ -25,13 +25,14 @@ body.dark {
 }
 
 select {
-  color: var(--ui-text-color) !important;
-  background-color: var(--ui-color) !important;
-  border: var(--ui-text-color) 1px solid;
-  /* cursor: pointer; */
+  color: var(--ui-anti-text) !important;
+  background-color: var(--ui-button-blue) !important;
+  border: none;
+  cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   border-radius: 2px;
   transition: opacity 0.2s ease-in-out;
+  padding: 2px 2px 2px 2px;
 }
 
 select:hover {
