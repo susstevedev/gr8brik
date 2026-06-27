@@ -6,6 +6,8 @@
 
 GR8BRIK is an all-in-browser online LEGO CAD tool that runs entirely in your browser with no installation required. It uses the LDraw parts library and WebGl via Three.js.
 
+Live demo: https://gr8brik.rf.gd/modeler?src=github
+
 ## built with
 
 * [Three.js](https://threejs.org/) -WebGl rendering
