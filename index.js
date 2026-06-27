@@ -26,7 +26,7 @@ if (!gl) {
     console.log('WEBGL STATUS: ENABLED');
 }
 
-let container, camera, scene, renderer, controls, transformControls, grid_helper, directional_lighting, ambient_lighting, ldraw_loader, loading_manager, mouse, raycaster, mesh_color, partName, partRotation, partPosition, selectedObject, customPosition, selectedMap, selectedExport, named_parts = null;
+let container, camera, scene, renderer, controls, transformControls, grid_helper, directional_lighting, ambient_lighting, ldraw_loader, loading_manager, mouse, raycaster, mesh_color, partName, partRotation, partPosition, selectedObject, multiSelectedObject, selectionGroup, customPosition, selectedMap, selectedExport, named_parts = null;
 
 let partColor = '#C91A09';
 let start_url = 'https://gr8brik.rf.gd';
@@ -265,7 +265,7 @@ function loadParts(type) {
     if (cached_parts[type]) {
         console.log(`${type} parts loaded from cache`);
         displayed_parts = cached_parts[type];
-        displayParts(true);
+        displayParts(displayed_parts, true);
         return;
     }
 
@@ -276,7 +276,7 @@ function loadParts(type) {
 				console.log(`${type} parts loaded`);
 				displayed_parts = data;
 				cached_parts[type] = data;
-				displayParts(true);
+				displayParts(displayed_parts, true);
 			})
 			.catch(err => {
 				console.error('error loading parts ', err);
@@ -349,13 +349,14 @@ function loadParts(type) {
     });
 }*/
 
-function displayParts(new_category) {
+function displayParts(displayed_parts, new_category) {
     let select_block_contain = document.getElementById("select-block");
 
     let MAX_LOAD_AMOUNT = 50;
     let currentIndex = 0;
     let observer = null;
     let sentinel = null;
+    let isRendering = false;
 
     displayed_parts = displayed_parts.sort((a, b) => a.name.length - b.name.length);
 
@@ -370,19 +371,34 @@ function displayParts(new_category) {
         sentinel.style.height = '1px';
         select_block_contain.appendChild(sentinel);
 
-        observer = new IntersectionObserver((entries) => {
+        /*observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && currentIndex < displayed_parts.length) {
                     renderParts();
                 }
             });
+        }, { rootMargin: '100px' });*/
+
+        observer = new IntersectionObserver((entries) => {
+            if (entries.some(entry => entry.isIntersecting)) {
+                if (currentIndex < displayed_parts.length) {
+                    requestAnimationFrame(renderParts);
+                }
+            }
         }, { rootMargin: '100px' });
+
         observer.observe(sentinel);
     }
 
     function renderParts() {
+        if (isRendering) {
+            return;
+        }
+
+        isRendering = true;
+
         let currentCount = select_block_contain.children.length - 1;
-        let loadLimit = Math.max(currentCount + MAX_LOAD_AMOUNT, MAX_LOAD_AMOUNT);
+        let loadLimit = Math.min(currentIndex + MAX_LOAD_AMOUNT, displayed_parts.length);
         
         if (loadLimit > displayed_parts.length) {
             loadLimit = displayed_parts.length;
@@ -412,16 +428,18 @@ function displayParts(new_category) {
 
         currentIndex = loadLimit;
 
-        if (loadLimit > MAX_LOAD_AMOUNT) {
-            MAX_LOAD_AMOUNT *= 2;
-        }
-
         if (currentIndex >= displayed_parts.length) {
             observer.disconnect();
         }
+
+        isRendering = false;
     }
 
     if (new_category) {
+        if (observer) { 
+            observer.disconnect();
+        }
+
         MAX_LOAD_AMOUNT = 50;
         currentIndex = 0;
 
@@ -437,18 +455,22 @@ function displayParts(new_category) {
 
 loadParts('brick');
 
-// New search function
-// This will be slightly slower though as it stores an array of simi matching parts and exact matches for those parts, then goes through them and pushes the exact maches to the top
+// NEWER search function
+// Overall it's better and cleaner
+// Will have bugs please report them if you can
 function searchParts() {
     let searchbox = document.getElementById("search-parts");
 
         const value = searchbox.value.toLowerCase().replace(/\s+/g, " ").trim();
-        const items = Array.from(document.querySelectorAll("#select-block span"));
+        //const items = Array.from(document.querySelectorAll("#select-block span"));
+        const items = displayed_parts;
 
-        const exact_match = [];
-        const simi_match = [];
+        /*const exact_match = [];
+        const simi_match = [];*/
 
-        items.forEach(item => {
+        const matchedItems = [];
+
+        /*items.forEach(item => {
             const title_txt = (item.title || "").toLowerCase().replace(/\s+/g, " ").trim();
             const part_num_elm = item.querySelector("small.part-list-number");
             const small_txt = part_num_elm ? part_num_elm.textContent.toLowerCase().trim() : "";
@@ -463,14 +485,41 @@ function searchParts() {
             } else {
                 item.style.display = "none";
             }
+        });*/
+
+        const queryTokens = value
+            .toLowerCase()
+            .trim()
+            .split(/\s+/)
+            .filter(Boolean);
+
+        items.forEach(item => {
+            const title_txt = (item.name || "").toLowerCase();
+            const num = (item.file || "").toLowerCase();
+
+            /*const match =
+                title_txt.includes(value) ||
+                num.includes(value);*/
+
+             const match = queryTokens.every(token =>
+                title_txt.includes(token) || num.includes(token)
+            );
+
+            //item.style.display = match ? "flex" : "none";
+
+            if(match) {
+                matchedItems.push(item);
+            }
         });
 
         const container = document.getElementById("select-block");
+        console.log(matchedItems);
+        displayParts(matchedItems, true);
 
-        exact_match.concat(simi_match).forEach(item => {
+        /*exact_match.concat(simi_match).forEach(item => {
             item.style.display = "flex";
             container.appendChild(item);
-        });
+        });*/
 }
 
 document.getElementById("search-parts").addEventListener("keyup", function (event) {
@@ -2215,8 +2264,10 @@ function init() {
     });
 
     transformControls.addEventListener('objectChange', function () {
-        if (selectedObject && !(selectedObject.userData.noSnap || scene.userData.noSnap)) {
-            const delta_pos = new THREE.Vector3().subVectors(selectedObject.position, original_pos);
+        const obj = transformControls.object;
+
+        if (obj && !(obj.userData.noSnap || scene.userData.noSnap)) {
+            const delta_pos = new THREE.Vector3().subVectors(obj.position, original_pos);
 
             const snapped_pos = new THREE.Vector3(
                 snapToGrid(delta_pos.x, 10),
@@ -2225,12 +2276,12 @@ function init() {
             );
 
             const final_pos = original_pos.clone().add(snapped_pos);
-            selectedObject.position.copy(final_pos);
+            obj.position.copy(final_pos);
 
             const delta_rot = new THREE.Euler(
-                selectedObject.rotation.x - original_rot.x,
-                selectedObject.rotation.y - original_rot.y,
-                selectedObject.rotation.z - original_rot.z
+                obj.rotation.x - original_rot.x,
+                obj.rotation.y - original_rot.y,
+                obj.rotation.z - original_rot.z
             );
 
             const snapped_rot = new THREE.Euler(
@@ -2240,11 +2291,11 @@ function init() {
             );
 
             const final_rot = new THREE.Euler(original_rot.x + snapped_rot.x, original_rot.y + snapped_rot.y, original_rot.z + snapped_rot.z);
-            selectedObject.rotation.copy(final_rot);
-            selectedObject.updateMatrixWorld(true);
+            obj.rotation.copy(final_rot);
+            obj.updateMatrixWorld(true);
             scene.updateMatrixWorld(true);
 
-            partPosition = selectedObject?.pos || null;
+            partPosition = obj?.pos || null;
             partRotation = null; // default im not fucking around with rotation rn
         }
         updateSceneData();
@@ -2774,6 +2825,7 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
 
                 transformControls.attach(child);
                 selectedObject = child;
+                multiSelectedObject = new Set();
             }
 
             if (child.material && child.material.map && child.isMesh && !child.isLineSegments) {
@@ -3144,6 +3196,38 @@ function renderBLItem(obj, level = 0) {
     return li;
 }
 
+function groupParts(objects) {
+    const group = new THREE.Group();
+    group.name = "ldgroup_" + makeid(8); // random id
+    group.userData.isGroup = true;
+
+    scene.add(group);
+
+    if(objects.children.length > 1) {
+        objects.forEach(obj => {
+            obj.updateMatrixWorld(true);
+            group.attach(obj);
+        });
+    } else {
+        object.updateMatrixWorld(true);
+        group.attach(object);
+    }
+    
+    return group;
+}
+
+function ungroupParts(group) {
+    const parent = group.parent;
+
+    while (group.children.length) {
+        const child = group.children[0];
+        child.updateMatrixWorld(true);
+        parent.attach(child);
+    }
+
+    parent.remove(group);
+}
+
 function subobjectPosition(g) {
     g.updateMatrixWorld(true);
 
@@ -3272,13 +3356,6 @@ function duplicatePart() {
     }
 }
 
-function createGroup(gname, gelm) {
-    let group = new THREE.Group();
-    group.name = gname;
-    group.add(gelm);
-    return group;
-}
-
 document.getElementById("part-library-filter").addEventListener("change", function () {
     let new_ldraw_path = this.value;
     ldraw_loader.setPath(new_ldraw_path);
@@ -3400,8 +3477,10 @@ function generateSceneJSON() {
                     y: scale.y,
                     z: scale.z
                 },
+                matrixw: mesh_child.matrixWorld.clone(),
                 id: mesh_child.userData.id || mesh_child.uuid,
                 ldraw: mesh_child.userData.ldraw.replace("parts/", ""),
+                name: mesh_child.userData.name,
                 materials,
 				texture: mesh_texture || null,
 				texturedata: mesh_texturedata || null,
@@ -3794,13 +3873,29 @@ window.addEventListener('pointerdown', function (event) {
     });
 
     if (intersects.length > 0) {
-        selectObject(intersects[0].object);
+        //selectObject(intersects[0].object);
+
+        if (intersects.length > 0) {
+            const obj = intersects[0].object;
+
+            if (event.shiftKey) {
+                selectObject(obj, "add");
+            } else if (event.ctrlKey) {
+                selectObject(obj, "toggle");
+            } else {
+                selectObject(obj, "replace");
+            }
+        } else {
+            selected.clear();
+            updateSelection();
+        }
+
     } else {
         deselect(selectedObject);
     }
 });
 
-function selectObject(obj) {
+/*function selectObject(obj) {
     while (obj.parent && !obj.userData.isBlock) {
         obj = obj.parent;
     }
@@ -3815,16 +3910,119 @@ function selectObject(obj) {
     transformControls.attach(obj);
     selectedObject = obj;
 
+    highlight(object);
+
     partColor = `#${obj?.material?.color?.getHexString()}` || `#${obj?.material[1]?.color?.getHexString()}` || '#ffffff';
     //$("#color-picker").spectrum("set", partColor);
 	document.getElementById('color-picker').setAttribute('color', partColor);
 	document.getElementById('color-picker').setAttribute('value', partColor);
 	document.getElementById('color-picker').style.backgroundColor = partColor;
+}*/
+
+function selectObject(obj, mode = "replace") {
+    while (obj.parent && !obj.userData.isBlock) {
+        obj = obj.parent;
+    }
+
+    if (!obj.userData.isBlock) {
+        return;
+    }
+
+    if (mode === "replace") {
+        multiSelectedObject.clear();
+    }
+
+    if (mode === "toggle") {
+        if (multiSelectedObject.has(obj)) {
+            multiSelectedObject.delete(obj);
+        } else {
+            multiSelectedObject.add(obj);
+        }
+    } else {
+        multiSelectedObject.add(obj);
+    }
+
+    updateSelection();
+}
+
+function updateSelection() {
+    scene.traverse(o => {
+        if (o.userData?.isBlock) {
+            unhighlight(o);
+        }
+    });
+
+    multiSelectedObject.forEach(o => highlight(o));
+
+    activeObject = multiSelectedObject.size
+        ? [...multiSelectedObject][multiSelectedObject.size - 1]
+        : null;
+
+    if (activeObject) {
+        transformControls.attach(activeObject);
+        selectedObject = activeObject;
+    } else {
+        transformControls.detach();
+        selectedObject = null;
+    }
+}
+
+function clearSelection() {
+    multiSelectedObject.forEach(obj => unhighlight(obj));
+    multiSelectedObject.clear();
+
+    selectedObject = null;
+
+    if (selectionGroup) {
+        while (selectionGroup.children.length) {
+            const obj = selectionGroup.children[0];
+            scene.attach(obj);
+        }
+        scene.remove(selectionGroup);
+        selectionGroup = null;
+    }
+
+    transformControls.detach();
+}
+
+// wip
+function highlight(obj) {
+    const mat = obj?.material;
+    if (!mat) {
+        return;
+    }
+
+    mat.emissive = mat.emissive || new THREE.Color();
+
+    mat.userData = mat.userData || {};
+    mat.userData.isHighlighted = true;
+
+    mat.emissive.set(0x333333);
+}
+
+function unhighlight(obj) {
+    const mat = obj?.material;
+    if (!mat) {
+        return;
+    }
+
+    mat.userData = mat.userData || {};
+    mat.userData.isHighlighted = false;
+
+    mat.emissive.set(0x000000);
 }
 
 function deselect(obj) {
-    transformControls.detach(obj);
-    selectedObject = null;
+    if(multiSelectedObject.has(obj)) {
+        multiSelectedObject.forEach(obj => unhighlight(obj));
+        multiSelectedObject.clear();
+        multiSelectedObject = new Set();
+    }
+
+    if(selectObject) {
+        transformControls.detach(obj);
+        selectedObject = null;
+    }
 }
 
 function onWindowResize() {
