@@ -8,15 +8,42 @@
     }
 
     let defaults = {
+        lastUpdated: new Date().toUTCString(),
         customParts: true,
         displayLines: false,
         highRes: true,
         noSnap: false,
         ui_trans: true,
         use_hdri: true,
+        export_full_scene: false,
+        hdri_background: false,
         flatcamera: false,
+        hdris: {
+            selected: 0,
+            0: {
+                url: "hdris/autumn_field_puresky_1k.hdr",
+                name: "Autumn Field (Pure Sky) (default)"
+            },
+            1: {
+                url: "hdris/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
+                name: "Kloofendal 48d Partly Cloudy (Pure Sky)"
+            },
+            2: {
+                url: "hdris/studio_small_03_1k.hdr",
+                name: "Studio Small 03"
+            },
+            3: {
+                url: "hdris/venice_sunset_1k.hdr",
+                name: "Venice Sunset"
+            },
+            4: {
+                url: "",
+                name: "custom object"
+            },
+        },
     }
 
+    window.defaults = defaults;
     window.settings = defaults;
 
     function setDefaultSettings() {
@@ -42,8 +69,9 @@
     readSettings();
 
     function saveSettings() {
-        const jsonData = JSON.stringify(window.settings);
-        const date = new Date();
+        let date = new Date();
+        window.settings.lastUpdated = date.toUTCString();
+        let jsonData = JSON.stringify(window.settings);
         date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
         document.cookie = "setting=" + jsonData + "; expires=" + date.toUTCString();
 
@@ -53,6 +81,8 @@
 
         if(debug) {
             console.log('Settings saved.');
+            console.log('scene: ' + JSON.stringify(scene.userData));
+            console.log('global: ' + JSON.stringify(window.settings));
         }
     }
 

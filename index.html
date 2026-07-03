@@ -168,8 +168,8 @@
 
     <input type="text" id="search-parts" placeholder="Search parts (current category only)..." /><span>&nbsp;</span><button id="search-submit" class="btn">Go</button><hr />
     
-    <button id="tab1" class="tab-button">Parts list</button>
-    <button id="tab2" class="tab-button">Parts in scene</button><br /><br />
+    <button data-tabbtnid="tab1" id="tab1" class="tab-button">Parts list</button>
+    <button data-tabbtnid="tab2" id="tab2" class="tab-button">Parts in scene</button><br /><br />
     
 	  <input type="file" id="cre-import" accept=".json,.gr8" style="display: none;"><input type="file" id="cre-import-gr8z" accept=".zip,.gr8z" style="display: none;"><input type="file" id="cre-import-three" accept=".json" style="display: none;"><input type="file" id="cre-import-ldr" accept=".ldr,.dat" style="display: none;">
 	  <span id="cre-export" style="display: none;"></span><span id="cre-export-gr8" style="display: none;"></span><span id="cre-export-gr8z" style="display: none;"></span><span id="cre-export-ldd" style="display: none;"></span><span id="selected-object-export-three" style="display: none;"></span><span id="cre-export-three" style="display: none;"></span><span id="cre-export-dae" style="display: none;"></span>
@@ -261,38 +261,45 @@
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: var(--ui-text-color);">Modeler Settings</span></h3>
 
-    <p><span style="color: var(--ui-text-color);"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Account</span></p>
+    <button data-settingsid="account" class="tab-button">Account</button>
+    <button data-settingsid="export_import" class="tab-button">Export & Import</button>
+    <button data-settingsid="functional" class="tab-button">Functional</button>
+    <button data-settingsid="display" class="tab-button">Display</button>
+    <button data-settingsid="saving" class="tab-button">Saving & Recovery</button>
+    <br />
 
-    <div id="settings-account-auth">
-      <img id="settings-account-auth-pfp" style="width: 30px; height: 30px; border-radius: 50%;" alt="Profile icon for your account" src="img/logo.png"></img>
-      <span id="settings-account-auth-username" style="bottom: 10px; position: relative;">Username</span>
+    <div data-settingsid="account">
+      <p><span style="color: var(--ui-text-color);"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Account</span></p>
+
+      <div id="settings-account-auth">
+        <span id="settings-account-loggedout">Signed out</span>
+        <img id="settings-account-auth-pfp" alt="Profile image"></img>
+        <span id="settings-account-auth-username"></span>
+      </div>
     </div>
 
-    <p id="settings-account-gh-login-text">GitHub login coming soon.</p>
-
-    <hr />
+    <div data-settingsid="export_import">
+	    <p><span style="color: var(--ui-text-color);"><i class="fa fa-hdd-o" aria-hidden="true"></i>&nbsp;Export & Import</span></p>
 	
-	<p><span style="color: var(--ui-text-color);"><i class="fa fa-hdd-o" aria-hidden="true"></i>&nbsp;Export & import</span></p>
-	
-	<input type="checkbox" id="export-fullscene-enable">
-    <label for="export-fullscene-enable">Include everything, like textures, lights, and other items when exporting as GLTF</label><br />
-	
-	<hr />
+	    <input type="checkbox" id="export-fullscene-enable">
+      <label for="export-fullscene-enable">Include everything, like textures, lights, and other items when exporting as GLTF</label><br />
+    </div>
 
-  <p><span style="color: var(--ui-text-color);"><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Functional</span></p>
+  <div data-settingsid="functional">
+    <p><span style="color: var(--ui-text-color);"><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Functional</span></p>
 
-	<h5><span style="color: var(--ui-text-color);">Parts</span></h5>
-	<input type="checkbox" id="snapping-enable" checked>
-  <label for="snapping-enable">Enable snapping to grid</label><br />
+    <h5><span style="color: var(--ui-text-color);">Parts</span></h5>
+    <input type="checkbox" id="snapping-enable" checked>
+    <label for="snapping-enable">Enable snapping to grid</label><br />
 
-  <span style="font-size: 14px;">Parts repo/lib</span>
-  <select id="part-library-filter" style="display: inline-block;">
-        <option id="parts-lib-1" value="https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/" selected>Default</option>
-        <option id="parts-lib-2" value="https://library.ldraw.org/library/official/">Ldraw.org offical</option>
-  </select><br />
-	
-	<hr />
+    <span style="font-size: 14px;">Parts repo/lib</span>
+    <select id="part-library-filter" style="display: inline-block;">
+          <option id="parts-lib-1" value="https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/" selected>Default</option>
+          <option id="parts-lib-2" value="https://library.ldraw.org/library/official/">Ldraw.org offical</option>
+    </select><br />
+	</div>
 
+  <div data-settingsid="display">
     <p><span style="color: var(--ui-text-color);"><i class="fa fa-paint-brush" aria-hidden="true"></i>&nbsp;Display</span></p>
 
     <h5><span style="color: var(--ui-text-color);">Parts</span></h5>
@@ -322,13 +329,19 @@
     <input type="checkbox" id="hdr-enable" checked>
     <label for="hdr-enable">Enable HDRI lighting</label><br />
 
+    <input type="checkbox" id="hdr-background-enable" checked>
+    <label for="hdr-background-enable">Enable HDRI background (hdri lighting MUST be enabled also)</label><br />
+
+    <select data-testid="selected-hdri" style="display: inline-block;">
+    </select><br />
+
     <h5><span style="color: var(--ui-text-color);">Camera</span></h5>
 
     <input type="checkbox" id="flatcamera-enable">
     <label for="flatcamera-enable">Orthographic camera</label><br />
+  </div>
 
-    <hr />
-
+  <div data-settingsid="saving">
     <p><span style="color: var(--ui-text-color);"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Saving & recovery</span></p>
 
 		<button class="btn" title="Load autosave from device" id="read_autosave"><i class="fa fa-floppy-o" aria-hidden="true"></i>Recover Autosave</button><br />
@@ -344,13 +357,13 @@
       <i class="fa fa-sliders" aria-hidden="true"></i>
       <i class="fa fa-trash" aria-hidden="true"></i>
       Trash Settings
-    </button><br /><hr />
-
-    <p>Version <b>June 14th, 2026</b></p>
-    <p>Created and maintained by <a href="https://github.com/susstevedev/gr8brik/graphs/contributors">me and other contributors</a> on GitHub.</p>
-    <p>2023 - 2026 Gr8brik and susstevedev. All rights reserved.</p>
-    </div>
+    </button><br />
   </div>
+
+  <p>Version <b>June 14th, 2026</b></p>
+  <p>Created and maintained by <a href="https://github.com/susstevedev">susstevedev</a> and other contributors on <a href="https://github.com/susstevedev/gr8brik">GitHub</a>.</p>
+  <p>2023 - 2026 Gr8brik and susstevedev. All rights reserved.</p>
+</div>
 
   <div id="preloaded-logo">
     <div class="img"></div>
@@ -375,5 +388,6 @@
 
   <script src="color.js"></script>
   <script src="settings.js"></script>
+  <script src="ui.js"></script>
 </body>
 </html>

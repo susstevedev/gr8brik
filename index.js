@@ -31,30 +31,19 @@ let container, camera, scene, renderer, controls, transformControls, grid_helper
 let partColor = '#C91A09';
 let start_url = 'https://gr8brik.rf.gd';
 
-let default_player_config = {
-    debug: false,
-    allowed_settings: {
-        'customParts': true,
-        'displayLines': true,
-        'highRes': true,
-        'nosnap': true,
-        'ui_trans': true,
-        'use_hdri': true,
-        'hideWelcome': true,
-    },
-};
-                
-window.globalPlayerConfig ??= {};
+function mergeConfig(settings, defaults) {
+    settings ??= {};
 
-console.log("[APP] Before config merge", window.globalPlayerConfig);
+    console.log("before config merge " + settings);
 
-for (const [key, value] of Object.entries(default_player_config)) {
-    if (!(key in window.globalPlayerConfig)) {
-        window.globalPlayerConfig[key] = value;
+    for (const [key, value] of Object.entries(defaults)) {
+        if (!(key in settings)) {
+            settings[key] = value;
+        }
     }
-}
 
-console.log("[APP] After config merge", window.globalPlayerConfig);
+    console.log("after config merge " + settings);
+}
 
 let color_palette = [
                 "#C91A09", // Bright Red
@@ -168,7 +157,6 @@ window.loggedin = false;
 function login() {
 	fetch('user.php?ajax=true')
     //fetch(start_url + "/ajax/user.php?ajax=true")
-    //fetch('user.json')
         .then(res => res.json())
         .then(response => {
             if (response.success) {
@@ -183,7 +171,8 @@ function login() {
                 field.setAttribute("href", "/acc/creations");
 
                 tooltip('Logged in as ' + response.user);
-                ui_login(response.user ?? 'Username', response.pfp ?? 'img/logo.png');
+                window.sessionData = response;
+                //ui_login(response.user ?? 'Username', response.pfp ?? 'img/logo.png');
 
                 if (response.alert != null && response.alert != undefined && response.alert != 0) {
                     const notification = document.createElement('span');
@@ -200,21 +189,20 @@ function login() {
             } else {
                 tooltip(response.error);
                 console.error("An error occured while authenticating " + response.error);
-				ui_login("Username", 'img/logo.png');
                 document.getElementById("username-field").innerHTML = "Login";
                 window.loggedin = false;
             }
+            ui_login_v2(response);
         })
         .catch(async (err) => {
             try {
                 const res = await err.response.json();
                 tooltip(res.error);
                 console.error("An error occured while authenticating " + res.error);
-				ui_login('Username', 'img/logo.png');
                 window.loggedin = false;
+                ui_login_v2(res);
             } catch {
                 tooltip('An error occured while authenticating');
-				ui_login('Username', 'img/logo.png');
                 console.error("An error occured while authenticating " + err);
                 window.loggedin = false;
             }
@@ -251,6 +239,28 @@ getWarnStatus();
 function ui_login(username, pfp) {
     document.querySelector('#settings-account-auth-username').textContent = username;
     document.querySelector('#settings-account-auth-pfp').src = pfp;
+}
+
+function ui_login_v2(response) {
+    document.querySelector('#settings-account-auth').style.display = 'block';
+
+    if(response && !response.error && response.success) {
+        document.querySelector('#settings-account-loggedout').style.display = 'none';
+
+        if(response.user) {
+            document.querySelector('#settings-account-auth-username').textContent = username;
+            document.querySelector('#settings-account-auth-username').style.display = 'block';
+        }
+
+        if(response.pfp) {
+            document.querySelector('#settings-account-auth-pfp').src = pfp;
+            document.querySelector('#settings-account-auth-pfp').style.display = 'block';
+        }
+    } else {
+        document.querySelector('#settings-account-auth-pfp').style.display = 'none';
+        document.querySelector('#settings-account-auth-username').style.display = 'none';
+        document.querySelector('#settings-account-loggedout').style.display = 'block';
+    }
 }
 
 let displayed_parts = [];
@@ -952,14 +962,17 @@ document.getElementById("toggleMenu").addEventListener("click", function () {
     }
 });
 
-document.querySelectorAll('.tab-button').forEach(button => {
+document.querySelectorAll('[data-tabbtnid].tab-button').forEach(button => {
     button.addEventListener('click', function () {
-        const is1 = this.id === 'tab1';
-        var search = document.getElementById("search-parts");
+        let is1 = this.getAttribute('data-tabbtnid') === 'tab1';
+        let search = document.getElementById("search-parts");
+
         document.getElementById('select-block').style.display = is1 ? 'flex' :
             'none';
+
         document.getElementById('block-list').style.display = is1 ? 'none' :
             'block';
+
         search.readOnly = is1 ? false : true;
     });
 });
@@ -999,15 +1012,17 @@ document.getElementById("cre-export-gr8").addEventListener("click", () => {
 });
 
 document.getElementById("cre-export-gr8z").addEventListener("click", () => {
-    const fileData = generateSceneJSON();
-    const zip = new JSZip();
+    let fileData = generateSceneJSON();
+    let setting = JSON.stringify(window.settings, null, 2);
+    let zip = new JSZip();
+
     zip.file("creation.gr8", fileData);
-    const elm = this;
+    zip.file("setting.json", setting);
 
     zip.generateAsync({ type: "blob" }).then(function (blob) {
-        const url = URL.createObjectURL(blob);
-        const date = new Date();
-        const a = document.createElement("a");
+        let url = URL.createObjectURL(blob);
+        let date = new Date();
+        let a = document.createElement("a");
         a.href = url;
         a.download = `gr8brik-compressed-creation-${date}.gr8z`;
         a.click();
@@ -1956,22 +1971,24 @@ document.getElementById("hdr-enable").addEventListener("change", function () {
     const use_hdri = this.checked;
     scene.userData.use_hdri = use_hdri;
 
-    /*if(scene.userData.use_hdri) {
-        const rgbe_loader = new THREE.RGBELoader();
-        //https://polyhaven.com/a/autumn_field_puresky
-        rgbe_loader.load('https://cdn.jsdelivr.net/gh/susstevedev/gr8brik/lib/autumn_field_puresky_1k.hdr', function (texture) {
-            texture.mapping = THREE.EquirectangularReflectionMapping;
-            scene.environment = texture;
-        });
-        scene.updateMatrixWorld(true);
-        saveSettings();
-    } else {
-        scene.environment = null;
-        scene.updateMatrixWorld(true);
-        saveSettings();
-    }*/
+    if (!use_hdri) {
+        scene.userData.hdri_background = false;
+        document.getElementById("hdr-background-enable").checked = false;
+    }
 
-    applyHdri(scene.userData.use_hdri);
+    applyHdri(scene.userData.use_hdri, scene.userData.hdri_background);
+});
+
+document.getElementById("hdr-background-enable").addEventListener("change", function () {
+    const hdri_background = this.checked;
+    scene.userData.hdri_background = hdri_background;
+
+    if(!scene.userData.use_hdri) {
+        scene.userData.hdri_background = false;
+        tooltip('Please enable "HDRI lighting" to change the background');
+        return;
+    }
+    applyHdri(scene.userData.use_hdri, scene.userData.hdri_background);
 });
 
 document.getElementById("export-fullscene-enable").addEventListener("change", function () {
@@ -2019,21 +2036,66 @@ function applyTransparent(ui_trans) {
     saveSettings();
 }
 
-function applyHdri(use_hdri) {
+function applyHdri(use_hdri, background) {
     if(use_hdri) {
-        const rgbe_loader = new THREE.RGBELoader();
-        //https://polyhaven.com/a/autumn_field_puresky
-        rgbe_loader.load('https://cdn.jsdelivr.net/gh/susstevedev/gr8brik/lib/autumn_field_puresky_1k.hdr', function (texture) {
+        let rgbe_loader = new THREE.RGBELoader();
+        let hdris = scene.userData.hdris;
+        let selected = hdris.selected;
+        let hdr_url;
+
+        let selectedHdr = hdris[selected];
+        hdr_url = selectedHdr ? selectedHdr.url : null;
+
+        if (!hdr_url) {
+            hdr_url = hdris[0].url; // default
+        }
+
+        rgbe_loader.load(hdr_url, function (texture) {
             texture.mapping = THREE.EquirectangularReflectionMapping;
             scene.environment = texture;
+
+            if(background) {
+                scene.background = texture;
+                document.body.classList.add('hdri-active');
+
+                if (isDark()) {
+                    document.body.classList.add("dark");
+                    document.getElementById("darkmode-enable").setAttribute('checked', 'true');
+                } else {
+                    if (document.body.classList.contains("dark")) {
+                        document.body.classList.remove("dark");
+                        document.getElementById("darkmode-enable").setAttribute('checked', 'false');
+                    }
+                }
+            } else {
+                renderer.setClearAlpha(0);
+                document.body.classList.remove('hdri-active');
+                scene.background = null;
+                scene.environment = null;
+            }
         });
-        scene.updateMatrixWorld(true);
-        saveSettings();
+
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.0;
     } else {
+        renderer.setClearAlpha(0);
+        document.body.classList.remove('hdri-active');
+        scene.background = null;
         scene.environment = null;
-        scene.updateMatrixWorld(true);
-        saveSettings();
     }
+
+    if (isDark()) {
+        document.body.classList.add("dark");
+        document.getElementById("darkmode-enable").setAttribute('checked', 'true');
+    } else {
+        if (document.body.classList.contains("dark")) {
+            document.body.classList.remove("dark");
+            document.getElementById("darkmode-enable").setAttribute('checked', 'false');
+        }
+    }
+
+    scene.updateMatrixWorld(true);
+    saveSettings();
 }
 
 function isDark() {
@@ -2066,6 +2128,8 @@ function getDate() {
 }
 
 function init() {
+    mergeConfig(window.settings, window.defaults);
+
     if (isDark()) {
         document.body.classList.add("dark");
         document.getElementById("darkmode-enable").setAttribute('checked', 'true');
@@ -2089,8 +2153,10 @@ function init() {
         window.scene = scene;
         scene.userData = window.settings;
     }
-
-    //THREE.Cache.enabled = false;
+    
+    // WebGl renderer
+    renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
     // transparent ui
     if(scene.userData.ui_trans || scene.userData.ui_trans === undefined || scene.userData.ui_trans === null) {
@@ -2102,15 +2168,11 @@ function init() {
 
     //hdri
     if(scene.userData.use_hdri || scene.userData.use_hdri === undefined || scene.userData.use_hdri === null) {
-        applyHdri(scene.userData.use_hdri);
+        applyHdri(scene.userData.use_hdri, scene.userData.hdri_background);
         document.getElementById("hdr-enable").setAttribute('checked', 'true');
     } else {
         document.getElementById("hdr-enable").setAttribute('checked', 'false');
     }
-
-    // WebGl renderer
-    renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
 
     // set pixel ratio
     // @the_an0nym pointed out how if your screen resolution isn't 100% (and in some cases just always), the scene looks buggy
@@ -2146,7 +2208,7 @@ function init() {
     controls.enableDamping = true;
     controls.dampingFactor = 0.8;
 
-    const stud_size = 20; // 1 stud = 20 three/ldr units
+    /*const stud_size = 20; // 1 stud = 20 three/ldr units
     const grid_size = stud_size * 16; // studs wide
     const divisions = 16; // 1 division per stud
 
@@ -2156,7 +2218,40 @@ function init() {
     } else {
         grid_helper = new THREE.GridHelper(grid_size, divisions, 0x242424, 0x242424);
         scene.add(grid_helper);
+    }*/
+
+    function makegrid() {
+        let stud_size = 20; // 1 stud = 20 three/ldr units
+        let grid_size = stud_size * 16; // studs wide
+        let divisions = 16; // 1 division per stud
+        let planeGeometry = new THREE.PlaneGeometry(grid_size, grid_size);
+
+        let textureLoader = new THREE.TextureLoader();
+        let texture = textureLoader.load('img/misc/1x1.webp'); // Replace with your image URL
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+        texture.repeat.set(divisions, divisions);
+
+        let planeMaterial = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide, transparent: true });
+        let imagePlane = new THREE.Mesh(planeGeometry, planeMaterial);
+        imagePlane.rotation.x = -Math.PI / 2; 
+        scene.add(imagePlane);
+
+        if (isDark()) {
+            grid_helper = new THREE.GridHelper(grid_size, divisions, 0xfafafa, 0xfafafa);
+            scene.add(grid_helper);
+        } else {
+            grid_helper = new THREE.GridHelper(grid_size, divisions, 0x242424, 0x242424);
+            scene.add(grid_helper);
+        }
+
+        grid_helper.transparent = true;
+        grid_helper.material.opacity = grid_helper.material.opacity / 2;
+        grid_helper.position.y = 0.1;
+        planeMaterial.needsUpdate = true;
+        grid_helper.needsUpdate = true;
     }
+    makegrid();
 
     loading_manager = new THREE.LoadingManager();
 
@@ -3928,6 +4023,10 @@ function selectObject(obj, mode = "replace") {
         return;
     }
 
+    if (!multiSelectedObject) {
+        return;
+    }
+
     if (mode === "replace") {
         multiSelectedObject.clear();
     }
@@ -3946,6 +4045,10 @@ function selectObject(obj, mode = "replace") {
 }
 
 function updateSelection() {
+    if (!multiSelectedObject) {
+        return;
+    }
+
     scene.traverse(o => {
         if (o.userData?.isBlock) {
             unhighlight(o);
@@ -3968,6 +4071,10 @@ function updateSelection() {
 }
 
 function clearSelection() {
+    if (!multiSelectedObject) {
+        return;
+    }
+
     multiSelectedObject.forEach(obj => unhighlight(obj));
     multiSelectedObject.clear();
 
@@ -4013,7 +4120,7 @@ function unhighlight(obj) {
 }
 
 function deselect(obj) {
-    if(multiSelectedObject.has(obj)) {
+    if(multiSelectedObject && multiSelectedObject.has(obj)) {
         multiSelectedObject.forEach(obj => unhighlight(obj));
         multiSelectedObject.clear();
         multiSelectedObject = new Set();

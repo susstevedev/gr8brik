@@ -24,6 +24,10 @@ body.dark {
   --ui-elm-noglass: rgba(36, 36, 36, 0.8);
 }
 
+body.hdri-active {
+  background-color: transparent !important;
+}
+
 select {
   color: var(--ui-anti-text) !important;
   background-color: var(--ui-button-blue) !important;
@@ -100,6 +104,26 @@ option {
   visibility: visible;
 }
 
+#settings-account-auth {
+  display: none;
+  
+  #settings-account-auth-pfp {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: none;
+  }
+
+  #settings-account-auth-username {
+    bottom: 10px;
+    position: relative;
+  }
+
+  #settings-account-loggedout {
+    display: none;
+  }
+}
+
 .btn,
 .btn-alt {
   transition: all 0.2s ease-in-out;
@@ -159,6 +183,16 @@ option {
 #ui-loading-file,
 #help-popup {
   display: none;
+}
+
+#settings-popup {
+  div[data-settingsid] {
+    display: none;
+  }
+
+  div[data-settingsid=account] {
+    display: inline-block;
+  }
 }
 
 #ui-loading-file {
@@ -245,6 +279,7 @@ option {
 	background-color: transparent !important;
 	backdrop-filter: blur(10px) !important;
 	-webkit-backdrop-filter: blur(10px);
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes fadeInFromNone {
