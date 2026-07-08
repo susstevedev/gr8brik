@@ -1,5 +1,5 @@
 //document.addEventListener('DOMContentLoaded', function () {
-    let debug = true;
+    let debug = window.debug;
 
     // getcookie but bad and small
     function getCookie(name) {
@@ -18,6 +18,51 @@
         export_full_scene: false,
         hdri_background: false,
         flatcamera: false,
+        activeCameraId: 0,
+        camera: [
+            {
+                id: 0,
+                type: "perspective",
+                fov: 45,
+                pos: {
+                    x: 250,
+                    y: 250,
+                    z: 250,
+                },
+                name: "Perspective camera"
+            },
+            {
+                id: 1,
+                type: "perspective",
+                fov: 45,
+                pos: {
+                    x: -250,
+                    y: 250,
+                    z: 250,
+                },
+                name: "Perspective camera 2"
+            },
+            {
+                id: 2,
+                type: "orthographic",
+                pos: {
+                    x: 250,
+                    y: 250,
+                    z: 250,
+                },
+                name: "Orthographic camera"
+            },
+            {
+                id: 3,
+                type: "orthographic",
+                pos: {
+                    x: -250,
+                    y: 250,
+                    z: 250,
+                },
+                name: "Orthographic camera 2"
+            }
+        ],
         hdris: {
             selected: 0,
             0: {
@@ -47,7 +92,8 @@
     window.settings = defaults;
 
     function setDefaultSettings() {
-        window.settings = defaults;
+        JSON.parse(JSON.stringify(defaults));
+        localStorage.removeItem("settings");
 
         if(debug) {
             console.log('Settings reset!');
@@ -55,7 +101,7 @@
     }
 
     function readSettings() {
-        const saved = getCookie("setting");
+        const saved = localStorage.getItem("settings");
 
         if (saved) {
             try {
@@ -72,8 +118,8 @@
         let date = new Date();
         window.settings.lastUpdated = date.toUTCString();
         let jsonData = JSON.stringify(window.settings);
-        date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
-        document.cookie = "setting=" + jsonData + "; expires=" + date.toUTCString();
+
+        localStorage.setItem("settings", jsonData);
 
         if(scene && scene.userData) {
             scene.userData = window.settings;
@@ -87,21 +133,58 @@
     }
 
     function clearSettings() {
-        const saved = getCookie("setting");
-
-        if (saved) {
-            try {
-                let parsed = JSON.parse(saved);
-                const date = new Date();
-                date.setTime(date.getTime() - (365 * 24 * 60 * 60 * 1000));
-                document.cookie = "setting=" + JSON.stringify(parsed) + "; expires=" + date.toUTCString();
+        try {
+                localStorage.removeItem("settings");
+                setDefaultSettings();
 
                 if(debug) {
                     console.log('Cleared settings.');
                 }
-            } catch (e) {
+        } catch (e) {
                 console.warn("failed to clear settings " + e);
-            }
         }
     }
+
+    function validateSettings(savedSettings, defaultSettings) {
+        if (!savedSettings || typeof savedSettings !== 'object') {
+            return JSON.parse(JSON.stringify(defaultSettings));
+        }
+
+        let repaired = { ...savedSettings };
+
+        Object.keys(defaultSettings).forEach(key => {
+            let defaultValue = defaultSettings[key];
+            let savedValue = repaired[key];
+
+            if (savedValue === undefined) {
+                repaired[key] = JSON.parse(JSON.stringify(defaultValue));
+                return;
+            }
+
+            let defaultType = typeof defaultValue;
+            let savedType = typeof savedValue;
+            let isDefault = Array.isArray(defaultValue);
+            let isSaved = Array.isArray(savedValue);
+
+            if (isDefault !== isSaved || (defaultType !== savedType && !isDefault)) {
+                repaired[key] = JSON.parse(JSON.stringify(defaultValue));
+                return;
+            }
+
+            if (key === 'camera' && isSaved) {
+                let isValid = savedValue.every(cam => 
+                    cam && typeof cam === 'object' && 'id' in cam && 'type' in cam && 'pos' in cam
+                );
+
+                if (!isValid) {
+                    repaired.camera = JSON.parse(JSON.stringify(defaultValue));
+                }
+            }
+        });
+
+        return repaired;
+    }
+
+    window.settings = validateSettings(window.settings, window.defaults);
+    debug = null;
 //});

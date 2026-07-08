@@ -124,6 +124,16 @@ option {
   }
 }
 
+#current-camera {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  width: 50%;
+  pointer-events: none;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+}
+
 .btn,
 .btn-alt {
   transition: all 0.2s ease-in-out;
@@ -174,6 +184,13 @@ option {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.stats-contain .stats {
+  height: 48px;
+  position: absolute !important;
+  left: 0px !important;
+  bottom: 0px !important;
 }
 
 #save-popup,

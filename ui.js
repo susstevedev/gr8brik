@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    let debug = window.debug;
 
     document.querySelectorAll('button[data-settingsid]').forEach(element => {
         element.addEventListener('click', function(event) {
@@ -31,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const index = arr.selected;
 
         Object.entries(arr).forEach(([key, value]) => {
+            let option = new Option(value.name, key);
+
             if (Number(key) === index) {
                 option.selected = true;
             }
@@ -38,8 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
             if (key === 'selected') {
                 return;
             }
-
-            let option = new Option(value.name, key);
 
             select.add(option);
         });
@@ -52,4 +53,32 @@ document.addEventListener('DOMContentLoaded', function () {
         applyHdri(true, true);
     });
 
+    function init_cam_ui() {
+        const selector = document.getElementById("camera-selector");
+        const cameras = scene.userData.camera;
+
+        if (!selector || !Array.isArray(cameras)) {
+            return;
+        }
+
+        selector.innerHTML = "";
+
+        cameras.forEach(cam => {
+            const option = document.createElement("option");
+            option.value = cam.id;
+            option.textContent = cam.name || `Camera ${cam.id}`;
+            selector.appendChild(option);
+        });
+
+        selector.value = scene.userData.activeCameraId ?? 0;
+
+        selector.addEventListener("change", (event) => {
+            scene.userData.activeCameraId = Number(event.target.value);
+            update_camera();
+            save_settings();
+        });
+    }
+    init_cam_ui();
+
+    debug = null;
 });

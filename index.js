@@ -8,6 +8,28 @@ window.addEventListener('beforeunload', function (e) {
     e.returnValue = '';
 });
 
+// new imports
+import * as THREE_NS from 'three';
+
+import { WebGPURenderer } from 'three/webgpu'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { TransformControls } from 'three/addons/controls/TransformControls.js';
+import { LDrawLoader } from 'three/addons/loaders/LDrawLoader.js';
+import { LDrawConditionalLineMaterial } from 'three/addons/materials/LDrawConditionalLineMaterial.js';
+import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
+import { HDRLoader } from 'three/addons/loaders/HDRLoader.js';
+import Stats from 'three/addons/libs/stats.module.js';
+
+let THREE = { ...THREE_NS };
+THREE.OrbitControls = OrbitControls;
+THREE.TransformControls = TransformControls;
+THREE.LDrawLoader = LDrawLoader;
+THREE.GLTFExporter = GLTFExporter;
+THREE.HDRLoader = HDRLoader; 
+THREE.RGBELoader = HDRLoader;
+
+const stats = new Stats();
+
 let canvas = document.createElement('canvas');
 let gl = canvas.getContext('webgl2');
 
@@ -26,7 +48,9 @@ if (!gl) {
     console.log('WEBGL STATUS: ENABLED');
 }
 
-let container, camera, scene, renderer, controls, transformControls, grid_helper, directional_lighting, ambient_lighting, ldraw_loader, loading_manager, mouse, raycaster, mesh_color, partName, partRotation, partPosition, selectedObject, multiSelectedObject, selectionGroup, customPosition, selectedMap, selectedExport, named_parts = null;
+window.debug = true; // debug mode
+
+let container = null, camera = null, scene = null, renderer = null, controls = null, transformControls = null, grid_helper = null, directional_lighting = null, ambient_lighting = null, ldraw_loader = null, loading_manager = null, mouse = null, raycaster = null, mesh_color = null, partName = null, partIcon = null, part = null, activeObject = null, partRotation = null, partPosition = null, selectedObject = null, multiSelectedObject = null, selectionGroup = null, customPosition = null, selectedMap = null, selectedExport = null;
 
 let partColor = '#C91A09';
 let start_url = 'https://gr8brik.rf.gd';
@@ -565,9 +589,9 @@ document.getElementById("select-block").addEventListener("click", function (e) {
     if(span.getAttribute("texture")) {
         const selectedTexture = span.getAttribute("texture");
 
-        addBlockV2(part, partColor, partPosition, partRotation, span, original_img, part, selectedTexture, null, null, null);
+        addBlockV2(part, partColor, null, span, original_img, part, selectedTexture, null, null, null);
     } else {
-        addBlockV2(part, partColor, partPosition, partRotation, span, original_img, part, null, null, null, null);
+        addBlockV2(part, partColor, null, span, original_img, part, null, null, null, null);
     }
 });
 
@@ -842,10 +866,12 @@ document.querySelector("#settings-popup .btn-alt").addEventListener("click", fun
 /* Welcome popup */
 document.querySelector("#welcome-popup .btn-alt").addEventListener("click", function () {
     document.getElementById("welcome-popup").style.display = "none";
+    scene.userData.hideWelcome = true;
 });
 
 document.querySelector("#welcome-popup .close.btn").addEventListener("click", function () {
     document.getElementById("welcome-popup").style.display = "none";
+    scene.userData.hideWelcome = true;
 });
 
 /* Other */
@@ -1016,10 +1042,17 @@ document.getElementById("cre-export-gr8z").addEventListener("click", () => {
     let setting = JSON.stringify(window.settings, null, 2);
     let zip = new JSZip();
 
-    zip.file("creation.gr8", fileData);
-    zip.file("setting.json", setting);
+    zip.file("creation.gr8", fileData , { 
+        compression: "DEFLATE", 
+        compressionOptions: { level: 9 } 
+    });
 
-    zip.generateAsync({ type: "blob" }).then(function (blob) {
+    zip.file("setting.json", setting , { 
+        compression: "DEFLATE", 
+        compressionOptions: { level: 9 } 
+    });
+
+    zip.generateAsync({ type: "blob", compression: "DEFLATE", compressionOptions: { level: 9 }, comment: "Zipped Gr8Brik.rf.gd creation"}).then(function (blob) {
         let url = URL.createObjectURL(blob);
         let date = new Date();
         let a = document.createElement("a");
@@ -1053,7 +1086,7 @@ document.getElementById("cre-export-ldd").addEventListener("click", () => {
     });
 });
 
-document.getElementById("cre-export-three").addEventListener("click", () => {
+/*document.getElementById("cre-export-three").addEventListener("click", () => {
     if (!scene) {
         tooltip("Scene is empty");
         return;
@@ -1070,6 +1103,35 @@ document.getElementById("cre-export-three").addEventListener("click", () => {
     a.download = `threejs-${date}.json`;
     a.click();
     URL.revokeObjectURL(url);
+});*/
+
+document.getElementById("cre-export-three").addEventListener("click", () => {
+    if (!scene) {
+        tooltip("Scene is empty");
+        return;
+    }
+
+    let fileData = JSON.stringify(scene.toJSON());
+    let zip = new JSZip();
+    let date = new Date();
+
+    zip.file(`scene.json`, fileData , { 
+        compression: "DEFLATE", 
+        compressionOptions: { level: 9 } 
+    });
+
+    zip.generateAsync({ type: "blob", compression: "DEFLATE", compressionOptions: { level: 9 }}).then(function (blob) {
+        let url = URL.createObjectURL(blob);
+        let date = new Date();
+        let a = document.createElement("a");
+        a.href = url;
+        a.download = `threejs-${date}.zip`;
+        a.click();
+
+        setTimeout(() => {
+            URL.revokeObjectURL(url);
+        }, 10000);
+    });
 });
 
 document.getElementById("selected-object-export-three").addEventListener("click", () => {
@@ -1632,15 +1694,28 @@ async function loadSceneFromJSON(data) {
         partColor = '#' + block.color;
         partPosition = block.position;
         partRotation = block.rotation;
+        partMatrixWorld = null;
 		partTexture = block.texturedata;
         partOpacity = block.opacity ?? '1.0';
+
+        if (Array.isArray(block.matrixw.elements)) {
+            partMatrixWorld = new THREE.Matrix4().fromArray(block.matrixw.elements);
+        } else if (partPosition && partRotation) {
+            const position = new THREE.Vector3(partPosition.x, partPosition.y, partPosition.z);
+            const scale = new THREE.Vector3(1, 1, 1);
+
+            const rotationEuler = new THREE.Euler(partRotation.x, partRotation.y, partRotation.z, 'XYZ');
+            const quaternion = new THREE.Quaternion().setFromEuler(rotationEuler);
+
+            partMatrixWorld = new THREE.Matrix4().compose(position, quaternion, scale);
+        }
 
         part = 'parts/' + block.ldraw;
 
         try {
             await new Promise((resolve, reject) => {
-                //addBlock(resolve, reject);
-                addBlockV2(part, partColor, partPosition, partRotation, null, null, part, partTexture, partOpacity, resolve, reject);
+                //addBlockV2(part, partColor, partPosition, partRotation, null, null, part, partTexture, partOpacity, resolve, reject);
+                addBlockV2(part, partColor, partMatrixWorld, null, null, part, partTexture, partOpacity, resolve, reject);
             });
         } catch (err) {
             console.warn(`Failed to add block: ${block.ldraw}`, err);
@@ -1745,7 +1820,7 @@ function ldrawToJSON(group) {
 
 /*document.getElementById("import-btn-three").addEventListener("click", function () {
     document.getElementById("cre-import-three").click();
-}); */
+});*/
 
 document.getElementById("cre-import-three").addEventListener("change", function (event) {
     let file = event.target.files[0];
@@ -1755,42 +1830,63 @@ document.getElementById("cre-import-three").addEventListener("change", function 
         return;
     }
 
-    const reader = new FileReader();
+    let reader = new FileReader();
 
-    reader.onload = function (e) {
+    reader.onload = async function (e) {
         try {
-            const data = JSON.parse(e.target.result);
-            const loader = new THREE.ObjectLoader();
+            let zip = await JSZip.loadAsync(e.target.result);
+            let jsonFile = zip.file("scene.json");
+
+            if (!jsonFile) {
+                throw new Error("scene.json not found inside the zip file");
+            }
+
+            let jsonString = await jsonFile.async("string");
+            let data = JSON.parse(jsonString);
+            let loader = new THREE.ObjectLoader();
 
             let object;
-
-            if (!Array.isArray(data)) {
-                if (data?.metadata && data?.metadata?.type && data?.metadata?.type === "App" && data?.object && data?.object?.metadata) {
-                    object = loader.parse(data.object);
-                } else {
-                    object = loader.parse(data);
-                }
-
-                object.children.forEach(function (child) {
-                    child.userData.noSnap = true;
-                    child.userData.isBlock = true;
-                    child.userData.partName = object.ldraw;
-                    child.ldraw = object.ldraw;
-                    scene.add(child);
-                });
-            } else {
-                data.forEach(function (item) {
-                    if (item?.object?.metadata && item?.object?.metadata?.type && item?.object?.metadata?.type === "App") {
-                        object = loader.parse(item.object);
-                    } else if (item?.metadata && item?.metadata?.type) {
-                        object = loader.parse(item);
-                    }
-                });
-            }
 
             if (selectedObject) {
                 transformControls.detach(selectedObject);
                 selectedObject = null;
+            }
+
+            /*if (!Array.isArray(data)) {
+                if (data?.metadata && data?.metadata?.type === "Object") {
+                    object = loader.parse(data);
+                } else {
+                    return new Error('Invalid file');
+                }
+            } else {
+                data.forEach(function (item) {
+                    object = loader.parse(item);
+                });
+            }*/
+
+            if (!Array.isArray(data)) {
+                if (data?.metadata?.type === "App" && data.scene) {
+                    object = loader.parse(data.scene);
+                    scene.add(object);
+                } else if (data?.metadata?.type === "Scene") {
+                    object = loader.parse(data);
+                    scene.add(object);
+                } else if (data?.metadata?.type === "Object") {
+                    object = loader.parse(data);
+                    scene.add(object);
+                } else if (data?.metadata) {
+                    object = loader.parse(data);
+                    scene.add(object);
+                } else {
+                    throw new Error(`Unsupported JSON metadata type: ${data?.metadata?.type || 'Unknown'}`);
+                }
+            } else {
+                data.forEach(function (item) {
+                    if (item?.metadata) {
+                        object = loader.parse(item);
+                        scene.add(object);
+                    }
+                });
             }
         } catch (err) {
             tooltip(`error: ${err}`);
@@ -1799,7 +1895,7 @@ document.getElementById("cre-import-three").addEventListener("change", function 
         event.target.value = "";
         updateSceneData();
     };
-    reader.readAsText(file);
+    reader.readAsArrayBuffer(file);
 });
 
 // moved to start of document
@@ -1809,7 +1905,8 @@ let blocks = [];
 let blockGroups = [];
 
 init();
-animate();
+//animate();
+initRenderer();
 
 function getCookie(name) {
     var cookies = document.cookie;
@@ -1848,9 +1945,11 @@ if(scene.userData.hideWelcome === true) {
 
 document.getElementById("flatcamera-enable").addEventListener("change", function () {
     if (scene.userData.flatcamera === true) {
-        scene.userData.hideWelcome = false;
+        scene.userData.flatcamera = false;
+        update_camera();
     } else {
         scene.userData.flatcamera = true;
+        update_camera();
     }
     scene.updateMatrixWorld(true);
     saveSettings();
@@ -2038,7 +2137,7 @@ function applyTransparent(ui_trans) {
 
 function applyHdri(use_hdri, background) {
     if(use_hdri) {
-        let rgbe_loader = new THREE.RGBELoader();
+        let rgbe_loader = new THREE.HDRLoader(); // using hdrloader now because that's replaced for some reason
         let hdris = scene.userData.hdris;
         let selected = hdris.selected;
         let hdr_url;
@@ -2155,7 +2254,8 @@ function init() {
     }
     
     // WebGl renderer
-    renderer = new THREE.WebGLRenderer({ alpha: true });
+    //renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer = new WebGPURenderer({ alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     // transparent ui
@@ -2179,18 +2279,65 @@ function init() {
     renderer.setPixelRatio(window.devicePixelRatio);
     container.appendChild(renderer.domElement);
 
-    if(scene.userData.flatcamera === true) {
-        // Camera
-        camera = new THREE.OrthographicCamera(window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, .1, 100000);
-        camera.zoom = 2;
-        camera.position.set(250, 250, 250);
-        document.getElementById("flatcamera-enable").setAttribute('checked', 'true');
-    } else {
-        // Camera
-        camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, .1, 100000);
-        camera.position.set(250, 250, 250);
-        document.getElementById("flatcamera-enable").setAttribute('checked', 'false');
+    window.update_camera = function() {
+        let activeId = scene.userData.activeCameraId ?? 0;
+        let cameraScene = scene.userData.camera;
+        let camConfig = cameraScene.find(c => c.id === activeId);
+
+        if (camConfig) {
+            if (scene.background && !scene._savedHdriMap) {
+                scene._savedHdriMap = scene.background; 
+            }
+
+            if (camConfig.type === "orthographic") {
+                if(scene.userData.flatcamera != true) {
+                    scene.userData.flatcamera = true;
+                }
+
+                camera = new THREE.OrthographicCamera(
+                    window.innerWidth / -2, window.innerWidth / 2,
+                    window.innerHeight / 2, window.innerHeight / -2,
+                    0.1, 10000
+                );
+                camera.zoom = 2;
+                document.getElementById("flatcamera-enable").checked = true;
+
+                scene.background = new THREE.Color(0x1a1a1a);
+                if (scene._savedHdriMap) {
+                    scene.environment = scene._savedHdriMap;
+                }
+            } else {
+                if (camConfig.type === "perspective") {
+                    scene.userData.flatcamera = false;
+                }
+
+                if (scene._savedHdriMap) {
+                    scene.background = scene._savedHdriMap;
+                    scene.environment = scene._savedHdriMap;
+                }
+
+                let fov = camConfig.fov || window.defaults?.camera?.fov || 45;
+                camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 10000);
+                document.getElementById("flatcamera-enable").checked = false;
+            }
+
+            //camera.position.set(250, 250, 250);
+            camera.position.set(camConfig.pos.x, camConfig.pos.y, camConfig.pos.z);
+            camera.name = camConfig.name || "Default Camera";
+            
+            document.getElementById("current-camera").innerText = camera.name;
+            camera.updateProjectionMatrix();
+
+            if (typeof controls !== "undefined" && controls) {
+                camera.lookAt(controls.target);
+                controls.object = camera;
+                controls.update();
+            } else {
+                camera.lookAt(0, 0, 0);
+            }
+        }
     }
+    update_camera();
 
     // Lighting
     ambient_lighting = new THREE.AmbientLight(0xdddddd, 1);
@@ -2202,23 +2349,12 @@ function init() {
 
     transformControls = new THREE.TransformControls(camera, renderer.domElement);
     transformControls.size = 0.75;
-    scene.add(transformControls);
+    transformControls.setSpace('local'); 
+    scene.add(transformControls.getHelper());
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.8;
-
-    /*const stud_size = 20; // 1 stud = 20 three/ldr units
-    const grid_size = stud_size * 16; // studs wide
-    const divisions = 16; // 1 division per stud
-
-    if (isDark()) {
-        grid_helper = new THREE.GridHelper(grid_size, divisions, 0xfafafa, 0xfafafa);
-        scene.add(grid_helper);
-    } else {
-        grid_helper = new THREE.GridHelper(grid_size, divisions, 0x242424, 0x242424);
-        scene.add(grid_helper);
-    }*/
 
     function makegrid() {
         let stud_size = 20; // 1 stud = 20 three/ldr units
@@ -2264,16 +2400,15 @@ function init() {
         loading_manager.itemEnd(url);
     };
 
-    named_parts = new Map();
-
     // loader config
     // please read ldrawloader docs before changing these values
-    const ldraw_path = "https://cdn.githubraw.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/";
+    //const ldraw_path = "https://cdn.githubraw.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/";
+    const ldraw_path = "https://githubraw.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/"; // FOR TESTING ONLY
     ldraw_loader = new THREE.LDrawLoader();
     ldraw_loader.preloadMaterials(ldraw_path + 'colors/ldconfig.ldr');
+    ldraw_loader.setConditionalLineMaterial(LDrawConditionalLineMaterial);
     ldraw_loader.setPath(ldraw_path + 'actual/');
     ldraw_loader.setPartsLibraryPath(ldraw_path + 'actual/');
-    //ldraw_loader.setFileMap(named_parts);
     ldraw_loader.separateObjects = true;
 
     raycaster = new THREE.Raycaster();
@@ -2351,7 +2486,7 @@ function init() {
     let original_pos = new THREE.Vector3();
     let original_rot = new THREE.Euler();
 
-    transformControls.addEventListener('mouseDown', () => {
+    /*transformControls.addEventListener('mouseDown', () => {
         if (selectedObject) {
             original_pos.copy(selectedObject.position);
             original_rot.copy(selectedObject.rotation);
@@ -2391,11 +2526,143 @@ function init() {
             scene.updateMatrixWorld(true);
 
             partPosition = obj?.pos || null;
-            partRotation = null; // default im not fucking around with rotation rn
+            partRotation = obj?.rot || null;;
         }
+        updateSceneData();
+    });*/
+
+    transformControls.addEventListener('mouseDown', () => {
+        let obj = transformControls.object;
+        if (!obj) {
+            return;
+        }
+
+        if (!obj.userData.originalTransform) {
+            obj.userData.originalTransform = {
+                pos: new THREE.Vector3(),
+                rot: new THREE.Euler()
+            };
+        }
+
+        obj.userData.originalTransform.pos.copy(obj.position);
+        obj.userData.originalTransform.rot.copy(obj.rotation);
+    });
+
+    /*transformControls.addEventListener('objectChange', function () {
+        let obj = transformControls.object;
+        if (!obj) {
+            return;
+        }
+
+        if (!scene.userData.noSnap && obj.userData.originalTransform) {
+            let origPos = obj.userData.originalTransform.pos;
+            let origRot = obj.userData.originalTransform.rot;
+
+            let current_world_pos = new THREE.Vector3();
+            obj.getWorldPosition(current_world_pos);
+
+            let start_world_pos = origPos.clone();
+            if (obj.parent) {
+                obj.parent.localToWorld(start_world_pos);
+            }
+            
+            let worldDeltaPos = new THREE.Vector3().subVectors(current_world_pos, start_world_pos);
+
+            let snappedWorldDelta = new THREE.Vector3(
+                snapToGrid(worldDeltaPos.x, 10),
+                snapToGrid(worldDeltaPos.y, 4),
+                snapToGrid(worldDeltaPos.z, 10)
+            );
+
+            let localDeltaPos = snappedWorldDelta.clone();
+            if (obj.parent) {
+                let inverseParentMatrix = new THREE.Matrix4().copy(obj.parent.matrixWorld).invert();
+                localDeltaPos.applyMatrix4(inverseParentMatrix);
+                
+                let parentWorldPos = new THREE.Vector3();
+                obj.parent.getWorldPosition(parentWorldPos);
+                localDeltaPos.add(parentWorldPos).applyMatrix4(inverseParentMatrix);
+            }
+
+            obj.position.copy(origPos).add(localDeltaPos);
+
+            let delta_rot = new THREE.Euler( obj.rotation.x - origRot.x, obj.rotation.y - origRot.y, obj.rotation.z - origRot.z );
+
+            let snap_angle = THREE.MathUtils.degToRad(45);
+            let snapped_rot = new THREE.Euler(
+                Math.round(delta_rot.x / snap_angle) * snap_angle,
+                Math.round(delta_rot.y / snap_angle) * snap_angle,
+                Math.round(delta_rot.z / snap_angle) * snap_angle
+            );
+            
+            obj.rotation.set(
+                origRot.x + snapped_rot.x,
+                origRot.y + snapped_rot.y,
+                origRot.z + snapped_rot.z
+            );
+
+            obj.updateMatrixWorld(true);
+
+            if (obj.parent) {
+                obj.parent.updateMatrixWorld(true);
+            }
+
+            obj.pos = obj.position.clone();
+            obj.rot = obj.rotation.clone();
+        }  
+        updateSceneData();
+    });*/
+
+    transformControls.addEventListener('objectChange', function () {
+        const obj = transformControls.object;
+        if (!obj) {
+            return;
+        }
+
+        if (!scene.userData.noSnap && obj.userData.originalTransform) {
+            const origPos = obj.userData.originalTransform.pos;
+            const origRot = obj.userData.originalTransform.rot;
+
+            const delta_pos = new THREE.Vector3().subVectors(obj.position, origPos);
+            const snapped_pos = new THREE.Vector3(
+                snapToGrid(delta_pos.x, 10),
+                snapToGrid(delta_pos.y, 4),
+                snapToGrid(delta_pos.z, 10)
+            );
+            obj.position.copy(origPos).add(snapped_pos);
+
+            const delta_rot = new THREE.Euler(
+                obj.rotation.x - origRot.x,
+                obj.rotation.y - origRot.y,
+                obj.rotation.z - origRot.z
+            );
+
+            const snapAngle = THREE.MathUtils.degToRad(45);
+            const snapped_rot = new THREE.Euler(
+                Math.round(delta_rot.x / snapAngle) * snapAngle,
+                Math.round(delta_rot.y / snapAngle) * snapAngle,
+                Math.round(delta_rot.z / snapAngle) * snapAngle
+            );
+            
+            obj.rotation.set(
+                origRot.x + snapped_rot.x,
+                origRot.y + snapped_rot.y,
+                origRot.z + snapped_rot.z
+            );
+
+            obj.pos = obj.position.clone();
+            obj.rot = obj.rotation.clone();
+        }
+        
         updateSceneData();
     });
 
+    if (document.querySelector('.stats-contain')) {
+        stats.dom.classList.add('stats');
+        stats.dom.style.left = '';
+        stats.dom.style.top = '';
+        document.querySelector('.stats-contain').appendChild(stats.dom);
+    }
 }
 
 class statehistoryManager {
@@ -2816,9 +3083,20 @@ function addBlock(throwSuccess, throwError) {
     });
 }
 
-/* addBlock version 2 */
-                    //part, partColor, partPosition, partRotation, span, original_img, part, null, null, null, null
-function addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, texture, partOpacity, throwSuccess, throwError) {
+/*
+
+addBlock version 2
+Adds part to scene (should be pretty clear)
+
+How would I handle so many variables to pass inside this?
+You would set up something like this, for something you don't need, make it null
+
+Example:
+part, partColor, partMatrixW, span, original_img, part, null, null, null, null
+
+*/
+
+function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileName, texture, partOpacity, throwSuccess, throwError) {
 	const FILE_LOCATION_TRY_PARTS = 0;
 	const FILE_LOCATION_TRY_P = 1;
 	const FILE_LOCATION_TRY_MODELS = 2;
@@ -3076,9 +3354,19 @@ function addBlockV2(part, partColor, partPosition, partRotation, partSpan, origi
 
         blockGroup.add(loadedGroup);
 
-        if (partPosition && partRotation) {
+        /*if (partPosition && partRotation) {
             blockGroup.position.set(partPosition.x, partPosition.y, partPosition.z);
             blockGroup.rotation.set(partRotation.x, partRotation.y, partRotation.z);
+        } else {
+            blockGroup.position.y = objectSize(blockGroup).y;
+            blockGroup.rotation.x = Math.PI;
+        }*/
+
+        if (partMatrixW instanceof THREE.Matrix4) {
+            blockGroup.matrixAutoUpdate = true;
+            partMatrixW.decompose(blockGroup.position, blockGroup.quaternion, blockGroup.scale);
+            blockGroup.updateMatrix();
+            blockGroup.updateMatrixWorld(true);
         } else {
             blockGroup.position.y = objectSize(blockGroup).y;
             blockGroup.rotation.x = Math.PI;
@@ -3463,8 +3751,8 @@ function generateSceneJSON() {
 
     let sceneData = {
         metadata: {
-            generator: 'gr8brik_generateSceneJSON',
-            file_version: '1.2.1.1',
+            generator: 'gr8brik',
+            file_version: '1.2.1.2',
             name: scenedata_name | "My Model",
             description: scenedata_desc | "My Description"
         },
@@ -4178,24 +4466,19 @@ document.getElementById("resetCamera").addEventListener("click", function () {
 
 // Last refactor 6/3/2025 by susstevedev
 function animate() {
-    document.addEventListener('DOMContentLoaded', function () {
-        const stats = new Stats();
+    stats.update();
 
-        stats.domElement.style.position = 'absolute';
-        stats.domElement.style.zIndex = '99999999';
-        stats.domElement.style.left = '0px';
-        stats.domElement.style.bottom = '0px';
-        document.body.appendChild(stats.domElement);
-
-        setInterval(function () {
-            stats.update();
-        }, 1000 / 60);
-    });
+    document.querySelector('.stats-contain').appendChild(stats.domElement);
 
     requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
+}
+
+async function initRenderer() {
+    await renderer.init();
+    animate();
 }
 
 function tooltip(text) {
@@ -4233,6 +4516,7 @@ function tooltipAlert(title, text, additionalText, buttonText) {
     tooltip.appendChild(tooltipExit);
 
     tooltip.setAttribute('id', 'tooltipAlert');
+    tooltip.setAttribute('class', 'trans');
     document.body.appendChild(tooltip);
 
     if (tooltip && tooltipExit) {
