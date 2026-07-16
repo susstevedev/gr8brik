@@ -1,10 +1,10 @@
 body {
   --ui-text-color: #000;
-  /*--ui-color: #fafafa;*/
-  --ui-color: #d3d3d3;
+  --ui-color: #fafafa;
   --ui-anti-color: #242424;
   --ui-anti-text: #fff;
   --ui-button-blue: #87ceeb;
+  --ui-button-lightblue: #add8e6;
   --ui-elm-noglass: rgba(211, 211, 211, 0.8);
 
   font-family: 'Arial Narrow', Arial, sans-serif;
@@ -18,8 +18,7 @@ body {
 body.dark {
   --ui-text-color: #fff;
   --ui-color: #242424;
-  /* --ui-anti-color: #fafafa; */
-  --ui-anti-color: #d3d3d3;
+  --ui-anti-color: #fafafa;
   --ui-anti-text: #000;
   --ui-elm-noglass: rgba(36, 36, 36, 0.8);
 }
@@ -121,6 +120,11 @@ option {
 
   #settings-account-loggedout {
     display: none;
+    color: red;
+  }
+
+  #settings-account-loggedout #text {
+    color: var(--ui-text-color);
   }
 }
 
@@ -134,10 +138,36 @@ option {
   text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
 }
 
+.ui-tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 0.5px dotted black;
+}
+
+.ui-tooltip .ui-tooltip-text {
+  visibility: hidden;
+  width: 220px;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+  background-color: var(--ui-button-blue);
+  color: var(--ui-text-color);
+  text-align: center;
+  padding: 2px 0;
+  border-radius: 2px;
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.10);
+  position: absolute;
+  z-index: 1;
+}
+
+.ui-tooltip:hover .ui-tooltip-text {
+  visibility: visible;
+}
+
 .btn,
 .btn-alt {
   transition: all 0.2s ease-in-out;
-  background-color: #87CEEB;
+  background-image: linear-gradient(var(--ui-button-lightblue), var(--ui-button-blue));
   color: #000;
   padding: 10px;
   margin-bottom: 5px;
@@ -149,9 +179,13 @@ option {
 }
 
 .btn:hover {
-  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.10);
-  background-color: #add8e6;
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.10) !important;
+  background-image: linear-gradient(var(--ui-button-blue), var(--ui-button-lightblue));
   cursor: pointer;
+}
+
+.btn-alt:active,.btn-alt:hover {
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3); 
 }
 
 .btn-disabled {
@@ -164,19 +198,19 @@ option {
 }
 
 .tab-button {
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px, inset 0 4px 8px rgba(0, 0, 0, 0);
   background-color: var(--ui-button-blue);
   color: var(--ui-anti-text);
   cursor: pointer;
   padding: 8px;
   border-radius: 2px;
   text-align: center;
-  transition: opacity 0.2s ease-in-out;
   border: none;
+  transition: all 0.2s ease-in-out;
 }
 
-.tab-button:hover {
-  opacity: 0.8 !important;
+.tab-button:hover,.tab-button:active {
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px, inset 0 4px 8px rgba(0, 0, 0, 0.3); 
 }
 
 .dialog {
@@ -267,6 +301,47 @@ option {
   border-radius: 10px;
 }
 
+#nav-wheel {
+  position: absolute; 
+  bottom: 50%;
+  right: 20px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--ui-color);
+  z-index: 10;
+}
+
+#nav-wheel .nav-arrow {
+  position: absolute;
+}
+
+#nav-wheel #nav-up {
+  left: 35%;
+  top: 0;
+}
+
+#nav-wheel #nav-down {
+  left: 35%;
+  bottom: 0;
+}
+
+#nav-wheel #nav-left {
+  top: 35%;
+  left: 0;
+}
+
+#nav-wheel #nav-right {
+  top: 35%;
+  right: 0;
+}
+
+#nav-wheel #nav-cam-reset {
+  top: 35%;
+  right: 35%;
+  left: 35%;
+}
+
 #tooltipAlert {
   border-radius: 2px;
   padding: 10px;
@@ -325,7 +400,7 @@ option {
   color: var(--ui-anti-color);
   text-decoration: none;
   float: right;
-  padding-right: 20px;
+  padding-right: 40px;
   top: 5px;
   position: relative;
 }

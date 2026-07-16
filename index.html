@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Modeler - Gr8brik</title>
   <meta charset="utf-8">
   <!-- <base href="/mod/new/"> -->
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -19,45 +18,9 @@
 
   <script src="https://cdn.jsdelivr.net/gh/susstevedev/gr8brik/lib/ColladaExporter-modded.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/gh/GitHubDragonFly/GitHubDragonFly.github.io/viewers/static/js/exporters/OBJExporter.js" crossorigin="anonymous"></script>
-  
-  <!-- ES5 FIXES
-  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.14/es5-shim.min.js"></script>
-  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.14/es5-sham.min.js"></script>
-  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
-  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.5/es6-shim.min.js"></script>
-  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.5/es6-sham.min.js"></script> -->
-
-  <!-- NON-THREEJS RELATED SCRIPTS 
-  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jszip@latest/dist/jszip.min.js" crossorigin="anonymous"></script> -->
-
-  <!-- IMPORTMAP
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/"
-      }
-    }
-  </script> -->
-  
-  <!-- THREEJS RELATED SCRIPTS | ES6
-  <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js" crossorigin="anonymous"></script>
-  
-  <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/LDrawLoader.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/TransformControls.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/RGBELoader.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.127.0/examples/js/exporters/GLTFExporter.js" crossorigin="anonymous"></script> 
-  
-  <script src="https://cdn.jsdelivr.net/gh/susstevedev/gr8brik/lib/ColladaExporter-modded.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/gh/GitHubDragonFly/GitHubDragonFly.github.io/viewers/static/js/exporters/OBJExporter.js" crossorigin="anonymous"></script>-->
-  
-  <!-- MAIN | ES6 
-  <script type="module" src="index.js?v=03-30-26" defer></script>-->
 
   <!-- es5 fixes -->
+  <!-- probably won't work just here to fix older browser maybe idk not tested -->
   <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.14/es5-shim.min.js"></script>
   <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.14/es5-sham.min.js"></script>
   <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
@@ -66,7 +29,6 @@
 
   <!-- non threejs related -->
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.js" crossorigin="anonymous"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/jszip@latest/dist/jszip.min.js" crossorigin="anonymous"></script>
   
   <!-- MAIN | ES6 -->
@@ -96,41 +58,45 @@
         <div class="dropdown-item" id="export-popup-open"><i class="fa fa-upload" aria-hidden="true"></i>Export...</div>
       </span>
       <span class="dropdown-element" id="dropdown-edit">
-        <div class="dropdown-item" id="move-block-t"><i class="fa fa-arrows-alt" aria-hidden="true"></i>Drag</div>
-        <div class="dropdown-item" id="move-block-r"><i class="fa fa-refresh" aria-hidden="true"></i>Rotate</div>
+        <div class="dropdown-item" id="move-block-t"><i class="fa fa-arrows-alt" aria-hidden="true"></i>Drag <small><kbd>T</kbd></small></div>
+        <div class="dropdown-item" id="move-block-r"><i class="fa fa-refresh" aria-hidden="true"></i>Rotate <small><kbd>R</kbd></small></div>
         <div class="dropdown-item" id="duplicate-part"><i class="fa fa-files-o" aria-hidden="true"></i>Duplicate part</div>
-        <div class="dropdown-item" id="delete-block"><i class="fa fa-trash" aria-hidden="true"></i>Delete part</div>
+        <div class="dropdown-item" id="delete-block"><i class="fa fa-trash" aria-hidden="true"></i>Delete part <small><kbd>Del</kbd></small></div>
         <div class="dropdown-item" id="read_autosave"><i class="fa fa-floppy-o" aria-hidden="true"></i>Recover autosave</div>
       </span>
     </span>
-    <a href="https://gr8brik.rf.gd/acc/login" target="_blank" id="username-field">Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    <a href="https://gr8brik.rf.gd/acc/login" target="_blank" id="username-field">Login</a>
   </div>
 
 	<div class="mobile-toggle-contain">
       <button id="toggleMenu" class="mobile-toggle ui-canbe-trans" style="top: 60px; padding-right: 0px; padding-left: 0px;">
-		<i class="fa fa-bars" aria-hidden="true" title="Reset the camera location"></i>
-	  </button>
+		    <i class="fa fa-bars" aria-hidden="true" title="Reset the camera location"></i>
+	    </button>
 	
-	  <button id="takeScreenshot" class="mobile-toggle ui-canbe-trans" style="top: 160px; padding-right: 0px; padding-left: 0px;">
-		<i class="fa fa-camera" aria-hidden="true" title="Take a screenshot"></i>
-	  </button>
+	    <button id="takeScreenshot" class="mobile-toggle ui-canbe-trans" style="top: 160px; padding-right: 0px; padding-left: 0px;">
+		    <i class="fa fa-camera" aria-hidden="true" title="Take a screenshot"></i>
+	    </button>
 
-	  <button id="resetCamera" class="mobile-toggle ui-canbe-trans" style="top: 260px; padding-right: 0px; padding-left: 0px;">
-		<i class="fa fa-refresh" aria-hidden="true" title="Reset the camera location"></i>
-	  </button>
+	    <button id="resetCamera" class="mobile-toggle ui-canbe-trans" style="top: 260px; padding-right: 0px; padding-left: 0px;">
+		    <i class="fa fa-refresh" aria-hidden="true" title="Reset the camera location"></i>
+	    </button>
 	</div>
-  
+
+  <div id="nav-wheel" class="ui-canbe-trans">
+    <button class="nav-arrow btn-alt" id="nav-up"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+    <button class="nav-arrow btn-alt" id="nav-down"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+    <button class="nav-arrow btn-alt" id="nav-left"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+    <button class="nav-arrow btn-alt" id="nav-right"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+    <button class="nav-arrow btn-alt" id="nav-cam-reset"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+  </div>
+
   <div id="left-container" class="ui-canbe-trans">
     <p style="height: 2vh;"></p>
 
     <span>Color</span><br />
-    <!-- <span id="color-picker"></span><br /> -->
-    <!--<input id="color-picker" data-jscolor=""><br />-->
-    <!-- <input id="color-picker"> -->
 
     <div id="color-picker"></div><br />
     <div id="color-picker-list">
-      <!-- <span id="item" value="#fff" style="background-color: #fff;" width="5px" height="5px">c</span> -->
     </div>
 
 		<span class="sub">Selected layer</span><br />
@@ -143,7 +109,6 @@
 
     <span>Filter</span><br />
 
-    <!-- <span style="font-size: 14px;">Category</span> -->
     <select id="part-type-filter" style="display: inline-block;">
         <option value="brick" selected>Bricks</option>
         <option value="plate">Plates & Baseplates</option>
@@ -215,18 +180,18 @@
     <div id="save-popup-form">
       <p><input type="text" name="name" placeholder="Name"></p>
       <p><textarea name="desc" rows="4" cols="32" placeholder="Description"></textarea></p>
-      <div>
+      <div style="display:none">
         <p><b>Model visiblity</b></p>
         <label>
-          <input type="radio" name="choice" value="private" selected> Private
+          <input type="radio" name="visible" value="private" selected> Private
         </label><br />
 
         <label>
-          <input type="radio" name="choice" value="unlist"> Unlisted
+          <input type="radio" name="visible" value="unlist"> Unlisted
         </label><br />
 
         <label>
-          <input type="radio" name="choice" value="public"> Public
+          <input type="radio" name="visible" value="public" checked="true"> Public
         </label>
       </div>
       <p><button class="btn" title="Finish saving" id="download-json">Save Creation</button></p>
@@ -285,7 +250,10 @@
       <p><span style="color: var(--ui-text-color);"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Account</span></p>
 
       <div id="settings-account-auth">
-        <span id="settings-account-loggedout">Signed out</span>
+        <span id="settings-account-loggedout">
+          <div class="message"></div>
+          <div class="text"></div>
+        </span>
         <img id="settings-account-auth-pfp" alt="Profile image"></img>
         <span id="settings-account-auth-username"></span>
       </div>
@@ -324,7 +292,7 @@
     <label for="display-lines-enable">Enable lines</label><br />
 
     <input type="checkbox" id="pbr-enable" checked>
-    <label for="display-lines-enable">Enable PBR</label><br />
+    <label for="pbr-enable">Enable PBR</label><br />
 
     <h5><span style="color: var(--ui-text-color);">User interface</span></h5>
 
@@ -377,7 +345,7 @@
     </button><br />
   </div>
 
-  <p>Version <b>June 14th, 2026</b></p>
+  <p>Version <b class="version-string"></b></p>
   <p>Created and maintained by <a href="https://github.com/susstevedev">susstevedev</a> and other contributors on <a href="https://github.com/susstevedev/gr8brik">GitHub</a>.</p>
   <p>2023 - 2026 Gr8brik and susstevedev. All rights reserved.</p>
 </div>

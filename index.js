@@ -8,6 +8,8 @@ window.addEventListener('beforeunload', function (e) {
     e.returnValue = '';
 });
 
+window.version = '2026.07.15';
+
 // new imports
 import * as THREE_NS from 'three';
 
@@ -50,10 +52,8 @@ if (!gl) {
 
 window.debug = true; // debug mode
 
-let container = null, camera = null, scene = null, renderer = null, controls = null, transformControls = null, grid_helper = null, directional_lighting = null, ambient_lighting = null, ldraw_loader = null, loading_manager = null, mouse = null, raycaster = null, mesh_color = null, partName = null, partIcon = null, part = null, activeObject = null, partRotation = null, partPosition = null, selectedObject = null, multiSelectedObject = null, selectionGroup = null, customPosition = null, selectedMap = null, selectedExport = null;
-
-let partColor = '#C91A09';
-let start_url = 'https://gr8brik.rf.gd';
+let container = null, camera = null, scene = null, renderer = null, controls = null, transformControls = null, grid_helper = null, directional_lighting = null, ambient_lighting = null, ldraw_loader = null, loading_manager = null, mouse = null, raycaster = null, mesh_color = null, partName = null, partIcon = null, part = null, partMatrixWorld = null, partTexture = null, partOpacity = null, activeObject = null, partRotation = null, partPosition = null, selectedObject = null, multiSelectedObject = null, selectionGroup = null, customPosition = null, selectedMap = null, selectedExport = null;
+let partColor = '#C91A09', start_url = 'https://gr8brik.rf.gd', DEFAULT_TITLE = 'Modeler - Gr8brik', show_import_animation = true;
 
 function mergeConfig(settings, defaults) {
     settings ??= {};
@@ -164,7 +164,7 @@ function updateColorPicker() {
 }); */
 
 // fix links not working
-document.addEventListener('click', function (event) {
+/*document.addEventListener('click', function (event) {
     if (event.target.tagName === 'A') {
         event.preventDefault();
         const url = event.target.getAttribute("href");
@@ -173,14 +173,17 @@ document.addEventListener('click', function (event) {
             window.location.href = url;
         }
     }
-});
+});*/
 
 // user login function
-// todo have this run ever 10 seconds if user is not signed in
 window.loggedin = false;
 function login() {
-	fetch('user.php?ajax=true')
-    //fetch(start_url + "/ajax/user.php?ajax=true")
+    fetch(start_url + "/ajax/user.php?ajax=true", {
+        headers: {
+            'X-version': window.version,
+            'X-app': 'gr8brik',
+        },
+        })
         .then(res => res.json())
         .then(response => {
             if (response.success) {
@@ -196,7 +199,6 @@ function login() {
 
                 tooltip('Logged in as ' + response.user);
                 window.sessionData = response;
-                //ui_login(response.user ?? 'Username', response.pfp ?? 'img/logo.png');
 
                 if (response.alert != null && response.alert != undefined && response.alert != 0) {
                     const notification = document.createElement('span');
@@ -212,35 +214,37 @@ function login() {
                 window.loggedin = true;
             } else {
                 tooltip(response.error);
-                console.error("An error occured while authenticating " + response.error);
+                console.error("An error occured while authenticating: " + response.error);
                 document.getElementById("username-field").innerHTML = "Login";
                 window.loggedin = false;
             }
             ui_login_v2(response);
         })
         .catch(async (err) => {
+            window.loggedin = false;
             try {
-                const res = await err.response.json();
+                let res = await err.response.json();
                 tooltip(res.error);
-                console.error("An error occured while authenticating " + res.error);
-                window.loggedin = false;
+                console.error("An error occured while authenticating: " + res.error);
                 ui_login_v2(res);
             } catch {
-                tooltip('An error occured while authenticating');
-                console.error("An error occured while authenticating " + err);
-                window.loggedin = false;
+                tooltip("An error occured while authenticating: " + err);
+                console.error("An error occured while authenticating: " + err);
+                ui_login_v2(null);
             }
         });
 }
 login();
 
 function getWarnStatus() {
-    //fetch(start_url + "/ajax/user.php?get_warn_status=true")
-    fetch('test.json')
+    fetch(start_url + "/ajax/user.php?get_warn_status=true")
         .then(res => res.json())
         .then(response => {
             if (response.status == "yes" && response.success == true) {
-                tooltipAlert(response.text, response.reason, response.additional, response.button)
+                tooltipAlert(response.text, response.reason, response.additional, response.button);
+
+                // rerun login function to update user information (logging user out if they get banned)
+                login();
             } else if(response.success == false) {
                 tooltip(response.error);
                 console.error("An error occured while authenticating " + response.error);
@@ -283,7 +287,10 @@ function ui_login_v2(response) {
     } else {
         document.querySelector('#settings-account-auth-pfp').style.display = 'none';
         document.querySelector('#settings-account-auth-username').style.display = 'none';
-        document.querySelector('#settings-account-loggedout').style.display = 'block';
+        let loggedoutelm = document.querySelector('#settings-account-loggedout');
+        loggedoutelm.style.display = 'block';
+        loggedoutelm.querySelector('.message').textContent = 'Logged out';
+        loggedoutelm.querySelector('.text').textContent = 'Log in to an account to save creations to our servers';
     }
 }
 
@@ -621,11 +628,19 @@ document.getElementById("download-json").addEventListener("click", function () {
             selectedObject = null;
         }
 
+        if(!window.loggedin) {
+            this.disabled = true;
+            this.classList.add('btn-disabled');
+            tooltip('Login to save creation to server');
+            return;
+        }
+
         let params = new URLSearchParams(window.location.search);
         let build_id = params.get("build_id") || null;
 
         const name = document.querySelector("#save-popup input[name='name']").value.trim();
         const desc = document.querySelector("#save-popup textarea[name='desc']").value.trim();
+        const visible = document.querySelector('input[name="visible"]:checked');
         const screenshot = capture();
 
         this.innerHTML = `<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>`;
@@ -639,23 +654,25 @@ document.getElementById("download-json").addEventListener("click", function () {
                 creation: sceneJSON,
                 name,
                 desc,
-                screenshot
+                screenshot,
+                visibility: visible.value,
             })
         })
             .then(res => res.json())
             .then(response => {
                 tooltip(response.success);
                 this.innerText = "Save Creation as a copy";
-                //this.disabled = true;
             })
             .catch(async err => {
                 try {
                     const res = await err.response.json();
                     tooltip(res.error);
-                    this.innerText = "Try again";
+                    this.innerText = "Save Creation";
                 } catch {
                     tooltip("An unknown error occurred.");
-                    this.innerText = "Try again";
+                    this.innerText = "Save Creation";
+                    this.disabled = true;
+                    this.classList.add('btn-disabled');
                 }
             });
     } else {
@@ -758,29 +775,33 @@ document.getElementById("export-finish").addEventListener("click", function () {
         const exporter = new THREE.GLTFExporter();
         const date = getDate();
 		
-		let scene_;
-		if(scene.userData.export_full_scene) {
-			scene_ = scene;
-		} else {
+		let scene_ = scene;
+		if(scene.userData.export_full_scene === false) {
 			scene_ = filter_objects_peices();
 		}
-		
-        console.log(scene.children.length, "meshes to export");
+        console.log(scene_.children.length + " objects to export");
 
         exporter.parse(
             scene_,
             function (result) {
-                //const blob = new Blob([JSON.stringify(result, null, 2)], { type: 'application/json' });
-                const blob = new Blob([result], { type: 'model/gltf-binary' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `creation-${date}.glb`;
-                a.click();
+                if (result instanceof ArrayBuffer) {
+                    //const blob = new Blob([JSON.stringify(result, null, 2)], { type: 'application/json' });
+                    const blob = new Blob([result], { type: 'model/gltf-binary' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `creation-${date}.glb`;
+                    a.click();
 
-                setTimeout(() =>
-                    URL.revokeObjectURL(url),
-                    10000);
+                    setTimeout(() =>
+                        URL.revokeObjectURL(url),
+                        10000);
+                } else {
+                console.error('Invalid object, expecting gltf');
+            }
+            },
+            function (error) {
+                console.error(error);
             },
             {
                 binary: true,
@@ -893,6 +914,49 @@ document.getElementById("read_settings").addEventListener("click", function () {
     //read_settings();
     readSettings(); // new
 });
+
+//wheel navigation
+document.querySelectorAll('.nav-arrow').forEach(btn => {
+  btn.addEventListener('click', (event) => {
+    let direction = event.currentTarget.id;
+    let azimuth = controls.getAzimuthalAngle();
+    let polar = controls.getPolarAngle();
+    let step = 0.15;
+
+    if (direction === 'nav-left') {
+        setcamangle(azimuth - step, polar);
+    } else if (direction === 'nav-right') {
+        setcamangle(azimuth + step, polar);
+    } else if (direction === 'nav-up') {
+        setcamangle(azimuth, polar - step);
+    } else if (direction === 'nav-down') {
+        setcamangle(azimuth, polar + step);
+    } else if (direction === 'nav-cam-reset') {
+        controls.reset();
+    } else {
+        console.warn('invalid angle');
+    }
+
+  });
+});
+
+function setcamangle(anglehor, anglever) {
+    let target = controls.target;
+
+    let dx = camera.position.x - target.x;
+    let dy = camera.position.y - target.y;
+    let dz = camera.position.z - target.z;
+
+    let radius = Math.sqrt(dx * dx + dy * dy + dz * dz);
+    let clampedpolar = Math.max(0.01, Math.min(Math.PI - 0.01, anglever));
+
+    let nx = target.x + radius * Math.sin(clampedpolar) * Math.sin(anglehor);
+    let ny = target.y + radius * Math.cos(clampedpolar);
+    let nz = target.z + radius * Math.sin(clampedpolar) * Math.cos(anglehor);
+    
+    camera.position.set(nx, ny, nz);
+    controls.update();
+}
 
 // file menu
 document.querySelector("#menu-file").addEventListener("click", function () {
@@ -1289,73 +1353,9 @@ a.click();
 setTimeout(() => URL.revokeObjectURL(url), 10000);
 } */
 
-
 function exportSceneToMPD(name) {
     const lines = [];
-
-    /*const ldraw_color_map = {
-    "C91A09": 4, // Bright Red
-    "F8CC00": 14, // Bright Yellow
-    "0020A0": 12, // Bright Blue
-    "005700": 28, // Dark Green
-    "FE8A18": 10, // Bright Orange
-    "D941BB": 124, // Bright Violet / Dark Purple
-
-    "000000": 0, // Black
-    "FFFFFF": 15, // White
-    "747371": 294, // Dark Stone Grey / Dark Bluish Grey
-    "A3A2A4": 295, // Medium Stone Grey / Light Bluish Grey
-    "958A73": 5, // Brick Yellow / Tan
-    "6C5C4D": 8, // Dark Stone Grey / Dark Brown
-
-    "812A00": 308, // Reddish Brown
-    "5883C1": 23, // Medium Blue
-    "4B974B": 37, // Sand Green
-    "A52A2A": 59, // Dark Red
-    "B36D2C": 38, // Dark Orange
-    "FCB7BC": 223, // Bright Pink
-
-    "60C0E0": 212, // Bright Light Blue
-    "FBE696": 226, // Light Yellow
-    "84B68D": 36, // Bright Green
-    "92B28B": 335, // Bright Yellowish Green / Lime
-    "002A5A": 26, // Dark Blue
-    "DDDD22": 334, // Vibrant Yellow
-    }; */
-
-    const ldraw_color_map = {
-        // row 1
-        "C91A09": 4,   // Bright Red
-        "F8CC00": 14,   // Bright Yellow
-        "0020A0": 12,   // Bright Blue
-        "005700": 28,   // Dark Green
-        "FE8A18": 10,   // Bright Orange
-        "D941BB": 124,   // Bright Violet
-
-        // row 2
-        "000000": 0,   // Black
-        "FFFFFF": 15,   // White
-        "747371": 294,   // Dark Stone Grey
-        "A3A2A4": 295,   // Medium Stone Grey
-        "958A73": 5,   // Dark Tan
-        "6C5C4D": 8,   // Brown
-
-        // row 3
-        "812A00": 308,   // Dark Brown
-        "5883C1": 23,   // Medium Blue
-        "4B974B": 37,   // Sand Green
-        "A52A2A": 59,   // Dark Red
-        "B36D2C": 38,   // Dark Orange
-        "FCB7BC": 223,   // Bright Pink
-
-        // row 4
-        "60C0E0": 212,   // Bright Light Blue
-        "FBE696": 226,   // Earth Yellow
-        "84B68D": 36,   // Bright Green
-        "92B28B": 335,   // Lime Green
-        "002A5A": 26,   // Dark Blue
-        "DDDD22": 334    // Vibrant Yellow
-    };
+    const ldraw_color_map = new Map(ldrawColors.map(c => [c.hex.toUpperCase(), c.code]));
 
     lines.push(`0 FILE ${name}.ldr`);
     lines.push(`0 ${name}`);
@@ -1365,72 +1365,32 @@ function exportSceneToMPD(name) {
     lines.push(`0 !LICENSE Redistributable under CCAL version 2.0`);
     lines.push(`0`);
 
-    /*scene.updateMatrixWorld(true);
-
-    scene.traverse(child => {
-    if (!child.isMesh || !child.userData.ldraw || !child.userData.isBlock) {
-        return;
-    }
-
-    const obj = child.clone();
-    obj.applyMatrix4(new THREE.Matrix4().makeScale(1, 1, -1));
-    obj.updateMatrixWorld(true);
-
-    let color_code = 16;
-    if(obj.material && !Array.isArray(obj.material)) {
-        const hex = obj.material.color.getHexString() || "ffffff";
-        color_code = ldraw_color_map[hex.toUpperCase()];
-    }
-
-    const file = obj.userData.ldraw.replace("parts/", "");
-    const color = color_code;
-
-    const line = toLDrawLine(obj.matrixWorld, color, file);
-    lines.push(line);
-    }); */
-
-    // before traversal:
     scene.updateMatrixWorld(true);
-
+    scene.rotation.x += Math.PI;
     scene.traverse(child => {
         if (!child.isMesh || !child.userData.ldraw) {
             return;
         }
 
-        // –– COLOR LOOKUP ––
-        let hex = child.material.color.getHexString().toUpperCase();
-        if (!(hex in ldraw_color_map)) {
-            console.warn("Unknown hex color:", hex);
+        let hex = "#FFFFFF";
+        if(child.material && !Array.isArray(child.material)) {
+            hex = "#" + child.material.color.getHexString().toUpperCase();
+        } else {
+           hex = "#FFFFFF"; //fallback too lazy to iterate over multi materials
         }
-        const color_code = ldraw_color_map[hex] ?? 16;
 
-        // –– PART FILENAME ––
-        const partName = child.userData.ldraw.replace("parts/", "");
+        let color_code = ldraw_color_map.get(hex.toUpperCase()) || 16;
+        let partName = child.userData.ldraw.replace("parts/", "");
 
-        // –– POSITION ––
-        /* const scaleFactor = 1000 / 0.4;          // meters→LDU
-        const pos = new THREE.Vector3();
+        let pos = new THREE.Vector3();
         child.getWorldPosition(pos);
-        const x = (pos.x * scaleFactor).toFixed(2);
-        const y = (pos.y * scaleFactor).toFixed(2);
-        // flip Z to match LDraw’s left‑handed Z‑up
-        const z = (-pos.z * scaleFactor).toFixed(2); */
-
-        const pos = new THREE.Vector3();
-        child.getWorldPosition(pos);
-        const x = (pos.x).toFixed(2);
-        const y = (pos.y).toFixed(2);
-        const z = (pos.z).toFixed(2);
+        let x = (pos.x).toFixed(2);
+        let y = (pos.y).toFixed(2);
+        let z = (pos.z).toFixed(2);
 
         // –– ROTATION ––
-        // Pull the 3×3 from matrixWorld directly:
-        const e = child.matrixWorld.elements;
-        // Three.js stores matrices column-major, so the 3×3 is:
-        //  [ e[0]  e[4]  e[8] ]
-        //  [ e[1]  e[5]  e[9] ]
-        //  [ e[2]  e[6]  e[10]]
-        // To write row-major “a b c d e f g h i”, we reorder:
-        const a = e[0].toFixed(5),
+        let e = child.matrixWorld.elements;
+        let a = e[0].toFixed(5),
             b = e[4].toFixed(5),
             c = e[8].toFixed(5),
             d = e[1].toFixed(5),
@@ -1440,8 +1400,7 @@ function exportSceneToMPD(name) {
             h = e[6].toFixed(5),
             i = e[10].toFixed(5);
 
-        // –– EMIT LINE ––
-        const line = [
+        let line = [
             `1`, color_code,
             x, y, z,
             a, b, c,
@@ -1451,49 +1410,20 @@ function exportSceneToMPD(name) {
         ].join(" ");
         lines.push(line);
     });
+    scene.rotation.x -= Math.PI;
 
     let result = lines.join('\n');
-    const date = getDate();
+    let date = getDate();
 
-    const blob = new Blob([result], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    let blob = new Blob([result], { type: 'text/plain' });
+    let url = URL.createObjectURL(blob);
+    let a = document.createElement('a');
     a.href = url;
     a.download = `creation-${date}.mpd`;
     a.click();
 
     setTimeout(() => URL.revokeObjectURL(url), 10000);
 }
-
-/* function toLDrawLine(matrix4, colorCode, partName) {
-    matrix4 = matrix4.clone();
-
-    matrix4.multiply(new THREE.Matrix4().makeScale(1, 1, -1));
-
-    const pos = new THREE.Vector3();
-    const quat = new THREE.Quaternion();
-    const scl = new THREE.Vector3();
-    matrix4.decompose(pos, quat, scl);
-    matrix4.compose(pos, quat, scl);
-
-    const e = matrix4.transpose().elements;
-
-    //const scaleFactor = 1000 / 0.4; // meters to ldu
-    //const tx = (e[3] * scaleFactor).toFixed(2);
-    //const ty = (e[7] * scaleFactor).toFixed(2);
-    //const tz = (e[11] * scaleFactor).toFixed(2);
-
-    const tx = (e[3]).toFixed(2);
-    const ty = (e[7]).toFixed(2);
-    const tz = (e[11]).toFixed(2);
-
-    const r11 = e[0].toFixed(5), r12 = e[1].toFixed(5), r13 = e[2].toFixed(5);
-    const r21 = e[4].toFixed(5), r22 = e[5].toFixed(5), r23 = e[6].toFixed(5);
-    const r31 = e[8].toFixed(5), r32 = e[9].toFixed(5), r33 = e[10].toFixed(5);
-    
-    return `1 ${colorCode} ${tx} ${ty} ${tz} ` + [r11, r12, r13, r21, r22, r23, r31, r32, r33].join(' ') + ` ${partName}`;
-} */
-
 
 document.getElementById("cre-import").addEventListener("change", function (event) {
     let file = event.target.files[0];
@@ -1628,44 +1558,50 @@ document.getElementById("cre-import-ldr").addEventListener("change", async funct
             }); */
 
             ldraw_loader.parse(e.target.result, async function (creation) {
+                creation.rotation.x += Math.PI;
+                creation.updateMatrixWorld(true);
+
                 await asyncTraverse(creation, async (child) => {
                     if (child?.userData?.fileName || child?.parent?.userData?.fileName || child?.parent?.parent?.userData?.fileName) {
                         let filename = child?.userData?.fileName;
 
                         part = 'parts/' + filename;
                         partName = filename;
+                        let childColor;
+                        let partMatrix;
 
-                        //if(child?.material?.color) {
-                            let childColor = '#' + child?.material?.color?.getHexString();
-                        //}
+                        child.traverse((subChild) => {
+                            if (subChild.isMesh) {
+                                partMatrix = subChild.matrixWorld.clone();
 
-                        partPosition = child.position.clone();
-                        partRotation = child.rotation.clone();
-                        console.log(child);
+                                if (subChild.material) {
+                                    if(Array.isArray(subChild.material)) {
+                                        childColor = subChild.material[1].color;
+                                    } else {
+                                        childColor = subChild.material.color;
+                                    }
+                                    
+                                    childColor = '#' + childColor.getHexString();
+                                } else {
+                                    console.log('no material');
+                                    childColor = "#fafafa";
+                                }
+                            }
+                        });
 
-						addBlockV2(part, childColor, partPosition, partRotation, part, null, null, null, null);
-						
+                        if(!partMatrix) {
+                            return new Error('Part missing matrixWorld');
+                        }
+
+                        addBlockV2(part, childColor, partMatrix, null, null, part, null, 1.0, null, null);
 						child.visible = false;
                     }
+
                     if (child.isLineSegments) {
                         child.visible = false;
                     }
                 });
-
-                console.log(creation.rotation.x);
-                creation.rotation.x += creation.rotation.x / 2;
-                console.log(creation.rotation.x);
-
                 scene.add(creation);
-                //scene.rotation.x += Math.PI;
-
-                /*scene.traverse(function (child) {
-                    if (child?.userData?.ldraw) {
-                        child.rotation.x -= Math.PI;
-                        console.log(child.userData.ldraw);
-                    }
-                });*/
-
             });
 
         } catch (err) {
@@ -1686,10 +1622,13 @@ async function loadSceneFromJSON(data) {
         return;
     }
 
-    document.getElementById('ui-loading-file').style.display = "block";
-    document.getElementsByClassName('scene')[0].style.opacity = "0.1";
+    if(show_import_animation === true) {
+        document.getElementById('ui-loading-file').style.display = "block";
+        document.getElementsByClassName('scene')[0].style.opacity = "0.1";
+    }
 
     for (const block of data.blocks) {
+        let modelName = data?.metadata?.name || "unnamed";
         partName = block.ldraw;
         partColor = '#' + block.color;
         partPosition = block.position;
@@ -1698,7 +1637,7 @@ async function loadSceneFromJSON(data) {
 		partTexture = block.texturedata;
         partOpacity = block.opacity ?? '1.0';
 
-        if (Array.isArray(block.matrixw.elements)) {
+        if (block.matrixw && Array.isArray(block.matrixw.elements)) {
             partMatrixWorld = new THREE.Matrix4().fromArray(block.matrixw.elements);
         } else if (partPosition && partRotation) {
             const position = new THREE.Vector3(partPosition.x, partPosition.y, partPosition.z);
@@ -1708,6 +1647,8 @@ async function loadSceneFromJSON(data) {
             const quaternion = new THREE.Quaternion().setFromEuler(rotationEuler);
 
             partMatrixWorld = new THREE.Matrix4().compose(position, quaternion, scale);
+        } else {
+            throw new Error('Object is missing elements: matrixw (can also use traditional block.position and block.rotation');
         }
 
         part = 'parts/' + block.ldraw;
@@ -1722,11 +1663,14 @@ async function loadSceneFromJSON(data) {
             tooltip(`Failed to load ${block.ldraw}`);
         }
     }
+    document.title = modelName + ' - ' + DEFAULT_TITLE;
 
-    console.log("Creation imported.");
-    tooltip("Creation imported.");
-    document.getElementById('ui-loading-file').style.display = "none";
-    document.getElementsByClassName('scene')[0].style.opacity = "1.0";
+    if(show_import_animation === true) {
+        console.log("Creation imported.");
+        tooltip("Creation imported.");
+        document.getElementById('ui-loading-file').style.display = "none";
+        document.getElementsByClassName('scene')[0].style.opacity = "1.0";
+    }
     updateSceneData();
 }
 
@@ -2066,7 +2010,7 @@ document.getElementById("trans-enable").addEventListener("change", function () {
     applyTransparent(scene.userData.ui_trans);
 });
 
-document.getElementById("hdr-enable").addEventListener("change", function () {
+/*document.getElementById("hdr-enable").addEventListener("change", function () {
     const use_hdri = this.checked;
     scene.userData.use_hdri = use_hdri;
 
@@ -2075,7 +2019,7 @@ document.getElementById("hdr-enable").addEventListener("change", function () {
         document.getElementById("hdr-background-enable").checked = false;
     }
 
-    applyHdri(scene.userData.use_hdri, scene.userData.hdri_background);
+    applyHdri(use_hdri, scene.userData.hdri_background);
 });
 
 document.getElementById("hdr-background-enable").addEventListener("change", function () {
@@ -2087,6 +2031,33 @@ document.getElementById("hdr-background-enable").addEventListener("change", func
         tooltip('Please enable "HDRI lighting" to change the background');
         return;
     }
+    applyHdri(scene.userData.use_hdri, scene.userData.hdri_background);
+});*/
+
+document.getElementById("hdr-enable").addEventListener("change", function () {
+    const use_hdri = this.checked;
+    scene.userData.use_hdri = use_hdri;
+
+    document.getElementById("hdr-background-enable").disabled = !use_hdri;
+    if (!use_hdri) {
+        scene.userData.hdri_background = false;
+        document.getElementById("hdr-background-enable").checked = false;
+    }
+
+    applyHdri(use_hdri, scene.userData.hdri_background);
+});
+
+document.getElementById("hdr-background-enable").addEventListener("change", function () {
+    const hdri_background = this.checked;
+
+    if (!scene.userData.use_hdri) {
+        this.checked = false; 
+        scene.userData.hdri_background = false;
+        tooltip('Please enable "HDRI lighting" to change the background');
+        return;
+    }
+
+    scene.userData.hdri_background = hdri_background;
     applyHdri(scene.userData.use_hdri, scene.userData.hdri_background);
 });
 
@@ -2135,7 +2106,7 @@ function applyTransparent(ui_trans) {
     saveSettings();
 }
 
-function applyHdri(use_hdri, background) {
+/*function applyHdri(use_hdri, background) {
     if(use_hdri) {
         let rgbe_loader = new THREE.HDRLoader(); // using hdrloader now because that's replaced for some reason
         let hdris = scene.userData.hdris;
@@ -2171,6 +2142,67 @@ function applyHdri(use_hdri, background) {
                 document.body.classList.remove('hdri-active');
                 scene.background = null;
                 scene.environment = null;
+            }
+        });
+
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.0;
+    } else {
+        renderer.setClearAlpha(0);
+        document.body.classList.remove('hdri-active');
+        scene.background = null;
+        scene.environment = null;
+    }
+
+    if (isDark()) {
+        document.body.classList.add("dark");
+        document.getElementById("darkmode-enable").setAttribute('checked', 'true');
+    } else {
+        if (document.body.classList.contains("dark")) {
+            document.body.classList.remove("dark");
+            document.getElementById("darkmode-enable").setAttribute('checked', 'false');
+        }
+    }
+
+    scene.updateMatrixWorld(true);
+    saveSettings();
+}*/
+
+function applyHdri(use_hdri, background) {
+    if (use_hdri) {
+        let rgbe_loader = new THREE.HDRLoader(); 
+        let hdris = scene.userData.hdris;
+        let selected = hdris.selected;
+        let hdr_url;
+
+        let selectedHdr = hdris[selected];
+        hdr_url = selectedHdr ? selectedHdr.url : null;
+
+        if (!hdr_url) {
+            hdr_url = hdris[0].url; 
+        }
+
+        rgbe_loader.load(hdr_url, function (texture) {
+            texture.mapping = THREE.EquirectangularReflectionMapping;
+            scene.environment = texture;
+
+            if (background) {
+                scene.background = texture;
+                document.body.classList.add('hdri-active');
+
+                if (isDark()) {
+                    document.body.classList.add("dark");
+                    document.getElementById("darkmode-enable").setAttribute('checked', 'true');
+                } else {
+                    if (document.body.classList.contains("dark")) {
+                        document.body.classList.remove("dark");
+                        document.getElementById("darkmode-enable").setAttribute('checked', 'false');
+                    }
+                }
+            } else {
+                renderer.setClearAlpha(0);
+                document.body.classList.remove('hdri-active');
+                scene.background = null; 
             }
         });
 
@@ -2255,11 +2287,11 @@ function init() {
     
     // WebGl renderer
     //renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer = new WebGPURenderer({ alpha: true });
+    renderer = new WebGPURenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     // transparent ui
-    if(scene.userData.ui_trans || scene.userData.ui_trans === undefined || scene.userData.ui_trans === null) {
+    if(scene.userData.ui_trans) {
         applyTransparent(scene.userData.ui_trans);
         document.getElementById("trans-enable").setAttribute('checked', 'true');
     } else {
@@ -2267,7 +2299,7 @@ function init() {
     }
 
     //hdri
-    if(scene.userData.use_hdri || scene.userData.use_hdri === undefined || scene.userData.use_hdri === null) {
+    if(scene.userData.use_hdri) {
         applyHdri(scene.userData.use_hdri, scene.userData.hdri_background);
         document.getElementById("hdr-enable").setAttribute('checked', 'true');
     } else {
@@ -2663,6 +2695,14 @@ function init() {
         stats.dom.style.top = '';
         document.querySelector('.stats-contain').appendChild(stats.dom);
     }
+
+    document.title = DEFAULT_TITLE;
+
+    let versionstrings = document.querySelectorAll('.version-string');
+    console.log(versionstrings);
+    versionstrings.forEach(elm => {
+        elm.textContent = window.version;
+    });
 }
 
 class statehistoryManager {
@@ -2700,7 +2740,7 @@ class statehistoryManager {
   }
 
   redo() {
-    if (this.redoStack.length === 0) {
+    if (this.redoStack.length <= 0) {
         return;
     }
     
@@ -2711,29 +2751,6 @@ class statehistoryManager {
 
   loadState(jsonState) {
     console.log(jsonState);
-
-    /*for (let i = scene.children.length - 1; i >= 0; i--) {
-        const obj = scene.children[i];
-        if (obj?.userData && obj?.userData?.ldraw || 
-            obj?.parent?.userData && obj?.parent?.userData?.ldraw || 
-            obj?.parent?.parent?.userData && obj?.parent?.parent?.userData?.ldraw ||
-            obj?.child?.userData && obj?.child.userData?.ldraw ||
-            obj?.child?.child?.userData && obj?.child?.child?.userData?.ldraw) {
-
-            scene.remove(obj);
-                if (obj.geometry) {
-                    obj.geometry.dispose();
-                }
-
-                if (obj.material) {
-                    if (Array.isArray(obj.material)) {
-                        obj.material.forEach(m => m.dispose());
-                    } else {
-                        obj.material.dispose();
-                    }
-                }
-        }
-    }*/
     
     if (blockGroups && blockGroups.length > 0) {
         blockGroups.forEach(function (g) {
@@ -2758,19 +2775,25 @@ class statehistoryManager {
         transformControls.detach();
     }
 
+    show_import_animation = false;
     loadSceneFromJSON(JSON.parse(jsonState));
-    scene.updateMatrixWorld();
+    show_import_animation = true;
+
+    this.scene.updateMatrixWorld();
   }
 }
+
 window.statehistory = new statehistoryManager(scene);
 
 window.changeBlockColor = function(color) {
+    const ldrawHexMap = new Map(ldrawColors.map(c => [c.hex.toUpperCase(), c.type]));
+
     if (!selectedObject) {
         tooltip("No part selected");
         return;
     }
 
-    selectedObject.traverse((child) => {
+    /*selectedObject.traverse((child) => {
         if (child.isMesh && child.material) {
             if (Array.isArray(child.material)) {
                 let mat;
@@ -2783,14 +2806,6 @@ window.changeBlockColor = function(color) {
                         return;
                     }
                 } else {					
-					/*if(child.userData.main_mat_uuid != undefined) {
-						mat = child.material[child.userData.main_mat_index];
-						selectedMap = child.userData.main_mat_index;
-					} else {
-						mat = child.material[0];
-						selectedMap = 0;
-					}*/
-
                     if(child.userData.main_mat_name != undefined) {
                         mat = child.material[child.userData.main_mat_index];
                         selectedMap = child.userData.main_mat_index;
@@ -2801,43 +2816,69 @@ window.changeBlockColor = function(color) {
                 }
 
                 if (mat && mat.color && !mat.map) {
-                    /*mat.color.set(color);
-                    mat.needsUpdate = true;*/
-					
-					//let cloned_mat = mat.clone();
-					//cloned_mat.color.set(color);
-                    //cloned_mat.color = new THREE.Color(color || "#ffffff");
-					//child.material[child.userData.main_mat_index] = mat.clone();
-
                     console.log(child.material[child.userData.main_mat_index]);
                     child.material[selectedMap].color = new THREE.Color(color || "#ffffff");
                     console.log(selectedMap);
                     child.material[selectedMap].needsUpdate = true;
-
-					/*mat = child.material[child.userData.main_mat_index];
-					cloned_mat = mat;*/
-
-					//console.log(cloned_mat.color.getHexString().toLowerCase());
                 }
 				
 				document.querySelector('#selected-map').value = selectedMap;
 
                 selectedMap = null;
-                updateSceneData();
-                updateBLItems();
-                statehistory.saveState();
             } else if (child.material.color) {
                 child.material.color.set(color);
                 child.material.needsUpdate = true;
-                updateSceneData();
-                updateBLItems();
-                statehistory.saveState();
+            }
+        }
+    });*/
+
+    selectedObject.traverse((child) => {
+        if (child.isMesh && child.material) {
+            
+            //array material
+            if (Array.isArray(child.material)) {
+                let targetIdx;
+                if (selectedMap != null) {
+                    if (child.material[selectedMap]) {
+                        targetIdx = selectedMap;
+                    } else {
+                        selectedMap = null;
+                        tooltip('Invalid multi color map selected');
+                        return;
+                    }
+                } else {					
+                    if (child.userData.main_mat_name !== undefined) {
+                        targetIdx = child.userData.main_mat_index;
+                    } else {
+                        targetIdx = 0;
+                    }
+                }
+
+                const currentMat = child.material[targetIdx];
+                if (currentMat && currentMat.color && !currentMat.map) {
+                    child.material[targetIdx] = createCustomMaterial(color, ldrawHexMap);
+                }
+				
+                document.querySelector('#selected-map').value = targetIdx;
+                selectedMap = null;
+
+            //single material
+            } else if (child.material.color) {
+                child.material = createCustomMaterial(color, ldrawHexMap);
             }
         }
     });
 
-    console.log(`Part color changed to ${color}`);
-    tooltip(`Part color changed to ${color}`);
+    updateSceneData();
+    updateBLItems();
+    updatecolorelement();
+    statehistory.saveState();
+
+    let namemap = new Map(ldrawColors.map(c => [c.hex.toUpperCase(), c.name]));
+    let colorname = namemap.get(color.toUpperCase()) || color;
+
+    console.log(`Part color changed to ${colorname}`);
+    tooltip(`Part color changed to ${colorname}`);
 }
 
 function deleteBlock(part) {
@@ -2889,11 +2930,11 @@ function capture() {
 
     let count = 0;
 	
-	if(selectedObject) {
-		transformControls.detach(selectedObject);
-		transformControls.visible = false;
+    if (selectedObject) {
+        transformControls.detach(selectedObject);
+        transformControls.visible = false;
         selectedObject = null;
-	}
+    }
 
     scene.traverse(function (object) {
         if (object?.isMesh && object?.userData.isBlock && !object?.isTransformControls) {
@@ -2910,25 +2951,35 @@ function capture() {
     });
 
     if (count === 0) {
-        console.warn("scene is empty");
+        console.warn("Scene is empty");
         return null;
     }
 
-    let light2 = new THREE.DirectionalLight(0xffffff, 1);
+    let light2 = new THREE.DirectionalLight(0xffffff, 2);
     light2.position.set(250, 250, 250);
     thumb.add(light2);
-
-    let camera2 = camera.clone();
 
     let ambient2 = new THREE.AmbientLight(0xdddddd);
     thumb.add(ambient2);
 
-    let renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
-    renderer.setClearColor(0x000000, 0); // transparent
-    renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
-    renderer.render(thumb, camera2);
+    let capture_height = 500;
+    let capture_width = Math.round(capture_height * (16 / 9));
 
-    let thumbnail = renderer.domElement.toDataURL("image/webp", 0.5);
+    let camera2 = camera.clone();
+    camera2.aspect = capture_width / capture_height;
+    camera2.updateProjectionMatrix();
+
+    let tempRenderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, alpha: true });
+    tempRenderer.setClearColor(0x000000, 0); 
+    tempRenderer.setPixelRatio(1);
+    tempRenderer.setSize(capture_width, capture_height);
+    
+    tempRenderer.render(thumb, camera2);
+    let thumbnail = tempRenderer.domElement.toDataURL("image/webp", 0.75);
+
+    tempRenderer.dispose();
+    thumb.clear();
+
     return thumbnail;
 }
 
@@ -3088,6 +3139,9 @@ function addBlock(throwSuccess, throwError) {
 addBlock version 2
 Adds part to scene (should be pretty clear)
 
+Default config:
+Ldraw part id, Object hex color, Object matrix world, HTML Object span, Ldraw icon image url, Ldraw part id, Texture url, Opacity (0.0 - 1.0), Success promise, Error promise
+
 How would I handle so many variables to pass inside this?
 You would set up something like this, for something you don't need, make it null
 
@@ -3097,33 +3151,22 @@ part, partColor, partMatrixW, span, original_img, part, null, null, null, null
 */
 
 function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileName, texture, partOpacity, throwSuccess, throwError) {
-	const FILE_LOCATION_TRY_PARTS = 0;
-	const FILE_LOCATION_TRY_P = 1;
-	const FILE_LOCATION_TRY_MODELS = 2;
-	const FILE_LOCATION_AS_IS = 3;
-	const FILE_LOCATION_TRY_RELATIVE = 4;
-	const FILE_LOCATION_TRY_ABSOLUTE = 5;
-	const FILE_LOCATION_NOT_FOUND = 6;	
-				
     if (!ldraw_loader) {
-        console.error('LdrawLoader is missing or not loaded yet.');
-        tooltip('Something really, really, weird has occured.');
+        console.error('LdrawLoader is missing or not loaded yet');
         return;
     }
 
     if (!part) {
-        console.error('No part is selected!');
-        tooltip('Please select a part.');
+        console.error('No part is selected');
         return;
     }
 
     if (!partColor) {
-        console.warn('Part color is not set. Setting color as white.');
+        console.warn('Part color is not set setting color as white');
         partColor = "#ffffff";
     }
 
     transformControls.detach(selectedObject);
-    console.log("Loading part:", part);
 
     if(!fileName || fileName === undefined || fileName === null) {
         fileName = part;
@@ -3132,17 +3175,16 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
 
     ldraw_loader.load(fileName, function (loadedGroup) {
         if (!loadedGroup) {
-            console.error("Loaded group does not exist.");
-            tooltip('Please select a block with valid mesh data');
+            console.error("Loaded group does not exist");
             return;
         }
 
         let blockGroup = new THREE.Group();
-        //blockGroup.name = `ldraw_${makeid(10)}`;
         blockGroup.name = `ldgroup_${blockGroup.uuid}`;
         blockGroup.ldraw = part;
 
         let display_lines = scene.userData.displayLines;
+        let colormap = new Map(ldrawColors.map(c => [c.hex.toUpperCase(), c.type]));
 
         loadedGroup.traverse((child) => {
             if (child.isLineSegments && child.parent.isGroup) {
@@ -3150,18 +3192,14 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
                 return;
             }
 
-            if (child.isMesh && child.userData && child.userData.filename === 'stud.dat') {
-                child.userData.filename === 'stud-logo.dat';
-            }
-
-            if (child.isMesh && child.userData && child.userData.filename === 'stud2.dat') {
-                child.userData.filename === 'stud2-logo.dat';
-            }
-
             let childOpacity = 1;
             console.log(partOpacity);
             if(partOpacity != null && partOpacity != undefined && partOpacity <= 1.0 && partOpacity <= 1) {
                 childOpacity = partOpacity;
+            }
+
+            if(child.material) {
+                console.log(child.material?.userData);
             }
 
             if (child.isMesh && !child.material.map && !child.isLineSegments && !Array.isArray(child.material)) {
@@ -3175,7 +3213,7 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
                     partUVGen(geometry);
                 }
 
-                if (scene?.userData?.highRes === true) {
+                /*if (scene?.userData?.highRes === true) {
                     child.material = new THREE.MeshPhysicalMaterial({
                         color: new THREE.Color(partColor || "#ffffff"),
                         reflectivity: 0.5,
@@ -3189,6 +3227,16 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
                     child.material = new THREE.MeshPhongMaterial({
                         color: new THREE.Color(partColor || "#ffffff")
                     });
+                }*/
+
+                let custommaterial = createCustomMaterial(partColor, colormap);
+
+                if(custommaterial && scene?.userData?.highRes === true) {
+                    child.material = custommaterial;
+                } else {
+                    child.material = new THREE.MeshPhysicalMaterial({
+                        color: new THREE.Color(partColor || "#ffffff")
+                    });
                 }
 
                 child.userData.isBlock = true;
@@ -3198,7 +3246,6 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
 
                 transformControls.attach(child);
                 selectedObject = child;
-                multiSelectedObject = new Set();
             }
 
             if (child.material && child.material.map && child.isMesh && !child.isLineSegments) {
@@ -3210,9 +3257,8 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
 				// main color uuid, for minifig textures
 				if (Array.isArray(child.material)) {
 					child.material.forEach((mat) => {
-						console.log(mat.name);
+                        let originalMap = mat.map;
 						if(mat.name.includes("Main_Colour")) {
-                        //if(mat.name === " Main_Colour") {
                             var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
 
                             child.material[index] = mat.clone();
@@ -3222,9 +3268,7 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
 
 							child.userData.main_mat_uuid = mat.uuid;
                             child.userData.main_mat_name = mat.name;
-							
 							child.userData.main_mat_index = index;
-							console.log(index);
 
                             if(partColor) {
                                 child.material[index].color = new THREE.Color(partColor || "#ffffff");
@@ -3239,38 +3283,6 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
             }
 			
 			const textureLoader = new THREE.TextureLoader();
-			/*if(child.material && child.isMesh && !child.material.map && !child.isLineSegments && texture) {
-				let uvs = generateUVMap(child.geometry);
-				child.geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
-
-				textureLoader.load(texture, (texturemap) => {
-					texturemap.colorSpace = THREE.SRGBColorSpace;
-					child.material.map = texturemap;
-					child.material.color = new THREE.Color("#ffffff");
-					child.material.needsUpdate = true;
-					child.userData.main_mat_index = 1;
-								
-					function toDataURL(url, callback) {
-					  var xhr = new XMLHttpRequest();
-					  xhr.onload = function() {
-						var reader = new FileReader();
-						reader.onloadend = function() {
-						  callback(reader.result);
-						}
-						reader.readAsDataURL(xhr.response);
-					  };
-					  xhr.open('GET', url);
-					  xhr.responseType = 'blob';
-					  xhr.send();
-					}
-
-					toDataURL(texture, function(dataUrl) {
-					  child.userData.textureData = dataUrl;
-					});
-				}, undefined, (err) => {
-					console.warn("Texture load failed or doesn't exist: " + err);
-				});
-			}*/
 
             if(child.material && child.isMesh && !child.material.map && !child.isLineSegments && texture && !Array.isArray(child.material)) {
 				textureLoader.load(texture, (texturemap) => {
@@ -3286,31 +3298,9 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
                         side: THREE.FrontSide 
                     });
 
-                    /*const ogMat = child.material.map;
-
-                    const decalMats = [ogMat, decalMat];
-
-                    const decalGeo = child.geometry.clone();
-
-                    const decalMesh = new THREE.Mesh(decalGeo, decalMats);
-                    decalMesh.position.y += 0.001; 
-                    
-                    child.parent.add(decalMesh);
-                    child.userData.hasTextureLayer = true;*/
-
-                    /*const materials = [child.material, textureMat];
-                    child.material = materials;*/
-
-                    //child.material[1].map = texturemap;
-                    /*child.material[1].map.wrapS = THREE.RepeatWrapping;
-                    child.material[1].map.wrapT = THREE.RepeatWrapping;*/
-
                     child.material = decalMat;
 					child.material.color = new THREE.Color("#ffffff");
 					child.material.needsUpdate = true;
-
-                    /*child.userData.main_mat_uuid = child.material[0].uuid;
-                    child.userData.main_mat_name = child.material[0].name*/
 					child.userData.main_mat_index = child.material[1];
 								
 					function toDataURL(url, callback) {
@@ -3336,7 +3326,6 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
 			}
 
             child.userData.parentName = partName;
-            //child.userData.id = makeid(15);
             child.userData.id = child.uuid;
             child.userData.original_mat = child.material;
 
@@ -3354,14 +3343,6 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
 
         blockGroup.add(loadedGroup);
 
-        /*if (partPosition && partRotation) {
-            blockGroup.position.set(partPosition.x, partPosition.y, partPosition.z);
-            blockGroup.rotation.set(partRotation.x, partRotation.y, partRotation.z);
-        } else {
-            blockGroup.position.y = objectSize(blockGroup).y;
-            blockGroup.rotation.x = Math.PI;
-        }*/
-
         if (partMatrixW instanceof THREE.Matrix4) {
             blockGroup.matrixAutoUpdate = true;
             partMatrixW.decompose(blockGroup.position, blockGroup.quaternion, blockGroup.scale);
@@ -3373,15 +3354,19 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
         }
 
         blockGroup.userData.partName = partName;
+        multiSelectedObject = new Set();
         scene.add(blockGroup);
 
         blocks.push(blockGroup);
         blockGroups.push(blockGroup);
         blockGroup.sceneCount = blocks.length;
 
-        tooltip(`Added part ${part.replace("parts/", "")}`);
+        if(show_import_animation === true) {
+            tooltip(`Added part ${part.replace("parts/", "")}`);
+        }
 
         updateBLItems();
+        updatecolorelement();
         updateSceneData();
         statehistory.saveState();
 
@@ -3389,125 +3374,71 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
             partSpan.querySelector('img').setAttribute("src", originalPSImg);
         }
 
-        throwSuccess();
-    }, undefined, function (error) {
-        if(error.code === 20 || error.code === "20") {
-            /*let part_urls = [
-                'parts/',
-                'p/',
-                'parts/p/',
-                'p/48/',
-                'p/8/',
-                'parts/s/',
-            ];
-
-            part_urls.forEach((url, count) => {
-				if(count != 7) {
-					let partmain = part.replace('parts/', "");
-					let fileName2 = url + partmain;
-					console.log('RETRY. Part location: ' + fileName2);
-					
-					addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName2, throwSuccess, throwError);
-				} else {
-					throw new Error('An error has occured');
-				}
-			}); */
-			
-			function addBlockLocation(locationState, triedLowerCase) {
-				let fileName2 = fileName.replace('parts/', '');
-				let subobjectURL = fileName2;
-				
-				if (locationState === FILE_LOCATION_NOT_FOUND) {
-					throw new Error('Subobject "' + fileName + '" could not be loaded.');
-				}
-				
-				switch ( locationState ) {
-					case FILE_LOCATION_AS_IS:
-						locationState = locationState + 1;
-						break;
-					case FILE_LOCATION_TRY_PARTS:
-						subobjectURL = 'parts/' + subobjectURL;
-						locationState = locationState + 1;
-						break;
-					case FILE_LOCATION_TRY_P:
-						subobjectURL = 'p/' + subobjectURL;
-						locationState = locationState + 1;
-						break;
-					case FILE_LOCATION_TRY_MODELS:
-						subobjectURL = 'models/' + subobjectURL;
-						locationState = locationState + 1;
-						break;
-					case FILE_LOCATION_TRY_RELATIVE:
-						subobjectURL = fileName.substring( 0, fileName.lastIndexOf( '/' ) + 1 ) + subobjectURL;
-						locationState = locationState + 1;
-						break;
-					case FILE_LOCATION_TRY_ABSOLUTE:
-						if ( triedLowerCase ) {
-							// Try absolute path
-							locationState = FILE_LOCATION_NOT_FOUND;
-						} else {
-							// Next attempt is lower case
-							fileName = fileName.toLowerCase();
-							subobjectURL = fileName2;
-							triedLowerCase = true;
-							locationState = FILE_LOCATION_TRY_PARTS;
-						}
-						break;
-				}
-				
-				addBlockV2(
-				part,
-				partColor,
-				partPosition,
-				partRotation,
-				partSpan,
-				originalPSImg,
-				subobjectURL,
-                null,
-                null,
-				() => {
-					console.log('done');
-					return;
-				},
-				() => {
-					addBlockLocation(locationState, triedLowerCase);
-					return;
-				},
-				);
-			}
-			
-			if(!throwError || throwError === null || throwError === undefined) {
-				addBlockLocation(FILE_LOCATION_TRY_PARTS, false);
-			}
-        } else {
-            console.error(error);
-			tooltip(error);
-			if(partSpan && partSpan !== null && partSpan !== undefined) {
-				partSpan.querySelector('img').setAttribute("src", originalPSImg);
-			}
-		
-            if(throwError !== undefined) {
-                throwError(error);
-            }
+        if(typeof throwSuccess === "function") {
+            throwSuccess();
         }
+    }, undefined, function (error) {
+        console.error(error);
+		tooltip('Could not add this part to this scene');
 
-        // from ldrawloader
-        // maybe fixes 404s stopping the script in palemoon and basilisk
-        /*if ( fileName.startsWith( 's/' ) ) {
-            fileName = 'parts/' + fileName;
-            addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, throwSuccess, throwError);
-        } else if ( fileName.startsWith( '48/' ) ) {
-            fileName = 'p/' + fileName;
-            addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, throwSuccess, throwError);
-        } else {
-            fileName = fileName;
-            addBlockV2(part, partColor, partPosition, partRotation, partSpan, originalPSImg, fileName, throwSuccess, throwError);
-        }*/
+		if(partSpan && partSpan !== null && partSpan !== undefined) {
+			partSpan.querySelector('img').setAttribute("src", originalPSImg);
+		}
+		
+        if(typeof throwError === "function") {
+            throwError(error);
+        }
     });
+}
 
-    function throwError(err) {
-        throw new Error(err);
-    }
+function createCustomMaterial(partColor, colormap) {
+  const normalizedHex = String(partColor).toUpperCase().trim();
+  
+  const materialType = colormap.get(normalizedHex) || 'solid';
+
+  const params = {
+    color: new THREE.Color(normalizedHex),
+    reflectivity: 0.5,
+    roughness: 0.15,
+    metalness: 0.0,
+    clearcoat: 0.4,
+    envMapIntensity: 0.5,
+    clearcoatRoughness: 0.1
+  };
+
+  switch (materialType) {
+    case 'transparent':
+      params.transparent = true;
+      params.opacity = 0.6;
+      params.roughness = 0.02;
+      params.transmission = 0.75;
+      params.ior = 1.55;
+      break;
+
+    case 'chrome':
+      params.roughness = 0.0;
+      params.metalness = 1.0;
+      params.clearcoat = 0.0;
+      break;
+
+    case 'metallic':
+      params.roughness = 0.25;
+      params.metalness = 0.75;
+      params.clearcoatRoughness = 0.05;
+      break;
+
+    case 'speckle':
+      params.roughness = 0.5;
+      params.clearcoat = 0.2;
+      break;
+
+    case 'special':
+    case 'solid':
+    default:
+      break;
+  }
+
+  return new THREE.MeshPhysicalMaterial(params);
 }
 
 function spanImg(original_img, span) {
@@ -3542,14 +3473,14 @@ function updateBLItems() {
 
 function renderBLItem(obj, level = 0) {
     const id = obj.uuid;
-    const color = obj.material?.color?.toName?.() || '#' + obj.material?.color?.getHexString?.() || "No material";
+    let colormap = new Map(ldrawColors.map(c => [c.hex.toUpperCase(), c.name]));
+    let colorhex = '#' + obj.material?.color?.getHexString?.() || '#ffffff';
+    let color = colormap.get(String(colorhex).toUpperCase().trim());
 
     let part;
     if (obj.userData.isBlock && obj.userData.ldraw) {
-        //part = `Part ${obj?.userData?.fileName || obj?.parent?.userData?.fileName}`;
         part = `${obj?.userData?.ldraw?.split(".")[0] || obj?.parent?.userData?.ldraw?.split(".")[0]}`;
         partIcon = `https://library.ldraw.org/media/ldraw/official/${part}.png`;
-        //<img src="https://library.ldraw.org/media/ldraw/official/parts/3001.png" loading="lazy" width="45px">
     }
 
     const img = document.createElement('img');
@@ -3560,7 +3491,7 @@ function renderBLItem(obj, level = 0) {
     const li = document.createElement('li');
     li.classList.add('scene-block-item');
     li.setAttribute('data-id', id);
-    li.innerHTML = `${part} (${color})`;
+    li.innerHTML = `${part.replace("parts/", "")} (${color})`;
 
     if (obj.children && obj.children.length > 0) {
         const ul = document.createElement('ul');
@@ -3581,7 +3512,7 @@ function renderBLItem(obj, level = 0) {
 
 function groupParts(objects) {
     const group = new THREE.Group();
-    group.name = "ldgroup_" + makeid(8); // random id
+    group.name = "ldgroup_" + makeid(8);
     group.userData.isGroup = true;
 
     scene.add(group);
@@ -3611,25 +3542,6 @@ function ungroupParts(group) {
     parent.remove(group);
 }
 
-function subobjectPosition(g) {
-    g.updateMatrixWorld(true);
-
-    const position = new THREE.Vector3();
-    const quaternion = new THREE.Quaternion();
-    const scale = new THREE.Vector3();
-
-    g.matrixWorld.decompose(position, quaternion, scale);
-
-    const m = g.clone();
-
-    m.position.copy(position);
-    m.quaternion.copy(quaternion);
-    m.scale.copy(scale);
-
-    m.updateMatrix();
-    return m;
-}
-
 function objectSize(obj) {
     if (!obj) {
         return new THREE.Vector3(0, 0, 0);
@@ -3640,37 +3552,6 @@ function objectSize(obj) {
     b.getSize(s);
 
     return s;
-}
-
-function isSmall(g, scale) {
-    const boundingBox = new THREE.Box3().setFromObject(g);
-    const size = new THREE.Vector3();
-    boundingBox.getSize(size);
-
-    return size.x < scale || size.y < scale || size.z < scale;
-}
-
-// old function
-function generateUVMap(geometry) {
-    geometry.computeBoundingBox();
-    geometry.computeVertexNormals();
-
-    const uvs = [];
-
-    const position = geometry.attributes.position;
-    const box = geometry.boundingBox;
-
-    for (let i = 0; i < position.count; i++) {
-        const x = position.getX(i);
-        const y = position.getY(i);
-        const u = (x - box.min.x) / (box.max.x - box.min.x);
-        const v = (y - box.min.y) / (box.max.y - box.min.y);
-        uvs.push(u, v);
-    }
-
-    //geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
-    //return geometry;
-	return uvs;
 }
 
 function partUVGen(geometry) {
@@ -3698,43 +3579,16 @@ function partUVGen(geometry) {
     geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvArray, 2));
 }
 
-function getPriceInfo() {
-    if (selectedObject) {
-        let part = selectedObject.parent.userData.fileName.replace("parts/", "").replace(".dat", "");
-
-        fetch(`parts.php?part_price=true&part=${part}`)
-            .then(res => res.json())
-            .then(data => {
-                const price = data.part_prices?.USD?.new;
-                if (price !== undefined) {
-                    console.log("new price in united states dollars: $" + price);
-                } else {
-                    console.warn(`price data unavailable for ${part}`);
-                }
-            });
-    }
-}
-
-function getFilename(obj) {
-    if (obj) {
-        while (obj) {
-            if (obj.userData) {
-                if (obj.userData.fileName) {
-                    return obj.userData.fileName;
-                }
-            }
-            obj = obj.parent;
-        }
-        return null;
-    }
-}
-
 function duplicatePart() {
     if (selectedObject) {
         part = `parts/${selectedObject.userData.parentName}`;
         partName = selectedObject.userData.parentName;
         partColor = `#${selectedObject.material.color.getHexString().toLowerCase()}`;
-        addBlock();
+
+        selectedObject.updateMatrixWorld(true);
+        let partMatrixW = selectedObject.matrixWorld.clone();
+
+        addBlockV2(part, partColor, partMatrixW, null, null, part, null, null, null, null);
         statehistory.saveState();
     }
 }
@@ -3751,14 +3605,12 @@ function generateSceneJSON() {
 
     let sceneData = {
         metadata: {
-            generator: 'gr8brik',
-            file_version: '1.2.1.2',
-            name: scenedata_name | "My Model",
-            description: scenedata_desc | "My Description"
+            generator: 'Gr8brik',
+            file_version: '1.2.1.3',
+            name: scenedata_name || "Unnamed project",
+            description: scenedata_desc || ""
         },
         camera: camera.position,
-        settings: JSON.stringify(scene.userData),
-        macro: null, // not implemented, planned to be a small scripting langauge (eg for custom animations and lighting)
         blocks: []
     };
 
@@ -3788,13 +3640,11 @@ function generateSceneJSON() {
             euler.setFromQuaternion(rot);
 
             const materials = [];
-
-            // Colors
 			let mesh_opacity;
 			let mesh_texture;
 			let mesh_texturedata;
 
-            //one is usually the index for most of the part that isn't a texture
+            //handles ldrawloader materials better than older function
             if (Array.isArray(mesh_child.material)) {
                 let LAYER_INDEX = 0;
 
@@ -3845,6 +3695,8 @@ function generateSceneJSON() {
 
             const blockData = {
                 color: mesh_color,
+                //legacy position and rotation
+                //for compatablity for old format
                 position: {
                     x: pos.x,
                     y: pos.y,
@@ -4023,10 +3875,10 @@ function LXFMLMatrix(matrix4) {
     const elm = converted.transpose().elements;
 
     return [
-        elm[0], elm[4], elm[8],    // X
-        elm[1], elm[5], elm[9],    // Y
-        elm[2], elm[6], elm[10],   // Z
-        elm[3], elm[7], elm[11]    // position
+        elm[0], elm[4], elm[8],
+        elm[1], elm[5], elm[9],
+        elm[2], elm[6], elm[10],
+        elm[3], elm[7], elm[11]
     ].map(v => v.toFixed(10)).join(',');
 }
 
@@ -4038,8 +3890,15 @@ function updateSceneData() {
 
             g.traverse(function (child) {
                 child.updateMatrixWorld(true);
-                if (child.isMesh && isSmall(child, 19)) {
-                    hasTinyMesh = true;
+
+                let boundingBox = new THREE.Box3().setFromObject(child);
+                let size = new THREE.Vector3();
+                boundingBox.getSize(size);
+
+                if(child.isMesh) {
+                    if (size.x < child.scale || size.y < child.scale || size.z < child.scale) {
+                        hasTinyMesh = true;
+                    }
                 }
             });
 
@@ -4100,48 +3959,14 @@ function clear_autosave() {
     }
 }
 
-function read_settings() {
-    const saved = getCookie("setting");
-
-    if (saved) {
-        try {
-            scene.userData = JSON.parse(saved);
-        } catch (e) {
-            console.warn("failed to load settings " + e);
-        }
-    }
-}
-read_settings();
-
-function save_settings() {
-    const jsonData = JSON.stringify(scene.userData);
-    const date = new Date();
-    date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
-    document.cookie = "setting=" + jsonData + "; expires=" + date.toUTCString();
-}
-
-function clear_settings() {
-    const saved = getCookie("setting");
-
-    if (saved) {
-        try {
-            let parsed = JSON.parse(saved);
-            const date = new Date();
-            date.setTime(date.getTime() - (365 * 24 * 60 * 60 * 1000));
-            document.cookie = "setting=" + JSON.stringify(parsed) + "; expires=" + date.toUTCString();
-
-            tooltip('Cleared settings');
-        } catch (e) {
-            console.warn("failed to load settings " + e);
-        }
-    }
-}
-
-/* 
-Clone mesh data and not anything else like transform controls
-*/
+const geometry_cache = new Map();
+// does what it says
 function clone_mesh_clean(obj) {
     if (!obj.isMesh || !obj.geometry) {
+        return null;
+    }
+
+    if (!obj.userData.isBlock || !obj.userData.ldraw) {
         return null;
     }
 
@@ -4157,8 +3982,23 @@ function clone_mesh_clean(obj) {
         mat = new THREE.MeshLambertMaterial();
     }
 
-    const geometry = obj.geometry.clone();
-    geometry.name = obj.name || 'mesh';
+    let original_mat = mat;
+
+    if(!original_mat) {
+        return new Error('Invalid material for object ' + obj.name);
+    }
+
+    let ldraw = obj.userData.ldraw; 
+    let geometry;
+
+    if (geometry_cache.has(ldraw)) {
+        geometry = geometry_cache.get(ldraw);
+    } else {
+        geometry = obj.geometry.clone();
+        geometry.name = `ldraw_${ldraw}`;
+        geometry_cache.set(ldraw, geometry);
+    }
+
     const obj_clone = new THREE.Mesh(geometry, mat);
 
     obj.updateMatrixWorld(true);
@@ -4166,7 +4006,7 @@ function clone_mesh_clean(obj) {
     obj.getWorldQuaternion(obj_clone.quaternion);
     obj.getWorldScale(obj_clone.scale);
 
-    obj_clone.name = obj.name || 'clone';
+    obj_clone.name = obj.name || 'clone ' + makeid(5);
 
     return obj_clone;
 }
@@ -4175,8 +4015,15 @@ function filter_objects_peices() {
     let thumb = new THREE.Scene();
 
     scene.traverse(function (object) {
-        if (object.isMesh && object.userData.isBlock) {
-			const hexColor = object.material?.color || object.material?.map || new THREE.Color(0xffffff);			
+        if (object.isMesh && object.userData.isBlock || object.userData.isTexture) {
+            let hexColor;
+
+            if(!Array.isArray(object.material)) {
+			    hexColor = object.material?.color || new THREE.Color(0xffffff);
+            } else {
+                hexColor = object.material[0].color;
+            }
+
             let cloned = clone_mesh_clean(object);
             if (cloned) {
                 if (cloned.material && cloned.material.color && selectedExport === "dae") {
@@ -4189,7 +4036,7 @@ function filter_objects_peices() {
                         }
                     });
                 } else {
-                    cloned.material = new THREE.MeshPhysicalMaterial({ color: hexColor, metalness: 0, roughness: 1 });
+                    cloned.material = new THREE.MeshLambertMaterial({color: hexColor});
                 }
                 thumb.add(cloned);
                 cloned.rotation.setFromQuaternion(cloned.quaternion);
@@ -4219,12 +4066,6 @@ function apply_vertex_from_hex(mesh, hex) {
     } else {
         mesh.material.vertexColors = true;
     }
-}
-
-function generate_missing() {
-    const geo = new THREE.BoxGeometry(10, 10, 10);
-    const mat = new THREE.MeshBasicMaterial({ color: 0xff00ff, wireframe: true });
-    return new THREE.Mesh(geo, mat);
 }
 
 window.addEventListener('pointerdown', function (event) {
@@ -4303,11 +4144,11 @@ window.addEventListener('pointerdown', function (event) {
 }*/
 
 function selectObject(obj, mode = "replace") {
-    while (obj.parent && !obj.userData.isBlock) {
+    while (obj.parent && !obj.userData.isBlock && !obj.userData.ldraw) {
         obj = obj.parent;
     }
 
-    if (!obj.userData.isBlock) {
+    if (!obj.userData.isBlock && !obj.userData.ldraw) {
         return;
     }
 
@@ -4383,28 +4224,26 @@ function clearSelection() {
 // wip
 function highlight(obj) {
     const mat = obj?.material;
-    if (!mat) {
-        return;
+
+    if (mat && mat?.emissive) {
+        mat.emissive = mat.emissive || new THREE.Color();
+
+        mat.userData = mat.userData || {};
+        mat.userData.isHighlighted = true;
+
+        mat.emissive.set(0x333333);
     }
-
-    mat.emissive = mat.emissive || new THREE.Color();
-
-    mat.userData = mat.userData || {};
-    mat.userData.isHighlighted = true;
-
-    mat.emissive.set(0x333333);
 }
 
 function unhighlight(obj) {
     const mat = obj?.material;
-    if (!mat) {
-        return;
+
+    if (mat && mat?.emissive) {
+        mat.userData = mat.userData || {};
+        mat.userData.isHighlighted = false;
+
+        mat.emissive.set(0x000000);
     }
-
-    mat.userData = mat.userData || {};
-    mat.userData.isHighlighted = false;
-
-    mat.emissive.set(0x000000);
 }
 
 function deselect(obj) {
@@ -4461,10 +4300,9 @@ document.getElementById("redo-action").addEventListener("click", function () {
 
 document.getElementById("resetCamera").addEventListener("click", function () {
     controls.reset();
-    scene.updateMatrixWorld();
+    updateSceneData();
 });
 
-// Last refactor 6/3/2025 by susstevedev
 function animate() {
     stats.update();
 
@@ -4522,9 +4360,6 @@ function tooltipAlert(title, text, additionalText, buttonText) {
     if (tooltip && tooltipExit) {
         tooltipExit.addEventListener('click', function() {
             tooltip.remove();
-
-            // rerun login function to update user information (logging user out if they get banned)
-            login();
         }, false);
     }
 }
