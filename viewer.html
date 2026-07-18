@@ -12,13 +12,7 @@
       }
     }
     </script>
-    
-    <!--<script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/controls/OrbitControls.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/LDrawLoader.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/RGBELoader.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/exporters/GLTFExporter.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/GLTFLoader.js"></script>-->
+
     <style>
         body {
             font-family: Verdana, sans-serif;
@@ -80,16 +74,17 @@
 
         #username {
             top: 50px;
-            left: 0;
-            display: none;
-            font-size: 15px;
         }
         
         #date-v2 {
             top: 100px;
+        }
+
+        #username, #date-v2 {
             left: 0;
             display: none;
             font-size: 15px;
+            padding: 5px 15px;
         }
         
         #username img {
@@ -134,17 +129,40 @@
         a:hover {
             color: #fff;
         }
+
+        #web-settings {
+            top: 0px;
+            right: 0px;
+            border-radius: 3px;
+        }
+
+        #web-settings:hover {
+            background-color: #87ceeb;
+            color: #000;
+            cursor: pointer;
+        }
+
+        #web-settings-dropdown {
+            display: none;
+            right: 0px;
+            top: 50px;
+            border-radius: 3px;
+        }
+
+        #web-settings-dropdown div {
+            position: relative;
+            border-radius: 3px;
+            padding: 2px 2px 2px 2px;
+        }
+
+        #web-settings-dropdown div:hover {
+            background-color: #87ceeb;
+            color: #000;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-         if (typeof WebAssembly != "object" && typeof WebAssembly.instantiate != "function" || !navigator.userAgent) {
-            alert("Your browser does not support WebAssembly. It might fail to load objects (lights, parts, etc) in the scene.");
-        }
-    });
-    </script>
-
     <script type="module">
         import * as THREE from 'three';
         import { OrbitControls as OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -168,9 +186,8 @@
            model: {
                allow_legacy_model: "true",
                smooth_normals: "true",
-               lines: "false", // legacy lines
    			   _lines: {
-                   enabled: "false",
+                   ldraw: "false",
                    custom: "false"
                }
 		   }
@@ -199,14 +216,16 @@
                     
             console.log(window.globalPlayerConfig);
             
-            let debug;
+            let debug = false;
             if(window.globalPlayerConfig.debug === "true") {
-                // debug/dev mode toggle
-				// when changed, the viewer will display information in the browser console
            		debug = true;
             }
+
+            if(debug) {
+                console.log(JSON.stringify(window.globalPlayerConfig));
+            }
                 
-          	if(typeof window.globalPlayerConfig.player_redesign === "boolean") {
+          	if(typeof window.globalPlayerConfig.player_redesign === "boolean" && debug) {
             	console.log('Player redesign flags coming soon');
             }
 
@@ -239,15 +258,17 @@
                         window.creation_data = text;
                         return JSON.parse(creation_data);
                     } catch (error) {
-                        //throw new Error('Invalid creation data JSON returned');
                         console.error(response);
                     }
                 })
                 .then(creation_data => {
+                    if(creation_data.legacy == 1) {
+                        window.location=`/legacy_viewer.html?model=${model_file}`;
+                    }
+
                     fetch(`${creation_data.model}`)
                         .then(response => {
                             if (!response.ok) {
-                                //throw new Error(`Server returned the error code ${response.status}`);
 								console.error(response);
                             }
                             return response.text();
@@ -259,7 +280,6 @@
                             } catch (error) {
                                 alert(error);
                                 console.error(error);
-                                //throw new Error('Invalid model data: ' + error);
                             }
                         })
                 })
@@ -320,11 +340,161 @@
                     		scene.environment = texture;
                     	});
                	 	}
+
+                    function createCustomMaterial(partColor) {
+                        const colors = [
+                            { code: 0, name: "Black", hex: "#05131D", type: "solid" },
+                            { code: 1, name: "Blue", hex: "#0055BF", type: "solid" },
+                            { code: 2, name: "Green", hex: "#237841", type: "solid" },
+                            { code: 3, name: "Dark Turquoise", hex: "#008F9B", type: "solid" },
+                            { code: 4, name: "Red", hex: "#C91A09", type: "solid" },
+                            { code: 5, name: "Dark Pink", hex: "#C870A0", type: "solid" },
+                            { code: 6, name: "Brown", hex: "#583927", type: "solid" },
+                            { code: 7, name: "Light Gray", hex: "#9C9C9C", type: "solid" },
+                            { code: 8, name: "Dark Gray", hex: "#636363", type: "solid" },
+                            { code: 9, name: "Light Blue", hex: "#A5CBEB", type: "solid" },
+                            { code: 10, name: "Bright Green", hex: "#4B9F38", type: "solid" },
+                            { code: 11, name: "Light Turquoise", hex: "#55C6D4", type: "solid" },
+                            { code: 12, name: "Salmon", hex: "#F27072", type: "solid" },
+                            { code: 13, name: "Pink", hex: "#FC97AC", type: "solid" },
+                            { code: 14, name: "Yellow", hex: "#F2CD37", type: "solid" },
+                            { code: 15, name: "White", hex: "#FFFFFF", type: "solid" },
+                            { code: 16, name: "Main Colour", hex: "#808080", type: "special" },
+                            { code: 19, name: "Tan", hex: "#E4CD9E", type: "solid" },
+                            { code: 20, name: "Light Violet", hex: "#C9D6E8", type: "solid" },
+                            { code: 21, name: "Violet", hex: "#875A9C", type: "solid" },
+                            { code: 22, name: "Purple", hex: "#671F81", type: "solid" },
+                            { code: 23, name: "Dark Blue Violet", hex: "#0E3E9A", type: "solid" },
+                            { code: 24, name: "Edge Colour", hex: "#333333", type: "special" },
+                            { code: 25, name: "Orange", hex: "#D67923", type: "solid" },
+                            { code: 26, name: "Magenta", hex: "#901F76", type: "solid" },
+                            { code: 27, name: "Lime", hex: "#A5CA18", type: "solid" },
+                            { code: 28, name: "Dark Tan", hex: "#958A73", type: "solid" },
+                            { code: 29, name: "Bricks Yellow", hex: "#E4C387", type: "solid" },
+                            { code: 30, name: "Brick Orange", hex: "#B05329", type: "solid" },
+                            { code: 31, name: "Bright Light Orange", hex: "#F88B14", type: "solid" },
+                            { code: 32, name: "Black Ink", hex: "#1A1A1A", type: "solid" },
+                            { code: 33, name: "Dark Orange", hex: "#A95812", type: "solid" },
+                            { code: 34, name: "Medium Reddish Violet", hex: "#9B6396", type: "solid" },
+                            { code: 35, name: "Sand Blue", hex: "#6074A5", type: "solid" },
+                            { code: 36, name: "Sand Green", hex: "#5F8969", type: "solid" },
+                            { code: 37, name: "Sand Red", hex: "#88605E", type: "solid" },
+                            { code: 38, name: "Dark Gray Glow", hex: "#757575", type: "solid" },
+                            { code: 39, name: "Spec Black", hex: "#1B2A34", type: "solid" },
+                            { code: 40, name: "Trans Black", hex: "#635F52", type: "transparent" },
+                            { code: 41, name: "Trans Dark Blue", hex: "#002060", type: "transparent" },
+                            { code: 42, name: "Trans Light Blue", hex: "#A6CAF0", type: "transparent" },
+                            { code: 43, name: "Trans Green", hex: "#006237", type: "transparent" },
+                            { code: 44, name: "Trans Bright Green", hex: "#78FC78", type: "transparent" },
+                            { code: 45, name: "Trans Red", hex: "#900000", type: "transparent" },
+                            { code: 46, name: "Trans Yellow", hex: "#F5CD2F", type: "transparent" },
+                            { code: 47, name: "Trans Clear", hex: "#FCFCFC", type: "transparent" },
+                            { code: 50, name: "Trans Purple", hex: "#52296E", type: "transparent" },
+                            { code: 52, name: "Trans Neon Cyan", hex: "#00FFFF", type: "transparent" },
+                            { code: 54, name: "Trans Light Purple", hex: "#9B5094", type: "transparent" },
+                            { code: 57, name: "Trans Neon Green", hex: "#D0F800", type: "transparent" },
+                            { code: 60, name: "Chrome Antique Bronze", hex: "#6B5D3D", type: "chrome" },
+                            { code: 61, name: "Chrome Blue", hex: "#6C9ACA", type: "chrome" },
+                            { code: 62, name: "Chrome Green", hex: "#60A956", type: "chrome" },
+                            { code: 63, name: "Chrome Pink", hex: "#AA4D8E", type: "chrome" },
+                            { code: 64, name: "Chrome Black", hex: "#2C2C2C", type: "chrome" },
+                            { code: 68, name: "Very Light Orange", hex: "#F3C396", type: "solid" },
+                            { code: 69, name: "Light Reddish Violet", hex: "#D9A3D6", type: "solid" },
+                            { code: 70, name: "Medium Reddish Violet", hex: "#9E3D8A", type: "solid" },
+                            { code: 71, name: "Light Bluish Gray", hex: "#A0A5A9", type: "solid" },
+                            { code: 72, name: "Dark Bluish Gray", hex: "#6C6E68", type: "solid" },
+                            { code: 73, name: "Medium Blue", hex: "#5A82C2", type: "solid" },
+                            { code: 74, name: "Medium Green", hex: "#55A359", type: "solid" },
+                            { code: 77, name: "Light Bluish Violet", hex: "#8C9BC2", type: "solid" },
+                            { code: 78, name: "Metallic Silver", hex: "#899499", type: "metallic" },
+                            { code: 79, name: "Metallic Green", hex: "#5D7363", type: "metallic" },
+                            { code: 80, name: "Metallic Gold", hex: "#CBA347", type: "metallic" },
+                            { code: 81, name: "Milky White", hex: "#FFFFFF", type: "solid" },
+                            { code: 82, name: "Metallic Dark Gray", hex: "#57585A", type: "metallic" },
+                            { code: 84, name: "Speckle Black Copper", hex: "#1A1A1A", type: "speckle" },
+                            { code: 85, name: "Speckle Dark Gray Silver", hex: "#4D4D4D", type: "speckle" },
+                            { code: 86, name: "Speckle Light Gray Silver", hex: "#8C8C8C", type: "speckle" },
+                            { code: 87, name: "Coral", hex: "#FF6D77", type: "solid" },
+                            { code: 88, name: "Salmon Red", hex: "#F25E5E", type: "solid" },
+                            { code: 89, name: "Medium Dark Pink", hex: "#F785B1", type: "solid" },
+                            { code: 98, name: "Very Light Bluish Gray", hex: "#E5E5E5", type: "solid" },
+                            { code: 112, name: "Blue Violet", hex: "#3C508C", type: "solid" },
+                            { code: 115, name: "Light Orange Brown", hex: "#B67B54", type: "solid" },
+                            { code: 116, name: "Medium Orange Brown", hex: "#A25F38", type: "solid" },
+                            { code: 117, name: "Dark Orange Brown", hex: "#7E3C1D", type: "solid" },
+                            { code: 118, name: "Light Yellowish Green", hex: "#D6E882", type: "solid" },
+                            { code: 119, name: "Bricks Brown", hex: "#8A5A36", type: "solid" },
+                            { code: 120, name: "Dark Green", hex: "#0E291C", type: "solid" },
+                            { code: 125, name: "Flourescent Red Orange", hex: "#FF4A3B", type: "solid" },
+                            { code: 128, name: "Dark Purple", hex: "#3F1558", type: "solid" },
+                            { code: 133, name: "Sand Violet", hex: "#82799A", type: "solid" },
+                            { code: 151, name: "Medium Red", hex: "#E03C31", type: "solid" },
+                            { code: 154, name: "Light Brown", hex: "#86614E", type: "solid" },
+                            { code: 158, name: "Flourescent Azure", hex: "#00A2F7", type: "solid" },
+                            { code: 191, name: "Flourescent Rose", hex: "#FF66C4", type: "solid" },
+                            { code: 212, name: "Rust Orange", hex: "#9B3B11", type: "solid" },
+                            { code: 232, name: "Light Aqua", hex: "#ADDFD8", type: "solid" },
+                            { code: 297, name: "Warm Yellow", hex: "#FFB329", type: "solid" },
+                            { code: 320, name: "Dark Royal Blue", hex: "#202050", type: "solid" },
+                            { code: 322, name: "Medium Lilac", hex: "#3A2E5C", type: "solid" },
+                            { code: 511, name: "Flourescent Green", hex: "#00FF00", type: "solid" },
+                            { code: 512, name: "Flourescent Yellow", hex: "#FFFF00", type: "solid" }
+                        ];
+
+                        let colormap = new Map(colors.map(c => [c.hex.toUpperCase(), c.type]));
+                        const normalizedHex = String(partColor).toUpperCase().trim();
+                        const materialType = colormap.get(normalizedHex) || 'solid';
+
+                        const params = {
+                            color: new THREE.Color(normalizedHex),
+                            reflectivity: 0.5,
+                            roughness: 0.15,
+                            metalness: 0.0,
+                            clearcoat: 0.4,
+                            envMapIntensity: 0.5,
+                            clearcoatRoughness: 0.1
+                        };
+
+                        switch (materialType) {
+                            case 'transparent':
+                                params.transparent = true;
+                                params.opacity = 0.6;
+                                params.roughness = 0.02;
+                                params.transmission = 0.75;
+                                params.ior = 1.55;
+                                break;
+
+                            case 'chrome':
+                                params.roughness = 0.0;
+                                params.metalness = 1.0;
+                                params.clearcoat = 0.0;
+                                break;
+
+                            case 'metallic':
+                                params.roughness = 0.25;
+                                params.metalness = 0.75;
+                                params.clearcoatRoughness = 0.05;
+                                break;
+
+                            case 'speckle':
+                                params.roughness = 0.5;
+                                params.clearcoat = 0.2;
+                                break;
+
+                            case 'special':
+                            case 'solid':
+                            default:
+                                break;
+                        }
+                        return new THREE.MeshPhysicalMaterial(params);
+                    }
                     
                     let total = 0
                     if(model_data.blocks) {
                         total = model_data?.blocks?.length;
                     }
+                    window.file_ver = model_data.metadata.file_version;
+                    console.log(window.file_ver);
                     
                     var complete = false;
                     var partsIntersecting = [];
@@ -348,28 +518,96 @@
                         //try {
                             loader.load(`${block.ldraw}`, function (group) {
                                 group.traverse((child) => {
-                                    if (window.globalPlayerConfig.model._lines.enabled === "false" && child.isLineSegments && child.userData.ldr_line != true) {
+                                    if (window.globalPlayerConfig.model._lines.ldraw === "false" && child.isLineSegments && child.userData.ldr_line != true) {
                                         child.visible = false;
                                         return;
                                     }
+                                    
+                                    let colorHex;
+                                    if(window.file_ver <= "1.2") {
+                                        colorHex = "#" + block.color;
+                                    } else {
+                                        colorHex = block?.materials;
+                                    }
 
-                                    let colorHex = `${block.color ? block.color.replace(/^#/, '') : 'ffffff'}`;
-                                    if (child.isMesh && !Array.isArray(child.material)) {
-                                        child.material = new THREE.MeshPhysicalMaterial({
-                                        	color: new THREE.Color(`#${colorHex}`),
-                                         	reflectivity: 0.5,
-                                            roughness: 0.4,
-                                            metalness: 0.1,
-                                            envMapIntensity: 1.0,
-                                    	});
-										
-                                        if(window.globalPlayerConfig.model._lines.enabled === "true" && window.globalPlayerConfig.model._lines.custom === "true") {
-                                            const edges = new THREE.EdgesGeometry(child.geometry, 10);
-                                            const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000 }));
-                                            line.userData.ldr_line = true;
-                                            line.visible = true;
-                                            child.add(line);
+                                    //let colorHex = `${block.color ? block.color.replace(/^#/, '') : 'ffffff'}`;
+                                    //let colorHex = `${mats ? mats.replace(/^#/, '') : 'ffffff'}`
+
+                                    if(!child.isLineSegments) {
+                                        if(!Array.isArray(colorHex)) {
+                                            let custommaterial = createCustomMaterial(colorHex);
+                                            if(custommaterial && scene?.userData?.highRes === true) {
+                                                child.material = custommaterial;
+                                            } else {
+                                                child.material = new THREE.MeshPhysicalMaterial({
+                                                    color: new THREE.Color(colorHex || "#ffffff")
+                                                });
+                                            }
+                                        } else if(Array.isArray(colorHex)) {
+                                            if(colorHex.length < 2) {
+                                                let color = "#" + colorHex[0]?.color || "#ffffff";
+                                                let custommaterial = createCustomMaterial(color);
+                                                if(custommaterial && scene?.userData?.highRes === true) {
+                                                    child.material = custommaterial;
+                                                } else {
+                                                    child.material = new THREE.MeshPhysicalMaterial({
+                                                        color: new THREE.Color(color)
+                                                    });
+                                                }
+                                            }
                                         }
+                                    }
+
+                                    if (child.isMesh && !Array.isArray(child.material)) {
+                                        const edges = new THREE.EdgesGeometry(child.geometry, 10);
+                                        const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000 }));
+                                        line.userData.ldr_line = true;
+
+                                        if(window.globalPlayerConfig.model._lines.custom === "false") {
+                                            line.visible = false;
+                                        }
+
+                                        child.add(line);
+                                    }
+                                    
+                                    if (child.isMesh && Array.isArray(child.material)) {
+                                        child.material.forEach((mat) => {
+                                           console.log(mat.name);
+                                            
+                                            if(mat.name.includes("Main_Colour")) {
+                                                var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
+
+                                                child.material[index] = mat.clone();
+                                                child.material[index].needsUpdate = true;
+
+                                                mat.name = child.material[index].name + '_' + child.uuid;
+
+                                                child.userData.main_mat_uuid = mat.uuid;
+                                                child.userData.main_mat_name = mat.name;
+
+                                                child.userData.main_mat_index = index;
+                                                console.log(index);
+
+                                                if(colorHex) {
+                                                    if(Array.isArray(colorHex)) {
+                                                        let match = colorHex.find(m => m.id === index);
+
+                                                        if(match?.color) {
+                                                            child.material[index].color = new THREE.Color("#" + match.color);
+                                                        } else {
+                                                            child.material[index].color = new THREE.Color("#ffffff");
+                                                        }
+                                                    } else {
+                                                        child.material[index].color = new THREE.Color(colorHex || "#ffffff");
+                                                    }
+                                                }
+                                            } else {
+                                                var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
+                                                child.material[index] = mat.clone();
+                                                child.material[index].name = child.material[index].name + '_' + child.uuid;
+                                                child.material[index].needsUpdate = true;
+                                            }
+                                        });
                                     }
 
                                     console.log(child.userData);
@@ -381,8 +619,22 @@
                                     }
                                 });
 
-                                group.position.set(block.position.x, block.position.y, block.position.z);
-                                group.rotation.set(block.rotation.x, block.rotation.y, block.rotation.z);
+                                if(block?.matrixw) {
+                                    if(block.matrixw?.elements) {
+                                        let matrix = new THREE.Matrix4().fromArray(block.matrixw.elements);
+                                        group.matrixAutoUpdate = true;
+                                        matrix.decompose(group.position,group.quaternion,group.scale);
+                                        group.updateMatrix();
+                                        group.updateMatrixWorld(true);
+                                    } else {
+                                        group.position.set(block.position.x, block.position.y, block.position.z);
+                                        group.rotation.set(block.rotation.x, block.rotation.y, block.rotation.z);
+                                    }
+                                } else {
+                                    group.position.set(block.position.x, block.position.y, block.position.z);
+                                    group.rotation.set(block.rotation.x, block.rotation.y, block.rotation.z);
+                                }
+
                                 scene.add(group);
 
                                 loadParts(blocks, index + 1);
@@ -407,143 +659,15 @@
                                 loadParts(blocks, index + 1);
                         });
                     }
-                    
-                    function legacyModelLoader(objs, total, index = 0) {
-                        if(index === total) {
-                            console.log(scene.children);
-                            camera.position.set(1, 1, 1);
-                            animate();
-                            return;
-                        }
-                       	
-                        const objLoader = new THREE.ObjectLoader();
-                        
-                        objs.forEach(obj => {
-                            /*function geoPatch(obj) {
-                                obj.intersect.object.geometries.forEach(g => {
-                                    if (g.type === 'PlaneBufferGeometry') {
-                                        g.type = 'PlaneGeometry';
-                                        return g;
-                                    }
-
-                                    if (g.type === 'Geometry') {
-                                        //g.type = 'BufferGeometry';
-                                        //g = new THREE.BufferGeometry().fromGeometry(g);
-                                        const bufferGeometry = new THREE.BufferGeometry();
-                                        let geometry = g;
-                                        console.log(geometry);
-
-                                        bufferGeometry.uuid = g.uuid; 
-                                        bufferGeometry.name = g.name;
-                                        if(g.userData) {
-                                            bufferGeometry.userData = JSON.parse(JSON.stringify(g.userData));
-                                        }
-
-                                        // 1. Convert Vertices
-                                        const vertices = [];
-                                        geometry.data.vertices.forEach(v => {
-                                            vertices.push(v.x, v.y, v.z);
-                                        });
-                                        bufferGeometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-
-                                        // 2. Convert Faces
-                                        const indices = [];
-                                        geometry.data.faces.forEach(f => {
-                                            indices.push(f.a, f.b, f.c);
-                                        });
-                                        bufferGeometry.setIndex(indices);
-
-                                        // 3. Convert Normals
-                                        if (geometry.data.normals && geometry.data.normals.length > 0) {                                   
-                                            const normals = [];
-                                            geometry.data.normals.forEach(n => {
-                                                normals.push(n.x, n.y, n.z);
-                                            });
-                                            bufferGeometry.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
-                                        } else {
-                                            bufferGeometry.computeVertexNormals();
-                                        }
-                                        //g = bufferGeometry;
-                                        console.log(bufferGeometry);
-                                        return bufferGeometry;
-                                    }
-
-                                    //if (g.type === 'Geometry') {
-                                        //g.type = 'BufferGeometry';
-                                        g = new THREE.BufferGeometry().fromGeometry(g);
-                                    //}
-                                 });
-                            }
-                            let obj2 = geoPatch(obj);
-
-                            obj2.intersect.object.materials.color = obj2.color;
-                            obj2.intersect.object.uuid = obj2.intersect.uuid;
-                            /*obj.intersect.object.geometries[0].width = obj.intersect.object.geometries[0].width / 2;
-                            obj.intersect.object.geometries[0].height = obj.intersect.object.geometries[0].height / 2;*/
-                            //if(obj?.intersect?.object?.uuid) {
-                                //const mesh = objLoader.parse(obj2.intersect);
-                                //scene.add(mesh);
-                                //console.log("Object loaded:" + obj);
-                            //}
-                            
-                            const exporter = new GLTFExporter();
-                            exporter.parse(obj.intersect.object, (result) => {
-                                /*if (result instanceof ArrayBuffer) {
-                                    saveArrayBuffer(result, 'scene.glb');
-                                } else {
-                                    const output = JSON.stringify(result, null, 2);
-                                    saveString(output, 'scene.gltf');
-                                }*/
-                                window.output = JSON.stringify(result, null, 2);
-        						window.blob_url = URL.createObjectURL(new Blob([window.output], { type: 'text' }));
-
-                                console.log(window.output);
-                            }, { binary: true });
-                            
-                            const gltfloader = new THREE.GLTFLoader();
-                            gltfloader.load(`${window.blob_url}`, function(scene) {
-                            	scene.add(scene);
-                            });
-                        });
-                        
-                        legacyModelLoader(objs, total, index + 1);
-                    }
 
                     if(!window.globalPlayerConfig.model.allow_legacy_model === "true") {
                     	loadParts(model_data.blocks);
                     } else {
                         if(model_data[0]?.intersect?.object?.metadata?.generator && model_data[0]?.intersect?.object?.metadata?.generator == "Object3D.toJSON") {
-                            console.log('yes it\'s legacy bruh');
-                            //showViewer();
-                            let legacyTotal = model_data.length;
-                            window.modelIsLegacy = true;
-                            
-                            /* model_data.forEach(part => {
-                            	legacyModelLoader(part, legacyTotal);
-                            }); */
-                            //showViewer();
-                            
-                            legacyModelLoader(model_data, legacyTotal);
-                            
-                            document.title = `${JSON.parse(window.creation_data).name} | gr8brik.rf.gd`;
-                        
-                            /*viewer.style.display = "block";
-                            loading.innerText = "This model can never be viewed again due to Geometry being replaced with BufferGeometry. If you want to view it, download the model and set up a threejs evirorment with a version below 124";
-
-                            wmark.style.display = "block";
-                            wmark.innerHTML = "<img src='https://gr8brik.rf.gd/img/logo/simplev2.png' alt='Logo' title='Logo' /> gr8brik.rf.gd";
-
-                            stat_name.style.display = "block";
-                            stat_name.innerHTML += `&nbsp;<a href="/build/${JSON.parse(window.creation_data).modelid}" target="_blank">${JSON.parse(window.creation_data).name}</a>`;
-
-                            stat_username.style.display = "block";
-                            stat_username.innerHTML += `&nbsp; <a href="/user/${JSON.parse(window.creation_data).userid}" target="_blank"><img src='https://gr8brik.rf.gd/acc/users/pfps/${JSON.parse(window.creation_data).userid}.webp' alt='User icon' title='User icon' />${JSON.parse(window.creation_data).username}</a>`;
-
-                            stat_date.style.display = "block";
-                            stat_date.innerHTML += `&nbsp;${JSON.parse(window.creation_data).date}`;*/
-
-                            animate();
-                            showViewer();
+                            let message = 'Legacy Gr8brik models are not compatible with this version of the viewer';
+                            loading.innerText = `An error occurred: ${message}`;
+                            document.getElementById("retry").style.display = "block";
+                            throw new Error(message);
                         } else {
                             loadParts(model_data.blocks);
                         }
@@ -556,44 +680,21 @@
                         viewer.style.display = "block";
 
                         wmark.style.display = "block";
-                        wmark.innerHTML = "<img src='https://gr8brik.rf.gd/img/logo/simplev2.png' alt='Logo' title='Logo' /> gr8brik.rf.gd";
+                        wmark.innerHTML = "<img src='/img/logo/simplev2.png' alt='Logo' title='Logo' /> gr8brik.rf.gd";
 
                         stat_name.style.display = "block";
-                        stat_name.innerHTML += `&nbsp;<a href="/build/${JSON.parse(window.creation_data).modelid}" target="_blank">${JSON.parse(window.creation_data).name}</a>`;
+                        stat_name.innerHTML += `<a href="/build/${JSON.parse(window.creation_data).modelid}" target="_blank">${JSON.parse(window.creation_data).name}</a>`;
 
                         stat_username.style.display = "block";
-                        stat_username.innerHTML += `&nbsp; <a href="/user/${JSON.parse(window.creation_data).userid}" target="_blank"><img src='https://gr8brik.rf.gd/acc/users/pfps/${JSON.parse(window.creation_data).userid}.webp' alt='User icon' title='User icon' />${JSON.parse(window.creation_data).username}</a>`;
+                        stat_username.innerHTML += `<a href="/user/${JSON.parse(window.creation_data).userid}" target="_blank"><img src='/acc/users/pfps/${JSON.parse(window.creation_data).userid}.webp' alt='User icon' title='User icon' />${JSON.parse(window.creation_data).username}</a>`;
                         
                         stat_date.style.display = "block";
-                        stat_date.innerHTML += `&nbsp;${JSON.parse(window.creation_data).date}`;
+                        stat_date.innerHTML += `${JSON.parse(window.creation_data).date}`;
 
                         animate();
-                        
-                       	intersectingCheck();
                     }
                     
                     window.showViewer = showViewer;
-                    
-      				/*window.intersectingCheck = function() { 
-                        console.log(partsIntersecting);
-                        partsIntersecting.forEach(obj => {
-                        const others = partsIntersecting.filter(other => other !== obj)
-
-                          partsIntersecting.forEach(other => {
-                            if (obj.intersectsBox(other)) {
-                                let OGobj = scene.getObjectById(obj.cloneid);
-                                console.log(OGobj + ' is inside another part');
-                                
-                                OGobj.material.transparent = true;
-                                OGobj.material.opacity = 0.25;
-                                OGobj.material.needsUpdate = true;
-                                
-                                scene.updateMatrixWorld(true);
-                                OGobj.updateMatrixWorld(true);
-                            }
-                          });
-                        });
-                    }*/
                     
                     window.intersectingCheck = function() { 
                         console.log(partsIntersecting);
@@ -617,6 +718,28 @@
                           });
                         });
                     }
+
+                    document.getElementById('web-settings').addEventListener('click', function() {
+                        let settings = document.getElementById('web-settings-dropdown');
+                        if(settings.style.display == 'none') {
+                            settings.style.display = 'block';
+                        } else {
+                            settings.style.display = 'none';
+                        }
+                    });
+
+                    // show ldrawloader lines
+                    document.getElementById('show-lines').addEventListener('click', () => {
+                        const show = window.globalPlayerConfig.model._lines.ldraw === "false";
+
+                        scene.traverse((o) => {
+                            if (o.isLineSegments) {
+                                o.visible = show;
+                            }
+                        });
+
+                        window.globalPlayerConfig.model._lines.ldraw = show ? "true" : "false";
+                    });
                     
                     window.addEventListener('resize', onWinResize, true);
                     
@@ -634,9 +757,6 @@
                         }
 
                         renderer.render(scene, camera);
-                        /*if(viewer.style.display === "none" && window.modelIsLegacy === true) {
-                            showViewer();
-                        }*/
                     }
                     animate();
                 }
@@ -653,9 +773,19 @@
     </script>
     <div id="loading" class="box-load">Loading...</div>
     <button id="retry">Retry</button>
-    <div id="stats" class="box">Viewing</div>
-    <div id="username" class="box">By</div>
-    <div id="date-v2" class="box">Created</div>
+    <div id="stats" class="box"></div>
+    <div id="username" class="box">By </div>
+    <div id="date-v2" class="box">Created </div>
+    <div id="web-settings" class="box right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders2" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M10.5 1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4H1.5a.5.5 0 0 1 0-1H10V1.5a.5.5 0 0 1 .5-.5M12 3.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m-6.5 2A.5.5 0 0 1 6 6v1.5h8.5a.5.5 0 0 1 0 1H6V10a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5M1 8a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 1 8m9.5 2a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V13H1.5a.5.5 0 0 1 0-1H10v-1.5a.5.5 0 0 1 .5-.5m1.5 2.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+        </svg>
+    </div>
+    <div id="web-settings-dropdown" class="box">
+        <div>
+            <span id="show-lines">Enable/disable lines</span>
+        </div>
+    </div>
     <div id="watermark"></div>
     <canvas id="viewer" style="width: 100vw; height: 100vh; display: none;"></canvas>
 </body>
