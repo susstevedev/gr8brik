@@ -1,6 +1,8 @@
 # GR8BRIK (Beta)
 
-> **This project is currently in beta**. Feel free to submit pull requests and open issues.
+> **This project is currently in beta**.
+>
+> Feel free to submit pull requests and open issues.
 
 ## what is gr8brik?
 
@@ -13,16 +15,14 @@ For the rest of the website's source: https://github.com/susstevdev/gr8brik-webs
 ## built with
 
 * [Three.js](https://threejs.org/) -WebGl rendering
+* [LDraw](http://www.ldraw.org/) - LEGO CAD part library
 * [LDrawLoader](https://threejs.org/docs/#examples/en/loaders/LDrawLoader) - LDraw parts loader for Three.js
 * [OrbitControls](https://threejs.org/docs/#examples/en/controls/OrbitControls) - Camera navigation for Three.js
 * [TransformControls](https://threejs.org/docs/#examples/en/controls/TransformControls) - Translation/Rotation/Scale tools for Three.js
-* [jQuery](https://jquery.com/) - DOM utilities (being phased out though)
-* [Spectrum.js](https://bgrins.github.io/spectrum/) - Color picker UI
-* [LDraw](http://www.ldraw.org/) - LEGO CAD part library
+* [jQuery](https://jquery.com/) - DOM utilities, no longer used but included
 * [FontAwesome v4](https://fontawesome.com/v4/) - Icons
 
 ## license & credits
-
 GR8BRIK uses components licensed under the MIT License and is itself open source under the same.
 
 > This project includes code from the Three.js project and other libraries. Please see individual licenses where applicable.
