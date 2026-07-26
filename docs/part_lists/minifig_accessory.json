@@ -1,0 +1,4087 @@
+[
+    {
+        "id": "6a5bbe4484efe6.56386256",
+        "name": "Minifig Shield Broad with Spiked Bottom and Cutout Corner",
+        "file": "10049.dat"
+    },
+    {
+        "id": "6a5bbe4484f9e5.08064865",
+        "name": "Minifig Shield Broad with Spiked Bottom, Cutout Corner with White Handprint Pattern",
+        "file": "10049p01.dat"
+    },
+    {
+        "id": "6a5bbe44850452.94470236",
+        "name": "Minifig Sword Uruk-Hai",
+        "file": "10050.dat"
+    },
+    {
+        "id": "6a5bbe44852c88.74798341",
+        "name": "Minifig Sword Small with Curved Blade",
+        "file": "10053.dat"
+    },
+    {
+        "id": "6a5bbe44894d70.30702275",
+        "name": "Minifig Sack with Hand Grab",
+        "file": "10169.dat"
+    },
+    {
+        "id": "6a5bbe448959f0.82448229",
+        "name": "Minifig Sack with Hand Grab with White \"$\" Pattern",
+        "file": "10169p01.dat"
+    },
+    {
+        "id": "6a5bbe44896765.63355838",
+        "name": "Minifig Sack with Hand Grab with Dark Brown Patch and Stitch Pattern",
+        "file": "10169p02.dat"
+    },
+    {
+        "id": "6a5bbe44897405.29234063",
+        "name": "Minifig Sack with Hand Grab with Reddish Brown Pattern",
+        "file": "10169p03.dat"
+    },
+    {
+        "id": "6a5bbe44897e77.09147731",
+        "name": "Minifig Food Pretzel",
+        "file": "10170.dat"
+    },
+    {
+        "id": "6a5bbe448988f9.46339001",
+        "name": "Minifig Trophy Cup  2.4L",
+        "file": "10172.dat"
+    },
+    {
+        "id": "6a5bbe44899339.33060920",
+        "name": "Minifig Trophy Cup  2.4L with Metallic Silver Terrier Dog Pattern",
+        "file": "10172p01.dat"
+    },
+    {
+        "id": "6a5bbe448a43a4.30631985",
+        "name": "Minifig Bladed Claw Spread",
+        "file": "10187.dat"
+    },
+    {
+        "id": "6a5bbe448c88c6.44180219",
+        "name": "Minifig Tool Wand with Hollow Stud at Tip",
+        "file": "102498.dat"
+    },
+    {
+        "id": "6a5bbe448c9588.42836147",
+        "name": "Minifig Tool Wand with Trans Clear Hollow Stud at Tip Pattern",
+        "file": "102498p01.dat"
+    },
+    {
+        "id": "6a5bbe448ea761.29007122",
+        "name": "Minifig Shield Round Bowed with DkGreen and Gold Rohan Pattern",
+        "file": "10520.dat"
+    },
+    {
+        "id": "6a5bbe448ebb68.62288113",
+        "name": "Minifig Shield Round Bowed with Bullseye with Star Pattern",
+        "file": "10532.dat"
+    },
+    {
+        "id": "6a5bbe448f6a04.88961673",
+        "name": "Minifig Tool Magnifying Glass with Thick Frame and Lens",
+        "file": "10830.dat"
+    },
+    {
+        "id": "6a5bbe448f7412.74820602",
+        "name": "Minifig Tool Magnifying Glass with Thick Frame and TransClear Lens",
+        "file": "10830p01.dat"
+    },
+    {
+        "id": "6a5bbe4490d3b5.25419303",
+        "name": "Minifig Ring  1 x  1",
+        "file": "11010.dat"
+    },
+    {
+        "id": "6a5bbe44923a84.12460254",
+        "name": "Minifig Hand Gorilla Fist",
+        "file": "11092.dat"
+    },
+    {
+        "id": "6a5bbe44924e93.07826271",
+        "name": "Minifig Axe Head Twin-bladed with Hole",
+        "file": "11096.dat"
+    },
+    {
+        "id": "6a5bbe449277b1.10318358",
+        "name": "Minifig Sword Double Blade with Bar Holder",
+        "file": "11103.dat"
+    },
+    {
+        "id": "6a5bbe44931e84.42409426",
+        "name": "Minifig Weapon Blade  3.4 L with Bar  3.6 L",
+        "file": "11156.dat"
+    },
+    {
+        "id": "6a5bbe4495e931.37139937",
+        "name": "Minifig Tool Gavel",
+        "file": "11250.dat"
+    },
+    {
+        "id": "6a5bbe4495f361.83224350",
+        "name": "Minifig Tray Oval",
+        "file": "11252.dat"
+    },
+    {
+        "id": "6a5bbe4498f067.60514359",
+        "name": "Minifig Sword with Jagged Edges",
+        "file": "11439.dat"
+    },
+    {
+        "id": "6a5bbe4498fa99.39260478",
+        "name": "Minifig Sword with Jagged Edges with Marbled White Pattern",
+        "file": "11439p01.dat"
+    },
+    {
+        "id": "6a5bbe44990ac4.93136940",
+        "name": "Minifig Sword with Jagged Edges with Marbled Trans Brown Pattern",
+        "file": "11439p02.dat"
+    },
+    {
+        "id": "6a5bbe44991677.77002400",
+        "name": "Minifig Sword with Jagged Edges with Marbled Trans Red Pattern",
+        "file": "11439p03.dat"
+    },
+    {
+        "id": "6a5bbe44992124.71805046",
+        "name": "Minifig Sword with Jagged Edges with Marbled Trans Medium Blue Pattern",
+        "file": "11439p04.dat"
+    },
+    {
+        "id": "6a5bbe44994127.98854814",
+        "name": "Minifig Plunger",
+        "file": "11459.dat"
+    },
+    {
+        "id": "6a5bbe44994b77.50984369",
+        "name": "Minifig Plunger with Medium Nougat Handle Pattern",
+        "file": "11459p01.dat"
+    },
+    {
+        "id": "6a5bbe449955e2.35341700",
+        "name": "Minifig Plunger with Reddish Brown Handle Pattern",
+        "file": "11459p02.dat"
+    },
+    {
+        "id": "6a5bbe449c6c15.71299026",
+        "name": "Minifig Blade with Bar Handle and Spikes",
+        "file": "11601.dat"
+    },
+    {
+        "id": "6a5bbe449cc622.77052696",
+        "name": "Minifig Electric Guitar Classic",
+        "file": "11640.dat"
+    },
+    {
+        "id": "6a5bbe449cd0a1.77454116",
+        "name": "Minifig Electric Guitar Classic with Magenta, Bright Pink and Metallic Silver Stars Pattern",
+        "file": "11640p01.dat"
+    },
+    {
+        "id": "6a5bbe449cda88.03316809",
+        "name": "Minifig Electric Guitar Classic with Tan and White Pickguard, Silver Strings Pattern",
+        "file": "11640p02.dat"
+    },
+    {
+        "id": "6a5bbe44a01ab4.35129789",
+        "name": "Minifig Paint Roller Brush Handle",
+        "file": "12885.dat"
+    },
+    {
+        "id": "6a5bbe44a26285.18889465",
+        "name": "Minifig Sword Double Blade Serrated with Bar Holder",
+        "file": "13549.dat"
+    },
+    {
+        "id": "6a5bbe44a27724.08738190",
+        "name": "Minifig Tomahawk with Flat-Silver Blade",
+        "file": "13571.dat"
+    },
+    {
+        "id": "6a5bbe44a28161.97473240",
+        "name": "Minifig Gun Laser Pistol with Rounded Heat Diffusers",
+        "file": "13608.dat"
+    },
+    {
+        "id": "6a5bbe44a28d10.47273108",
+        "name": "Animal Bird Crow",
+        "file": "13665.dat"
+    },
+    {
+        "id": "6a5bbe44a56ca1.42154517",
+        "name": "Minifig Weapon Billy Club",
+        "file": "13790.dat"
+    },
+    {
+        "id": "6a5bbe44a58b62.23959436",
+        "name": "Minifig Welding Gas Torch with Hose and Gas Cylinder Top",
+        "file": "13793.dat"
+    },
+    {
+        "id": "6a5bbe44a5a192.18328465",
+        "name": "Minifig Saxophone",
+        "file": "13808.dat"
+    },
+    {
+        "id": "6a5bbe44a5abe8.65117339",
+        "name": "Minifig Saxophone with Black Mouthpiece Pattern",
+        "file": "13808p01.dat"
+    },
+    {
+        "id": "6a5bbe44a5f050.76243156",
+        "name": "Minifig Gun Laser Kryptonian",
+        "file": "13952.dat"
+    },
+    {
+        "id": "6a5bbe44a63038.64791831",
+        "name": "Minifig Headphones \/ Ear Protection",
+        "file": "14045.dat"
+    },
+    {
+        "id": "6a5bbe44a64445.74500719",
+        "name": "Minifig Food Corn on the Cob",
+        "file": "1411.dat"
+    },
+    {
+        "id": "6a5bbe44a64e82.40580292",
+        "name": "Minifig Food Corn on the Cob with Yellow Corn Pattern",
+        "file": "1411p01.dat"
+    },
+    {
+        "id": "6a5bbe44b3de16.59088284",
+        "name": "Minifig Gun Shooting Blaster",
+        "file": "15391.dat"
+    },
+    {
+        "id": "6a5bbe44b3e871.72290225",
+        "name": "Minifig Gun Shooting Blaster with Dark Bluish Grey Trigger",
+        "file": "15391c01.dat"
+    },
+    {
+        "id": "6a5bbe44b3f278.66371158",
+        "name": "Minifig Gun Shooting Blaster with Dark Bluish Grey Trigger and Trans Orange Projectile",
+        "file": "15391c02.dat"
+    },
+    {
+        "id": "6a5bbe44b3fc62.38170673",
+        "name": "Minifig Gun Shooting Blaster Trigger",
+        "file": "15392.dat"
+    },
+    {
+        "id": "6a5bbe44b48a54.67055302",
+        "name": "Minifig Hand Armour with Two Studs",
+        "file": "15407.dat"
+    },
+    {
+        "id": "6a5bbe44b6df10.41552968",
+        "name": "Minifig Cup Takeaway",
+        "file": "15496.dat"
+    },
+    {
+        "id": "6a5bbe44b82269.06630284",
+        "name": "Minifig Tool Grappling Hook with Bar",
+        "file": "15534.dat"
+    },
+    {
+        "id": "6a5bbe44bd6056.32768052",
+        "name": "Animal Antlers with Pin",
+        "file": "1613.dat"
+    },
+    {
+        "id": "6a5bbe44bdb231.94424831",
+        "name": "Minifig Candy Cane with Dual Mould Spiral",
+        "file": "1621.dat"
+    },
+    {
+        "id": "6a5bbe44bdbd81.76155703",
+        "name": "Minifig Candy Cane with Red Spiral Pattern",
+        "file": "1621p01.dat"
+    },
+    {
+        "id": "6a5bbe44bdc7a3.81856557",
+        "name": "Minifig Candy Cane with Magenta Spiral Pattern",
+        "file": "1621p02.dat"
+    },
+    {
+        "id": "6a5bbe44cc3346.19115954",
+        "name": "Minifig Weapon Blaster with Two Barrels",
+        "file": "17010.dat"
+    },
+    {
+        "id": "6a5bbe44cf3530.52465719",
+        "name": "Minifig Sword Longsword with Thick Guard",
+        "file": "18031.dat"
+    },
+    {
+        "id": "6a5bbe44cf3f55.08515658",
+        "name": "Minifig Sword Roman Gladius with Thick Crossguard",
+        "file": "18034.dat"
+    },
+    {
+        "id": "6a5bbe44cf4951.15701827",
+        "name": "Minifig Harpoon with Smooth Bar",
+        "file": "18041.dat"
+    },
+    {
+        "id": "6a5bbe44cff946.50996891",
+        "name": "Flame  3.5L Rounded Wing Shaped with Bar 0.5L",
+        "file": "18394.dat"
+    },
+    {
+        "id": "6a5bbe44d00360.63653989",
+        "name": "Flame  3.5L Rounded Wing Shaped with Bar 0.5L with Marbled Trans Yellow Pattern",
+        "file": "18394p01.dat"
+    },
+    {
+        "id": "6a5bbe44d00d57.81149192",
+        "name": "Flame  3.5L Rounded Wing Shaped with Bar 0.5L with Marbled Glitter Trans Clear Pattern",
+        "file": "18394p02.dat"
+    },
+    {
+        "id": "6a5bbe44d01740.44426052",
+        "name": "Flame  3.5L Rounded Wing Shaped with Bar 0.5L with Marbled Dark Bluish Grey Pattern",
+        "file": "18394p03.dat"
+    },
+    {
+        "id": "6a5bbe44d02162.52678830",
+        "name": "Flame  3.5L Rounded Wing Shaped with Bar 0.5L with Marbled Trans Dark Pink Pattern",
+        "file": "18394p04.dat"
+    },
+    {
+        "id": "6a5bbe44d02af4.99485489",
+        "name": "Flame  5L Curved with Bar 0.5L and Triangular Base",
+        "file": "18395.dat"
+    },
+    {
+        "id": "6a5bbe44d4c3d4.11808244",
+        "name": "Minifig Stand Jumper",
+        "file": "18663.dat"
+    },
+    {
+        "id": "6a5bbe44d4d858.75457351",
+        "name": "Minifig Lightsaber Hilt with Round Guard",
+        "file": "18673.dat"
+    },
+    {
+        "id": "6a5bbe44d5c250.81095351",
+        "name": "Minifig Ice Axe with 3-Rib Handle",
+        "file": "18738.dat"
+    },
+    {
+        "id": "6a5bbe44d5e4a9.01168139",
+        "name": "Minifig Snowboard  2 x  6",
+        "file": "18746.dat"
+    },
+    {
+        "id": "6a5bbe44d60f32.08816934",
+        "name": "Minifig Sword Blocky",
+        "file": "18787.dat"
+    },
+    {
+        "id": "6a5bbe44d61927.12421487",
+        "name": "Minifig Axe Blocky",
+        "file": "18788.dat"
+    },
+    {
+        "id": "6a5bbe44d622e1.25485313",
+        "name": "Minifig Pickaxe Blocky",
+        "file": "18789.dat"
+    },
+    {
+        "id": "6a5bbe44d62ce5.57189848",
+        "name": "Minifig Shovel Blocky",
+        "file": "18791.dat"
+    },
+    {
+        "id": "6a5bbe44d66cd9.55231880",
+        "name": "Minifig Tool Rip Saw",
+        "file": "18826.dat"
+    },
+    {
+        "id": "6a5bbe44d67724.79900012",
+        "name": "Minifig Tool Rip Saw with Reddish Brown Grip Pattern",
+        "file": "18826p01.dat"
+    },
+    {
+        "id": "6a5bbe44d69e42.84772891",
+        "name": "Minifig Shield Triangular Long",
+        "file": "18836.dat"
+    },
+    {
+        "id": "6a5bbe44d6a7e9.25659957",
+        "name": "Minifig Shield Triangular Long with Bear Head on Dark Red and Red Background Pattern",
+        "file": "18836p40.dat"
+    },
+    {
+        "id": "6a5bbe44d6b1a5.15871926",
+        "name": "Minifig Shield Triangular Long with Gold Rampant Lions and Crossed Keys Pattern",
+        "file": "18836p41.dat"
+    },
+    {
+        "id": "6a5bbe44d6bb20.09182655",
+        "name": "Minifig Shield Triangular Long with Dark Red Edge with Rivets and Black Bat on Metallic Silver Background Pattern",
+        "file": "18836p42.dat"
+    },
+    {
+        "id": "6a5bbe44d6c481.04131917",
+        "name": "Minifig Shield Triangular Long with Black Pyramid and Sun Pattern",
+        "file": "18836pq0.dat"
+    },
+    {
+        "id": "6a5bbe44d7f677.64042721",
+        "name": "Minifig Tool Scissors",
+        "file": "18920.dat"
+    },
+    {
+        "id": "6a5bbe44de1e53.12094101",
+        "name": "Minifig Scabbard for Two Swords with Bar",
+        "file": "19141.dat"
+    },
+    {
+        "id": "6a5bbe44df2a85.96867353",
+        "name": "Minifig Blade with Bar and Three Spikes",
+        "file": "19179.dat"
+    },
+    {
+        "id": "6a5bbe44e212b7.76621864",
+        "name": "Minifig Radio with Large Grille",
+        "file": "19220.dat"
+    },
+    {
+        "id": "6a5bbe44f036d5.12138559",
+        "name": "Minifig Cup Take Out with Dome Lid",
+        "file": "20398.dat"
+    },
+    {
+        "id": "6a5bbe44f04146.48125779",
+        "name": "Minifig Cup Take Out with Trans Clear Dome Lid Pattern",
+        "file": "20398p01.dat"
+    },
+    {
+        "id": "6a5bbe4500ef70.24079647",
+        "name": "Minifig Slingshot",
+        "file": "20546.dat"
+    },
+    {
+        "id": "6a5bbe4500f954.32054378",
+        "name": "Minifig Slingshot with Dark Tan Band Pattern",
+        "file": "20546p01.dat"
+    },
+    {
+        "id": "6a5bbe45010316.42590718",
+        "name": "Minifig Slingshot with Bright Light Yellow Band Pattern",
+        "file": "20546p02.dat"
+    },
+    {
+        "id": "6a5bbe45010d03.28775115",
+        "name": "Minifig Slingshot with Medium Nougat Band Pattern",
+        "file": "20546p03.dat"
+    },
+    {
+        "id": "6a5bbe4501d948.85904956",
+        "name": "Holder Ring with  3 Bars and  3 Bar Tubes",
+        "file": "20612.dat"
+    },
+    {
+        "id": "6a5bbe45056ce6.08195312",
+        "name": "Minifig Shield Round Bowed with Mercedes-Benz Logo",
+        "file": "21100.dat"
+    },
+    {
+        "id": "6a5bbe4505f262.88689582",
+        "name": "Minifig Sword Katana Type  3 (Square Guard with Smooth Endcap)",
+        "file": "21459.dat"
+    },
+    {
+        "id": "6a5bbe450671d7.83715129",
+        "name": "Minifig Tool Sonic Screwdriver",
+        "file": "21700.dat"
+    },
+    {
+        "id": "6a5bbe45067c04.99268022",
+        "name": "Minifig Tool Sonic Screwdriver with Bright Green Tip and White Handle Pattern",
+        "file": "21700p01.dat"
+    },
+    {
+        "id": "6a5bbe450fd437.83560633",
+        "name": "Minifig Axe Head Faceted with Bar  0.5L",
+        "file": "22407.dat"
+    },
+    {
+        "id": "6a5bbe450feab0.24321389",
+        "name": "Minifig Shield Pentagonal Castellated",
+        "file": "22408.dat"
+    },
+    {
+        "id": "6a5bbe450ffa14.47962172",
+        "name": "Minifig Shield Pentagonal Jagged",
+        "file": "22409.dat"
+    },
+    {
+        "id": "6a5bbe45111205.57779852",
+        "name": "Minifig Food Cherry",
+        "file": "22667.dat"
+    },
+    {
+        "id": "6a5bbe451165c4.20745061",
+        "name": "~Minifig Stand Spring",
+        "file": "22706.dat"
+    },
+    {
+        "id": "6a5bbe4511ece6.52051625",
+        "name": "Minifig Tool Hose Nozzle with Handle at Bottom and Top",
+        "file": "22921.dat"
+    },
+    {
+        "id": "6a5bbe451360e9.03269273",
+        "name": "Minifig Lightsaber Hilt with Steep Sloping Fingers",
+        "file": "23306.dat"
+    },
+    {
+        "id": "6a5bbe45169b12.29161329",
+        "name": "Minifig Goblet",
+        "file": "2343.dat"
+    },
+    {
+        "id": "6a5bbe451b6180.73533693",
+        "name": "Minifig Weapon Blade Faceted 3.8 L with Bar 0.5 L",
+        "file": "23860.dat"
+    },
+    {
+        "id": "6a5bbe451b9f10.37133981",
+        "name": "Minifig Gun Shooting Blaster with Socket Joint-8 with Friction",
+        "file": "23922.dat"
+    },
+    {
+        "id": "6a5bbe451ba960.59432267",
+        "name": "Minifig Gun Shooting Blaster with Socket Joint-8 with Dark Bluish Grey Trigger",
+        "file": "23922c01.dat"
+    },
+    {
+        "id": "6a5bbe451bb345.02527771",
+        "name": "Minifig Gun Shooting Blaster with Socket Joint-8 with Dark Bluish Grey Trigger and Trans Orange Projectile",
+        "file": "23922c02.dat"
+    },
+    {
+        "id": "6a5bbe451bd206.67060309",
+        "name": "Minifig Utensil Hourglass",
+        "file": "23945.dat"
+    },
+    {
+        "id": "6a5bbe451bdc36.88818169",
+        "name": "Minifig Utensil Hourglass with TransClear Housing Pattern",
+        "file": "23945p01.dat"
+    },
+    {
+        "id": "6a5bbe451c4314.78729714",
+        "name": "Minifig Teapot",
+        "file": "23986.dat"
+    },
+    {
+        "id": "6a5bbe451d8ca3.51682157",
+        "name": "Minifig Crutch",
+        "file": "24077.dat"
+    },
+    {
+        "id": "6a5bbe451dc5f7.27215003",
+        "name": "Minifig Mop",
+        "file": "24085.dat"
+    },
+    {
+        "id": "6a5bbe451e3950.58095029",
+        "name": "Minifig Book Cover",
+        "file": "24093.dat"
+    },
+    {
+        "id": "6a5bbe451e5823.56952167",
+        "name": "Minifig Book Cover with Disney Castle and Gold Trim Pattern",
+        "file": "24093p01.dat"
+    },
+    {
+        "id": "6a5bbe451e62d7.86032897",
+        "name": "Minifig Book Cover \"MOBY BRICK\"",
+        "file": "24093p02.dat"
+    },
+    {
+        "id": "6a5bbe451e6d09.57026146",
+        "name": "Minifig Book Cover with Beethoven Music Sheet Pattern",
+        "file": "24093p03.dat"
+    },
+    {
+        "id": "6a5bbe451e7711.01291492",
+        "name": "Minifig Book Cover with \"Scooter\" on Laptop Screen Pattern",
+        "file": "24093p04.dat"
+    },
+    {
+        "id": "6a5bbe451ea665.37441477",
+        "name": "Minifig Sword with Hexagonal Decorations",
+        "file": "24108.dat"
+    },
+    {
+        "id": "6a5bbe451eb0e8.89131291",
+        "name": "Minifig Sword with Hexagonal Decorations with Flat Silver Pattern",
+        "file": "24108pe1.dat"
+    },
+    {
+        "id": "6a5bbe451ebb24.03754751",
+        "name": "Minifig Sword with Hexagonal Decorations with Light Bluish Grey Pattern",
+        "file": "24108pe2.dat"
+    },
+    {
+        "id": "6a5bbe451ec578.16032288",
+        "name": "Minifig Sword with Hexagonal Decorations with Pearl Gold Pattern",
+        "file": "24108pe3.dat"
+    },
+    {
+        "id": "6a5bbe45236682.41500376",
+        "name": "Minifig Wheelchair",
+        "file": "24312.dat"
+    },
+    {
+        "id": "6a5bbe4529ed59.37510852",
+        "name": "Minifig Book Base with Two Studs",
+        "file": "24324.dat"
+    },
+    {
+        "id": "6a5bbe452fe8b4.45466954",
+        "name": "Minifig Hair Decoration Bow Large with Pin",
+        "file": "24634.dat"
+    },
+    {
+        "id": "6a5bbe452ff2f4.94048061",
+        "name": "Minifig Hair Decoration Bow Large with Pin with  6 White Polka Dots on Each Side Pattern",
+        "file": "24634p01.dat"
+    },
+    {
+        "id": "6a5bbe45326c62.77699822",
+        "name": "Minifig Whip",
+        "file": "2488.dat"
+    },
+    {
+        "id": "6a5bbe453279c3.54201471",
+        "name": "Minifig Whip in Latched Position",
+        "file": "2488c01.dat"
+    },
+    {
+        "id": "6a5bbe453357c3.55832353",
+        "name": "Minifig Hand Truck",
+        "file": "2495.dat"
+    },
+    {
+        "id": "6a5bbe453361a7.59743370",
+        "name": "Minifig Hand Truck (Complete)",
+        "file": "2495c01.dat"
+    },
+    {
+        "id": "6a5bbe45344540.11599174",
+        "name": "Minifig Sword Dao with Curved Blade and Hilt",
+        "file": "25111.dat"
+    },
+    {
+        "id": "6a5bbe45352836.93534009",
+        "name": "Minifig Tool Holder",
+        "file": "2516.dat"
+    },
+    {
+        "id": "6a5bbe453676d2.64364583",
+        "name": "Minifig Cannon  2 x  4 Base",
+        "file": "2527.dat"
+    },
+    {
+        "id": "6a5bbe45368f61.72473812",
+        "name": "Minifig Cannon Non-Shooting with Base (Shortcut)",
+        "file": "2527c01.dat"
+    },
+    {
+        "id": "6a5bbe453751f6.62131894",
+        "name": "Minifig Sword Cutlass",
+        "file": "2530.dat"
+    },
+    {
+        "id": "6a5bbe4537a644.84793197",
+        "name": "Minifig Cannon Shooting Barrel and Breech",
+        "file": "2535c01.dat"
+    },
+    {
+        "id": "6a5bbe4537f485.14939535",
+        "name": "Tassel Hanging from Top",
+        "file": "25375-f1.dat"
+    },
+    {
+        "id": "6a5bbe453803f4.19709332",
+        "name": "Tassel Hanging from Side",
+        "file": "25375-f2.dat"
+    },
+    {
+        "id": "6a5bbe45380e59.27069439",
+        "name": "Tassel Hanging from Side with Support Ring Vertical",
+        "file": "25375-f3.dat"
+    },
+    {
+        "id": "6a5bbe453819f8.29488157",
+        "name": "~Tassel Support",
+        "file": "25375k01.dat"
+    },
+    {
+        "id": "6a5bbe453824b4.89597578",
+        "name": "~Tassel",
+        "file": "25375k02.dat"
+    },
+    {
+        "id": "6a5bbe45385a15.63081311",
+        "name": "Minifig Food Bread Bun",
+        "file": "25386.dat"
+    },
+    {
+        "id": "6a5bbe4538c879.46364302",
+        "name": "Minifig Tool Oar",
+        "file": "2542.dat"
+    },
+    {
+        "id": "6a5bbe4539a090.17170355",
+        "name": "Rope Bridge (needs work)",
+        "file": "2549.dat"
+    },
+    {
+        "id": "6a5bbe4539d4c0.18316665",
+        "name": "Minifig Crown with Bar  0.5L",
+        "file": "25516.dat"
+    },
+    {
+        "id": "6a5bbe453b2374.90700887",
+        "name": "Minifig Gun Musket",
+        "file": "2561.dat"
+    },
+    {
+        "id": "6a5bbe453b37d7.03590471",
+        "name": "Minifig Gun Flintlock Pistol",
+        "file": "2562.dat"
+    },
+    {
+        "id": "6a5bbe453ba0b6.26347690",
+        "name": "Minifig Crossbow",
+        "file": "2570.dat"
+    },
+    {
+        "id": "6a5bbe453d7dd8.98558145",
+        "name": "Minifig Shield Ovoid",
+        "file": "2586.dat"
+    },
+    {
+        "id": "6a5bbe453dce54.28738349",
+        "name": "Minifig Shield Ovoid with Indigo Islanders Pattern",
+        "file": "2586p30.dat"
+    },
+    {
+        "id": "6a5bbe453ddbc4.97159454",
+        "name": "Minifig Shield Ovoid with Stag Head Pattern",
+        "file": "2586p40.dat"
+    },
+    {
+        "id": "6a5bbe453de640.74072639",
+        "name": "Minifig Shield Ovoid with Green Dragon Pattern",
+        "file": "2586p4b.dat"
+    },
+    {
+        "id": "6a5bbe453df114.08560277",
+        "name": "Minifig Shield Ovoid with Blue Dragon Pattern",
+        "file": "2586p4c.dat"
+    },
+    {
+        "id": "6a5bbe453dfb42.59449797",
+        "name": "Minifig Shield Ovoid with Royal Knights Lion Pattern",
+        "file": "2586p4d.dat"
+    },
+    {
+        "id": "6a5bbe453e0561.12329110",
+        "name": "Minifig Shield Ovoid with Bat Pattern",
+        "file": "2586p4f.dat"
+    },
+    {
+        "id": "6a5bbe453e1035.20519239",
+        "name": "Minifig Shield Ovoid with Bull Head Pattern",
+        "file": "2586p4g.dat"
+    },
+    {
+        "id": "6a5bbe453e19e0.49031892",
+        "name": "Minifig Shield Ovoid with Silver Skull on Dark Red Pattern",
+        "file": "2586p4h.dat"
+    },
+    {
+        "id": "6a5bbe453e2402.15407235",
+        "name": "Minifig Shield Ovoid with Crown on Dark Blue and Medium Blue Quarters Pattern",
+        "file": "2586p4j.dat"
+    },
+    {
+        "id": "6a5bbe453e2dd3.39817596",
+        "name": "Minifig Shield Ovoid with Dark Green Dragon on Medium Nougat\/Tan Pattern",
+        "file": "2586p4k.dat"
+    },
+    {
+        "id": "6a5bbe453e3833.57631415",
+        "name": "Minifig Shield Ovoid with Gold Lion on Red\/White Quart. Pattern",
+        "file": "2586p4l.dat"
+    },
+    {
+        "id": "6a5bbe453e4266.90797488",
+        "name": "Minifig Shield Ovoid with Gold Lion Head on Blue and White Pattern",
+        "file": "2586p4m.dat"
+    },
+    {
+        "id": "6a5bbe453e4c77.78500862",
+        "name": "Minifig Shield Ovoid with Red Fire Breathing Dragon Head on Black Background Pattern",
+        "file": "2586p4n.dat"
+    },
+    {
+        "id": "6a5bbe453e5624.61161839",
+        "name": "Minifig Shield Ovoid with Golden Lion Pattern",
+        "file": "2586ph1.dat"
+    },
+    {
+        "id": "6a5bbe453e6068.51100274",
+        "name": "Minifig Shield Ovoid with Silver Snake Pattern",
+        "file": "2586ph2.dat"
+    },
+    {
+        "id": "6a5bbe453e6a90.30905560",
+        "name": "Minifig Shield Ovoid with SW Gungan Patrol Shield Pattern",
+        "file": "2586ps1.dat"
+    },
+    {
+        "id": "6a5bbe453e74d4.42161799",
+        "name": "Minifig Shield Ovoid with American Indian Pattern",
+        "file": "2586pw1.dat"
+    },
+    {
+        "id": "6a5bbe453e7e81.70044651",
+        "name": "Minifig Shield Ovoid with Galloping Horse and Feathers Pattern",
+        "file": "2586pw2.dat"
+    },
+    {
+        "id": "6a5bbe453eaab1.11465303",
+        "name": "Minifig Boomerang",
+        "file": "25892.dat"
+    },
+    {
+        "id": "6a5bbe453f6131.68849653",
+        "name": "Minifig Acoustic Guitar",
+        "file": "25975.dat"
+    },
+    {
+        "id": "6a5bbe453f6b24.79308893",
+        "name": "Minifig Acoustic Guitar with Black Fingerboard and Neck and Metallic Silver Strings Pattern",
+        "file": "25975p01.dat"
+    },
+    {
+        "id": "6a5bbe453f74e1.06226635",
+        "name": "Minifig Acoustic Guitar with Black Tuning Pegs and Metallic Silver Strings Pattern",
+        "file": "25975p02.dat"
+    },
+    {
+        "id": "6a5bbe4541aa45.33541954",
+        "name": "Minifig Tool Fishing Rod",
+        "file": "2614.dat"
+    },
+    {
+        "id": "6a5bbe45483eb0.12975307",
+        "name": "Minifig Sword Greatsword with Capped Pommel",
+        "file": "2674b.dat"
+    },
+    {
+        "id": "6a5bbe45484895.93168057",
+        "name": "Minifig Weapon Axe Dwarven",
+        "file": "2674d.dat"
+    },
+    {
+        "id": "6a5bbe454852b6.76414543",
+        "name": "Minifig Sword with Broken Blade",
+        "file": "2674e.dat"
+    },
+    {
+        "id": "6a5bbe45485d05.68992730",
+        "name": "Minifig Sword Small with Upturned Crossguard and Capped Pommel",
+        "file": "2674f.dat"
+    },
+    {
+        "id": "6a5bbe454c0121.03796920",
+        "name": "Minifig Umbrella Folded",
+        "file": "27150.dat"
+    },
+    {
+        "id": "6a5bbe454d44e3.69022038",
+        "name": "Minifig Lightning Bolt with Rim",
+        "file": "27256.dat"
+    },
+    {
+        "id": "6a5bbe454d4ed8.36886623",
+        "name": "Minifig Spear Tip Faceted with Bar  0.4L",
+        "file": "27257.dat"
+    },
+    {
+        "id": "6a5bbe455886a8.21228978",
+        "name": "Minifig Magic Wand with Short Handle",
+        "file": "28681.dat"
+    },
+    {
+        "id": "6a5bbe455d79e9.48721825",
+        "name": "Minifig Machete",
+        "file": "29109.dat"
+    },
+    {
+        "id": "6a5bbe4560c496.83595984",
+        "name": "Minifig Sports Barbells",
+        "file": "29592.dat"
+    },
+    {
+        "id": "6a5bbe4560f719.55972954",
+        "name": "Minifig Gun with Round Heat Diffusers, Fin and Spherical Emitter",
+        "file": "29601.dat"
+    },
+    {
+        "id": "6a5bbe45615466.76305097",
+        "name": "Minifig Serving Tray  2 x  3",
+        "file": "29635.dat"
+    },
+    {
+        "id": "6a5bbe45615f23.13027924",
+        "name": "Minifig Whisk",
+        "file": "29636.dat"
+    },
+    {
+        "id": "6a5bbe45638dd9.98697881",
+        "name": "Minifig Goblet",
+        "file": "30002.dat"
+    },
+    {
+        "id": "6a5bbe4566a581.14996399",
+        "name": "Minifig Handlebars",
+        "file": "30031.dat"
+    },
+    {
+        "id": "6a5bbe4566d7e0.88237963",
+        "name": "Minifig Space Scanner Tool",
+        "file": "30035.dat"
+    },
+    {
+        "id": "6a5bbe457625b2.75471656",
+        "name": "Minifig Speargun",
+        "file": "30088.dat"
+    },
+    {
+        "id": "6a5bbe45763915.44839270",
+        "name": "Minifig Camera Snapshot Type 1",
+        "file": "30089a.dat"
+    },
+    {
+        "id": "6a5bbe45764301.21793321",
+        "name": "Minifig Camera Snapshot Type 2",
+        "file": "30089b.dat"
+    },
+    {
+        "id": "6a5bbe4578ee29.53220794",
+        "name": "Minifig Underwater Scooter",
+        "file": "30092.dat"
+    },
+    {
+        "id": "6a5bbe457cea46.62441351",
+        "name": "Minifig Chain 17L with  17L Span Straight",
+        "file": "30104.dat"
+    },
+    {
+        "id": "6a5bbe457cf477.82858142",
+        "name": "Minifig Chain End for Chain  6L and 17L",
+        "file": "30104k01.dat"
+    },
+    {
+        "id": "6a5bbe457cfe77.56552234",
+        "name": "Minifig Chain Link for Chain  6L and 17L",
+        "file": "30104k02.dat"
+    },
+    {
+        "id": "6a5bbe45849813.39507598",
+        "name": "Minifig Feathers with Pin",
+        "file": "30126.dat"
+    },
+    {
+        "id": "6a5bbe4584a220.45036331",
+        "name": "Minifig Feathers with Pin and Black Tip on Both Sides Pattern",
+        "file": "30126p01.dat"
+    },
+    {
+        "id": "6a5bbe4584ac69.87558385",
+        "name": "Minifig Feathers with Pin and Black Tip On One Side Pattern",
+        "file": "30126p02.dat"
+    },
+    {
+        "id": "6a5bbe4584b612.25912691",
+        "name": "Minifig Feathers with Pin and Red Tip with Black Stripe Pattern",
+        "file": "30126p03.dat"
+    },
+    {
+        "id": "6a5bbe4584fcb2.89364226",
+        "name": "Minifig Gun Revolver",
+        "file": "30132.dat"
+    },
+    {
+        "id": "6a5bbe45856410.74419234",
+        "name": "Minifig Gun Rifle",
+        "file": "30141.dat"
+    },
+    {
+        "id": "6a5bbe4585ae52.84479069",
+        "name": "Minifig Camera Movie",
+        "file": "30148.dat"
+    },
+    {
+        "id": "6a5bbe4585f693.92000738",
+        "name": "Minifig Tool Magnifying Glass",
+        "file": "30152a.dat"
+    },
+    {
+        "id": "6a5bbe458601f0.90464306",
+        "name": "Minifig Tool Magnifying Glass with TransClear Lens",
+        "file": "30152ap01.dat"
+    },
+    {
+        "id": "6a5bbe45860d38.38355733",
+        "name": "Minifig Tool Magnifying Glass with TransRed Lens",
+        "file": "30152ap02.dat"
+    },
+    {
+        "id": "6a5bbe45862195.95319691",
+        "name": "Minifig Sextant",
+        "file": "30154.dat"
+    },
+    {
+        "id": "6a5bbe4586a948.55824372",
+        "name": "~Minifig Backpack Openable Joint Curved",
+        "file": "30158d.dat"
+    },
+    {
+        "id": "6a5bbe4586e711.23866165",
+        "name": "Minifig Binoculars with Round Eyepiece",
+        "file": "30162.dat"
+    },
+    {
+        "id": "6a5bbe45871bf6.40843132",
+        "name": "Minifig Shield Rectangular  2 x  3 with Bent and Chamfered Sides and Four Studs",
+        "file": "30166.dat"
+    },
+    {
+        "id": "6a5bbe45872616.90515475",
+        "name": "Minifig Shield Rectangular  2 x  3 with Bent and Chamfered Sides and Four Studs with Triangular Viewfinder Pattern",
+        "file": "30166ps0.dat"
+    },
+    {
+        "id": "6a5bbe4587b478.59471123",
+        "name": "Minifig Sword Katana Type  1 (Octagonal Guard)",
+        "file": "30173a.dat"
+    },
+    {
+        "id": "6a5bbe4587be73.63426109",
+        "name": "Minifig Sword Katana Type  2 (Square Guard)",
+        "file": "30173b.dat"
+    },
+    {
+        "id": "6a5bbe4589ae40.45777357",
+        "name": "Bar Flexible H-shaped with Holders (Formed as Vehicle Rollcage)",
+        "file": "30191-f2.dat"
+    },
+    {
+        "id": "6a5bbe4589eeb6.63413890",
+        "name": "Minifig Tool Grappling Hook",
+        "file": "30192.dat"
+    },
+    {
+        "id": "6a5bbe4589f898.78572009",
+        "name": "Minifig Ice Axe",
+        "file": "30193.dat"
+    },
+    {
+        "id": "6a5bbe458a0278.98165507",
+        "name": "Minifig Circular Blade Saw",
+        "file": "30194.dat"
+    },
+    {
+        "id": "6a5bbe458b23b4.08405223",
+        "name": "Minifig Food Popsicle",
+        "file": "30222.dat"
+    },
+    {
+        "id": "6a5bbe458b8a01.05411937",
+        "name": "Minifig Jackhammer",
+        "file": "30228.dat"
+    },
+    {
+        "id": "6a5bbe458b9411.11969494",
+        "name": "Minifig Zip Line Handle (Needs work)",
+        "file": "30229.dat"
+    },
+    {
+        "id": "6a5bbe459136e6.93019069",
+        "name": "Minifig Tool Binoculars Space",
+        "file": "30304.dat"
+    },
+    {
+        "id": "6a5bbe4591ee72.58660959",
+        "name": "Minifig Life Ring",
+        "file": "30340.dat"
+    },
+    {
+        "id": "6a5bbe45a10b39.08329250",
+        "name": "Minifig Stand",
+        "file": "30488.dat"
+    },
+    {
+        "id": "6a5bbe45a14182.74316068",
+        "name": "Minifig Stand Hinge Pin",
+        "file": "30491.dat"
+    },
+    {
+        "id": "6a5bbe45a41cd5.76773319",
+        "name": "Minifig Martian Hypersled",
+        "file": "30593.dat"
+    },
+    {
+        "id": "6a5bbe45cbaa79.51374594",
+        "name": "Minifig Arm Bandage Wrapped",
+        "file": "30924.dat"
+    },
+    {
+        "id": "6a5bbe45d2d343.50714385",
+        "name": "Minifig Oar Head",
+        "file": "31990.dat"
+    },
+    {
+        "id": "6a5bbe45e44110.89601365",
+        "name": "Power Burst Energy Effect with Bar",
+        "file": "32643.dat"
+    },
+    {
+        "id": "6a5bbe45e7d1a6.43765259",
+        "name": "Minifig Book (Closed)",
+        "file": "33009-f1.dat"
+    },
+    {
+        "id": "6a5bbe45e7dba0.73210544",
+        "name": "Minifig Book (Open)",
+        "file": "33009-f2.dat"
+    },
+    {
+        "id": "6a5bbe45e8e507.77632769",
+        "name": "Minifig Food Turkey Body",
+        "file": "33048.dat"
+    },
+    {
+        "id": "6a5bbe45e8eee2.25204575",
+        "name": "Minifig Food Turkey with Legs (Complete)",
+        "file": "33048c01.dat"
+    },
+    {
+        "id": "6a5bbe45e8f940.17919008",
+        "name": "Minifig Food Apple",
+        "file": "33051.dat"
+    },
+    {
+        "id": "6a5bbe45e90333.60270688",
+        "name": "Minifig Mug",
+        "file": "33054.dat"
+    },
+    {
+        "id": "6a5bbe45e90d02.58730837",
+        "name": "Minifig Food Turkey Leg",
+        "file": "33057.dat"
+    },
+    {
+        "id": "6a5bbe45e91797.23556447",
+        "name": "Minifig Wine Glass",
+        "file": "33061.dat"
+    },
+    {
+        "id": "6a5bbe45e93642.39147504",
+        "name": "Minifig Food Sausage",
+        "file": "33078.dat"
+    },
+    {
+        "id": "6a5bbe45e95e04.54993795",
+        "name": "Minifig Food Banana",
+        "file": "33085.dat"
+    },
+    {
+        "id": "6a5bbe45e9adf6.81176283",
+        "name": "Minifig Food Ice Cream Cone",
+        "file": "33120.dat"
+    },
+    {
+        "id": "6a5bbe45e9d541.43915142",
+        "name": "Minifig Food Croissant with Rounded Ends",
+        "file": "33125.dat"
+    },
+    {
+        "id": "6a5bbe45ea08f1.90261685",
+        "name": "Minifig Food Carrot",
+        "file": "33172.dat"
+    },
+    {
+        "id": "6a5bbe45ea12d1.68352763",
+        "name": "Minifig Food Carrot with Green Leaves (Complete)",
+        "file": "33172c01.dat"
+    },
+    {
+        "id": "6a5bbe45ea1c89.35371977",
+        "name": "Minifig Food Carrot with Bright_Green Leaves (Complete)",
+        "file": "33172c02.dat"
+    },
+    {
+        "id": "6a5bbe45ea2657.63789361",
+        "name": "Minifig Food Carrot with Lime Leaves (Complete)",
+        "file": "33172c03.dat"
+    },
+    {
+        "id": "6a5bbe45ea3002.41097455",
+        "name": "Minifig Food Carrot with Reddish Brown Leaves (Complete)",
+        "file": "33172c04.dat"
+    },
+    {
+        "id": "6a5bbe45ea4fa0.25377595",
+        "name": "Minifig Food Carrot Top",
+        "file": "33183.dat"
+    },
+    {
+        "id": "6a5bbe45f02f95.57139031",
+        "name": "Minifig Rice Bowl",
+        "file": "34172.dat"
+    },
+    {
+        "id": "6a5bbe45f03993.47375623",
+        "name": "Minifig Rice Bowl with Metallic Gold Stripes Pattern",
+        "file": "34172p01.dat"
+    },
+    {
+        "id": "6a5bbe46015dd3.41565137",
+        "name": "Power Burst Blaster with Bar",
+        "file": "35032a.dat"
+    },
+    {
+        "id": "6a5bbe46016893.69268764",
+        "name": "Power Burst Bolt  5L with Bar at Both Ends",
+        "file": "35032b.dat"
+    },
+    {
+        "id": "6a5bbe46017243.24863610",
+        "name": "Power Burst Bolt  5L Spiral with Bar at Both Ends",
+        "file": "35032d.dat"
+    },
+    {
+        "id": "6a5bbe46017bf5.82909261",
+        "name": "Power Burst Shield  3.5 x  3.5 with Bar",
+        "file": "35032e.dat"
+    },
+    {
+        "id": "6a5bbe460185e7.95477885",
+        "name": "Power Burst Shield  3 x  2.5 with Bar at Both Ends",
+        "file": "35032f.dat"
+    },
+    {
+        "id": "6a5bbe46051202.77199342",
+        "name": "Minifig Chakram",
+        "file": "35485.dat"
+    },
+    {
+        "id": "6a5bbe4606d582.01226982",
+        "name": "Minifig Balloon Dog",
+        "file": "35692.dat"
+    },
+    {
+        "id": "6a5bbe46082b42.76720326",
+        "name": "Minifig Pen",
+        "file": "35809.dat"
+    },
+    {
+        "id": "6a5bbe46083550.29357592",
+        "name": "Minifig Pen with Medium Lilac Tip and Cap Pattern",
+        "file": "35809p01.dat"
+    },
+    {
+        "id": "6a5bbe46083f75.02180985",
+        "name": "Minifig Pen with Magenta Tip and Cap Pattern",
+        "file": "35809p02.dat"
+    },
+    {
+        "id": "6a5bbe46084928.95642868",
+        "name": "Minifig Pen with Pearl Dark Grey Tip and Cap Pattern",
+        "file": "35809p03.dat"
+    },
+    {
+        "id": "6a5bbe46087cb0.67823630",
+        "name": "Minifig Food Cake Double Layer",
+        "file": "35860.dat"
+    },
+    {
+        "id": "6a5bbe46088769.55707134",
+        "name": "Minifig Food Cake Double Layer with Pink Base and Bright Light Blue Ribbon Pattern",
+        "file": "35860p01.dat"
+    },
+    {
+        "id": "6a5bbe460ae9b5.18009710",
+        "name": "Minifig Weapon Sword Hilt with Dragon Head",
+        "file": "36017.dat"
+    },
+    {
+        "id": "6a5bbe460b65f2.77530643",
+        "name": "Minifig Weapon Web Effect  5L Narrow with Bars at Both Ends",
+        "file": "36083a.dat"
+    },
+    {
+        "id": "6a5bbe460b6ff2.61585380",
+        "name": "Minifig Weapon Web Effect Handcuffs",
+        "file": "36083b.dat"
+    },
+    {
+        "id": "6a5bbe460b79d1.31276083",
+        "name": "Minifig Weapon Web Effect Web  4 x  3 with Bar",
+        "file": "36083c.dat"
+    },
+    {
+        "id": "6a5bbe460b83e2.90333984",
+        "name": "Minifig Weapon Web Effect Web  2 x  2 with Bars on Both Sides",
+        "file": "36083d.dat"
+    },
+    {
+        "id": "6a5bbe460b8e27.64232529",
+        "name": "Minifig Weapon Web Effect Web  4.5 x  4 with Bar and  2 Handles",
+        "file": "36083e.dat"
+    },
+    {
+        "id": "6a5bbe460b9818.38742682",
+        "name": "Minifig Weapon Web Effect  4L Spreading with Bars at Both Ends",
+        "file": "36083f.dat"
+    },
+    {
+        "id": "6a5bbe4621d3b3.90453741",
+        "name": "Minifig Tool Wand",
+        "file": "36752a.dat"
+    },
+    {
+        "id": "6a5bbe4621ddb9.40000086",
+        "name": "Minifig Tool Wand Sprue",
+        "file": "36752b.dat"
+    },
+    {
+        "id": "6a5bbe4621e7d8.09509081",
+        "name": "Minifig Tool Wand Sprue without Arch",
+        "file": "36752c.dat"
+    },
+    {
+        "id": "6a5bbe4621f1a0.69495938",
+        "name": "Minifig Tool Wands on Sprue",
+        "file": "36752c01.dat"
+    },
+    {
+        "id": "6a5bbe4621fba2.25076225",
+        "name": "Minifig Tool Wands on Sprue without Arch",
+        "file": "36752c02.dat"
+    },
+    {
+        "id": "6a5bbe462608f9.31234532",
+        "name": "Minifig Suitcase with Long Handle (Closed)",
+        "file": "37178-f1.dat"
+    },
+    {
+        "id": "6a5bbe46261665.10414939",
+        "name": "Minifig Suitcase with Long Handle (Open)",
+        "file": "37178-f2.dat"
+    },
+    {
+        "id": "6a5bbe46262808.62420863",
+        "name": "~Minifig Suitcase with Long Handle - Male Half",
+        "file": "37178k01.dat"
+    },
+    {
+        "id": "6a5bbe46263272.95311346",
+        "name": "~Minifig Suitcase with Long Handle - Female Half",
+        "file": "37178k02.dat"
+    },
+    {
+        "id": "6a5bbe4626de59.91950929",
+        "name": "Minifig Sword with Curved Blade and Reinforced Guard with Bar",
+        "file": "37341a.dat"
+    },
+    {
+        "id": "6a5bbe4626e883.50211008",
+        "name": "Minifig Weapon Knife Curved  1.6 L Blade with Cross Hatched Grip",
+        "file": "37341b.dat"
+    },
+    {
+        "id": "6a5bbe4626f2a9.24235706",
+        "name": "Minifig Sword Katana  3.5 L with Short Smooth Grip and Square Crossguard",
+        "file": "37341c.dat"
+    },
+    {
+        "id": "6a5bbe4626fca5.67549207",
+        "name": "Minifig Scythe with Bar and Cross Hatched Grip",
+        "file": "37341d.dat"
+    },
+    {
+        "id": "6a5bbe46270640.39563967",
+        "name": "Minifig Weapon Hook with Double Blades",
+        "file": "37341e.dat"
+    },
+    {
+        "id": "6a5bbe462a6204.89504805",
+        "name": "Minifig Weapon Crescent Blade",
+        "file": "3757.dat"
+    },
+    {
+        "id": "6a5bbe462abcc7.59855804",
+        "name": "Minifig Suitcase with Hinge",
+        "file": "37702.dat"
+    },
+    {
+        "id": "6a5bbe462ac6b0.97375776",
+        "name": "Minifig Suitcase with Hinge with Lid (Complete)",
+        "file": "37702c01.dat"
+    },
+    {
+        "id": "6a5bbe462ad0b4.53660508",
+        "name": "Minifig Suitcase with Hinge with Metallic Gold Clasps Pattern",
+        "file": "37702p01.dat"
+    },
+    {
+        "id": "6a5bbe462ada94.64964278",
+        "name": "Minifig Ball Winged, HP Quidditch Golden Snitch",
+        "file": "37704.dat"
+    },
+    {
+        "id": "6a5bbe462af9a3.69193235",
+        "name": "Minifig Bar  4L with Middle Bat Emblem",
+        "file": "37720c.dat"
+    },
+    {
+        "id": "6a5bbe462b0398.69443278",
+        "name": "Minifig Bar  0.8L with Tip Bat Emblem",
+        "file": "37720d.dat"
+    },
+    {
+        "id": "6a5bbe462b3679.15813559",
+        "name": "Minifig Candle Flame",
+        "file": "37775.dat"
+    },
+    {
+        "id": "6a5bbe462b4052.41003395",
+        "name": "Minifig Lantern",
+        "file": "37776.dat"
+    },
+    {
+        "id": "6a5bbe462bb0f5.50615634",
+        "name": "Minifig Sword Rapier",
+        "file": "37846.dat"
+    },
+    {
+        "id": "6a5bbe462c3f26.10661326",
+        "name": "Minifig Cup with Bar Handle",
+        "file": "38014.dat"
+    },
+    {
+        "id": "6a5bbe464676f3.80704865",
+        "name": "Minifig Tool Handaxe",
+        "file": "3835.dat"
+    },
+    {
+        "id": "6a5bbe464682c2.82907451",
+        "name": "Minifig Pushbroom",
+        "file": "3836.dat"
+    },
+    {
+        "id": "6a5bbe46468d05.65859828",
+        "name": "Minifig Shovel",
+        "file": "3837.dat"
+    },
+    {
+        "id": "6a5bbe46474146.37388293",
+        "name": "Minifig Pickaxe",
+        "file": "3841.dat"
+    },
+    {
+        "id": "6a5bbe464789b6.00681425",
+        "name": "Minifig Shield Triangular",
+        "file": "3846.dat"
+    },
+    {
+        "id": "6a5bbe4647ed80.08781215",
+        "name": "Minifig Shield Triangular with Red Cross and Helmet Pattern",
+        "file": "3846p01.dat"
+    },
+    {
+        "id": "6a5bbe4647f853.27356588",
+        "name": "Minifig Shield Triangular with Town Hall Pattern",
+        "file": "3846p02.dat"
+    },
+    {
+        "id": "6a5bbe46480278.23421683",
+        "name": "Minifig Shield Triangular with Deer Head and Black Outline Pattern",
+        "file": "3846p40.dat"
+    },
+    {
+        "id": "6a5bbe464817d7.09187577",
+        "name": "Minifig Shield Triangular with Wolfpack Pattern",
+        "file": "3846p44.dat"
+    },
+    {
+        "id": "6a5bbe464822f1.96223912",
+        "name": "Minifig Shield Triangular with Black Falcon Blue Border Pattern",
+        "file": "3846p45.dat"
+    },
+    {
+        "id": "6a5bbe46482da6.78605054",
+        "name": "Minifig Shield Triangular with Black Falcon Yellow Border Pattern",
+        "file": "3846p46.dat"
+    },
+    {
+        "id": "6a5bbe46483818.39442156",
+        "name": "Minifig Shield Triangular with Red in Blue Frame Pattern",
+        "file": "3846p47.dat"
+    },
+    {
+        "id": "6a5bbe46484219.09989845",
+        "name": "Minifig Shield Triangular with Forestman Pattern",
+        "file": "3846p48.dat"
+    },
+    {
+        "id": "6a5bbe46484bb5.68433546",
+        "name": "Minifig Shield Triangular with Black and Metallic Silver Falcon with Black Border Pattern",
+        "file": "3846p49.dat"
+    },
+    {
+        "id": "6a5bbe46485576.77243235",
+        "name": "Minifig Shield Triangular with Blue Dragon Pattern",
+        "file": "3846p4c.dat"
+    },
+    {
+        "id": "6a5bbe46485f78.84524413",
+        "name": "Minifig Shield Triangular with Royal Knights Lion Pattern",
+        "file": "3846p4d.dat"
+    },
+    {
+        "id": "6a5bbe46486e16.91373212",
+        "name": "Minifig Shield Triangular with Lion Head, Blue & Yellow Pattern",
+        "file": "3846p4e.dat"
+    },
+    {
+        "id": "6a5bbe46487857.68382072",
+        "name": "Minifig Shield Triangular with Bat Pattern",
+        "file": "3846p4f.dat"
+    },
+    {
+        "id": "6a5bbe46488254.15065793",
+        "name": "Minifig Shield Triangular with Blue Lion on Yellow Pattern",
+        "file": "3846p4g.dat"
+    },
+    {
+        "id": "6a5bbe46488c76.10174588",
+        "name": "Minifig Shield Triangular with Yellow Lion on Blue Pattern",
+        "file": "3846p4h.dat"
+    },
+    {
+        "id": "6a5bbe46489667.22501364",
+        "name": "Minifig Shield Triangular w\/ Crown on Dk\/Med Blue Quart. Pattern",
+        "file": "3846p4j.dat"
+    },
+    {
+        "id": "6a5bbe4648a053.89755715",
+        "name": "Minifig Shield Triangular with Dark Green Dragon on Medium Nougat\/Tan Pattern",
+        "file": "3846p4k.dat"
+    },
+    {
+        "id": "6a5bbe4648aa33.87621516",
+        "name": "Minifig Shield Triangular with Gold Lion on Red\/White Quarters Pattern",
+        "file": "3846p4l.dat"
+    },
+    {
+        "id": "6a5bbe4648b433.19523824",
+        "name": "Minifig Shield Triangular with Gold Lion Head on Blue and White Pattern",
+        "file": "3846p4m.dat"
+    },
+    {
+        "id": "6a5bbe4648be02.84300703",
+        "name": "Minifig Shield Triangular with Red Dragon Head on Black Background Pattern",
+        "file": "3846p4n.dat"
+    },
+    {
+        "id": "6a5bbe4648c8b3.56324883",
+        "name": "Minifig Shield Triangular with Blue Lion Standing with Raised Foot on Yellow Background with Red Border Pattern",
+        "file": "3846p4o.dat"
+    },
+    {
+        "id": "6a5bbe4648d254.88024085",
+        "name": "Minifig Shield Triangular with Yellow Lion Standing with Raised Foot on Blue Background with Red Border Pattern",
+        "file": "3846p4p.dat"
+    },
+    {
+        "id": "6a5bbe4648dc03.04893391",
+        "name": "Minifig Shield Triangular with Yellow Lion with Raised Foot on Blue and Red Background with Border Pattern",
+        "file": "3846p4q.dat"
+    },
+    {
+        "id": "6a5bbe4648e5c7.69549978",
+        "name": "Minifig Shield Triangular with Yellow and Black Crossed Halberds and Blue Border Pattern",
+        "file": "3846p4r.dat"
+    },
+    {
+        "id": "6a5bbe4648f0d1.22059855",
+        "name": "Minifig Shield Triangular with Red\/Peach Quarters Pattern",
+        "file": "3846p4t.dat"
+    },
+    {
+        "id": "6a5bbe4648fb42.29053662",
+        "name": "Minifig Shield Triangular with Maroon\/Red Quarters Pattern",
+        "file": "3846p4u.dat"
+    },
+    {
+        "id": "6a5bbe464904d3.64204374",
+        "name": "Minifig Shield Triangular with Crown on Bright Reddish Lilac Background with Gold Border Pattern",
+        "file": "3846p4x.dat"
+    },
+    {
+        "id": "6a5bbe46490eb3.04354735",
+        "name": "Minifig Shield Triangular with Green Chevrons on Yellow Background Pattern",
+        "file": "3846p4y.dat"
+    },
+    {
+        "id": "6a5bbe46491892.21496065",
+        "name": "Minifig Shield Triangular with 3 Yellow Trefoils on Blue Background Pattern",
+        "file": "3846p4z.dat"
+    },
+    {
+        "id": "6a5bbe46492237.31501536",
+        "name": "Minifig Shield Triangular with White Horse Head on Blue Background with Gold Border Pattern",
+        "file": "3846p50.dat"
+    },
+    {
+        "id": "6a5bbe46492c02.12113252",
+        "name": "Minifig Shield Triangular with Goblin King Eye Pattern",
+        "file": "3846pm0.dat"
+    },
+    {
+        "id": "6a5bbe464935f4.53889615",
+        "name": "Minifig Sword Shortsword",
+        "file": "3847.dat"
+    },
+    {
+        "id": "6a5bbe46493fb3.18873262",
+        "name": "Minifig Battleaxe",
+        "file": "3848.dat"
+    },
+    {
+        "id": "6a5bbe46494980.40110673",
+        "name": "Minifig Lance",
+        "file": "3849.dat"
+    },
+    {
+        "id": "6a5bbe46497350.97090788",
+        "name": "Minifig Hairbrush with Long Handle",
+        "file": "3852a.dat"
+    },
+    {
+        "id": "6a5bbe46497cf7.14819550",
+        "name": "Minifig Hairbrush with Short Handle",
+        "file": "3852b.dat"
+    },
+    {
+        "id": "6a5bbe464b3b47.32697259",
+        "name": "Minifig Shield Round",
+        "file": "3876.dat"
+    },
+    {
+        "id": "6a5bbe464b50c8.62925096",
+        "name": "Minifig Saucer with Hollow Stud on Top",
+        "file": "38799.dat"
+    },
+    {
+        "id": "6a5bbe464b8a31.47240902",
+        "name": "Minifig Sword Darksaber",
+        "file": "3885.dat"
+    },
+    {
+        "id": "6a5bbe464c70b4.97938682",
+        "name": "Minifig Cup",
+        "file": "3899.dat"
+    },
+    {
+        "id": "6a5bbe464c7ba8.24035906",
+        "name": "Minifig Cup with Black \"C:\\\" Pattern",
+        "file": "3899p01.dat"
+    },
+    {
+        "id": "6a5bbe464c8547.71240004",
+        "name": "Minifig Cup with Black \"Shhh!\" Pattern",
+        "file": "3899p02.dat"
+    },
+    {
+        "id": "6a5bbe464c8f23.44687056",
+        "name": "Minifig Cup with White \"DUNK ME!\" Pattern",
+        "file": "3899p03.dat"
+    },
+    {
+        "id": "6a5bbe464c98d4.70564349",
+        "name": "Minifig Cup with White Octan Logo Pattern",
+        "file": "3899p04.dat"
+    },
+    {
+        "id": "6a5bbe464ca2b1.76838707",
+        "name": "Minifig Cup with Black \"I Heart SOUTH PAWS\" Pattern",
+        "file": "3899p05.dat"
+    },
+    {
+        "id": "6a5bbe464cae20.51174966",
+        "name": "Minifig Cup with Medium Lilac and Medium Lavender \"I Heart HLC\" Pattern",
+        "file": "3899p07.dat"
+    },
+    {
+        "id": "6a5bbe464cb9f4.41187822",
+        "name": "Minifig Cup with Black Outlined Marshmallow Face and Yellow and Orange Flames Pattern",
+        "file": "3899p08.dat"
+    },
+    {
+        "id": "6a5bbe464cc414.13003957",
+        "name": "Minifig Cup with Reddish Brown \"TVA\" Logo on Metallic Gold Rectangle Pattern",
+        "file": "3899p09.dat"
+    },
+    {
+        "id": "6a5bbe464ce342.46624284",
+        "name": "Minifig Signal Holder",
+        "file": "3900.dat"
+    },
+    {
+        "id": "6a5bbe464cf936.37988930",
+        "name": "Minifig Signal Holder with Black \"POLICE\" and Red Line Pattern",
+        "file": "3900p01.dat"
+    },
+    {
+        "id": "6a5bbe464d1772.47212774",
+        "name": "Minifig Megaphone",
+        "file": "39144.dat"
+    },
+    {
+        "id": "6a5bbe464d2143.93345202",
+        "name": "Minifig Megaphone with Red Firefighter Logo on Two Sides Pattern",
+        "file": "39144p01.dat"
+    },
+    {
+        "id": "6a5bbe46504479.83463053",
+        "name": "Minifig Torch",
+        "file": "3959.dat"
+    },
+    {
+        "id": "6a5bbe46535737.18689342",
+        "name": "Minifig Radio with Short Handle",
+        "file": "3962a.dat"
+    },
+    {
+        "id": "6a5bbe46536301.37607796",
+        "name": "Minifig Radio with Long Handle",
+        "file": "3962b.dat"
+    },
+    {
+        "id": "6a5bbe46540367.97485799",
+        "name": "Minifig Axe with Pick End and Long Handle",
+        "file": "39802.dat"
+    },
+    {
+        "id": "6a5bbe46540dc2.72118496",
+        "name": "Minifig Axe with Pick End and Long Handle with Red Head Pattern",
+        "file": "39802p01.dat"
+    },
+    {
+        "id": "6a5bbe4654c7d2.51315700",
+        "name": "Wheelbarrow with 1 Wheel",
+        "file": "4003.dat"
+    },
+    {
+        "id": "6a5bbe4654d1d7.77626648",
+        "name": "Wheelbarrow with 1 Wheel (Complete)",
+        "file": "4003c01.dat"
+    },
+    {
+        "id": "6a5bbe4654db99.52296630",
+        "name": "Minifig Tool Spanner\/Screwdriver",
+        "file": "4006.dat"
+    },
+    {
+        "id": "6a5bbe465665f2.32353473",
+        "name": "Minifig Key",
+        "file": "40359a.dat"
+    },
+    {
+        "id": "6a5bbe46567000.08650155",
+        "name": "~Sprue for 2 Minifig Keys",
+        "file": "40359b.dat"
+    },
+    {
+        "id": "6a5bbe46567a43.03965880",
+        "name": "Minifig Keys on Sprue",
+        "file": "40359c01.dat"
+    },
+    {
+        "id": "6a5bbe46580297.23775370",
+        "name": "Minifig Weapon Disc Projectile",
+        "file": "40598a.dat"
+    },
+    {
+        "id": "6a5bbe46580cd2.59662175",
+        "name": "Minifig Weapon Grappling Hook Tip",
+        "file": "40598b.dat"
+    },
+    {
+        "id": "6a5bbe465816e8.31574575",
+        "name": "Minifig Weapon Grenade with Large Tapered Top and Four Indents",
+        "file": "40598c.dat"
+    },
+    {
+        "id": "6a5bbe465820d9.70883157",
+        "name": "Minifig Weapon Grenade with Small Tapered Top and Two Ridges",
+        "file": "40598d.dat"
+    },
+    {
+        "id": "6a5bbe465c91b6.47123764",
+        "name": "Minifig Seat  2 x  2",
+        "file": "4079.dat"
+    },
+    {
+        "id": "6a5bbe465e43c0.75297163",
+        "name": "Minifig Umbrella",
+        "file": "4094b.dat"
+    },
+    {
+        "id": "6a5bbe467cced1.52739185",
+        "name": "Minifig Tool Hose Nozzle with Handle",
+        "file": "4210a.dat"
+    },
+    {
+        "id": "6a5bbe467d3d60.98688526",
+        "name": "Minifig Lightsaber Hilt with Bend",
+        "file": "42114.dat"
+    },
+    {
+        "id": "6a5bbe467d65a6.65178283",
+        "name": "Minifig Lightsaber with Bend Chrome Silver - 1 Side On",
+        "file": "42114c01.dat"
+    },
+    {
+        "id": "6a5bbe467d7254.98985609",
+        "name": "Minifig Lightsaber with Bend Chrome Silver - 2 Sides On",
+        "file": "42114c02.dat"
+    },
+    {
+        "id": "6a5bbe468455f1.19225276",
+        "name": "Minifig Skateboard with Four Wheel Clips",
+        "file": "42511.dat"
+    },
+    {
+        "id": "6a5bbe46846b29.17129048",
+        "name": "Minifig Skateboard with Black Wheels (Complete)",
+        "file": "42511c01.dat"
+    },
+    {
+        "id": "6a5bbe46847525.17123903",
+        "name": "Minifig Skateboard with Yellow Wheels (Complete)",
+        "file": "42511c02.dat"
+    },
+    {
+        "id": "6a5bbe468480e7.49915371",
+        "name": "Minifig Skateboard with Medium Lavender Wheels (Complete)",
+        "file": "42511c03.dat"
+    },
+    {
+        "id": "6a5bbe46848ad0.98420178",
+        "name": "Minifig Skateboard with Medium Lilac Wheels (Complete)",
+        "file": "42511c04.dat"
+    },
+    {
+        "id": "6a5bbe468496e7.59145787",
+        "name": "Minifig Skateboard with White Wheels (Complete)",
+        "file": "42511c05.dat"
+    },
+    {
+        "id": "6a5bbe4684a139.50080587",
+        "name": "Minifig Skateboard with Bright Green Wheels (Complete)",
+        "file": "42511c06.dat"
+    },
+    {
+        "id": "6a5bbe4684acf0.10033421",
+        "name": "Minifig Skateboard with Dark Turquoise Wheels (Complete)",
+        "file": "42511c07.dat"
+    },
+    {
+        "id": "6a5bbe46898ff7.19629380",
+        "name": "Minifig Food Turkey Leg with Oval Opening on Back",
+        "file": "42876.dat"
+    },
+    {
+        "id": "6a5bbe468d2100.73172319",
+        "name": "Minifig Pipe Wrench (Needs Work)",
+        "file": "4328.dat"
+    },
+    {
+        "id": "6a5bbe468d5755.74907012",
+        "name": "Minifig Broom",
+        "file": "4332.dat"
+    },
+    {
+        "id": "6a5bbe468dac02.74564929",
+        "name": "Minifig Ladle",
+        "file": "4337.dat"
+    },
+    {
+        "id": "6a5bbe468de4f4.01128392",
+        "name": "Minifig Basketball Net for Hoop",
+        "file": "43374.dat"
+    },
+    {
+        "id": "6a5bbe468e0c03.71825798",
+        "name": "Minifig Cauldron",
+        "file": "4341.dat"
+    },
+    {
+        "id": "6a5bbe468e2ce1.98442052",
+        "name": "Minifig Food French Bread",
+        "file": "4342.dat"
+    },
+    {
+        "id": "6a5bbe46906dc9.30637385",
+        "name": "Minifig Loudhailer",
+        "file": "4349.dat"
+    },
+    {
+        "id": "6a5bbe46907968.09034312",
+        "name": "Minifig Loudhailer with Orange Stripe Pattern",
+        "file": "4349p01.dat"
+    },
+    {
+        "id": "6a5bbe4690e7c2.87077317",
+        "name": "Minifig Camera with Side Sight",
+        "file": "4360.dat"
+    },
+    {
+        "id": "6a5bbe46913296.32939064",
+        "name": "Minifig Basketball",
+        "file": "43702.dat"
+    },
+    {
+        "id": "6a5bbe46913d94.86273332",
+        "name": "Minifig Basketball with Black Spokes Pattern",
+        "file": "43702p01.dat"
+    },
+    {
+        "id": "6a5bbe46930172.86217862",
+        "name": "Minifig Sword Scimitar",
+        "file": "43887.dat"
+    },
+    {
+        "id": "6a5bbe4693b444.27855186",
+        "name": "Minifig Spear with Four Side Blades",
+        "file": "43899.dat"
+    },
+    {
+        "id": "6a5bbe469868d9.82135825",
+        "name": "Minifig Suitcase (Closed)",
+        "file": "4449-f1.dat"
+    },
+    {
+        "id": "6a5bbe46987eb6.96801198",
+        "name": "Minifig Suitcase (Open)",
+        "file": "4449-f2.dat"
+    },
+    {
+        "id": "6a5bbe469895a8.89293143",
+        "name": "Minifig Sword Greatsword",
+        "file": "44493.dat"
+    },
+    {
+        "id": "6a5bbe4698c101.91327205",
+        "name": "~Minifig Suitcase Joiner Tab",
+        "file": "4449k01.dat"
+    },
+    {
+        "id": "6a5bbe4698cb29.76312591",
+        "name": "~Minifig Suitcase Male Half",
+        "file": "4449k02.dat"
+    },
+    {
+        "id": "6a5bbe4698d538.71814063",
+        "name": "~Minifig Suitcase Female Half",
+        "file": "4449k03.dat"
+    },
+    {
+        "id": "6a5bbe469a3174.63215205",
+        "name": "Minifig Knife",
+        "file": "44658.dat"
+    },
+    {
+        "id": "6a5bbe469a3ba9.76079691",
+        "name": "Minifig Knifes on Sprue",
+        "file": "44658c01.dat"
+    },
+    {
+        "id": "6a5bbe469aed45.37757575",
+        "name": "Minifig Gun Blaster with Studs on Sides, Bottom and Front",
+        "file": "44709.dat"
+    },
+    {
+        "id": "6a5bbe469b0bb8.58604334",
+        "name": "Minifig Hair Decoration Plume Ribbon",
+        "file": "44740.dat"
+    },
+    {
+        "id": "6a5bbe469bd265.61246692",
+        "name": "Minifig Metal Detector",
+        "file": "4479a.dat"
+    },
+    {
+        "id": "6a5bbe469c8a62.16741957",
+        "name": "Sports Hockey Puck without Axlehole",
+        "file": "44848.dat"
+    },
+    {
+        "id": "6a5bbe469ee198.54008419",
+        "name": "Minifig Pitchfork",
+        "file": "4496.dat"
+    },
+    {
+        "id": "6a5bbe469eec83.19831229",
+        "name": "Minifig Spear with Round End",
+        "file": "4497.dat"
+    },
+    {
+        "id": "6a5bbe469f1e32.87026568",
+        "name": "Minifig Bow with Arrow",
+        "file": "4499.dat"
+    },
+    {
+        "id": "6a5bbe46a27c93.40507385",
+        "name": "Minifig Tool Mallet",
+        "file": "4522b.dat"
+    },
+    {
+        "id": "6a5bbe46a2d946.47863072",
+        "name": "Minifig Frypan",
+        "file": "4528.dat"
+    },
+    {
+        "id": "6a5bbe46a2e8e1.19433215",
+        "name": "Minifig Saucepan",
+        "file": "4529.dat"
+    },
+    {
+        "id": "6a5bbe46a6e118.36649440",
+        "name": "Plate  6 x  6 x  0.667 with 4 Studs and Card-holder - \"SPORTS\"",
+        "file": "45522.dat"
+    },
+    {
+        "id": "6a5bbe46a9e2c3.38846216",
+        "name": "Minifig Skateboard with Two Wheel Clips",
+        "file": "45917.dat"
+    },
+    {
+        "id": "6a5bbe46a9ed44.29118100",
+        "name": "Wheels Skateboard",
+        "file": "45918.dat"
+    },
+    {
+        "id": "6a5bbe46b40cd0.70645378",
+        "name": "Jack Lifter",
+        "file": "4627.dat"
+    },
+    {
+        "id": "6a5bbe46b416f4.39220152",
+        "name": "Jack Handle",
+        "file": "4628.dat"
+    },
+    {
+        "id": "6a5bbe46b421b5.79517100",
+        "name": "Jack Base",
+        "file": "4629.dat"
+    },
+    {
+        "id": "6a5bbe46b48fc9.42241596",
+        "name": "Jack Assembly (Complete) Lowered",
+        "file": "4629c01.dat"
+    },
+    {
+        "id": "6a5bbe46b49994.84104848",
+        "name": "Jack Assembly (Complete) Raised",
+        "file": "4629c02.dat"
+    },
+    {
+        "id": "6a5bbe46ba80c1.56793913",
+        "name": "Minifig Stretcher with Bottom Hinges",
+        "file": "4714.dat"
+    },
+    {
+        "id": "6a5bbe46ba8b33.41032523",
+        "name": "Stretcher Wheels",
+        "file": "4715.dat"
+    },
+    {
+        "id": "6a5bbe46c84d90.65154479",
+        "name": "Net  6 x  1 x  5 Soccer Goal Side",
+        "file": "48298.dat"
+    },
+    {
+        "id": "6a5bbe46c90d00.89183337",
+        "name": "Minifig Shield Octagonal with Stud",
+        "file": "48494.dat"
+    },
+    {
+        "id": "6a5bbe46c916f5.28905825",
+        "name": "Minifig Sword with Angular Hilt",
+        "file": "48495.dat"
+    },
+    {
+        "id": "6a5bbe46cff038.17578798",
+        "name": "Minifig Shepherd Crook",
+        "file": "49492.dat"
+    },
+    {
+        "id": "6a5bbe46d0b029.13283120",
+        "name": "Minifig Shopping Cart Frame",
+        "file": "49649.dat"
+    },
+    {
+        "id": "6a5bbe46d0bb19.61427958",
+        "name": "Minifig Shopping Cart with Black Wheels",
+        "file": "49649c01.dat"
+    },
+    {
+        "id": "6a5bbe46d24cc6.94764077",
+        "name": "Minifig Tool Hexagonal with Opposing Studs and 3 Ribbed Handles at 120 Degrees",
+        "file": "50018a.dat"
+    },
+    {
+        "id": "6a5bbe46d25716.89865001",
+        "name": "Minifig Tool Impact Wrench with Opposing Studs with Angled Ribbed Handle and Rear Bar Handle",
+        "file": "50018b.dat"
+    },
+    {
+        "id": "6a5bbe46d261f3.86191030",
+        "name": "Minifig Tool Hexagonal with Hollow Stud with Perpendicular Bar and Ribbed Handle",
+        "file": "50018c.dat"
+    },
+    {
+        "id": "6a5bbe46d26c22.78700854",
+        "name": "Minifig Tool Octagonal with Opposing Studs and Perpendicular Bars",
+        "file": "50018d.dat"
+    },
+    {
+        "id": "6a5bbe46d27611.68060829",
+        "name": "Minifig Tool Peanut Shaped with Hollow Stud and Offset Bar",
+        "file": "50018e.dat"
+    },
+    {
+        "id": "6a5bbe46d28047.17597548",
+        "name": "Minifig Tool Hemisphere with 3 Ribs and Hollow Stud",
+        "file": "50018f.dat"
+    },
+    {
+        "id": "6a5bbe46d289f7.84839574",
+        "name": "Minifig Tool Circular Tooth Blade with Cover with Opposing Studs and Bar",
+        "file": "50018g.dat"
+    },
+    {
+        "id": "6a5bbe46d96fa1.99232155",
+        "name": "Minifig Weapon Staff Nokama",
+        "file": "51641.dat"
+    },
+    {
+        "id": "6a5bbe46d97995.50228154",
+        "name": "Minifig Weapon Staff Onewa",
+        "file": "51642.dat"
+    },
+    {
+        "id": "6a5bbe46d98399.03362141",
+        "name": "Minifig Weapon Staff Nuju",
+        "file": "51643.dat"
+    },
+    {
+        "id": "6a5bbe46d98e20.80108688",
+        "name": "Minifig Weapon Staff Matau",
+        "file": "51644.dat"
+    },
+    {
+        "id": "6a5bbe46d997d6.59042088",
+        "name": "Minifig Weapon Staff Vakama",
+        "file": "51645.dat"
+    },
+    {
+        "id": "6a5bbe46d9a210.44776990",
+        "name": "Minifig Weapon Staff Whenua",
+        "file": "51663.dat"
+    },
+    {
+        "id": "6a5bbe46da5488.39881998",
+        "name": "Minifig Cannon  2 x  8 Non-Shooting",
+        "file": "518.dat"
+    },
+    {
+        "id": "6a5bbe46db7293.74320375",
+        "name": "Minifig Food Banana Peel",
+        "file": "5215.dat"
+    },
+    {
+        "id": "6a5bbe46dbc4e6.56278814",
+        "name": "Minifig Food Peach",
+        "file": "5234.dat"
+    },
+    {
+        "id": "6a5bbe46dd2975.79750531",
+        "name": "Minifig Video Game Controller",
+        "file": "53118.dat"
+    },
+    {
+        "id": "6a5bbe46dd33d5.90541416",
+        "name": "Minifig Video Game Controller with Metallic Silver, Red and Blue Buttons Pattern",
+        "file": "53118p01.dat"
+    },
+    {
+        "id": "6a5bbe46dd8f99.73487301",
+        "name": "Minifig Weapon Hilt with Curved Guard and Bar with Hourglass Handle",
+        "file": "5330.dat"
+    },
+    {
+        "id": "6a5bbe46dd9995.36860586",
+        "name": "Minifig Weapon Hilt with Curved Guard and Bar with Opal Trans Light Blue Hourglass Handle Pattern",
+        "file": "5330p01.dat"
+    },
+    {
+        "id": "6a5bbe46dda355.48807589",
+        "name": "Minifig Weapon Hilt with Curved Guard and Bar with Trans Bright Green Hourglass Handle Pattern",
+        "file": "5330p02.dat"
+    },
+    {
+        "id": "6a5bbe46ddefb5.71489354",
+        "name": "Minifig Helmet Viking Horn",
+        "file": "53451.dat"
+    },
+    {
+        "id": "6a5bbe46de0447.92644873",
+        "name": "Minifig Battleaxe Blade",
+        "file": "53454.dat"
+    },
+    {
+        "id": "6a5bbe46de4150.36921685",
+        "name": "Net 16 x  8 Soccer Goal Back",
+        "file": "53531.dat"
+    },
+    {
+        "id": "6a5bbe46de4b57.11572884",
+        "name": "Net 16 x  8 Soccer Goal Back (Formed to fit 48298)",
+        "file": "53531c01.dat"
+    },
+    {
+        "id": "6a5bbe46e619f1.16756518",
+        "name": "Bar  3.2L with Bow",
+        "file": "55237a.dat"
+    },
+    {
+        "id": "6a5bbe46e623a1.26011511",
+        "name": "Bar  4.2L with Disc",
+        "file": "55237b.dat"
+    },
+    {
+        "id": "6a5bbe46e62d51.52713917",
+        "name": "Bar  6L with Blade",
+        "file": "55237c.dat"
+    },
+    {
+        "id": "6a5bbe46e636e3.25665739",
+        "name": "Bar  4.3L with Bow Blade",
+        "file": "55237d.dat"
+    },
+    {
+        "id": "6a5bbe46e640e8.99759680",
+        "name": "Bar  7.5L Sword with Bulges and Cylinders on Sides",
+        "file": "55237e.dat"
+    },
+    {
+        "id": "6a5bbe46e64aa9.92321206",
+        "name": "Bar  4.2L with Asymmetric Bow",
+        "file": "55237f.dat"
+    },
+    {
+        "id": "6a5bbe46e654c0.84792112",
+        "name": "Bar  5L with Cylinders on Sides",
+        "file": "55237g.dat"
+    },
+    {
+        "id": "6a5bbe46e65e59.75902848",
+        "name": "Bar  5L with Blades on Sides",
+        "file": "55237h.dat"
+    },
+    {
+        "id": "6a5bbe46e66866.91833226",
+        "name": "Bar  6.2L Sword with Lateral Blades",
+        "file": "55237i.dat"
+    },
+    {
+        "id": "6a5bbe46e672d8.27997604",
+        "name": "Bar  5.8L with Hammer",
+        "file": "55237j.dat"
+    },
+    {
+        "id": "6a5bbe46e67c99.65921579",
+        "name": "Bar  4L with Symmetric Blades",
+        "file": "55237k.dat"
+    },
+    {
+        "id": "6a5bbe46e68654.45490336",
+        "name": "Bar  4.2L with Spear and Cylinders on Sides",
+        "file": "55237l.dat"
+    },
+    {
+        "id": "6a5bbe46e69a76.74619822",
+        "name": "Minifig Tool Hammer",
+        "file": "55295.dat"
+    },
+    {
+        "id": "6a5bbe46e6a420.24726068",
+        "name": "Minifig Tool Oilcan",
+        "file": "55296.dat"
+    },
+    {
+        "id": "6a5bbe46e6b024.94398901",
+        "name": "Minifig Tool Power Drill",
+        "file": "55297.dat"
+    },
+    {
+        "id": "6a5bbe46e6ba53.48810951",
+        "name": "Minifig Tool Screwdriver",
+        "file": "55298.dat"
+    },
+    {
+        "id": "6a5bbe46e6c466.42629772",
+        "name": "Minifig Tool Open End Wrench",
+        "file": "55299.dat"
+    },
+    {
+        "id": "6a5bbe46e6d867.59860273",
+        "name": "Minifig Tool Box Wrench",
+        "file": "55300.dat"
+    },
+    {
+        "id": "6a5bbe46e7a678.06823136",
+        "name": "Minifig Gun Semiautomatic Pistol",
+        "file": "55707a.dat"
+    },
+    {
+        "id": "6a5bbe46e7b083.14591868",
+        "name": "Minifig Machine Gun with Drum Magazine",
+        "file": "55707b.dat"
+    },
+    {
+        "id": "6a5bbe46e7bad5.31574300",
+        "name": "Minifig Bar with Bat Wings",
+        "file": "55707c.dat"
+    },
+    {
+        "id": "6a5bbe46e7c497.53419748",
+        "name": "Minifig Shackles",
+        "file": "55707d.dat"
+    },
+    {
+        "id": "6a5bbe46e7ce26.92824894",
+        "name": "Minifig Propeller with Bat Wings",
+        "file": "55707e.dat"
+    },
+    {
+        "id": "6a5bbe46e9c735.25316362",
+        "name": "Minifig Sword Wakizashi with Square Guard with Smooth Endcap",
+        "file": "5644.dat"
+    },
+    {
+        "id": "6a5bbe46ea5b99.95417309",
+        "name": "Minifig Shackles",
+        "file": "56619.dat"
+    },
+    {
+        "id": "6a5bbe46eaee51.50072490",
+        "name": "String Cord Thin 20 cm x  0.6 cm (Formed for Set 4564)",
+        "file": "56823-f1.dat"
+    },
+    {
+        "id": "6a5bbe46eaf898.39068589",
+        "name": "String Thin Twisted  0.6 mm x 20 cm 3-Ply",
+        "file": "56823.dat"
+    },
+    {
+        "id": "6a5bbe46eb0317.82259585",
+        "name": "~String Thin Twisted  0.6 mm Diameter 3-Ply - End Segment",
+        "file": "56823k01.dat"
+    },
+    {
+        "id": "6a5bbe46eb0d56.20223660",
+        "name": "~String Thin Twisted  0.6 mm Diameter 3-Ply - Mid Segment",
+        "file": "56823k02.dat"
+    },
+    {
+        "id": "6a5bbe46eb17a2.93846045",
+        "name": "~String Thin Twisted  0.6 mm Diameter - Single Winding for Drum",
+        "file": "56823k03.dat"
+    },
+    {
+        "id": "6a5bbe46eb21c8.60971846",
+        "name": "~String Thin Twisted  0.6 mm Diameter - Straight  8.25 LDU Long",
+        "file": "56823k04.dat"
+    },
+    {
+        "id": "6a5bbe46ed2166.62827261",
+        "name": "Minifig Harpoon",
+        "file": "57467.dat"
+    },
+    {
+        "id": "6a5bbe46effba8.95843448",
+        "name": "Minifig Gun Long Blaster",
+        "file": "57899.dat"
+    },
+    {
+        "id": "6a5bbe46f297a9.01470239",
+        "name": "Minifig Food Pear",
+        "file": "5822.dat"
+    },
+    {
+        "id": "6a5bbe46f2a194.72529815",
+        "name": "Minifig Gun Short Blaster",
+        "file": "58247.dat"
+    },
+    {
+        "id": "6a5bbe46f2b663.54138694",
+        "name": "Minifig Hose Nozzle with Side String Hole",
+        "file": "58367.dat"
+    },
+    {
+        "id": "6a5bbe46f36614.87583662",
+        "name": "Minifig Umbrella",
+        "file": "58572.dat"
+    },
+    {
+        "id": "6a5bbe46f3c0b1.03116569",
+        "name": "Minifig Sword Greatsword",
+        "file": "59.dat"
+    },
+    {
+        "id": "6a5bbe47004108.87122566",
+        "name": "Minifig Sword Saber with Clip Pommel",
+        "file": "59229.dat"
+    },
+    {
+        "id": "6a5bbe470055d5.52359358",
+        "name": "Minifig Shield Round Flat",
+        "file": "59231.dat"
+    },
+    {
+        "id": "6a5bbe47005fd4.81366278",
+        "name": "Minifig Shield Round Flat with Helmet on Dark\/Medium Blue Quarters Pattern",
+        "file": "59231p40.dat"
+    },
+    {
+        "id": "6a5bbe470069b1.42182403",
+        "name": "Minifig Shield Round Flat with Silver Skull on Dark Red Pattern",
+        "file": "59231p4h.dat"
+    },
+    {
+        "id": "6a5bbe47007398.60425235",
+        "name": "Minifig Flail",
+        "file": "59232.dat"
+    },
+    {
+        "id": "6a5bbe47007de8.81509187",
+        "name": "Minifig Lightning",
+        "file": "59233.dat"
+    },
+    {
+        "id": "6a5bbe470087b9.35091141",
+        "name": "Minifig Lightning with Marbled Trans Purple Pattern",
+        "file": "59233p01.dat"
+    },
+    {
+        "id": "6a5bbe470091b5.25281598",
+        "name": "Minifig Lightning with Marbled Trans Bright Green Pattern",
+        "file": "59233p02.dat"
+    },
+    {
+        "id": "6a5bbe47009bb9.17482021",
+        "name": "Minifig Lightning with Marbled Medium Lilac Pattern",
+        "file": "59233p03.dat"
+    },
+    {
+        "id": "6a5bbe470a7b15.18141998",
+        "name": "Minifig Chain 16L with  16L Span Straight",
+        "file": "60169.dat"
+    },
+    {
+        "id": "6a5bbe470a8582.17257866",
+        "name": "Minifig Chain End for Chain 16L",
+        "file": "60169k01.dat"
+    },
+    {
+        "id": "6a5bbe470a8f90.04119359",
+        "name": "Minifig Chain Link for Chain 16L",
+        "file": "60169k02.dat"
+    },
+    {
+        "id": "6a5bbe470e6d35.57466236",
+        "name": "Minifig Tool Hammer with 3-Rib Handle",
+        "file": "604547.dat"
+    },
+    {
+        "id": "6a5bbe470e7722.33811141",
+        "name": "Minifig Tool Oilcan with Ribbed Handle",
+        "file": "604548.dat"
+    },
+    {
+        "id": "6a5bbe470e8115.78032935",
+        "name": "Minifig Tool Battery Powered Drill",
+        "file": "604549.dat"
+    },
+    {
+        "id": "6a5bbe470e8b60.44331728",
+        "name": "Minifig Tool Screwdriver with Wide Head and 3-Rib Handle",
+        "file": "604550.dat"
+    },
+    {
+        "id": "6a5bbe470e95e2.46203442",
+        "name": "Minifig Tool Open End Wrench with 3-Rib Handle",
+        "file": "604551.dat"
+    },
+    {
+        "id": "6a5bbe470e9fc6.96767963",
+        "name": "Minifig Tool Box Wrench with 3-Rib Handle",
+        "file": "604552.dat"
+    },
+    {
+        "id": "6a5bbe470ea984.41633993",
+        "name": "Minifig Tool 4-Way Lug Wrench",
+        "file": "604553.dat"
+    },
+    {
+        "id": "6a5bbe470edcb7.79791033",
+        "name": "Minifig Tool Adjustable Wrench with 3-Rib Handle",
+        "file": "604614.dat"
+    },
+    {
+        "id": "6a5bbe470ee6c6.43234359",
+        "name": "Minifig Tool Socket Wrench with Ratchet and 3-Rib Handle",
+        "file": "604615.dat"
+    },
+    {
+        "id": "6a5bbe47187689.33322079",
+        "name": "Minifig Surf Board  2 x 10",
+        "file": "6075.dat"
+    },
+    {
+        "id": "6a5bbe47189e47.41353068",
+        "name": "Minifig Sword Scimitar with Jagged Edge",
+        "file": "60752.dat"
+    },
+    {
+        "id": "6a5bbe47193830.04283991",
+        "name": "Minifig Plume Dragon and Wings on Sprue",
+        "file": "6080.dat"
+    },
+    {
+        "id": "6a5bbe471a1c27.87513887",
+        "name": "Minifig Hose Nozzle with Side String Hole Simplified",
+        "file": "60849.dat"
+    },
+    {
+        "id": "6a5bbe471df5a5.60039674",
+        "name": "Minifig Chainsaw Blade",
+        "file": "6117.dat"
+    },
+    {
+        "id": "6a5bbe471e58d1.84416233",
+        "name": "Minifig Gun SW Small Blaster DC-17",
+        "file": "61190a.dat"
+    },
+    {
+        "id": "6a5bbe471eb057.78196856",
+        "name": "Minifig Lightsaber Hilt Short Curved",
+        "file": "61199.dat"
+    },
+    {
+        "id": "6a5bbe471ebaf2.80121661",
+        "name": "Minifig Lightsaber Hilt Short Curved Light Bluish Grey - 1 Side On",
+        "file": "61199c01.dat"
+    },
+    {
+        "id": "6a5bbe471f32b0.59288512",
+        "name": "Minifig Polearm Halberd",
+        "file": "6123.dat"
+    },
+    {
+        "id": "6a5bbe471f99b8.87879996",
+        "name": "Minifig Magic Wand with Long Handle",
+        "file": "6124b.dat"
+    },
+    {
+        "id": "6a5bbe471fe0d5.69782901",
+        "name": "Minifig Flame with Pegs",
+        "file": "6126a.dat"
+    },
+    {
+        "id": "6a5bbe471fead5.73574418",
+        "name": "Minifig Flame with Rim",
+        "file": "6126b.dat"
+    },
+    {
+        "id": "6a5bbe472b0874.96082048",
+        "name": "Minifig Handcuffs",
+        "file": "61482.dat"
+    },
+    {
+        "id": "6a5bbe473d62e5.62622090",
+        "name": "Minifig Shield Octagonal without Stud",
+        "file": "61856.dat"
+    },
+    {
+        "id": "6a5bbe473d6c76.53294064",
+        "name": "Minifig Shield Octagonal with Troll Skull on Dark Red Pattern",
+        "file": "61856p40.dat"
+    },
+    {
+        "id": "6a5bbe474065a6.19686336",
+        "name": "Minifig Whip Coiled",
+        "file": "61975.dat"
+    },
+    {
+        "id": "6a5bbe47406fb0.71682069",
+        "name": "Minifig Satchel",
+        "file": "61976.dat"
+    },
+    {
+        "id": "6a5bbe4747d696.11885529",
+        "name": "Minifig Tool Mechanical, 6 on Sprue",
+        "file": "6246.dat"
+    },
+    {
+        "id": "6a5bbe4749bd29.76175289",
+        "name": "Minifig Food Ice Cream Scoops",
+        "file": "6254.dat"
+    },
+    {
+        "id": "6a5bbe474b4241.80220674",
+        "name": "Minifig Dinner Plate",
+        "file": "6256.dat"
+    },
+    {
+        "id": "6a5bbe474b4cd5.63011400",
+        "name": "Minifig Dinner Plate with Four Black Outlined Orange Bones Pattern",
+        "file": "6256p01.dat"
+    },
+    {
+        "id": "6a5bbe474b5a89.04544432",
+        "name": "Minifig Dinner Plate with Green and Lime Lettuce Leaf and Yellow Splotches Pattern",
+        "file": "6256p02.dat"
+    },
+    {
+        "id": "6a5bbe474b68c4.39539429",
+        "name": "Minifig Dinner Plate with Metallic Light Blue Swirl Pattern",
+        "file": "6256ph1.dat"
+    },
+    {
+        "id": "6a5bbe474d3b31.34587262",
+        "name": "Minifig Cup",
+        "file": "6264.dat"
+    },
+    {
+        "id": "6a5bbe474deab4.08541396",
+        "name": "Minifig Goblet with Hollow Stem",
+        "file": "6269.dat"
+    },
+    {
+        "id": "6a5bbe474e1514.60045989",
+        "name": "Minifig Computer Laptop (Open Flat)",
+        "file": "62698-f1.dat"
+    },
+    {
+        "id": "6a5bbe474e1fc8.47279101",
+        "name": "Minifig Computer Laptop (Open)",
+        "file": "62698-f2.dat"
+    },
+    {
+        "id": "6a5bbe474e2ae5.96966457",
+        "name": "Minifig Computer Laptop (Closed)",
+        "file": "62698-f3.dat"
+    },
+    {
+        "id": "6a5bbe474e7ce4.71716018",
+        "name": "Minifig Barbed Wire Loop",
+        "file": "62700.dat"
+    },
+    {
+        "id": "6a5bbe47515523.56835297",
+        "name": "Minifig Gun Short Blaster",
+        "file": "62885.dat"
+    },
+    {
+        "id": "6a5bbe47593701.75066117",
+        "name": "Minifig Helmet Rangefinder for SW Clone Trooper Helmet",
+        "file": "63586.dat"
+    },
+    {
+        "id": "6a5bbe475c2934.39190394",
+        "name": "Minifig Hockey Stick with  3.6 L Bar",
+        "file": "64000.dat"
+    },
+    {
+        "id": "6a5bbe476108c0.41460037",
+        "name": "Minifig Lightsaber Hilt with Slight Sloping Fingers with Bottom Ring",
+        "file": "64567a.dat"
+    },
+    {
+        "id": "6a5bbe476112e0.57570075",
+        "name": "Minifig Lightsaber with Slight Sloping Fingers with Bottom Ring Chrome Silver - 1 Side On",
+        "file": "64567ac01.dat"
+    },
+    {
+        "id": "6a5bbe47611d19.09334039",
+        "name": "Minifig Lightsaber with Slight Sloping Fingers with Bottom Ring Chrome Silver - 2 Sides On",
+        "file": "64567ac02.dat"
+    },
+    {
+        "id": "6a5bbe476127f4.56180847",
+        "name": "Minifig Lightsaber with Slight Sloping Fingers with Bottom Ring Metallic Dark Grey - 1 Side On Blade with Cross Bar",
+        "file": "64567ac03.dat"
+    },
+    {
+        "id": "6a5bbe47613206.45541313",
+        "name": "Minifig Lightsaber Hilt with Slight Sloping Fingers without Bottom Ring",
+        "file": "64567b.dat"
+    },
+    {
+        "id": "6a5bbe4761ba79.69820037",
+        "name": "Minifig Telescope",
+        "file": "64644.dat"
+    },
+    {
+        "id": "6a5bbe4762d177.86697827",
+        "name": "Minifig Dynamite Sticks Bundle",
+        "file": "64728.dat"
+    },
+    {
+        "id": "6a5bbe4765aa77.37322735",
+        "name": "Minifig Game Controller",
+        "file": "65080.dat"
+    },
+    {
+        "id": "6a5bbe4765b460.28273964",
+        "name": "Minifig Game Controller with Red Handle and Buttons Pattern",
+        "file": "65080p01.dat"
+    },
+    {
+        "id": "6a5bbe4765be14.56356456",
+        "name": "Minifig Game Controller with Black Handle and Buttons Pattern",
+        "file": "65080p02.dat"
+    },
+    {
+        "id": "6a5bbe4769cdd7.80571421",
+        "name": "Minifig Food Cupcake with Hollow Stud",
+        "file": "65468d.dat"
+    },
+    {
+        "id": "6a5bbe476acfa2.34111661",
+        "name": "Minifig Lantern Spherical with Large Round Handle",
+        "file": "65581.dat"
+    },
+    {
+        "id": "6a5bbe477197e9.14939261",
+        "name": "Minifig Food Dumpling",
+        "file": "6647.dat"
+    },
+    {
+        "id": "6a5bbe4773fc13.88221883",
+        "name": "Minifig Drone Body with  4 Arms",
+        "file": "66967.dat"
+    },
+    {
+        "id": "6a5bbe47750060.85148323",
+        "name": "Minifig Weapon Nunchaku (Straight)",
+        "file": "67100-f1.dat"
+    },
+    {
+        "id": "6a5bbe47750a21.18201141",
+        "name": "Minifig Weapon Nunchaku Handle",
+        "file": "67100k01.dat"
+    },
+    {
+        "id": "6a5bbe47751456.54194770",
+        "name": "Minifig Weapon Nunchaku with Black Handles (Straight)",
+        "file": "67100p01-f1.dat"
+    },
+    {
+        "id": "6a5bbe47751e69.70886197",
+        "name": "Minifig Weapon Nunchaku Handle with Black Grip",
+        "file": "67100p01k01.dat"
+    },
+    {
+        "id": "6a5bbe4775edf8.25783739",
+        "name": "Minifig Food Croissant with Flat Ends",
+        "file": "67338.dat"
+    },
+    {
+        "id": "6a5bbe47791f37.91620911",
+        "name": "Minifig Tuft",
+        "file": "68212.dat"
+    },
+    {
+        "id": "6a5bbe47799349.79944379",
+        "name": "Minifig Cup Stein with Handle",
+        "file": "68495.dat"
+    },
+    {
+        "id": "6a5bbe47799d01.65991047",
+        "name": "Minifig Cup Stein with Handle and Trans-Orange Drink Pattern",
+        "file": "68495p01.dat"
+    },
+    {
+        "id": "6a5bbe4779a6f5.74099551",
+        "name": "Minifig Cup Stein with Handle and Trans Bright Green Drink Pattern",
+        "file": "68495p02.dat"
+    },
+    {
+        "id": "6a5bbe4779b082.31652865",
+        "name": "Minifig Cup Stein with Handle and Reddish Brown Drink Pattern",
+        "file": "68495p03.dat"
+    },
+    {
+        "id": "6a5bbe4779ba59.35043913",
+        "name": "Minifig Cup Stein with Handle and Dark Brown Drink Pattern",
+        "file": "68495p05.dat"
+    },
+    {
+        "id": "6a5bbe4779d8f3.12155532",
+        "name": "Minifig Sundae Glass",
+        "file": "68504.dat"
+    },
+    {
+        "id": "6a5bbe4779ed82.03682920",
+        "name": "Cloud \/ Smoke Swirl with Bar  1L",
+        "file": "68547.dat"
+    },
+    {
+        "id": "6a5bbe477aa6f0.08277562",
+        "name": "Minifig Antenna",
+        "file": "6899.dat"
+    },
+    {
+        "id": "6a5bbe477abb09.64370841",
+        "name": "Yarn Ball  1.1 x  1.2",
+        "file": "6900.dat"
+    },
+    {
+        "id": "6a5bbe477c3417.53230984",
+        "name": "Plate  1 x  2 with Mini Shooting Blaster Type 2",
+        "file": "69754.dat"
+    },
+    {
+        "id": "6a5bbe477c4058.49082051",
+        "name": "Plate  1 x  2 with Mini Shooting Blaster Type 2 with Dark Bluish Grey Trigger and Round Tile",
+        "file": "69754c01.dat"
+    },
+    {
+        "id": "6a5bbe477c4af5.64876788",
+        "name": "Projectile Launcher Trigger",
+        "file": "69755.dat"
+    },
+    {
+        "id": "6a5bbe477c6a98.18545294",
+        "name": "Projectile Launcher with Bar",
+        "file": "69767.dat"
+    },
+    {
+        "id": "6a5bbe477c7574.68805962",
+        "name": "Projectile Launcher with Bar with Dark Bluish Grey Trigger and Round Tile",
+        "file": "69767c01.dat"
+    },
+    {
+        "id": "6a5bbe477c8150.38431370",
+        "name": "Projectile Launcher with Bar with Dark Bluish Grey Trigger",
+        "file": "69767c02.dat"
+    },
+    {
+        "id": "6a5bbe477caae5.89956066",
+        "name": "Flame  4L",
+        "file": "69858.dat"
+    },
+    {
+        "id": "6a5bbe477d2743.20201595",
+        "name": "Minifig Sword Macuahuitl with Eight Blades",
+        "file": "69944.dat"
+    },
+    {
+        "id": "6a5bbe477d30f2.29798951",
+        "name": "Minifig Sword Macuahuitl with Eight Black Blades and Grip Pattern",
+        "file": "69944p01.dat"
+    },
+    {
+        "id": "6a5bbe477d4f12.81374294",
+        "name": "Minifig Violin",
+        "file": "69947.dat"
+    },
+    {
+        "id": "6a5bbe477d5967.19656876",
+        "name": "Minifig Violin with Silver Strings, Black Fingerboard, F-holes, and Chin Rest Pattern",
+        "file": "69947p01.dat"
+    },
+    {
+        "id": "6a5bbe477f8ae6.35967543",
+        "name": "Minifig Coins on Sprue - Sans-serif Type",
+        "file": "70501.dat"
+    },
+    {
+        "id": "6a5bbe477f9689.69251531",
+        "name": "Minifig Coin with \"10\" Sans-serif Type",
+        "file": "70501a.dat"
+    },
+    {
+        "id": "6a5bbe477fa0c3.16563235",
+        "name": "Minifig Coin with \"20\" Sans-serif Type",
+        "file": "70501b.dat"
+    },
+    {
+        "id": "6a5bbe477fad11.75781445",
+        "name": "Minifig Coin with \"30\" Sans-serif Type",
+        "file": "70501c.dat"
+    },
+    {
+        "id": "6a5bbe477fb763.84729362",
+        "name": "Minifig Coin with \"40\" Sans-serif Type",
+        "file": "70501d.dat"
+    },
+    {
+        "id": "6a5bbe478153d7.95556169",
+        "name": "Minifig Sword Greatsword",
+        "file": "71014a.dat"
+    },
+    {
+        "id": "6a5bbe4781c642.80709213",
+        "name": "String Braided 41L with End Studs",
+        "file": "71149.dat"
+    },
+    {
+        "id": "6a5bbe4781d070.90242803",
+        "name": "~String End Stud",
+        "file": "71149k01.dat"
+    },
+    {
+        "id": "6a5bbe4781da85.64915731",
+        "name": "~String Braided Segment",
+        "file": "71149k02.dat"
+    },
+    {
+        "id": "6a5bbe47829f00.49211064",
+        "name": "Minifig Bugle",
+        "file": "71342.dat"
+    },
+    {
+        "id": "6a5bbe47868367.58866667",
+        "name": "Minifig Trophy Cup  5L",
+        "file": "72092.dat"
+    },
+    {
+        "id": "6a5bbe4786d5b7.00874660",
+        "name": "Minifig Helmet Rangefinder Short, Square Shaft for SW Mandalorian Helmet",
+        "file": "7218.dat"
+    },
+    {
+        "id": "6a5bbe47884bd3.87899159",
+        "name": "Minifig Soccer Ball",
+        "file": "72824.dat"
+    },
+    {
+        "id": "6a5bbe478855c3.30403526",
+        "name": "Minifig Soccer Ball with Black Pentagons Pattern",
+        "file": "72824p01.dat"
+    },
+    {
+        "id": "6a5bbe47895863.62817017",
+        "name": "Minifig Candelabra with  3 Arms",
+        "file": "73117.dat"
+    },
+    {
+        "id": "6a5bbe4791a703.60416995",
+        "name": "Power Burst Stand  5 x  5 x  0.667 with  2 Studs",
+        "file": "73304.dat"
+    },
+    {
+        "id": "6a5bbe4797c370.90194426",
+        "name": "Minifig Compass",
+        "file": "74948.dat"
+    },
+    {
+        "id": "6a5bbe4797cdd6.05507501",
+        "name": "Minifig Compass with Fleur de Lis Pattern",
+        "file": "74948p01.dat"
+    },
+    {
+        "id": "6a5bbe4797d811.49701484",
+        "name": "Minifig Compass with White and Yellow Pattern",
+        "file": "74948p02.dat"
+    },
+    {
+        "id": "6a5bbe479a7d22.45835557",
+        "name": "Minifig Shield Round Bowed",
+        "file": "75902.dat"
+    },
+    {
+        "id": "6a5bbe479a8794.01809714",
+        "name": "Minifig Shield Round Bowed with DkGreen and Gold Rohan Pattern",
+        "file": "75902p01.dat"
+    },
+    {
+        "id": "6a5bbe479a91d4.62643544",
+        "name": "Minifig Shield Round Bowed with Bullseye with Star Pattern",
+        "file": "75902p02.dat"
+    },
+    {
+        "id": "6a5bbe479a9b97.51155199",
+        "name": "Minifig Shield Round Bowed with Gold Eagle Pattern",
+        "file": "75902p03.dat"
+    },
+    {
+        "id": "6a5bbe479aa514.66823511",
+        "name": "Minifig Shield Round Bowed with Mercedes-Benz Logo Pattern",
+        "file": "75902p04.dat"
+    },
+    {
+        "id": "6a5bbe479aaef0.39111478",
+        "name": "Minifig Shield Round Bowed with Mercedes-Benz Logo over Grid Pattern",
+        "file": "75902p05.dat"
+    },
+    {
+        "id": "6a5bbe479ab8f6.92351057",
+        "name": "Minifig Shield Round Bowed with Gold Circle, Dark Brown Field and Nails Pattern",
+        "file": "75902p06.dat"
+    },
+    {
+        "id": "6a5bbe479ac2b5.73593333",
+        "name": "Minifig Shield Round Bowed with Clouds and Lightning Pattern",
+        "file": "75902p07.dat"
+    },
+    {
+        "id": "6a5bbe479acca8.84061844",
+        "name": "Minifig Shield Round Bowed with Dark Orange and Nougat Crescents Pattern",
+        "file": "75902p08.dat"
+    },
+    {
+        "id": "6a5bbe479ad650.10819191",
+        "name": "Minifig Shield Round Bowed with Yellow and Dark Green Panels with Gold Dragon Pattern",
+        "file": "75902p09.dat"
+    },
+    {
+        "id": "6a5bbe479ae077.64328846",
+        "name": "Minifig Shield Round Bowed with Dark Red and Blue Panels with Silver Bird Pattern",
+        "file": "75902p0a.dat"
+    },
+    {
+        "id": "6a5bbe479aea75.49706169",
+        "name": "Minifig Shield Round Bowed with Blue and White Panels Pattern",
+        "file": "75902p0b.dat"
+    },
+    {
+        "id": "6a5bbe479af3f3.69008381",
+        "name": "Minifig Shield Round Bowed with Red and White Concentric Rings and British Union Jack Pattern",
+        "file": "75902pb0.dat"
+    },
+    {
+        "id": "6a5bbe479afde5.70436767",
+        "name": "Minifig Shield Round Bowed with Red and White Concentric Rings, White Star and Silver Highlights Pattern",
+        "file": "75902pb1.dat"
+    },
+    {
+        "id": "6a5bbe479b0b59.50449595",
+        "name": "Minifig Shield Round Bowed with Red and White Concentric Rings, Star in Blue Circle Pattern",
+        "file": "75902pb2.dat"
+    },
+    {
+        "id": "6a5bbe479b15d5.25550628",
+        "name": "Minifig Shield Round Bowed with SW Dejarik Hologame Board Pattern",
+        "file": "75902ps1.dat"
+    },
+    {
+        "id": "6a5bbe479b1fe3.78580741",
+        "name": "Minifig Tool Sledgehammer",
+        "file": "75904.dat"
+    },
+    {
+        "id": "6a5bbe479b29e3.87169298",
+        "name": "Minifig Sledgehammer with Copper Runes 2-Sided Pattern",
+        "file": "75904p02.dat"
+    },
+    {
+        "id": "6a5bbe479b33b5.80315183",
+        "name": "String Braided 21L with End Studs",
+        "file": "75924.dat"
+    },
+    {
+        "id": "6a5bbe479bef58.08252658",
+        "name": "String Braided 21L with End Studs and Minifig Grips",
+        "file": "76065.dat"
+    },
+    {
+        "id": "6a5bbe479bf963.36989906",
+        "name": "~String Minifig Grip",
+        "file": "76065k01.dat"
+    },
+    {
+        "id": "6a5bbe47bf04a3.40034844",
+        "name": "String Braided 11L with End Studs",
+        "file": "76384.dat"
+    },
+    {
+        "id": "6a5bbe47bf3571.05112560",
+        "name": "Minifig Stand with Spring and Hinge Pin",
+        "file": "76407.dat"
+    },
+    {
+        "id": "6a5bbe47bf4132.02936091",
+        "name": "Minifig Stand with Spring and Green Hinge Pin Pattern",
+        "file": "76407p01.dat"
+    },
+    {
+        "id": "6a5bbe47c0bc54.93017169",
+        "name": "Minifig Sword Shortsword with Elaborate Hilt",
+        "file": "76764.dat"
+    },
+    {
+        "id": "6a5bbe47c90440.34701748",
+        "name": "Minifig Chopsticks",
+        "file": "79735.dat"
+    },
+    {
+        "id": "6a5bbe47c90e87.48574997",
+        "name": "Minifig Watering Can",
+        "file": "79736.dat"
+    },
+    {
+        "id": "6a5bbe47c91950.51452832",
+        "name": "Minifig Cutlery Fork",
+        "file": "79741.dat"
+    },
+    {
+        "id": "6a5bbe47c92355.19412563",
+        "name": "Minifig Food Cupcake",
+        "file": "79743.dat"
+    },
+    {
+        "id": "6a5bbe47c97675.38182377",
+        "name": "Minifig Whisk with Notch in Handle",
+        "file": "79808.dat"
+    },
+    {
+        "id": "6a5bbe47ca9976.12556404",
+        "name": "Minifig Cutlery Spoon",
+        "file": "80179.dat"
+    },
+    {
+        "id": "6a5bbe47ccd0a7.23834537",
+        "name": "Minifig Lute",
+        "file": "80503.dat"
+    },
+    {
+        "id": "6a5bbe47cce4a9.53416188",
+        "name": "Flame  3.5L with Clip",
+        "file": "80519.dat"
+    },
+    {
+        "id": "6a5bbe47ced3b0.08218624",
+        "name": "Minifig Banjo",
+        "file": "80716.dat"
+    },
+    {
+        "id": "6a5bbe47ceddb8.65046806",
+        "name": "Minifig Banjo with White Skin and Metallic Silver Strings Pattern",
+        "file": "80716p01.dat"
+    },
+    {
+        "id": "6a5bbe47dc72b4.66638191",
+        "name": "Minifig Flame  7 L with Bar  0.8",
+        "file": "85959.dat"
+    },
+    {
+        "id": "6a5bbe47dc7c93.96130273",
+        "name": "Minifig Flame  7 L with Bar  0.8 with Marbled Trans Orange \/ Trans Yellow Flame Tip Pattern",
+        "file": "85959p01.dat"
+    },
+    {
+        "id": "6a5bbe47dc86a4.72532317",
+        "name": "Minifig Flame  7 L with Bar  0.8 with Marbled Trans Yellow Flame Tip Pattern",
+        "file": "85959p02.dat"
+    },
+    {
+        "id": "6a5bbe47dc9088.96299276",
+        "name": "Minifig Flame  7 L with Bar  0.8 with Marbled Trans Green Flame Tip Pattern",
+        "file": "85959p03.dat"
+    },
+    {
+        "id": "6a5bbe47dc9a52.61140265",
+        "name": "Minifig Flame  7 L with Bar  0.8 with Marbled Trans Clear Flame Tip Pattern",
+        "file": "85959p04.dat"
+    },
+    {
+        "id": "6a5bbe47dca422.61404113",
+        "name": "Minifig Flame  7 L with Bar  0.8 with Marbled Trans Bright Green Flame Tip Pattern",
+        "file": "85959p05.dat"
+    },
+    {
+        "id": "6a5bbe47dcadd3.43928342",
+        "name": "Minifig Flame  7 L with Bar  0.8 with Marbled Trans Purple Flame Tip Pattern",
+        "file": "85959p06.dat"
+    },
+    {
+        "id": "6a5bbe47e00227.03331225",
+        "name": "Minifig Torch without Grooves",
+        "file": "86208.dat"
+    },
+    {
+        "id": "6a5bbe47e81238.71555149",
+        "name": "Block  6 x  4 x  1 with Handles and Minifig Pattern",
+        "file": "87561.dat"
+    },
+    {
+        "id": "6a5bbe47e81c61.25165577",
+        "name": "Block  6 x  4 x  1 with Handles and Minifig Outline with Han Solo in Carbonite Pattern",
+        "file": "87561p01.dat"
+    },
+    {
+        "id": "6a5bbe47e92312.26591278",
+        "name": "Minifig Tool Oar Reinforced",
+        "file": "87585.dat"
+    },
+    {
+        "id": "6a5bbe47eadcc6.96359227",
+        "name": "Minifig Feathered Headdress Small",
+        "file": "87696.dat"
+    },
+    {
+        "id": "6a5bbe47eb05e2.33367835",
+        "name": "Bar  0.5L with Curved Blade 2L",
+        "file": "87747.dat"
+    },
+    {
+        "id": "6a5bbe47eb0ff6.51683438",
+        "name": "Minifig Ring with Triangle",
+        "file": "87748.dat"
+    },
+    {
+        "id": "6a5bbe47eb1a41.32523848",
+        "name": "Minifig Ring with Triangle with Gold Bands and Crab Pattern",
+        "file": "87748p01.dat"
+    },
+    {
+        "id": "6a5bbe47eb2450.25754420",
+        "name": "Minifig Ring with Triangle with Gold Bands and Turtle Pattern",
+        "file": "87748p02.dat"
+    },
+    {
+        "id": "6a5bbe47eb2e45.71850774",
+        "name": "Minifig Ring with Triangle with Gold Bands and Shark Pattern",
+        "file": "87748p03.dat"
+    },
+    {
+        "id": "6a5bbe47eb3872.77839271",
+        "name": "Minifig Ring with Triangle with Gold Bands and Squid Pattern",
+        "file": "87748p04.dat"
+    },
+    {
+        "id": "6a5bbe47eb4265.13912000",
+        "name": "Minifig Ring with Triangle with Gold Bands and Manta Ray Pattern",
+        "file": "87748p05.dat"
+    },
+    {
+        "id": "6a5bbe47eb4c80.35831779",
+        "name": "Minifig Ring with Triangle with Gold Bands and Triangle Pattern",
+        "file": "87748p06.dat"
+    },
+    {
+        "id": "6a5bbe47ecde05.73765872",
+        "name": "Minifig Syringe",
+        "file": "87989.dat"
+    },
+    {
+        "id": "6a5bbe47ed1036.01996547",
+        "name": "Minifig Gun Laser Pistol with Trapezoidal Heat Diffusers",
+        "file": "87993.dat"
+    },
+    {
+        "id": "6a5bbe47ed3ae7.75038585",
+        "name": "Minifig Cheerleader Pom Pom",
+        "file": "87997.dat"
+    },
+    {
+        "id": "6a5bbe47ed4521.34817268",
+        "name": "Minifig Cheerleader Pom Pom with Blue Pattern",
+        "file": "87997p01.dat"
+    },
+    {
+        "id": "6a5bbe47ed4f71.73684026",
+        "name": "Minifig Cheerleader Pom Pom with Red Pattern",
+        "file": "87997p02.dat"
+    },
+    {
+        "id": "6a5bbe47ed5928.30854258",
+        "name": "Minifig Cheerleader Pom Pom with Dark Green Pattern",
+        "file": "87997p03.dat"
+    },
+    {
+        "id": "6a5bbe47ed6318.92600239",
+        "name": "Minifig Cheerleader Pom Pom with Green Pattern",
+        "file": "87997p04.dat"
+    },
+    {
+        "id": "6a5bbe47ed9681.86408465",
+        "name": "Minifig Weapon Club with Spikes",
+        "file": "88001.dat"
+    },
+    {
+        "id": "6a5bbe47ee0949.40095410",
+        "name": "Minifig Dagger",
+        "file": "88288.dat"
+    },
+    {
+        "id": "6a5bbe47ee1358.50172547",
+        "name": "Minifig Dagger with Pearl Light Grey Blade",
+        "file": "88288p01.dat"
+    },
+    {
+        "id": "6a5bbe47ef72b2.63970905",
+        "name": "Minifig Skateboard with Four Wheel Clips",
+        "file": "88422.dat"
+    },
+    {
+        "id": "6a5bbe47ef9db1.16945076",
+        "name": "Minifig Helmet Viking Horn",
+        "file": "88513.dat"
+    },
+    {
+        "id": "6a5bbe47f07032.12906299",
+        "name": "Minifig Whip Bent Flexible (Formed for Electrical Roof Wiring - Right Aligned)",
+        "file": "88704-f1.dat"
+    },
+    {
+        "id": "6a5bbe47f07ac9.86498510",
+        "name": "Minifig Whip Bent Flexible (Formed for Electrical Roof Wiring - Left Aligned)",
+        "file": "88704-f2.dat"
+    },
+    {
+        "id": "6a5bbe47f08534.86120243",
+        "name": "Minifig Whip Bent Flexible",
+        "file": "88704.dat"
+    },
+    {
+        "id": "6a5bbe47f09a07.65711208",
+        "name": "Minifig Weapon Bladed Claw",
+        "file": "88811.dat"
+    },
+    {
+        "id": "6a5bbe47f0a422.04658162",
+        "name": "Minifig Weapon Hand Dagger",
+        "file": "88812.dat"
+    },
+    {
+        "id": "6a5bbe47f38387.51591909",
+        "name": "Minifig Trophy Cup  3.6L",
+        "file": "89801.dat"
+    },
+    {
+        "id": "6a5bbe48007f17.70747832",
+        "name": "Minifig Microphone",
+        "file": "90370.dat"
+    },
+    {
+        "id": "6a5bbe48008942.43313370",
+        "name": "Minifig Microphone with Metallic Silver Top Pattern",
+        "file": "90370p01.dat"
+    },
+    {
+        "id": "6a5bbe48009394.94667782",
+        "name": "Minifig Microphone with Metallic Gold Top Pattern",
+        "file": "90370p02.dat"
+    },
+    {
+        "id": "6a5bbe48009d44.76835158",
+        "name": "Minifig Microphone with Metallic Gold Top Half Sphere Pattern",
+        "file": "90370p03.dat"
+    },
+    {
+        "id": "6a5bbe4800a6d7.13132888",
+        "name": "Minifig Microphone with Black Top Half Sphere Pattern",
+        "file": "90370p04.dat"
+    },
+    {
+        "id": "6a5bbe4800b0f0.87159448",
+        "name": "Minifig Microphone with Metallic Silver Top Half Sphere Pattern",
+        "file": "90370p05.dat"
+    },
+    {
+        "id": "6a5bbe4800cf57.79496639",
+        "name": "Minifig Pike \/ Spear Elaborate with Rubber Head",
+        "file": "90391.dat"
+    },
+    {
+        "id": "6a5bbe4800d963.65752223",
+        "name": "Minifig Pike \/ Spear Elaborate with Rubber Pearl Light Grey Head Pattern",
+        "file": "90391p01.dat"
+    },
+    {
+        "id": "6a5bbe4800e369.16880902",
+        "name": "Minifig Pike \/ Spear Elaborate with Rubber Flat Silver Head Pattern",
+        "file": "90391p02.dat"
+    },
+    {
+        "id": "6a5bbe4800ed22.81693005",
+        "name": "Minifig Pike \/ Spear Elaborate With Rubber Pearl Gold Head Pattern",
+        "file": "90391p03.dat"
+    },
+    {
+        "id": "6a5bbe4800f6f2.53673717",
+        "name": "Minifig Lifeguard Float",
+        "file": "90395.dat"
+    },
+    {
+        "id": "6a5bbe48010118.89803596",
+        "name": "Minifig Surf Board  2 x  6.5",
+        "file": "90397.dat"
+    },
+    {
+        "id": "6a5bbe48011fc6.97557031",
+        "name": "Minifig Surf Board  2 x  6.5 with Pink Flames Pattern",
+        "file": "90397p02.dat"
+    },
+    {
+        "id": "6a5bbe48012c88.78723636",
+        "name": "Minifig Surf Board  2 x  6.5 with Medium Lilac Batman Logo Pattern",
+        "file": "90397p04.dat"
+    },
+    {
+        "id": "6a5bbe48013684.41340179",
+        "name": "Minifig Surf Board  2 x  6.5 with White Shark, Black Open Mouth and Gills Pattern",
+        "file": "90397p05.dat"
+    },
+    {
+        "id": "6a5bbe48014113.43197678",
+        "name": "Minifig Statuette",
+        "file": "90398.dat"
+    },
+    {
+        "id": "6a5bbe48014b17.82520427",
+        "name": "Minifig Statuette with Astronaut Pattern",
+        "file": "90398p01.dat"
+    },
+    {
+        "id": "6a5bbe4801e381.81571065",
+        "name": "Minifig Tool Magnifying Glass with Removable TransClear Lens",
+        "file": "90463.dat"
+    },
+    {
+        "id": "6a5bbe4802b029.04798663",
+        "name": "Minifig Maracas",
+        "file": "90508.dat"
+    },
+    {
+        "id": "6a5bbe4802bca1.83770686",
+        "name": "Minifig Maracas with Green Border Pattern",
+        "file": "90508p01.dat"
+    },
+    {
+        "id": "6a5bbe4802f9a6.89770868",
+        "name": "Minifig Ski Pole",
+        "file": "90540.dat"
+    },
+    {
+        "id": "6a5bbe48045263.89777551",
+        "name": "Broom Bristles with Stud",
+        "file": "90826.dat"
+    },
+    {
+        "id": "6a5bbe48053e11.50403195",
+        "name": "Minifig Shield Round Type 2",
+        "file": "91884.dat"
+    },
+    {
+        "id": "6a5bbe48054880.52754350",
+        "name": "Minifig Shield Round Type 2 with Dark Brown Ring and 4 Rivets Pattern",
+        "file": "91884p01.dat"
+    },
+    {
+        "id": "6a5bbe48055560.37451410",
+        "name": "Minifig Shield Round Type 2 with Silver Rivets Pattern",
+        "file": "91884p02.dat"
+    },
+    {
+        "id": "6a5bbe48055fe6.07319379",
+        "name": "Minifig Shield Round Type 2 with Dragon Heads and Ornaments Pattern",
+        "file": "91884p03.dat"
+    },
+    {
+        "id": "6a5bbe48056a33.10511645",
+        "name": "Minifig Shield Round Type 2 with Aztec Bird on Dark Red Pattern",
+        "file": "91884p04.dat"
+    },
+    {
+        "id": "6a5bbe48096e83.13844235",
+        "name": "Claw Hooked with Clip",
+        "file": "92220.dat"
+    },
+    {
+        "id": "6a5bbe481304b5.09987638",
+        "name": "Minifig Weapon Trident",
+        "file": "92290.dat"
+    },
+    {
+        "id": "6a5bbe48132e64.83898124",
+        "name": "Minifig Chain  6L with  6L Span Straight",
+        "file": "92338-f1.dat"
+    },
+    {
+        "id": "6a5bbe48133a41.25785774",
+        "name": "Minifig Chain  6L with  6L Span Catenary",
+        "file": "92338-f2.dat"
+    },
+    {
+        "id": "6a5bbe48166c87.53851864",
+        "name": "Minifig Tool Crowbar",
+        "file": "92585.dat"
+    },
+    {
+        "id": "6a5bbe48182768.73556789",
+        "name": "Bone 5L",
+        "file": "92691.dat"
+    },
+    {
+        "id": "6a5bbe48195579.41416968",
+        "name": "Minifig Gun Small Blaster with Telescopic Sight",
+        "file": "92738.dat"
+    },
+    {
+        "id": "6a5bbe48197fb0.24387883",
+        "name": "Minifig Shield Oval",
+        "file": "92747.dat"
+    },
+    {
+        "id": "6a5bbe48198c14.18360773",
+        "name": "Minifig Shield Oval with SW Gungan Patrol Shield Pattern",
+        "file": "92747p01.dat"
+    },
+    {
+        "id": "6a5bbe481996d0.79935238",
+        "name": "Minifig Shield Oval with Lime and White Circles, Dark Purple Arrows and Lines Pattern",
+        "file": "92747p02.dat"
+    },
+    {
+        "id": "6a5bbe4819a168.56162689",
+        "name": "Minifig Shield Oval with White, Lime and Medium Azure Circles, Dark Purple Lines Pattern",
+        "file": "92747p03.dat"
+    },
+    {
+        "id": "6a5bbe4819ab35.46218134",
+        "name": "Minifig Shield Oval with Small Lime and Large White Circles, Dark Purple Chain and Lines Pattern",
+        "file": "92747p04.dat"
+    },
+    {
+        "id": "6a5bbe4819b5f9.17548181",
+        "name": "Minifig Shield Oval with White, Lime and Medium Azure Circles, Lightning Bolt and Dark Purple Lines Pattern",
+        "file": "92747p05.dat"
+    },
+    {
+        "id": "6a5bbe4819bfb7.93327433",
+        "name": "Minifig Shield Oval with Large White Circle, Dark Purple Characters and Lines Pattern",
+        "file": "92747p06.dat"
+    },
+    {
+        "id": "6a5bbe481c8430.75970921",
+        "name": "Minifig Sword Katana (Dragon Guard)",
+        "file": "93055.dat"
+    },
+    {
+        "id": "6a5bbe481c8e70.09162977",
+        "name": "Minifig Weapon Three Pointed Throwing Star (Shuriken) with Smooth Grips",
+        "file": "93058.dat"
+    },
+    {
+        "id": "6a5bbe481e6b91.38193184",
+        "name": "Figure Friends Basket",
+        "file": "93092.dat"
+    },
+    {
+        "id": "6a5bbe481eb595.93994392",
+        "name": "Minifig Metal Detector without Stud on Search Head",
+        "file": "93106.dat"
+    },
+    {
+        "id": "6a5bbe481ec082.83822452",
+        "name": "Minifig Stretcher without Bottom Hinges",
+        "file": "93140.dat"
+    },
+    {
+        "id": "6a5bbe481ed514.15532429",
+        "name": "Minifig Stretcher White with Holder",
+        "file": "93140c01.dat"
+    },
+    {
+        "id": "6a5bbe481ef1a0.36670119",
+        "name": "Bone 2L",
+        "file": "93160.dat"
+    },
+    {
+        "id": "6a5bbe481f1ff5.06585665",
+        "name": "Minifig Tennis Racket",
+        "file": "93216.dat"
+    },
+    {
+        "id": "6a5bbe481f3439.53995190",
+        "name": "Minifig Baseball Bat",
+        "file": "93220.dat"
+    },
+    {
+        "id": "6a5bbe481f3ef2.00349386",
+        "name": "Minifig Baseball Bat with White Grip Pattern",
+        "file": "93220p01.dat"
+    },
+    {
+        "id": "6a5bbe481f48f4.91891930",
+        "name": "Minifig Baseball Bat with Black Grip Pattern",
+        "file": "93220p02.dat"
+    },
+    {
+        "id": "6a5bbe481f5310.51191673",
+        "name": "Minifig Baseball Bat with Three White Diamonds and White Grip Pattern",
+        "file": "93220p03.dat"
+    },
+    {
+        "id": "6a5bbe481f5cc3.74075993",
+        "name": "Minifig Baseball Bat with Three Metallic Silver Diamonds with Rivets Pattern",
+        "file": "93220p04.dat"
+    },
+    {
+        "id": "6a5bbe481f66c1.14888985",
+        "name": "Minifig Boombox  1 x  3 x  1",
+        "file": "93221.dat"
+    },
+    {
+        "id": "6a5bbe481f70b7.09700109",
+        "name": "Minifig Boombox  1 x  3 x  1 with Metallic Gold Rimmed Speakers, Cassette Player and Buttons Pattern",
+        "file": "93221p01.dat"
+    },
+    {
+        "id": "6a5bbe481f7ac5.62075346",
+        "name": "Minifig Boombox  1 x  3 x  1 with Metallic Silver Rimmed Speakers, Cassette Player and Buttons Pattern",
+        "file": "93221p02.dat"
+    },
+    {
+        "id": "6a5bbe481f85c5.73299309",
+        "name": "Minifig Boombox  1 x  3 x  1 with Black Rimmed Speakers, Cassette Player and Switches Pattern",
+        "file": "93221p03.dat"
+    },
+    {
+        "id": "6a5bbe481f9029.60630439",
+        "name": "Minifig Boombox  1 x  3 x  1 with Metallic Gold Rimmed Speakers and Digital Music Player Pattern",
+        "file": "93221p04.dat"
+    },
+    {
+        "id": "6a5bbe481f99f8.54032109",
+        "name": "Minifig Boombox  1 x  3 x  1 with Magenta Rimmed Speakers, Cassette Player, Switches and Lime Decoration Pattern",
+        "file": "93221p05.dat"
+    },
+    {
+        "id": "6a5bbe481fa395.12126691",
+        "name": "Minifig Boombox  1 x  3 x  1 with Metallic Gold Rimmed Speakers, Rotary Knobs and Sound Wave Display Pattern",
+        "file": "93221p06.dat"
+    },
+    {
+        "id": "6a5bbe481fae19.03217968",
+        "name": "Minifig Tool Fishing Rod  8L Clip at End",
+        "file": "93222.dat"
+    },
+    {
+        "id": "6a5bbe481ffef4.88977531",
+        "name": "Minifig Long Bow with Arrow",
+        "file": "93231.dat"
+    },
+    {
+        "id": "6a5bbe48200880.56712874",
+        "name": "Minifig Sword Khopesh",
+        "file": "93247.dat"
+    },
+    {
+        "id": "6a5bbe48204f90.19943898",
+        "name": "Minifig Shield Scarab",
+        "file": "93251.dat"
+    },
+    {
+        "id": "6a5bbe482059d3.57895962",
+        "name": "Minifig Pharaoh's Staff with Forked End",
+        "file": "93252.dat"
+    },
+    {
+        "id": "6a5bbe48229910.74245619",
+        "name": "Minifig Sword Rapier",
+        "file": "93550.dat"
+    },
+    {
+        "id": "6a5bbe4822a336.88376388",
+        "name": "Minifig Paint Palette",
+        "file": "93551.dat"
+    },
+    {
+        "id": "6a5bbe4822ad25.69824095",
+        "name": "Minifig Paint Palette with Paint Drops Pattern",
+        "file": "93551p01.dat"
+    },
+    {
+        "id": "6a5bbe4822b740.24229869",
+        "name": "Minifig Paint Brush",
+        "file": "93552.dat"
+    },
+    {
+        "id": "6a5bbe4822c1c1.83354448",
+        "name": "Minifig Paint Brush with Silver Ring and Half Green Tip Pattern",
+        "file": "93552p01.dat"
+    },
+    {
+        "id": "6a5bbe4822cbc3.53506595",
+        "name": "Minifig Paint Brush with Silver Ring and Half Medium Azure Tip Pattern",
+        "file": "93552p02.dat"
+    },
+    {
+        "id": "6a5bbe4822d854.37916006",
+        "name": "Minifig Paint Brush with Half Orange Tip Pattern",
+        "file": "93552p03.dat"
+    },
+    {
+        "id": "6a5bbe4822ea35.12208170",
+        "name": "Minifig Paint Brush with Full Green Tip Pattern",
+        "file": "93552p04.dat"
+    },
+    {
+        "id": "6a5bbe4822fb69.86448530",
+        "name": "Minifig Paint Brush with Full Orange Tip Pattern",
+        "file": "93552p05.dat"
+    },
+    {
+        "id": "6a5bbe48230b18.18987770",
+        "name": "Minifig Paint Brush with Full Blue Tip Pattern",
+        "file": "93552p06.dat"
+    },
+    {
+        "id": "6a5bbe48231a95.41978100",
+        "name": "Minifig Hand Fan",
+        "file": "93553.dat"
+    },
+    {
+        "id": "6a5bbe48235d27.66856474",
+        "name": "Minifig Hockey Stick with  1.1 L Bar",
+        "file": "93559.dat"
+    },
+    {
+        "id": "6a5bbe48237e64.87922226",
+        "name": "Minifig Electric Guitar V Shape",
+        "file": "93564.dat"
+    },
+    {
+        "id": "6a5bbe48238864.45776457",
+        "name": "Minifig Electric Guitar V Shape with Silver Strings, White Body Pattern",
+        "file": "93564p01.dat"
+    },
+    {
+        "id": "6a5bbe48239214.29014044",
+        "name": "Minifig Electric Guitar V Shape with Black Strings, DkPink Lightning Pattern",
+        "file": "93564p02.dat"
+    },
+    {
+        "id": "6a5bbe4823a6f2.34283538",
+        "name": "Minifig Food Pie with Cream Filling",
+        "file": "93568.dat"
+    },
+    {
+        "id": "6a5bbe4823b163.60130677",
+        "name": "Minifig Food Pie with White Cream Filling Pattern",
+        "file": "93568p01.dat"
+    },
+    {
+        "id": "6a5bbe4823bc49.62373358",
+        "name": "Minifig Food Pie with Yellow Cream Filling Pattern",
+        "file": "93568p02.dat"
+    },
+    {
+        "id": "6a5bbe482626a5.80461720",
+        "name": "Minifig Spear with Flat End",
+        "file": "93789.dat"
+    },
+    {
+        "id": "6a5bbe48270b33.30381238",
+        "name": "Minifig Comb Small with Heart",
+        "file": "94719.dat"
+    },
+    {
+        "id": "6a5bbe48271960.48068764",
+        "name": "Minifig Brush Oval",
+        "file": "94720.dat"
+    },
+    {
+        "id": "6a5bbe48273b13.02233173",
+        "name": "Minifig Spray Bottle with Heart",
+        "file": "94724.dat"
+    },
+    {
+        "id": "6a5bbe482836e2.51983613",
+        "name": "Minifig Staff with Spherical End",
+        "file": "95049.dat"
+    },
+    {
+        "id": "6a5bbe482840d1.91533563",
+        "name": "Minifig Staff with Crescent End",
+        "file": "95050.dat"
+    },
+    {
+        "id": "6a5bbe48284bc1.59839310",
+        "name": "Minifig Small Bow with Arrow",
+        "file": "95051.dat"
+    },
+    {
+        "id": "6a5bbe482855a9.18579216",
+        "name": "Minifig Axe with Twin-Blade",
+        "file": "95052.dat"
+    },
+    {
+        "id": "6a5bbe48285f82.61166828",
+        "name": "Minifig Sword Small with Angular Guard",
+        "file": "95053.dat"
+    },
+    {
+        "id": "6a5bbe482869d9.33936467",
+        "name": "Minifig Knife with Flat Hilt End",
+        "file": "95054.dat"
+    },
+    {
+        "id": "6a5bbe4828dc92.44326005",
+        "name": "Minifig Gun Pistol Two Barrel",
+        "file": "95199.dat"
+    },
+    {
+        "id": "6a5bbe48291179.83172268",
+        "name": "Minifig Bottle  1 x  1 x  2 Cylindrical",
+        "file": "95228.dat"
+    },
+    {
+        "id": "6a5bbe48291b69.63475925",
+        "name": "Minifig Bottle  1 x  1 x  2 Cylindrical with Bottle Ship Pattern",
+        "file": "95228p01.dat"
+    },
+    {
+        "id": "6a5bbe482982f3.84551348",
+        "name": "Minifig Axe",
+        "file": "95330.dat"
+    },
+    {
+        "id": "6a5bbe48298dc4.11967445",
+        "name": "Minifig Axe with Red Head and Silver Blade Pattern",
+        "file": "95330p01.dat"
+    },
+    {
+        "id": "6a5bbe482a1287.30675741",
+        "name": "Minifig Sword Scabbard with Shoulder Strap",
+        "file": "95348.dat"
+    },
+    {
+        "id": "6a5bbe482b1e00.34532209",
+        "name": "Minifig Sword Roman Gladius with Thin Crossguard",
+        "file": "95673.dat"
+    },
+    {
+        "id": "6a5bbe482c1bb5.11479792",
+        "name": "Figure Friends Hair Brush with Heart on Reverse",
+        "file": "96480.dat"
+    },
+    {
+        "id": "6a5bbe482c2f49.46422257",
+        "name": "Figure Friends Comb with Handle and  3 Hearts",
+        "file": "96482.dat"
+    },
+    {
+        "id": "6a5bbe482c4355.48781943",
+        "name": "Figure Friends Hair Dryer",
+        "file": "96484.dat"
+    },
+    {
+        "id": "6a5bbe482cdab2.97255459",
+        "name": "Minifig Tool Fishing Rod 12L Straight End",
+        "file": "96858.dat"
+    },
+    {
+        "id": "6a5bbe482d3b31.23704604",
+        "name": "Minifig Coin with  \"1\" Gothic Type",
+        "file": "96904.dat"
+    },
+    {
+        "id": "6a5bbe482d4652.67941140",
+        "name": "Minifig Coin with  \"2\" Gothic Type",
+        "file": "96905.dat"
+    },
+    {
+        "id": "6a5bbe482d5029.60516094",
+        "name": "Minifig Coin with  \"5\" Gothic Type",
+        "file": "96906.dat"
+    },
+    {
+        "id": "6a5bbe482d5a28.06126101",
+        "name": "Minifig Coin with \"10\" Gothic Type",
+        "file": "96907.dat"
+    },
+    {
+        "id": "6a5bbe485085c2.40159463",
+        "name": "Figure Friends Dish Round  2.7 x  2.7",
+        "file": "97783.dat"
+    },
+    {
+        "id": "6a5bbe48508fb4.77315412",
+        "name": "Figure Friends Cupcake Case",
+        "file": "97784.dat"
+    },
+    {
+        "id": "6a5bbe485099c7.63659661",
+        "name": "Figure Friends Dish Rectangular",
+        "file": "97785.dat"
+    },
+    {
+        "id": "6a5bbe4850baf8.54187335",
+        "name": "Figure Friends Mixing Bowl",
+        "file": "97791.dat"
+    },
+    {
+        "id": "6a5bbe4850c503.93571508",
+        "name": "Figure Friends Hand-held Food Mixer",
+        "file": "97793.dat"
+    },
+    {
+        "id": "6a5bbe48528763.80583620",
+        "name": "Minifig Weapon Curved Blade  8.5L with Bar  1.5L",
+        "file": "98137.dat"
+    },
+    {
+        "id": "6a5bbe485ca081.63258581",
+        "name": "Minifig Weapon Sai",
+        "file": "98139.dat"
+    },
+    {
+        "id": "6a5bbe485cb562.14716826",
+        "name": "Minifig Weapon Crescent Blade Serrated with Bar 0.5L",
+        "file": "98141.dat"
+    },
+    {
+        "id": "6a5bbe485deb83.34496701",
+        "name": "Wheelbarrow with Two Studs and 2 Wheel Clips",
+        "file": "98288.dat"
+    },
+    {
+        "id": "6a5bbe485e1627.73117577",
+        "name": "Minifig Weapon Spear Short with Pin Hole",
+        "file": "98338.dat"
+    },
+    {
+        "id": "6a5bbe485e3ef8.81862105",
+        "name": "Minifig Shield Rectangular Curved with Stud",
+        "file": "98367.dat"
+    },
+    {
+        "id": "6a5bbe485e49d0.97936453",
+        "name": "Minifig Shield Rectangular Curved with Stud with Gold Lightning Wings and Arrows Pattern",
+        "file": "98367p01.dat"
+    },
+    {
+        "id": "6a5bbe485e5442.70783439",
+        "name": "Minifig Toolbox  1 x  3 with Handle",
+        "file": "98368.dat"
+    },
+    {
+        "id": "6a5bbe485e5e27.80667823",
+        "name": "Minifig Toolbox  1 x  3 with Handle and Classic Space Logo on Back Pattern",
+        "file": "98368p01.dat"
+    },
+    {
+        "id": "6a5bbe485e6825.98946819",
+        "name": "Minifig Cleaver",
+        "file": "98369.dat"
+    },
+    {
+        "id": "6a5bbe485e7213.25063989",
+        "name": "Minifig Sword Longsword with Thin Guard",
+        "file": "98370.dat"
+    },
+    {
+        "id": "6a5bbe485e8557.05229996",
+        "name": "Minifig Steak on Bone",
+        "file": "98372.dat"
+    },
+    {
+        "id": "6a5bbe485e8f29.52372970",
+        "name": "Minifig Steak on Bone with Red Meat Pattern",
+        "file": "98372p01.dat"
+    },
+    {
+        "id": "6a5bbe485e9946.24512292",
+        "name": "Minifig Steak on Bone with Dark Red Meat Pattern",
+        "file": "98372p02.dat"
+    },
+    {
+        "id": "6a5bbe485ead63.17208695",
+        "name": "Minifig Toy Winder Key",
+        "file": "98375.dat"
+    },
+    {
+        "id": "6a5bbe485ed602.03952544",
+        "name": "Minifig Teddy Bear with Arms Down",
+        "file": "98382.dat"
+    },
+    {
+        "id": "6a5bbe485edfd9.50187916",
+        "name": "Minifig Teddy Bear with Arms Down with Tan Belly and Muzzle and Black Nose and Eyes Pattern",
+        "file": "98382p01.dat"
+    },
+    {
+        "id": "6a5bbe485eea57.46648423",
+        "name": "Minifig Oil Lamp",
+        "file": "98383.dat"
+    },
+    {
+        "id": "6a5bbe48600244.78151301",
+        "name": "Minifig Handlebars with Angular Handles",
+        "file": "98397.dat"
+    },
+    {
+        "id": "6a5bbe48617442.57629062",
+        "name": "Minifig Bar with Bat Wings",
+        "file": "98721.dat"
+    },
+    {
+        "id": "6a5bbe486319e9.06482977",
+        "name": "Minifig Sword Greatsword",
+        "file": "99232.dat"
+    },
+    {
+        "id": "6a5bbe4863a1d0.15420609",
+        "name": "Minifig Lasso",
+        "file": "99253.dat"
+    },
+    {
+        "id": "6a5bbe48899bc0.23874289",
+        "name": "Minifig Conical Flask",
+        "file": "u9180.dat"
+    },
+    {
+        "id": "6a5bbe4889a637.80521740",
+        "name": "Minifig Conical Flask TransClear with Coloured Base",
+        "file": "u9180c01.dat"
+    }
+]

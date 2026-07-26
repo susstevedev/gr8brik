@@ -1,0 +1,1577 @@
+[
+    {
+        "id": "6a5bbe4489bf02.67306188",
+        "name": "Minifig Leg Right Robotic",
+        "file": "10177b.dat"
+    },
+    {
+        "id": "6a5bbe44eba718.45122800",
+        "name": "Minifig Legs Minecraft Enderman",
+        "file": "19732.dat"
+    },
+    {
+        "id": "6a5bbe44f0f0c0.75390701",
+        "name": "~Minifig Leg Left Dual Mould",
+        "file": "20460b.dat"
+    },
+    {
+        "id": "6a5bbe44f0fb51.45243116",
+        "name": "Minifig Leg Left with White Lower Leg Pattern",
+        "file": "20460bp00.dat"
+    },
+    {
+        "id": "6a5bbe44f105f7.24081742",
+        "name": "Minifig Leg Left with Red Lower Leg Pattern",
+        "file": "20460bp01.dat"
+    },
+    {
+        "id": "6a5bbe44f11060.04247973",
+        "name": "Minifig Leg Left with Blue Lower Leg Pattern",
+        "file": "20460bp02.dat"
+    },
+    {
+        "id": "6a5bbe44f11ab4.68623476",
+        "name": "Minifig Leg Left with Bright Light Orange Lower Leg Pattern",
+        "file": "20460bp03.dat"
+    },
+    {
+        "id": "6a5bbe44f12534.85892019",
+        "name": "Minifig Leg Left with Yellow Lower Leg Pattern",
+        "file": "20460bp04.dat"
+    },
+    {
+        "id": "6a5bbe44f12f77.65579184",
+        "name": "Minifig Leg Left with Black Lower Leg Pattern",
+        "file": "20460bp05.dat"
+    },
+    {
+        "id": "6a5bbe44f139b5.92468284",
+        "name": "Minifig Leg Left with Dark Brown Lower Leg Pattern",
+        "file": "20460bp06.dat"
+    },
+    {
+        "id": "6a5bbe44f143e6.71765987",
+        "name": "Minifig Leg Left with Dark Red Lower Leg Pattern",
+        "file": "20460bp07.dat"
+    },
+    {
+        "id": "6a5bbe44f14e55.05258168",
+        "name": "Minifig Leg Left with Dark Green Lower Leg Pattern",
+        "file": "20460bp08.dat"
+    },
+    {
+        "id": "6a5bbe44f15906.96399932",
+        "name": "Minifig Leg Left with Dark Blue Lower Leg Pattern",
+        "file": "20460bp09.dat"
+    },
+    {
+        "id": "6a5bbe44f16391.59031581",
+        "name": "Minifig Leg Left Dual Mould with Reddish Brown Lower Leg Pattern",
+        "file": "20460bp0a.dat"
+    },
+    {
+        "id": "6a5bbe44f16e78.03680668",
+        "name": "Minifig Leg Left Dual Mould with Medium Lilac Lower Leg Pattern",
+        "file": "20460bp0c.dat"
+    },
+    {
+        "id": "6a5bbe44f178d6.28320064",
+        "name": "Minifig Leg Left Dual Mould with Dark Orange Lower Leg Pattern",
+        "file": "20460bp0e.dat"
+    },
+    {
+        "id": "6a5bbe44f182f6.58897541",
+        "name": "Minifig Leg Left with Bright Green Lower Leg Pattern",
+        "file": "20460bp0g.dat"
+    },
+    {
+        "id": "6a5bbe44f18d42.07756195",
+        "name": "Minifig Leg Left with Green Lower Leg Pattern",
+        "file": "20460bp0h.dat"
+    },
+    {
+        "id": "6a5bbe44f19c46.76212429",
+        "name": "Minifig Leg Left with Wetsuit, Coral and Dark Azure Trim Pattern",
+        "file": "20460bpckc.dat"
+    },
+    {
+        "id": "6a5bbe44f1a968.42556737",
+        "name": "Minifig Leg Left with White Lower Leg and Green Sandals Pattern",
+        "file": "20460bpd87.dat"
+    },
+    {
+        "id": "6a5bbe44f1b445.18291162",
+        "name": "Minifig Leg Left with Ruffles, Black Lower Leg and White Feet Pattern",
+        "file": "20460bpd92.dat"
+    },
+    {
+        "id": "6a5bbe44f1beb3.29422977",
+        "name": "Minifig Leg Left with Stripes, Kneepad and Bright Pink Boots Pattern",
+        "file": "20460bpde1.dat"
+    },
+    {
+        "id": "6a5bbe44f1c915.90638505",
+        "name": "Minifig Leg Left with White Cat Foot Pattern",
+        "file": "20460bpde6.dat"
+    },
+    {
+        "id": "6a5bbe44f1d3b0.81259255",
+        "name": "Minifig Leg Left with Orange Lower Leg Pattern",
+        "file": "20460bpde7.dat"
+    },
+    {
+        "id": "6a5bbe44f1de67.52826857",
+        "name": "Minifig Leg Left with Black and White Shoe on Grey Lower Leg Pattern",
+        "file": "20460bpdg3.dat"
+    },
+    {
+        "id": "6a5bbe44f1e8a0.57585864",
+        "name": "Minifig Leg Left with Metallic Pink Dress and Silver Pumps Pattern",
+        "file": "20460bpdg6.dat"
+    },
+    {
+        "id": "6a5bbe44f1f317.96156263",
+        "name": "Minifig Leg Left with Orange Feet Pattern",
+        "file": "20460bpdg8.dat"
+    },
+    {
+        "id": "6a5bbe44f20056.06747379",
+        "name": "Minifig Leg Left with Sand Blue Lower Leg and Reddish Brown Shoes Pattern",
+        "file": "20460bpdgb.dat"
+    },
+    {
+        "id": "6a5bbe44f20bb7.94658269",
+        "name": "Minifig Leg Left with Bright Light Orange Foot and Silver Sandals Pattern",
+        "file": "20460bpdgc.dat"
+    },
+    {
+        "id": "6a5bbe44f21626.20991780",
+        "name": "Minifig Leg Left with Light Nougat Lower Leg and Black Shoes Pattern",
+        "file": "20460bpx0.dat"
+    },
+    {
+        "id": "6a5bbe44f22134.16260144",
+        "name": "Minifig Leg Left with Dark Red Lower Leg and Triangular Notch on Side Pattern",
+        "file": "20460bpx1.dat"
+    },
+    {
+        "id": "6a5bbe44f22b88.12919023",
+        "name": "Minifig Leg Left with Bright Light Orange Lower Leg and Medium Lavender Shoes Pattern",
+        "file": "20460bpx2.dat"
+    },
+    {
+        "id": "6a5bbe44f235f0.00844769",
+        "name": "Minifig Leg Left with Ruffles, Black Lower Leg and Yellow Feet Pattern",
+        "file": "20460bpx3.dat"
+    },
+    {
+        "id": "6a5bbe44f24218.89532145",
+        "name": "Minifig Leg Left with Red Boot and Black Line Pattern",
+        "file": "20460bpx5.dat"
+    },
+    {
+        "id": "6a5bbe44f2f4a4.96624857",
+        "name": "~Minifig Leg Right Dual Mould",
+        "file": "20461b.dat"
+    },
+    {
+        "id": "6a5bbe44f2ff07.30863923",
+        "name": "Minifig Leg Right with White Lower Leg Pattern",
+        "file": "20461bp00.dat"
+    },
+    {
+        "id": "6a5bbe44f30962.52572747",
+        "name": "Minifig Leg Right with Red Lower Leg Pattern",
+        "file": "20461bp01.dat"
+    },
+    {
+        "id": "6a5bbe44f313a2.78169092",
+        "name": "Minifig Leg Right with Blue Lower Leg Pattern",
+        "file": "20461bp02.dat"
+    },
+    {
+        "id": "6a5bbe44f31eb1.98513646",
+        "name": "Minifig Leg Right with Bright Light Orange Lower Leg Pattern",
+        "file": "20461bp03.dat"
+    },
+    {
+        "id": "6a5bbe44f32986.96545361",
+        "name": "Minifig Leg Right with Yellow Lower Leg Pattern",
+        "file": "20461bp04.dat"
+    },
+    {
+        "id": "6a5bbe44f333c4.81801005",
+        "name": "Minifig Leg Right with Black Lower Leg Pattern",
+        "file": "20461bp05.dat"
+    },
+    {
+        "id": "6a5bbe44f33e39.05346289",
+        "name": "Minifig Leg Right with Dark Brown Lower Leg Pattern",
+        "file": "20461bp06.dat"
+    },
+    {
+        "id": "6a5bbe44f34872.53551251",
+        "name": "Minifig Leg Right with Dark Red Lower Leg Pattern",
+        "file": "20461bp07.dat"
+    },
+    {
+        "id": "6a5bbe44f352a2.34845019",
+        "name": "Minifig Leg Right with Dark Green Lower Leg Pattern",
+        "file": "20461bp08.dat"
+    },
+    {
+        "id": "6a5bbe44f35d50.46875278",
+        "name": "Minifig Leg Right with Dark Blue Lower Leg Pattern",
+        "file": "20461bp09.dat"
+    },
+    {
+        "id": "6a5bbe44f36788.07626689",
+        "name": "Minifig Leg Right Dual Mould with Reddish Brown Lower Leg Pattern",
+        "file": "20461bp0a.dat"
+    },
+    {
+        "id": "6a5bbe44f37272.24190422",
+        "name": "Minifig Leg Right Dual Mould with Medium Lilac Lower Leg Pattern",
+        "file": "20461bp0c.dat"
+    },
+    {
+        "id": "6a5bbe44f37cd8.29495644",
+        "name": "Minifig Leg Right Dual Mould with Dark Orange Lower Leg Pattern",
+        "file": "20461bp0e.dat"
+    },
+    {
+        "id": "6a5bbe44f38707.64195892",
+        "name": "Minifig Leg Right with Bright Green Lower Leg Pattern",
+        "file": "20461bp0g.dat"
+    },
+    {
+        "id": "6a5bbe44f39141.57658651",
+        "name": "Minifig Leg Right with Green Lower Leg Pattern",
+        "file": "20461bp0h.dat"
+    },
+    {
+        "id": "6a5bbe44f39bd5.75229826",
+        "name": "Minifig Leg Right with Wetsuit, Coral and Dark Azure Trim Pattern",
+        "file": "20461bpckc.dat"
+    },
+    {
+        "id": "6a5bbe44f3a618.49012224",
+        "name": "Minifig Leg Right with White Lower Leg and Green Sandals Pattern",
+        "file": "20461bpd87.dat"
+    },
+    {
+        "id": "6a5bbe44f3b097.54718357",
+        "name": "Minifig Leg Right with Ruffles, Black Lower Leg and White Feet Pattern",
+        "file": "20461bpd92.dat"
+    },
+    {
+        "id": "6a5bbe44f3bad5.82656427",
+        "name": "Minifig Leg Right with Stripes, Kneepad and Bright Pink Boots Pattern",
+        "file": "20461bpde1.dat"
+    },
+    {
+        "id": "6a5bbe44f3c505.42848198",
+        "name": "Minifig Leg Right with White Cat Foot Pattern",
+        "file": "20461bpde6.dat"
+    },
+    {
+        "id": "6a5bbe44f3cf20.40458766",
+        "name": "Minifig Leg Right with Orange Lower Leg Pattern",
+        "file": "20461bpde7.dat"
+    },
+    {
+        "id": "6a5bbe44f3d952.00426752",
+        "name": "Minifig Leg Right with Black and White Shoe on Grey Lower Leg Pattern",
+        "file": "20461bpdg3.dat"
+    },
+    {
+        "id": "6a5bbe44f3e366.57063804",
+        "name": "Minifig Leg Right with Metallic Pink Dress and Silver Pumps Pattern",
+        "file": "20461bpdg6.dat"
+    },
+    {
+        "id": "6a5bbe44f3ed63.25238989",
+        "name": "Minifig Leg Right with Rope Belt and Orange Feet Pattern",
+        "file": "20461bpdg8.dat"
+    },
+    {
+        "id": "6a5bbe44f3f7b0.85323359",
+        "name": "Minifig Leg Right with Sand Blue Lower Leg and Reddish Brown Shoes Pattern",
+        "file": "20461bpdgb.dat"
+    },
+    {
+        "id": "6a5bbe44f401a7.92029589",
+        "name": "Minifig Leg Right with Bright Light Orange Foot and Silver Sandals Pattern",
+        "file": "20461bpdgc.dat"
+    },
+    {
+        "id": "6a5bbe44f40bd1.61214813",
+        "name": "Minifig Leg Right with Light Nougat Lower Leg and Black Shoes Pattern",
+        "file": "20461bpx0.dat"
+    },
+    {
+        "id": "6a5bbe44f416f4.33098421",
+        "name": "Minifig Leg Right with Dark Red Lower Leg and Triangular Notch on Side Pattern",
+        "file": "20461bpx1.dat"
+    },
+    {
+        "id": "6a5bbe44f42194.62766303",
+        "name": "Minifig Leg Right with Bright Light Orange Lower Leg and Medium Lavender Shoes Pattern",
+        "file": "20461bpx2.dat"
+    },
+    {
+        "id": "6a5bbe45000961.78589743",
+        "name": "Minifig Leg Right with Ruffles, Black Lower Leg and Yellow Feet Pattern",
+        "file": "20461bpx3.dat"
+    },
+    {
+        "id": "6a5bbe450013d8.66142312",
+        "name": "Minifig Leg Right with Red Boot and Black Line Pattern",
+        "file": "20461bpx5.dat"
+    },
+    {
+        "id": "6a5bbe451db091.95093139",
+        "name": "Minifig Leg Faun Right",
+        "file": "24082.dat"
+    },
+    {
+        "id": "6a5bbe451dbb80.90303451",
+        "name": "Minifig Leg Faun Left",
+        "file": "24083.dat"
+    },
+    {
+        "id": "6a5bbe45376634.55152430",
+        "name": "Minifig Leg Wooden",
+        "file": "2532.dat"
+    },
+    {
+        "id": "6a5bbe46278916.31222047",
+        "name": "Minifig Leg Medium Right",
+        "file": "37365.dat"
+    },
+    {
+        "id": "6a5bbe462792e9.94725821",
+        "name": "Minifig Leg Medium Right with Yellow Shoe Tip Pattern",
+        "file": "37365p01.dat"
+    },
+    {
+        "id": "6a5bbe46279ce0.86873952",
+        "name": "Minifig Leg Medium Right with Bright Light Yellow Shoe Tip Pattern",
+        "file": "37365p02.dat"
+    },
+    {
+        "id": "6a5bbe4627a6e7.15972499",
+        "name": "Minifig Leg Medium Right with  White Boots with Black Lines Pattern",
+        "file": "37365pdea.dat"
+    },
+    {
+        "id": "6a5bbe4627b0e3.84937940",
+        "name": "Minifig Leg Medium Right with Black Hoves and White Frills Pattern",
+        "file": "37365pdeb.dat"
+    },
+    {
+        "id": "6a5bbe4627bae2.71727838",
+        "name": "Minifig Leg Medium Right with Black Hoves Pattern",
+        "file": "37365pdec.dat"
+    },
+    {
+        "id": "6a5bbe4627c523.76817562",
+        "name": "Minifig Leg Medium Right with Black Shoe and Lab Coat Pattern",
+        "file": "37365pdg2.dat"
+    },
+    {
+        "id": "6a5bbe4627cef1.57568094",
+        "name": "Minifig Leg Medium Right with Orange and Brown Dots, White Shoes Pattern",
+        "file": "37365pdg4.dat"
+    },
+    {
+        "id": "6a5bbe4627d8f5.04393116",
+        "name": "Minifig Leg Medium Right with Black Shoe Pattern",
+        "file": "37365pdg9.dat"
+    },
+    {
+        "id": "6a5bbe4627e2f9.78284482",
+        "name": "Minifig Leg Medium Left",
+        "file": "37366.dat"
+    },
+    {
+        "id": "6a5bbe4627ed07.87048295",
+        "name": "Minifig Leg Medium Left with Yellow Shoe Tip Pattern",
+        "file": "37366p01.dat"
+    },
+    {
+        "id": "6a5bbe4627f7a7.87282960",
+        "name": "Minifig Leg Medium Left with Bright Light Yellow Shoe Tip Pattern",
+        "file": "37366p02.dat"
+    },
+    {
+        "id": "6a5bbe462801b5.08213809",
+        "name": "Minifig Leg Medium Left with  White Boots with Black Lines Pattern",
+        "file": "37366pdea.dat"
+    },
+    {
+        "id": "6a5bbe46280c11.65894887",
+        "name": "Minifig Leg Medium Left with Black Hoves and White Frills Pattern",
+        "file": "37366pdeb.dat"
+    },
+    {
+        "id": "6a5bbe46281692.83853577",
+        "name": "Minifig Leg Medium Left with Black Hoves Pattern",
+        "file": "37366pdec.dat"
+    },
+    {
+        "id": "6a5bbe46282096.50226089",
+        "name": "Minifig Leg Medium Left with Orange and Brown Dots, White Shoes Pattern",
+        "file": "37366pdg4.dat"
+    },
+    {
+        "id": "6a5bbe46282a88.38989273",
+        "name": "Minifig Leg Medium Left with Black Shoe Pattern",
+        "file": "37366pdg9.dat"
+    },
+    {
+        "id": "6a5bbe4634c5c4.93790232",
+        "name": "Minifig Leg Right",
+        "file": "3816c.dat"
+    },
+    {
+        "id": "6a5bbe4634d019.57080612",
+        "name": "Minifig Leg Right with Lime Leotard and Toes Pattern",
+        "file": "3816cp01.dat"
+    },
+    {
+        "id": "6a5bbe4634da42.28674378",
+        "name": "Minifig Leg Right with White Button, Black Shoe and Black Line on Side Pattern",
+        "file": "3816cp02.dat"
+    },
+    {
+        "id": "6a5bbe4634e488.42381253",
+        "name": "Minifig Leg Right with Armour Scales, Knee Pads and Claws Pattern",
+        "file": "3816cp04.dat"
+    },
+    {
+        "id": "6a5bbe4634ef26.16251355",
+        "name": "Minifig Leg Right with Dark Red Armour Scales, Gold Knee Pad and Toes Pattern",
+        "file": "3816cp0e.dat"
+    },
+    {
+        "id": "6a5bbe4634f954.84037466",
+        "name": "Minifig Leg Right with Silver Panels and Light Bluish Grey Straps Pattern",
+        "file": "3816cp0g.dat"
+    },
+    {
+        "id": "6a5bbe46350322.96383580",
+        "name": "Minifig Leg Right with Silver and Metallic Dark Grey Armour Pattern",
+        "file": "3816cp0h.dat"
+    },
+    {
+        "id": "6a5bbe46350cd4.75956347",
+        "name": "Minifig Leg Right with Diving Suit Orange and Medium Azure Stripes Pattern",
+        "file": "3816cp0i.dat"
+    },
+    {
+        "id": "6a5bbe46351681.86385924",
+        "name": "Minifig Leg Right with Dark Red Scales, Lion Knee Pad and Clawed Toe Pattern",
+        "file": "3816cp0j.dat"
+    },
+    {
+        "id": "6a5bbe463521e6.72138358",
+        "name": "Minifig Leg Right with Nougat Leg and Silver Rimmed Boot Pattern",
+        "file": "3816cp0l.dat"
+    },
+    {
+        "id": "6a5bbe46352c77.96300106",
+        "name": "Minifig Leg Right with Skirt, Boot and Light Nougat Leg Pattern",
+        "file": "3816cp0m.dat"
+    },
+    {
+        "id": "6a5bbe463536b3.87427678",
+        "name": "Minifig Leg Right with Dark Purple Boot and Black Leotard Pattern",
+        "file": "3816cp0n.dat"
+    },
+    {
+        "id": "6a5bbe463540c3.84871018",
+        "name": "Minifig Leg Right with Black Stripes Pattern",
+        "file": "3816cp0o.dat"
+    },
+    {
+        "id": "6a5bbe46354ac1.61463451",
+        "name": "Minifig Leg Right with Dark Bluish Grey Pockets Outline Pattern",
+        "file": "3816cp0r.dat"
+    },
+    {
+        "id": "6a5bbe46355540.14570045",
+        "name": "Minifig Leg Right with Retro Spacesuit with Dark Orange Wrinkles Pattern",
+        "file": "3816cp0x.dat"
+    },
+    {
+        "id": "6a5bbe463564f6.05216334",
+        "name": "Minifig Leg Right with Rags Pattern",
+        "file": "3816cp30.dat"
+    },
+    {
+        "id": "6a5bbe46357086.86777102",
+        "name": "Minifig Leg Right with Green Leaf Pattern",
+        "file": "3816cp3j.dat"
+    },
+    {
+        "id": "6a5bbe46357a80.48047324",
+        "name": "Minifig Leg Right with Pouch Pattern",
+        "file": "3816cp40.dat"
+    },
+    {
+        "id": "6a5bbe463584d9.63332768",
+        "name": "Minifig Leg Right with Scale Mail Pattern",
+        "file": "3816cp41.dat"
+    },
+    {
+        "id": "6a5bbe46358f31.85815234",
+        "name": "Minifig Leg Right with Shirttails, Gold Band and Fleur de Lis Pattern",
+        "file": "3816cp42.dat"
+    },
+    {
+        "id": "6a5bbe46359bc5.22126190",
+        "name": "Minifig Leg Right with Leather Straps and Red Diamonds Pattern",
+        "file": "3816cp4f.dat"
+    },
+    {
+        "id": "6a5bbe4635a637.73335807",
+        "name": "Minifig Leg Right with Insectoids Robot Pattern",
+        "file": "3816cp60.dat"
+    },
+    {
+        "id": "6a5bbe4635b113.96102180",
+        "name": "Minifig Leg Right with Insectoids Blue Circuitry Pattern",
+        "file": "3816cp61.dat"
+    },
+    {
+        "id": "6a5bbe4635bb86.88185503",
+        "name": "Minifig Leg Right with Insectoids Green Circuitry Pattern",
+        "file": "3816cp62.dat"
+    },
+    {
+        "id": "6a5bbe4635c5e5.44477828",
+        "name": "Minifig Leg Right with Robot Pattern",
+        "file": "3816cp63.dat"
+    },
+    {
+        "id": "6a5bbe4635d024.30155737",
+        "name": "Minifig Leg Right with Astro Pattern",
+        "file": "3816cp6f.dat"
+    },
+    {
+        "id": "6a5bbe4635da20.47000065",
+        "name": "Minifig Leg Right with White and Gold Markings Pattern",
+        "file": "3816cp6g.dat"
+    },
+    {
+        "id": "6a5bbe4635e468.79412280",
+        "name": "Minifig Leg Right with Gold Circuitry and Orange Cable Pattern",
+        "file": "3816cp6u.dat"
+    },
+    {
+        "id": "6a5bbe4635ee95.94004812",
+        "name": "Minifig Leg Right with Silver Circuitry and Salmon Cable Pattern",
+        "file": "3816cp6v.dat"
+    },
+    {
+        "id": "6a5bbe4635f856.92215823",
+        "name": "Minifig Leg Right with Golden Circuit Pattern",
+        "file": "3816cp6w.dat"
+    },
+    {
+        "id": "6a5bbe46360260.66829768",
+        "name": "Minifig Leg Right with Reflective Stripes and Black Pocket Outline Pattern",
+        "file": "3816cp70.dat"
+    },
+    {
+        "id": "6a5bbe46360c77.17224861",
+        "name": "Minifig Leg Right with Reflective Stripes and Tan Pocket Outline Pattern",
+        "file": "3816cp71.dat"
+    },
+    {
+        "id": "6a5bbe463616c4.74908231",
+        "name": "Minifig Leg Right with Zippered Pocket Pattern",
+        "file": "3816cp72.dat"
+    },
+    {
+        "id": "6a5bbe46362113.04288342",
+        "name": "Minifig Leg Right with White Apron Pattern",
+        "file": "3816cp89.dat"
+    },
+    {
+        "id": "6a5bbe46362b03.47178259",
+        "name": "Minifig Leg Right with Reddish Brown Apron Pattern",
+        "file": "3816cp8a.dat"
+    },
+    {
+        "id": "6a5bbe46363588.36948119",
+        "name": "Minifig Leg Right with Reflective Stripe Pattern",
+        "file": "3816cp8h.dat"
+    },
+    {
+        "id": "6a5bbe46364057.67895129",
+        "name": "Minifig Leg Right with Reflective Stripe and Silver Triangles on Foot Pattern",
+        "file": "3816cp8i.dat"
+    },
+    {
+        "id": "6a5bbe46364d65.61790143",
+        "name": "Minifig Leg Right with Green Kilt and Toes Pattern",
+        "file": "3816cpa2.dat"
+    },
+    {
+        "id": "6a5bbe463657e3.32987489",
+        "name": "Minifig Leg Right with Buttoned Cargo Pocket Pattern",
+        "file": "3816cpa3.dat"
+    },
+    {
+        "id": "6a5bbe463661d1.08735046",
+        "name": "Minifig Leg Right with Holster and Belt Pattern",
+        "file": "3816cpa9.dat"
+    },
+    {
+        "id": "6a5bbe46366ba7.74764833",
+        "name": "Minifig Leg Right with Dark Red Loincloth, White Claws and Fur Tail Pattern",
+        "file": "3816cpaw.dat"
+    },
+    {
+        "id": "6a5bbe46367594.36520601",
+        "name": "Minifig Leg Right with Dark Red Loincloth, Belt with White Spikes and White Claws Pattern",
+        "file": "3816cpaz.dat"
+    },
+    {
+        "id": "6a5bbe46367fa2.14959023",
+        "name": "Minifig Leg Right with Silver Armour Plate and Knee Pad with Bat Pattern",
+        "file": "3816cpb1.dat"
+    },
+    {
+        "id": "6a5bbe46368a20.52398409",
+        "name": "Minifig Leg Right with Dark Bluish Grey Robe Lines Pattern",
+        "file": "3816cpb8.dat"
+    },
+    {
+        "id": "6a5bbe46369448.47113315",
+        "name": "Minifig Leg Right with  3 Black Diamonds Wide Spaced Pattern",
+        "file": "3816cpb9.dat"
+    },
+    {
+        "id": "6a5bbe46369e81.28448662",
+        "name": "Minifig Leg Right with  3 Black Diamonds Pattern",
+        "file": "3816cpba.dat"
+    },
+    {
+        "id": "6a5bbe4636a841.38250746",
+        "name": "Minifig Leg Right with Iron Man Armoured Suit Mark VI Pattern",
+        "file": "3816cpbb.dat"
+    },
+    {
+        "id": "6a5bbe4636b929.93346627",
+        "name": "Minifig Leg Right with Iron Man Armoured Suit Mark VII Pattern",
+        "file": "3816cpbc.dat"
+    },
+    {
+        "id": "6a5bbe4636c6c4.78517300",
+        "name": "Minifig Leg Right with War Machine Armoured Suit Kneepad Pattern",
+        "file": "3816cpbd.dat"
+    },
+    {
+        "id": "6a5bbe4636d150.05949385",
+        "name": "Minifig Leg Right with Iron Man Armoured Suit Mark XVII Pattern",
+        "file": "3816cpbe.dat"
+    },
+    {
+        "id": "6a5bbe46370a27.58922889",
+        "name": "Minifig Leg Right with Iron Man Armoured Suit Mark XLII Pattern",
+        "file": "3816cpbf.dat"
+    },
+    {
+        "id": "6a5bbe463715e6.09737425",
+        "name": "Minifig Leg Right with Iron Patriot Armoured Suit Kneepad Pattern",
+        "file": "3816cpbg.dat"
+    },
+    {
+        "id": "6a5bbe46372163.70609191",
+        "name": "Minifig Leg Right with Medium Blue Patch Pattern",
+        "file": "3816cpc14.dat"
+    },
+    {
+        "id": "6a5bbe46372bf3.43777602",
+        "name": "Minifig Leg Right with Gold Cord and Tunic Pattern",
+        "file": "3816cpc2g.dat"
+    },
+    {
+        "id": "6a5bbe46373632.65059543",
+        "name": "Minifig Leg Right with Samurai Armour Pattern",
+        "file": "3816cpc34.dat"
+    },
+    {
+        "id": "6a5bbe46374349.63653787",
+        "name": "Minifig Leg Right with Dark Green and Silver Scale Mail Pattern",
+        "file": "3816cpc39.dat"
+    },
+    {
+        "id": "6a5bbe46374d33.46220671",
+        "name": "Minifig Leg Right with Chainlink and  3 Safety Pins Pattern",
+        "file": "3816cpc44.dat"
+    },
+    {
+        "id": "6a5bbe46375716.34825071",
+        "name": "Minifig Leg Right with Shorts with Black Line and Brick Logo Pattern",
+        "file": "3816cpc4b.dat"
+    },
+    {
+        "id": "6a5bbe46376165.34548008",
+        "name": "Minifig Leg Right with Clockwork Robot Pattern",
+        "file": "3816cpc67.dat"
+    },
+    {
+        "id": "6a5bbe46376b86.83965065",
+        "name": "Minifig Leg Right with Red Roman Tunic and Belt Pattern",
+        "file": "3816cpc6a.dat"
+    },
+    {
+        "id": "6a5bbe463775d1.12500876",
+        "name": "Minifig Leg Right with Chicken Feet Pattern",
+        "file": "3816cpc97.dat"
+    },
+    {
+        "id": "6a5bbe46378024.36059674",
+        "name": "Minifig Leg Right with Black Triangles on Foot Pattern",
+        "file": "3816cpcbd.dat"
+    },
+    {
+        "id": "6a5bbe46378a55.19991747",
+        "name": "Minifig Leg Right with Dark Blue Claws Pattern",
+        "file": "3816cpcr6.dat"
+    },
+    {
+        "id": "6a5bbe463794c9.17660004",
+        "name": "Minifig Leg Right with Black Orca Pattern",
+        "file": "3816cpd6e.dat"
+    },
+    {
+        "id": "6a5bbe4637a024.51095582",
+        "name": "Minifig Leg Right with Black Pocket and Seam Pattern",
+        "file": "3816cpdd1.dat"
+    },
+    {
+        "id": "6a5bbe4637aae7.28272224",
+        "name": "Minifig Leg Right with Laboratory Smock Pattern",
+        "file": "3816cpde.dat"
+    },
+    {
+        "id": "6a5bbe4637b554.64878442",
+        "name": "Minifig Leg Right with White Rabbit Foot Pattern",
+        "file": "3816cpde2.dat"
+    },
+    {
+        "id": "6a5bbe4637bfa5.03743339",
+        "name": "Minifig Leg Right with 2 Black Gaps Pattern",
+        "file": "3816cpde3.dat"
+    },
+    {
+        "id": "6a5bbe4637ca89.81243533",
+        "name": "Minifig Leg Right with Black Gap Pattern",
+        "file": "3816cpde4.dat"
+    },
+    {
+        "id": "6a5bbe4637d4d2.77329367",
+        "name": "Minifig Leg Right with Dark Brown Fur Pattern",
+        "file": "3816cpdg1.dat"
+    },
+    {
+        "id": "6a5bbe4637def1.21522023",
+        "name": "Minifig Leg Right with Reddish Brown Fur Pattern",
+        "file": "3816cpdg7.dat"
+    },
+    {
+        "id": "6a5bbe4637e914.58356743",
+        "name": "Minifig Leg Right with Black Shoe Pattern",
+        "file": "3816cpdga.dat"
+    },
+    {
+        "id": "6a5bbe4637f376.46030451",
+        "name": "Minifig Leg Right with Dark Blue Coattails Pattern",
+        "file": "3816cph0.dat"
+    },
+    {
+        "id": "6a5bbe4637fdb7.50095784",
+        "name": "Minifig Leg Right with Purple Greatcoat with Dark Grey Border Pattern",
+        "file": "3816cphb.dat"
+    },
+    {
+        "id": "6a5bbe463807c7.21796312",
+        "name": "Minifig Leg Right with Purple Greatcoat Pattern",
+        "file": "3816cphf.dat"
+    },
+    {
+        "id": "6a5bbe46381224.15158715",
+        "name": "Minifig Leg Right with LOTR Leather Armour Pattern",
+        "file": "3816cpm0.dat"
+    },
+    {
+        "id": "6a5bbe463822a0.23953325",
+        "name": "Minifig Leg Right with LOTR Scale Armour Pattern",
+        "file": "3816cpm1.dat"
+    },
+    {
+        "id": "6a5bbe46382e18.86094881",
+        "name": "Minifig Leg Right with LOTR Coat and Shirttails Pattern",
+        "file": "3816cpm2.dat"
+    },
+    {
+        "id": "6a5bbe46383ae3.59221916",
+        "name": "Minifig Leg Right with Reddish Brown Pocket and Metallic Gold Rivet Pattern",
+        "file": "3816cpn1.dat"
+    },
+    {
+        "id": "6a5bbe46384589.35752366",
+        "name": "Minifig Leg Right with Green Knee Straps Pattern",
+        "file": "3816cpn2.dat"
+    },
+    {
+        "id": "6a5bbe46384fc2.09735911",
+        "name": "Minifig Leg Right with Reddish Brown Sandals Pattern",
+        "file": "3816cpn4.dat"
+    },
+    {
+        "id": "6a5bbe46385a40.33095352",
+        "name": "Minifig Leg Right with Dark Blue Loincloth Pattern",
+        "file": "3816cpq0.dat"
+    },
+    {
+        "id": "6a5bbe46386492.43392840",
+        "name": "Minifig Leg Right with Dark Blue and Gold Loincloth Pattern",
+        "file": "3816cpq1.dat"
+    },
+    {
+        "id": "6a5bbe46386ec2.94164476",
+        "name": "Minifig Leg Right with SW White Leggings Pattern",
+        "file": "3816cps0.dat"
+    },
+    {
+        "id": "6a5bbe463879d7.94014395",
+        "name": "Minifig Leg Right with SW Kylo Ren Silver Checkered Lines Pattern",
+        "file": "3816cps1.dat"
+    },
+    {
+        "id": "6a5bbe463883e7.00057612",
+        "name": "Minifig Leg Right with SW White Robe and Dark Tan Folds Pattern",
+        "file": "3816cps2.dat"
+    },
+    {
+        "id": "6a5bbe46388db0.88622974",
+        "name": "Minifig Leg Right with SW Medium Lavender Cloth Pattern",
+        "file": "3816cps3.dat"
+    },
+    {
+        "id": "6a5bbe46389810.86866457",
+        "name": "Minifig Leg Right with SW Clone Trooper Black, Light Bluish Grey Markings and Knee Pad Pattern",
+        "file": "3816cps4.dat"
+    },
+    {
+        "id": "6a5bbe4638a276.02444379",
+        "name": "Minifig Leg Right with SW Gunbelt Pattern",
+        "file": "3816cps5.dat"
+    },
+    {
+        "id": "6a5bbe4638ac57.21356173",
+        "name": "Minifig Leg Right with SW Jedi Robe with Dark Brown Wrinkles and White Leggings Pattern",
+        "file": "3816cps6.dat"
+    },
+    {
+        "id": "6a5bbe4638b677.96559130",
+        "name": "Minifig Leg Right with SW Stormtrooper Pattern",
+        "file": "3816cpsk.dat"
+    },
+    {
+        "id": "6a5bbe4638c0e6.07465286",
+        "name": "Minifig Leg Right with Medium Azure and Magenta Stripes Pattern",
+        "file": "3816cpu1.dat"
+    },
+    {
+        "id": "6a5bbe4638cb54.25508293",
+        "name": "Minifig Leg Right with Red\/White Triangles Pattern",
+        "file": "3816cpw1.dat"
+    },
+    {
+        "id": "6a5bbe4638d571.43960103",
+        "name": "Minifig Leg Right with Blue\/White Triangles, Fringe Pattern",
+        "file": "3816cpw2.dat"
+    },
+    {
+        "id": "6a5bbe4638dfb1.65654814",
+        "name": "Minifig Leg Right with Dark Turquoise\/White Triangles, White Fringe Pattern",
+        "file": "3816cpw3.dat"
+    },
+    {
+        "id": "6a5bbe4638e9e4.43173647",
+        "name": "Minifig Leg Right with Blue Fringe Pattern",
+        "file": "3816cpw4.dat"
+    },
+    {
+        "id": "6a5bbe4638f3c4.24081108",
+        "name": "Minifig Leg Right with Red Coattail Pattern",
+        "file": "3816cpx0.dat"
+    },
+    {
+        "id": "6a5bbe4638fd85.03251867",
+        "name": "Minifig Leg Right with Black Straps and Dark Blue Clips Pattern",
+        "file": "3816cpx1.dat"
+    },
+    {
+        "id": "6a5bbe46390759.05849388",
+        "name": "Minifig Leg Right with Pocket and Holster Pattern",
+        "file": "3816cpx2.dat"
+    },
+    {
+        "id": "6a5bbe46391189.18035761",
+        "name": "Minifig Leg Right with Turtle Shell and Dark Brown Knee Pad Pattern",
+        "file": "3816cpx3.dat"
+    },
+    {
+        "id": "6a5bbe46391be0.49349467",
+        "name": "Minifig Leg Right with Turtle Shell and Dark Bluish Grey Knee Pad Pattern",
+        "file": "3816cpx7.dat"
+    },
+    {
+        "id": "6a5bbe46392634.38449503",
+        "name": "Minifig Leg Right with White Stripes Pattern",
+        "file": "3816cpy1.dat"
+    },
+    {
+        "id": "6a5bbe46393089.78669392",
+        "name": "Minifig Leg Right with Black, Blue and Red Stripes Pattern",
+        "file": "3816cpy2.dat"
+    },
+    {
+        "id": "6a5bbe46393a58.47827643",
+        "name": "Minifig Leg Right with Racing Suit with Black AMG Logo, Green Halftone and Grey Dotted Lines Pattern (Needs Work)",
+        "file": "3816cpy3.dat"
+    },
+    {
+        "id": "6a5bbe46394524.00236381",
+        "name": "Minifig Leg Right with Racing Suit with Orange Lines and Silver Hexagons Pattern",
+        "file": "3816cpy5.dat"
+    },
+    {
+        "id": "6a5bbe463cd278.53198950",
+        "name": "Minifig Leg Left",
+        "file": "3817c.dat"
+    },
+    {
+        "id": "6a5bbe463cdc96.68826254",
+        "name": "Minifig Leg Left with Lime Leotard and Toes Pattern",
+        "file": "3817cp01.dat"
+    },
+    {
+        "id": "6a5bbe463ce6d2.35200825",
+        "name": "Minifig Leg Left with White Button, Black Shoe and Black Line on Side Pattern",
+        "file": "3817cp02.dat"
+    },
+    {
+        "id": "6a5bbe463cf117.11140986",
+        "name": "Minifig Leg Left with Armour Scales, Knee Pads and Claws Pattern",
+        "file": "3817cp04.dat"
+    },
+    {
+        "id": "6a5bbe463cfad2.12833593",
+        "name": "Minifig Leg Left with Dark Red Armour Scales, Gold Knee Pad and Toes Pattern",
+        "file": "3817cp0e.dat"
+    },
+    {
+        "id": "6a5bbe463d0571.07488208",
+        "name": "Minifig Leg Left with Silver Panels and Light Bluish Grey Straps Pattern",
+        "file": "3817cp0g.dat"
+    },
+    {
+        "id": "6a5bbe463d0f36.19425851",
+        "name": "Minifig Leg Left with Silver and Metallic Dark Grey Armour Pattern",
+        "file": "3817cp0h.dat"
+    },
+    {
+        "id": "6a5bbe463d1965.82184263",
+        "name": "Minifig Leg Left with Diving Suit Orange and Medium Azure Stripes Pattern",
+        "file": "3817cp0i.dat"
+    },
+    {
+        "id": "6a5bbe463d2349.64198533",
+        "name": "Minifig Leg Left with Dark Red Scales, Lion Knee Pad and Clawed Toe Pattern",
+        "file": "3817cp0j.dat"
+    },
+    {
+        "id": "6a5bbe463d2eb8.29243378",
+        "name": "Minifig Leg Left with Nougat Leg and Silver Rimmed Boot Pattern",
+        "file": "3817cp0l.dat"
+    },
+    {
+        "id": "6a5bbe463d38d8.45123905",
+        "name": "Minifig Leg Left with Skirt, Boot and Light Nougat Leg Pattern",
+        "file": "3817cp0m.dat"
+    },
+    {
+        "id": "6a5bbe463d4310.42596346",
+        "name": "Minifig Leg Left with Dark Purple Boot and Black Leotard Pattern",
+        "file": "3817cp0n.dat"
+    },
+    {
+        "id": "6a5bbe463d4d45.12281628",
+        "name": "Minifig Leg Left with Black Stripes Pattern",
+        "file": "3817cp0o.dat"
+    },
+    {
+        "id": "6a5bbe463d5713.37062689",
+        "name": "Minifig Leg Left with Dark Bluish Grey Pockets Outline Pattern",
+        "file": "3817cp0r.dat"
+    },
+    {
+        "id": "6a5bbe463d60d2.77561498",
+        "name": "Minifig Leg Left with Retro Spacesuit with Dark Orange Wrinkles Pattern",
+        "file": "3817cp0x.dat"
+    },
+    {
+        "id": "6a5bbe463d6a89.12165815",
+        "name": "Minifig Leg Left with Rags and Patch Pattern",
+        "file": "3817cp30.dat"
+    },
+    {
+        "id": "6a5bbe463d74c8.13061696",
+        "name": "Minifig Leg Left with Green Leaf Pattern",
+        "file": "3817cp3j.dat"
+    },
+    {
+        "id": "6a5bbe463d7e82.29975980",
+        "name": "Minifig Leg Left with Amulet Pattern",
+        "file": "3817cp40.dat"
+    },
+    {
+        "id": "6a5bbe463d88f4.39277218",
+        "name": "Minifig Leg Left with Scale Mail Pattern",
+        "file": "3817cp41.dat"
+    },
+    {
+        "id": "6a5bbe463d9447.29677854",
+        "name": "Minifig Leg Left with Shirttails, Gold Band and Fleur de Lis Pattern",
+        "file": "3817cp42.dat"
+    },
+    {
+        "id": "6a5bbe463d9ea7.64965294",
+        "name": "Minifig Leg Left with Leather Straps and Red Diamonds Pattern",
+        "file": "3817cp4f.dat"
+    },
+    {
+        "id": "6a5bbe463da883.01558451",
+        "name": "Minifig Leg Left with Insectoids Robot Pattern (Needs Work)",
+        "file": "3817cp60.dat"
+    },
+    {
+        "id": "6a5bbe463db2a7.00450399",
+        "name": "Minifig Leg Left with Insectoids Blue Circuitry Pattern",
+        "file": "3817cp61.dat"
+    },
+    {
+        "id": "6a5bbe463dbca6.80749408",
+        "name": "Minifig Leg Left with Insectoids Green Circuitry Pattern",
+        "file": "3817cp62.dat"
+    },
+    {
+        "id": "6a5bbe463dc6b1.29946762",
+        "name": "Minifig Leg Left with Robot Pattern",
+        "file": "3817cp63.dat"
+    },
+    {
+        "id": "6a5bbe463dd0b7.42132451",
+        "name": "Minifig Leg Left with Astro Pattern",
+        "file": "3817cp6f.dat"
+    },
+    {
+        "id": "6a5bbe463ddab7.96750934",
+        "name": "Minifig Leg Left with Gold Circuitry and Orange Cable Pattern",
+        "file": "3817cp6u.dat"
+    },
+    {
+        "id": "6a5bbe463de497.13737592",
+        "name": "Minifig Leg Left with Silver Circuitry and Salmon Cable Pattern",
+        "file": "3817cp6v.dat"
+    },
+    {
+        "id": "6a5bbe463dee79.13800532",
+        "name": "Minifig Leg Left with Golden Circuit Pattern",
+        "file": "3817cp6w.dat"
+    },
+    {
+        "id": "6a5bbe463df8c9.25043680",
+        "name": "Minifig Leg Left with Reflective Stripes and Black Pocket Outline Pattern",
+        "file": "3817cp70.dat"
+    },
+    {
+        "id": "6a5bbe463e02f1.81958149",
+        "name": "Minifig Leg Left with Reflective Stripes and Tan Pocket Outline Pattern",
+        "file": "3817cp71.dat"
+    },
+    {
+        "id": "6a5bbe463e0ca0.91218003",
+        "name": "Minifig Leg Left with Map Pattern",
+        "file": "3817cp72.dat"
+    },
+    {
+        "id": "6a5bbe463e16b4.16620465",
+        "name": "Minifig Leg Left with White Apron Pattern",
+        "file": "3817cp89.dat"
+    },
+    {
+        "id": "6a5bbe463e20b4.65042215",
+        "name": "Minifig Leg Left with Reddish Brown Apron Pattern",
+        "file": "3817cp8a.dat"
+    },
+    {
+        "id": "6a5bbe463e2b11.59470929",
+        "name": "Minifig Leg Left with 'EMMET' Badge and Reflective Stripe Pattern",
+        "file": "3817cp8h.dat"
+    },
+    {
+        "id": "6a5bbe463e35c5.31166454",
+        "name": "Minifig Leg Right with Reflective Stripe and Silver Triangles on Foot Pattern",
+        "file": "3817cp8i.dat"
+    },
+    {
+        "id": "6a5bbe463e4190.04927610",
+        "name": "Minifig Leg Left with Green Kilt and Toes Pattern",
+        "file": "3817cpa2.dat"
+    },
+    {
+        "id": "6a5bbe463e4bf5.77174674",
+        "name": "Minifig Leg Left with Buttoned Cargo Pocket Pattern",
+        "file": "3817cpa3.dat"
+    },
+    {
+        "id": "6a5bbe463e5602.44775320",
+        "name": "Minifig Leg Left with Holster and Belt Pattern",
+        "file": "3817cpa9.dat"
+    },
+    {
+        "id": "6a5bbe463e5fe2.41148599",
+        "name": "Minifig Leg Left with Dark Red Loincloth and White Claws Pattern",
+        "file": "3817cpaw.dat"
+    },
+    {
+        "id": "6a5bbe463e69e3.52047179",
+        "name": "Minifig Leg Left with Dark Red Loincloth, Belt with White Spikes and White Claws Pattern",
+        "file": "3817cpaz.dat"
+    },
+    {
+        "id": "6a5bbe463e7397.33357421",
+        "name": "Minifig Leg Left with Silver Armour Plate and Knee Pad with Bat Pattern",
+        "file": "3817cpb1.dat"
+    },
+    {
+        "id": "6a5bbe463e7d95.59324821",
+        "name": "Minifig Leg Left with Dark Bluish Grey Robe Lines, Pouch and Metallic Silver Beads Pattern",
+        "file": "3817cpb8.dat"
+    },
+    {
+        "id": "6a5bbe463e8791.61167665",
+        "name": "Minifig Leg Left with  2 Red Diamonds on Top Pattern",
+        "file": "3817cpb9.dat"
+    },
+    {
+        "id": "6a5bbe463e91d6.79208101",
+        "name": "Minifig Leg Left with  2 Red Diamonds Pattern",
+        "file": "3817cpba.dat"
+    },
+    {
+        "id": "6a5bbe463e9bd4.21345519",
+        "name": "Minifig Leg Left with Iron Man Armoured Suit Mark VI Pattern",
+        "file": "3817cpbb.dat"
+    },
+    {
+        "id": "6a5bbe463ea5d2.93100390",
+        "name": "Minifig Leg Left with Iron Man Armoured Suit Mark VII Pattern",
+        "file": "3817cpbc.dat"
+    },
+    {
+        "id": "6a5bbe463eafd7.04478250",
+        "name": "Minifig Leg Left with War Machine Armoured Suit Kneepad Pattern",
+        "file": "3817cpbd.dat"
+    },
+    {
+        "id": "6a5bbe463eba56.49688453",
+        "name": "Minifig Leg Left with Iron Man Armoured Suit Mark XVII Pattern",
+        "file": "3817cpbe.dat"
+    },
+    {
+        "id": "6a5bbe463ec424.64844274",
+        "name": "Minifig Leg Left with Iron Man Armoured Suit Mark XLII Pattern",
+        "file": "3817cpbf.dat"
+    },
+    {
+        "id": "6a5bbe463ece78.22512179",
+        "name": "Minifig Leg Left with Iron Patriot Armoured Suit Kneepad Pattern",
+        "file": "3817cpbg.dat"
+    },
+    {
+        "id": "6a5bbe463ed9a6.44207501",
+        "name": "Minifig Leg Left with Red Tied Sash Pattern",
+        "file": "3817cpc1.dat"
+    },
+    {
+        "id": "6a5bbe463ee4f9.77423607",
+        "name": "Minifig Leg Left with Red Patch Pattern",
+        "file": "3817cpc14.dat"
+    },
+    {
+        "id": "6a5bbe463eefe3.92326921",
+        "name": "Minifig Leg Left with Gold Cord and Tunic Pattern",
+        "file": "3817cpc2g.dat"
+    },
+    {
+        "id": "6a5bbe463efea2.73737915",
+        "name": "Minifig Leg Left with Samurai Armour Pattern",
+        "file": "3817cpc34.dat"
+    },
+    {
+        "id": "6a5bbe463f0b53.26731498",
+        "name": "Minifig Leg Left with Dark Green and Silver Scale Mail Pattern",
+        "file": "3817cpc39.dat"
+    },
+    {
+        "id": "6a5bbe463f15c1.23679373",
+        "name": "Minifig Leg Left with  2 Safety Pins Pattern",
+        "file": "3817cpc44.dat"
+    },
+    {
+        "id": "6a5bbe463f2001.10768729",
+        "name": "Minifig Leg Left with Shorts with Black Line and Lion Crest Pattern",
+        "file": "3817cpc4b.dat"
+    },
+    {
+        "id": "6a5bbe463f2b45.01889262",
+        "name": "Minifig Leg Left with Clockwork Robot Pattern",
+        "file": "3817cpc67.dat"
+    },
+    {
+        "id": "6a5bbe463f36d9.32714931",
+        "name": "Minifig Leg Left with Red Roman Tunic and Belt Pattern",
+        "file": "3817cpc6a.dat"
+    },
+    {
+        "id": "6a5bbe463f41e2.95326733",
+        "name": "Minifig Leg Left with Chicken Feet Pattern",
+        "file": "3817cpc97.dat"
+    },
+    {
+        "id": "6a5bbe463f4d51.56132924",
+        "name": "Minifig Leg Left with Black Triangles on Foot Pattern",
+        "file": "3817cpcbd.dat"
+    },
+    {
+        "id": "6a5bbe463f5799.92545217",
+        "name": "Minifig Leg Left with Dark Blue Claws Pattern",
+        "file": "3817cpcr6.dat"
+    },
+    {
+        "id": "6a5bbe463f61e7.63488934",
+        "name": "Minifig Leg Left with Black Orca Pattern",
+        "file": "3817cpd6e.dat"
+    },
+    {
+        "id": "6a5bbe463f6f40.60237120",
+        "name": "Minifig Leg Left with Black Pocket and Seam Pattern",
+        "file": "3817cpdd1.dat"
+    },
+    {
+        "id": "6a5bbe463f7af0.71962891",
+        "name": "Minifig Leg Left with Laboratory Smock Pattern",
+        "file": "3817cpde.dat"
+    },
+    {
+        "id": "6a5bbe463f8693.46491356",
+        "name": "Minifig Leg Left with White Rabbit Foot Pattern",
+        "file": "3817cpde2.dat"
+    },
+    {
+        "id": "6a5bbe463f91d3.89056593",
+        "name": "Minifig Leg Left with 2 Black Gaps Pattern",
+        "file": "3817cpde3.dat"
+    },
+    {
+        "id": "6a5bbe463f9c83.05886088",
+        "name": "Minifig Leg Left with Black Gap Pattern",
+        "file": "3817cpde4.dat"
+    },
+    {
+        "id": "6a5bbe463fa6a1.44890975",
+        "name": "Minifig Leg Left with Dark Brown Fur Pattern",
+        "file": "3817cpdg1.dat"
+    },
+    {
+        "id": "6a5bbe463fb093.95839258",
+        "name": "Minifig Leg Left with Reddish Brown Fur Pattern",
+        "file": "3817cpdg7.dat"
+    },
+    {
+        "id": "6a5bbe463fba95.56731341",
+        "name": "Minifig Leg Left with Black Shoe Pattern",
+        "file": "3817cpdga.dat"
+    },
+    {
+        "id": "6a5bbe463fc6f0.25065297",
+        "name": "Minifig Leg Left with Dark Blue Coattails Pattern",
+        "file": "3817cph0.dat"
+    },
+    {
+        "id": "6a5bbe463fd216.94776500",
+        "name": "Minifig Leg Left with Purple Greatcoat with Dark Grey Border Pattern",
+        "file": "3817cphb.dat"
+    },
+    {
+        "id": "6a5bbe463fdc85.39655780",
+        "name": "Minifig Leg Left with Purple Greatcoat Pattern",
+        "file": "3817cphf.dat"
+    },
+    {
+        "id": "6a5bbe463fe6d4.77932478",
+        "name": "Minifig Leg Left with LOTR Leather Armour Pattern",
+        "file": "3817cpm0.dat"
+    },
+    {
+        "id": "6a5bbe463ff449.30307315",
+        "name": "Minifig Leg Left with LOTR Scale Armour Pattern",
+        "file": "3817cpm1.dat"
+    },
+    {
+        "id": "6a5bbe46400000.62355896",
+        "name": "Minifig Leg Left with LOTR Coat and Shirttails Pattern",
+        "file": "3817cpm2.dat"
+    },
+    {
+        "id": "6a5bbe46400b21.46530135",
+        "name": "Minifig Leg Left with Reddish Brown Pocket and Metallic Gold Rivet Pattern",
+        "file": "3817cpn1.dat"
+    },
+    {
+        "id": "6a5bbe46401589.35685121",
+        "name": "Minifig Leg Left with Green Knee Straps Pattern",
+        "file": "3817cpn2.dat"
+    },
+    {
+        "id": "6a5bbe46402013.40850780",
+        "name": "Minifig Leg Left with Reddish Brown Sandals Pattern",
+        "file": "3817cpn4.dat"
+    },
+    {
+        "id": "6a5bbe46402a01.11814906",
+        "name": "Minifig Leg Left with Dark Blue Loincloth Pattern",
+        "file": "3817cpq0.dat"
+    },
+    {
+        "id": "6a5bbe46403489.99183604",
+        "name": "Minifig Leg Left with Dark Blue and Gold Loincloth Pattern",
+        "file": "3817cpq1.dat"
+    },
+    {
+        "id": "6a5bbe46403f83.55946738",
+        "name": "Minifig Leg Left with SW White Leggings Pattern",
+        "file": "3817cps0.dat"
+    },
+    {
+        "id": "6a5bbe46404970.90586361",
+        "name": "Minifig Leg Left with SW Kylo Ren Silver Checkered Lines Pattern",
+        "file": "3817cps1.dat"
+    },
+    {
+        "id": "6a5bbe46405341.26782699",
+        "name": "Minifig Leg Left with SW White Robe and Dark Tan Folds Pattern",
+        "file": "3817cps2.dat"
+    },
+    {
+        "id": "6a5bbe46405d28.18740975",
+        "name": "Minifig Leg Left with SW Medium Lavender Cloth and Metallic Silver Beads Pattern",
+        "file": "3817cps3.dat"
+    },
+    {
+        "id": "6a5bbe46406789.98431572",
+        "name": "Minifig Leg Left with SW Clone Trooper Black, Light Bluish Grey Markings and Knee Pad Pattern",
+        "file": "3817cps4.dat"
+    },
+    {
+        "id": "6a5bbe464071a3.22851060",
+        "name": "Minifig Leg Left with SW Jedi Robe with Dark Brown Wrinkles and White Leggings Pattern",
+        "file": "3817cps6.dat"
+    },
+    {
+        "id": "6a5bbe46407c64.72052590",
+        "name": "Minifig Leg Left with SW Stormtrooper Pattern",
+        "file": "3817cpsk.dat"
+    },
+    {
+        "id": "6a5bbe46408c48.86154681",
+        "name": "Minifig Leg Left with Red\/White Triangles Pattern",
+        "file": "3817cpw1.dat"
+    },
+    {
+        "id": "6a5bbe464098d3.19674771",
+        "name": "Minifig Leg Left with Blue\/White Triangles, Fringe Pattern",
+        "file": "3817cpw2.dat"
+    },
+    {
+        "id": "6a5bbe4640a367.26054873",
+        "name": "Minifig Leg Left with Dark Turquoise\/White Triangles, White Fringe Pattern",
+        "file": "3817cpw3.dat"
+    },
+    {
+        "id": "6a5bbe4640ad66.66134269",
+        "name": "Minifig Leg Left with Blue Fringe Pattern",
+        "file": "3817cpw4.dat"
+    },
+    {
+        "id": "6a5bbe4640b789.82697652",
+        "name": "Minifig Leg Left with Red Coattail Pattern",
+        "file": "3817cpx0.dat"
+    },
+    {
+        "id": "6a5bbe4640c1b1.32782188",
+        "name": "Minifig Leg Left with Black Straps and Dark Blue Pouch Pattern",
+        "file": "3817cpx1.dat"
+    },
+    {
+        "id": "6a5bbe4640cb86.80483607",
+        "name": "Minifig Leg Left with Pocket Pattern",
+        "file": "3817cpx2.dat"
+    },
+    {
+        "id": "6a5bbe4640d5e7.18801005",
+        "name": "Minifig Leg Left with Turtle Shell and Dark Brown Knee Pad Pattern",
+        "file": "3817cpx3.dat"
+    },
+    {
+        "id": "6a5bbe4640e128.82651891",
+        "name": "Minifig Leg Right with Turtle Shell and Dark Bluish Grey Knee Pad Pattern",
+        "file": "3817cpx7.dat"
+    },
+    {
+        "id": "6a5bbe4640ebf1.92230342",
+        "name": "Minifig Leg Left with Yellow Stripes Pattern",
+        "file": "3817cpy0.dat"
+    },
+    {
+        "id": "6a5bbe4640f5f1.43848504",
+        "name": "Minifig Leg Left with White Stripes Pattern",
+        "file": "3817cpy1.dat"
+    },
+    {
+        "id": "6a5bbe46410054.40264814",
+        "name": "Minifig Leg Left with Black, Blue and Red Stripes Pattern",
+        "file": "3817cpy2.dat"
+    },
+    {
+        "id": "6a5bbe46410a52.46140800",
+        "name": "Minifig Leg Left with Racing Suit with Grey Dotted Lines Pattern (Needs Work)",
+        "file": "3817cpy3.dat"
+    },
+    {
+        "id": "6a5bbe46411425.90805892",
+        "name": "Minifig Leg Left with Racing Suit with Orange Lines and Silver Hexagons Pattern",
+        "file": "3817cpy5.dat"
+    },
+    {
+        "id": "6a5bbe46875e88.50095808",
+        "name": "Minifig Legs SW Super Battle Droid",
+        "file": "42687.dat"
+    },
+    {
+        "id": "6a5bbe468ce466.83820659",
+        "name": "Minifig Legs Joined with Spring Holes",
+        "file": "43220.dat"
+    },
+    {
+        "id": "6a5bbe4691ff07.19939852",
+        "name": "Minifig Leg Spring (Straight)",
+        "file": "43741-f1.dat"
+    },
+    {
+        "id": "6a5bbe469208f6.96175577",
+        "name": "Minifig Leg Spring (Bent 45\u00b0)",
+        "file": "43741-f2.dat"
+    },
+    {
+        "id": "6a5bbe46921348.64811117",
+        "name": "~Minifig Leg Spring (Bent 90\u00b0)",
+        "file": "43741-f3.dat"
+    },
+    {
+        "id": "6a5bbe46e28265.24992690",
+        "name": "Minifig Legs Bionicle",
+        "file": "54276.dat"
+    },
+    {
+        "id": "6a5bbe47cebfa8.12205909",
+        "name": "Minifig Leg Left Spring Prosthetic",
+        "file": "80690.dat"
+    },
+    {
+        "id": "6a5bbe47cec9e0.52675803",
+        "name": "Minifig Leg Left Spring Prosthetic with Dark Bluish Grey Foot Pattern",
+        "file": "80690p01.dat"
+    },
+    {
+        "id": "6a5bbe47eba171.12596975",
+        "name": "Minifig Leg Left Long with Closed Hole",
+        "file": "87775.dat"
+    },
+    {
+        "id": "6a5bbe47ebabf9.50064610",
+        "name": "Minifig Leg Left Long with Dark Orange Boots Pattern",
+        "file": "87775pk1.dat"
+    },
+    {
+        "id": "6a5bbe47ebb601.41381019",
+        "name": "Minifig Leg Left Long with Black and White Chaps and Dark Orange Boots Pattern",
+        "file": "87775pk3.dat"
+    },
+    {
+        "id": "6a5bbe47ebc160.18070833",
+        "name": "Minifig Leg Left Long with Black and White Chaps and Dark Orange Boots and Dirt Stains Pattern",
+        "file": "87775pk4.dat"
+    },
+    {
+        "id": "6a5bbe47ebcec0.69393307",
+        "name": "Minifig Leg Right Long with Closed Hole",
+        "file": "87776.dat"
+    },
+    {
+        "id": "6a5bbe47ebd960.91934762",
+        "name": "Minifig Leg Right Long with Dark Orange Boots Pattern",
+        "file": "87776pk1.dat"
+    },
+    {
+        "id": "6a5bbe47ebe3c3.14472154",
+        "name": "Minifig Leg Right Long with Black and White Chaps and Dark Orange Boots Pattern",
+        "file": "87776pk3.dat"
+    },
+    {
+        "id": "6a5bbe47ebee76.29520867",
+        "name": "Minifig Leg Right Long with Black and White Chaps and Dark Orange Boots and Dirt Stains Pattern",
+        "file": "87776pk4.dat"
+    },
+    {
+        "id": "6a5bbe48625ce8.71814426",
+        "name": "Minifig Leg Left Long with Open Hole",
+        "file": "99100.dat"
+    },
+    {
+        "id": "6a5bbe48626773.55293586",
+        "name": "Minifig Leg Left Long with Open Hole with 4 Silver Square Pattern",
+        "file": "99100p01.dat"
+    },
+    {
+        "id": "6a5bbe486271f6.71854029",
+        "name": "Minifig Leg Right Long with Open Hole",
+        "file": "99101.dat"
+    },
+    {
+        "id": "6a5bbe48627cd6.08824134",
+        "name": "Minifig Leg Right Long with Open Hole with 4 Silver Square Pattern",
+        "file": "99101p01.dat"
+    }
+]

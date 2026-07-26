@@ -1,0 +1,2172 @@
+[
+    {
+        "id": "6a5bbe44a151e9.87816081",
+        "name": "~Train Signal Semaphore Metal Bar",
+        "file": "129.dat"
+    },
+    {
+        "id": "6a5bbe44a1d642.20152278",
+        "name": "Duplo Train Crossing Gate Crossbar",
+        "file": "13359.dat"
+    },
+    {
+        "id": "6a5bbe44a1e071.98088967",
+        "name": "Duplo Train Crossing Gate Crossbar with Red Stripes Pattern",
+        "file": "13359p01.dat"
+    },
+    {
+        "id": "6a5bbe44b8d5b1.69301110",
+        "name": "Train Front  6 x 14 x  7.333",
+        "file": "15536.dat"
+    },
+    {
+        "id": "6a5bbe44d47a61.95359196",
+        "name": "Train Bogie Plate with Short Closed Pin",
+        "file": "18626.dat"
+    },
+    {
+        "id": "6a5bbe4516a593.38690842",
+        "name": "~Train Wheels Pin",
+        "file": "2344.dat"
+    },
+    {
+        "id": "6a5bbe45228960.96059505",
+        "name": "~Train Wheel Spoked with Cylindrical Rim with 8 LDU Axle Hole",
+        "file": "243.dat"
+    },
+    {
+        "id": "6a5bbe452a98f4.01360867",
+        "name": "Train Wheel Spoked with Cylindrical Rim with Stub Axle",
+        "file": "243c01.dat"
+    },
+    {
+        "id": "6a5bbe452ab1e1.27587719",
+        "name": "~Train Wheel Spoked with Conical Rim",
+        "file": "244.dat"
+    },
+    {
+        "id": "6a5bbe452c11e0.07725765",
+        "name": "Train Wheel Spoked with Conical Rim with Stub Axle",
+        "file": "244c01.dat"
+    },
+    {
+        "id": "6a5bbe452c1c75.32473720",
+        "name": "Train Wheel Spoked with Conical Rim with Stub Axle and Black Tyre",
+        "file": "244c02.dat"
+    },
+    {
+        "id": "6a5bbe452c26e5.45884479",
+        "name": "Train Wheel Spoked with Conical Rim with Stub Axle and Light Grey Tyre",
+        "file": "244c03.dat"
+    },
+    {
+        "id": "6a5bbe452c3177.88467012",
+        "name": "~Train Wheel 4 Studs with Conical Rim",
+        "file": "245.dat"
+    },
+    {
+        "id": "6a5bbe452f2b16.02138140",
+        "name": "Train Wheel 4 Studs with Conical Rim with Stub Axle",
+        "file": "245c01.dat"
+    },
+    {
+        "id": "6a5bbe452f36c3.28174704",
+        "name": "Train Wheel 4 Studs with Conical Rim with Stub Axle and Light Grey Tyre",
+        "file": "245c02.dat"
+    },
+    {
+        "id": "6a5bbe4533d3f1.07667926",
+        "name": "Train Track Roller Coaster Straight 4 x 16",
+        "file": "25059.dat"
+    },
+    {
+        "id": "6a5bbe4533de46.03090781",
+        "name": "Train Track Roller Coaster Curve 90 Degrees Radius 12",
+        "file": "25061.dat"
+    },
+    {
+        "id": "6a5bbe453ff9f5.42665582",
+        "name": "Train Base  4 x  5 Roller Coaster",
+        "file": "26021.dat"
+    },
+    {
+        "id": "6a5bbe454004d2.56028085",
+        "name": "Train Base  4 x  5 Roller Coaster with Dark Bluish Grey Wheels",
+        "file": "26021c01.dat"
+    },
+    {
+        "id": "6a5bbe45400f24.31755893",
+        "name": "Train Track Roller Coaster Straight  4 x  8",
+        "file": "26022.dat"
+    },
+    {
+        "id": "6a5bbe4542c715.06813110",
+        "name": "Train Steam Cylinder  2 x  2 x  1.667 Sloped",
+        "file": "263.dat"
+    },
+    {
+        "id": "6a5bbe4545c223.94071649",
+        "name": "Train Track Roller Coaster Ramp  4 x 16 x  6 S-Shape Lower",
+        "file": "26559.dat"
+    },
+    {
+        "id": "6a5bbe4545d775.70581184",
+        "name": "Train Track Roller Coaster Ramp  4 x 16 x  6 S-Shape Upper",
+        "file": "26560.dat"
+    },
+    {
+        "id": "6a5bbe4545e226.82252417",
+        "name": "Train Track Roller Coaster Ramp  4 x  8 x  6 Straight",
+        "file": "26561.dat"
+    },
+    {
+        "id": "6a5bbe454a63b6.47645356",
+        "name": "~Train Base  6 x 12 Type 1",
+        "file": "270.dat"
+    },
+    {
+        "id": "6a5bbe454b70b0.31212462",
+        "name": "Train Base  6 x 12 Type 1 with Red Wheels (Complete)",
+        "file": "270c01.dat"
+    },
+    {
+        "id": "6a5bbe454b7b61.08933826",
+        "name": "Train Base  6 x 12 Type 1 with Wheels and Magnets (Complete)",
+        "file": "270c02.dat"
+    },
+    {
+        "id": "6a5bbe4552d9c7.76343034",
+        "name": "Train Base  6 x 22 Type 2 with Buffers",
+        "file": "280.dat"
+    },
+    {
+        "id": "6a5bbe455323f2.66548037",
+        "name": "Train Base  6 x 22 Type 2 with Buffers and Magnets (Complete)",
+        "file": "280c01.dat"
+    },
+    {
+        "id": "6a5bbe4555e5e3.60587807",
+        "name": "Train Base  6 x 16 Type 2",
+        "file": "285.dat"
+    },
+    {
+        "id": "6a5bbe45569fa5.37894028",
+        "name": "~Train Track  9V Switch Right - Plastic Part",
+        "file": "2859.dat"
+    },
+    {
+        "id": "6a5bbe4556b602.52040798",
+        "name": "~Train Track  9V Switch Right - Plastic Part with Underside Cover Plate and Metal Elements",
+        "file": "2859c00.dat"
+    },
+    {
+        "id": "6a5bbe4556e989.60211347",
+        "name": "Train Base  6 x 16 Type 2 with Magnets (Complete)",
+        "file": "285c01.dat"
+    },
+    {
+        "id": "6a5bbe4556fe76.48117743",
+        "name": "~Train Track 9V Switch Tongue Right - Plastic Part",
+        "file": "2860a.dat"
+    },
+    {
+        "id": "6a5bbe455711c9.30191202",
+        "name": "~Train Track 9V Switch Tongue Right",
+        "file": "2860ac01.dat"
+    },
+    {
+        "id": "6a5bbe45572994.49152649",
+        "name": "~Train Track  9V Switch Left - Plastic Part",
+        "file": "2861.dat"
+    },
+    {
+        "id": "6a5bbe45576556.79950232",
+        "name": "~Train Track  9V Switch Left - Plastic Part with Underside Cover Plate and Metal Elements",
+        "file": "2861c00.dat"
+    },
+    {
+        "id": "6a5bbe4557f580.05009833",
+        "name": "~Train Track 9V Switch Tongue Left - Plastic Part",
+        "file": "2862a.dat"
+    },
+    {
+        "id": "6a5bbe45580005.79522195",
+        "name": "~Train Track 9V Switch Tongue Left",
+        "file": "2862ac01.dat"
+    },
+    {
+        "id": "6a5bbe45580a81.27237398",
+        "name": "~Train Track  9V Bottom Plate Right",
+        "file": "2863.dat"
+    },
+    {
+        "id": "6a5bbe45581538.45428193",
+        "name": "~Train Track 9V Switch Command Rod",
+        "file": "2864.dat"
+    },
+    {
+        "id": "6a5bbe45582008.38443365",
+        "name": "~Train Track  9V Switch Command Rod with Metal Plate",
+        "file": "2864c01.dat"
+    },
+    {
+        "id": "6a5bbe45583e05.49369519",
+        "name": "~Train Track  9V Straight - Plastic Part",
+        "file": "2865a.dat"
+    },
+    {
+        "id": "6a5bbe45584862.38714563",
+        "name": "Train Track  9V Points Lever",
+        "file": "2866.dat"
+    },
+    {
+        "id": "6a5bbe45587070.06297797",
+        "name": "~Train Track  9V Curved - Plastic Part",
+        "file": "2867a.dat"
+    },
+    {
+        "id": "6a5bbe45587ad5.89409782",
+        "name": "~Train Speed Regulator  9V - Underside",
+        "file": "2868.dat"
+    },
+    {
+        "id": "6a5bbe45589b11.67869375",
+        "name": "~Train Speed Regulator  9V - Cover",
+        "file": "2869.dat"
+    },
+    {
+        "id": "6a5bbe4558b028.17572252",
+        "name": "Train Speed Regulator  9V without Dial",
+        "file": "2869c01.dat"
+    },
+    {
+        "id": "6a5bbe4558be98.04463227",
+        "name": "Train Speed Regulator  9V",
+        "file": "2869c02.dat"
+    },
+    {
+        "id": "6a5bbe4558d2f6.09185633",
+        "name": "Train Speed Regulator  9V - Dial",
+        "file": "2870.dat"
+    },
+    {
+        "id": "6a5bbe4559d4c6.99864984",
+        "name": "Train Wheel Bogie Single Axle without Wheelset",
+        "file": "2878.dat"
+    },
+    {
+        "id": "6a5bbe4559df73.09171426",
+        "name": "Train Wheel Bogie Single Axle with Wheelset with Open Centre Wheels",
+        "file": "2878c01.dat"
+    },
+    {
+        "id": "6a5bbe4559e9e5.02154971",
+        "name": "Train Wheel Bogie Single Axle with Wheelset with Closed Centre Wheels",
+        "file": "2878c02.dat"
+    },
+    {
+        "id": "6a5bbe4559f458.88325292",
+        "name": "~Train Wheel with Open Centre for Wheel Bogie",
+        "file": "2879.dat"
+    },
+    {
+        "id": "6a5bbe455c18f5.02304210",
+        "name": "~Train Wheel  9V with Electrical Contact",
+        "file": "2895.dat"
+    },
+    {
+        "id": "6a5bbe455d1d37.04691067",
+        "name": "Train Buffer Beam with Closed Buffer Bottom with Sealed Magnet (Type 3) (Complete)",
+        "file": "29084.dat"
+    },
+    {
+        "id": "6a5bbe455d27a3.82452686",
+        "name": "~Train Buffer Beam with Closed Buffer Bottom for Sealed Magnet (Type 3)",
+        "file": "29085.dat"
+    },
+    {
+        "id": "6a5bbe455d31c9.51617562",
+        "name": "Train Buffer Beam with Closed Buffer Bottom for Sealed Magnet with Screw (Type 3)",
+        "file": "29085c01.dat"
+    },
+    {
+        "id": "6a5bbe455e4041.01882481",
+        "name": "Train Front Sloping Top",
+        "file": "2917.dat"
+    },
+    {
+        "id": "6a5bbe455e7411.15657906",
+        "name": "Train Coupling Type 2",
+        "file": "2920.dat"
+    },
+    {
+        "id": "6a5bbe455ed355.21014686",
+        "name": "Train Front  2 x  6 x  5.333 with  4 x  3 Cutout with Trans Clear Glass",
+        "file": "2924ac01.dat"
+    },
+    {
+        "id": "6a5bbe455efd13.56448903",
+        "name": "Train Front  2 x  6 x  5.333 with  4 x  2 Cutout and Trans Clear Glass",
+        "file": "2924bc01.dat"
+    },
+    {
+        "id": "6a5bbe455f11c2.40210936",
+        "name": "Train Front  2 x  6 x  5.333 with  4 x  2 Cutout and Trans Brown Glass",
+        "file": "2924bc02.dat"
+    },
+    {
+        "id": "6a5bbe455f4653.59759971",
+        "name": "Train Wheel Tiny",
+        "file": "2927.dat"
+    },
+    {
+        "id": "6a5bbe455fbf43.94957881",
+        "name": "~Train Track  9V Bottom Plate Left",
+        "file": "2939.dat"
+    },
+    {
+        "id": "6a5bbe456187f9.63832770",
+        "name": "Train Base  6 x 34 Split-Level",
+        "file": "2972.dat"
+    },
+    {
+        "id": "6a5bbe459102e8.28527808",
+        "name": "Train Base  6 x 22 Type 1",
+        "file": "303.dat"
+    },
+    {
+        "id": "6a5bbe459da280.22815369",
+        "name": "Train Base  6 x 22 Type 1 with Magnets (Complete)",
+        "file": "303c01.dat"
+    },
+    {
+        "id": "6a5bbe459dad25.99289867",
+        "name": "~Train Signal Semaphore Base  4 x  9",
+        "file": "304.dat"
+    },
+    {
+        "id": "6a5bbe45a19c01.09390637",
+        "name": "Train Signal Semaphore 4.5V (Complete) Stop Position Red\/White",
+        "file": "304c01.dat"
+    },
+    {
+        "id": "6a5bbe45a1a687.54222280",
+        "name": "Train Signal Semaphore 4.5V (Complete) Proceed Pos. Red\/White",
+        "file": "304c02.dat"
+    },
+    {
+        "id": "6a5bbe45a1b0c9.63731897",
+        "name": "Train Track  4.5V Straight Tapered with Signal Red\/White (Stop)",
+        "file": "304c03.dat"
+    },
+    {
+        "id": "6a5bbe45a1bb33.98069376",
+        "name": "Train Track  4.5V Straight Tapered w\/ Signal Red\/White (Proceed)",
+        "file": "304c04.dat"
+    },
+    {
+        "id": "6a5bbe45a1c5c4.88581675",
+        "name": "Train Signal Semaphore  4.5V (Complete) Stop Position Blue\/Red",
+        "file": "304c05.dat"
+    },
+    {
+        "id": "6a5bbe45a1d055.04441100",
+        "name": "Train Signal Semaphore  4.5V (Complete) Proceed Pos. Blue\/Red",
+        "file": "304c06.dat"
+    },
+    {
+        "id": "6a5bbe45a1da96.51095090",
+        "name": "Train Track  4.5V Straight Tapered with Signal Blue\/Red (Stop)",
+        "file": "304c07.dat"
+    },
+    {
+        "id": "6a5bbe45a1e4c7.33329826",
+        "name": "Train Track  4.5V Straight Tapered w\/ Signal Blue\/Red (Proceed)",
+        "file": "304c08.dat"
+    },
+    {
+        "id": "6a5bbe45b4e772.65576549",
+        "name": "Tile  2 x  2 with Groove and Yellow Weight and Payload Data Pattern",
+        "file": "3068bpt9.dat"
+    },
+    {
+        "id": "6a5bbe45cad608.16577912",
+        "name": "~Train Signal Semaphore Blade",
+        "file": "308.dat"
+    },
+    {
+        "id": "6a5bbe45d0ad50.23656422",
+        "name": "~Train Signal Semaphore Lever",
+        "file": "316.dat"
+    },
+    {
+        "id": "6a5bbe45d100e2.54178489",
+        "name": "~Train Signal Semaphore Pole Half",
+        "file": "317.dat"
+    },
+    {
+        "id": "6a5bbe45d166a0.86102740",
+        "name": "~Train Signal Sempahore Actuator Plate",
+        "file": "318.dat"
+    },
+    {
+        "id": "6a5bbe45d6a4b4.81600680",
+        "name": "Train Base  6 x 14 with Inverted Sloped Front",
+        "file": "32085.dat"
+    },
+    {
+        "id": "6a5bbe45d6c430.94891737",
+        "name": "Train Track  9V Crossing",
+        "file": "32087.dat"
+    },
+    {
+        "id": "6a5bbe45d834d9.28950003",
+        "name": "Train Direction Switch - 4.5 Volt",
+        "file": "3218.dat"
+    },
+    {
+        "id": "6a5bbe45dc13f0.84576605",
+        "name": "Train Track Rail Straight Tapered",
+        "file": "3228a.dat"
+    },
+    {
+        "id": "6a5bbe45dc1e67.75283013",
+        "name": "Train Track  4.5V Tapered Straight (Complete)",
+        "file": "3228ac01.dat"
+    },
+    {
+        "id": "6a5bbe45dc28c1.81125184",
+        "name": "Train Track  4.5V Tapered Straight (Complete w\/o End Sleepers)",
+        "file": "3228ac02.dat"
+    },
+    {
+        "id": "6a5bbe45dc3351.73831512",
+        "name": "Train Track Rail Slotted Straight",
+        "file": "3228b.dat"
+    },
+    {
+        "id": "6a5bbe45dc3d81.98052119",
+        "name": "Train Track  4.5V Slotted Straight (Complete)",
+        "file": "3228bc01.dat"
+    },
+    {
+        "id": "6a5bbe45dc4862.53562572",
+        "name": "Train Track  4.5V Slotted Straight (Complete w\/o End Sleepers)",
+        "file": "3228bc02.dat"
+    },
+    {
+        "id": "6a5bbe45dc52b5.14137231",
+        "name": "Train Track Rail Straight",
+        "file": "3228c.dat"
+    },
+    {
+        "id": "6a5bbe45dcae67.14611102",
+        "name": "Train Track Tapered Rail Curved Outside",
+        "file": "3229a.dat"
+    },
+    {
+        "id": "6a5bbe45dcb893.64569732",
+        "name": "Train Track  4.5V Curved Tapered (Complete 1 Segment)",
+        "file": "3229ac01.dat"
+    },
+    {
+        "id": "6a5bbe45dcc2a0.50837823",
+        "name": "Train Track  4.5V Curved Tapered (Complete 4 Segments)",
+        "file": "3229ac04.dat"
+    },
+    {
+        "id": "6a5bbe45dccca9.89285892",
+        "name": "Train Track Slotted Rail Curved Outside",
+        "file": "3229b.dat"
+    },
+    {
+        "id": "6a5bbe45dcd6b3.54392673",
+        "name": "Train Track  4.5V Curved Slotted (Complete 1 Segment)",
+        "file": "3229bc01.dat"
+    },
+    {
+        "id": "6a5bbe45dce232.77863098",
+        "name": "Train Track  4.5V Curved Slotted (Complete 4 Segments)",
+        "file": "3229bc04.dat"
+    },
+    {
+        "id": "6a5bbe45dd2a35.56902968",
+        "name": "Train Track Tapered Rail Curved Inside",
+        "file": "3230a.dat"
+    },
+    {
+        "id": "6a5bbe45dd3458.92626021",
+        "name": "Train Track Slotted Rail Curved Inside",
+        "file": "3230b.dat"
+    },
+    {
+        "id": "6a5bbe45dd9248.34624158",
+        "name": "Train Track  4.5V Crossing Tapered",
+        "file": "3231a.dat"
+    },
+    {
+        "id": "6a5bbe45dd9c98.51620451",
+        "name": "Train Track  4.5V Crossing Slotted",
+        "file": "3231b.dat"
+    },
+    {
+        "id": "6a5bbe45ddb184.52300021",
+        "name": "Train Window  1 x  2 x  3 with Underside Ridged Stud Holders",
+        "file": "3233.dat"
+    },
+    {
+        "id": "6a5bbe45de6831.37241657",
+        "name": "Train Track 12V Straight Insert Type 2",
+        "file": "3240a.dat"
+    },
+    {
+        "id": "6a5bbe45de7287.82683888",
+        "name": "Train Track 12V Slotted Straight with Conductive Centre Rail without Sockets (Complete)",
+        "file": "3240ac01.dat"
+    },
+    {
+        "id": "6a5bbe45de7d21.97465567",
+        "name": "Train Track 12V Slotted Straight with Conductive Centre Rail without Sockets (Complete w\/o End Sleepers)",
+        "file": "3240ac02.dat"
+    },
+    {
+        "id": "6a5bbe45de87b0.96013354",
+        "name": "Train Track 12V Straight Insert Type 3",
+        "file": "3240b.dat"
+    },
+    {
+        "id": "6a5bbe45de91f1.83937866",
+        "name": "Train Track 12V Slotted Straight with Conductive Centre Rail with Sockets (Complete)",
+        "file": "3240bc01.dat"
+    },
+    {
+        "id": "6a5bbe45de9cb4.49579633",
+        "name": "Train Track 12V Slotted Straight with Conductive Centre Rail with Sockets (Complete without End Sleepers)",
+        "file": "3240bc02.dat"
+    },
+    {
+        "id": "6a5bbe45dea782.45722622",
+        "name": "Train Track 12V Straight Insert with Decoupler Underside Cutout",
+        "file": "3240c.dat"
+    },
+    {
+        "id": "6a5bbe45deb1f8.52700305",
+        "name": "Train Track 12V Curved Insert Type 2 with Plug Sockets",
+        "file": "3241a.dat"
+    },
+    {
+        "id": "6a5bbe45debbf2.25841356",
+        "name": "Train Track 12V Slotted Curved (Complete 1 Segment)",
+        "file": "3241ac01.dat"
+    },
+    {
+        "id": "6a5bbe45dec628.36104216",
+        "name": "Train Track 12V Slotted Curved (Complete 4 Segments)",
+        "file": "3241ac04.dat"
+    },
+    {
+        "id": "6a5bbe45ded094.30501662",
+        "name": "Train Track 12V Curved Insert Type 2 without Plug Sockets",
+        "file": "3241b.dat"
+    },
+    {
+        "id": "6a5bbe45f18083.51936932",
+        "name": "~Train Base for Train Battery Box Car with Two Contact Holes",
+        "file": "3443a.dat"
+    },
+    {
+        "id": "6a5bbe45f18b64.00665857",
+        "name": "Train Battery Box Car with Two Contact Holes, Red Switch Lever and Red Wheels (Complete)",
+        "file": "3443ac01.dat"
+    },
+    {
+        "id": "6a5bbe45f19577.05621413",
+        "name": "Train Battery Box Car with Two Contact Holes, Red Switch Lever, Red Wheels and Magnets (Complete)",
+        "file": "3443ac02.dat"
+    },
+    {
+        "id": "6a5bbe45f19f60.07009269",
+        "name": "Train Battery Box Car with Two Contact Holes, Red Switch Lever and Black Wheels (Complete)",
+        "file": "3443ac03.dat"
+    },
+    {
+        "id": "6a5bbe45f1a981.40751670",
+        "name": "Train Battery Box Car with Two Contact Holes, Red Switch Lever, Black Wheels and Magnets (Complete)",
+        "file": "3443ac04.dat"
+    },
+    {
+        "id": "6a5bbe45f1b387.16209100",
+        "name": "~Train Base for Train Battery Box Car with Three Contact Holes",
+        "file": "3443b.dat"
+    },
+    {
+        "id": "6a5bbe45f1bdc5.70542343",
+        "name": "Train Battery Box Car with Three Contact Holes, Red Switch Lever and Red Wheels (Complete)",
+        "file": "3443bc01.dat"
+    },
+    {
+        "id": "6a5bbe45f1d364.17720826",
+        "name": "Train Battery Box Car with Three Contact Holes, Red Switch Lever, Red Wheels and Magnets (Complete)",
+        "file": "3443bc02.dat"
+    },
+    {
+        "id": "6a5bbe45f1f065.07460103",
+        "name": "Train Battery Box Car with Three Contact Holes, Black Switch Lever and Black Wheels (Complete)",
+        "file": "3443bc03.dat"
+    },
+    {
+        "id": "6a5bbe45f1fbf2.93340599",
+        "name": "Train Battery Box Car with Three Contact Holes, Black Switch Lever, Black Wheels and Magnets (Complete)",
+        "file": "3443bc04.dat"
+    },
+    {
+        "id": "6a5bbe45f206a1.72064592",
+        "name": "Train Battery Box Car with Three Contact Holes, Red Switch Lever and Black Wheels (Complete)",
+        "file": "3443bc05.dat"
+    },
+    {
+        "id": "6a5bbe45f21e89.33704418",
+        "name": "Train Battery Box Car with Three Contact Holes, Red Switch Lever, Black Wheels and Magnets (Complete)",
+        "file": "3443bc06.dat"
+    },
+    {
+        "id": "6a5bbe45f30d68.80294226",
+        "name": "Train Track Roller Coaster Ramp  4 x 16 x  3 S-Shape",
+        "file": "34738.dat"
+    },
+    {
+        "id": "6a5bbe45f41bb6.40819783",
+        "name": "Train Single Buffer",
+        "file": "3488.dat"
+    },
+    {
+        "id": "6a5bbe4608f2f8.01257889",
+        "name": "Duplo Train Action Brick",
+        "file": "35962.dat"
+    },
+    {
+        "id": "6a5bbe460902d5.01025317",
+        "name": "Duplo Train Action Brick with White Drop Pattern",
+        "file": "35962p01.dat"
+    },
+    {
+        "id": "6a5bbe46090e65.63273935",
+        "name": "Duplo Train Action Brick with White Double Arrow Pattern",
+        "file": "35962p02.dat"
+    },
+    {
+        "id": "6a5bbe460918d3.87054759",
+        "name": "Duplo Train Action Brick with White Cross in Circle Pattern",
+        "file": "35962p03.dat"
+    },
+    {
+        "id": "6a5bbe46092312.95581176",
+        "name": "Duplo Train Action Brick with Black Light Pattern",
+        "file": "35962p04.dat"
+    },
+    {
+        "id": "6a5bbe46092d70.42692880",
+        "name": "Duplo Train Action Brick with Black Music Note Pattern",
+        "file": "35962p05.dat"
+    },
+    {
+        "id": "6a5bbe46093769.64181713",
+        "name": "Duplo Train Buffer Stop",
+        "file": "35967.dat"
+    },
+    {
+        "id": "6a5bbe46298c34.45904741",
+        "name": "Train Front  6 x 10 x  7",
+        "file": "37493.dat"
+    },
+    {
+        "id": "6a5bbe46463491.42700457",
+        "name": "Train Wheel Bogie With Pin Slots without Wheelset",
+        "file": "38339.dat"
+    },
+    {
+        "id": "6a5bbe46463ea0.52097230",
+        "name": "Train Wheel Bogie With Pin Slots with Wheelset Black",
+        "file": "38339c01.dat"
+    },
+    {
+        "id": "6a5bbe464648b7.58952454",
+        "name": "Train Wheel Bogie With Pin Slots with Wheelset Red",
+        "file": "38339c02.dat"
+    },
+    {
+        "id": "6a5bbe46466252.69291334",
+        "name": "Train Wheel with Pin for Wheel Bogie",
+        "file": "38340.dat"
+    },
+    {
+        "id": "6a5bbe46550f50.77419242",
+        "name": "Train Buffer Beam",
+        "file": "4022.dat"
+    },
+    {
+        "id": "6a5bbe465519b8.04991178",
+        "name": "Train Buffer Beam with Black Coupling Type 1 with Magnet in Coupled Position",
+        "file": "4022c01.dat"
+    },
+    {
+        "id": "6a5bbe465523e4.50453190",
+        "name": "Train Buffer Beam with Black Coupling Type 1 with Magnet in Uncoupled Position",
+        "file": "4022c02.dat"
+    },
+    {
+        "id": "6a5bbe46552e56.80212385",
+        "name": "Train Coupling Type 1",
+        "file": "4023.dat"
+    },
+    {
+        "id": "6a5bbe46556d98.41598191",
+        "name": "Train Coupling Type 1 with Magnet in Coupled Position",
+        "file": "4023c01.dat"
+    },
+    {
+        "id": "6a5bbe46557817.25502872",
+        "name": "Train Coupling Type 1 with Magnet in Uncoupled Position",
+        "file": "4023c02.dat"
+    },
+    {
+        "id": "6a5bbe4655fe57.72122689",
+        "name": "Train Window  1 x  4 x  3",
+        "file": "4033.dat"
+    },
+    {
+        "id": "6a5bbe46561282.28583113",
+        "name": "Train Window  1 x  4 x  3 with Trans-Clear Glass",
+        "file": "4033c01.dat"
+    },
+    {
+        "id": "6a5bbe46565c16.91727248",
+        "name": "Train Window  1 x  2 x  3",
+        "file": "4035.dat"
+    },
+    {
+        "id": "6a5bbe46568461.56051338",
+        "name": "Train Window  1 x  2 x  3 with Trans-Clear Glass",
+        "file": "4035c01.dat"
+    },
+    {
+        "id": "6a5bbe465dc949.98415922",
+        "name": "Train Bogie Plate with Long Pin",
+        "file": "4092a.dat"
+    },
+    {
+        "id": "6a5bbe465dd3d8.46742519",
+        "name": "Train Bogie Plate with Short Pin",
+        "file": "4092b.dat"
+    },
+    {
+        "id": "6a5bbe465dfc85.15613808",
+        "name": "Train Base  6 x 28 with 23 Holes",
+        "file": "4093a.dat"
+    },
+    {
+        "id": "6a5bbe465e10c1.31662415",
+        "name": "Train Base  6 x 28 with 15 Holes",
+        "file": "4093b.dat"
+    },
+    {
+        "id": "6a5bbe465e1ac4.50281901",
+        "name": "Train Base  6 x 28 with  8 Holes",
+        "file": "4093c.dat"
+    },
+    {
+        "id": "6a5bbe466e8e35.62575481",
+        "name": "Train Track Sleeper Plate  2 x  8 without Cable Grooves",
+        "file": "4166a.dat"
+    },
+    {
+        "id": "6a5bbe466e9860.93918785",
+        "name": "Train Track Sleeper Plate  2 x  8 with Cable Grooves",
+        "file": "4166b.dat"
+    },
+    {
+        "id": "6a5bbe466ef0f1.94707107",
+        "name": "Train Signal Mast",
+        "file": "4168.dat"
+    },
+    {
+        "id": "6a5bbe466f2574.81379953",
+        "name": "Train Signal Stand",
+        "file": "4169.dat"
+    },
+    {
+        "id": "6a5bbe46710144.27182414",
+        "name": "Train Base  6 x 16",
+        "file": "4178.dat"
+    },
+    {
+        "id": "6a5bbe46711547.80909804",
+        "name": "~Brick  2 x  4 for Train Wheels Top",
+        "file": "4179.dat"
+    },
+    {
+        "id": "6a5bbe467199e2.04745637",
+        "name": "~Brick  2 x  4 for Train Wheels Base",
+        "file": "4180a.dat"
+    },
+    {
+        "id": "6a5bbe4671dfb7.24378381",
+        "name": "Train Door  1 x  4 x  5 Left",
+        "file": "4181.dat"
+    },
+    {
+        "id": "6a5bbe467257d7.30504170",
+        "name": "Train Door  1 x  4 x  5 Left with TransClear Glass",
+        "file": "4181c01.dat"
+    },
+    {
+        "id": "6a5bbe46730226.13882410",
+        "name": "Train Door  1 x  4 x  5 Left with Yellow Bottom Half Pattern",
+        "file": "4181p01.dat"
+    },
+    {
+        "id": "6a5bbe46730ce1.18834208",
+        "name": "Train Door  1 x  4 x  5 Left with Red Bottom Half Pattern",
+        "file": "4181p02.dat"
+    },
+    {
+        "id": "6a5bbe46732c34.43573293",
+        "name": "Train Door  1 x  4 x  5 Left with White Stripe Pattern",
+        "file": "4181p03.dat"
+    },
+    {
+        "id": "6a5bbe46733652.35823217",
+        "name": "Train Door  1 x  4 x  5 Left White Stripe w Sticker DB 7745",
+        "file": "4181p03d01.dat"
+    },
+    {
+        "id": "6a5bbe46734072.93602718",
+        "name": "Train Door  1 x  4 x  5 Left with Red\/White\/Blue Stripe Pattern",
+        "file": "4181p04.dat"
+    },
+    {
+        "id": "6a5bbe46734a67.71174922",
+        "name": "Train Door  1 x  4 x  5 Left with Blue Bottom Half Pattern",
+        "file": "4181p05.dat"
+    },
+    {
+        "id": "6a5bbe46735ff8.20497786",
+        "name": "Train Door  1 x  4 x  5 Left with Red\/Blue Stripe Pattern",
+        "file": "4181p06.dat"
+    },
+    {
+        "id": "6a5bbe46736a64.09352241",
+        "name": "Train Door  1 x  4 x  5 Left with Yellow Stripe Pattern",
+        "file": "4181p07.dat"
+    },
+    {
+        "id": "6a5bbe467374e5.99903922",
+        "name": "Train Door  1 x  4 x  5 Left White Stripe Train Logo Pattern",
+        "file": "4181p08.dat"
+    },
+    {
+        "id": "6a5bbe46737f07.90937605",
+        "name": "Train Door  1 x  4 x  5 Left with Green Stripe White Train Logo and Rivet Pattern",
+        "file": "4181p09.dat"
+    },
+    {
+        "id": "6a5bbe46738983.07619455",
+        "name": "Train Door  1 x  4 x  5 Right",
+        "file": "4182.dat"
+    },
+    {
+        "id": "6a5bbe46739d80.80837398",
+        "name": "Train Door  1 x  4 x  5 Right with TransClear Glass",
+        "file": "4182c01.dat"
+    },
+    {
+        "id": "6a5bbe467463f2.47763763",
+        "name": "Train Door  1 x  4 x  5 Right with Yellow Bottom Half Pattern",
+        "file": "4182p01.dat"
+    },
+    {
+        "id": "6a5bbe46746e26.50857765",
+        "name": "Train Door  1 x  4 x  5 Right with Red Bottom Half Pattern",
+        "file": "4182p02.dat"
+    },
+    {
+        "id": "6a5bbe46748c32.91858606",
+        "name": "Train Door  1 x  4 x  5 Right with White Stripe Pattern",
+        "file": "4182p03.dat"
+    },
+    {
+        "id": "6a5bbe46749682.72000982",
+        "name": "Train Door  1 x  4 x  5 Right White Stripe w Sticker DB 7745",
+        "file": "4182p03d01.dat"
+    },
+    {
+        "id": "6a5bbe4674a0d6.19045902",
+        "name": "Train Door  1 x  4 x  5 Right with Red\/White\/Blue Stripe Pattern",
+        "file": "4182p04.dat"
+    },
+    {
+        "id": "6a5bbe4674ab56.21533357",
+        "name": "Train Door  1 x  4 x  5 Right with Blue Bottom Half Pattern",
+        "file": "4182p05.dat"
+    },
+    {
+        "id": "6a5bbe4674c0a8.40359770",
+        "name": "Train Door  1 x  4 x  5 Right with Red\/Blue Stripe Pattern",
+        "file": "4182p06.dat"
+    },
+    {
+        "id": "6a5bbe4674cab1.33140664",
+        "name": "Train Door  1 x  4 x  5 Right with Yellow Stripe Pattern",
+        "file": "4182p07.dat"
+    },
+    {
+        "id": "6a5bbe4674d517.37460973",
+        "name": "Train Door  1 x  4 x  5 Right White Stripe Train Logo Pattern",
+        "file": "4182p08.dat"
+    },
+    {
+        "id": "6a5bbe4674df54.00774604",
+        "name": "Train Door  1 x  4 x  5 Right with Green Stripe White Train Logo and Rivet Pattern",
+        "file": "4182p09.dat"
+    },
+    {
+        "id": "6a5bbe46884873.98335689",
+        "name": "Train Door  1 x  4 x  5 Right with Thick Bottom Support",
+        "file": "42819.dat"
+    },
+    {
+        "id": "6a5bbe4689f709.43833547",
+        "name": "~Train Brick  2 x  4 Holder for Sliding Wheel Brick Top Type 2",
+        "file": "429.dat"
+    },
+    {
+        "id": "6a5bbe468b84d9.53874320",
+        "name": "Train Brick  2 x  4 Holder for Sliding Wheel Brick (Complete)",
+        "file": "429c01.dat"
+    },
+    {
+        "id": "6a5bbe468baec7.97901792",
+        "name": "~Train Brick  2 x  4 Holder Bottom Solid",
+        "file": "430.dat"
+    },
+    {
+        "id": "6a5bbe468c35c5.22219157",
+        "name": "~Train Brick  2 x  4 Holder Bottom for Power Pickup",
+        "file": "431.dat"
+    },
+    {
+        "id": "6a5bbe468d2b82.06385482",
+        "name": "~Train Brick  2 x  4 Holder for Sliding Wheel Brick Top Type 1",
+        "file": "433.dat"
+    },
+    {
+        "id": "6a5bbe4693fc04.30078243",
+        "name": "Train Door  1 x  4 x  5 Left with Thick Bottom Support",
+        "file": "43967.dat"
+    },
+    {
+        "id": "6a5bbe469ae2c7.51397880",
+        "name": "~Train Wheel 4 Studs with Traction Teeth",
+        "file": "447.dat"
+    },
+    {
+        "id": "6a5bbe469bdd16.72004395",
+        "name": "Train Wheel 4 Studs with Traction Teeth with Stub Axle",
+        "file": "447c01.dat"
+    },
+    {
+        "id": "6a5bbe46a08804.68398062",
+        "name": "Train Level Crossing Gate Type 2",
+        "file": "4512.dat"
+    },
+    {
+        "id": "6a5bbe46a09279.13036922",
+        "name": "Train Level Crossing Gate Type 2 with Red Stripes Pattern",
+        "file": "4512p01.dat"
+    },
+    {
+        "id": "6a5bbe46a57f95.51846207",
+        "name": "Duplo Train Cabin Roof",
+        "file": "4543.dat"
+    },
+    {
+        "id": "6a5bbe46a80c57.86946606",
+        "name": "Train Front  6 x 10 x  3.667 Triple Curved Wedge",
+        "file": "45706.dat"
+    },
+    {
+        "id": "6a5bbe46a820c8.52846995",
+        "name": "Train Front  6 x 10 x  3.667 Triple Curved Wedge with Green Train Logo and Stripe on Side Pattern",
+        "file": "45706p01.dat"
+    },
+    {
+        "id": "6a5bbe46a82b23.33850951",
+        "name": "Train Front  6 x 10 x  3.667 Triple Curved Wedge with Trans Yellow Prism with Green Train Logo and Stripe on Side Pattern",
+        "file": "45706p01c01.dat"
+    },
+    {
+        "id": "6a5bbe46a83f16.45768813",
+        "name": "Train Buffer Beam with Plough",
+        "file": "45708.dat"
+    },
+    {
+        "id": "6a5bbe46aa9282.40662186",
+        "name": "~Train 12V Actuator  4 x  8 x  1.667 Manual",
+        "file": "459a.dat"
+    },
+    {
+        "id": "6a5bbe46aa9cb4.72695813",
+        "name": "~Train 12V Actuator  4 x  8 x  1.667 Electric",
+        "file": "459b.dat"
+    },
+    {
+        "id": "6a5bbe46d3c6a6.49319179",
+        "name": "Train Steam Drive Rod",
+        "file": "505.dat"
+    },
+    {
+        "id": "6a5bbe46d3d0c7.62953373",
+        "name": "Train Steam Drive Rod Holder",
+        "file": "506.dat"
+    },
+    {
+        "id": "6a5bbe46d7dc32.35124283",
+        "name": "Train Track 12V Electric Cable Connector",
+        "file": "511c01.dat"
+    },
+    {
+        "id": "6a5bbe46d93345.03239622",
+        "name": "Duplo Train Track Point Rail with Red Tongue (Turning Right)",
+        "file": "51560-f1.dat"
+    },
+    {
+        "id": "6a5bbe46d93ce4.80109173",
+        "name": "Duplo Train Track Point Rail with Red Tongue (Turning Left)",
+        "file": "51560-f2.dat"
+    },
+    {
+        "id": "6a5bbe46dab0c4.86443954",
+        "name": "~Duplo Train Track Point Rail",
+        "file": "51943.dat"
+    },
+    {
+        "id": "6a5bbe46daba72.86443457",
+        "name": "~Duplo Train Track Point Tongue",
+        "file": "51944.dat"
+    },
+    {
+        "id": "6a5bbe46ddb946.25190135",
+        "name": "Train Track 6 Studs Wide Curved",
+        "file": "53400.dat"
+    },
+    {
+        "id": "6a5bbe46ddc666.44895150",
+        "name": "Train Track 6 Studs Wide Curved (Complete 4 Segments)",
+        "file": "53400c04.dat"
+    },
+    {
+        "id": "6a5bbe46ddd165.09025400",
+        "name": "Train Track 6 Studs Wide Straight",
+        "file": "53401.dat"
+    },
+    {
+        "id": "6a5bbe46e716d0.04768856",
+        "name": "Train Wheel for RC Train w Technic Axle Hole and Rubber Ring",
+        "file": "55423.dat"
+    },
+    {
+        "id": "6a5bbe46e7ed93.78448022",
+        "name": "Train Front  6 x 14 x  7.667",
+        "file": "55768.dat"
+    },
+    {
+        "id": "6a5bbe46ef59a0.22588502",
+        "name": "Train Wheel with Closed Centre for Wheel Bogie",
+        "file": "57878.dat"
+    },
+    {
+        "id": "6a5bbe475a4655.10148510",
+        "name": "Duplo Train Track Straight  4 x  8",
+        "file": "6377.dat"
+    },
+    {
+        "id": "6a5bbe475a5130.61442941",
+        "name": "Duplo Train Track Curved",
+        "file": "6378.dat"
+    },
+    {
+        "id": "6a5bbe475ba048.31027737",
+        "name": "Duplo Train Track Level Crossing",
+        "file": "6391.dat"
+    },
+    {
+        "id": "6a5bbe475c3477.19598118",
+        "name": "Train Track Flexible Segment (Complete, Straight)",
+        "file": "64022.dat"
+    },
+    {
+        "id": "6a5bbe475c3f29.69222327",
+        "name": "Train Track Flexible Segment (Complete, Bent Left)",
+        "file": "64022c01.dat"
+    },
+    {
+        "id": "6a5bbe475c4982.61237967",
+        "name": "Train Track Flexible Segment (Complete, Bent Right)",
+        "file": "64022c02.dat"
+    },
+    {
+        "id": "6a5bbe475c69f4.77595522",
+        "name": "Duplo Train Level Crossing Gate Base",
+        "file": "6405.dat"
+    },
+    {
+        "id": "6a5bbe475c9e70.19821486",
+        "name": "Duplo Train Level Crossing Gate Crossbar",
+        "file": "6406.dat"
+    },
+    {
+        "id": "6a5bbe475f8422.94474687",
+        "name": "Train Buffer Beam with Plow and Sealed Magnet (Complete)",
+        "file": "64414.dat"
+    },
+    {
+        "id": "6a5bbe475f8de5.13511273",
+        "name": "~Train Buffer Beam with Plow",
+        "file": "64415.dat"
+    },
+    {
+        "id": "6a5bbe475f9804.02313510",
+        "name": "Train Buffer Beam with Plow and Screw",
+        "file": "64415c01.dat"
+    },
+    {
+        "id": "6a5bbe475fa284.19139961",
+        "name": "~Train Buffer Sealed Magnet Casing",
+        "file": "64417.dat"
+    },
+    {
+        "id": "6a5bbe475fad87.10106856",
+        "name": "Train Buffer Sealed Magnet",
+        "file": "64417c01.dat"
+    },
+    {
+        "id": "6a5bbe475fe014.81121510",
+        "name": "Train Buffer Beam with Sealed Magnet (Complete)",
+        "file": "64422.dat"
+    },
+    {
+        "id": "6a5bbe475febb8.81604565",
+        "name": "~Train Buffer Beam with Open Buffer Bottom and Long Cylinder for Sealed Magnet (Type 1)",
+        "file": "64424.dat"
+    },
+    {
+        "id": "6a5bbe475ffa69.27997846",
+        "name": "~Train Buffer Beam with Open Buffer Bottom and Long Cylinder for Sealed Magnet with Screw (Type 1)",
+        "file": "64424c01.dat"
+    },
+    {
+        "id": "6a5bbe476146f6.55928242",
+        "name": "Train Track Flexible Segment Male Half",
+        "file": "64572.dat"
+    },
+    {
+        "id": "6a5bbe47615115.57416597",
+        "name": "Train Track Flexible Segment Female Half",
+        "file": "64573.dat"
+    },
+    {
+        "id": "6a5bbe476aa667.69178752",
+        "name": "Train Window  1 x  4 x  3 with Shutter Holes",
+        "file": "6556.dat"
+    },
+    {
+        "id": "6a5bbe476d6231.73508902",
+        "name": "Train Base  6 x 24",
+        "file": "6584.dat"
+    },
+    {
+        "id": "6a5bbe477cb4e5.18200042",
+        "name": "Train Battery Box Car Roof  6 x 14",
+        "file": "699.dat"
+    },
+    {
+        "id": "6a5bbe477de691.59382408",
+        "name": "Train 12V Actuator  4 x  8 x  1.667 Electric (Complete)",
+        "file": "70026.dat"
+    },
+    {
+        "id": "6a5bbe477e65c2.84533458",
+        "name": "Train Level Crossing Gate Counterweight Type 2",
+        "file": "70163.dat"
+    },
+    {
+        "id": "6a5bbe47894e04.42691661",
+        "name": "Train 12V Actuator  4 x  8 x  1.667 Manual (Complete)",
+        "file": "73112.dat"
+    },
+    {
+        "id": "6a5bbe47933bd0.85814107",
+        "name": "~Train Base  6 x 16 Type 1",
+        "file": "736.dat"
+    },
+    {
+        "id": "6a5bbe47938845.16583642",
+        "name": "~Train Track 12V Slotted Point Right Base (Straight)",
+        "file": "73696a.dat"
+    },
+    {
+        "id": "6a5bbe47939364.37814615",
+        "name": "~Train Track 12V Slotted Point Right Base (Branching)",
+        "file": "73696ac00.dat"
+    },
+    {
+        "id": "6a5bbe4793a858.60250802",
+        "name": "Train Track 12V Slotted Point Left Manual (Straight)",
+        "file": "73696c01.dat"
+    },
+    {
+        "id": "6a5bbe4793b340.38847260",
+        "name": "Train Track 12V Slotted Point Left Manual (Branching)",
+        "file": "73696c02.dat"
+    },
+    {
+        "id": "6a5bbe4793bd88.32143405",
+        "name": "Train Track 12V Slotted Point Left Electric (Straight)",
+        "file": "73696c03.dat"
+    },
+    {
+        "id": "6a5bbe4793c7e5.03427287",
+        "name": "Train Track 12V Slotted Point Left Electric (Branching)",
+        "file": "73696c04.dat"
+    },
+    {
+        "id": "6a5bbe4793dd43.13996628",
+        "name": "~Train Track 12V Slotted Point Left Base (Straight)",
+        "file": "73697a.dat"
+    },
+    {
+        "id": "6a5bbe4793e7d2.23280777",
+        "name": "~Train Track 12V Slotted Point Left Base (Branching)",
+        "file": "73697ac00.dat"
+    },
+    {
+        "id": "6a5bbe4793fc19.96631699",
+        "name": "Train Track 12V Slotted Point Right Manual (Straight)",
+        "file": "73697c01.dat"
+    },
+    {
+        "id": "6a5bbe47940760.33715477",
+        "name": "Train Track 12V Slotted Point Right Manual (Branching)",
+        "file": "73697c02.dat"
+    },
+    {
+        "id": "6a5bbe479411c2.90468819",
+        "name": "Train Track 12V Slotted Point Right Electric (Straight)",
+        "file": "73697c03.dat"
+    },
+    {
+        "id": "6a5bbe47941bf1.72006939",
+        "name": "Train Track 12V Slotted Point Right Electric (Branching)",
+        "file": "73697c04.dat"
+    },
+    {
+        "id": "6a5bbe47942a74.68144737",
+        "name": "Train Base  6 x 16 Type 1 with Red Wheels (Complete)",
+        "file": "736c01.dat"
+    },
+    {
+        "id": "6a5bbe47943513.88919256",
+        "name": "Train Base  6 x 16 Type 1 with Wheels and Magnets (Complete)",
+        "file": "736c02.dat"
+    },
+    {
+        "id": "6a5bbe4796f008.98816519",
+        "name": "Train Track  9V Straight",
+        "file": "74746.dat"
+    },
+    {
+        "id": "6a5bbe4796fa68.21572141",
+        "name": "Train Track  9V Curved",
+        "file": "74747.dat"
+    },
+    {
+        "id": "6a5bbe47970442.04228773",
+        "name": "Train Track  9V Curved (Complete 4 Segments)",
+        "file": "74747c04.dat"
+    },
+    {
+        "id": "6a5bbe4799ab14.98812382",
+        "name": "Train Track  9V Switch Right Straight",
+        "file": "75541-f1.dat"
+    },
+    {
+        "id": "6a5bbe4799b582.43235699",
+        "name": "Train Track  9V Switch Right Branching",
+        "file": "75541-f2.dat"
+    },
+    {
+        "id": "6a5bbe4799c095.47019494",
+        "name": "Train Track  9V Point Right Straight with Yellow Lever",
+        "file": "75541c01-f1.dat"
+    },
+    {
+        "id": "6a5bbe4799cb30.08536697",
+        "name": "Train Track  9V Point Right Branching with Yellow Lever",
+        "file": "75541c01-f2.dat"
+    },
+    {
+        "id": "6a5bbe4799d5b3.12279874",
+        "name": "Train Track  9V Switch Left Straight",
+        "file": "75542-f1.dat"
+    },
+    {
+        "id": "6a5bbe4799e032.17291015",
+        "name": "Train Track  9V Switch Left Branching",
+        "file": "75542-f2.dat"
+    },
+    {
+        "id": "6a5bbe4799eb88.23630625",
+        "name": "Train Track  9V Point Left Straight with Yellow Lever",
+        "file": "75542c01-f1.dat"
+    },
+    {
+        "id": "6a5bbe4799f605.04627941",
+        "name": "Train Track  9V Point Left Branching with Yellow Lever",
+        "file": "75542c01-f2.dat"
+    },
+    {
+        "id": "6a5bbe47cd3949.77920376",
+        "name": "Train Track Roller Coaster Straight  4 x  4",
+        "file": "80562.dat"
+    },
+    {
+        "id": "6a5bbe47cfb4f4.56090978",
+        "name": "Train Level Crossing Centre Rail Cap Insert",
+        "file": "812.dat"
+    },
+    {
+        "id": "6a5bbe47cfde40.50908273",
+        "name": "Train Level Crossing Base",
+        "file": "813.dat"
+    },
+    {
+        "id": "6a5bbe47cffda0.21246205",
+        "name": "Train Level Crossing Base with Center Rail Cap Insert (Complete)",
+        "file": "813c01.dat"
+    },
+    {
+        "id": "6a5bbe47d007f8.22619026",
+        "name": "Train Track  4.5V Tapered Straight with Blue\/Red\/White Level Crossing Gate Type 1 (Closed)",
+        "file": "813c02-f1.dat"
+    },
+    {
+        "id": "6a5bbe47d01249.83716529",
+        "name": "Train Track  4.5V Tapered Straight with Blue\/Red\/White Level Crossing Gate Type 1 (Open)",
+        "file": "813c02-f2.dat"
+    },
+    {
+        "id": "6a5bbe47d01c71.55407316",
+        "name": "Train Track 12V Tapered Straight with Blue\/Red\/White Level Crossing Gate Type 1 (Closed)",
+        "file": "813c03-f1.dat"
+    },
+    {
+        "id": "6a5bbe47d026a0.43127599",
+        "name": "Train Track 12V Tapered Straight with Blue\/Red\/White Level Crossing Gate Type 1 (Open)",
+        "file": "813c03-f2.dat"
+    },
+    {
+        "id": "6a5bbe47d030f1.07404841",
+        "name": "~Train Level Crossing Gate Type 1 - Crossbar Base",
+        "file": "814.dat"
+    },
+    {
+        "id": "6a5bbe47d04ff2.96873643",
+        "name": "Train Level Crossing Gate Type 1 - Base with White\/Red Crossbar Left Closed (Complete)",
+        "file": "814c01-f1.dat"
+    },
+    {
+        "id": "6a5bbe47d059f2.28681901",
+        "name": "Train Level Crossing Gate Type 1 - Base with White\/Red Crossbar Left Open (Complete)",
+        "file": "814c01-f2.dat"
+    },
+    {
+        "id": "6a5bbe47d06419.58810999",
+        "name": "Train Level Crossing Gate Type 1 - Base with White\/Red Crossbar Right Closed (Complete)",
+        "file": "814c02-f1.dat"
+    },
+    {
+        "id": "6a5bbe47d06e89.09690757",
+        "name": "Train Level Crossing Gate Type 1 - Base with White\/Red Crossbar Right Open (Complete)",
+        "file": "814c02-f2.dat"
+    },
+    {
+        "id": "6a5bbe47d07908.16864165",
+        "name": "~Train Level Crossing Gate Type 1 - Crossbar",
+        "file": "815.dat"
+    },
+    {
+        "id": "6a5bbe47d08d27.61872443",
+        "name": "Train Level Crossing Gate Type 1 - Crossbar with Red Handle Left",
+        "file": "815c01.dat"
+    },
+    {
+        "id": "6a5bbe47d09768.73331067",
+        "name": "Train Level Crossing Gate Type 1 - Crossbar with Red Handle Right",
+        "file": "815c02.dat"
+    },
+    {
+        "id": "6a5bbe47d0a243.00878167",
+        "name": "~Train Level Crossing Gate Type 1 - Crossbar Handle",
+        "file": "816.dat"
+    },
+    {
+        "id": "6a5bbe47d6d184.40170856",
+        "name": "Train Base  4 x  7 with 4 Black Axle Bushes",
+        "file": "824c01.dat"
+    },
+    {
+        "id": "6a5bbe47db4b64.37622846",
+        "name": "Train Wheel Large with Axlehole and Pinhole",
+        "file": "85489a.dat"
+    },
+    {
+        "id": "6a5bbe47db5566.07931507",
+        "name": "Train Wheel Large With Axle Pinhole and Red Traction Band",
+        "file": "85489ac01.dat"
+    },
+    {
+        "id": "6a5bbe47db5f89.90228181",
+        "name": "Train Wheel Large with Axlehole and Pinhole without Flange",
+        "file": "85489b.dat"
+    },
+    {
+        "id": "6a5bbe47dba7f5.32432205",
+        "name": "Train Wheel Large Traction Band",
+        "file": "85544.dat"
+    },
+    {
+        "id": "6a5bbe47dcf4c3.22348887",
+        "name": "Train Track 4 Studs Wide Curved",
+        "file": "85976.dat"
+    },
+    {
+        "id": "6a5bbe47dcff12.04449191",
+        "name": "Train Track 4 Studs Wide Curved (Complete 2 Segments)",
+        "file": "85976c02.dat"
+    },
+    {
+        "id": "6a5bbe47dd0901.55446874",
+        "name": "Train Track 4 Studs Wide Ramp",
+        "file": "85977.dat"
+    },
+    {
+        "id": "6a5bbe47dfd6e9.07462674",
+        "name": "Train Track 12V Straight Insert Type 1",
+        "file": "861.dat"
+    },
+    {
+        "id": "6a5bbe47dfeb73.71208553",
+        "name": "Train Track 12V Tapered Straight (Complete)",
+        "file": "861c01.dat"
+    },
+    {
+        "id": "6a5bbe47dff769.29388373",
+        "name": "Train Track 12V Tapered Straight (Complete w\/o End Sleepers)",
+        "file": "861c02.dat"
+    },
+    {
+        "id": "6a5bbe47e03657.50932050",
+        "name": "Train Track 12V Straight Insert Type 2 with Isolation",
+        "file": "862a.dat"
+    },
+    {
+        "id": "6a5bbe47e040d9.54451136",
+        "name": "Train Track 12V Slotted Straight with Isolation (Complete)",
+        "file": "862ac01.dat"
+    },
+    {
+        "id": "6a5bbe47e04b22.58417037",
+        "name": "Train Track 12V Slotted Straight with Isolation and Signal Light Grey",
+        "file": "862ac02.dat"
+    },
+    {
+        "id": "6a5bbe47e055e4.55404942",
+        "name": "~Train Track 12V Slotted Point Left Main Part (Needs Work)",
+        "file": "864.dat"
+    },
+    {
+        "id": "6a5bbe47e06087.56637835",
+        "name": "~Train Track 12V Slotted Point Right Main Part (Needs Work)",
+        "file": "865.dat"
+    },
+    {
+        "id": "6a5bbe47e09325.55589165",
+        "name": "Train Track 12V Curved Insert Type 1 (Needs Work)",
+        "file": "866.dat"
+    },
+    {
+        "id": "6a5bbe47e0bea0.03318260",
+        "name": "Train Track 12V Curved Tapered (Complete 1 Segment)",
+        "file": "866c01.dat"
+    },
+    {
+        "id": "6a5bbe47e0c8f5.90331564",
+        "name": "Train Track 12V Curved Tapered (Complete 4 Segments)",
+        "file": "866c04.dat"
+    },
+    {
+        "id": "6a5bbe47e0dec6.91052820",
+        "name": "~Train 12V Actuator Technic Axle",
+        "file": "868.dat"
+    },
+    {
+        "id": "6a5bbe47e11354.81197229",
+        "name": "Train Base  6 x 34 Split-Level without Bottom Tubes",
+        "file": "87058.dat"
+    },
+    {
+        "id": "6a5bbe47e45b40.38088412",
+        "name": "Tile  2 x  4 with Gold \"10277\" and Yellow \"Ce 6\/8\" with 6 Rivets Pattern",
+        "file": "87079pt3.dat"
+    },
+    {
+        "id": "6a5bbe47ef7d06.46706044",
+        "name": "Train Track Flexible Segment Female Half",
+        "file": "88492.dat"
+    },
+    {
+        "id": "6a5bbe47ef89b1.76753652",
+        "name": "Train Track Flexible Segment Male Half",
+        "file": "88493.dat"
+    },
+    {
+        "id": "6a5bbe48045ce9.24899642",
+        "name": "Train Wheel 50 mm with Axlehole and Pinhole",
+        "file": "90840.dat"
+    },
+    {
+        "id": "6a5bbe48057fa7.39048451",
+        "name": "~Train Buffer Beam with Open Buffer Bottom for Sealed Magnet (Type 2)",
+        "file": "91968.dat"
+    },
+    {
+        "id": "6a5bbe480589f0.87946581",
+        "name": "Train Buffer Beam with Open Buffer Bottom for Sealed Magnet with Bolt (Type 2)",
+        "file": "91968c01.dat"
+    },
+    {
+        "id": "6a5bbe48059f56.01100699",
+        "name": "Train Buffer Beam with Open Buffer Bottom with Sealed Magnet (Type 2) (Complete)",
+        "file": "91994.dat"
+    },
+    {
+        "id": "6a5bbe48061778.46206368",
+        "name": "Train Base  6 x 24 with  6 Holes, Twin  2 x  2 Cutouts and Reinforced Underside",
+        "file": "92088.dat"
+    },
+    {
+        "id": "6a5bbe48134536.74099340",
+        "name": "Train Base  6 x 28 with  6 Holes and Twin  2 x  2 Cutouts",
+        "file": "92339.dat"
+    },
+    {
+        "id": "6a5bbe48134f99.77452612",
+        "name": "Train Base  6 x 24 with  6 Holes and Twin  2 x  2 Cutouts",
+        "file": "92340.dat"
+    },
+    {
+        "id": "6a5bbe482678d7.79888342",
+        "name": "~Train Body for Train Battery Box Car",
+        "file": "941.dat"
+    },
+    {
+        "id": "6a5bbe48269723.59026956",
+        "name": "~Direction Lever for Train Battery Box Car",
+        "file": "942.dat"
+    },
+    {
+        "id": "6a5bbe4826a0e6.21439973",
+        "name": "~Cutout Button for Train Battery Box Car",
+        "file": "943.dat"
+    },
+    {
+        "id": "6a5bbe48275270.51421108",
+        "name": "Train Steam Cylinder  2 x  2 x  1.667 Curved - Interior Smooth",
+        "file": "947a.dat"
+    },
+    {
+        "id": "6a5bbe48275ce1.48092865",
+        "name": "Train Steam Cylinder  2 x  2 x  1.667 Curved - Interior Grooved",
+        "file": "947b.dat"
+    },
+    {
+        "id": "6a5bbe48276783.91899223",
+        "name": "~Train Track  4.5V Point Type 1 Tapered Left - Frame",
+        "file": "948a.dat"
+    },
+    {
+        "id": "6a5bbe48277232.23868967",
+        "name": "Train Track  4.5V Point Type 1 Tapered Left (Straight)",
+        "file": "948ac01.dat"
+    },
+    {
+        "id": "6a5bbe48277c40.06799844",
+        "name": "Train Track  4.5V Point Type 1 Tapered Left (Branching)",
+        "file": "948ac02.dat"
+    },
+    {
+        "id": "6a5bbe48278678.29492621",
+        "name": "~Train Track  4.5V Point Type 2 Tapered Left - Frame",
+        "file": "948b.dat"
+    },
+    {
+        "id": "6a5bbe482790f1.73945034",
+        "name": "Train Track  4.5V Point Type 2 Tapered Left (Straight)",
+        "file": "948bc01.dat"
+    },
+    {
+        "id": "6a5bbe48279b36.43005030",
+        "name": "Train Track  4.5V Point Type 2 Tapered Left (Branching)",
+        "file": "948bc02.dat"
+    },
+    {
+        "id": "6a5bbe4827a583.55608339",
+        "name": "~Train Track  4.5V Point Type 2 Slotted Left - Frame",
+        "file": "948c.dat"
+    },
+    {
+        "id": "6a5bbe4827b014.79308647",
+        "name": "Train Track  4.5V Point Type 2 Slotted Left (Straight)",
+        "file": "948cc01.dat"
+    },
+    {
+        "id": "6a5bbe4827ba84.08580235",
+        "name": "Train Track  4.5V Point Type 2 Slotted Left (Branching)",
+        "file": "948cc02.dat"
+    },
+    {
+        "id": "6a5bbe4827cf62.32017247",
+        "name": "~Train Track  4.5V Point Type 1 Tapered Right - Frame",
+        "file": "949a.dat"
+    },
+    {
+        "id": "6a5bbe4827d997.79470057",
+        "name": "Train Track  4.5V Point Type 1 Tapered Right (Straight)",
+        "file": "949ac01.dat"
+    },
+    {
+        "id": "6a5bbe4827e403.13311791",
+        "name": "Train Track  4.5V Point Type 1 Tapered Right (Branching)",
+        "file": "949ac02.dat"
+    },
+    {
+        "id": "6a5bbe4827ee11.05543190",
+        "name": "~Train Track  4.5V Point Type 2 Tapered Right - Frame",
+        "file": "949b.dat"
+    },
+    {
+        "id": "6a5bbe4827f9c8.61928931",
+        "name": "Train Track  4.5V Point Type 2 Tapered Right (Straight)",
+        "file": "949bc01.dat"
+    },
+    {
+        "id": "6a5bbe482803c4.48003631",
+        "name": "Train Track  4.5V Point Type 2 Tapered Right (Branching)",
+        "file": "949bc02.dat"
+    },
+    {
+        "id": "6a5bbe48280e19.49644912",
+        "name": "~Train Track  4.5V Point Type 2 Slotted Right - Frame",
+        "file": "949c.dat"
+    },
+    {
+        "id": "6a5bbe48281857.36147376",
+        "name": "Train Track  4.5V Point Type 2 Slotted Right (Straight)",
+        "file": "949cc01.dat"
+    },
+    {
+        "id": "6a5bbe482822b5.85111851",
+        "name": "Train Track  4.5V Point Type 2 Slotted Right (Branching)",
+        "file": "949cc02.dat"
+    },
+    {
+        "id": "6a5bbe48287405.65238512",
+        "name": "~Train Track  4.5V Point Type 1 Left - Switch Rails",
+        "file": "950a.dat"
+    },
+    {
+        "id": "6a5bbe48287ea9.74138306",
+        "name": "~Train Track  4.5V Point Type 2 Left - Switch Rails",
+        "file": "950b.dat"
+    },
+    {
+        "id": "6a5bbe4828e882.35621027",
+        "name": "~Train Track  4.5V Point Type 1 Right - Switch Rails",
+        "file": "951a.dat"
+    },
+    {
+        "id": "6a5bbe4828f317.50438259",
+        "name": "~Train Track  4.5V Point Type 2 Right - Switch Rails",
+        "file": "951b.dat"
+    },
+    {
+        "id": "6a5bbe482945a6.19160016",
+        "name": "~Train Track  4.5V Point Type 1 Left - Sleeper",
+        "file": "952a.dat"
+    },
+    {
+        "id": "6a5bbe48295038.52729376",
+        "name": "~Train Track  4.5V Point Type 2 Left - Sleeper",
+        "file": "952b.dat"
+    },
+    {
+        "id": "6a5bbe482a3bc2.22438042",
+        "name": "~Train Track  4.5V Point Type 1 Right - Sleeper",
+        "file": "953a.dat"
+    },
+    {
+        "id": "6a5bbe482a45d8.22866512",
+        "name": "~Train Track  4.5V Point Type 2 Right - Sleeper",
+        "file": "953b.dat"
+    },
+    {
+        "id": "6a5bbe4862fa44.72631811",
+        "name": "Train Track 12V Slotted Crossing",
+        "file": "992.dat"
+    },
+    {
+        "id": "6a5bbe4864dfa2.39210987",
+        "name": "~Train Wheel Large with Pin Axle Hole",
+        "file": "995.dat"
+    },
+    {
+        "id": "6a5bbe486564a9.68474445",
+        "name": "~Train Wheel Small with Pin Axle Hole",
+        "file": "996.dat"
+    },
+    {
+        "id": "6a5bbe486b9087.79978284",
+        "name": "| BBB Train Wheel XL Flanged Driver 17.6 mm",
+        "file": "t1070.dat"
+    },
+    {
+        "id": "6a5bbe486b9a82.52173118",
+        "name": "| BBB Train Wheel Medium Flanged Driver 24.0 mm",
+        "file": "t1071.dat"
+    },
+    {
+        "id": "6a5bbe486ba419.84025616",
+        "name": "| BBB Train Wheel Flanged Driver 30.4 mm",
+        "file": "t1072.dat"
+    },
+    {
+        "id": "6a5bbe486badf9.66467869",
+        "name": "| BBB Train Wheel XL Flanged Driver 36.8 mm",
+        "file": "t1073.dat"
+    },
+    {
+        "id": "6a5bbe486bb829.53990837",
+        "name": "| BBB Train Wheel Medium Blind Driver 24.0 mm",
+        "file": "t1074.dat"
+    },
+    {
+        "id": "6a5bbe486bc1b1.97722279",
+        "name": "| BBB Train Wheel Blind Driver 30.4 mm",
+        "file": "t1075.dat"
+    },
+    {
+        "id": "6a5bbe486bcba7.85892368",
+        "name": "| BBB Train Wheel XL Blind Driver 36.8 mm",
+        "file": "t1076.dat"
+    },
+    {
+        "id": "6a5bbe486bd6e8.37646432",
+        "name": "| BBB Train Wheel XXL Flanged Driver 43.2 mm",
+        "file": "t1077.dat"
+    },
+    {
+        "id": "6a5bbe486be154.27705281",
+        "name": "| BBB Train Wheel XXL Blind Driver 43.2 mm",
+        "file": "t1078.dat"
+    },
+    {
+        "id": "6a5bbe4879dd11.78805661",
+        "name": "Train Level Crossing Base without Center Rail",
+        "file": "u813a.dat"
+    },
+    {
+        "id": "6a5bbe487cc056.04260642",
+        "name": "~Train Track 12V Slotted Point Left 2 Merged Plates  2 x  8",
+        "file": "u9033.dat"
+    },
+    {
+        "id": "6a5bbe487ccaa4.63301023",
+        "name": "~Train Track 12V Slotted Point Right 2 Merged Plates  2 x  8",
+        "file": "u9034.dat"
+    },
+    {
+        "id": "6a5bbe487cd4b2.59213129",
+        "name": "~Train Track 12V Slotted Point Left Bottom Plate",
+        "file": "u9035.dat"
+    },
+    {
+        "id": "6a5bbe487cdec1.06881035",
+        "name": "~Train Track 12V Slotted Point Right Bottom Plate",
+        "file": "u9036.dat"
+    },
+    {
+        "id": "6a5bbe487ce9b6.77170356",
+        "name": "~Train Track 12V Slotted Point: Actuating Pin",
+        "file": "u9037.dat"
+    },
+    {
+        "id": "6a5bbe487eb2d3.39170334",
+        "name": "~Train Track  9V Switch Command Rod Conductor Plate",
+        "file": "u9074.dat"
+    },
+    {
+        "id": "6a5bbe487f7a70.56228579",
+        "name": "~Train Track  9V Switch Right - Curved Metal Rail, End Section of Main Rail",
+        "file": "u9097.dat"
+    },
+    {
+        "id": "6a5bbe487f84a4.82190939",
+        "name": "~Train Track  9V Switch Right - Curved Metal Rail, Closure Rail",
+        "file": "u9098.dat"
+    },
+    {
+        "id": "6a5bbe487f8f34.90299047",
+        "name": "~Train Track  9V Switch Right - Curved Metal Rail, Frog Rail",
+        "file": "u9099.dat"
+    },
+    {
+        "id": "6a5bbe488498c9.86481475",
+        "name": "Train Track 12V Tapered Crossing",
+        "file": "u9137.dat"
+    },
+    {
+        "id": "6a5bbe48897b60.09957534",
+        "name": "~Train Track  9V Switch - Internal Contact Plate",
+        "file": "u9171.dat"
+    },
+    {
+        "id": "6a5bbe48898748.32176886",
+        "name": "~Train Track  9V Switch Right - External Contact Plate",
+        "file": "u9172.dat"
+    },
+    {
+        "id": "6a5bbe488991d6.75297755",
+        "name": "~Train Track  9V Switch - Internal Contact Plate for Switch Function",
+        "file": "u9173.dat"
+    },
+    {
+        "id": "6a5bbe488bec59.04080276",
+        "name": "~Train Track 12V Tapered Point Left Main Part (Needs Work)",
+        "file": "u9220.dat"
+    },
+    {
+        "id": "6a5bbe488bf6c9.95708782",
+        "name": "~Train Track 12V Tapered Point Right Main Part (Needs Work)",
+        "file": "u9221.dat"
+    },
+    {
+        "id": "6a5bbe488c0106.43650876",
+        "name": "~Train Track 12V Tapered Point Left Bottom Plate",
+        "file": "u9222.dat"
+    },
+    {
+        "id": "6a5bbe488c0c22.96941370",
+        "name": "~Train Track 12V Tapered Point Right Bottom Plate",
+        "file": "u9223.dat"
+    },
+    {
+        "id": "6a5bbe488c1634.32205191",
+        "name": "~Train Track 12V Tapered Point Left Housing",
+        "file": "u9224.dat"
+    },
+    {
+        "id": "6a5bbe488c2081.43455298",
+        "name": "~Train Track 12V Tapered Point Right Housing",
+        "file": "u9225.dat"
+    },
+    {
+        "id": "6a5bbe488c2ac0.47348323",
+        "name": "~Train Track 12V Tapered Point Vertical Axle",
+        "file": "u9226.dat"
+    },
+    {
+        "id": "6a5bbe488c7dd7.61055716",
+        "name": "~Train Track 12V Decoupler Plate (Needs Work)",
+        "file": "u9230.dat"
+    },
+    {
+        "id": "6a5bbe488c8b27.20794602",
+        "name": "Train Track 12V Decoupler Electric (Inactive)",
+        "file": "u9230c01.dat"
+    },
+    {
+        "id": "6a5bbe488c9643.99677314",
+        "name": "Train Track 12V Decoupler Electric (Active)",
+        "file": "u9230c02.dat"
+    },
+    {
+        "id": "6a5bbe488ca1f8.02942069",
+        "name": "~Train Track 12V Tapered Point Left Manual (Straight)",
+        "file": "u9231.dat"
+    },
+    {
+        "id": "6a5bbe488cace4.85755025",
+        "name": "~Train Track 12V Tapered Point Left Manual (Branching)",
+        "file": "u9231c00.dat"
+    },
+    {
+        "id": "6a5bbe488cc155.60380733",
+        "name": "Train Track 12V Tapered Point Left Manual (Straight)",
+        "file": "u9231c01.dat"
+    },
+    {
+        "id": "6a5bbe488cd250.63132862",
+        "name": "Train Track 12V Tapered Point Left Manual (Branching)",
+        "file": "u9231c02.dat"
+    },
+    {
+        "id": "6a5bbe488cde54.34842150",
+        "name": "~Train Track 12V Tapered Point Left Electric (Straight)",
+        "file": "u9232.dat"
+    },
+    {
+        "id": "6a5bbe488ceb06.49725248",
+        "name": "~Train Track 12V Tapered Point Left Electric (Branching)",
+        "file": "u9232c00.dat"
+    },
+    {
+        "id": "6a5bbe488cf5a1.29239984",
+        "name": "Train Track 12V Tapered Point Left Electric (Straight)",
+        "file": "u9232c01.dat"
+    },
+    {
+        "id": "6a5bbe488d0391.52543624",
+        "name": "Train Track 12V Tapered Point Left Electric (Branching)",
+        "file": "u9232c02.dat"
+    },
+    {
+        "id": "6a5bbe488d0f32.50435955",
+        "name": "~Train Track 12V Tapered Point Right Manual (Straight)",
+        "file": "u9233.dat"
+    },
+    {
+        "id": "6a5bbe488d1c53.70944015",
+        "name": "~Train Track 12V Tapered Point Right Manual (Branching)",
+        "file": "u9233c00.dat"
+    },
+    {
+        "id": "6a5bbe488d2849.33057185",
+        "name": "Train Track 12V Tapered Point Right Manual (Straight)",
+        "file": "u9233c01.dat"
+    },
+    {
+        "id": "6a5bbe488d3290.10379418",
+        "name": "Train Track 12V Tapered Point Right Manual (Branching)",
+        "file": "u9233c02.dat"
+    },
+    {
+        "id": "6a5bbe488d3d48.31733145",
+        "name": "~Train Track 12V Tapered Point Right Electric (Straight)",
+        "file": "u9234.dat"
+    },
+    {
+        "id": "6a5bbe488d4821.31251163",
+        "name": "~Train Track 12V Tapered Point Right Electric (Branching)",
+        "file": "u9234c00.dat"
+    },
+    {
+        "id": "6a5bbe488d5255.78040301",
+        "name": "Train Track 12V Tapered Point Right Electric (Straight)",
+        "file": "u9234c01.dat"
+    },
+    {
+        "id": "6a5bbe488d5ce6.10274054",
+        "name": "Train Track 12V Tapered Point Right Electric (Branching)",
+        "file": "u9234c02.dat"
+    },
+    {
+        "id": "6a5bbe488daeb8.22474677",
+        "name": "~Train Track 9V Switch Tongue Right - Metal Rail",
+        "file": "u9240.dat"
+    },
+    {
+        "id": "6a5bbe488db984.27177191",
+        "name": "~Train Wheel for RC Train with Technic Axle Hole",
+        "file": "u9241.dat"
+    },
+    {
+        "id": "6a5bbe488dc371.67499130",
+        "name": "~Rubber Ring for Train Wheel for RC Train with Technic Axle Hole",
+        "file": "u9242.dat"
+    },
+    {
+        "id": "6a5bbe488eb965.38271397",
+        "name": "~Train Speed Regulator  9V - Foot",
+        "file": "u9266.dat"
+    },
+    {
+        "id": "6a5bbe488ecfa7.65964453",
+        "name": "~Train Speed Regulator  9V - Conductor Plate Dummy",
+        "file": "u9268.dat"
+    },
+    {
+        "id": "6a5bbe488ff543.02769996",
+        "name": "~Train Track  9V Switch Right - Straight Metal Rail",
+        "file": "u9309.dat"
+    },
+    {
+        "id": "6a5bbe4894f6a6.09187096",
+        "name": "~Train Base  4 x  7 with 4 Axle Bushes Case",
+        "file": "u9388.dat"
+    },
+    {
+        "id": "6a5bbe489aa039.05420836",
+        "name": "~Train Track  9V Switch Left - Curved Metal Rail, Start Section of Main Rail",
+        "file": "u9508.dat"
+    },
+    {
+        "id": "6a5bbe489aaa91.94832370",
+        "name": "~Train Track  9V Switch Left - Curved Metal Rail, End Section of Main Rail",
+        "file": "u9509.dat"
+    },
+    {
+        "id": "6a5bbe489ad411.40998805",
+        "name": "~Train Coupling Hook Base with Round Hole",
+        "file": "u9513.dat"
+    },
+    {
+        "id": "6a5bbe489ade74.08746607",
+        "name": "~Train Coupling Hook without Notch with Round Peg",
+        "file": "u9514.dat"
+    },
+    {
+        "id": "6a5bbe489ae8e4.23447670",
+        "name": "Train Coupling Hook without Notch with Round Base Connection",
+        "file": "u9514c01.dat"
+    },
+    {
+        "id": "6a5bbe489af3c7.05095467",
+        "name": "~Train Coupling Hook Base with Rectangular Hole",
+        "file": "u9515.dat"
+    },
+    {
+        "id": "6a5bbe489afdf9.21168199",
+        "name": "~Train Coupling Hook without Notch with Rectangular Peg",
+        "file": "u9516.dat"
+    },
+    {
+        "id": "6a5bbe489b0865.48258959",
+        "name": "Train Coupling Hook without Notch with Rectangular Base Connection",
+        "file": "u9516c01.dat"
+    },
+    {
+        "id": "6a5bbe489b12a3.72809324",
+        "name": "Train Coupling Hook with Notch",
+        "file": "u9517.dat"
+    },
+    {
+        "id": "6a5bbe489bf3d6.94700160",
+        "name": "~Train Track  9V Switch Left - Curved Metal Rail, Closure Rail",
+        "file": "u9541.dat"
+    },
+    {
+        "id": "6a5bbe489c08f9.41712412",
+        "name": "~Train Track  9V Switch Left - Curved Metal Rail, Frog Rail",
+        "file": "u9544.dat"
+    },
+    {
+        "id": "6a5bbe489c1314.70211918",
+        "name": "~Train Track 9V Switch Tongue Left - Metal Rail",
+        "file": "u9545.dat"
+    },
+    {
+        "id": "6a5bbe489c4689.85437024",
+        "name": "~Train Wheel Spoked with Cylindrical Rim with 6 LDU Axle Hole",
+        "file": "u9550.dat"
+    },
+    {
+        "id": "6a5bbe489c50b6.55981309",
+        "name": "~Train Wheels Spoked with Cylindrical Rim with Axle Steel  6 x 96 LDU",
+        "file": "u9550c01.dat"
+    },
+    {
+        "id": "6a5bbe489d8587.01593846",
+        "name": "~Train Brick  2 x  4 x  1.333 Sliding Wheel Block Housing - Type A",
+        "file": "u9579a.dat"
+    },
+    {
+        "id": "6a5bbe489d9046.61410954",
+        "name": "~Train Brick  2 x  4 x  1.333 Sliding Wheel Block - Type B",
+        "file": "u9579b.dat"
+    },
+    {
+        "id": "6a5bbe489d9a92.49951492",
+        "name": "~Train Brick  2 x  4 x  1.333 Sliding Wheel Block - Weight",
+        "file": "u9580.dat"
+    },
+    {
+        "id": "6a5bbe489da525.14349336",
+        "name": "~Train Brick  2 x  4 x  1.333 Sliding Wheel Block - Cover",
+        "file": "u9581.dat"
+    },
+    {
+        "id": "6a5bbe489db012.79837120",
+        "name": "Train Brick  2 x  4 x  1.333 Sliding Wheel Block - Type A",
+        "file": "u9582a.dat"
+    },
+    {
+        "id": "6a5bbe489dbad4.95176414",
+        "name": "Train Brick  2 x  4 x  1.333 Sliding Wheel Block - Type B with Ledge",
+        "file": "u9582b.dat"
+    },
+    {
+        "id": "6a5bbe489dc560.90259836",
+        "name": "Train Brick  2 x  4 x  1.333 Sliding Wheel Block - Type B with Black Conical Wheels with Black Tyre",
+        "file": "u9582bc01.dat"
+    },
+    {
+        "id": "6a5bbe489e0e68.13774713",
+        "name": "~Train Track  9V Curved - Inner Metal Rail",
+        "file": "u9610.dat"
+    },
+    {
+        "id": "6a5bbe489e18c8.96814002",
+        "name": "~Train Track  9V Straight - Metal Rail",
+        "file": "u9611.dat"
+    },
+    {
+        "id": "6a5bbe489e22e0.54612773",
+        "name": "~Train Track  9V Curved - Outer Metal Rail",
+        "file": "u9621.dat"
+    },
+    {
+        "id": "6a5bbe489e8c60.12252019",
+        "name": "~Train Track  9V Switch Right - Straight Metal Rail, Centre Section of Main Rail",
+        "file": "u9627.dat"
+    },
+    {
+        "id": "6a5bbe489e9723.50961631",
+        "name": "~Train Track  9V Switch Right - Straight Metal Rail, Closure Rail",
+        "file": "u9628.dat"
+    },
+    {
+        "id": "6a5bbe489ea161.63026379",
+        "name": "~Train Track  9V Switch\/Crossing - Upper Straight Internal Wire",
+        "file": "u9631.dat"
+    },
+    {
+        "id": "6a5bbe489eabe8.74232013",
+        "name": "~Train Track  9V Switch Right - Curved Internal Wire",
+        "file": "u9634.dat"
+    },
+    {
+        "id": "6a5bbe489eb628.21366375",
+        "name": "~Train Track  9V Switch Right - Curved Metal Rail, Start Section of Main Rail",
+        "file": "u9635.dat"
+    }
+]

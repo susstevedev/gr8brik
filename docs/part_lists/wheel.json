@@ -1,0 +1,1697 @@
+[
+    {
+        "id": "6a5bbe4486ee81.98181003",
+        "name": "Wheel 37 x 45 Hard-Plastic with  6 Curved Spokes",
+        "file": "100942.dat"
+    },
+    {
+        "id": "6a5bbe4486f922.96123214",
+        "name": "Wheel 37 x 45 Hard-Plastic with  6 Silver Curved Spokes Pattern",
+        "file": "100942p01.dat"
+    },
+    {
+        "id": "6a5bbe448e5d69.07878681",
+        "name": "Wheel 13.4 x 24 with Integral Smooth Racing Tyre",
+        "file": "105162.dat"
+    },
+    {
+        "id": "6a5bbe448e67f9.03121005",
+        "name": "Wheel 13.4 x 24 with Rubber Black Integral Smooth Racing Tyre Pattern",
+        "file": "105162p01.dat"
+    },
+    {
+        "id": "6a5bbe448e7285.86576542",
+        "name": "Wheel 13.4 x 24 with Rubber Black Integral Smooth Racing Tyre with Yellow \"PIRELLI P ZERO\" Pattern",
+        "file": "105162p02.dat"
+    },
+    {
+        "id": "6a5bbe448e7d39.75739171",
+        "name": "Wheel 13.4 x 24 with Rubber Black Integral Smooth Racing Tyre with Red \"PIRELLI P ZERO\" Pattern",
+        "file": "105162p03.dat"
+    },
+    {
+        "id": "6a5bbe448e87c5.72469603",
+        "name": "Wheel 13.4 x 24 with Rubber Black Integral Smooth Racing Tyre with White \"PIRELLI P ZERO\" Pattern",
+        "file": "105162p04.dat"
+    },
+    {
+        "id": "6a5bbe448ec5f9.63462068",
+        "name": "Wheel 22 x 50 with Integral Smooth Racing Tyre",
+        "file": "105645.dat"
+    },
+    {
+        "id": "6a5bbe448ed430.40362426",
+        "name": "Wheel 22 x 50 with Rubber Black Integral Smooth Racing Tyre Pattern",
+        "file": "105645p01.dat"
+    },
+    {
+        "id": "6a5bbe448edf45.11808354",
+        "name": "Wheel 22 x 50 with Rubber Black Integral Smooth Racing Tyre with White \"GOODYEAR EAGLE\" Pattern",
+        "file": "105645p02.dat"
+    },
+    {
+        "id": "6a5bbe4490e016.92585198",
+        "name": "Wheel 14.9 x 24 with Integral Smooth Racing Tyre",
+        "file": "110100.dat"
+    },
+    {
+        "id": "6a5bbe4490eaf3.45248072",
+        "name": "Wheel 14.9 x 24 with Rubber Black Integral Smooth Racing Tyre with Yellow \"PIRELLI P ZERO\" Pattern",
+        "file": "110100p01.dat"
+    },
+    {
+        "id": "6a5bbe4490f5c1.87620504",
+        "name": "Wheel 14.9 x 24 with Rubber Black Integral Smooth Racing Tyre with Red \"PIRELLI P ZERO\" Pattern",
+        "file": "110100p02.dat"
+    },
+    {
+        "id": "6a5bbe449101b4.54400280",
+        "name": "Wheel 14.9 x 24 with Rubber Black Integral Smooth Racing Tyre with White \"PIRELLI P ZERO\" Pattern",
+        "file": "110100p03.dat"
+    },
+    {
+        "id": "6a5bbe44920569.98443473",
+        "name": "Wheel 30 x 50 with Integral Smooth Racing Tyre",
+        "file": "110638.dat"
+    },
+    {
+        "id": "6a5bbe44921110.21499895",
+        "name": "Wheel 30 x 50 with Rubber Black Integral Smooth Racing Tyre with White \"GOODYEAR EAGLE\" Pattern",
+        "file": "110638p01.dat"
+    },
+    {
+        "id": "6a5bbe449244c9.79722565",
+        "name": "Wheel 30 x 64 with  7 Pin Holes and  6 Small Holes",
+        "file": "11094.dat"
+    },
+    {
+        "id": "6a5bbe4492d547.37605850",
+        "name": "~Wheel Rim 26 x  7 with Rip Cord Gear Axle",
+        "file": "11140.dat"
+    },
+    {
+        "id": "6a5bbe44949c96.60112170",
+        "name": "Wheel Rim 10 x 14 with Fake Bolts and  6 Spokes",
+        "file": "11208.dat"
+    },
+    {
+        "id": "6a5bbe4494a7c2.11378756",
+        "name": "Wheel Rim 10 x 14 with Fake Bolts and  6 Spokes with Tyre 10\/ 32 x 14",
+        "file": "11208c01.dat"
+    },
+    {
+        "id": "6a5bbe449e82d6.05125724",
+        "name": "~Duplo Axle for Wheel Rim 11 x 17",
+        "file": "12588.dat"
+    },
+    {
+        "id": "6a5bbe449e8d15.69490280",
+        "name": "~Duplo Wheel Rim 11 x 17",
+        "file": "12589.dat"
+    },
+    {
+        "id": "6a5bbe449e9758.94189161",
+        "name": "Duplo Wheel 11 x 17 with Black Tyre 11 \/ 45 x 17 and Black Attached Axle",
+        "file": "12589c01.dat"
+    },
+    {
+        "id": "6a5bbe449ea155.90859813",
+        "name": "Duplo Wheel 11 x 17 with Dark Azure Tyre 11 \/ 45 x 17 and Black Attached Axle",
+        "file": "12589c02.dat"
+    },
+    {
+        "id": "6a5bbe449eab43.99130678",
+        "name": "Duplo Wheel 11 x 17 with Red Tyre 11 \/ 45 x 17 and Black Attached Axle",
+        "file": "12589c03.dat"
+    },
+    {
+        "id": "6a5bbe449eb5c2.42580661",
+        "name": "~Duplo Tyre 11 \/ 45 x 17",
+        "file": "12590.dat"
+    },
+    {
+        "id": "6a5bbe44a60591.51336503",
+        "name": "Wheel Rim  8 x 18 with Deep Centre Groove, Deep Spokes and Peghole",
+        "file": "13971.dat"
+    },
+    {
+        "id": "6a5bbe44a61204.91936704",
+        "name": "Wheel Rim  8 x 18 with Deep Centre Groove, Deep Spokes and Peghole with Tyre  7\/ 45x 17 Offset Tread with Middle Band",
+        "file": "13971c01.dat"
+    },
+    {
+        "id": "6a5bbe44aef7b3.39407363",
+        "name": "Wheel Rim 34 x 56 with  6 Spokes and  6 Pegholes",
+        "file": "15038.dat"
+    },
+    {
+        "id": "6a5bbe44af0297.60324408",
+        "name": "Wheel Rim 34 x 56 with 6 Spokes and 6 Pegholes with Tyre 44\/ 58 x 56 R Tractor",
+        "file": "15038c01.dat"
+    },
+    {
+        "id": "6a5bbe44af0d79.69755263",
+        "name": "Wheel Rim 34 x 56 with  6 Spokes and  6 Pegholes with White Rim Front Pattern",
+        "file": "15038p01.dat"
+    },
+    {
+        "id": "6a5bbe44b35df9.62295942",
+        "name": "~Duplo Wheel Rim 16 x 21",
+        "file": "15315.dat"
+    },
+    {
+        "id": "6a5bbe44b36873.15674599",
+        "name": "Duplo Wheel 16 x 21 with Black Tyre 11 \/ 45 x 17 and Black Attached Axle",
+        "file": "15315c01.dat"
+    },
+    {
+        "id": "6a5bbe44b37424.28424072",
+        "name": "~Duplo Axle for Wheel Rim 16 x 21",
+        "file": "15316.dat"
+    },
+    {
+        "id": "6a5bbe44b37e77.38639386",
+        "name": "~Duplo Tyre 13 \/ 50 x 21",
+        "file": "15317.dat"
+    },
+    {
+        "id": "6a5bbe44d07e79.17829562",
+        "name": "Wheel Rim  8 x  8 Notched Hole, Reinforced Back with Yellow Ring Pattern",
+        "file": "18459.dat"
+    },
+    {
+        "id": "6a5bbe44d5aaa2.61118870",
+        "name": "Wheel Rim 11 x 18 Front with 36 Spokes and Knock-off Hub Nut",
+        "file": "1872.dat"
+    },
+    {
+        "id": "6a5bbe44d9bf61.43151417",
+        "name": "Wheel Rim 11 x 18 with Vented Disc Brake",
+        "file": "18976.dat"
+    },
+    {
+        "id": "6a5bbe44d9c9b0.99027513",
+        "name": "Wheel Rim 11 x 18 with Vented Disc Brake with Tyre 11.2\/ 28 x 17.6 Intermediate",
+        "file": "18976c01.dat"
+    },
+    {
+        "id": "6a5bbe44d9dfa8.56027746",
+        "name": "Wheel Rim 11 x 18 Front with  5 Spokes",
+        "file": "18978a.dat"
+    },
+    {
+        "id": "6a5bbe44d9ea52.19766987",
+        "name": "Wheel Rim 11 x 18 Front with 10 Angled Spokes",
+        "file": "18978b.dat"
+    },
+    {
+        "id": "6a5bbe44d9f479.37942744",
+        "name": "Wheel Rim 11 x 18 Front with  7 Y-Shaped Spokes",
+        "file": "18979a.dat"
+    },
+    {
+        "id": "6a5bbe44d9fec1.91795423",
+        "name": "Wheel Rim 11 x 18 Front with 10 Spokes",
+        "file": "18979b.dat"
+    },
+    {
+        "id": "6a5bbe44e208f8.10329157",
+        "name": "Wheel Cover  5 Spoke Thick with Edge Bolts",
+        "file": "19215.dat"
+    },
+    {
+        "id": "6a5bbe44ee5e82.83615477",
+        "name": "~Wheel Centre Small for Steel Axle",
+        "file": "20.dat"
+    },
+    {
+        "id": "6a5bbe45091b44.89685774",
+        "name": "Wheel 25 x 28 VR with 35mm Diameter Rear Rim and Complete Cross Axle Hole",
+        "file": "22253.dat"
+    },
+    {
+        "id": "6a5bbe45092611.30316805",
+        "name": "Wheel 25 x 28 VR with 35mm Diameter Rear Rim and Complete Cross Axle Hole with Tyre 30\/ 42 x 28 R Balloon",
+        "file": "22253c01.dat"
+    },
+    {
+        "id": "6a5bbe45093089.99185083",
+        "name": "Wheel 25 x 28 VR with 35mm Diameter Rear Rim and Complete Cross Axle Hole with Tyre 28\/ 38 x 28 VR",
+        "file": "22253c02.dat"
+    },
+    {
+        "id": "6a5bbe45101528.24716998",
+        "name": "Wheel 21 x 37 Hard-Plastic with  7 Pin Holes",
+        "file": "22410.dat"
+    },
+    {
+        "id": "6a5bbe45122912.20628421",
+        "name": "Wheel 56 x 46 Technic Racing",
+        "file": "22969a.dat"
+    },
+    {
+        "id": "6a5bbe45123944.08284958",
+        "name": "Wheel 56 x 46 Technic Racing with Tyre 61\/ 41 x 54 Off Road",
+        "file": "22969ac01.dat"
+    },
+    {
+        "id": "6a5bbe45124534.00933079",
+        "name": "Wheel 56 x 46 Technic Racing with Tyre 61\/ 41 x 54 Power Puller",
+        "file": "22969ac02.dat"
+    },
+    {
+        "id": "6a5bbe45130f23.97585170",
+        "name": "~Duplo Car Base  2 x  6 Wheel",
+        "file": "2313a.dat"
+    },
+    {
+        "id": "6a5bbe45131a19.68085332",
+        "name": "~Duplo Car Base  2 x  6 Wheel with Fake Bolts",
+        "file": "2313b.dat"
+    },
+    {
+        "id": "6a5bbe451a3fd1.84969042",
+        "name": "Wheel Rim 42 x 62 with 10 Spokes and  3 Pegholes",
+        "file": "23800.dat"
+    },
+    {
+        "id": "6a5bbe451a4bc8.42118804",
+        "name": "Wheel Rim 42 x 62 with 10 Spokes and  3 Pegholes with Tyre 44\/ 22 x 62 ZR",
+        "file": "23800c01.dat"
+    },
+    {
+        "id": "6a5bbe4520a180.72349646",
+        "name": "~Wheel Spoked with Stud",
+        "file": "242.dat"
+    },
+    {
+        "id": "6a5bbe45227e12.52831734",
+        "name": "Wheel Spoked with Stud (Complete)",
+        "file": "242c01.dat"
+    },
+    {
+        "id": "6a5bbe4522b288.17573286",
+        "name": "Wheel Rim 11 x 18 Front with 10 Parallel Spokes",
+        "file": "24308a.dat"
+    },
+    {
+        "id": "6a5bbe4522bc64.05077257",
+        "name": "Wheel Rim 11 x 18 Front with 10 Y-Spokes",
+        "file": "24308b.dat"
+    },
+    {
+        "id": "6a5bbe45237b07.60184901",
+        "name": "Wheel  2 x 21 with Wheel Pin Hole with Integral Rubber Black Tyre Pattern",
+        "file": "24314p01.dat"
+    },
+    {
+        "id": "6a5bbe45238554.05269068",
+        "name": "Wheel  2 x 21 with Wheel Pin Hole with Integral Rubber Bright Green Tyre Pattern",
+        "file": "24314p02.dat"
+    },
+    {
+        "id": "6a5bbe4530a4a7.58555744",
+        "name": "Wheel  2.8 x 27 with  8 Spokes",
+        "file": "2470.dat"
+    },
+    {
+        "id": "6a5bbe45325f54.73067578",
+        "name": "Wheels Roller Coaster",
+        "file": "24869.dat"
+    },
+    {
+        "id": "6a5bbe45336c01.85148638",
+        "name": "Wheel Trolley",
+        "file": "2496.dat"
+    },
+    {
+        "id": "6a5bbe453513c0.20090254",
+        "name": "Wheel 32 x 56 Hard-Plastic without Inner Supports",
+        "file": "2515a.dat"
+    },
+    {
+        "id": "6a5bbe45351e23.35866234",
+        "name": "Wheel 32 x 56 Hard-Plastic with Inner Supports",
+        "file": "2515b.dat"
+    },
+    {
+        "id": "6a5bbe453c5dc1.36428472",
+        "name": "Wheel 48 x 76 with Tread on Sidewall",
+        "file": "2573.dat"
+    },
+    {
+        "id": "6a5bbe453eda64.20273135",
+        "name": "Wheel 30 x 35 with Tread on Sidewall",
+        "file": "2593.dat"
+    },
+    {
+        "id": "6a5bbe45494ae4.81549884",
+        "name": "~Axle Steel  5 x  67.5 LDU with Two Wheels  1.6 x 10",
+        "file": "2688.dat"
+    },
+    {
+        "id": "6a5bbe45495581.74496004",
+        "name": "~Wheel Axle Metal with Notched End",
+        "file": "269.dat"
+    },
+    {
+        "id": "6a5bbe4549b6a9.09323481",
+        "name": "Wheel Rim 12.7 x 30 Stepped",
+        "file": "2695.dat"
+    },
+    {
+        "id": "6a5bbe4549c276.51260444",
+        "name": "Wheel Rim 12.7 x 30 Stepped with Tyre 12.7\/ 51 x 30",
+        "file": "2695c01.dat"
+    },
+    {
+        "id": "6a5bbe454d3041.81034425",
+        "name": "Wheel 37 x 62 with Rocky Spikes and  7 Pegholes",
+        "file": "27254.dat"
+    },
+    {
+        "id": "6a5bbe45504c02.60125736",
+        "name": "Wheelbarrow Wheels with Red Axle",
+        "file": "277.dat"
+    },
+    {
+        "id": "6a5bbe45568b33.84946053",
+        "name": "Wheel Minifig Bicycle with Integral Rubber Black Tyre",
+        "file": "28578.dat"
+    },
+    {
+        "id": "6a5bbe455ca967.74499509",
+        "name": "Wheel Rim 14 x 62 Motorcycle",
+        "file": "2903.dat"
+    },
+    {
+        "id": "6a5bbe455cdea7.53085556",
+        "name": "Wheel Rim 14 x 62 Motorcycle with Tyre 17\/ 70 x 62 Motorcycle Offroad",
+        "file": "2903c01.dat"
+    },
+    {
+        "id": "6a5bbe455dae38.45117503",
+        "name": "Wheel Rim 11 x 18 Front with  5 Wide Spokes",
+        "file": "29117a.dat"
+    },
+    {
+        "id": "6a5bbe455db864.28965597",
+        "name": "Wheel Rim 11 x 18 Front with  5 Split Spokes",
+        "file": "29117b.dat"
+    },
+    {
+        "id": "6a5bbe4562c527.60214095",
+        "name": "Wheel 12 x 20 with Technic Axle Hole and 6 Pegholes",
+        "file": "2994.dat"
+    },
+    {
+        "id": "6a5bbe4562db00.98050552",
+        "name": "Wheel Rim 30 x 30 with 40mm Diameter Rear Rim",
+        "file": "2996.dat"
+    },
+    {
+        "id": "6a5bbe4562e547.31952449",
+        "name": "Wheel Rim 30 x 30 with 40mm Diameter Rear Rim with Tyre 40\/ 48 x 30 Off Road",
+        "file": "2996c01.dat"
+    },
+    {
+        "id": "6a5bbe4562fc58.41761504",
+        "name": "Wheel Rim 32 x 56 with Peghole and 6 Spokes with Pegholes",
+        "file": "2998.dat"
+    },
+    {
+        "id": "6a5bbe45659c56.58498560",
+        "name": "Wheel Rim  8 x  8 Round Hole, for Wheel Holding Pin",
+        "file": "30027a.dat"
+    },
+    {
+        "id": "6a5bbe4565a697.80344811",
+        "name": "Wheel Rim  8 x  8 Round Hole, for Wheel Holding Pin with Tyre  8\/ 40 x  8 Slick Smooth",
+        "file": "30027ac01.dat"
+    },
+    {
+        "id": "6a5bbe4565b0e2.83629258",
+        "name": "Wheel Rim  8 x  8 Notched Hole, Two Slots, for Wheel Holding Pin",
+        "file": "30027b.dat"
+    },
+    {
+        "id": "6a5bbe4565bbb6.36281035",
+        "name": "Wheel Rim  8 x  8 Notched Hole, Two Slots, for Wheel Holding Pin with Tyre  8\/ 40 x  8 Slick Smooth",
+        "file": "30027bc01.dat"
+    },
+    {
+        "id": "6a5bbe4565c617.64856589",
+        "name": "Wheel Rim  8 x  8 Notched Hole, One Slot, for Wheel Holding Pin",
+        "file": "30027c.dat"
+    },
+    {
+        "id": "6a5bbe4565d047.70565423",
+        "name": "Wheel Rim  8 x  8 Notched Hole, One Slot, Recessed Cross, for Wheel Holding Pin",
+        "file": "30027d.dat"
+    },
+    {
+        "id": "6a5bbe45862c10.38951630",
+        "name": "Wheel Rim  8 x 18 with 12 Spokes and Peghole",
+        "file": "30155.dat"
+    },
+    {
+        "id": "6a5bbe458636a6.79936625",
+        "name": "Wheel Rim  8 x 18 with 12 Spokes and Peghole with Tyre 12\/50 x 16 Offset Tread",
+        "file": "30155c01.dat"
+    },
+    {
+        "id": "6a5bbe45899a33.85854978",
+        "name": "Wheel Rim 11.2 x 10.4 with Stub Axles",
+        "file": "30190.dat"
+    },
+    {
+        "id": "6a5bbe4589a470.93076813",
+        "name": "Wheel Centre Wide with Stub Axles with Tyre 12\/ 40 x 11 Wide",
+        "file": "30190c01.dat"
+    },
+    {
+        "id": "6a5bbe458ffd13.92188343",
+        "name": "Wheel Rim 14.8 x 16.8 with Centre Groove",
+        "file": "30285.dat"
+    },
+    {
+        "id": "6a5bbe45919a57.56425638",
+        "name": "Wheel Hard with Treads",
+        "file": "30324.dat"
+    },
+    {
+        "id": "6a5bbe45cb3ad1.07816562",
+        "name": "Wheel Rim  6.4 x 11 with  7 Spokes",
+        "file": "30838.dat"
+    },
+    {
+        "id": "6a5bbe45cb4ab6.48659044",
+        "name": "Wheel Rim  6.4 x 11 with  7 Spokes with Blue Ring and Five Yellow Dots Pattern",
+        "file": "30838pk0.dat"
+    },
+    {
+        "id": "6a5bbe45ccee89.27122602",
+        "name": "~Axle Bush 1.4L",
+        "file": "3111.dat"
+    },
+    {
+        "id": "6a5bbe45cdcae6.77914630",
+        "name": "~Axle Bush 1.6L",
+        "file": "3112.dat"
+    },
+    {
+        "id": "6a5bbe45d352c3.03867744",
+        "name": "Wheel Rim 18 x 41 Model Team Type 2",
+        "file": "32004b.dat"
+    },
+    {
+        "id": "6a5bbe45d35cd0.07277667",
+        "name": "Wheel 18 x 41 Model Team with Tyre 68.8 x 24S",
+        "file": "32004bc01.dat"
+    },
+    {
+        "id": "6a5bbe45d44041.71455982",
+        "name": "Wheel Rim 18 x 37 with 6 Pegholes and Long Axle Bush",
+        "file": "32020.dat"
+    },
+    {
+        "id": "6a5bbe45d44ac0.38580813",
+        "name": "Wheel Rim 18 x 37 with 6 Pegholes and Long Axle Bush with Rubber Black Tyre 20\/ 64 x 37 S",
+        "file": "32020c01.dat"
+    },
+    {
+        "id": "6a5bbe45d55e02.99952727",
+        "name": "Wheel Rim 14 x 60 with 3 Spokes and 3 Pegholes",
+        "file": "32057.dat"
+    },
+    {
+        "id": "6a5bbe45d568e0.73037845",
+        "name": "Wheel Rim 14 x 60 with 3 Spokes and 3 Pegholes with Tyre 14\/ 20 x 60",
+        "file": "32057c01.dat"
+    },
+    {
+        "id": "6a5bbe45d66520.57804168",
+        "name": "Wheel Rim 28 x 60 with 3 Spokes and 3 Pegholes",
+        "file": "32077.dat"
+    },
+    {
+        "id": "6a5bbe45d7c3e8.07786823",
+        "name": "Wheel 14 x 30 Smooth",
+        "file": "32146.dat"
+    },
+    {
+        "id": "6a5bbe45d91d55.22444272",
+        "name": "Wheel 14 x 21 Solid Rubber with Axlehole",
+        "file": "32193.dat"
+    },
+    {
+        "id": "6a5bbe45d95025.40105344",
+        "name": "Wheel Rim 30 x 61 with 3 Spokes Swirled",
+        "file": "32197.dat"
+    },
+    {
+        "id": "6a5bbe45da2d77.51992595",
+        "name": "Wheel 14 x 30 Znap",
+        "file": "32219.dat"
+    },
+    {
+        "id": "6a5bbe45da37b5.03075249",
+        "name": "Wheel 16 x 68 Znap",
+        "file": "32220.dat"
+    },
+    {
+        "id": "6a5bbe45daa6d6.98212994",
+        "name": "Wheel 41mm Znap",
+        "file": "32247.dat"
+    },
+    {
+        "id": "6a5bbe45dab153.69905555",
+        "name": "Wheel 41mm Znap with Black Tyre",
+        "file": "32248.dat"
+    },
+    {
+        "id": "6a5bbe45ea83b7.26617631",
+        "name": "Wheel  3.2 x 43 with 10 Spokes Wooden",
+        "file": "33211.dat"
+    },
+    {
+        "id": "6a5bbe45ea8e74.31749779",
+        "name": "Wheel  3.2 x 56 with 10 Spokes Wooden",
+        "file": "33212.dat"
+    },
+    {
+        "id": "6a5bbe45f0fe55.05916840",
+        "name": "Wheel Rim  6.4 x  8 with Slot",
+        "file": "34337.dat"
+    },
+    {
+        "id": "6a5bbe45f28685.75366330",
+        "name": "Wheel Centre with Stub Axles",
+        "file": "3464b.dat"
+    },
+    {
+        "id": "6a5bbe45f290d9.32791529",
+        "name": "Wheel Centre with Stub Axles with Tyre  6\/ 50 x  8 Offset Tread",
+        "file": "3464c01.dat"
+    },
+    {
+        "id": "6a5bbe45f29b27.14606696",
+        "name": "Wheel Centre with Stub Axles with Tyre 4\/ 80 x 8 Single Smooth Type 1",
+        "file": "3464c02.dat"
+    },
+    {
+        "id": "6a5bbe45f2a591.55578052",
+        "name": "Wheel Centre with Stub Axles with Tyre 4\/ 80 x 8 Single Smooth Type 2",
+        "file": "3464c03.dat"
+    },
+    {
+        "id": "6a5bbe45f3b438.80247421",
+        "name": "Wheel Rim  8 x 17.5 with Axlehole",
+        "file": "3482.dat"
+    },
+    {
+        "id": "6a5bbe45f3bea4.90356327",
+        "name": "Wheel Rim  8 x 17.5 with Axlehole with Black Tyre  7\/ 56 x 17 Offset Tread",
+        "file": "3482c01.dat"
+    },
+    {
+        "id": "6a5bbe45f3c925.33907111",
+        "name": "Wheel Rim  8 x 17.5 with Axlehole with Black Tyre 10\/130 x 17",
+        "file": "3482c02.dat"
+    },
+    {
+        "id": "6a5bbe45f3d348.57894856",
+        "name": "Wheel Rim  8 x 17.5 with Axlehole with Black Tyre  7\/ 86 x 17 with Centre Groove",
+        "file": "3482c03.dat"
+    },
+    {
+        "id": "6a5bbe45f3dd60.44207209",
+        "name": "Wheel Rim  8 x 17.5 with Axlehole with Rubber Black Tyre 12\/ 50 x 16 Offset Tread",
+        "file": "3482c04.dat"
+    },
+    {
+        "id": "6a5bbe45f3e766.42614325",
+        "name": "Wheel Rim  8 x 17.5 with Axlehole with Rubber Light Grey Tyre 12\/ 50 x 16 Offset Tread",
+        "file": "3482c05.dat"
+    },
+    {
+        "id": "6a5bbe45f40645.97662087",
+        "name": "Wheel 16 x 37 Hard-Plastic with 4 Studs",
+        "file": "3486.dat"
+    },
+    {
+        "id": "6a5bbe4600af48.64641109",
+        "name": "Wheel  8 x 35 with 12 Spokes (Complete)",
+        "file": "35.dat"
+    },
+    {
+        "id": "6a5bbe460ac9f9.34125443",
+        "name": "~Wheel Axle Metal",
+        "file": "35b.dat"
+    },
+    {
+        "id": "6a5bbe460ad411.98600976",
+        "name": "Wheel 8 x 35 with 12 Spokes with Black Tyre Large",
+        "file": "35c01.dat"
+    },
+    {
+        "id": "6a5bbe46265176.12137017",
+        "name": "Wheel Cover 28 Spoke for Wheel 20 x 30",
+        "file": "37195.dat"
+    },
+    {
+        "id": "6a5bbe46285503.76094573",
+        "name": "Wheel Rim 42 x 62 with 10 Spokes and  3 Pins",
+        "file": "37383.dat"
+    },
+    {
+        "id": "6a5bbe46285f22.79829497",
+        "name": "Wheel Rim 42 x 62 with 10 Spokes and  3 Pins with Tyre 44\/ 22 x 62 ZR",
+        "file": "37383c01.dat"
+    },
+    {
+        "id": "6a5bbe462869a3.20917867",
+        "name": "Wheel Rim 42 x 62 with 10 Spokes and  3 Pins with Silver Outline Pattern",
+        "file": "37383p01.dat"
+    },
+    {
+        "id": "6a5bbe46287401.88476393",
+        "name": "Wheel Rim 42 x 62 with 10 Spokes and  3 Pins with Silver Outline Pattern with Tyre 44\/ 22 x 62 ZR",
+        "file": "37383p01c01.dat"
+    },
+    {
+        "id": "6a5bbe46287e56.62921796",
+        "name": "Wheel 24 x 43 Technic",
+        "file": "3739.dat"
+    },
+    {
+        "id": "6a5bbe46288863.47506299",
+        "name": "Wheel 24 x 43 Technic with Tyre 24\/ 80 x 43 Offset Tread",
+        "file": "3739c01.dat"
+    },
+    {
+        "id": "6a5bbe464e1a01.13428983",
+        "name": "Wheel 14 x 48 with 4 Spokes with Integral Tyre",
+        "file": "39367.dat"
+    },
+    {
+        "id": "6a5bbe464e23f0.29185013",
+        "name": "Wheel 14 x 48 with 4 Spokes with Integral Medium Azure Tyre",
+        "file": "39367p01.dat"
+    },
+    {
+        "id": "6a5bbe464e30f6.39437922",
+        "name": "Wheel 14 x 48 with 4 Spokes with Integral Black Tyre",
+        "file": "39367p02.dat"
+    },
+    {
+        "id": "6a5bbe465c8785.01113620",
+        "name": "~Wheel 10 x  3",
+        "file": "4075.dat"
+    },
+    {
+        "id": "6a5bbe465d9ca9.37455858",
+        "name": "~Wheel Fabuland Wheelbarrow",
+        "file": "4091.dat"
+    },
+    {
+        "id": "6a5bbe4660f3b5.50174321",
+        "name": "~Axle for Wheel 10 x  3",
+        "file": "4108.dat"
+    },
+    {
+        "id": "6a5bbe46610946.29472494",
+        "name": "~Axle Red with Two Wheels 10 x  3 (Complete)",
+        "file": "4108c01.dat"
+    },
+    {
+        "id": "6a5bbe467786c2.81346037",
+        "name": "Wheel Rim 26 x 43 with 6 Spokes and 3 Pegholes",
+        "file": "41896.dat"
+    },
+    {
+        "id": "6a5bbe46779145.90644816",
+        "name": "Wheel Rim 26 x 43 with 6 Spokes 3 Pegholes with Tyre 28\/ 23 x 43 ZR Street",
+        "file": "41896c01.dat"
+    },
+    {
+        "id": "6a5bbe46859221.18092521",
+        "name": "Wheel Rim 10 x 17.4 with 4 Studs and Freestyle Pinhole",
+        "file": "4259.dat"
+    },
+    {
+        "id": "6a5bbe46861177.42119609",
+        "name": "Wheel Rim  8 x 11.2 with Centre Groove",
+        "file": "42610.dat"
+    },
+    {
+        "id": "6a5bbe46861bf8.63397919",
+        "name": "Wheel Rim  8 x 11.2 with Centre Groove and Peghole with Tyre  6.4\/ 75 x  8 Shallow Offset Tread",
+        "file": "42610c01.dat"
+    },
+    {
+        "id": "6a5bbe46862767.06062393",
+        "name": "Wheel Rim  8 x 11.2 with Centre Groove and Peghole with Tyre  6\/ 30 x 11",
+        "file": "42610c02.dat"
+    },
+    {
+        "id": "6a5bbe468631a9.00764600",
+        "name": "Wheel Rim  8 x 11.2 with Centre Groove and Peghole with Tyre  6.4\/ 75 x  8 Shallow Offset Tread with Centre Band",
+        "file": "42610c03.dat"
+    },
+    {
+        "id": "6a5bbe46871f65.96715188",
+        "name": "Wheel Rim 20 x 30 Smooth with 6 Pinholes",
+        "file": "4266.dat"
+    },
+    {
+        "id": "6a5bbe468729e2.01794364",
+        "name": "Wheel Rim 20 x 30 Smooth with 6 Pinholes with Tyre 20\/ 83 x 30 Offset Tread",
+        "file": "4266c01.dat"
+    },
+    {
+        "id": "6a5bbe46873483.96355247",
+        "name": "Wheel Rim 20 x 30 Smooth with 6 Pinholes with Tyre 20\/ 46 x 30 Off Road",
+        "file": "4266c02.dat"
+    },
+    {
+        "id": "6a5bbe46879217.85600810",
+        "name": "Wheel Rim 20 x 30 \"Torq Thrust\" with  5 Spokes and External Ribs",
+        "file": "42716.dat"
+    },
+    {
+        "id": "6a5bbe46879cf0.53744869",
+        "name": "Wheel Rim 20 x 30 \"Torq Thrust\" with  5 Spokes and External Ribs with Tyre 20\/ 48 x 30",
+        "file": "42716c01.dat"
+    },
+    {
+        "id": "6a5bbe4689cd48.26729438",
+        "name": "Wheel 13 x 20 Solid Rubber with Axle Hole",
+        "file": "4288.dat"
+    },
+    {
+        "id": "6a5bbe46910869.36997720",
+        "name": "~Wheel  6 x 20 with 10 Spokes",
+        "file": "4363.dat"
+    },
+    {
+        "id": "6a5bbe46951fa2.73004585",
+        "name": "Wheel Rim 20 x 30 with 3 Pegholes",
+        "file": "44292.dat"
+    },
+    {
+        "id": "6a5bbe46952a16.01997606",
+        "name": "Wheel 14 x 29 Smooth with Black Tyre (Complete)",
+        "file": "44293.dat"
+    },
+    {
+        "id": "6a5bbe46993b90.67319060",
+        "name": "Wheel 22 x 172 with Fins and Inner 168 Tooth Gear",
+        "file": "44556.dat"
+    },
+    {
+        "id": "6a5bbe469b49f6.81583170",
+        "name": "Wheel Rim 34 x 56 with 6 Spokes and 3 Pegholes",
+        "file": "44772.dat"
+    },
+    {
+        "id": "6a5bbe469b5467.77167127",
+        "name": "Wheel Rim 34 x 56 with 6 Spokes and 3 Pegholes with Tyre 44\/ 44 x 56 Off Road",
+        "file": "44772c01.dat"
+    },
+    {
+        "id": "6a5bbe469b6107.10761090",
+        "name": "Wheel Rim 34 x 56 with 6 Spokes and 3 Pegholes with Tyre 44\/ 58 x 56 R Tractor",
+        "file": "44772c02.dat"
+    },
+    {
+        "id": "6a5bbe469d32c6.35312281",
+        "name": "Wheel  2.8 x 34 with  8 Spokes with Round Hole for Wheel Holding Pin",
+        "file": "4489a.dat"
+    },
+    {
+        "id": "6a5bbe469d3e59.65651836",
+        "name": "Wheel  2.8 x 34 with  8 Spokes with Notched Hole for Wheel Holding Pin",
+        "file": "4489b.dat"
+    },
+    {
+        "id": "6a5bbe469f3395.28625268",
+        "name": "~Wheel  6.4 x  8",
+        "file": "450.dat"
+    },
+    {
+        "id": "6a5bbe46b37eb8.76588097",
+        "name": "Wheel Rim  6.4 x  8",
+        "file": "4624.dat"
+    },
+    {
+        "id": "6a5bbe46b3c5c6.75743050",
+        "name": "Wheel Rim  6.4 x  8 with Tyre  6\/ 50 x  8 Offset Tread",
+        "file": "4624c01.dat"
+    },
+    {
+        "id": "6a5bbe46b3cfe0.77147295",
+        "name": "Wheel Rim  6.4 x  8 with Tyre  6\/ 50 x  8 Offset Tread with Centre Band",
+        "file": "4624c02.dat"
+    },
+    {
+        "id": "6a5bbe46b3da09.10264452",
+        "name": "Wheel Rim  6.4 x  8 with Tyre  4\/ 80 x  8 Single Smooth Type 1",
+        "file": "4624c03.dat"
+    },
+    {
+        "id": "6a5bbe46b3e431.18511645",
+        "name": "Wheel Rim  6.4 x  8 with Tyre  8\/ 75 x  8 Offset Tread",
+        "file": "4624c04.dat"
+    },
+    {
+        "id": "6a5bbe46b3ee32.61753875",
+        "name": "Wheel Rim  6.4 x  8 with Tyre  4\/ 80 x  8 Single Smooth Type 2",
+        "file": "4624c05.dat"
+    },
+    {
+        "id": "6a5bbe46b4f5a1.18264692",
+        "name": "Wheel 16 x 75 Motorcycle Solid",
+        "file": "46334.dat"
+    },
+    {
+        "id": "6a5bbe46b50063.24722122",
+        "name": "Wheel 17 x 75 Motorcycle Solid with Tyre 21\/ 48 x 75 Motorcycle with Racing Tread",
+        "file": "46334c01.dat"
+    },
+    {
+        "id": "6a5bbe46bb5517.11711502",
+        "name": "Wheel Minifig Bicycle",
+        "file": "4720.dat"
+    },
+    {
+        "id": "6a5bbe46c23216.05006779",
+        "name": "Wheel  5 x 17.5 with Solid Spokes and Axlehole",
+        "file": "47576.dat"
+    },
+    {
+        "id": "6a5bbe46ced0b9.20706859",
+        "name": "Wheel Rim 11 x 18 Side with Tyre Widener",
+        "file": "49098.dat"
+    },
+    {
+        "id": "6a5bbe46cedac2.33951735",
+        "name": "Wheel Rim 11 x 18 Side with Tyre Widener with Yellow \"Chevrolet Camaro\" Pattern",
+        "file": "49098py0.dat"
+    },
+    {
+        "id": "6a5bbe46cee494.41723903",
+        "name": "Wheel Rim 11 x 18 Side with Tyre Widener with Blue \"Pirelli Cinturato\" Pattern",
+        "file": "49098py1.dat"
+    },
+    {
+        "id": "6a5bbe46cf56d8.56404404",
+        "name": "Wheel Rim 34 x 56 with  6 Double Spokes and  6 Pegholes",
+        "file": "49294.dat"
+    },
+    {
+        "id": "6a5bbe46cf6145.61586841",
+        "name": "Wheel Rim 34 x 56 with  6 Double Spokes and  6 Pegholes with Tyre 35\/ 42 x 56 Racing",
+        "file": "49294c01.dat"
+    },
+    {
+        "id": "6a5bbe46cf6bb6.46314855",
+        "name": "Wheel 14 x 80 with  4 Spokes with Integral Tyre",
+        "file": "49295.dat"
+    },
+    {
+        "id": "6a5bbe46cf7619.74904321",
+        "name": "Wheel 14 x 80 with  4 Spokes with Integral Medium Azure Tyre",
+        "file": "49295p01.dat"
+    },
+    {
+        "id": "6a5bbe46cf8048.79479452",
+        "name": "Wheel 14 x 80 with  4 Spokes with Integral Black Tyre",
+        "file": "49295p02.dat"
+    },
+    {
+        "id": "6a5bbe46cf8a98.25381440",
+        "name": "Wheel 14 x 80 with  4 Spokes with Integral Red Tyre Pattern",
+        "file": "49295p03.dat"
+    },
+    {
+        "id": "6a5bbe46d1d170.90817963",
+        "name": "~Wheel Rim  8 x 18 with 4 Studs",
+        "file": "497a.dat"
+    },
+    {
+        "id": "6a5bbe46d1dc27.24236838",
+        "name": "Wheel Rim  8 x 18 with 4 Studs and Notched Axle",
+        "file": "497c01.dat"
+    },
+    {
+        "id": "6a5bbe46d321b6.51287287",
+        "name": "Train Wheel Small with Notched Hole",
+        "file": "50254.dat"
+    },
+    {
+        "id": "6a5bbe46d49df1.21575671",
+        "name": "Wheel  6 x 14 Spoked with Stub Axles",
+        "file": "50862.dat"
+    },
+    {
+        "id": "6a5bbe46d4a814.05058246",
+        "name": "Wheel  6 x 14 Spoked with Stub Axles with Tyre  6\/ 58 x 14 Offset Tread",
+        "file": "50862c01.dat"
+    },
+    {
+        "id": "6a5bbe46d58048.26396922",
+        "name": "Wheel Rim  6.4 x 11 with  5 Spokes",
+        "file": "50944.dat"
+    },
+    {
+        "id": "6a5bbe46d58ac4.03969291",
+        "name": "Wheel Rim  6.4 x 11 with 5 Spokes with Tyre  6.4\/ 75 x  8 Shallow Offset Tread",
+        "file": "50944c01.dat"
+    },
+    {
+        "id": "6a5bbe46d59926.70772228",
+        "name": "Wheel Rim  6.4 x 11 with 5 Spokes with Tyre  6\/ 30 x 11",
+        "file": "50944c02.dat"
+    },
+    {
+        "id": "6a5bbe46d5a961.81869787",
+        "name": "Wheel Rim  6.4 x 11 with  5 Spokes with Metallic Silver Outline Pattern",
+        "file": "50944p01.dat"
+    },
+    {
+        "id": "6a5bbe46d5b4b8.79212950",
+        "name": "Wheel Rim  6.4 x  11 with  5 Spokes with Metallic Silver Outline Pattern with Tyre  6\/ 30 x  11",
+        "file": "50944p01c01.dat"
+    },
+    {
+        "id": "6a5bbe46d5bfa7.42551823",
+        "name": "Wheel Rim  6.4 x 11 with  5 Spokes with Metallic Gold Outline Pattern",
+        "file": "50944p02.dat"
+    },
+    {
+        "id": "6a5bbe46d71a22.34065357",
+        "name": "Wheel Cover  5 Spoke for Wheel 34 x 56",
+        "file": "50965.dat"
+    },
+    {
+        "id": "6a5bbe46d8ccf0.96763700",
+        "name": "Wheel Rim 14 x 18 with  8 Spokes",
+        "file": "51377.dat"
+    },
+    {
+        "id": "6a5bbe46d8d724.79662647",
+        "name": "Wheel Centre Large Wide 8 Spokes with Tyre Shallow Staggered",
+        "file": "51377c01.dat"
+    },
+    {
+        "id": "6a5bbe46d8e174.07552230",
+        "name": "Wheel Centre Large Wide with 8 Spokes with Tyre 30.4 x 14",
+        "file": "51377c02.dat"
+    },
+    {
+        "id": "6a5bbe46d8ec38.95890353",
+        "name": "Wheel Rim 20 x 75 with 6 Double Spokes",
+        "file": "51378.dat"
+    },
+    {
+        "id": "6a5bbe46da0a12.93911149",
+        "name": "Wheel Rim  6.4 x 11 with  5 Spokes with Metallic Silver Outline Pattern",
+        "file": "51719.dat"
+    },
+    {
+        "id": "6a5bbe46da1613.67660183",
+        "name": "Wheel Rim  6.4 x 11 with 5 Spokes and Silver Pattern with Tyre  6.4\/ 75 x  8 Shallow Offset Tread",
+        "file": "51719c01.dat"
+    },
+    {
+        "id": "6a5bbe46e03ca3.86528148",
+        "name": "Wheel Cover  5 Spoke for Wheel 20 x 30",
+        "file": "54086.dat"
+    },
+    {
+        "id": "6a5bbe46e046f4.99636799",
+        "name": "Wheel Rim 20 x 30 with  6 Spokes and No Pegholes",
+        "file": "54087.dat"
+    },
+    {
+        "id": "6a5bbe46e28d06.03430744",
+        "name": "Wheel Rim 41 x 75 with  10 Spokes and  3 Pins",
+        "file": "5428.dat"
+    },
+    {
+        "id": "6a5bbe46e82155.53530985",
+        "name": "Wheel 21 x 56 with 8 Spokes Armoured",
+        "file": "55817.dat"
+    },
+    {
+        "id": "6a5bbe46e82b78.00982938",
+        "name": "Wheel 12 x 18 Smooth",
+        "file": "55889.dat"
+    },
+    {
+        "id": "6a5bbe46e8bbe7.56006772",
+        "name": "Wheel Rim 14 x 18 with Holes on Both Sides (Needs Work)",
+        "file": "55981.dat"
+    },
+    {
+        "id": "6a5bbe46e8c630.75781481",
+        "name": "Wheel Rim 14 x 18 with Holes on Both Sides with Tyre 14\/ 50 x 17 with Centre Band",
+        "file": "55981c01.dat"
+    },
+    {
+        "id": "6a5bbe46e8d0e5.47375430",
+        "name": "Wheel Rim 14 x 18 with Holes on Both Sides with Tyre 14\/ 70 x 17",
+        "file": "55981c02.dat"
+    },
+    {
+        "id": "6a5bbe46e8dad0.69059751",
+        "name": "Wheel Rim 14 x 18 with Holes on Both Sides with Tyre 14\/ 54 x 15 VR",
+        "file": "55981c03.dat"
+    },
+    {
+        "id": "6a5bbe46e8e503.48129790",
+        "name": "Wheel Rim 14 x 18 with Holes on Both Sides with Tyre 18\/ 56 x 17 Off-Road with Offset Centre",
+        "file": "55981c04.dat"
+    },
+    {
+        "id": "6a5bbe46e8ef09.74084888",
+        "name": "Wheel Rim 14 x 18 with Holes on Both Sides with Tyre 14\/ 26 x 18 Shallow Staggered Treads with Middle Band",
+        "file": "55981c05.dat"
+    },
+    {
+        "id": "6a5bbe46e8f943.21737848",
+        "name": "Wheel Rim 14 x 18 with Holes on Both Sides with Tyre 14.3\/ 27 x  6.4 Shallow Staggered Treads",
+        "file": "55981c06.dat"
+    },
+    {
+        "id": "6a5bbe46e903f9.35155629",
+        "name": "Wheel Rim 14 x 18 with Axlehole",
+        "file": "55982.dat"
+    },
+    {
+        "id": "6a5bbe46e95610.67565230",
+        "name": "Wheel Rim 20 x 30 with  6 Dual Spokes and External Ribs",
+        "file": "56145.dat"
+    },
+    {
+        "id": "6a5bbe46e96069.16867146",
+        "name": "Wheel Rim 20 x 30, 6 Spokes, Ribs with Tyre 43.2 x 26 Balloon Small",
+        "file": "56145c01.dat"
+    },
+    {
+        "id": "6a5bbe46e96a74.02830512",
+        "name": "Wheel Rim 20 x 30, 6 Spokes, Ribs with Tyre 22\/ 30 x 30 ZR",
+        "file": "56145c02.dat"
+    },
+    {
+        "id": "6a5bbe46e97472.96291818",
+        "name": "Wheel Rim 20 x 30, 6 Spokes, Ribs with Tyre 26\/ 52 x 30 Off Road",
+        "file": "56145c03.dat"
+    },
+    {
+        "id": "6a5bbe46ea1c99.32464394",
+        "name": "Wheel Rim 20 x 30 with  5 Holes",
+        "file": "5650.dat"
+    },
+    {
+        "id": "6a5bbe46eb6b73.61348714",
+        "name": "Wheel Rim  8 x 18 with Deep Centre Groove and Peghole",
+        "file": "56902.dat"
+    },
+    {
+        "id": "6a5bbe46eb75c6.42898019",
+        "name": "Wheel Rim  8 x 18 with Deep Centre Groove and Peghole with Tyre  7\/ 45 x 17 Offset Tread with Middle Band",
+        "file": "56902c01.dat"
+    },
+    {
+        "id": "6a5bbe46eb8078.04404556",
+        "name": "Wheel Rim  8 x 18 with Deep Centre Groove and Axle Hole",
+        "file": "56903.dat"
+    },
+    {
+        "id": "6a5bbe46eb8aa4.60997693",
+        "name": "Wheel Rim  8 x 18 with Deep Centre Groove and Axle Hole with Tyre  7\/ 45 x 17 Offset Tread with Middle Band",
+        "file": "56903c01.dat"
+    },
+    {
+        "id": "6a5bbe46eb95e1.72084339",
+        "name": "Wheel Rim 14 x 30 with 6 Spokes and No Pegholes",
+        "file": "56904.dat"
+    },
+    {
+        "id": "6a5bbe46eba0a0.12418958",
+        "name": "Wheel Rim 14 x 30 with 6 Spokes and No Pegholes with Tyre 14\/ 43 x 30",
+        "file": "56904c01.dat"
+    },
+    {
+        "id": "6a5bbe46ebb522.65811768",
+        "name": "Wheel Rim 26 x 43 with 6 Spokes and 6 Pegholes",
+        "file": "56908.dat"
+    },
+    {
+        "id": "6a5bbe46ebbf65.93252622",
+        "name": "Wheel Rim 26 x 43 with 6 Spokes and 6 Pegholes with Tyre 38\/ 50 x 43 Off Road",
+        "file": "56908c01.dat"
+    },
+    {
+        "id": "6a5bbe46ebc986.74097859",
+        "name": "Wheel Rim 26 x 43 with 6 Spokes and 6 Pegholes with Tyre 44\/ 91 x 43 R",
+        "file": "56908c02.dat"
+    },
+    {
+        "id": "6a5bbe46ebd372.81588946",
+        "name": "Wheel Rim 26 x 43 with 6 Spokes and 6 Pegholes with Tyre 28\/ 23 x 43 ZR Street",
+        "file": "56908c03.dat"
+    },
+    {
+        "id": "6a5bbe46ef4582.83860511",
+        "name": "~Axle Steel  5 x 100 LDU",
+        "file": "57877.dat"
+    },
+    {
+        "id": "6a5bbe46ef4f90.61923808",
+        "name": "~Axle Steel  5 x 100 LDU with Two Train Wheels with Closed Centres",
+        "file": "57877c01.dat"
+    },
+    {
+        "id": "6a5bbe46f0c123.75456817",
+        "name": "Wheel Cover  7 Spoke Forked for Wheel 34 x 56",
+        "file": "58088.dat"
+    },
+    {
+        "id": "6a5bbe4709daf0.40681859",
+        "name": "Wheel Rim 12 x 11 with Round Hole",
+        "file": "6014a.dat"
+    },
+    {
+        "id": "6a5bbe4709e585.45321242",
+        "name": "Wheel Rim 12 x 11 with Round Hole with Tyre 12\/ 40 x 11 Wide",
+        "file": "6014ac01.dat"
+    },
+    {
+        "id": "6a5bbe4709ef91.14085037",
+        "name": "Wheel Rim 12 x 11 with Notched Hole",
+        "file": "6014b.dat"
+    },
+    {
+        "id": "6a5bbe4709f9d3.29111093",
+        "name": "Wheel Rim 12 x 11 with Notched Hole with Tyre 12\/ 40 x 11 Wide",
+        "file": "6014bc01.dat"
+    },
+    {
+        "id": "6a5bbe470a0fe9.00114023",
+        "name": "Wheel Rim 12 x 11 with Notched Hole with Tyre 12\/ 40 x 11 Wide with Centre Band",
+        "file": "6014bc02.dat"
+    },
+    {
+        "id": "6a5bbe470a1a70.10795134",
+        "name": "Wheel Rim 12 x 11 with Notched Hole with Tyre 12\/ 61 x 11 Balloon",
+        "file": "6014bc03.dat"
+    },
+    {
+        "id": "6a5bbe470b6993.60323248",
+        "name": "Wheel Rim 16 x 31 with 6 Pegholes",
+        "file": "60208.dat"
+    },
+    {
+        "id": "6a5bbe471dff80.91001238",
+        "name": "Wheel 23 x 24 with Tread on Sidewall",
+        "file": "6118.dat"
+    },
+    {
+        "id": "6a5bbe47340707.97567984",
+        "name": "Wheel Cover  5 Spoke for Wheel 20 x 30 with Red Edge Pattern",
+        "file": "61738.dat"
+    },
+    {
+        "id": "6a5bbe4745d340.75865164",
+        "name": "~Wheel  4 x 10 with Integral Rubber Black Tyre",
+        "file": "6230.dat"
+    },
+    {
+        "id": "6a5bbe4746a661.03693691",
+        "name": "Wheel Cover  7 Spoke for Wheel 14 x 18",
+        "file": "62359.dat"
+    },
+    {
+        "id": "6a5bbe47485807.47820511",
+        "name": "Wheel Rim 10 x 17.4 with 4 Studs and Technic Peghole",
+        "file": "6248.dat"
+    },
+    {
+        "id": "6a5bbe474e8766.38714041",
+        "name": "Wheel Cover  9 Spoke for Wheel 14 x 17",
+        "file": "62701.dat"
+    },
+    {
+        "id": "6a5bbe475922e3.65310435",
+        "name": "~Wheel  6.8 x 18 Solid for Duplo Vehicle Base",
+        "file": "6357.dat"
+    },
+    {
+        "id": "6a5bbe475d7878.67496465",
+        "name": "Wheel Minifig Bicycle with Black Tyre",
+        "file": "64248.dat"
+    },
+    {
+        "id": "6a5bbe4762a8c3.93643444",
+        "name": "Wheel 20 x 64 with Spikes and 13 Pegholes",
+        "file": "64711.dat"
+    },
+    {
+        "id": "6a5bbe4762b2b3.34906016",
+        "name": "Wheel 32 x 64 Conical with Spikes and Inner 48 Tooth Gear",
+        "file": "64712.dat"
+    },
+    {
+        "id": "6a5bbe476cd550.54025277",
+        "name": "Wheel Rim 23 x 22 Offroad with Axlehole",
+        "file": "6580a.dat"
+    },
+    {
+        "id": "6a5bbe476cdff8.58103770",
+        "name": "Wheel Rim 23 x 22 Off Road with Axlehole with Tyre 26\/ 36 x 22 Off Road",
+        "file": "6580ac01.dat"
+    },
+    {
+        "id": "6a5bbe476cea90.71835949",
+        "name": "Wheel Rim 23 x 22 Offroad with Split Axlehole",
+        "file": "6580b.dat"
+    },
+    {
+        "id": "6a5bbe476cf5a1.48123606",
+        "name": "Wheel Rim 23 x 22 Off Road with Split Axlehole with Tyre 26\/ 36 x 22 Off Road",
+        "file": "6580bc01.dat"
+    },
+    {
+        "id": "6a5bbe476d1896.60347849",
+        "name": "Wheel Rim 20 x 33 with  6 Pinholes",
+        "file": "6582.dat"
+    },
+    {
+        "id": "6a5bbe476d2d19.08354019",
+        "name": "Wheel Rim 20 x 33 with  6 Pinholes with Tyre 20\/ 40 x 33 Off Road",
+        "file": "6582c01.dat"
+    },
+    {
+        "id": "6a5bbe476d4315.74515309",
+        "name": "Wheel 14 x 35 with 4 Spokes with Integral Tyre",
+        "file": "65834.dat"
+    },
+    {
+        "id": "6a5bbe476d4d33.04553945",
+        "name": "Wheel 14 x 35 with 4 Spokes with Integral Medium Azure Tyre",
+        "file": "65834p01.dat"
+    },
+    {
+        "id": "6a5bbe476d57b8.24161970",
+        "name": "Wheel 14 x 35 with 4 Spokes with Integral Rubber Black Tyre Pattern",
+        "file": "65834p02.dat"
+    },
+    {
+        "id": "6a5bbe476e0942.16552287",
+        "name": "Wheel 25 x 28 VR with 35mm Diameter Rear Rim and Partial Cross Axle Hole",
+        "file": "6595.dat"
+    },
+    {
+        "id": "6a5bbe476e1389.85603538",
+        "name": "Wheel 25 x 28 VR with 35mm Diameter Rear Rim and Partial Cross Axle Hole with Tyre 30\/ 42 x 28 R Balloon",
+        "file": "6595c01.dat"
+    },
+    {
+        "id": "6a5bbe476e1d78.50351886",
+        "name": "Wheel 25 x 28 VR with 35mm Diameter Rear Rim and Partial Cross Axle Hole with Tyre 28\/ 38 x 28 VR",
+        "file": "6595c02.dat"
+    },
+    {
+        "id": "6a5bbe476e3208.43060946",
+        "name": "Wheel  4 x 21 with Three Spokes and Integral Rubber Tyre",
+        "file": "6600.dat"
+    },
+    {
+        "id": "6a5bbe476e3be5.48564010",
+        "name": "Wheel  4 x 21 with Three Spokes and Integral Rubber Black Tyre Pattern",
+        "file": "6600p01.dat"
+    },
+    {
+        "id": "6a5bbe476e97a2.77070436",
+        "name": "Wheel Rim 20 x 30 with  3 Dual Angled Spokes and  4L Hub",
+        "file": "66155.dat"
+    },
+    {
+        "id": "6a5bbe476ea1b0.85756678",
+        "name": "Wheel Rim 20 x 30 with  3 Dual Angled Spokes and  4L Hub with Tyre 26\/ 24 x 30 Sand Racing",
+        "file": "66155c01.dat"
+    },
+    {
+        "id": "6a5bbe4771f6f8.87406055",
+        "name": "Wheel Rim 11 x 18 with Drilled Disc Brake",
+        "file": "66727.dat"
+    },
+    {
+        "id": "6a5bbe477201d2.30499562",
+        "name": "Wheel Rim 11 x 18 with Drilled Disc Brake with Tyre 11.2\/ 28 x 17.6 Intermediate",
+        "file": "66727c01.dat"
+    },
+    {
+        "id": "6a5bbe47794a56.35797533",
+        "name": "~Wheel  5.5 x 20 with 10 Spokes",
+        "file": "683.dat"
+    },
+    {
+        "id": "6a5bbe47795ed0.03415172",
+        "name": "Wheel 16 x 40 with  7 Pin Holes",
+        "file": "68327.dat"
+    },
+    {
+        "id": "6a5bbe477a0261.64263332",
+        "name": "Wheel Rim 42 x 62 with 20 Spokes and  3 Pins",
+        "file": "68577.dat"
+    },
+    {
+        "id": "6a5bbe477a0d55.02243769",
+        "name": "Wheel Rim 42 x 62 with 20 Spokes and  3 Pins with Tyre 44\/ 22 x 62 ZR",
+        "file": "68577c01.dat"
+    },
+    {
+        "id": "6a5bbe477e1ac0.50831212",
+        "name": "~Axle Steel  6 x 108",
+        "file": "70081.dat"
+    },
+    {
+        "id": "6a5bbe477ee275.46451497",
+        "name": "Wheel Rim  8 x 18 with 4 Studs and Cylindrical Axle",
+        "file": "7039.dat"
+    },
+    {
+        "id": "6a5bbe477eecb3.67315671",
+        "name": "Wheel Rim  8 x 18 with 4 Studs, Cylindrical Axle with LightGrey Tyre 7.2\/ 45 x 8.8",
+        "file": "7039c01.dat"
+    },
+    {
+        "id": "6a5bbe477ef717.49447005",
+        "name": "Wheel Rim  8 x 18 with 4 Studs, Cylindrical Axle with Black Tyre 7.2\/ 45 x 8.8",
+        "file": "7039c02.dat"
+    },
+    {
+        "id": "6a5bbe477f01d1.18621120",
+        "name": "Wheel Rim  8 x 18 with 4 Studs, Cylindrical Axle with Tyre 7\/ 56 x 17 Offset Tread",
+        "file": "7039c03.dat"
+    },
+    {
+        "id": "6a5bbe47806089.61231273",
+        "name": "~Axle Steel  5 x 112 LDU with Conical Ends",
+        "file": "70720.dat"
+    },
+    {
+        "id": "6a5bbe47806c42.58382883",
+        "name": "~Axle Steel  5 x 112 LDU with Conical Ends with Two Train Wheels with Open Centres",
+        "file": "70720c01.dat"
+    },
+    {
+        "id": "6a5bbe478351e9.32278276",
+        "name": "Wheel Rim  8 x 35 with 12 Studs with Axle (Complete)",
+        "file": "715.dat"
+    },
+    {
+        "id": "6a5bbe4783a424.50740475",
+        "name": "Wheel Rim  8 x 35 with 12 Studs with Axle and Light Grey Tyre",
+        "file": "715c01.dat"
+    },
+    {
+        "id": "6a5bbe4783ae49.11334442",
+        "name": "Wheel Rim  8 x 35 with 12 Studs with Axle with Black Tyre Large",
+        "file": "715c02.dat"
+    },
+    {
+        "id": "6a5bbe47848ff8.65267523",
+        "name": "Wheel 24 x 107 Motorcycle with  7 Spokes",
+        "file": "71720.dat"
+    },
+    {
+        "id": "6a5bbe47849a95.10613557",
+        "name": "Wheel 24 x 107 Motorcycle with  7 Spokes with Tyre 27\/ 48 x 107 Motorcycle with Racing Tread",
+        "file": "71720c01.dat"
+    },
+    {
+        "id": "6a5bbe4786eb17.68351585",
+        "name": "~Wheel 11 x 24 with Integral Rubber Tyre",
+        "file": "72206.dat"
+    },
+    {
+        "id": "6a5bbe4786f583.52494406",
+        "name": "Wheel 11 x 24 with Integral Rubber Black Tyre",
+        "file": "72206p01.dat"
+    },
+    {
+        "id": "6a5bbe4786ffc2.36945155",
+        "name": "Wheel Rim 11 x 24 Front with  5 Spokes",
+        "file": "72210a.dat"
+    },
+    {
+        "id": "6a5bbe478709d6.32916245",
+        "name": "Wheel Rim 11 x 24 Front with  9 Spokes",
+        "file": "72210b.dat"
+    },
+    {
+        "id": "6a5bbe4791fcd7.17312243",
+        "name": "Wheel Rim 41 x 75 with  5 Spokes and  3 Pins #2 (Right)",
+        "file": "73389.dat"
+    },
+    {
+        "id": "6a5bbe479210e8.54316026",
+        "name": "Wheel Rim 41 x 75 with  5 Spokes and  3 Pins #1 (Left)",
+        "file": "73398.dat"
+    },
+    {
+        "id": "6a5bbe4795c496.98335041",
+        "name": "Wheel 7 x 24 with Fake Bolts and 6 Spokes with Integral Rubber Tyre",
+        "file": "74214.dat"
+    },
+    {
+        "id": "6a5bbe4795cf89.78597760",
+        "name": "Wheel 7 x 24 with Fake Bolts and 6 Spokes with Integral Rubber Black Tyre",
+        "file": "74214p01.dat"
+    },
+    {
+        "id": "6a5bbe4797e207.25676205",
+        "name": "Wheel Rim  8 x  8 Notched Hole, Reinforced Back",
+        "file": "74967.dat"
+    },
+    {
+        "id": "6a5bbe4797ebf0.15248755",
+        "name": "Wheel Rim  8 x  8 Notched Hole, Reinforced Back with Tyre  8\/ 40 x  8 Slick Smooth",
+        "file": "74967c01.dat"
+    },
+    {
+        "id": "6a5bbe4797f620.08394931",
+        "name": "Wheel Rim  8 x  8 Notched Hole, Reinforced Back with Yellow Ring Pattern",
+        "file": "74967p01.dat"
+    },
+    {
+        "id": "6a5bbe47980065.05178698",
+        "name": "Wheel Rim  8 x  8 Notched Hole, Reinforced Back with Yellow Ring Pattern with Tyre  8\/ 40 x  8 Slick Smooth",
+        "file": "74967p01c01.dat"
+    },
+    {
+        "id": "6a5bbe47c6f815.19773742",
+        "name": "Wheel Rim 13 x 56 with 12 Spokes and Axlehole",
+        "file": "7877.dat"
+    },
+    {
+        "id": "6a5bbe47cc9239.81020919",
+        "name": "Wheel  2 x 21 with Technic Pin Hole with Integral Rubber Tyre",
+        "file": "80441.dat"
+    },
+    {
+        "id": "6a5bbe47cc9c83.43633023",
+        "name": "Wheel  2 x 21 with Technic Pin Hole with Integral Rubber Black Tyre Pattern",
+        "file": "80441p01.dat"
+    },
+    {
+        "id": "6a5bbe47cca6d8.68901036",
+        "name": "Wheel  2 x 21 with Technic Pin Hole with Integral Rubber Tan Tyre Pattern",
+        "file": "80441p02.dat"
+    },
+    {
+        "id": "6a5bbe47d9f346.43324488",
+        "name": "Wheel 20 x 62 Motorcycle Solid",
+        "file": "84772.dat"
+    },
+    {
+        "id": "6a5bbe47d9fe40.24116464",
+        "name": "Wheel 20 x 62 Motorcycle Solid with White Outer Rim Pattern",
+        "file": "84772p01.dat"
+    },
+    {
+        "id": "6a5bbe47da0948.94528506",
+        "name": "Wheel 20 x 62 Motorcycle Solid with White Outer Rim Pattern with Tyre 20 \/ 33 x 62 Motorcycle",
+        "file": "84772p01c01.dat"
+    },
+    {
+        "id": "6a5bbe47e0a825.93851859",
+        "name": "Wheel Rim 18 x 37 with 6 Pegholes and Short Axle Bush",
+        "file": "86652.dat"
+    },
+    {
+        "id": "6a5bbe47e0b248.62332429",
+        "name": "Wheel Rim 18 x 37 with 6 Pegholes and Short Axle Bush with Rubber Black Tyre 20\/ 64 x 37 S",
+        "file": "86652c01.dat"
+    },
+    {
+        "id": "6a5bbe47e0d3b8.30166394",
+        "name": "Wheel Train for 12V Electric Motor",
+        "file": "867.dat"
+    },
+    {
+        "id": "6a5bbe47efb264.76314541",
+        "name": "Wheel 17 x 75 Motorcycle with Holes in Rim",
+        "file": "88517.dat"
+    },
+    {
+        "id": "6a5bbe47efbcd1.33155713",
+        "name": "Wheel 17 x 75 Motorcycle with Holes in Rim w Tyre 19\/ 67 x 75",
+        "file": "88517c01.dat"
+    },
+    {
+        "id": "6a5bbe47efc738.67440918",
+        "name": "Wheel 17 x 75 Motorcycle with Holes in Rim with Tyre 23\/ 41 x 75 Motorcycle with Racing Tread",
+        "file": "88517c02.dat"
+    },
+    {
+        "id": "6a5bbe47efd1c2.00777079",
+        "name": "Wheel 17 x 75 Motorcycle with Holes in Rim with Tyre 21\/ 48 x 75 Motorcycle with Racing Tread",
+        "file": "88517c03.dat"
+    },
+    {
+        "id": "6a5bbe481bcce3.88579109",
+        "name": "Wheel Minifig Bicycle with Integral Rubber Black Tyre",
+        "file": "92851.dat"
+    },
+    {
+        "id": "6a5bbe48244315.68753480",
+        "name": "Wheel Rim  6.4 x 11 with 8 Straight Spokes",
+        "file": "93593.dat"
+    },
+    {
+        "id": "6a5bbe48244d84.27885832",
+        "name": "Wheel Rim  6.4 x 11 without Spokes",
+        "file": "93594.dat"
+    },
+    {
+        "id": "6a5bbe482457f6.11234541",
+        "name": "Wheel Rim  6.4 x 11 with  8 Y-Shaped Spokes",
+        "file": "93595.dat"
+    },
+    {
+        "id": "6a5bbe48246248.12840705",
+        "name": "Wheel Rim  6.4 x 11 with  8 Y-Shaped Spokes with Tyre  6.4\/ 75 x  8 Shallow Offset Tread with Centre Band",
+        "file": "93595c01.dat"
+    },
+    {
+        "id": "6a5bbe48246d75.81769542",
+        "name": "Wheel Rim  6.4 x 11 with  8 Y-Shaped Spokes and Silver Pattern",
+        "file": "93595p01.dat"
+    },
+    {
+        "id": "6a5bbe48247802.99697719",
+        "name": "Wheel Rim  6.4 x 11 with  8 Y-Shaped Spokes and Gold Pattern",
+        "file": "93595p02.dat"
+    },
+    {
+        "id": "6a5bbe48248293.33443717",
+        "name": "Wheel Rim  6.4 x 11 with  8 Y-Shaped Spokes and Black Pattern",
+        "file": "93595p03.dat"
+    },
+    {
+        "id": "6a5bbe4826bf17.71535659",
+        "name": "~Axle Steel  6 x 96 LDU",
+        "file": "944.dat"
+    },
+    {
+        "id": "6a5bbe487c9d60.70594320",
+        "name": "~Wheel 14 x 29 Smooth",
+        "file": "u9030.dat"
+    },
+    {
+        "id": "6a5bbe487d7ab9.84307408",
+        "name": "~Wheel  8 x 35 with 12 Spokes",
+        "file": "u9049.dat"
+    },
+    {
+        "id": "6a5bbe487f1d90.94533139",
+        "name": "Wheel Rim 26 x  7 with Rip Cord Gear Axle [494] and Tyre [16]",
+        "file": "u9081c01.dat"
+    },
+    {
+        "id": "6a5bbe48842fe4.88196017",
+        "name": "~Axle Steel  4 x 72 LDU",
+        "file": "u9132.dat"
+    },
+    {
+        "id": "6a5bbe488439e0.03646888",
+        "name": "~Axle Steel  4 x  72 LDU with Two Wheels  4 x  8",
+        "file": "u9132c01.dat"
+    },
+    {
+        "id": "6a5bbe488443c9.99711998",
+        "name": "~Axle Steel  4 x 72 with Two Wheels  6.4 x  8",
+        "file": "u9132c02.dat"
+    },
+    {
+        "id": "6a5bbe48844e43.90110856",
+        "name": "~Axle Steel  4 x 72 LDU with Two Wheels  4 x  8 with Tyres  4\/ 80 x  8 Single Smooth Type 1",
+        "file": "u9132c03.dat"
+    },
+    {
+        "id": "6a5bbe48845895.98901990",
+        "name": "~Axle Steel  4 x  72 LDU with Two Wheels  6.4 x  8 with Tyres  3\/100 x  8 Double Smooth",
+        "file": "u9132c04.dat"
+    },
+    {
+        "id": "6a5bbe48846256.48349712",
+        "name": "~Axle Steel  4 x  72 LDU with Two Wheels  4 x  8 with Tyres  6\/ 50 x  8 Offset Tread",
+        "file": "u9132c05.dat"
+    },
+    {
+        "id": "6a5bbe48846c35.22565968",
+        "name": "~Axle Steel  4 x 114 LDU",
+        "file": "u9133.dat"
+    },
+    {
+        "id": "6a5bbe48847647.93093099",
+        "name": "~Axle Steel  4 x 114 LDU with Two Wheels  4 x  8",
+        "file": "u9133c01.dat"
+    },
+    {
+        "id": "6a5bbe4888fa36.77451939",
+        "name": "Wheel  8 x 19 with Integral Axle",
+        "file": "u9163.dat"
+    },
+    {
+        "id": "6a5bbe48893408.63646175",
+        "name": "Wheel  4 x 19 with Stub Axles",
+        "file": "u9167.dat"
+    },
+    {
+        "id": "6a5bbe4889c5b0.63203893",
+        "name": "~Axle Steel  4 x 96 LDU",
+        "file": "u9183.dat"
+    },
+    {
+        "id": "6a5bbe4889d993.23527726",
+        "name": "~Axle Steel  5 x 67.5 for Monorail Motor and Chassis",
+        "file": "u9185.dat"
+    },
+    {
+        "id": "6a5bbe4889e3e5.94118359",
+        "name": "~Wheel  1.6 x 10 for Monorail Motor and Chassis",
+        "file": "u9186.dat"
+    },
+    {
+        "id": "6a5bbe488d9a24.32949685",
+        "name": "~Wheel Rim  8 x 35 with 12 Studs",
+        "file": "u9237.dat"
+    }
+]

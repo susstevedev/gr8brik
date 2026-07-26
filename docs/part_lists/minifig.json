@@ -1,0 +1,797 @@
+[
+    {
+        "id": "6a5bbe44856c90.62686223",
+        "name": "Minifig Gollum",
+        "file": "10057.dat"
+    },
+    {
+        "id": "6a5bbe44857760.39639873",
+        "name": "Minifig Gollum with Wide Eyes and Open Mouth Pattern",
+        "file": "10057pm0.dat"
+    },
+    {
+        "id": "6a5bbe44858246.06549778",
+        "name": "Minifig Gollum with Narrow Eyes and Half-open Mouth Pattern",
+        "file": "10057pm1.dat"
+    },
+    {
+        "id": "6a5bbe4485ec75.15988895",
+        "name": "Minifig Baby Head with Space Helmet and Air Tanks",
+        "file": "100662.dat"
+    },
+    {
+        "id": "6a5bbe4485f920.99493959",
+        "name": "Minifig Baby Head with Space Helmet and Air Tanks and Yellow Face with Eyes and Smile Pattern",
+        "file": "100662p01.dat"
+    },
+    {
+        "id": "6a5bbe448f9333.09592993",
+        "name": "Minifig Helmet Iron Man",
+        "file": "10907.dat"
+    },
+    {
+        "id": "6a5bbe448f9db2.18348352",
+        "name": "Minifig Helmet Iron Man with Visor with Gold Face, White Eyes Pattern",
+        "file": "10907c01.dat"
+    },
+    {
+        "id": "6a5bbe44a237e0.90899263",
+        "name": "Minifig Baseball Glove",
+        "file": "13543.dat"
+    },
+    {
+        "id": "6a5bbe44a3e701.55672575",
+        "name": "Minifig Hat with Small Pin, Women's Fedora with Large Bow and Feather",
+        "file": "13746.dat"
+    },
+    {
+        "id": "6a5bbe44a3f229.39425832",
+        "name": "Minifig Hat with Small Pin, Women's Fedora with Large Red Bow and Black Feather Pattern",
+        "file": "13746p01.dat"
+    },
+    {
+        "id": "6a5bbe44a3fcd9.38812709",
+        "name": "Minifig Hat with Small Pin, Women's Fedora with Large Red Bow and Red Feather Pattern",
+        "file": "13746p02.dat"
+    },
+    {
+        "id": "6a5bbe44a40702.83988467",
+        "name": "Minifig Hair Female Long, Braided on Right, Hole on Top",
+        "file": "13750.dat"
+    },
+    {
+        "id": "6a5bbe44b3b3e0.97401341",
+        "name": "Minifig Mechanical Arm Bent with Reinforced Elbow with Clips at 90 degrees",
+        "file": "15341.dat"
+    },
+    {
+        "id": "6a5bbe44b57010.99350484",
+        "name": "~Minifig Helmet Large Square - Top",
+        "file": "15435.dat"
+    },
+    {
+        "id": "6a5bbe44b7c462.61364667",
+        "name": "Minifig Baby Body with Bodysuit",
+        "file": "15526.dat"
+    },
+    {
+        "id": "6a5bbe44b93892.72205248",
+        "name": "Minifig Lightsaber Hilt without Bottom Ring",
+        "file": "15556a.dat"
+    },
+    {
+        "id": "6a5bbe44b9c1c3.93451955",
+        "name": "Minifig Fire Helmet",
+        "file": "15601.dat"
+    },
+    {
+        "id": "6a5bbe44b9cc48.74524025",
+        "name": "Minifig Fire Helmet",
+        "file": "15602.dat"
+    },
+    {
+        "id": "6a5bbe44b9d754.19329129",
+        "name": "Minifig Castle Helmet with Neck Protector",
+        "file": "15606.dat"
+    },
+    {
+        "id": "6a5bbe44ce7090.18442779",
+        "name": "Minifig Robot Leg  1 x  2 x  1.667 with Pin",
+        "file": "17486.dat"
+    },
+    {
+        "id": "6a5bbe44cf9296.54806431",
+        "name": "Minifig Hair Spiked",
+        "file": "18228.dat"
+    },
+    {
+        "id": "6a5bbe4502c578.43995696",
+        "name": "Minifig Helmet SW Flametrooper Episode  7 and Walker Driver Episode 8",
+        "file": "20905.dat"
+    },
+    {
+        "id": "6a5bbe450fafa4.94690707",
+        "name": "Minifig Mechanical Shoulder with two Bar-Holes",
+        "file": "22392.dat"
+    },
+    {
+        "id": "6a5bbe451a0056.50885103",
+        "name": "Minifig Skeleton Leg Long",
+        "file": "23769.dat"
+    },
+    {
+        "id": "6a5bbe451d0eb4.92305456",
+        "name": "Minifig Bundled Baby with Stud Holder on Back",
+        "file": "24067.dat"
+    },
+    {
+        "id": "6a5bbe451d1956.51771676",
+        "name": "Minifig Bundled Baby with Stud Holder on Back with Yellow Smiling Face and Small Eyes Pattern",
+        "file": "24067p01.dat"
+    },
+    {
+        "id": "6a5bbe451d23d7.21022888",
+        "name": "Minifig Bundled Baby with Stud Holder on Back with Light Nougat Smiling Face, Small Eyes and Gold Capital Letter H Pattern",
+        "file": "24067p02.dat"
+    },
+    {
+        "id": "6a5bbe451d2e56.09497856",
+        "name": "Minifig Bundled Baby with Stud Holder on Back with White Evil Face Pattern",
+        "file": "24067p03.dat"
+    },
+    {
+        "id": "6a5bbe451d38f0.71850960",
+        "name": "Minifig Bundled Baby with Stud Holder on Back with Light Nougat Smiling Face and Large Eyes Pattern",
+        "file": "24067p04.dat"
+    },
+    {
+        "id": "6a5bbe451d4464.10714006",
+        "name": "Minifig Bundled Baby with Stud Holder on Back with Nougat Smiling Face, Large Eyes and Hair Pattern",
+        "file": "24067p05.dat"
+    },
+    {
+        "id": "6a5bbe451d96f6.53959491",
+        "name": "Minifig Mechanical Cuboid Torso with Stud on Front",
+        "file": "24078.dat"
+    },
+    {
+        "id": "6a5bbe451e8279.91071909",
+        "name": "Minifig Book Cover with White Head Up Display Pattern",
+        "file": "24093pc1.dat"
+    },
+    {
+        "id": "6a5bbe452bc1f2.73640714",
+        "name": "Minifig Helmet Visor Standard",
+        "file": "2447b.dat"
+    },
+    {
+        "id": "6a5bbe452eaf58.12527009",
+        "name": "Minifig Baby Head",
+        "file": "24581.dat"
+    },
+    {
+        "id": "6a5bbe452eb9b9.62727016",
+        "name": "Minifig Baby Head with Eyes and Smile Pattern",
+        "file": "24581p01.dat"
+    },
+    {
+        "id": "6a5bbe45348293.34114226",
+        "name": "Minifig Baby Body",
+        "file": "25128.dat"
+    },
+    {
+        "id": "6a5bbe45348d73.67615825",
+        "name": "Minifig Baby Body with Yellow Hands Pattern",
+        "file": "25128p01.dat"
+    },
+    {
+        "id": "6a5bbe453497f4.70126797",
+        "name": "Minifig Baby with Head with Eyes and Smile Pattern",
+        "file": "25128p01c01.dat"
+    },
+    {
+        "id": "6a5bbe4534a263.31014485",
+        "name": "Minifig Baby Body with Yellow Hands and Bib with Elephant Pattern",
+        "file": "25128p02.dat"
+    },
+    {
+        "id": "6a5bbe4534ac93.90509889",
+        "name": "Minifig Baby Body with Light Nougat Hands Pattern",
+        "file": "25128p03.dat"
+    },
+    {
+        "id": "6a5bbe4534b6b2.58807424",
+        "name": "Minifig Baby Body with Black Lines, Reddish Brown Fur Collar and Sand Green Hands Pattern",
+        "file": "25128p04.dat"
+    },
+    {
+        "id": "6a5bbe4534c0c4.22397138",
+        "name": "Minifig Baby Body with Classic Space Logo Pattern",
+        "file": "25128p05.dat"
+    },
+    {
+        "id": "6a5bbe45377700.55759599",
+        "name": "~Minifig Cannon Shooting Barrel",
+        "file": "2533.dat"
+    },
+    {
+        "id": "6a5bbe45378213.06612400",
+        "name": "Minifig Cannon Shooting (Complete)",
+        "file": "2533c01.dat"
+    },
+    {
+        "id": "6a5bbe45378c46.67656094",
+        "name": "~Minifig Cannon Shooting Plunger",
+        "file": "2534.dat"
+    },
+    {
+        "id": "6a5bbe453796b5.73228582",
+        "name": "~Minifig Cannon Shooting Breech",
+        "file": "2535.dat"
+    },
+    {
+        "id": "6a5bbe454421f1.91212376",
+        "name": "Minifig Hair Short with Curls and Corn Rows",
+        "file": "2644.dat"
+    },
+    {
+        "id": "6a5bbe454acb41.12850848",
+        "name": "Minifig Hat Beanie",
+        "file": "27059.dat"
+    },
+    {
+        "id": "6a5bbe45575a05.66335619",
+        "name": "Minifig Flame with Rim",
+        "file": "28618.dat"
+    },
+    {
+        "id": "6a5bbe455e2156.34635013",
+        "name": "Minifig Flipper Thick",
+        "file": "29161.dat"
+    },
+    {
+        "id": "6a5bbe455e8937.89291469",
+        "name": "Minifig Construction Helmet with Hair Ponytail",
+        "file": "29211.dat"
+    },
+    {
+        "id": "6a5bbe4582f081.12376112",
+        "name": "Minifig Comb",
+        "file": "30112b.dat"
+    },
+    {
+        "id": "6a5bbe45894983.37176099",
+        "name": "~Bike  3 Wheel Motorcycle Minifig (Complete)",
+        "file": "30187c02.dat"
+    },
+    {
+        "id": "6a5bbe45953541.80383401",
+        "name": "Minifig Robot Leg  1 x  2 x  2.333 with Pin",
+        "file": "30362a.dat"
+    },
+    {
+        "id": "6a5bbe45977864.39744403",
+        "name": "Minifig Mechanical Torso",
+        "file": "30375.dat"
+    },
+    {
+        "id": "6a5bbe459782f1.07887690",
+        "name": "Minifig Mechanical SW Battle Droid (Shortcut)",
+        "file": "30375cs0.dat"
+    },
+    {
+        "id": "6a5bbe45978dd6.72143395",
+        "name": "Minifig Mechanical SW Battle Droid Commander (Shortcut)",
+        "file": "30375cs1.dat"
+    },
+    {
+        "id": "6a5bbe45979842.41901487",
+        "name": "Minifig Mechanical SW Battle Droid Security (Shortcut)",
+        "file": "30375cs2.dat"
+    },
+    {
+        "id": "6a5bbe4597a2a1.55943209",
+        "name": "Minifig Mechanical SW Battle Droid Pilot (Shortcut)",
+        "file": "30375cs3.dat"
+    },
+    {
+        "id": "6a5bbe4597b2e3.71857819",
+        "name": "Minifig Mechanical Torso with Orange Insignia Pattern",
+        "file": "30375ps1.dat"
+    },
+    {
+        "id": "6a5bbe4597bdc8.70030012",
+        "name": "Minifig Mechanical Torso with Tan Insignia Pattern",
+        "file": "30375ps2.dat"
+    },
+    {
+        "id": "6a5bbe4597c8d7.95409949",
+        "name": "Minifig Mechanical Torso with Blue Insignia Pattern",
+        "file": "30375ps3.dat"
+    },
+    {
+        "id": "6a5bbe4597d3a5.74622844",
+        "name": "Minifig Mechanical Torso with Orange Dot Insignia Pattern",
+        "file": "30375ps4.dat"
+    },
+    {
+        "id": "6a5bbe4597de59.16189888",
+        "name": "Minifig Mechanical Torso with Yellow Dot Insignia Pattern",
+        "file": "30375ps5.dat"
+    },
+    {
+        "id": "6a5bbe4597e861.11438773",
+        "name": "Minifig Mechanical Torso with Tan Three Dot Insignia Pattern",
+        "file": "30375ps6.dat"
+    },
+    {
+        "id": "6a5bbe4597f2f0.45680190",
+        "name": "Minifig Mechanical Torso with Red Dot Insignia Pattern",
+        "file": "30375ps7.dat"
+    },
+    {
+        "id": "6a5bbe4597fd52.19889434",
+        "name": "Minifig Mechanical Legs",
+        "file": "30376.dat"
+    },
+    {
+        "id": "6a5bbe45980781.17160882",
+        "name": "Minifig Mechanical Arm with Clips Parallel",
+        "file": "30377.dat"
+    },
+    {
+        "id": "6a5bbe459812d1.03200373",
+        "name": "Minifig Mechanical Head SW Battle Droid",
+        "file": "30378.dat"
+    },
+    {
+        "id": "6a5bbe45981d79.52576325",
+        "name": "Minifig Mechanical Head SW Battle Droid with Orange Insignia Pattern",
+        "file": "30378ps1.dat"
+    },
+    {
+        "id": "6a5bbe45982816.54164599",
+        "name": "Minifig Mechanical Head SW Battle Droid with Dark Red Insignia Pattern",
+        "file": "30378ps2.dat"
+    },
+    {
+        "id": "6a5bbe459832d1.21791318",
+        "name": "Minifig Mechanical Head SW Battle Droid with Yellow Insignia Pattern",
+        "file": "30378ps3.dat"
+    },
+    {
+        "id": "6a5bbe45a2b2a8.95701996",
+        "name": "Minifig Martian Head with Clip",
+        "file": "30529.dat"
+    },
+    {
+        "id": "6a5bbe45a2be24.54206372",
+        "name": "Minifig Martian (Complete)",
+        "file": "30529c01.dat"
+    },
+    {
+        "id": "6a5bbe45a2c872.13272824",
+        "name": "Minifig Martian Head with Clip with Eyes Plain Pattern",
+        "file": "30529p01.dat"
+    },
+    {
+        "id": "6a5bbe45a2d2b7.44978255",
+        "name": "Minifig Martian Head with Clip with Eyelashes Pattern",
+        "file": "30529p02.dat"
+    },
+    {
+        "id": "6a5bbe45a2dd09.70009567",
+        "name": "Minifig Martian Legs",
+        "file": "30530.dat"
+    },
+    {
+        "id": "6a5bbe45de21a3.54141713",
+        "name": "Minifig Spear with Round End",
+        "file": "32373.dat"
+    },
+    {
+        "id": "6a5bbe45e829d7.27097280",
+        "name": "~Minifig Book Spine",
+        "file": "33009k01.dat"
+    },
+    {
+        "id": "6a5bbe45e833f7.19459723",
+        "name": "~Minifig Book Front",
+        "file": "33009k02.dat"
+    },
+    {
+        "id": "6a5bbe45e83dc0.38676719",
+        "name": "~Minifig Book Back",
+        "file": "33009k03.dat"
+    },
+    {
+        "id": "6a5bbe45e84833.09752328",
+        "name": "~Minifig Book Joint Curved",
+        "file": "33009k04.dat"
+    },
+    {
+        "id": "6a5bbe45e85205.33299420",
+        "name": "~Minifig Book Joint Straight",
+        "file": "33009k05.dat"
+    },
+    {
+        "id": "6a5bbe45ec4bc0.64810117",
+        "name": "Arm Skeleton with Vertical Clip Bent 53.13",
+        "file": "33449.dat"
+    },
+    {
+        "id": "6a5bbe45ec5746.14362271",
+        "name": "Minifig Baby Head with Neck",
+        "file": "33464.dat"
+    },
+    {
+        "id": "6a5bbe45ec6259.25720692",
+        "name": "Minifig Baby Head with Neck with Eyes and Smile Pattern",
+        "file": "33464p01.dat"
+    },
+    {
+        "id": "6a5bbe46037378.55677538",
+        "name": "Minifig Helmet Visor Standard",
+        "file": "35334.dat"
+    },
+    {
+        "id": "6a5bbe460525f2.95668012",
+        "name": "Minifig Baby Head Cuboid",
+        "file": "35530.dat"
+    },
+    {
+        "id": "6a5bbe467551d7.53530057",
+        "name": "Minifig Brick  2 x  2 with Steering Wheel",
+        "file": "41850.dat"
+    },
+    {
+        "id": "6a5bbe46773f20.97386295",
+        "name": "Minifig Mechanical SW Super Battle Droid",
+        "file": "41889c01.dat"
+    },
+    {
+        "id": "6a5bbe467749d0.78541468",
+        "name": "Minifig Mechanical SW Super Battle Droid with Blaster Arm",
+        "file": "41889c02.dat"
+    },
+    {
+        "id": "6a5bbe46dfa460.30198146",
+        "name": "Minifig Mechanical Leg",
+        "file": "53984.dat"
+    },
+    {
+        "id": "6a5bbe46dfae54.71931252",
+        "name": "Minifig Mechanical Head and Torso",
+        "file": "53988.dat"
+    },
+    {
+        "id": "6a5bbe46dfb854.26268702",
+        "name": "Minifig Mechanical Arm with Clip and Rod Hole with Thin Forearm",
+        "file": "53989.dat"
+    },
+    {
+        "id": "6a5bbe46e277e6.75663155",
+        "name": "Minifig Mechanical Torso with 4 Side Attachment Cylinders",
+        "file": "54275.dat"
+    },
+    {
+        "id": "6a5bbe46e72ca7.88921617",
+        "name": "Minifig Mechanical Legs",
+        "file": "55527.dat"
+    },
+    {
+        "id": "6a5bbe46e736e3.36025779",
+        "name": "Minifig Mechanical Arm with Clips Parallel",
+        "file": "55528.dat"
+    },
+    {
+        "id": "6a5bbe47004b48.03324127",
+        "name": "Minifig Mechanical Arm Straight with Clips at 90 degrees",
+        "file": "59230.dat"
+    },
+    {
+        "id": "6a5bbe47058fb4.31825928",
+        "name": "Minifig Helmet Castle with Fixed Face Grille",
+        "file": "59858.dat"
+    },
+    {
+        "id": "6a5bbe4709bc41.50384646",
+        "name": "Minifig Skeleton Torso with Shoulder Rods",
+        "file": "60115.dat"
+    },
+    {
+        "id": "6a5bbe471b51f9.46397319",
+        "name": "~Minifig Compass Base",
+        "file": "6094.dat"
+    },
+    {
+        "id": "6a5bbe471b5c52.50854672",
+        "name": "~Minifig Compass Cover",
+        "file": "6095.dat"
+    },
+    {
+        "id": "6a5bbe471e7711.07673554",
+        "name": "Minifig Helmet Rangefinder for SW Clone Trooper Helmet",
+        "file": "61190d.dat"
+    },
+    {
+        "id": "6a5bbe474d1097.72975129",
+        "name": "Minifig Skeleton (Shortcut)",
+        "file": "6260c01.dat"
+    },
+    {
+        "id": "6a5bbe474d4588.05637719",
+        "name": "Minifig Skeleton Arm",
+        "file": "6265.dat"
+    },
+    {
+        "id": "6a5bbe474d5045.63221512",
+        "name": "Minifig Skeleton Leg",
+        "file": "6266.dat"
+    },
+    {
+        "id": "6a5bbe474e3566.77239344",
+        "name": "~Minifig Computer Laptop Keyboard",
+        "file": "62698k01.dat"
+    },
+    {
+        "id": "6a5bbe474e3fa3.79121649",
+        "name": "~Minifig Computer Laptop Hinge",
+        "file": "62698k02.dat"
+    },
+    {
+        "id": "6a5bbe474e49e7.41527233",
+        "name": "~Minifig Computer Laptop Screen",
+        "file": "62698k03.dat"
+    },
+    {
+        "id": "6a5bbe4776a3f3.84807436",
+        "name": "Minifig Centaur Body",
+        "file": "67638.dat"
+    },
+    {
+        "id": "6a5bbe4776ae25.86377923",
+        "name": "Minifig Centaur Body with Dark Tan Tail Pattern",
+        "file": "67638p01.dat"
+    },
+    {
+        "id": "6a5bbe4776b837.54546354",
+        "name": "Minifig Centaur Body with Dark Brown Tail Pattern",
+        "file": "67638p02.dat"
+    },
+    {
+        "id": "6a5bbe477d07b9.98323442",
+        "name": "Minifig Hat Beekeeper",
+        "file": "69938.dat"
+    },
+    {
+        "id": "6a5bbe477d1210.35647945",
+        "name": "Minifig Hat Beekeeper with Molded Trans-Brown Visor Pattern",
+        "file": "69938p01.dat"
+    },
+    {
+        "id": "6a5bbe477d1c80.31185501",
+        "name": "Minifig Hat Beekeeper with Molded Trans-Black Visor Pattern",
+        "file": "69938p02.dat"
+    },
+    {
+        "id": "6a5bbe4780fbd4.12278207",
+        "name": "~Minifig Compass Base Stick",
+        "file": "70926.dat"
+    },
+    {
+        "id": "6a5bbe47896281.47829059",
+        "name": "Minifig Baby Head Grogu",
+        "file": "73125.dat"
+    },
+    {
+        "id": "6a5bbe47896cc1.49666784",
+        "name": "Minifig Baby Head Grogu with Black Eyes Pattern",
+        "file": "73125p01.dat"
+    },
+    {
+        "id": "6a5bbe479cb936.43736436",
+        "name": "Minifig Mechanical Arm with Clip and Rod Hole with Thick Forearm",
+        "file": "76116.dat"
+    },
+    {
+        "id": "6a5bbe47c980c7.37317740",
+        "name": "Minifig Cleaver",
+        "file": "79811.dat"
+    },
+    {
+        "id": "6a5bbe47df8d69.17112792",
+        "name": "Minifig Mechanical Arm with Clips Parallel",
+        "file": "86024.dat"
+    },
+    {
+        "id": "6a5bbe47df9803.97953299",
+        "name": "Minifig Mechanical Legs",
+        "file": "86025.dat"
+    },
+    {
+        "id": "6a5bbe47e827d7.43601968",
+        "name": "Minifig Mechanical Torso Cyborg",
+        "file": "87566.dat"
+    },
+    {
+        "id": "6a5bbe47e83248.42213143",
+        "name": "Minifig Mechanical Torso Cyborg with Tan Pattern",
+        "file": "87566p01.dat"
+    },
+    {
+        "id": "6a5bbe47e83ca4.28429729",
+        "name": "Minifig Mechanical Torso Cyborg with White Pattern",
+        "file": "87566p02.dat"
+    },
+    {
+        "id": "6a5bbe47e84781.48432346",
+        "name": "Minifig Mechanical Head Cyborg",
+        "file": "87567.dat"
+    },
+    {
+        "id": "6a5bbe47e851e5.28280381",
+        "name": "Minifig Mechanical Head Cyborg with Tan Face Pattern",
+        "file": "87567p01.dat"
+    },
+    {
+        "id": "6a5bbe47e85c47.25812805",
+        "name": "Minifig Mechanical Head Cyborg with White Face Pattern",
+        "file": "87567p02.dat"
+    },
+    {
+        "id": "6a5bbe47e866b6.43845257",
+        "name": "Minifig Mechanical Arm Bent with Clips at 90 Degrees",
+        "file": "87568.dat"
+    },
+    {
+        "id": "6a5bbe47e871a7.26031135",
+        "name": "Minifig Mechanical Arm Bent with Clips at 90 Degrees with White Pattern on Left Side",
+        "file": "87568p01.dat"
+    },
+    {
+        "id": "6a5bbe47e87bd4.31216030",
+        "name": "Minifig Mechanical Arm Bent with Clips at 90 Degrees with White Pattern on Right Side",
+        "file": "87568p02.dat"
+    },
+    {
+        "id": "6a5bbe47e88633.04174191",
+        "name": "Minifig Mechanical Arm Bent with Clips at 90 Degrees with Tan Pattern on Left Side",
+        "file": "87568p03.dat"
+    },
+    {
+        "id": "6a5bbe47e89088.33308661",
+        "name": "Minifig Mechanical Arm Bent with Clips at 90 Degrees with Tan Pattern on Right Side",
+        "file": "87568p04.dat"
+    },
+    {
+        "id": "6a5bbe47e89af9.40403851",
+        "name": "Minifig Mechanical Leg Angled",
+        "file": "87569.dat"
+    },
+    {
+        "id": "6a5bbe47e8a517.64629665",
+        "name": "Minifig Mechanical Leg Angled with Dark Bluish Grey Foot Pattern",
+        "file": "87569p01.dat"
+    },
+    {
+        "id": "6a5bbe47ebf897.82255229",
+        "name": "Minifig Helmet Visor Shielded",
+        "file": "87777.dat"
+    },
+    {
+        "id": "6a5bbe47ef5091.54520604",
+        "name": "Minifig Flipper Thick",
+        "file": "88408.dat"
+    },
+    {
+        "id": "6a5bbe481ca372.71753233",
+        "name": "Arm Skeleton with Vertical Clip Bent 53.13",
+        "file": "93061.dat"
+    },
+    {
+        "id": "6a5bbe481caf66.32440304",
+        "name": "Minifig Skeleton Leg with Square Foot",
+        "file": "93062.dat"
+    },
+    {
+        "id": "6a5bbe481cbab9.84773281",
+        "name": "Minifig Skeleton Leg with Black Square Foot",
+        "file": "93062p01.dat"
+    },
+    {
+        "id": "6a5bbe481cc525.96745838",
+        "name": "Minifig Skeleton Leg with Pearl Dark Grey Square Foot",
+        "file": "93062p02.dat"
+    },
+    {
+        "id": "6a5bbe4825be65.70928283",
+        "name": "Arm Skeleton with Horizontal Clip Bent 56.31",
+        "file": "93609.dat"
+    },
+    {
+        "id": "6a5bbe4825c996.03093606",
+        "name": "~Minifig Skeleton Leg with Square Foot, Leg",
+        "file": "93612.dat"
+    },
+    {
+        "id": "6a5bbe4825d400.46594645",
+        "name": "~Minifig Skeleton Leg with Square Foot, Foot",
+        "file": "93613.dat"
+    },
+    {
+        "id": "6a5bbe48295a72.52561341",
+        "name": "Minifig Boxing Glove Left",
+        "file": "95320.dat"
+    },
+    {
+        "id": "6a5bbe48296524.05497749",
+        "name": "Minifig Boxing Glove Right",
+        "file": "95321.dat"
+    },
+    {
+        "id": "6a5bbe4850da50.34255997",
+        "name": "_Minifig Standing (Complete)",
+        "file": "979.dat"
+    },
+    {
+        "id": "6a5bbe4850eec4.88262450",
+        "name": "_Minifig Sitting (Complete)",
+        "file": "980.dat"
+    },
+    {
+        "id": "6a5bbe48520c41.79645573",
+        "name": "Minifig Helmet Visor Samurai",
+        "file": "98129.dat"
+    },
+    {
+        "id": "6a5bbe485e0c70.89289913",
+        "name": "Minifig Mechanical Arm with Clip and Rod Hole with Thick Forearm",
+        "file": "98313.dat"
+    },
+    {
+        "id": "6a5bbe4892c011.45966110",
+        "name": "~Minifig Compass Dial",
+        "file": "u9349.dat"
+    },
+    {
+        "id": "6a5bbe4892caa8.25797620",
+        "name": "~Minifig Compass Dial with Fleur de Lis Pattern",
+        "file": "u9349p01.dat"
+    },
+    {
+        "id": "6a5bbe4892d522.51698037",
+        "name": "~Minifig Compass Dial with White and Yellow Pattern",
+        "file": "u9349p02.dat"
+    },
+    {
+        "id": "6a5bbe48948129.89994344",
+        "name": "~Minifig Tool Magnifying Glass Removable Lens",
+        "file": "u9381.dat"
+    },
+    {
+        "id": "6a5bbe48948bd7.77522022",
+        "name": "~Minifig Tool Magnifying Glass Holder for Removable Lens",
+        "file": "u9382.dat"
+    },
+    {
+        "id": "6a5bbe489746c2.55543161",
+        "name": "~Minifig Hair Powerpuff Girls Blossom",
+        "file": "u9440.dat"
+    },
+    {
+        "id": "6a5bbe48975209.17093880",
+        "name": "~Minifig Hair Powerpuff Girls Blossom with Red Bowtie Pattern",
+        "file": "u9440p01.dat"
+    },
+    {
+        "id": "6a5bbe48976709.75466392",
+        "name": "~Minifig Hair Powerpuff Girls Bubbles",
+        "file": "u9446.dat"
+    },
+    {
+        "id": "6a5bbe48977120.45046304",
+        "name": "~Minifig Hair Powerpuff Girls Buttercup",
+        "file": "u9447.dat"
+    }
+]

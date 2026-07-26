@@ -1,0 +1,537 @@
+[
+    {
+        "id": "6a5bbe44852270.83988193",
+        "name": "Minifig Beard with Rounded End",
+        "file": "10052.dat"
+    },
+    {
+        "id": "6a5bbe448a2896.95166951",
+        "name": "Minifig Wings Fairy",
+        "file": "10183.dat"
+    },
+    {
+        "id": "6a5bbe448a33b1.23007783",
+        "name": "Minifig Wings Fairy with Black Oval Lines Pattern",
+        "file": "10183p01.dat"
+    },
+    {
+        "id": "6a5bbe449258a2.32921861",
+        "name": "Minifig Armour Shoulder Pads with 1 Stud on Front, 2 Studs on Back",
+        "file": "11097.dat"
+    },
+    {
+        "id": "6a5bbe4498e5f3.50355266",
+        "name": "Minifig Armour Shoulder Pads with Ridges",
+        "file": "11438.dat"
+    },
+    {
+        "id": "6a5bbe449efe68.49331404",
+        "name": "Minifig Ninja Turtle Shell with Horizontal Belt",
+        "file": "12609.dat"
+    },
+    {
+        "id": "6a5bbe449f08b6.89923298",
+        "name": "Minifig Ninja Turtle Shell with Dark Brown Horizontal Belt Pattern",
+        "file": "12609p01.dat"
+    },
+    {
+        "id": "6a5bbe449f12a9.06406875",
+        "name": "Minifig Armour Shoulder Pads with  6 Spikes",
+        "file": "12618.dat"
+    },
+    {
+        "id": "6a5bbe44a13cd2.89432278",
+        "name": "Minifig Backpack Skydiver",
+        "file": "12897.dat"
+    },
+    {
+        "id": "6a5bbe44b1be40.98916200",
+        "name": "Minifig Armour Shoulder Pads with Neck Protection, 1 Stud on Front, 2 Studs on Back",
+        "file": "15086.dat"
+    },
+    {
+        "id": "6a5bbe44b47c15.20389580",
+        "name": "Minifig Backpack with Horizontal Pin Holes",
+        "file": "15406.dat"
+    },
+    {
+        "id": "6a5bbe44b4ae22.64698041",
+        "name": "Minifig Body Armour Vest",
+        "file": "15423.dat"
+    },
+    {
+        "id": "6a5bbe44b4b9b1.44746600",
+        "name": "Minifig Body Armour Vest with \"ACU\" Pattern",
+        "file": "15423p01.dat"
+    },
+    {
+        "id": "6a5bbe44b4f254.12318915",
+        "name": "Minifig Hood Folded Down",
+        "file": "15428.dat"
+    },
+    {
+        "id": "6a5bbe44b4fd11.04076865",
+        "name": "Minifig Hood Folded Down with Purple Inside Pattern",
+        "file": "15428p01.dat"
+    },
+    {
+        "id": "6a5bbe44b58486.59136598",
+        "name": "Minifig Armour Shoulder Pads Square",
+        "file": "15437.dat"
+    },
+    {
+        "id": "6a5bbe44b58ef9.99700854",
+        "name": "Minifig Armour Shoulder Pads Square with Red Hexagonal Pattern",
+        "file": "15437p01.dat"
+    },
+    {
+        "id": "6a5bbe44b598c3.41006737",
+        "name": "Minifig Moustache",
+        "file": "15439.dat"
+    },
+    {
+        "id": "6a5bbe44b6c867.36934168",
+        "name": "Minifig Armour Shoulder Pads with  4 Spikes",
+        "file": "15490.dat"
+    },
+    {
+        "id": "6a5bbe44b6f362.42760703",
+        "name": "Minifig Beard Short",
+        "file": "15501.dat"
+    },
+    {
+        "id": "6a5bbe44b9e174.33331575",
+        "name": "Minifig Bandana Ninja",
+        "file": "15619.dat"
+    },
+    {
+        "id": "6a5bbe44da1347.63520267",
+        "name": "Bracket  1 x  1 -  1 x  2",
+        "file": "18986.dat"
+    },
+    {
+        "id": "6a5bbe44ee1150.73633519",
+        "name": "Minifig Collar SW Darth Vader Helmet Bottom",
+        "file": "19917.dat"
+    },
+    {
+        "id": "6a5bbe45061df2.88982918",
+        "name": "Figure Friends Cape Cloth Short with 2 Bottom Curves and 4 Heart Shaped Holes (Formed Shape 1)",
+        "file": "21490c01.dat"
+    },
+    {
+        "id": "6a5bbe450628a7.94522864",
+        "name": "Figure Friends Cape Cloth Short with 2 Bottom Curves and 4 Heart Shaped Holes (Formed Shape 2)",
+        "file": "21490c02.dat"
+    },
+    {
+        "id": "6a5bbe450fbd22.23758302",
+        "name": "Minifig Armour Breastplate with Shoulder Pads Large, Pentagonal Cut-out and 4 Studs on Back",
+        "file": "22402.dat"
+    },
+    {
+        "id": "6a5bbe452c5924.61136920",
+        "name": "Minifig Face Scarf with Notch in Back",
+        "file": "24504.dat"
+    },
+    {
+        "id": "6a5bbe45357a50.91181913",
+        "name": "Minifig Backpack Non-Opening",
+        "file": "2524.dat"
+    },
+    {
+        "id": "6a5bbe4535cdd0.45021115",
+        "name": "Minifig Epaulette",
+        "file": "2526.dat"
+    },
+    {
+        "id": "6a5bbe45383812.72420764",
+        "name": "Minifig Scarf Long Wrapped",
+        "file": "25376.dat"
+    },
+    {
+        "id": "6a5bbe453e8873.77310318",
+        "name": "Minifig Armour Plate",
+        "file": "2587.dat"
+    },
+    {
+        "id": "6a5bbe453e92e6.62609388",
+        "name": "Minifig Armour Plate with LOTR King Theoden Pattern",
+        "file": "2587pm0.dat"
+    },
+    {
+        "id": "6a5bbe45408c61.72316554",
+        "name": "Minifig Collar Fur",
+        "file": "26066.dat"
+    },
+    {
+        "id": "6a5bbe4540a061.75188193",
+        "name": "Minifig Backpack with Three Pouches and Bedroll",
+        "file": "26073.dat"
+    },
+    {
+        "id": "6a5bbe4540ab34.04257195",
+        "name": "Minifig Backpack with Three Pouches and Red Bedroll Pattern",
+        "file": "26073p01.dat"
+    },
+    {
+        "id": "6a5bbe4540b655.05875918",
+        "name": "Minifig Backpack with Three Pouches and Lime Bedroll Pattern",
+        "file": "26073p02.dat"
+    },
+    {
+        "id": "6a5bbe4540c150.87713233",
+        "name": "Minifig Backpack with Three Pouches and Dark Green Bedroll Pattern",
+        "file": "26073p03.dat"
+    },
+    {
+        "id": "6a5bbe4540cbc2.99589207",
+        "name": "Minifig Backpack with Three Pouches and Blue Bedroll Pattern",
+        "file": "26073p04.dat"
+    },
+    {
+        "id": "6a5bbe4540d626.43065139",
+        "name": "Minifig Backpack with Three Pouches and Medium Azure Bedroll Pattern",
+        "file": "26073p05.dat"
+    },
+    {
+        "id": "6a5bbe45418bf2.08991630",
+        "name": "Minifig Lifevest",
+        "file": "2610.dat"
+    },
+    {
+        "id": "6a5bbe454c0d22.46689111",
+        "name": "Minifig Bowtie",
+        "file": "27151.dat"
+    },
+    {
+        "id": "6a5bbe4578e480.43709694",
+        "name": "Minifig Scuba Tank",
+        "file": "30091.dat"
+    },
+    {
+        "id": "6a5bbe45842dd9.77873301",
+        "name": "Minifig Armour Shoulder (Needs Work)",
+        "file": "30121.dat"
+    },
+    {
+        "id": "6a5bbe45850814.98459594",
+        "name": "Minifig Bandana",
+        "file": "30133.dat"
+    },
+    {
+        "id": "6a5bbe45867694.40483086",
+        "name": "Minifig Backpack Openable Open",
+        "file": "30158.dat"
+    },
+    {
+        "id": "6a5bbe458680c2.17201553",
+        "name": "~Minifig Backpack Openable Back",
+        "file": "30158a.dat"
+    },
+    {
+        "id": "6a5bbe45868a71.03338464",
+        "name": "~Minifig Backpack Openable Front",
+        "file": "30158b.dat"
+    },
+    {
+        "id": "6a5bbe45869441.34993876",
+        "name": "~Minifig Backpack Openable Joint Straight",
+        "file": "30158c.dat"
+    },
+    {
+        "id": "6a5bbe45869ee2.36588821",
+        "name": "Minifig Backpack Openable Closed",
+        "file": "30158c01.dat"
+    },
+    {
+        "id": "6a5bbe4587c858.12069010",
+        "name": "Minifig Armour Samurai",
+        "file": "30174.dat"
+    },
+    {
+        "id": "6a5bbe45919001.68774231",
+        "name": "Minifig Backpack with Sleeping Bag",
+        "file": "30323.dat"
+    },
+    {
+        "id": "6a5bbe46063098.36799806",
+        "name": "Minifig Armour Dual Layer Shoulder Pads",
+        "file": "35635.dat"
+    },
+    {
+        "id": "6a5bbe461f7839.14945666",
+        "name": "Minifig Neck Bracket with 4 Angled Handles",
+        "file": "36452.dat"
+    },
+    {
+        "id": "6a5bbe462a80c2.09457294",
+        "name": "Minifig Shoulder Guards",
+        "file": "37614.dat"
+    },
+    {
+        "id": "6a5bbe462b9c87.26891193",
+        "name": "Minifig Baby Carrier",
+        "file": "37822.dat"
+    },
+    {
+        "id": "6a5bbe4645ab96.68584724",
+        "name": "Minifig Cape Cloth Scalloped  6 Points",
+        "file": "38301.dat"
+    },
+    {
+        "id": "6a5bbe4645b557.82246496",
+        "name": "Minifig Cape Cloth Scalloped  6 Points (Formed)",
+        "file": "38301c01.dat"
+    },
+    {
+        "id": "6a5bbe4645bee5.36268786",
+        "name": "Minifig Cape Cloth Scalloped 6 Points (Formed Shape 2)",
+        "file": "38301c02.dat"
+    },
+    {
+        "id": "6a5bbe4645c939.10815300",
+        "name": "Minifig Cape Cloth Scalloped  6 Points with Magenta Pattern",
+        "file": "38301p01.dat"
+    },
+    {
+        "id": "6a5bbe4645d2f0.22547789",
+        "name": "Minifig Cape Cloth Scalloped  6 Points with Inside Magenta Pattern (Formed)",
+        "file": "38301p01c01.dat"
+    },
+    {
+        "id": "6a5bbe4645dfa8.19489617",
+        "name": "Minifig Cape Cloth Scalloped 6 Points with Inside Magenta Pattern (Formed Shape 2)",
+        "file": "38301p01c02.dat"
+    },
+    {
+        "id": "6a5bbe464696f1.10724585",
+        "name": "Minifig Airtanks",
+        "file": "3838.dat"
+    },
+    {
+        "id": "6a5bbe4646ca75.77326792",
+        "name": "Minifig Vest",
+        "file": "3840.dat"
+    },
+    {
+        "id": "6a5bbe464736f6.19317142",
+        "name": "Minifig Vest with 3 Yellow\/Black Chevrons Upwards Pattern",
+        "file": "3840p01.dat"
+    },
+    {
+        "id": "6a5bbe4653ee17.86298897",
+        "name": "Minifig Aviator Oxygen Mask",
+        "file": "39796.dat"
+    },
+    {
+        "id": "6a5bbe4663c496.84826319",
+        "name": "Minifig Armour Shoulder Pads with Snake Heads and Stud on Back",
+        "file": "41202.dat"
+    },
+    {
+        "id": "6a5bbe4671ea04.83060491",
+        "name": "Minifig Front Harness with  4 Back Studs",
+        "file": "41811.dat"
+    },
+    {
+        "id": "6a5bbe4683c363.74475630",
+        "name": "Minifig Cape Cloth with Pointed Ends and Collar",
+        "file": "42450.dat"
+    },
+    {
+        "id": "6a5bbe4683cd66.69320535",
+        "name": "Minifig Cape Cloth with Pointed Ends and Collar (Formed)",
+        "file": "42450c01.dat"
+    },
+    {
+        "id": "6a5bbe469f14b0.80985303",
+        "name": "Minifig Arrow Quiver",
+        "file": "4498.dat"
+    },
+    {
+        "id": "6a5bbe46a286b0.27608887",
+        "name": "Minifig Container D-Basket",
+        "file": "4523.dat"
+    },
+    {
+        "id": "6a5bbe46a29195.74448496",
+        "name": "Minifig Cape",
+        "file": "4524.dat"
+    },
+    {
+        "id": "6a5bbe46bda2e5.00063321",
+        "name": "Minifig Jet-Pack with Stud On Front",
+        "file": "4736.dat"
+    },
+    {
+        "id": "6a5bbe46d1f0e9.73205889",
+        "name": "Minifig Costume Flying Saucer",
+        "file": "4988.dat"
+    },
+    {
+        "id": "6a5bbe46d30231.90298043",
+        "name": "Minifig Cape Cloth (Formed)",
+        "file": "50231c01.dat"
+    },
+    {
+        "id": "6a5bbe46d30cc5.77828074",
+        "name": "Minifig Cape Cloth (Formed Floating)",
+        "file": "50231c02.dat"
+    },
+    {
+        "id": "6a5bbe46d316e8.68802706",
+        "name": "Minifig Cape Cloth with Inside Dark Red Pattern (Formed)",
+        "file": "50231p01c01.dat"
+    },
+    {
+        "id": "6a5bbe46ea6fd2.52258742",
+        "name": "Minifig Cape Cloth Scalloped  5 Points (Formed)",
+        "file": "56630c01.dat"
+    },
+    {
+        "id": "6a5bbe470bc7d9.32974382",
+        "name": "Minifig Jet-Pack with 2 Octagonal Nozzles (Needs Work)",
+        "file": "6023.dat"
+    },
+    {
+        "id": "6a5bbe47186c62.29814982",
+        "name": "Minifig Beard Long with Five Braids",
+        "file": "60749.dat"
+    },
+    {
+        "id": "6a5bbe47188029.36535720",
+        "name": "Minifig Beard Long Forked",
+        "file": "60750.dat"
+    },
+    {
+        "id": "6a5bbe471e62a8.87052495",
+        "name": "Minifig Armour SW Clone Trooper Pauldron",
+        "file": "61190b.dat"
+    },
+    {
+        "id": "6a5bbe47209b30.57145920",
+        "name": "Minifig Hair Beard",
+        "file": "6132.dat"
+    },
+    {
+        "id": "6a5bbe47324af3.76409681",
+        "name": "Minifig Fire Helmet Breathing Hose",
+        "file": "6158.dat"
+    },
+    {
+        "id": "6a5bbe4768a8f6.48590071",
+        "name": "Minifig Cape Cloth with Straight Side (Formed)",
+        "file": "65384c01.dat"
+    },
+    {
+        "id": "6a5bbe4773bc23.80910794",
+        "name": "Minifig Headset Around Neck",
+        "file": "66913.dat"
+    },
+    {
+        "id": "6a5bbe47997774.03764932",
+        "name": "Minifig Armour Shoulder Pads with Double Flaps and  2 Studs on Back",
+        "file": "7549.dat"
+    },
+    {
+        "id": "6a5bbe47c6b545.43711229",
+        "name": "Minifig Armour Breastplate with Round Shoulder Pads and 2 Back Studs",
+        "file": "78643.dat"
+    },
+    {
+        "id": "6a5bbe47dcb803.79896773",
+        "name": "Minifig Body Armour Vest with Back Stud",
+        "file": "85961.dat"
+    },
+    {
+        "id": "6a5bbe47dfcc57.32824389",
+        "name": "Minifig Cape Cloth with Holes and Tattered Edges (Formed)",
+        "file": "86038c01.dat"
+    },
+    {
+        "id": "6a5bbe47dfe0f3.06092264",
+        "name": "Minifig Armour Shoulder Pads with Tiered Fins and  2 Vertical Pin Holes on Back",
+        "file": "86123.dat"
+    },
+    {
+        "id": "6a5bbe47ee2804.31286948",
+        "name": "Minifig Scabbard for Two Swords",
+        "file": "88290.dat"
+    },
+    {
+        "id": "6a5bbe47ee75d9.44540641",
+        "name": "Minifig Armour Shoulder Pads with Top Spikes",
+        "file": "88295.dat"
+    },
+    {
+        "id": "6a5bbe47f3a1f8.33414749",
+        "name": "Minifig Breastplate with Fins and Embossed Atlantis Triangle",
+        "file": "89917.dat"
+    },
+    {
+        "id": "6a5bbe48169592.74512145",
+        "name": "Minifig Sack",
+        "file": "92590.dat"
+    },
+    {
+        "id": "6a5bbe481ced72.93584092",
+        "name": "Minifig Beard Long with  3 Points",
+        "file": "93069.dat"
+    },
+    {
+        "id": "6a5bbe481fb7c3.59425373",
+        "name": "Minifig Beard Medium Short",
+        "file": "93223.dat"
+    },
+    {
+        "id": "6a5bbe48203b55.40891865",
+        "name": "Minifig Eagle Wing",
+        "file": "93250.dat"
+    },
+    {
+        "id": "6a5bbe48204569.28574668",
+        "name": "Minifig Eagle Wing with Tan Feathers and Red\/Gold Pattern",
+        "file": "93250pq0.dat"
+    },
+    {
+        "id": "6a5bbe48239ce7.94142117",
+        "name": "Minifig Body and Shoulder Armour Smooth",
+        "file": "93565.dat"
+    },
+    {
+        "id": "6a5bbe4850cf56.88126010",
+        "name": "Minifig Life Jacket",
+        "file": "97895.dat"
+    },
+    {
+        "id": "6a5bbe48617e60.60884884",
+        "name": "Minifig Bat Wing",
+        "file": "98722.dat"
+    },
+    {
+        "id": "6a5bbe48638c48.10806329",
+        "name": "Minifig Neckwear Ribbon with Medal",
+        "file": "99250.dat"
+    },
+    {
+        "id": "6a5bbe48639741.95169491",
+        "name": "Minifig Neckwear Ribbon with Medal Gold Pattern",
+        "file": "99250p01.dat"
+    },
+    {
+        "id": "6a5bbe4864aa35.24237158",
+        "name": "Minifig Cape Cloth Short (Formed)",
+        "file": "99464c01.dat"
+    },
+    {
+        "id": "6a5bbe4898fdc3.76907357",
+        "name": "Minifig Cape Cloth Tattered and Pixelated",
+        "file": "u9490.dat"
+    },
+    {
+        "id": "6a5bbe48990e53.79223384",
+        "name": "Minifig Cape Cloth Tattered and Pixelated (Formed)",
+        "file": "u9490c01.dat"
+    }
+]

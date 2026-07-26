@@ -1,0 +1,972 @@
+[
+    {
+        "id": "6a5bbe44845f73.67395050",
+        "name": "Baseplate 16 x 30 with Set 080 Yellow House Studs",
+        "file": "0901.dat"
+    },
+    {
+        "id": "6a5bbe44846fa8.09794665",
+        "name": "Baseplate 16 x 24 with Set 080 Small White House Studs",
+        "file": "0902.dat"
+    },
+    {
+        "id": "6a5bbe44847e07.01609684",
+        "name": "Baseplate 16 x 24 with Set 080 Red House Studs",
+        "file": "0903.dat"
+    },
+    {
+        "id": "6a5bbe44848896.72808605",
+        "name": "Baseplate 16 x 24 with Set 080 Large White House Studs",
+        "file": "0904.dat"
+    },
+    {
+        "id": "6a5bbe449025d9.30417772",
+        "name": "Baseplate 24 x 32 with Rounded Corners",
+        "file": "10a.dat"
+    },
+    {
+        "id": "6a5bbe44903376.32108300",
+        "name": "Baseplate 24 x 32 with Square Corners",
+        "file": "10b.dat"
+    },
+    {
+        "id": "6a5bbe44903e95.09752427",
+        "name": "Baseplate 24 x 32 with Set 363 Dots Pattern",
+        "file": "10p01.dat"
+    },
+    {
+        "id": "6a5bbe44904975.44561544",
+        "name": "Baseplate 24 x 32 with Set 354 Dots Pattern",
+        "file": "10p02.dat"
+    },
+    {
+        "id": "6a5bbe44905446.50587165",
+        "name": "Baseplate 24 x 32 with Set 358 Dots Pattern",
+        "file": "10p03.dat"
+    },
+    {
+        "id": "6a5bbe44905f10.80882263",
+        "name": "Baseplate 24 x 32 with Set 345 Dots Pattern",
+        "file": "10p04.dat"
+    },
+    {
+        "id": "6a5bbe449069d6.48128996",
+        "name": "Baseplate 24 x 32 with Set 351 Dots Pattern",
+        "file": "10p05.dat"
+    },
+    {
+        "id": "6a5bbe44907488.81826568",
+        "name": "Baseplate 24 x 32 with Set 149 Dots Pattern",
+        "file": "10p06.dat"
+    },
+    {
+        "id": "6a5bbe44907f33.40523872",
+        "name": "Baseplate 24 x 32 with Set 346 Dots Pattern",
+        "file": "10p07.dat"
+    },
+    {
+        "id": "6a5bbe449089b3.79893758",
+        "name": "Baseplate 24 x 32 with Set 353 Dots Pattern",
+        "file": "10p08.dat"
+    },
+    {
+        "id": "6a5bbe44909493.62941512",
+        "name": "Baseplate 24 x 32 with Set 372 Dots Pattern",
+        "file": "10p09.dat"
+    },
+    {
+        "id": "6a5bbe44909f80.72881241",
+        "name": "Baseplate 24 x 32 with Set 1601 Dots Pattern",
+        "file": "10p0a.dat"
+    },
+    {
+        "id": "6a5bbe4490aa89.90502177",
+        "name": "Baseplate 24 x 32 with Set 361 Dots Pattern",
+        "file": "10p0b.dat"
+    },
+    {
+        "id": "6a5bbe45033633.23183614",
+        "name": "Baseplate 16 x 22",
+        "file": "210.dat"
+    },
+    {
+        "id": "6a5bbe45120a06.01898942",
+        "name": "Duplo Baseplate 16 x 24 with 93 Stud Irregular Gap",
+        "file": "2296.dat"
+    },
+    {
+        "id": "6a5bbe451264c4.46060583",
+        "name": "Duplo Baseplate 16 x 24 with 93 Stud Irregular Gap with Blue Pond Pattern",
+        "file": "2296p01.dat"
+    },
+    {
+        "id": "6a5bbe45180496.67706166",
+        "name": "Baseplate 32 x 32 Road 7-Stud Straight",
+        "file": "2358.dat"
+    },
+    {
+        "id": "6a5bbe45181947.73970180",
+        "name": "Baseplate 32 x 32 Road 7-Stud Straight with Runway Crosswalk Pattern",
+        "file": "2358p02.dat"
+    },
+    {
+        "id": "6a5bbe451823d9.74437723",
+        "name": "Baseplate 32 x 32 Road 7-Stud Straight w\/ Runway Wide Pattern",
+        "file": "2358p03.dat"
+    },
+    {
+        "id": "6a5bbe45182e69.15066828",
+        "name": "Baseplate 32 x 32 Road 7-Stud Straight w\/ Runway Narrow Pattern",
+        "file": "2358p04.dat"
+    },
+    {
+        "id": "6a5bbe45183914.27455395",
+        "name": "Baseplate 32 x 32 Road 7-Stud Curve",
+        "file": "2359.dat"
+    },
+    {
+        "id": "6a5bbe451843a5.63553520",
+        "name": "Baseplate 32 x 32 Road 7-Stud Curve with Road Pattern",
+        "file": "2359p01.dat"
+    },
+    {
+        "id": "6a5bbe45184db4.92428874",
+        "name": "Baseplate 32 x 32 Road 7-Stud Curve with Lagoon Pattern",
+        "file": "2359p02.dat"
+    },
+    {
+        "id": "6a5bbe45185879.48673258",
+        "name": "Baseplate 32 x 32 Road 7-Stud Curve with River Pattern",
+        "file": "2359p03.dat"
+    },
+    {
+        "id": "6a5bbe451862a0.87541323",
+        "name": "Baseplate 32 x 32 Road 7-Stud Curve with Rocks and Ruts Pattern",
+        "file": "2359p04.dat"
+    },
+    {
+        "id": "6a5bbe45187708.92950832",
+        "name": "Baseplate 32 x 32 Road 7-Stud T-Junction",
+        "file": "2360.dat"
+    },
+    {
+        "id": "6a5bbe45188189.04540068",
+        "name": "Baseplate 32 x 32 Road 7-Stud T-Junction with Crosswalk Pattern",
+        "file": "2360p01.dat"
+    },
+    {
+        "id": "6a5bbe45188c07.21640496",
+        "name": "Baseplate 32 x 32 Road 7-Stud T-Junction w\/ Runway Narrow Patt.",
+        "file": "2360p02.dat"
+    },
+    {
+        "id": "6a5bbe45189655.13894873",
+        "name": "Baseplate 32 x 32 Road 7-Stud Crossroads",
+        "file": "2361.dat"
+    },
+    {
+        "id": "6a5bbe4518a0d1.90817770",
+        "name": "Baseplate 32 x 32 Road 7-Stud Crossroads with Crosswalk Pattern",
+        "file": "2361p01.dat"
+    },
+    {
+        "id": "6a5bbe4518ab38.75629472",
+        "name": "Baseplate 32 x 32 Road 7-Stud Crossroads w\/ Runway Wide Pattern",
+        "file": "2361p02.dat"
+    },
+    {
+        "id": "6a5bbe4518b536.57830061",
+        "name": "Baseplate 32 x 32 Road 7-Stud Crossroads w\/ Runway Narrow Patt.",
+        "file": "2361p03.dat"
+    },
+    {
+        "id": "6a5bbe4539dfc4.05171029",
+        "name": "Baseplate 32 x 32 Raised with Ramp and Pit",
+        "file": "2552.dat"
+    },
+    {
+        "id": "6a5bbe4539e9e9.51417948",
+        "name": "Baseplate 32 x 32 Raised with Ramp and Pit with Ice Pattern",
+        "file": "2552p01.dat"
+    },
+    {
+        "id": "6a5bbe4539f3f6.17196027",
+        "name": "Baseplate 32 x 32 Raised with Ramp and Pit with White and Light Grey Craters Pattern",
+        "file": "2552p02.dat"
+    },
+    {
+        "id": "6a5bbe4539ff08.35184966",
+        "name": "Baseplate 32 x 32 Raised with Ramp and Pit with Water and Dark Grey Stones Pattern",
+        "file": "2552p03.dat"
+    },
+    {
+        "id": "6a5bbe453a0950.72159444",
+        "name": "Baseplate 32 x 32 Raised with Ramp and Pit with Water and Green Stones Pattern",
+        "file": "2552p04.dat"
+    },
+    {
+        "id": "6a5bbe453a13f6.06876261",
+        "name": "Baseplate 32 x 32 Raised with Ramp and Pit with Grey and Black Rocks Pattern",
+        "file": "2552p05.dat"
+    },
+    {
+        "id": "6a5bbe453a1e40.60824170",
+        "name": "Baseplate 32 x 32 Raised with Ramp and Pit with Grey and DarkGrey Rocks Pattern",
+        "file": "2552p06.dat"
+    },
+    {
+        "id": "6a5bbe45668645.30407929",
+        "name": "Baseplate 32 x 32 Racing",
+        "file": "30030.dat"
+    },
+    {
+        "id": "6a5bbe45669b22.75732922",
+        "name": "Baseplate 32 x 32 with Racing Pattern",
+        "file": "30030p01.dat"
+    },
+    {
+        "id": "6a5bbe458b56c6.46956779",
+        "name": "Baseplate 32 x 32 Road 8-Stud Dual",
+        "file": "30225b.dat"
+    },
+    {
+        "id": "6a5bbe458b6175.52921423",
+        "name": "Baseplate 32 x 32 Road 8-Stud Dual with Crosswalk Pattern",
+        "file": "30225bp1.dat"
+    },
+    {
+        "id": "6a5bbe458f8410.89825525",
+        "name": "Baseplate 32 x 48 Raised with Corner Pits",
+        "file": "30271.dat"
+    },
+    {
+        "id": "6a5bbe45a058b1.22150260",
+        "name": "Baseplate 32 x 32 Canyon without Island",
+        "file": "30473.dat"
+    },
+    {
+        "id": "6a5bbe45cba063.00454953",
+        "name": "Baseplate 32 x 32 Road 7-Stud Refuge",
+        "file": "309.dat"
+    },
+    {
+        "id": "6a5bbe45cbe068.81472579",
+        "name": "Baseplate 32 x 32 Road 7-Stud Refuge with Green Lines Pattern",
+        "file": "309p01.dat"
+    },
+    {
+        "id": "6a5bbe45cbeac9.08219232",
+        "name": "Baseplate 32 x 32 Road 7-Stud Refuge with River Pattern",
+        "file": "309p02.dat"
+    },
+    {
+        "id": "6a5bbe45cbf500.95568277",
+        "name": "Baseplate 32 x 32 Road 7-Stud Refuge with White Lines Pattern",
+        "file": "309p03.dat"
+    },
+    {
+        "id": "6a5bbe45cc0464.25721528",
+        "name": "Baseplate 32 x 32 Road 7-Stud Refuge with Green & White Lines",
+        "file": "309p04.dat"
+    },
+    {
+        "id": "6a5bbe45cca7a6.01009881",
+        "name": "Duplo Baseplate  8 x 12",
+        "file": "31043.dat"
+    },
+    {
+        "id": "6a5bbe45cccf37.12265992",
+        "name": "Duplo Baseplate 12 x 16 with 12 x  4 Stud Gap",
+        "file": "31074.dat"
+    },
+    {
+        "id": "6a5bbe45ec2202.51368568",
+        "name": "Baseplate 16 x 24",
+        "file": "3334.dat"
+    },
+    {
+        "id": "6a5bbe460055e6.77247950",
+        "name": "Baseplate  8 x 24",
+        "file": "3497.dat"
+    },
+    {
+        "id": "6a5bbe461f5e11.69771239",
+        "name": "Baseplate 24 x 40",
+        "file": "3645.dat"
+    },
+    {
+        "id": "6a5bbe461f8295.73367512",
+        "name": "Baseplate 24 x 40 with Set 369 Dots Pattern",
+        "file": "3645p02.dat"
+    },
+    {
+        "id": "6a5bbe461f8d98.99342106",
+        "name": "Baseplate 24 x 40 with Set 370 Dots Pattern",
+        "file": "3645p03.dat"
+    },
+    {
+        "id": "6a5bbe461f9944.71274922",
+        "name": "Baseplate 24 x 40 with Set 373 Dots Pattern",
+        "file": "3645p04.dat"
+    },
+    {
+        "id": "6a5bbe4621a545.08952544",
+        "name": "Baseplate 24 x 24 with Studs on 3 Sides",
+        "file": "367.dat"
+    },
+    {
+        "id": "6a5bbe462892e8.87616054",
+        "name": "Baseplate 16 x 32 with Rounded Corners",
+        "file": "374.dat"
+    },
+    {
+        "id": "6a5bbe4629a130.73145386",
+        "name": "Baseplate 16 x 32 with Rounded Corners and Set 350 Dots Pattern",
+        "file": "374p01.dat"
+    },
+    {
+        "id": "6a5bbe4629aba2.18393375",
+        "name": "Baseplate 16 x 32 with Rounded Corners + Set 352 Dots Pattern",
+        "file": "374p02.dat"
+    },
+    {
+        "id": "6a5bbe4629b601.15650583",
+        "name": "Baseplate 16 x 32 with Rounded Corners + Set 356 Dots Pattern",
+        "file": "374p03.dat"
+    },
+    {
+        "id": "6a5bbe4629c035.20151994",
+        "name": "Baseplate 16 x 32 with Rounded Corners + Set 540 Dots Pattern",
+        "file": "374p04.dat"
+    },
+    {
+        "id": "6a5bbe462c66a2.23549435",
+        "name": "Baseplate 32 x 32",
+        "file": "3811.dat"
+    },
+    {
+        "id": "6a5bbe462c7110.20198481",
+        "name": "Baseplate 32 x 32 with Set 7838 Dots Pattern",
+        "file": "3811p01.dat"
+    },
+    {
+        "id": "6a5bbe462c7b83.08951612",
+        "name": "Baseplate 32 x 32 with Island and Water Pattern",
+        "file": "3811p02.dat"
+    },
+    {
+        "id": "6a5bbe462c8622.67098322",
+        "name": "Baseplate 32 x 32 with Beach Pattern",
+        "file": "3811p03.dat"
+    },
+    {
+        "id": "6a5bbe462c9032.90983625",
+        "name": "Baseplate 32 x 32 with Paradisa Island Pattern",
+        "file": "3811p04.dat"
+    },
+    {
+        "id": "6a5bbe462c9ad6.39020587",
+        "name": "Baseplate 32 x 32 with Island Pattern",
+        "file": "3811p05.dat"
+    },
+    {
+        "id": "6a5bbe464a0d71.06762623",
+        "name": "Baseplate 16 x 32 with Square Corners",
+        "file": "3857.dat"
+    },
+    {
+        "id": "6a5bbe464a1794.53041941",
+        "name": "Baseplate 16 x 32 with Square Corners and Beach Pattern",
+        "file": "3857p01.dat"
+    },
+    {
+        "id": "6a5bbe464a21e4.71146550",
+        "name": "Baseplate 16 x 32 with Square Corners with River and Set 6071 Dots Pattern",
+        "file": "3857p02.dat"
+    },
+    {
+        "id": "6a5bbe464a4533.90989091",
+        "name": "Baseplate 50 x 50 Road 3-way Curve",
+        "file": "385a.dat"
+    },
+    {
+        "id": "6a5bbe464a4fb4.96958894",
+        "name": "Baseplate 50 x 50 Road 3-way Curve with Grey Road Pattern",
+        "file": "385ap01.dat"
+    },
+    {
+        "id": "6a5bbe464ae9d6.78885171",
+        "name": "Baseplate  8 x 16",
+        "file": "3865.dat"
+    },
+    {
+        "id": "6a5bbe464af658.56299517",
+        "name": "Baseplate 16 x 16",
+        "file": "3867.dat"
+    },
+    {
+        "id": "6a5bbe464b0230.33082149",
+        "name": "Baseplate 16 x 16 with Island and Water Pattern",
+        "file": "3867p01.dat"
+    },
+    {
+        "id": "6a5bbe464b0c92.06454914",
+        "name": "Baseplate 16 x 16 with Island Pattern",
+        "file": "3867p02.dat"
+    },
+    {
+        "id": "6a5bbe464fcb20.31457333",
+        "name": "Baseplate 32 x 32 with Craters",
+        "file": "3947.dat"
+    },
+    {
+        "id": "6a5bbe46537b78.15182779",
+        "name": "Baseplate 10 x 16",
+        "file": "397.dat"
+    },
+    {
+        "id": "6a5bbe465492e4.11387368",
+        "name": "Baseplate 14 x 14 with Rounded Corners",
+        "file": "400.dat"
+    },
+    {
+        "id": "6a5bbe4675d849.22356696",
+        "name": "Baseplate 48 x 48",
+        "file": "4186.dat"
+    },
+    {
+        "id": "6a5bbe467601d2.32429070",
+        "name": "Baseplate 48 x 48 with Soccer Field Half Pattern",
+        "file": "4186p01.dat"
+    },
+    {
+        "id": "6a5bbe46760ca6.57294878",
+        "name": "Baseplate  8 x 32",
+        "file": "4187.dat"
+    },
+    {
+        "id": "6a5bbe46842b80.27192272",
+        "name": "Baseplate 32 x 32 Road 9-Stud Layby",
+        "file": "425.dat"
+    },
+    {
+        "id": "6a5bbe4685a7b0.77489762",
+        "name": "Baseplate 32 x 32 Road 9-Stud Layby with Racetrack Pattern",
+        "file": "425p01.dat"
+    },
+    {
+        "id": "6a5bbe4685b254.83357518",
+        "name": "Baseplate 32 x 32 Road 9-Stud Layby with Crosswalk Pattern",
+        "file": "425p02.dat"
+    },
+    {
+        "id": "6a5bbe468753e8.19771830",
+        "name": "Duplo Baseplate 24 x 24",
+        "file": "4268.dat"
+    },
+    {
+        "id": "6a5bbe4695a674.60982893",
+        "name": "Baseplate 32 x 32 Road 6-Stud Straight",
+        "file": "44336.dat"
+    },
+    {
+        "id": "6a5bbe4695b0c1.02453703",
+        "name": "Baseplate 32 x 32 Road 6-Stud Straight with Yellow Road Edge Pattern",
+        "file": "44336p01.dat"
+    },
+    {
+        "id": "6a5bbe4695bb28.72653926",
+        "name": "Baseplate 32 x 32 Road 6-Stud Straight with Pit Stop Pattern",
+        "file": "44336p02.dat"
+    },
+    {
+        "id": "6a5bbe4695c5d1.07856117",
+        "name": "Baseplate 32 x 32 Road 6-Stud Straight with Runway Pattern",
+        "file": "44336p03.dat"
+    },
+    {
+        "id": "6a5bbe4695cfe3.78664291",
+        "name": "Baseplate 32 x 32 Road 6-Stud Straight with White Road Edge Pattern",
+        "file": "44336p04.dat"
+    },
+    {
+        "id": "6a5bbe4695dd54.93724378",
+        "name": "Baseplate 32 x 32 Road 6-Stud T-Junction",
+        "file": "44341.dat"
+    },
+    {
+        "id": "6a5bbe4695e7e4.59634615",
+        "name": "Baseplate 32 x 32 Road 6-Stud T-Junction with Yellow Road Edge and White Pedestrian Crossing Pattern",
+        "file": "44341p01.dat"
+    },
+    {
+        "id": "6a5bbe4695f280.97352740",
+        "name": "Baseplate 32 x 32 Road 6-Stud T-Junction with White Road Edge and Pedestrian Crossing Pattern",
+        "file": "44341p02.dat"
+    },
+    {
+        "id": "6a5bbe4695fcf3.85260804",
+        "name": "Baseplate 32 x 32 Road 6-Stud Curve",
+        "file": "44342.dat"
+    },
+    {
+        "id": "6a5bbe46960748.17724440",
+        "name": "Baseplate 32 x 32 Road 6-Stud Curve with Yellow Road Edge Pattern",
+        "file": "44342p01.dat"
+    },
+    {
+        "id": "6a5bbe46961204.30230640",
+        "name": "Baseplate 32 x 32 Road 6-Stud Curve with White Road Edge Pattern",
+        "file": "44342p02.dat"
+    },
+    {
+        "id": "6a5bbe46961c71.13999845",
+        "name": "Baseplate 32 x 32 Road 6-Stud Crossroads",
+        "file": "44343.dat"
+    },
+    {
+        "id": "6a5bbe46962718.50229291",
+        "name": "Baseplate 32 x 32 Road 6-Stud Crossroads with Yellow Road Edge and White Pedestrian Crossing Pattern",
+        "file": "44343p01.dat"
+    },
+    {
+        "id": "6a5bbe46963104.19262203",
+        "name": "Baseplate 32 x 32 Road 6-Stud Crossroads with Runway Pattern",
+        "file": "44343p02.dat"
+    },
+    {
+        "id": "6a5bbe46963b67.80308016",
+        "name": "Baseplate 32 x 32 Road 6-Stud Crossroads with White Road Edge and Pedestrian Crossing Pattern",
+        "file": "44343p03.dat"
+    },
+    {
+        "id": "6a5bbe469b8025.82023631",
+        "name": "Baseplate 32 x 32 Road 9-Stud Driveway",
+        "file": "4478.dat"
+    },
+    {
+        "id": "6a5bbe469b8b55.65508669",
+        "name": "Baseplate 32 x 32 Road 9-Stud Driveway with Grey Pattern",
+        "file": "4478p01.dat"
+    },
+    {
+        "id": "6a5bbe469b95a7.42963143",
+        "name": "Baseplate 32 x 32 Road 9-Stud Driveway with White Lines Pattern",
+        "file": "4478p02.dat"
+    },
+    {
+        "id": "6a5bbe469b9fc4.69258981",
+        "name": "Baseplate 32 x 32 Road 9-Stud Driveway with Grey Crazy Paving",
+        "file": "4478p03.dat"
+    },
+    {
+        "id": "6a5bbe469ba9f9.00441244",
+        "name": "Baseplate 32 x 32 Road 9-Stud Driveway with Dark Grey Crazy Paving",
+        "file": "4478p04.dat"
+    },
+    {
+        "id": "6a5bbe46a6c1f6.96472806",
+        "name": "Baseplate 16 x 24 with Rounded Corners",
+        "file": "455.dat"
+    },
+    {
+        "id": "6a5bbe46a70052.60410125",
+        "name": "Baseplate 16 x 24 with Rounded Corners with Set 344 Dots Pattern",
+        "file": "455p01.dat"
+    },
+    {
+        "id": "6a5bbe46a70a52.48471010",
+        "name": "Baseplate 16 x 24 with Rounded Corners with Set 362 Dots Pattern",
+        "file": "455p02.dat"
+    },
+    {
+        "id": "6a5bbe46cebb87.60904195",
+        "name": "Baseplate 20 x 26 with 12 x 18 Hole",
+        "file": "49059.dat"
+    },
+    {
+        "id": "6a5bbe46d38913.18279241",
+        "name": "Duplo Baseplate 12 x 16 with  6 x 16 Stud Gap",
+        "file": "50384.dat"
+    },
+    {
+        "id": "6a5bbe46d91447.86145864",
+        "name": "Baseplate 32 x 48 Raised with Level Front",
+        "file": "51542.dat"
+    },
+    {
+        "id": "6a5bbe46d94771.72582804",
+        "name": "Baseplate 16 x 16 Driveway",
+        "file": "51595.dat"
+    },
+    {
+        "id": "6a5bbe46d951b0.89740446",
+        "name": "Baseplate 16 x 16 Driveway with Grey Drive Pattern",
+        "file": "51595p01.dat"
+    },
+    {
+        "id": "6a5bbe46d95c01.08762976",
+        "name": "Baseplate 16 x 16 Driveway with Grey Drive\/White Stripes Pattern",
+        "file": "51595p02.dat"
+    },
+    {
+        "id": "6a5bbe46d96616.27378538",
+        "name": "Baseplate 16 x 16 Driveway with Yellow Truck Pattern",
+        "file": "51595p03.dat"
+    },
+    {
+        "id": "6a5bbe46de9c54.61354561",
+        "name": "Baseplate 16 x 16 Raised with Shaped 10 x 10 Hole and 4 Pegholes",
+        "file": "53588.dat"
+    },
+    {
+        "id": "6a5bbe47012276.44916041",
+        "name": "Duplo Baseplate 16 x 16",
+        "file": "5930.dat"
+    },
+    {
+        "id": "6a5bbe470c0605.25664832",
+        "name": "Baseplate 32 x 32 Canyon with Island",
+        "file": "6024.dat"
+    },
+    {
+        "id": "6a5bbe470c1004.19434194",
+        "name": "Baseplate 32 x 32 Canyon with Island with Blue and Yellow Stream Pattern",
+        "file": "6024p02.dat"
+    },
+    {
+        "id": "6a5bbe4712f802.67883429",
+        "name": "Baseplate 32 x 32 Road 9-Stud Straight",
+        "file": "606.dat"
+    },
+    {
+        "id": "6a5bbe47174a34.95414883",
+        "name": "Baseplate 32 x 32 Road 9-Stud Straight with Road Pattern",
+        "file": "606p01.dat"
+    },
+    {
+        "id": "6a5bbe47175516.49017970",
+        "name": "Baseplate 32 x 32 Road 9-Stud Straight with Crosswalk Pattern",
+        "file": "606p02.dat"
+    },
+    {
+        "id": "6a5bbe47176565.04494421",
+        "name": "Baseplate 32 x 32 Road 9-Stud Straight with Runway Pattern",
+        "file": "606p33.dat"
+    },
+    {
+        "id": "6a5bbe47177045.50892778",
+        "name": "Baseplate 32 x 32 Road 9-Stud Crossroads",
+        "file": "607.dat"
+    },
+    {
+        "id": "6a5bbe47192353.38799199",
+        "name": "Baseplate 32 x 32 Road 9-Stud Crossroads with Crosswalk Pattern",
+        "file": "607p01.dat"
+    },
+    {
+        "id": "6a5bbe47192e52.54218847",
+        "name": "Baseplate 32 x 32 Road 9-Stud T-Junction",
+        "file": "608.dat"
+    },
+    {
+        "id": "6a5bbe471a5f97.00106530",
+        "name": "Baseplate 32 x 32 Road 9-Stud T-Junction with Crosswalk Pattern",
+        "file": "608p01.dat"
+    },
+    {
+        "id": "6a5bbe471a6c08.11473740",
+        "name": "Baseplate 32 x 32 Road 9-Stud T-Junction w\/ Green Octagon Patt.",
+        "file": "608p02.dat"
+    },
+    {
+        "id": "6a5bbe471a77b6.72859603",
+        "name": "Baseplate 32 x 32 Road 9-Stud T-Junction w\/ Yellow Lines Pattern",
+        "file": "608p03.dat"
+    },
+    {
+        "id": "6a5bbe471a8716.82907227",
+        "name": "Baseplate 32 x 32 Road 9-Stud T-Junction w\/ Orange Lines Pattern",
+        "file": "608p04.dat"
+    },
+    {
+        "id": "6a5bbe471a9880.57989616",
+        "name": "Baseplate 32 x 32 Road 9-Stud T-Junction with Runway Pattern",
+        "file": "608p33.dat"
+    },
+    {
+        "id": "6a5bbe471aabb3.58267531",
+        "name": "Baseplate 32 x 32 Road 9-Stud Curve",
+        "file": "609.dat"
+    },
+    {
+        "id": "6a5bbe471af5f6.27248282",
+        "name": "Baseplate 32 x 32 Raised with Ramp, Pit and Stairs",
+        "file": "6092.dat"
+    },
+    {
+        "id": "6a5bbe471b14a9.29814557",
+        "name": "Baseplate 32 x 32 Raised with Ramp, Pit and Stairs with Grey Stones Pattern",
+        "file": "6092p01.dat"
+    },
+    {
+        "id": "6a5bbe471b66e4.72590334",
+        "name": "Baseplate 16 x 16",
+        "file": "6098.dat"
+    },
+    {
+        "id": "6a5bbe471b7113.81401517",
+        "name": "Baseplate 32 x 32 Road 9-Stud Landing Pad",
+        "file": "6099.dat"
+    },
+    {
+        "id": "6a5bbe471b7b18.08362330",
+        "name": "Baseplate 32 x 32 Road 9-Stud Landing Pad with Runway Pattern",
+        "file": "6099p01.dat"
+    },
+    {
+        "id": "6a5bbe471b85a4.47324616",
+        "name": "Baseplate 32 x 32 Road 9-Stud Landing Pad with Green Octagon",
+        "file": "6099p02.dat"
+    },
+    {
+        "id": "6a5bbe471b8ff7.03469376",
+        "name": "Baseplate 32 x 32 Road 9-Stud Landing Pad Type 1 (Yellow) Pattern",
+        "file": "6099p03.dat"
+    },
+    {
+        "id": "6a5bbe471b9b23.60455735",
+        "name": "Baseplate 32 x 32 Road 9-Stud Landing Pad Type 1 (Orange) Pattern",
+        "file": "6099p04.dat"
+    },
+    {
+        "id": "6a5bbe471ba523.63635767",
+        "name": "Baseplate 32 x 32 Road 9-Stud Landing Pad Type 2 (Orange) Pattern",
+        "file": "6099p05.dat"
+    },
+    {
+        "id": "6a5bbe471baf35.11800279",
+        "name": "Baseplate 32 x 32 Road 9-Stud Landing Pad Type 3 (Orange) Pattern",
+        "file": "6099p06.dat"
+    },
+    {
+        "id": "6a5bbe471bb929.63027619",
+        "name": "Baseplate 32 x 32 Road 9-Stud Landing Pad Type 2 (Yellow) Pattern",
+        "file": "6099p07.dat"
+    },
+    {
+        "id": "6a5bbe471bc401.85202697",
+        "name": "Baseplate 32 x 32 Road 9-Stud Curve with Road Pattern",
+        "file": "609p01.dat"
+    },
+    {
+        "id": "6a5bbe471be213.65039338",
+        "name": "Baseplate 32 x 32 Road 8-Stud Straight",
+        "file": "610.dat"
+    },
+    {
+        "id": "6a5bbe471bec70.11268652",
+        "name": "Baseplate 32 x 32 Road 9-Stud 3-Lane",
+        "file": "6100.dat"
+    },
+    {
+        "id": "6a5bbe471bf6d5.55324658",
+        "name": "Baseplate 32 x 32 Road 9-Stud 3-Lane with Centre and Right Numbered Pattern",
+        "file": "6100p01.dat"
+    },
+    {
+        "id": "6a5bbe471c0125.42319530",
+        "name": "Baseplate 32 x 32 Road 9-Stud 3-Lane w\/ Helicopter Pad Pattern",
+        "file": "6100p02.dat"
+    },
+    {
+        "id": "6a5bbe471c0bc2.66582471",
+        "name": "Baseplate 32 x 32 Road 9-Stud 3-Lane with Left & Right Numbered",
+        "file": "6100p03.dat"
+    },
+    {
+        "id": "6a5bbe471c15e9.15316930",
+        "name": "Baseplate 32 x 32 Road 9-Stud 3-Lane with Chevrons Pattern",
+        "file": "6100p04.dat"
+    },
+    {
+        "id": "6a5bbe471c2048.08455502",
+        "name": "Baseplate 32 x 32 Road 9-Stud 3-Lane w\/ Centre & Left Numbered",
+        "file": "6100p05.dat"
+    },
+    {
+        "id": "6a5bbe471d5329.64335414",
+        "name": "Baseplate 32 x 32 Road 8-Stud Straight with Road Pattern",
+        "file": "610p01.dat"
+    },
+    {
+        "id": "6a5bbe471d5d54.86104025",
+        "name": "Baseplate 32 x 32 Road 8-Stud Crossroads",
+        "file": "611.dat"
+    },
+    {
+        "id": "6a5bbe471ed423.63994797",
+        "name": "Baseplate 32 x 32 Road 8-Stud Crossroads with Crosswalk Pattern",
+        "file": "611p01.dat"
+    },
+    {
+        "id": "6a5bbe471ee051.03673123",
+        "name": "Baseplate 32 x 32 Road 8-Stud T-Junction",
+        "file": "612.dat"
+    },
+    {
+        "id": "6a5bbe47205d96.33307753",
+        "name": "Baseplate 32 x 32 Road 8-Stud T-Junction with Crosswalk Pattern",
+        "file": "612p01.dat"
+    },
+    {
+        "id": "6a5bbe47206876.25137261",
+        "name": "Baseplate 32 x 32 Road 8-Stud Curve",
+        "file": "613.dat"
+    },
+    {
+        "id": "6a5bbe47214075.87739811",
+        "name": "Baseplate 32 x 32 with Craters with Studs",
+        "file": "6136.dat"
+    },
+    {
+        "id": "6a5bbe47214ac6.28123808",
+        "name": "Baseplate 32 x 32 with Craters with Studs Underwater Pattern",
+        "file": "6136p01.dat"
+    },
+    {
+        "id": "6a5bbe4721c3d0.52864756",
+        "name": "Baseplate 32 x 32 Road 8-Stud Curve with Road Pattern",
+        "file": "613p01.dat"
+    },
+    {
+        "id": "6a5bbe474d1bb6.40851444",
+        "name": "Baseplate 32 x 48 Raised with Ramp, Pit and Stairs",
+        "file": "6261.dat"
+    },
+    {
+        "id": "6a5bbe4762f131.05625234",
+        "name": "Duplo Baseplate 16 x 24",
+        "file": "6475.dat"
+    },
+    {
+        "id": "6a5bbe4763d9e6.57495736",
+        "name": "Baseplate 16 x 32 with Railway Station Studs",
+        "file": "648.dat"
+    },
+    {
+        "id": "6a5bbe4779ced3.60118921",
+        "name": "Baseplate 16 x 18",
+        "file": "6850.dat"
+    },
+    {
+        "id": "6a5bbe4779e3c1.93742747",
+        "name": "Duplo Baseplate 12 x 16",
+        "file": "6851.dat"
+    },
+    {
+        "id": "6a5bbe47c50467.35988095",
+        "name": "Baseplate 50 x 50",
+        "file": "782.dat"
+    },
+    {
+        "id": "6a5bbe47c62757.38653206",
+        "name": "Baseplate 24 x 32 with Studs on 3 Sides",
+        "file": "785.dat"
+    },
+    {
+        "id": "6a5bbe47c94cc2.22046001",
+        "name": "Baseplate  8 x  8 with Sharp Corners",
+        "file": "79759.dat"
+    },
+    {
+        "id": "6a5bbe47cbd5a2.31215312",
+        "name": "Baseplate  8 x  8 with Adhesive Tape",
+        "file": "80319.dat"
+    },
+    {
+        "id": "6a5bbe47cd1ae9.13475354",
+        "name": "Baseplate 32 x 32 Road 7-Stud Straight with Road Pattern",
+        "file": "80547.dat"
+    },
+    {
+        "id": "6a5bbe47cf3ad3.92120368",
+        "name": "Baseplate 24 x 40 with Rounded Corners, Driveways and Set EU360\/US580 Dot Pattern",
+        "file": "809.dat"
+    },
+    {
+        "id": "6a5bbe47cf9645.73340566",
+        "name": "Baseplate 16 x 32 Warehouse Set 341",
+        "file": "811.dat"
+    },
+    {
+        "id": "6a5bbe47d11ca3.10355819",
+        "name": "Baseplate  8 x 12",
+        "file": "819.dat"
+    },
+    {
+        "id": "6a5bbe47f21dd1.09385097",
+        "name": "Baseplate 14 x 20 with Rounded Corners",
+        "file": "896.dat"
+    },
+    {
+        "id": "6a5bbe47f36444.07055578",
+        "name": "Baseplate 14 x 20 with Rounded Corners + Set 355 Dots Pattern",
+        "file": "896p01.dat"
+    },
+    {
+        "id": "6a5bbe48048707.24288092",
+        "name": "Baseplate 10 x 48 Train-Ferry Set 343",
+        "file": "911.dat"
+    },
+    {
+        "id": "6a5bbe4804a5b1.57403477",
+        "name": "Baseplate 16 x 16 Control Tower Set 340",
+        "file": "912.dat"
+    },
+    {
+        "id": "6a5bbe4804ea27.58660597",
+        "name": "Baseplate 24 x 32 Fire-House",
+        "file": "915.dat"
+    },
+    {
+        "id": "6a5bbe480509f1.49263891",
+        "name": "Baseplate 24 x 32 with Driveways and Set EU357\/US570 Dot Pattern",
+        "file": "915p01.dat"
+    },
+    {
+        "id": "6a5bbe480514c0.08168612",
+        "name": "Baseplate 24 x 32 with Driveways and Set 347 Dot Pattern",
+        "file": "915p02.dat"
+    },
+    {
+        "id": "6a5bbe48051f77.62811428",
+        "name": "Baseplate 24 x 32 with Driveways and Set 355 Dots Pattern",
+        "file": "915p04.dat"
+    },
+    {
+        "id": "6a5bbe486e7433.58296131",
+        "name": "Baseplate 24 x 24",
+        "file": "u1193.dat"
+    },
+    {
+        "id": "6a5bbe486e93f0.24195746",
+        "name": "Baseplate 14 x 20",
+        "file": "u1454.dat"
+    },
+    {
+        "id": "6a5bbe486e9e33.98741728",
+        "name": "Baseplate 14 x 20 with Set 355 Dots Pattern",
+        "file": "u1454p01.dat"
+    },
+    {
+        "id": "6a5bbe48700078.92228287",
+        "name": "Baseplate  8 x 22",
+        "file": "u568.dat"
+    },
+    {
+        "id": "6a5bbe4877e177.76897391",
+        "name": "Mursten Baseplate 10 x 20",
+        "file": "u8011.dat"
+    }
+]

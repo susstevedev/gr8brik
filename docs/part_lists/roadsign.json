@@ -1,0 +1,652 @@
+[
+    {
+        "id": "6a5bbe44a220e5.09554871",
+        "name": "Signpost Ornamented Type 2",
+        "file": "13459.dat"
+    },
+    {
+        "id": "6a5bbe44b25603.66485736",
+        "name": "Roadsign Clip-on  2 x  2 Square with C-Clip",
+        "file": "15210.dat"
+    },
+    {
+        "id": "6a5bbe44b2c148.59810147",
+        "name": "Roadsign Clip-on  2 x  2 Square with C-Clip with Blue Computer Screen Pattern",
+        "file": "15210pc0.dat"
+    },
+    {
+        "id": "6a5bbe44b2cbc8.19157234",
+        "name": "Roadsign Clip-on  2 x  2 Square with C-Clip with Black \"Rabbit Season\" Pattern",
+        "file": "15210pde7.dat"
+    },
+    {
+        "id": "6a5bbe44efb528.79675437",
+        "name": "Signpost Ornamented Type 1",
+        "file": "2038.dat"
+    },
+    {
+        "id": "6a5bbe458dbc96.14557079",
+        "name": "Roadsign Clip-on  2 x  2 Square",
+        "file": "30258.dat"
+    },
+    {
+        "id": "6a5bbe458deef4.37725805",
+        "name": "Roadsign Clip-on  2 x  2 Square with Black Arrow Pattern",
+        "file": "30258p01.dat"
+    },
+    {
+        "id": "6a5bbe458df9f7.44705165",
+        "name": "Roadsign Clip-on  2 x  2 Square with Black Turn Arrow Pattern",
+        "file": "30258p02.dat"
+    },
+    {
+        "id": "6a5bbe458e0413.15213756",
+        "name": "Roadsign Clip-on  2 x  2 Square with Pedestrian Crossing Pattern",
+        "file": "30258p03.dat"
+    },
+    {
+        "id": "6a5bbe458e0e46.20577205",
+        "name": "Roadsign Clip-on  2 x  2 Square with Speed Limit \"30\" Pattern",
+        "file": "30258p04.dat"
+    },
+    {
+        "id": "6a5bbe458e1830.89810184",
+        "name": "Roadsign Clip-on  2 x  2 Square with \"P\" on Blue Pattern",
+        "file": "30258p05.dat"
+    },
+    {
+        "id": "6a5bbe458e22a1.74437758",
+        "name": "Roadsign Clip-on  2 x  2 Square with Blue Computer Screen Pattern",
+        "file": "30258pc0.dat"
+    },
+    {
+        "id": "6a5bbe458e3722.72415843",
+        "name": "Roadsign Clip-on  2.2 x  2.667 Triangular",
+        "file": "30259a.dat"
+    },
+    {
+        "id": "6a5bbe458e5652.25576681",
+        "name": "Roadsign Clip-on  2.2 x  2.667 Triangular with Fire Pattern",
+        "file": "30259ap01.dat"
+    },
+    {
+        "id": "6a5bbe458e63f9.11257209",
+        "name": "Roadsign Clip-on  2.2 x  2.667 Triangular with Warning Pattern",
+        "file": "30259ap02.dat"
+    },
+    {
+        "id": "6a5bbe458e6e56.65019040",
+        "name": "Roadsign Clip-on  2.2 x  2.667 Triangular with Bend Pattern",
+        "file": "30259ap03.dat"
+    },
+    {
+        "id": "6a5bbe458e78c6.88361162",
+        "name": "Roadsign Clip-on  2.2 x  2.667 Triangular with Traffic Light Pattern",
+        "file": "30259ap04.dat"
+    },
+    {
+        "id": "6a5bbe458e82a0.02292682",
+        "name": "Roadsign Clip-on  2.2 x  2.667 Triangular with Road Works Pattern",
+        "file": "30259ap05.dat"
+    },
+    {
+        "id": "6a5bbe458e8d06.35477712",
+        "name": "Roadsign Clip-on  2.2 x  2.667 Triangular with Narrow Road Pattern",
+        "file": "30259ap06.dat"
+    },
+    {
+        "id": "6a5bbe458eeba2.38567925",
+        "name": "Roadsign Clip-on  2 x  2 Octagonal",
+        "file": "30260.dat"
+    },
+    {
+        "id": "6a5bbe458ef617.14301506",
+        "name": "Roadsign Clip-on  2 x  2 Octagonal w\/ Red Stop Sign Pattern",
+        "file": "30260p01.dat"
+    },
+    {
+        "id": "6a5bbe458f0061.92346124",
+        "name": "Roadsign Clip-on  2 x  2 Round",
+        "file": "30261.dat"
+    },
+    {
+        "id": "6a5bbe458f2882.02099470",
+        "name": "Roadsign Clip-on  2 x  2 Round with \"POLICE\" and \"STOP\" Pattern",
+        "file": "30261p01.dat"
+    },
+    {
+        "id": "6a5bbe458f32d5.55716266",
+        "name": "Roadsign Clip-on  2 x  2 Round with Speed Limit \"50\" Pattern",
+        "file": "30261p02.dat"
+    },
+    {
+        "id": "6a5bbe458f3d18.93975515",
+        "name": "Roadsign Clip-on  2 x  2 Round with Arrow on Blue Pattern",
+        "file": "30261p03.dat"
+    },
+    {
+        "id": "6a5bbe458f4726.19650963",
+        "name": "Roadsign Clip-on  2 x  2 Round with No Entry Pattern",
+        "file": "30261p04.dat"
+    },
+    {
+        "id": "6a5bbe458f5126.38025609",
+        "name": "Roadsign Clip-on  2 x  2 Round with No Parking Pattern",
+        "file": "30261p05.dat"
+    },
+    {
+        "id": "6a5bbe45ec7a27.65478817",
+        "name": "Roadsign Rectangular Tall",
+        "file": "3349.dat"
+    },
+    {
+        "id": "6a5bbe45ec8f77.29497860",
+        "name": "Roadsign Rectangular Tall with Parking and \"300m\" Pattern",
+        "file": "3349p01.dat"
+    },
+    {
+        "id": "6a5bbe45ec9a77.60187272",
+        "name": "Roadsign Rectangular Tall with Sans-Serif \"P\" Parking Pattern",
+        "file": "3349p02.dat"
+    },
+    {
+        "id": "6a5bbe45ecb042.50911110",
+        "name": "Roadsign Round",
+        "file": "3350.dat"
+    },
+    {
+        "id": "6a5bbe45ecc766.02159707",
+        "name": "Roadsign Round with No Entry Pattern",
+        "file": "3350p01.dat"
+    },
+    {
+        "id": "6a5bbe45ecd1c5.91037925",
+        "name": "Roadsign Round with No Left Turn Pattern",
+        "file": "3350p02.dat"
+    },
+    {
+        "id": "6a5bbe45ecdc68.75427074",
+        "name": "Roadsign Round with No Waiting Left Pattern",
+        "file": "3350p03.dat"
+    },
+    {
+        "id": "6a5bbe45ece680.15108327",
+        "name": "Roadsign Round with No Waiting Right Pattern",
+        "file": "3350p04.dat"
+    },
+    {
+        "id": "6a5bbe45ecf233.90637999",
+        "name": "Roadsign Round with Speed Limit \"40\" Pattern",
+        "file": "3350p05.dat"
+    },
+    {
+        "id": "6a5bbe45ecfc86.73037294",
+        "name": "Roadsign Round with No Passing Pattern",
+        "file": "3350p06.dat"
+    },
+    {
+        "id": "6a5bbe45ed0685.72339908",
+        "name": "Roadsign Round with End of Speed Limit \"40\" Pattern",
+        "file": "3350p07.dat"
+    },
+    {
+        "id": "6a5bbe45ed1127.61156409",
+        "name": "Roadsign Round with End of No Passing Pattern",
+        "file": "3350p08.dat"
+    },
+    {
+        "id": "6a5bbe45ed1b25.50344122",
+        "name": "Roadsign Round with \"BUS STOP\" Pattern",
+        "file": "3350p09.dat"
+    },
+    {
+        "id": "6a5bbe45ed25d4.32309771",
+        "name": "Roadsign Triangular Type 1",
+        "file": "3351a.dat"
+    },
+    {
+        "id": "6a5bbe45ed30c6.03779946",
+        "name": "Roadsign Triangular Type 1 with Level Crossing Large Pattern",
+        "file": "3351ap01.dat"
+    },
+    {
+        "id": "6a5bbe45ed3b53.28837604",
+        "name": "Roadsign Triangular Type 1 with Cross Intersection Pattern",
+        "file": "3351ap02.dat"
+    },
+    {
+        "id": "6a5bbe45ed47b4.13066208",
+        "name": "Roadsign Triangular Type 1 with Road Works, 1 Dirt Pile Pattern",
+        "file": "3351ap03.dat"
+    },
+    {
+        "id": "6a5bbe45ed5280.92438295",
+        "name": "Roadsign Triangular Type 1 with Skidding Car\/Spare Wheel Pattern",
+        "file": "3351ap04.dat"
+    },
+    {
+        "id": "6a5bbe45ed5d39.18282753",
+        "name": "Roadsign Triangular Type 1 with Skidding Car Pattern",
+        "file": "3351ap05.dat"
+    },
+    {
+        "id": "6a5bbe45ed6796.94408010",
+        "name": "Roadsign Triangular Type 1 with Locomotive no Rail Pattern",
+        "file": "3351ap06.dat"
+    },
+    {
+        "id": "6a5bbe45ed7188.87018323",
+        "name": "Roadsign Triangular Type 1 with Locomotive on Rail Pattern",
+        "file": "3351ap07.dat"
+    },
+    {
+        "id": "6a5bbe45ed7bc7.15965956",
+        "name": "Roadsign Triangular Type 1 with Ped. Crossing Type 1 Pattern",
+        "file": "3351ap08.dat"
+    },
+    {
+        "id": "6a5bbe45ed8601.54789098",
+        "name": "Roadsign Triangular Type 1 with Pedestrians Pattern",
+        "file": "3351ap09.dat"
+    },
+    {
+        "id": "6a5bbe45ed9054.71856779",
+        "name": "Roadsign Triangular Type 1 with Road Works with 2 Piles (Thick Worker) Pattern",
+        "file": "3351ap10.dat"
+    },
+    {
+        "id": "6a5bbe45ed9b41.75339726",
+        "name": "Roadsign Triangular Type 1 with Road Works with 2 Piles (Thin Worker) Pattern",
+        "file": "3351ap11.dat"
+    },
+    {
+        "id": "6a5bbe45eda608.46829146",
+        "name": "Roadsign Triangular Type 1 with Ped. Crossing Type 2 Pattern",
+        "file": "3351ap12.dat"
+    },
+    {
+        "id": "6a5bbe45edb138.16736883",
+        "name": "Roadsign Triangular Type 1 with Pedestrians Pattern",
+        "file": "3351ap13.dat"
+    },
+    {
+        "id": "6a5bbe45edbc50.01682903",
+        "name": "Roadsign Triangular Type 1 with Level Crossing Small Pattern",
+        "file": "3351ap14.dat"
+    },
+    {
+        "id": "6a5bbe45edcab3.15169921",
+        "name": "Roadsign Triangular Type 1 with Dangerous Intersection Pattern",
+        "file": "3351ap15.dat"
+    },
+    {
+        "id": "6a5bbe45edda01.63742512",
+        "name": "Roadsign Triangular Type 2",
+        "file": "3351b.dat"
+    },
+    {
+        "id": "6a5bbe45edea22.14705270",
+        "name": "Roadsign Triangular Type 2 with Locomotive no Rail Pattern",
+        "file": "3351bp06.dat"
+    },
+    {
+        "id": "6a5bbe45edf5c1.85438498",
+        "name": "Roadsign Triangular Type 2 with Dangerous Intersection Pattern",
+        "file": "3351bp15.dat"
+    },
+    {
+        "id": "6a5bbe4606eaf0.29149047",
+        "name": "Roadsign Octagonal",
+        "file": "3570.dat"
+    },
+    {
+        "id": "6a5bbe46073d90.60992318",
+        "name": "Roadsign Octagonal with \"STOP\" Short Text Pattern",
+        "file": "3570p01.dat"
+    },
+    {
+        "id": "6a5bbe46074810.78813601",
+        "name": "Roadsign Octagonal with \"STOP\" Tall Text Pattern",
+        "file": "3570p02.dat"
+    },
+    {
+        "id": "6a5bbe464c46e1.13464365",
+        "name": "Roadsign Wide Rectangle",
+        "file": "3897.dat"
+    },
+    {
+        "id": "6a5bbe464c5b40.16154656",
+        "name": "Roadsign Wide Rectangle with \"Snack Bar\" Sign Pattern",
+        "file": "3897p01.dat"
+    },
+    {
+        "id": "6a5bbe46c47da8.73978409",
+        "name": "Fabuland Lamppost",
+        "file": "4781.dat"
+    },
+    {
+        "id": "6a5bbe47629460.68812959",
+        "name": "Roadsign Square",
+        "file": "647.dat"
+    },
+    {
+        "id": "6a5bbe4763c575.13491450",
+        "name": "Roadsign Square with Parking Pattern",
+        "file": "647p01.dat"
+    },
+    {
+        "id": "6a5bbe476b7266.49814360",
+        "name": "Roadsign Clip-on  2.2 x  2.667 Triangular (Thick C-Clip)",
+        "file": "65676a.dat"
+    },
+    {
+        "id": "6a5bbe47872864.71925441",
+        "name": "Lamppost",
+        "file": "723.dat"
+    },
+    {
+        "id": "6a5bbe47954ee3.00760442",
+        "name": "Roadsign Square without Base",
+        "file": "740.dat"
+    },
+    {
+        "id": "6a5bbe47957791.15958996",
+        "name": "Roadsign Square without Base with White Parking \"P\" Pattern",
+        "file": "740p01.dat"
+    },
+    {
+        "id": "6a5bbe47958205.61781934",
+        "name": "Roadsign Square Large without Base with Parking Narrow Pattern",
+        "file": "740p02.dat"
+    },
+    {
+        "id": "6a5bbe47960c16.48301910",
+        "name": "Roadsign Base Round Type 1",
+        "file": "745.dat"
+    },
+    {
+        "id": "6a5bbe47965603.37771655",
+        "name": "Roadsign Base Round Type 2",
+        "file": "746.dat"
+    },
+    {
+        "id": "6a5bbe4796d0f0.03637905",
+        "name": "Roadsign Triangular without Base",
+        "file": "747.dat"
+    },
+    {
+        "id": "6a5bbe47975861.32047908",
+        "name": "Roadsign Triangular without Base with Double Bend Left Pattern",
+        "file": "747p04.dat"
+    },
+    {
+        "id": "6a5bbe47976d24.37114587",
+        "name": "Roadsign Triangular without Base w\/ Locomotive no Rail Pattern",
+        "file": "747p06.dat"
+    },
+    {
+        "id": "6a5bbe47977969.10436116",
+        "name": "Roadsign Triangular without Base with Pedestrians Pattern",
+        "file": "747p07.dat"
+    },
+    {
+        "id": "6a5bbe479783d8.03291847",
+        "name": "Roadsign Triangular without Base with Generic Warning Pattern",
+        "file": "747p08.dat"
+    },
+    {
+        "id": "6a5bbe47978e09.72851299",
+        "name": "Roadsign Triangular without Base with Intersection Pattern",
+        "file": "747p09.dat"
+    },
+    {
+        "id": "6a5bbe47979966.48792075",
+        "name": "Roadsign Triangular without Base with Ped. Crossing Pattern",
+        "file": "747p10.dat"
+    },
+    {
+        "id": "6a5bbe4797a3e0.36670616",
+        "name": "Roadsign Triangular without Base with Level Crossing Pattern",
+        "file": "747p11.dat"
+    },
+    {
+        "id": "6a5bbe47bf2af1.07531960",
+        "name": "Signpost Cantilever with Suspended Sign",
+        "file": "764.dat"
+    },
+    {
+        "id": "6a5bbe486eb206.07628987",
+        "name": "Roadsign Diamond without Base",
+        "file": "u1850.dat"
+    },
+    {
+        "id": "6a5bbe486ebc39.53609127",
+        "name": "Roadsign Diamond without Base with Red Border Pattern",
+        "file": "u1850p01.dat"
+    },
+    {
+        "id": "6a5bbe486ec6a9.08674056",
+        "name": "Roadsign Diamond without Base with Priority Road Pattern",
+        "file": "u1850p02.dat"
+    },
+    {
+        "id": "6a5bbe486ed0a1.10430434",
+        "name": "Roadsign Diamond without Base with End Priority Right Pattern",
+        "file": "u1850p03.dat"
+    },
+    {
+        "id": "6a5bbe486edb38.30917385",
+        "name": "Roadsign Diamond without Base with End Priority Left Pattern",
+        "file": "u1850p04.dat"
+    },
+    {
+        "id": "6a5bbe486ee567.54155906",
+        "name": "Roadsign Round Large without Base",
+        "file": "u1851.dat"
+    },
+    {
+        "id": "6a5bbe486eeff7.10207391",
+        "name": "Roadsign Round Large without Base with \"STOP\" Pattern",
+        "file": "u1851p01.dat"
+    },
+    {
+        "id": "6a5bbe486efa49.86273686",
+        "name": "Roadsign Round Small without Base",
+        "file": "u1852.dat"
+    },
+    {
+        "id": "6a5bbe486f0473.50879559",
+        "name": "Roadsign Round Small without Base with No Entry Wide Pattern",
+        "file": "u1852p01.dat"
+    },
+    {
+        "id": "6a5bbe486f0eb9.68250735",
+        "name": "Roadsign Round Small without Base with No Entry Narrow Pattern",
+        "file": "u1852p02.dat"
+    },
+    {
+        "id": "6a5bbe486f1917.42606539",
+        "name": "Roadsign Round Small without Base with No Left Turn Pattern",
+        "file": "u1852p03.dat"
+    },
+    {
+        "id": "6a5bbe486f2388.81688060",
+        "name": "Roadsign Round Small without Base with No Waiting Left Pattern",
+        "file": "u1852p04.dat"
+    },
+    {
+        "id": "6a5bbe486f2da4.95526908",
+        "name": "Roadsign Round Small without Base with No Parking Pattern",
+        "file": "u1852p05.dat"
+    },
+    {
+        "id": "6a5bbe486f37a4.70360443",
+        "name": "Roadsign Round Small without Base with Turn Left Narrow Pattern",
+        "file": "u1852p06.dat"
+    },
+    {
+        "id": "6a5bbe486f41f3.98309525",
+        "name": "Roadsign Round Small without Base with Turn Right Narrow Pattern",
+        "file": "u1852p07.dat"
+    },
+    {
+        "id": "6a5bbe486f4c25.00397089",
+        "name": "Roadsign Round Small without Base with Turn Left Wide Pattern",
+        "file": "u1852p08.dat"
+    },
+    {
+        "id": "6a5bbe486f5651.62067947",
+        "name": "Roadsign Round Small without Base with Turn Right Wide Pattern",
+        "file": "u1852p09.dat"
+    },
+    {
+        "id": "6a5bbe486f60a2.93719436",
+        "name": "Roadsign Square Small without Base",
+        "file": "u1853.dat"
+    },
+    {
+        "id": "6a5bbe486f6b07.09070506",
+        "name": "Roadsign Square Small without Base with Ped. Crossing Pattern",
+        "file": "u1853p01.dat"
+    },
+    {
+        "id": "6a5bbe486f7522.42165506",
+        "name": "Roadsign Square Small without Base with Parking Pattern",
+        "file": "u1853p02.dat"
+    },
+    {
+        "id": "6a5bbe486f7f07.36088719",
+        "name": "Roadsign Triangular Inverted without Base",
+        "file": "u1854.dat"
+    },
+    {
+        "id": "6a5bbe486f8914.39187081",
+        "name": "Roadsign Triangular Inverted without Base with Give Way Pattern",
+        "file": "u1854p01.dat"
+    },
+    {
+        "id": "6a5bbe486f9359.16023770",
+        "name": "Roadsign Triangular Inverted without Base with \"HALT\" Pattern",
+        "file": "u1854p02.dat"
+    },
+    {
+        "id": "6a5bbe486fbbb0.99808484",
+        "name": "Signpost Slanted Cantilever with Suspended Sign",
+        "file": "u454.dat"
+    },
+    {
+        "id": "6a5bbe486fc5a4.76821716",
+        "name": "Signpost Slanted Cantilever with Suspended Sign with Shell Logo Pattern",
+        "file": "u454p01.dat"
+    },
+    {
+        "id": "6a5bbe486fcf55.65913094",
+        "name": "Signpost Slanted Cantilever with Suspended Sign with Shell Logo 1955 Pattern",
+        "file": "u454p02.dat"
+    },
+    {
+        "id": "6a5bbe486fd919.93818284",
+        "name": "Signpost Slanted Cantilever with Suspended Sign with \"POLICE\" Pattern",
+        "file": "u454p03.dat"
+    },
+    {
+        "id": "6a5bbe487afed0.32005552",
+        "name": "Roadsign Round Large",
+        "file": "u9006.dat"
+    },
+    {
+        "id": "6a5bbe487b0ab7.89683109",
+        "name": "Roadsign Round Large with \"STOP\" Pattern",
+        "file": "u9006p01.dat"
+    },
+    {
+        "id": "6a5bbe487b1642.07023529",
+        "name": "Roadsign Triangular with Round Base",
+        "file": "u9007.dat"
+    },
+    {
+        "id": "6a5bbe487b2113.44106313",
+        "name": "Roadsign Triangular with Round Base with Cross Intersection Pattern",
+        "file": "u9007p01.dat"
+    },
+    {
+        "id": "6a5bbe487b2b34.61212645",
+        "name": "Roadsign Triangular with Round Base with Pedestrians Pattern",
+        "file": "u9007p02.dat"
+    },
+    {
+        "id": "6a5bbe487b3558.95921665",
+        "name": "Roadsign Triangular with Round Base with Roundabout Pattern",
+        "file": "u9007p03.dat"
+    },
+    {
+        "id": "6a5bbe487b3ff4.63156022",
+        "name": "Roadsign Triangular with Round Base with 2-way Traffic Pattern",
+        "file": "u9007p04.dat"
+    },
+    {
+        "id": "6a5bbe487b4a16.87405572",
+        "name": "Roadsign Triangular with Round Base with Right Bend Pattern",
+        "file": "u9007p05.dat"
+    },
+    {
+        "id": "6a5bbe487b5448.50478953",
+        "name": "Roadsign Triangular with Round Base with Bends Pattern",
+        "file": "u9007p06.dat"
+    },
+    {
+        "id": "6a5bbe487b6060.28982892",
+        "name": "Roadsign Triangular with Round Base with Ped. Crossing Pattern",
+        "file": "u9007p07.dat"
+    },
+    {
+        "id": "6a5bbe487b6ad6.45708755",
+        "name": "Roadsign Round with Round Base",
+        "file": "u9008.dat"
+    },
+    {
+        "id": "6a5bbe487b7592.03432089",
+        "name": "Roadsign Round with Round Base with No Waiting Left Pattern",
+        "file": "u9008p01.dat"
+    },
+    {
+        "id": "6a5bbe487b8030.74794230",
+        "name": "Roadsign Round with Round Base with End Restrictions Pattern",
+        "file": "u9008p02.dat"
+    },
+    {
+        "id": "6a5bbe487b8a93.33560541",
+        "name": "Roadsign Round with Round Base with Speed Limit \"30\" Pattern",
+        "file": "u9008p03.dat"
+    },
+    {
+        "id": "6a5bbe487b9570.19906393",
+        "name": "Roadsign Round with Round Base with No Entry Pattern",
+        "file": "u9008p04.dat"
+    },
+    {
+        "id": "6a5bbe487ba008.68154789",
+        "name": "Roadsign Round with Round Base with \"STOP\" Pattern",
+        "file": "u9008p05.dat"
+    },
+    {
+        "id": "6a5bbe487baa73.89490249",
+        "name": "Roadsign Round with Round Base with Turn Left Pattern",
+        "file": "u9008p06.dat"
+    },
+    {
+        "id": "6a5bbe487bb4c4.33521027",
+        "name": "Roadsign Round with Round Base with Turn Right Pattern",
+        "file": "u9008p07.dat"
+    },
+    {
+        "id": "6a5bbe487bbee2.83632264",
+        "name": "Roadsign Square with Round Base",
+        "file": "u9009.dat"
+    },
+    {
+        "id": "6a5bbe487bc981.25741908",
+        "name": "Roadsign Square with Round Base with Parking Pattern",
+        "file": "u9009p01.dat"
+    }
+]

@@ -1,0 +1,2877 @@
+[
+    {
+        "id": "6a5bbe448e92a0.50491976",
+        "name": "Minifig Head Animal Crossing Raccoon",
+        "file": "105196.dat"
+    },
+    {
+        "id": "6a5bbe448e9d57.45851722",
+        "name": "Minifig Head Animal Crossing Raccoon Tom Nook with Dark Brown Face, Coral Auricles and Blue Eyes Pattern",
+        "file": "105196p01.dat"
+    },
+    {
+        "id": "6a5bbe448f4b50.40355363",
+        "name": "Minifig Head with LOTR Uruk-Hai Scowl and White Hand 2-Sided Pattern",
+        "file": "10756.dat"
+    },
+    {
+        "id": "6a5bbe449edf54.02052427",
+        "name": "Minifig Head Ninja Turtle",
+        "file": "12607.dat"
+    },
+    {
+        "id": "6a5bbe449eea04.03069272",
+        "name": "Minifig Head Ninja Turtle with Leonardo Looking Up Pattern",
+        "file": "12607p01.dat"
+    },
+    {
+        "id": "6a5bbe449ef473.48631340",
+        "name": "Minifig Head Ninja Turtle with Michelangelo Grin Pattern",
+        "file": "12607p03.dat"
+    },
+    {
+        "id": "6a5bbe44a170c6.28109197",
+        "name": "Minifig Head Yoda with Curved Ears Type 2",
+        "file": "13195.dat"
+    },
+    {
+        "id": "6a5bbe44a17b78.73175091",
+        "name": "Minifig Head Yoda with Curved Ears Type 2 with Black Eyes and Grey Hair Pattern",
+        "file": "13195p01.dat"
+    },
+    {
+        "id": "6a5bbe44a3d9c1.21054818",
+        "name": "~Minifig Head Round  1.8 x  1.8 Biscuit Filling",
+        "file": "13733.dat"
+    },
+    {
+        "id": "6a5bbe44a5c7d3.48563095",
+        "name": "Minifig Head Yeti",
+        "file": "13809.dat"
+    },
+    {
+        "id": "6a5bbe44a5d222.59382240",
+        "name": "Minifig Head Yeti with Bright Light Blue Face and Bright Light Yellow Teeth Pattern",
+        "file": "13809p01.dat"
+    },
+    {
+        "id": "6a5bbe44a5dc54.97100597",
+        "name": "Minifig Head Yeti with Shaggy Hair with Reddish Brown Fur, Black Nose and White Beaver Teeth Pattern",
+        "file": "13809p02.dat"
+    },
+    {
+        "id": "6a5bbe44a5e657.05095111",
+        "name": "Minifig Head Yeti with Dark Brown Fur and White Teeth Pattern",
+        "file": "13809p03.dat"
+    },
+    {
+        "id": "6a5bbe44a6f514.47067368",
+        "name": "~Minifig Head Round  1.8 x  1.8 Biscuit",
+        "file": "14396.dat"
+    },
+    {
+        "id": "6a5bbe44a6ff24.02576859",
+        "name": "~Minifig Head Round  1.8 x  1.8 Biscuit with Black and Metallic Silver Gears on Front and White Clockface on Back Pattern",
+        "file": "14396p01.dat"
+    },
+    {
+        "id": "6a5bbe44a70923.01958572",
+        "name": "~Minifig Head Round  1.8 x  1.8 Biscuit with Reddish Brown Eyes and White Brows and Mouth with Dark Brown Moustache and Freckles Pattern",
+        "file": "14396p02.dat"
+    },
+    {
+        "id": "6a5bbe44a71319.61158846",
+        "name": "~Minifig Head Round  1.8 x  1.8 Biscuit with Reddish Brown Eyes, White Brows and Mouth with Red Lips, Cheeks and Freckles Pattern",
+        "file": "14396p03.dat"
+    },
+    {
+        "id": "6a5bbe44a71cf1.21086537",
+        "name": "~Minifig Head Round  1.8 x  1.8 Biscuit with Reddish Brown Eyes and White Brows and Mouth with Freckles Pattern",
+        "file": "14396p04.dat"
+    },
+    {
+        "id": "6a5bbe44a72737.39131270",
+        "name": "Minifig Head Round  1.8 x  1.8 Biscuit with Filling",
+        "file": "14397.dat"
+    },
+    {
+        "id": "6a5bbe44a732a9.51271091",
+        "name": "Minifig Head Round  1.8 x  1.8 Biscuit with Blue Filling, Black and Metallic Silver Gears on Front and White Clockface on Back Pattern",
+        "file": "14397p01c01.dat"
+    },
+    {
+        "id": "6a5bbe44a73d40.43884283",
+        "name": "Minifig Head Round  1.8 x  1.8 Biscuit with Reddish Brown Filling and Reddish Brown Eyes and White Brows and Mouth with Dark Brown Moustache and Freckles Pattern",
+        "file": "14397p02c01.dat"
+    },
+    {
+        "id": "6a5bbe44a747d6.77209823",
+        "name": "Minifig Head Round  1.8 x  1.8 Biscuit with Bright Pink Filling and Reddish Brown Eyes, White Brows and Mouth with Red Lips, Cheeks and Freckles Pattern",
+        "file": "14397p03c01.dat"
+    },
+    {
+        "id": "6a5bbe44a75243.17476578",
+        "name": "Minifig Head Round  1.8 x  1.8 Biscuit with Reddish Brown Filling and Reddish Brown Eyes and White Brows and Mouth with Freckles Pattern",
+        "file": "14397p04c01.dat"
+    },
+    {
+        "id": "6a5bbe44b74006.67233417",
+        "name": "Minifig Head Simpsons Marge Simpson",
+        "file": "15522.dat"
+    },
+    {
+        "id": "6a5bbe44b74a71.19457959",
+        "name": "Minifig Head Simpsons Marge Simpson with Eyes Looking Right Pattern",
+        "file": "15522p01.dat"
+    },
+    {
+        "id": "6a5bbe44b75797.33014936",
+        "name": "Minifig Head Simpsons Marge Simpson with Wide Open Eyes Pattern",
+        "file": "15522p02.dat"
+    },
+    {
+        "id": "6a5bbe44b761f2.25000999",
+        "name": "Minifig Head Simpsons Bart Simpson",
+        "file": "15523.dat"
+    },
+    {
+        "id": "6a5bbe44b76d48.77430907",
+        "name": "Minifig Head Simpsons Bart Simpson with Eyes Looking Left Pattern",
+        "file": "15523p01.dat"
+    },
+    {
+        "id": "6a5bbe44b77941.95573562",
+        "name": "Minifig Head Simpsons Bart Simpson with Eyes Pattern",
+        "file": "15523p02.dat"
+    },
+    {
+        "id": "6a5bbe44b78396.70087565",
+        "name": "Minifig Head Simpsons Lisa Simpson",
+        "file": "15524.dat"
+    },
+    {
+        "id": "6a5bbe44b78dd2.47793493",
+        "name": "Minifig Head Simpsons Lisa Simpson with Worried Eyes Pattern",
+        "file": "15524p01.dat"
+    },
+    {
+        "id": "6a5bbe44b798c0.15069888",
+        "name": "Minifig Head Simpsons Lisa Simpson with Eyes Pattern",
+        "file": "15524p02.dat"
+    },
+    {
+        "id": "6a5bbe44b7a3a6.75126562",
+        "name": "Minifig Head Simpsons Maggie Simpson",
+        "file": "15525.dat"
+    },
+    {
+        "id": "6a5bbe44b7ae06.38498217",
+        "name": "Minifig Head Simpsons Maggie Simpson with Wide Open Eyes Pattern",
+        "file": "15525p01.dat"
+    },
+    {
+        "id": "6a5bbe44b7b846.77182783",
+        "name": "Minifig Head Simpsons Maggie Simpson with Worried Eyes Pattern",
+        "file": "15525p02.dat"
+    },
+    {
+        "id": "6a5bbe44b7ceb4.48963711",
+        "name": "Minifig Head Simpsons Homer Simpson",
+        "file": "15527.dat"
+    },
+    {
+        "id": "6a5bbe44b7d930.97387688",
+        "name": "Minifig Head Simpsons Homer Simpson with Half Closed Eyes Pattern",
+        "file": "15527p01.dat"
+    },
+    {
+        "id": "6a5bbe44b7e446.43450937",
+        "name": "Minifig Head Simpsons Homer Simpson with Wide Open Eyes Pattern",
+        "file": "15527p02.dat"
+    },
+    {
+        "id": "6a5bbe44b7ee93.87138697",
+        "name": "Minifig Head Simpsons Ned Flanders",
+        "file": "15529.dat"
+    },
+    {
+        "id": "6a5bbe44b7f8e9.08157220",
+        "name": "Minifig Head Simpsons Ned Flanders with Glasses, Hair and Moustache Pattern",
+        "file": "15529p01.dat"
+    },
+    {
+        "id": "6a5bbe44d8ed14.28422518",
+        "name": "Minifig Head Snake with Open Mouth",
+        "file": "18955.dat"
+    },
+    {
+        "id": "6a5bbe44eb1c46.19276661",
+        "name": "Minifig Head Cuboid",
+        "file": "19729.dat"
+    },
+    {
+        "id": "6a5bbe44eb3003.02427494",
+        "name": "Minifig Head Cuboid with Minecraft Zombie Pattern",
+        "file": "19729p00.dat"
+    },
+    {
+        "id": "6a5bbe44eb3a20.72987836",
+        "name": "Minifig Head Cuboid with Minecraft Pumpkin Pattern",
+        "file": "19729p01.dat"
+    },
+    {
+        "id": "6a5bbe44eb4470.21351405",
+        "name": "Minifig Head Cuboid with Minecraft Steve Pattern",
+        "file": "19729p02.dat"
+    },
+    {
+        "id": "6a5bbe44eb4e95.15937452",
+        "name": "Minifig Head Cuboid with Minecraft Creeper Pattern",
+        "file": "19729p03.dat"
+    },
+    {
+        "id": "6a5bbe44eb5892.54339453",
+        "name": "Minifig Head Cuboid with Minecraft Blaze Pattern",
+        "file": "19729p04.dat"
+    },
+    {
+        "id": "6a5bbe44eb6278.60195721",
+        "name": "Minifig Head Cuboid with Minecraft Skeleton Pattern",
+        "file": "19729p05.dat"
+    },
+    {
+        "id": "6a5bbe44eb6c66.61244212",
+        "name": "Minifig Head Cuboid with Minecraft Alex Pattern",
+        "file": "19729p06.dat"
+    },
+    {
+        "id": "6a5bbe44eb7bd7.71137266",
+        "name": "Minifig Head Cuboid with Minecraft Zombie Pigman Pattern",
+        "file": "19729p07.dat"
+    },
+    {
+        "id": "6a5bbe44eb86b1.32867534",
+        "name": "Minifig Head Cuboid with Minecraft Enderman Face Pattern",
+        "file": "19729p08.dat"
+    },
+    {
+        "id": "6a5bbe44eb90d6.36140248",
+        "name": "Minifig Head Cuboid with Minecraft Wither Skull Skeleton Face Pattern",
+        "file": "19729p09.dat"
+    },
+    {
+        "id": "6a5bbe4501ede5.04066092",
+        "name": "~Minifig Headdress Pumpkin Carved Shell",
+        "file": "20693.dat"
+    },
+    {
+        "id": "6a5bbe4501f7d0.92008360",
+        "name": "~Minifig Headdress Pumpkin Carved Stalk",
+        "file": "20694.dat"
+    },
+    {
+        "id": "6a5bbe4519e8e2.64763441",
+        "name": "Minifig Head Cuboid with Raised Rectangle",
+        "file": "23766.dat"
+    },
+    {
+        "id": "6a5bbe4519f4a4.68324717",
+        "name": "Minifig Head Cuboid with Raised Rectangle with Minecraft Iron Golem Pattern",
+        "file": "23766p01.dat"
+    },
+    {
+        "id": "6a5bbe452f7632.32495236",
+        "name": "Minifig Head Mouse",
+        "file": "24629.dat"
+    },
+    {
+        "id": "6a5bbe452f8091.21131703",
+        "name": "Minifig Head Mouse with Black Ears, Nose and Skull and Eyes with Black Pupil with White Highlight Pattern",
+        "file": "24629p01.dat"
+    },
+    {
+        "id": "6a5bbe452f8b53.47075334",
+        "name": "Minifig Head Mouse with Black Ears, Nose and Eyelashes and Skull and Eyes with Black Pupil with White Highlight Pattern",
+        "file": "24629p02.dat"
+    },
+    {
+        "id": "6a5bbe452f9597.28622919",
+        "name": "Minifig Head Mouse with Black Ears, Nose, Skull and Eyes Pattern",
+        "file": "24629p03.dat"
+    },
+    {
+        "id": "6a5bbe452f9fb1.19706440",
+        "name": "Minifig Head Mouse with Black Ears, Nose, Skull and Eyes with Eyelashes Pattern",
+        "file": "24629p04.dat"
+    },
+    {
+        "id": "6a5bbe452faa03.78253566",
+        "name": "Minifig Head Mouse with Black Ears, Nose Eyebrows and Skull and Eyes with Black Pupil with White Highlight Pattern",
+        "file": "24629p05.dat"
+    },
+    {
+        "id": "6a5bbe452fc8e3.99528276",
+        "name": "Minifig Head Duck",
+        "file": "24633.dat"
+    },
+    {
+        "id": "6a5bbe452fd356.34323552",
+        "name": "Minifig Head Duck with Bright Light Orange Bill and Black and Medium Blue Eyes Pattern",
+        "file": "24633p01.dat"
+    },
+    {
+        "id": "6a5bbe452fde17.68705391",
+        "name": "Minifig Head Duck with Bright Light Orange Bill, Eyelashes and Lavender Eye Shadow Pattern",
+        "file": "24633p02.dat"
+    },
+    {
+        "id": "6a5bbe453547f3.47619710",
+        "name": "Minifig Head Cuboid",
+        "file": "25194.dat"
+    },
+    {
+        "id": "6a5bbe45404d49.60867630",
+        "name": "Minifig Head Sonic the Hedgehog",
+        "file": "26051.dat"
+    },
+    {
+        "id": "6a5bbe45405747.42904603",
+        "name": "Minifig Head Sonic the Hedgehog with Green Eyes, Tan Face and Half Smile Pattern",
+        "file": "26051p01.dat"
+    },
+    {
+        "id": "6a5bbe454061a0.40671082",
+        "name": "Minifig Head Gremlin",
+        "file": "26056.dat"
+    },
+    {
+        "id": "6a5bbe45406bf8.86244888",
+        "name": "Minifig Head Gremlin with Mogwai with Light Nougat Ears and Face, White Fur on Head and Around Right Eye and Dark Brown Eyes Pattern",
+        "file": "26056px0.dat"
+    },
+    {
+        "id": "6a5bbe4551e415.03722993",
+        "name": "Minifig Head Alien E. T.",
+        "file": "27956.dat"
+    },
+    {
+        "id": "6a5bbe4551ee36.94511364",
+        "name": "Minifig Head Alien E. T. with Blue Eyes and Grin Pattern",
+        "file": "27956px1.dat"
+    },
+    {
+        "id": "6a5bbe45579947.35583044",
+        "name": "Minifig Head with Vented Stud",
+        "file": "28621.dat"
+    },
+    {
+        "id": "6a5bbe4557a374.84904035",
+        "name": "Minifig Head Alien with 3 Eyes and Bright Green Spots Pattern",
+        "file": "28621p0b.dat"
+    },
+    {
+        "id": "6a5bbe4557ae18.51515473",
+        "name": "Minifig Head with Gold Visor, Black Eyebrows, Neutral \/ Smile with Teeth Pattern 2-Sided Pattern",
+        "file": "28621p0y.dat"
+    },
+    {
+        "id": "6a5bbe4557b8b5.52427144",
+        "name": "Minifig Head with Dark Brown Eyebrows and Full Beard, Open Mouth Smile \/ Neutral 2-Sided Pattern",
+        "file": "28621p11.dat"
+    },
+    {
+        "id": "6a5bbe4557c2c1.21583700",
+        "name": "Minifig Head with Small Black Eyebrows Eyes and Smile \/ Surprised 2-Sided Pattern",
+        "file": "28621p13.dat"
+    },
+    {
+        "id": "6a5bbe4557cd24.03211208",
+        "name": "Minifig Head with Black Eyebrows and Thick Moustache Rounded, Angry \/ Laughing 2-Sided Pattern",
+        "file": "28621p14.dat"
+    },
+    {
+        "id": "6a5bbe4557d740.32676959",
+        "name": "Minifig Head with Black Eyebrows and Thick Moustache Flared Ends, Angry \/ Laughing 2-Sided Pattern",
+        "file": "28621p15.dat"
+    },
+    {
+        "id": "6a5bbe4557e141.59692160",
+        "name": "Minifig Head with Black Eyebrows Thick Moustache and Round Glasses Pattern",
+        "file": "28621p16.dat"
+    },
+    {
+        "id": "6a5bbe4557eb25.47230492",
+        "name": "Minifig Head with Black Eyebrows and Beard, Crow's Feet Smiling \/ Angry 2-Sided Pattern",
+        "file": "28621p17.dat"
+    },
+    {
+        "id": "6a5bbe455bebe1.68873265",
+        "name": "Minifig Head Powerpuff Girls Blossom with Orange Hair and Red Bowtie",
+        "file": "28946.dat"
+    },
+    {
+        "id": "6a5bbe455bf648.96437970",
+        "name": "Minifig Head Powerpuff Girls Bubbles with Yellow Hair",
+        "file": "28948.dat"
+    },
+    {
+        "id": "6a5bbe455c0033.30500135",
+        "name": "Minifig Head Powerpuff Girls Buttercup with Black Hair",
+        "file": "28949.dat"
+    },
+    {
+        "id": "6a5bbe455cb466.76083002",
+        "name": "Minifig Head Round  1 x  1 x  1.333 Pencil Top",
+        "file": "29030.dat"
+    },
+    {
+        "id": "6a5bbe455cbee6.37652888",
+        "name": "Minifig Head Round  1 x  1 x  1.333 Pencil Top with Orange Eyes Pattern",
+        "file": "29030p01.dat"
+    },
+    {
+        "id": "6a5bbe455f52a2.72639940",
+        "name": "Minifig Head Cuboid with Raised Rectangle with Hat Cuboid with 3 Sloped Steps",
+        "file": "29272.dat"
+    },
+    {
+        "id": "6a5bbe45972402.52259255",
+        "name": "Minifig Head Gungan with Split Eyes (Needs Work)",
+        "file": "30371.dat"
+    },
+    {
+        "id": "6a5bbe45a09ff4.70403284",
+        "name": "Minifig Head Protocol Droid",
+        "file": "30480.dat"
+    },
+    {
+        "id": "6a5bbe45a0ab02.87469222",
+        "name": "Minifig Head Protocol Droid with Bright Light Yellow Eyes Pattern",
+        "file": "30480ps0.dat"
+    },
+    {
+        "id": "6a5bbe45a0b729.25233667",
+        "name": "Minifig Head Protocol Droid with Red Eyes Pattern",
+        "file": "30480ps1.dat"
+    },
+    {
+        "id": "6a5bbe45a0c180.53849000",
+        "name": "Minifig Head Protocol Droid with Yellow Eyes Pattern",
+        "file": "30480ps2.dat"
+    },
+    {
+        "id": "6a5bbe45a0d6c8.64573729",
+        "name": "Minifig Head Wookiee with Bandolier",
+        "file": "30483.dat"
+    },
+    {
+        "id": "6a5bbe45a0e0f5.14068775",
+        "name": "Minifig Head Wookiee with Silver Bandolier \/ Black Nose Pattern",
+        "file": "30483p01.dat"
+    },
+    {
+        "id": "6a5bbe45d048d9.29529234",
+        "name": "~Minifig Head Powerpuff Girls Face",
+        "file": "31512.dat"
+    },
+    {
+        "id": "6a5bbe45d052a9.31908148",
+        "name": "~Minifig Head Powerpuff Girls Face with Blossom Pattern",
+        "file": "31512p01.dat"
+    },
+    {
+        "id": "6a5bbe45d05cb6.82949972",
+        "name": "~Minifig Head Powerpuff Girls Face with Bubbles Pattern",
+        "file": "31512p02.dat"
+    },
+    {
+        "id": "6a5bbe45d06680.24610043",
+        "name": "~Minifig Head Powerpuff Girls Face with Buttercup Pattern",
+        "file": "31512p03.dat"
+    },
+    {
+        "id": "6a5bbe460e3545.66984690",
+        "name": "Minifig Head with Solid Stud",
+        "file": "3626a.dat"
+    },
+    {
+        "id": "6a5bbe460e4065.07732817",
+        "name": "Minifig Head with Standard Grin Pattern (Solid Stud)",
+        "file": "3626ap01.dat"
+    },
+    {
+        "id": "6a5bbe460e5523.09482990",
+        "name": "Minifig Head with Blocked Hollow Stud",
+        "file": "3626b.dat"
+    },
+    {
+        "id": "6a5bbe460e5fe3.64435859",
+        "name": "Minifig Head with Standard Grin Pattern (Blocked Hollow Stud)",
+        "file": "3626bp01.dat"
+    },
+    {
+        "id": "6a5bbe460e6a23.73480796",
+        "name": "Minifig Head with Standard Woman Pattern",
+        "file": "3626bp02.dat"
+    },
+    {
+        "id": "6a5bbe460e7482.26637788",
+        "name": "Minifig Head with Standard Grin and Pointed Moustache Pattern",
+        "file": "3626bp03.dat"
+    },
+    {
+        "id": "6a5bbe460e7f24.57020636",
+        "name": "Minifig Head with Standard Grin and Sunglasses Pattern",
+        "file": "3626bp04.dat"
+    },
+    {
+        "id": "6a5bbe460e89b0.25732385",
+        "name": "Minifig Head with Standard Grin and Eyebrows Pattern",
+        "file": "3626bp05.dat"
+    },
+    {
+        "id": "6a5bbe460e93d8.72265619",
+        "name": "Minifig Head with Standard Grin, Eyebrows and Microphone Pattern",
+        "file": "3626bp06.dat"
+    },
+    {
+        "id": "6a5bbe460e9e03.56643486",
+        "name": "Minifig Head with Freckle Nose and Standard Grin Pattern",
+        "file": "3626bp07.dat"
+    },
+    {
+        "id": "6a5bbe460ea849.39215595",
+        "name": "Minifig Head Female with Red Lips Small Eyebrows Pattern",
+        "file": "3626bp08.dat"
+    },
+    {
+        "id": "6a5bbe460eb233.85784288",
+        "name": "Minifig Head Female with Brown Eyebrows, Pupils, Eyelashes Pattern",
+        "file": "3626bp09.dat"
+    },
+    {
+        "id": "6a5bbe460ebbe8.01261350",
+        "name": "Minifig Head with Grey Hair, Beard, Moustache, Angry Pattern",
+        "file": "3626bp0a.dat"
+    },
+    {
+        "id": "6a5bbe460ec5a4.17069038",
+        "name": "Minifig Head with Teeth, Pupils, Brown Eyebrows Pattern",
+        "file": "3626bp0b.dat"
+    },
+    {
+        "id": "6a5bbe460ecfe8.40454620",
+        "name": "Minifig Head with Thick Moustache and Short Eyebrows Pattern",
+        "file": "3626bp0c.dat"
+    },
+    {
+        "id": "6a5bbe460eda59.16788684",
+        "name": "Minifig Head with Black Hair, Eyebrows and Smirk Pattern",
+        "file": "3626bp0d.dat"
+    },
+    {
+        "id": "6a5bbe460ee413.75441162",
+        "name": "Minifig Head with Glasses, Grey Eyebrows, Beard and Moustache Pattern",
+        "file": "3626bp0e.dat"
+    },
+    {
+        "id": "6a5bbe460eee43.91223341",
+        "name": "Minifig Head with Angry Eyebrows and Tense Mouth Pattern",
+        "file": "3626bp0f.dat"
+    },
+    {
+        "id": "6a5bbe460efc20.98870827",
+        "name": "Minifig Head with Reddish Brown Eyebrows, White Pupils, Lopsided Smile with Black Dimple Pattern",
+        "file": "3626bp0g.dat"
+    },
+    {
+        "id": "6a5bbe460f07a3.30113870",
+        "name": "Minifig Head with White and Light Bluish Grey Bushy Eyebrows, Open Mouth Smile Pattern",
+        "file": "3626bp0h.dat"
+    },
+    {
+        "id": "6a5bbe460f11c7.99238500",
+        "name": "Minifig Head with Grey Frame Glasses, Brown Eyebrows and Open Smile Pattern",
+        "file": "3626bp0i.dat"
+    },
+    {
+        "id": "6a5bbe460f1bd8.40458547",
+        "name": "Minifig Head with Black Hair, White Eyes, Nose, Red Freckles, Lopsided Grin Pattern",
+        "file": "3626bp0j.dat"
+    },
+    {
+        "id": "6a5bbe460f2634.37681110",
+        "name": "Minifig Head Glasses with Grey Moustache, Crosseyed Pattern",
+        "file": "3626bp0k.dat"
+    },
+    {
+        "id": "6a5bbe460f3046.73242693",
+        "name": "Minifig Head with Yellow and Black Fish Pattern",
+        "file": "3626bp0l.dat"
+    },
+    {
+        "id": "6a5bbe460f3a87.61902648",
+        "name": "Minifig Head Female with Red Lips, Open Mouth and Thick Eyelashes Pattern",
+        "file": "3626bp20.dat"
+    },
+    {
+        "id": "6a5bbe460f75a9.27882015",
+        "name": "Minifig Head with Messy Hair, Moustache and Stubble Pattern",
+        "file": "3626bp35.dat"
+    },
+    {
+        "id": "6a5bbe460f7fa0.46303442",
+        "name": "Minifig Head with Dark Red Moustache and Beard, Sneer, White Pupil and Eye Patch Pattern",
+        "file": "3626bp36.dat"
+    },
+    {
+        "id": "6a5bbe460f89f4.37725712",
+        "name": "Minifig Head with Grin, Dark Grey Beard and Eyebrows Pattern",
+        "file": "3626bp39.dat"
+    },
+    {
+        "id": "6a5bbe460f9438.46947044",
+        "name": "Minifig Head with Wiry Moustache, Goatee and Eyebrows Pattern",
+        "file": "3626bp3e.dat"
+    },
+    {
+        "id": "6a5bbe460f9e20.87103130",
+        "name": "Minifig Head with Islander White\/Red Painted Face Pattern",
+        "file": "3626bp3j.dat"
+    },
+    {
+        "id": "6a5bbe460fa7f7.23603598",
+        "name": "Minifig Head with Islander White\/Blue Painted Face Pattern",
+        "file": "3626bp3k.dat"
+    },
+    {
+        "id": "6a5bbe460fb2f9.26934378",
+        "name": "Minifig Head with Sideburns and Droopy Moustache Black Pattern",
+        "file": "3626bp3n.dat"
+    },
+    {
+        "id": "6a5bbe460fc000.43933577",
+        "name": "Minifig Head with Sideburns and Droopy Moustache Brown Pattern",
+        "file": "3626bp3q.dat"
+    },
+    {
+        "id": "6a5bbe460fca56.00459450",
+        "name": "Minifig Head with Brown Moustache, Stubble, Eyebrows, Frowning Pattern",
+        "file": "3626bp3r.dat"
+    },
+    {
+        "id": "6a5bbe460fd680.36656579",
+        "name": "Minifig Head Female with Red Lips and Black Messy Hair Pattern",
+        "file": "3626bp40.dat"
+    },
+    {
+        "id": "6a5bbe460fe0d3.91885958",
+        "name": "Minifig Head with Red Moustache and Goatee Pattern",
+        "file": "3626bp41.dat"
+    },
+    {
+        "id": "6a5bbe460feb53.54908592",
+        "name": "Minifig Head with Dark Orange Moustache, Beard and Messy Hair Pattern",
+        "file": "3626bp42.dat"
+    },
+    {
+        "id": "6a5bbe460ff561.32900815",
+        "name": "Minifig Head with Red Moustache, Beard and Messy Hair Pattern",
+        "file": "3626bp43.dat"
+    },
+    {
+        "id": "6a5bbe460fff81.34042590",
+        "name": "Minifig Head with Black Moustache, Beard and Messy Hair Pattern",
+        "file": "3626bp44.dat"
+    },
+    {
+        "id": "6a5bbe46100967.93068824",
+        "name": "Minifig Head with Moustache Curly and Spiky Beard under Mouth Pattern",
+        "file": "3626bp45.dat"
+    },
+    {
+        "id": "6a5bbe46101376.73524827",
+        "name": "Minifig Head with Eye Patch, Dark Orange Moustache, Beard and Messy Hair Pattern",
+        "file": "3626bp46.dat"
+    },
+    {
+        "id": "6a5bbe46101f63.06273677",
+        "name": "Minifig Head with Eye Patch, Red Moustache, Beard and Messy Hair Pattern",
+        "file": "3626bp47.dat"
+    },
+    {
+        "id": "6a5bbe46102ae9.95057317",
+        "name": "Minifig Head with Eye Patch, Fabuland Red Stubble and Messy Hair Pattern",
+        "file": "3626bp48.dat"
+    },
+    {
+        "id": "6a5bbe46103633.40665669",
+        "name": "Minifig Head with Eye Patch, Black Stubble and Messy Hair Pattern",
+        "file": "3626bp49.dat"
+    },
+    {
+        "id": "6a5bbe46104054.35503741",
+        "name": "Minifig Head Skull Evil with Light Bluish Grey around Eyes, Mouth, Nose and Facial Lines with Scowl Pattern",
+        "file": "3626bp4a.dat"
+    },
+    {
+        "id": "6a5bbe46104a42.28440932",
+        "name": "Minifig Head Skull Evil with Dark Bluish Grey around Eyes, Black Mouth and Nose and Light Bluish Grey Facial Lines with Scowl Pattern",
+        "file": "3626bp4b.dat"
+    },
+    {
+        "id": "6a5bbe461055d7.51671347",
+        "name": "Minifig Head with Moustache, Frown and Pointed Hairline Pattern",
+        "file": "3626bp4c.dat"
+    },
+    {
+        "id": "6a5bbe46105fb8.07499020",
+        "name": "Minifig Head with Red Moustache, Eyebrows and Hair Pattern",
+        "file": "3626bp4d.dat"
+    },
+    {
+        "id": "6a5bbe461069b8.74396521",
+        "name": "Minifig Head with Curly Brown Moustache and Hair Pattern",
+        "file": "3626bp4e.dat"
+    },
+    {
+        "id": "6a5bbe461073a9.66504978",
+        "name": "Minifig Head with Messy Black Hair,  1 Tooth in Mouth Pattern",
+        "file": "3626bp4f.dat"
+    },
+    {
+        "id": "6a5bbe46107d83.55298163",
+        "name": "Minifig Head with White Pupils, Crow's Feet, Light Bluish Grey Beard and Sad Mouth Pattern",
+        "file": "3626bp4g.dat"
+    },
+    {
+        "id": "6a5bbe46108782.36716031",
+        "name": "Minifig Head with Big Smile\/Sad with Tear 2-sided Pattern",
+        "file": "3626bp4h.dat"
+    },
+    {
+        "id": "6a5bbe46109190.60669219",
+        "name": "Minifig Head with White Pupils, Black Ringbeard, Brown Messy Hair and  3 Marks Below Left Eye Pattern",
+        "file": "3626bp4i.dat"
+    },
+    {
+        "id": "6a5bbe46109b72.87658105",
+        "name": "Minifig Head with Red Eyes and White Fangs Pattern",
+        "file": "3626bp4j.dat"
+    },
+    {
+        "id": "6a5bbe4610a505.37012740",
+        "name": "Minifig Head Female with Curly Eyes, Red Lips, Dark Orange Curles and Tiara Pattern",
+        "file": "3626bp4k.dat"
+    },
+    {
+        "id": "6a5bbe4610aeb8.40093712",
+        "name": "Minifig Head with Moustache Wavy, Goatee and Bushy Eyebrows Pattern",
+        "file": "3626bp4l.dat"
+    },
+    {
+        "id": "6a5bbe4610b8e9.98785758",
+        "name": "Minifig Head with Black Bushy Moustache and Hair Pattern",
+        "file": "3626bp4m.dat"
+    },
+    {
+        "id": "6a5bbe4610c2c2.65404059",
+        "name": "Minifig Head with Insectoids Robot Pattern",
+        "file": "3626bp50.dat"
+    },
+    {
+        "id": "6a5bbe4610cd16.95118433",
+        "name": "Minifig Head with Insectoids Metallic Copper Hair and Headset Pattern (Needs Work)",
+        "file": "3626bp51.dat"
+    },
+    {
+        "id": "6a5bbe4610d6d1.60911068",
+        "name": "Minifig Head with Insectoids Green Hair, Metallic Copper Eyepiece and Headset Pattern",
+        "file": "3626bp52.dat"
+    },
+    {
+        "id": "6a5bbe4610e0c6.52662882",
+        "name": "Minifig Head with Female Alien with Copper Lips and Headset Pattern",
+        "file": "3626bp53.dat"
+    },
+    {
+        "id": "6a5bbe4610eab1.66043115",
+        "name": "Minifig Head with Insectoids Silver Hair, Copper Eyegrid and Headset Pattern",
+        "file": "3626bp54.dat"
+    },
+    {
+        "id": "6a5bbe4610f465.00550844",
+        "name": "Minifig Head with Insectoids Silver Hair, Copper Glasses and Headset Pattern",
+        "file": "3626bp55.dat"
+    },
+    {
+        "id": "6a5bbe4610fe18.17193883",
+        "name": "Minifig Head with Insectoids with Black Hair, Headset, Green and Copper Eye Grid Pattern",
+        "file": "3626bp56.dat"
+    },
+    {
+        "id": "6a5bbe461107d0.86656322",
+        "name": "Minifig Head with Ice Planet Moustache and Eyebrows Pattern",
+        "file": "3626bp61.dat"
+    },
+    {
+        "id": "6a5bbe461116f2.60129635",
+        "name": "Minifig Head with Ice Planet Messy White Hair Pattern",
+        "file": "3626bp62.dat"
+    },
+    {
+        "id": "6a5bbe46112281.87063696",
+        "name": "Minifig Head with Silver Robot Pattern",
+        "file": "3626bp63.dat"
+    },
+    {
+        "id": "6a5bbe46112cf3.13320429",
+        "name": "Minifig Head with Gold Robot Pattern",
+        "file": "3626bp64.dat"
+    },
+    {
+        "id": "6a5bbe461136f2.15891216",
+        "name": "Minifig Head with Ice Planet Female Red Hair Pattern",
+        "file": "3626bp65.dat"
+    },
+    {
+        "id": "6a5bbe46114117.61965703",
+        "name": "Minifig Head with Blue Headband and Dark Orange Hair Pattern",
+        "file": "3626bp66.dat"
+    },
+    {
+        "id": "6a5bbe46114ae6.13157021",
+        "name": "Minifig Head with Thin Moustache, Stubble and Sideburns Pattern",
+        "file": "3626bp67.dat"
+    },
+    {
+        "id": "6a5bbe461154f0.90737354",
+        "name": "Minifig Head with Silver Sunglasses and Red Headset Pattern",
+        "file": "3626bp68.dat"
+    },
+    {
+        "id": "6a5bbe46115f83.69219301",
+        "name": "Minifig Head with Headset Over Fabuland Red Hair and Eyebrows Pattern",
+        "file": "3626bp69.dat"
+    },
+    {
+        "id": "6a5bbe461169e2.86541207",
+        "name": "Minifig Head with Red Moustache, Eyebrows and Headset Pattern",
+        "file": "3626bp6a.dat"
+    },
+    {
+        "id": "6a5bbe46117475.00122036",
+        "name": "Minifig Head with Headset Over Brown Hair and Eyebrows Pattern",
+        "file": "3626bp6b.dat"
+    },
+    {
+        "id": "6a5bbe46117e60.63673693",
+        "name": "Minifig Head Female with Red Lips and Black Upswept Eyelashes Pattern",
+        "file": "3626bp6f.dat"
+    },
+    {
+        "id": "6a5bbe46118874.76564466",
+        "name": "Minifig Head with Gold Paint, Fangs and Slanted Eyes Pattern",
+        "file": "3626bp6u.dat"
+    },
+    {
+        "id": "6a5bbe46119201.56065240",
+        "name": "Minifig Head with Large Blue Mask Pattern",
+        "file": "3626bp6v.dat"
+    },
+    {
+        "id": "6a5bbe46119bb6.84142563",
+        "name": "Minifig Head with Small Blue Mask Pattern",
+        "file": "3626bp6w.dat"
+    },
+    {
+        "id": "6a5bbe4611a5a5.16889788",
+        "name": "Minifig Head with Silver Mask and Mouth Grille Pattern",
+        "file": "3626bp6x.dat"
+    },
+    {
+        "id": "6a5bbe4611afa8.67653340",
+        "name": "Minifig Head with Green Brain and Yellow Mouth Pattern",
+        "file": "3626bp6y.dat"
+    },
+    {
+        "id": "6a5bbe4611ba28.03703810",
+        "name": "Minifig Head with Brown Hair over Eye and Black Eyebrows Pattern",
+        "file": "3626bp7a.dat"
+    },
+    {
+        "id": "6a5bbe4611c5d3.78765607",
+        "name": "Minifig Head with Blue Sunglasses Pattern",
+        "file": "3626bp7b.dat"
+    },
+    {
+        "id": "6a5bbe4611d017.21804234",
+        "name": "Minifig Head with Blue Wrap-Around Sunglasses Pattern",
+        "file": "3626bp7c.dat"
+    },
+    {
+        "id": "6a5bbe4611da35.37527709",
+        "name": "Minifig Head with Blue Sunglasses and Stubble Pattern",
+        "file": "3626bp7e.dat"
+    },
+    {
+        "id": "6a5bbe4611e437.47247817",
+        "name": "Minifig Head Moustache Curly and Full, Plain Eyebrows Pattern",
+        "file": "3626bp7f.dat"
+    },
+    {
+        "id": "6a5bbe4611f112.22782731",
+        "name": "Minifig Head with Glasses and Moustache Pattern",
+        "file": "3626bp7g.dat"
+    },
+    {
+        "id": "6a5bbe4611fb15.65785257",
+        "name": "Minifig Head with Dark Orange Beard and White Smile Pattern",
+        "file": "3626bp80.dat"
+    },
+    {
+        "id": "6a5bbe46120508.65575761",
+        "name": "Minifig Head with Lefty Mouth and Stubble Pattern",
+        "file": "3626bp81.dat"
+    },
+    {
+        "id": "6a5bbe46120fe5.46936373",
+        "name": "Minifig Head with Smirk, Black Hair and Goatee Pattern",
+        "file": "3626bp82.dat"
+    },
+    {
+        "id": "6a5bbe46121cc1.68053539",
+        "name": "Minifig Head with Brown Eyebrows, Smirking Face, Pupils Pattern",
+        "file": "3626bp83.dat"
+    },
+    {
+        "id": "6a5bbe46122d49.23986274",
+        "name": "Minifig Head with Smile, Black Eyebrows and White Pupils Pattern (Blocked Hollow Stud)",
+        "file": "3626bp84.dat"
+    },
+    {
+        "id": "6a5bbe46123846.66932524",
+        "name": "Minifig Head with Smile, Brown Eyebrows and White Pupils Pattern (Blocked Hollow Stud)",
+        "file": "3626bp85.dat"
+    },
+    {
+        "id": "6a5bbe461243a8.17861014",
+        "name": "Minifig Head with Smile and Gold Tooth Pattern",
+        "file": "3626bp86.dat"
+    },
+    {
+        "id": "6a5bbe46124e02.96244576",
+        "name": "Minifig Head with Glasses, Thin Brown Eyebrows, Smile Pattern (Hollow Stud)",
+        "file": "3626bp87.dat"
+    },
+    {
+        "id": "6a5bbe461258c7.31420526",
+        "name": "Minifig Head with Grin, Brown Beard, White Pupils Pattern (Hollow Stud)",
+        "file": "3626bp88.dat"
+    },
+    {
+        "id": "6a5bbe46126365.90199020",
+        "name": "Minifig Head Female with Red Lips Annoyed \/ Smiling 2-Sided Pattern (Blocked Hollow Stud)",
+        "file": "3626bp89.dat"
+    },
+    {
+        "id": "6a5bbe46126e48.61694102",
+        "name": "Minifig Head Female with Peach Lips, Smile, Brown Eyebrows Pattern (Blocked Hollow Stud)",
+        "file": "3626bp8a.dat"
+    },
+    {
+        "id": "6a5bbe46127835.22354572",
+        "name": "Minifig Head with Brown Eyebrows, Freckles, Open Smile Pattern (Hollow Stud)",
+        "file": "3626bp8b.dat"
+    },
+    {
+        "id": "6a5bbe46128223.39460643",
+        "name": "Minifig Head Female with Peach Lips, Smile, Black Eyebrows Pattern (Blocked Hollow Stud)",
+        "file": "3626bp8c.dat"
+    },
+    {
+        "id": "6a5bbe46128c43.86464929",
+        "name": "Minifig Head with Brown Angular Beard and Glasses Pattern",
+        "file": "3626bp8d.dat"
+    },
+    {
+        "id": "6a5bbe46129626.31819581",
+        "name": "Minifig Head with Scowl, White Pupils and Angry Eyebrows Pattern",
+        "file": "3626bp8e.dat"
+    },
+    {
+        "id": "6a5bbe4612a059.84830266",
+        "name": "Minifig Head with White Pupils, Cheek Lines, Black Eyebrows, Wide Open Mouth and Chin Dimple Pattern",
+        "file": "3626bp8f.dat"
+    },
+    {
+        "id": "6a5bbe4612aa17.30216471",
+        "name": "Minifig Head with Dark Bluish Grey Eyebrows, Moustache and Sideburns, White Pupils and Open Mouth Pattern",
+        "file": "3626bp8g.dat"
+    },
+    {
+        "id": "6a5bbe4612b3c0.18746159",
+        "name": "Minifig Head with White Pupils, Black Eyebrows Closed\/Scared Mouth 2-sided Pattern",
+        "file": "3626bp8h.dat"
+    },
+    {
+        "id": "6a5bbe4612be33.49030656",
+        "name": "Minifig Head Female with Red Lips Smile\/Scared 2-Sided Pattern",
+        "file": "3626bp8i.dat"
+    },
+    {
+        "id": "6a5bbe4612c930.60169989",
+        "name": "Minifig Head with Orange Glasses and Smirk Pattern",
+        "file": "3626bp8j.dat"
+    },
+    {
+        "id": "6a5bbe4612d350.71853951",
+        "name": "Minifig Head with Black Eyebrows and Silver Sunglasses Pattern",
+        "file": "3626bp8k.dat"
+    },
+    {
+        "id": "6a5bbe4612dd04.80277085",
+        "name": "Minifig Head with White Pupils, Grey Eyebrows, Beard and Open Mouth Pattern",
+        "file": "3626bp8l.dat"
+    },
+    {
+        "id": "6a5bbe4612e758.89538736",
+        "name": "Minifig Head with White Beard, Sideburns, Moustache, Eyebrows and White Pupils Pattern",
+        "file": "3626bp8m.dat"
+    },
+    {
+        "id": "6a5bbe4612f191.96661172",
+        "name": "Minifig Head with Orange Sunglasses with Nose Piece, Open Mouth and Chin Dimple Pattern",
+        "file": "3626bp8n.dat"
+    },
+    {
+        "id": "6a5bbe4612fba5.42424644",
+        "name": "Minifig Head with Glasses and White Muttonchops Pattern",
+        "file": "3626bpa1.dat"
+    },
+    {
+        "id": "6a5bbe461305d0.55248968",
+        "name": "Minifig Head with Adventurers Mummy Pattern",
+        "file": "3626bpa2.dat"
+    },
+    {
+        "id": "6a5bbe46131055.85595758",
+        "name": "Minifig Head with Smirk & Black Moustache Pattern",
+        "file": "3626bpa3.dat"
+    },
+    {
+        "id": "6a5bbe46131a47.84003952",
+        "name": "Minifig Head with Villain Black Facial Hair Pattern",
+        "file": "3626bpa4.dat"
+    },
+    {
+        "id": "6a5bbe46132419.52144817",
+        "name": "Minifig Head with Stubble, Moustache and Smirk Pattern",
+        "file": "3626bpa5.dat"
+    },
+    {
+        "id": "6a5bbe46132df8.58422624",
+        "name": "Minifig Head Female with Brown Hair, Eyelashes, and Lipstick Pattern",
+        "file": "3626bpa6.dat"
+    },
+    {
+        "id": "6a5bbe461337e8.30760161",
+        "name": "Minifig Head with Monocle, Scar, and Moustache Pattern",
+        "file": "3626bpa7.dat"
+    },
+    {
+        "id": "6a5bbe461341c0.97632699",
+        "name": "Minifig Head with Evil Skeleton Skull Pattern",
+        "file": "3626bpa8.dat"
+    },
+    {
+        "id": "6a5bbe46134bc5.27374752",
+        "name": "Minifig Head with Villainous Glasses & Black Facial Hair Pattern",
+        "file": "3626bpa9.dat"
+    },
+    {
+        "id": "6a5bbe46135861.88112416",
+        "name": "Minifig Head with Aquanaut, Red Headband and Freckles Pattern",
+        "file": "3626bpaa.dat"
+    },
+    {
+        "id": "6a5bbe461363b0.41680889",
+        "name": "Minifig Head with Aquanaut, Green Angled Sunglasses and Brown Hair Pattern",
+        "file": "3626bpab.dat"
+    },
+    {
+        "id": "6a5bbe46136e47.42069771",
+        "name": "Minifig Head with Tribal Paint and Frown Pattern",
+        "file": "3626bpac.dat"
+    },
+    {
+        "id": "6a5bbe46137837.60284305",
+        "name": "Minifig Head with Beard, Hair and Sideburns in Vertical Line Pattern",
+        "file": "3626bpad.dat"
+    },
+    {
+        "id": "6a5bbe46138416.19092890",
+        "name": "Minifig Head with Big Eyes, Curved Eyebrows, Orange Mouth Pattern",
+        "file": "3626bpao.dat"
+    },
+    {
+        "id": "6a5bbe46138e37.79202666",
+        "name": "Minifig Head with Smirk, Black Moustache and Cleft Chin Pattern",
+        "file": "3626bpap.dat"
+    },
+    {
+        "id": "6a5bbe461398a4.88826764",
+        "name": "Minifig Head with Black Skull Type 1 (Smiling) (Blocked Hollow Stud) Pattern",
+        "file": "3626bpaq.dat"
+    },
+    {
+        "id": "6a5bbe4613a263.27123807",
+        "name": "Minifig Head Alien with Large Dark Blue Eyes, Turtle Mouth and Gills Pattern",
+        "file": "3626bpar.dat"
+    },
+    {
+        "id": "6a5bbe4613ac21.44831077",
+        "name": "Minifig Head with Pursed Lips and White Forehead Pattern",
+        "file": "3626bpb1.dat"
+    },
+    {
+        "id": "6a5bbe4613b600.43872534",
+        "name": "Minifig Head with Mask Br.Green with Eyeholes and Smile Pattern",
+        "file": "3626bpb2.dat"
+    },
+    {
+        "id": "6a5bbe4613bfe9.63090061",
+        "name": "Minifig Head with Wide Smile, Red Lips and Crow's Feet Pattern",
+        "file": "3626bpb3.dat"
+    },
+    {
+        "id": "6a5bbe4613c9c1.15474847",
+        "name": "Minifig Head Female with Green Lips and Red Eyebrows Pattern",
+        "file": "3626bpb5.dat"
+    },
+    {
+        "id": "6a5bbe4613d3b7.12070197",
+        "name": "Minifig Head with Mask Purple with Eyeholes and Smile Pattern",
+        "file": "3626bpb6.dat"
+    },
+    {
+        "id": "6a5bbe4613dda0.36831094",
+        "name": "Minifig Head with Monocle and Black Slanted Eyebrows Pattern",
+        "file": "3626bpb7.dat"
+    },
+    {
+        "id": "6a5bbe4613e750.44506794",
+        "name": "Minifig Head Female with Dark Red Lips, Smirk\/Eyemask 2-Sided Pattern",
+        "file": "3626bpb8.dat"
+    },
+    {
+        "id": "6a5bbe4613f109.54229354",
+        "name": "Minifig Head Female with Black Mask, Blue Eyes and Black Lips Pattern",
+        "file": "3626bpba.dat"
+    },
+    {
+        "id": "6a5bbe4613fad1.60264605",
+        "name": "Minifig Head with Red Eyes with White Pupils and Missing Teeth Pattern",
+        "file": "3626bpc15.dat"
+    },
+    {
+        "id": "6a5bbe46140511.10700796",
+        "name": "Minifig Head with Thick Black Moustache and Eyebrows, Grin with Teeth Pattern",
+        "file": "3626bpc21.dat"
+    },
+    {
+        "id": "6a5bbe46140f44.71927974",
+        "name": "Minifig Head with Thick Black Eyebrows, Red Eyes with White Pupils, Light Bluish Grey Eye Shadow and Fangs Pattern",
+        "file": "3626bpc25.dat"
+    },
+    {
+        "id": "6a5bbe46141958.56236117",
+        "name": "Minifig Head with White and Blue Stripes on Cheeks, Black Eyebrows and Big Grin Pattern",
+        "file": "3626bpc33.dat"
+    },
+    {
+        "id": "6a5bbe461423d0.32431026",
+        "name": "Minifig Head Female with Black Eyes, Thin Eyebrows and Red Narrow Lips",
+        "file": "3626bpc42.dat"
+    },
+    {
+        "id": "6a5bbe46142d81.68190650",
+        "name": "Minifig Head with Open Smiling Mouth, Teeth and Tounge Pattern",
+        "file": "3626bpc44.dat"
+    },
+    {
+        "id": "6a5bbe46143742.61592558",
+        "name": "Minifig Head with Reddish Brown Eyebrows, Open Mouth Smile, Stubble, White Pupils Pattern",
+        "file": "3626bpc4b.dat"
+    },
+    {
+        "id": "6a5bbe46144133.22567139",
+        "name": "Minifig Head Female with Black Eyebrows, Wide Eyelashes with Thick Dark Azure Mascara, Smile and Dark Orange Lips Pattern",
+        "file": "3626bpc5e.dat"
+    },
+    {
+        "id": "6a5bbe46144ad7.59726880",
+        "name": "Minifig Head with Eyebrows, Cheeklines, Determined Pattern",
+        "file": "3626bpc6a.dat"
+    },
+    {
+        "id": "6a5bbe461454b0.17744378",
+        "name": "Minifig Head with Tan Thin Eyebrows and Moustache and Grin with Teeth Pattern",
+        "file": "3626bpc83.dat"
+    },
+    {
+        "id": "6a5bbe46145e87.18730814",
+        "name": "Minifig Head Female with White Ski Goggles with Pink and Purple Glass and Black Strap and Red Lips Pattern",
+        "file": "3626bpc87.dat"
+    },
+    {
+        "id": "6a5bbe46146822.69828729",
+        "name": "Minifig Head Alien with Lower Fangs, Single Orange Eye Open \/ Eye Half Closed 2-sided Pattern",
+        "file": "3626bpc94.dat"
+    },
+    {
+        "id": "6a5bbe46147295.40386121",
+        "name": "Minifig Head with HP Harry Potter Eyeglasses and Lightning Scar Pattern",
+        "file": "3626bph1.dat"
+    },
+    {
+        "id": "6a5bbe46148004.10232440",
+        "name": "Minifig Head with HP Draco Malfoy Tan Eyebrows and Frown Pattern",
+        "file": "3626bph2.dat"
+    },
+    {
+        "id": "6a5bbe461489b9.54186560",
+        "name": "Minifig Head with HP Ron Weasley Pattern",
+        "file": "3626bph3.dat"
+    },
+    {
+        "id": "6a5bbe46149756.35604566",
+        "name": "Minifig Head with HP Gregory Goyle\/Harry Potter 2-Sided Pattern",
+        "file": "3626bph4.dat"
+    },
+    {
+        "id": "6a5bbe4614a0d7.39085656",
+        "name": "Minifig Head with HP Vincent Crabbe\/Ron Weasley 2-Sided Pattern",
+        "file": "3626bph5.dat"
+    },
+    {
+        "id": "6a5bbe4614aa91.51904949",
+        "name": "Minifig Head with HP Voldemort with Teeth and Nostrils Pattern",
+        "file": "3626bph6.dat"
+    },
+    {
+        "id": "6a5bbe4614bb67.43106568",
+        "name": "Minifig Head with HP Harry Potter with Glasses and Lightning Bolt, Smile \/ Frown 2-Sided Pattern",
+        "file": "3626bph7.dat"
+    },
+    {
+        "id": "6a5bbe4614c5d5.44872423",
+        "name": "Minifig Head with HP Rubeus Hagrid with Wrinkles Pattern",
+        "file": "3626bph8.dat"
+    },
+    {
+        "id": "6a5bbe4614cf15.28595623",
+        "name": "Minifig Head with HP Narcissa Malfoy with Dark Brown Eyebrows, Crow's Feet, Angry \/ Smile 2-Sided Pattern",
+        "file": "3626bph9.dat"
+    },
+    {
+        "id": "6a5bbe4614d894.00238543",
+        "name": "Minifig Head with HP Albus Dumbledore Half-Moon Glasses and Grey Eyebrows Pattern",
+        "file": "3626bpha.dat"
+    },
+    {
+        "id": "6a5bbe4614e1f9.32641760",
+        "name": "Minifig Head with HP Severus Snape Pattern",
+        "file": "3626bphb.dat"
+    },
+    {
+        "id": "6a5bbe4614ed25.05249718",
+        "name": "Minifig Head with LOTR Uruk-Hai Scowl and White Hand 2-Sided Pattern (Hollow Stud with Pierced Base)",
+        "file": "3626bpm0.dat"
+    },
+    {
+        "id": "6a5bbe4614f7b3.06986428",
+        "name": "Minifig Head with LOTR Orc with Grey Hair Pattern",
+        "file": "3626bpma.dat"
+    },
+    {
+        "id": "6a5bbe46150113.43109095",
+        "name": "Minifig Head with LOTR Uruk-Hai Lurtz Scowl and White Hand 2-Sided Pattern",
+        "file": "3626bpmb.dat"
+    },
+    {
+        "id": "6a5bbe46150a76.21006467",
+        "name": "Minifig Head with White Hair, Eyebrows, and Moustache Pattern",
+        "file": "3626bpn1.dat"
+    },
+    {
+        "id": "6a5bbe46151403.02961425",
+        "name": "Minifig Head Mummy with Wrapped Face with 2 Eyes \/ 1 Eye 2-Sided Pattern",
+        "file": "3626bpq0.dat"
+    },
+    {
+        "id": "6a5bbe46151d71.75644270",
+        "name": "Minifig Head Mummy with 2 Eyes \/ Gold Death Mask 2-Sided Pattern",
+        "file": "3626bpq1.dat"
+    },
+    {
+        "id": "6a5bbe461532c1.65846529",
+        "name": "Minifig Head with Sideburns, Goatee, Beard Stubble, Scar Pattern",
+        "file": "3626bpq2.dat"
+    },
+    {
+        "id": "6a5bbe46154076.94364188",
+        "name": "Minifig Head Female with Smiling \/ Scared 2-Sided Pattern",
+        "file": "3626bpq3.dat"
+    },
+    {
+        "id": "6a5bbe46154a72.32031937",
+        "name": "Minifig Head with Glasses, Brown Sideburns and Moustache Pattern",
+        "file": "3626bpq4.dat"
+    },
+    {
+        "id": "6a5bbe46155621.32189072",
+        "name": "Minifig Head with Black Full Beard, Thick Black Eyebrows and White Pupils Pattern",
+        "file": "3626bpq5.dat"
+    },
+    {
+        "id": "6a5bbe46155fe4.77911713",
+        "name": "Minifig Head with SW Red Lips, Black Eyes, Thin Eyebrows Pattern",
+        "file": "3626bps0.dat"
+    },
+    {
+        "id": "6a5bbe46156a08.52709801",
+        "name": "Minifig Head with Light Yellow Eyes, Black Eyebrows and Wrinkles Pattern",
+        "file": "3626bps1.dat"
+    },
+    {
+        "id": "6a5bbe46157787.06614977",
+        "name": "Minifig Head with SW Brown Eyebrows Pattern",
+        "file": "3626bps2.dat"
+    },
+    {
+        "id": "6a5bbe46158178.16025153",
+        "name": "Minifig Head with SW Small Black Eyebrows Pattern",
+        "file": "3626bps3.dat"
+    },
+    {
+        "id": "6a5bbe46158f22.52087154",
+        "name": "Minifig Head with SW Grey Beard and Eyebrows Pattern",
+        "file": "3626bps4.dat"
+    },
+    {
+        "id": "6a5bbe46159cd3.27482051",
+        "name": "Minifig Head with SW Smirk and Brown Eyebrows Pattern",
+        "file": "3626bps5.dat"
+    },
+    {
+        "id": "6a5bbe4615a639.45624856",
+        "name": "Minifig Head with SW Black Eyebrows and Dark Bluish Grey Scars Pattern",
+        "file": "3626bps6.dat"
+    },
+    {
+        "id": "6a5bbe4615afc1.94679035",
+        "name": "Minifig Head with SW Black Eyebrows and Dark Grey Scars Pattern",
+        "file": "3626bps7.dat"
+    },
+    {
+        "id": "6a5bbe4615b993.44663596",
+        "name": "Minifig Head with SW Darth Maul Pattern",
+        "file": "3626bps8.dat"
+    },
+    {
+        "id": "6a5bbe4615c552.67816719",
+        "name": "Minifig Head with SW Brown Eyebrows and Beard Pattern",
+        "file": "3626bps9.dat"
+    },
+    {
+        "id": "6a5bbe4615d2f2.68221997",
+        "name": "Minifig Head with Balaclava, Headset and Stubbles Pattern",
+        "file": "3626bpsa.dat"
+    },
+    {
+        "id": "6a5bbe4615dc73.68171310",
+        "name": "Minifig Head with SW Alien with Large Black Eyes Pattern",
+        "file": "3626bpsb.dat"
+    },
+    {
+        "id": "6a5bbe4615e6b3.76675518",
+        "name": "Minifig Head with SW Grey Eyebrows & Implant 2-Sided Pattern",
+        "file": "3626bpsc.dat"
+    },
+    {
+        "id": "6a5bbe4615f114.16073319",
+        "name": "Minifig Head with SW Freckles and Thin Brown Eyebrows Pattern",
+        "file": "3626bpsd.dat"
+    },
+    {
+        "id": "6a5bbe4615fd51.51716141",
+        "name": "Minifig Head with SW Scout Trooper Black Visor Pattern",
+        "file": "3626bpse.dat"
+    },
+    {
+        "id": "6a5bbe46160ac0.23546520",
+        "name": "Minifig Head with Straight Smile and Black Curved Eyebrows Pattern",
+        "file": "3626bpsf.dat"
+    },
+    {
+        "id": "6a5bbe46161885.28527468",
+        "name": "Minifig Head with Dark Orange Eyebrows and Trimmed Beard Pattern",
+        "file": "3626bpsg.dat"
+    },
+    {
+        "id": "6a5bbe461627d3.57016349",
+        "name": "Minifig Head with Dark Orange Eyebrows, Trimmed Beard and Headset Pattern",
+        "file": "3626bpsh.dat"
+    },
+    {
+        "id": "6a5bbe46163511.11870585",
+        "name": "Minifig Head with SW Dark Orange Eyebrows and Slight Smile Pattern",
+        "file": "3626bpsk.dat"
+    },
+    {
+        "id": "6a5bbe46164178.32032785",
+        "name": "Minifig Head with SW Black Goggles and Chin Strap Pattern",
+        "file": "3626bpsl.dat"
+    },
+    {
+        "id": "6a5bbe46164ed2.59676884",
+        "name": "Minifig Head with Light Bluish Grey Eyebrows and Stubbles Pattern",
+        "file": "3626bpsm.dat"
+    },
+    {
+        "id": "6a5bbe46165d19.16610764",
+        "name": "Minifig Head with Bright Light Yellow Eyes, Black Dots, Red and Yellow Rim Pattern",
+        "file": "3626bpsn.dat"
+    },
+    {
+        "id": "6a5bbe46166fe4.73876889",
+        "name": "Minifig Head with SW Reddish Brown Eyebrows, White Pupils and Dimple Pattern",
+        "file": "3626bpso.dat"
+    },
+    {
+        "id": "6a5bbe46167aa8.38472595",
+        "name": "Minifig Head with SW Yellow Eyes, Black Eyebrows and Dark Bluish Grey Wrinkles Pattern",
+        "file": "3626bpsp.dat"
+    },
+    {
+        "id": "6a5bbe461688b8.81832334",
+        "name": "Minifig Head with Dark Bluish Grey Stern Eyebrows and Cheek Lines Pattern",
+        "file": "3626bpsr.dat"
+    },
+    {
+        "id": "6a5bbe46169642.96883091",
+        "name": "Minifig Head with SW Tusken Raider Pattern",
+        "file": "3626bpst.dat"
+    },
+    {
+        "id": "6a5bbe46169fb1.05701271",
+        "name": "Minifig Head with Angry Moustache, White Teeth and Gold Tooth Pattern",
+        "file": "3626bpw0.dat"
+    },
+    {
+        "id": "6a5bbe4616a916.38922007",
+        "name": "Minifig Head with Thick Angry Moustache, Stubble and Long Hair Pattern",
+        "file": "3626bpw1.dat"
+    },
+    {
+        "id": "6a5bbe4616b283.96536166",
+        "name": "Minifig Head with Angry Moustache and Teeth Pattern",
+        "file": "3626bpw2.dat"
+    },
+    {
+        "id": "6a5bbe4616bbc0.69118330",
+        "name": "Minifig Head Female with Nose, Red Lips and Large Eyes Pattern",
+        "file": "3626bpw3.dat"
+    },
+    {
+        "id": "6a5bbe4616c4f9.89561357",
+        "name": "Minifig Head with Orange Painted Face Pattern",
+        "file": "3626bpw4.dat"
+    },
+    {
+        "id": "6a5bbe4616ce41.54406620",
+        "name": "Minifig Head with Painted Triangles Pattern",
+        "file": "3626bpw5.dat"
+    },
+    {
+        "id": "6a5bbe4616d7f9.51428209",
+        "name": "Minifig Head with Red and Dark-Turquoise Painted Lines, Eyebrows, Pupils, Nose Pattern",
+        "file": "3626bpw6.dat"
+    },
+    {
+        "id": "6a5bbe4616e231.72087615",
+        "name": "Minifig Head with Light Turquoise and Orange Painted Face Pattern",
+        "file": "3626bpw7.dat"
+    },
+    {
+        "id": "6a5bbe4616eb82.91344095",
+        "name": "Minifig Head with Glasses, Pencil Behind Ear and Pointed Moustache Pattern",
+        "file": "3626bpw8.dat"
+    },
+    {
+        "id": "6a5bbe4616f502.28710420",
+        "name": "Minifig Head with Moustache, Stubble and Bald Hair Part Pattern",
+        "file": "3626bpw9.dat"
+    },
+    {
+        "id": "6a5bbe4616fe80.52954384",
+        "name": "Minifig Head with Hollow Stud",
+        "file": "3626c.dat"
+    },
+    {
+        "id": "6a5bbe46170c41.07412843",
+        "name": "Minifig Head with Standard Grin Pattern (Hollow Stud)",
+        "file": "3626cp01.dat"
+    },
+    {
+        "id": "6a5bbe461719f8.83764003",
+        "name": "Minifig Head with Single Large Black Eye with Pupil Pattern",
+        "file": "3626cp02.dat"
+    },
+    {
+        "id": "6a5bbe46172736.89291540",
+        "name": "Minifig Head with Large Tongue \/ Scared 2-Sided Pattern",
+        "file": "3626cp03.dat"
+    },
+    {
+        "id": "6a5bbe461731f2.08403917",
+        "name": "Minifig Head with Open Mouth with Tongue \/ Half Open Mouth with Tongue 2-Sided Pattern",
+        "file": "3626cp04.dat"
+    },
+    {
+        "id": "6a5bbe46173b51.98268046",
+        "name": "Minifig Head with Dark Brown Eyebrows, Crooked Smile and Laugh Lines Pattern",
+        "file": "3626cp05.dat"
+    },
+    {
+        "id": "6a5bbe461744c5.07668589",
+        "name": "Minifig Head with Metallic Silver Sunglasses, Clenched Teeth Pattern \/ Black Glasses, Crooked Smile 2-Sided Pattern",
+        "file": "3626cp06.dat"
+    },
+    {
+        "id": "6a5bbe46174e14.51010322",
+        "name": "Minifig Head with Stern Black Eyebrows, White Pupils and Dark Orange Chin Dimple Pattern",
+        "file": "3626cp07.dat"
+    },
+    {
+        "id": "6a5bbe46175749.38411346",
+        "name": "Minifig Head with Stern Black Eyebrows, White Pupils and Black Chin Dimple Pattern",
+        "file": "3626cp08.dat"
+    },
+    {
+        "id": "6a5bbe46176427.35008368",
+        "name": "Minifig Head with Pineapple Pattern",
+        "file": "3626cp09.dat"
+    },
+    {
+        "id": "6a5bbe46177019.71392936",
+        "name": "Minifig Head with Large Black Eyes and Thick Smile \/ Frown 2-Sided Pattern",
+        "file": "3626cp0a.dat"
+    },
+    {
+        "id": "6a5bbe46177a89.37812068",
+        "name": "Minifig Head with Glasses, Reddish Brown Eyebrows, Beauty Mark and Scared \/ Crooked Smile 2-Sided Pattern",
+        "file": "3626cp0b.dat"
+    },
+    {
+        "id": "6a5bbe46178583.30158093",
+        "name": "Minifig Head with Black Eyebrows, Eyelashes, Peach Lips and Open Smile Pattern",
+        "file": "3626cp0c.dat"
+    },
+    {
+        "id": "6a5bbe461792f2.22021389",
+        "name": "Minifig Head with Black Bushy Eyebrows, Chin Dimple and Frown Pattern",
+        "file": "3626cp0l.dat"
+    },
+    {
+        "id": "6a5bbe4617a039.96982408",
+        "name": "Minifig Head with Bushy Orange Eyebrows, Cheek Lines, Frown\/Angry 2-Sided Pattern",
+        "file": "3626cp0o.dat"
+    },
+    {
+        "id": "6a5bbe4617a9b6.57099986",
+        "name": "Minifig Head with White Spider-Man Eyes Pattern",
+        "file": "3626cp20.dat"
+    },
+    {
+        "id": "6a5bbe4617b703.92949591",
+        "name": "Minifig Head with Dark Orange Beard, Gold Teeth and Eyepatch Pattern",
+        "file": "3626cp30.dat"
+    },
+    {
+        "id": "6a5bbe4617c063.11156629",
+        "name": "Minifig Head with Dark Brown Eyebrows, Goatee, Sideburns and White Pupils Pattern",
+        "file": "3626cp40.dat"
+    },
+    {
+        "id": "6a5bbe4617c9d2.86022914",
+        "name": "Minifig Head with Eyebrows, Crow's Feet, Open Mouth Smile \/ Queasy Expression with Sweat Drop 2-Sided Pattern",
+        "file": "3626cp70.dat"
+    },
+    {
+        "id": "6a5bbe4617d2f0.12678223",
+        "name": "Minifig Head with Raised Left Eyebrow, Freckles and Crooked Smile Pattern",
+        "file": "3626cp71.dat"
+    },
+    {
+        "id": "6a5bbe4617dc74.09964876",
+        "name": "Minifig Head with Beard Stubble, Black Raised Right Eyebrow and Smirk Angled to Right Pattern",
+        "file": "3626cp72.dat"
+    },
+    {
+        "id": "6a5bbe4617e5a3.91250878",
+        "name": "Minifig Head with Black Eyebrows, White Pupils, Chin Dimple, Open Mouth Smile with Teeth Pattern",
+        "file": "3626cp73.dat"
+    },
+    {
+        "id": "6a5bbe4617eee3.18212777",
+        "name": "Minifig Head with Light Bluish Grey Thick Eyebrows and Angular Beard and Open White Mouth Pattern",
+        "file": "3626cp74.dat"
+    },
+    {
+        "id": "6a5bbe4617f829.62901459",
+        "name": "Minifig Head with Black Angry Eyebrows, Scowl and Headset Pattern",
+        "file": "3626cp75.dat"
+    },
+    {
+        "id": "6a5bbe46180150.54779202",
+        "name": "Minifig Head Female with Black Glasses, Brown Eyebrows, Open Mouth Smile with Peach Lips Pattern Pattern",
+        "file": "3626cp76.dat"
+    },
+    {
+        "id": "6a5bbe46180a74.19428600",
+        "name": "Minifig Head Female with Black Eyebrows, Peach Lips, Smirk \/ Smile with Mud Splotches 2-Sided Pattern",
+        "file": "3626cp77.dat"
+    },
+    {
+        "id": "6a5bbe461813d5.03091958",
+        "name": "Minifig Head with Big Smile and Teeth \/ Sad with Tear 2-Sided Pattern",
+        "file": "3626cp78.dat"
+    },
+    {
+        "id": "6a5bbe46181d37.78410941",
+        "name": "Minifig Head with Black Eyebrows, White Pupils, Chin Dimple, Cheek Lines and Smirk Pattern",
+        "file": "3626cp79.dat"
+    },
+    {
+        "id": "6a5bbe46182690.55242839",
+        "name": "Minifig Head with Grey Eyebrows, Moustache and Stubble, Sad Face Pattern",
+        "file": "3626cp7a.dat"
+    },
+    {
+        "id": "6a5bbe46183081.69692124",
+        "name": "Minifig Head Female with Black Eyebrows, Eyelashes, Nougat Lips, Smile, Teeth, Open Eyes \/ Closed Eyes 2-Sided Pattern",
+        "file": "3626cp7b.dat"
+    },
+    {
+        "id": "6a5bbe46183c03.81824385",
+        "name": "Minifig Head with Black Moustache and Eyebrows, Nougat Cheek Lines and Smile Pattern",
+        "file": "3626cp7c.dat"
+    },
+    {
+        "id": "6a5bbe46184931.37239988",
+        "name": "Minifig Head Female with Earth Orange Eyebrows, Dark Red Glasses, Red Lips and Beauty Mark Pattern",
+        "file": "3626cp7d.dat"
+    },
+    {
+        "id": "6a5bbe46185259.26467798",
+        "name": "Minifig Head with Grey Eyebrows and Stubble, Medium Nougat Cheek Lines and Chin Dimple and Black Glasses Pattern",
+        "file": "3626cp7e.dat"
+    },
+    {
+        "id": "6a5bbe46185b66.28510615",
+        "name": "Minifig Head Female with Earth Orange Lips and Light Blue Glasses with Black Top Frame Pattern",
+        "file": "3626cp7f.dat"
+    },
+    {
+        "id": "6a5bbe46186528.96346403",
+        "name": "Minifig Head with Smile, Black Eyebrows and White Pupils Pattern (Hollow Stud)",
+        "file": "3626cp7g.dat"
+    },
+    {
+        "id": "6a5bbe46187134.47609539",
+        "name": "Minifig Head with Smile, Brown Eyebrows and White Pupils Pattern (Hollow Stud)",
+        "file": "3626cp7h.dat"
+    },
+    {
+        "id": "6a5bbe46187ed1.89221358",
+        "name": "Minifig Head with Dark Orange Eyebrows, Goatee, Moustache and Dark Bluish Grey Soot Marks Pattern",
+        "file": "3626cp7i.dat"
+    },
+    {
+        "id": "6a5bbe46188814.00084559",
+        "name": "Minifig Head with Reddish Brown Eyebrows, White Pupils, Freckles and Smiling \/ Scared 2-Sided Pattern",
+        "file": "3626cp7j.dat"
+    },
+    {
+        "id": "6a5bbe46189186.56558721",
+        "name": "Minifig Head with Rectangular Glasses, Light Bluish Grey Eyebrows and Moustache Pattern",
+        "file": "3626cp7k.dat"
+    },
+    {
+        "id": "6a5bbe46189ea2.89103244",
+        "name": "Minifig Head with Black Eyelashes, Reddish Brown Eyebrows and Freckles Pattern",
+        "file": "3626cp7l.dat"
+    },
+    {
+        "id": "6a5bbe4618a7f0.79569566",
+        "name": "Minifig Head with Medium Nougat Eyebrows, Sideburns and White Pupils Pattern",
+        "file": "3626cp7m.dat"
+    },
+    {
+        "id": "6a5bbe4618b539.26687732",
+        "name": "Minifig Head with Reddish Brown Eyebrows, White Pupils, Lopsided Smile and Dimple Pattern",
+        "file": "3626cp7n.dat"
+    },
+    {
+        "id": "6a5bbe4618bec4.79667878",
+        "name": "Minifig Head with Black Eyebrows, Reddish Brown Freckles, Grin \/ Sad Frown  2-Sided Pattern",
+        "file": "3626cp7s.dat"
+    },
+    {
+        "id": "6a5bbe4618c800.28847778",
+        "name": "Minifig Head with Mouth Closed Stern \/ Mouth Open Scared 2-Sided Pattern",
+        "file": "3626cp80.dat"
+    },
+    {
+        "id": "6a5bbe4618d162.42073307",
+        "name": "Minifig Head Female with Black Eyebrows and Eyelashes, Freckles, Pink Lips, Open Mouth Smile \/ Angry 2-Sided Pattern",
+        "file": "3626cp81.dat"
+    },
+    {
+        "id": "6a5bbe4618db41.74223231",
+        "name": "Minifig Head with White Pupils, Crooked Mouth, Eyebrows and Dimple Pattern",
+        "file": "3626cp82.dat"
+    },
+    {
+        "id": "6a5bbe4618e493.09256986",
+        "name": "Minifig Head with Red Round Glasses, Black Eyebrows and Freckles Pattern",
+        "file": "3626cp83.dat"
+    },
+    {
+        "id": "6a5bbe4618ee03.03075846",
+        "name": "Minifig Head with Black\/Silver Sunglasses, Chin Dimple and Grim Mouth Pattern",
+        "file": "3626cp84.dat"
+    },
+    {
+        "id": "6a5bbe4618f739.15053863",
+        "name": "Minifig Head Female with Reddish Brown Eyebrows, Medium Nougat Freckles and Lips, Small Smirk \/ Left Eye Squinted 2-Sided Pattern",
+        "file": "3626cp85.dat"
+    },
+    {
+        "id": "6a5bbe46190079.37176530",
+        "name": "Minifig Head with Dark Tan Eyebrows, Moustache, Dark Tan and Grey Sideburns and Stubble Pattern",
+        "file": "3626cp86.dat"
+    },
+    {
+        "id": "6a5bbe46190a10.74577955",
+        "name": "Minifig Head with Glasses, Thin Brown Eyebrows, Smile Pattern (Hollow Stud)",
+        "file": "3626cp87.dat"
+    },
+    {
+        "id": "6a5bbe461917c0.06967677",
+        "name": "Minifig Head with Grin, Brown Beard, White Pupils Pattern (Hollow Stud)",
+        "file": "3626cp88.dat"
+    },
+    {
+        "id": "6a5bbe46192550.14972777",
+        "name": "Minifig Head Female with Red Lips Annoyed \/ Smiling 2-Sided Pattern (Hollow Stud)",
+        "file": "3626cp89.dat"
+    },
+    {
+        "id": "6a5bbe46193283.40456645",
+        "name": "Minifig Head Female with Peach Lips, Smile, Brown Eyebrows Pattern (Hollow Stud)",
+        "file": "3626cp8a.dat"
+    },
+    {
+        "id": "6a5bbe46193f92.49772832",
+        "name": "Minifig Head with Brown Eyebrows, Freckles, Open Smile Pattern (Hollow Stud)",
+        "file": "3626cp8b.dat"
+    },
+    {
+        "id": "6a5bbe46194cf4.49635776",
+        "name": "Minifig Head Female with Peach Lips, Smile, Black Eyebrows Pattern (Hollow Stud)",
+        "file": "3626cp8c.dat"
+    },
+    {
+        "id": "6a5bbe46195a16.44369471",
+        "name": "Minifig Head Female with Black Eyebrows, Eyelashes, Freckles, Pink Lips, Lopsided Smile \/ Determined 2-Sided Pattern",
+        "file": "3626cp8d.dat"
+    },
+    {
+        "id": "6a5bbe461963b9.11944220",
+        "name": "Minifig Head with Black Standard Eyes, Smiling with Tongue \/ Standard Grin 2-Sided Pattern",
+        "file": "3626cp8e.dat"
+    },
+    {
+        "id": "6a5bbe461970b2.92295826",
+        "name": "Minifig Head with Yellow Eyes and Mouth and Aluminum Foil Blotches Pattern",
+        "file": "3626cp8f.dat"
+    },
+    {
+        "id": "6a5bbe46197a14.84676009",
+        "name": "Minifig Head Alien with Robot Red Eyes and Mouth and Silver Metal Plates Eyebrows and Mask Pattern",
+        "file": "3626cp8g.dat"
+    },
+    {
+        "id": "6a5bbe461989d9.68725830",
+        "name": "Minifig Head with Silver Sunglasses, Eyebrows Wavy and Thin Grin Pattern",
+        "file": "3626cp8h.dat"
+    },
+    {
+        "id": "6a5bbe461994f3.92479804",
+        "name": "Minifig Head with Black Eyebrows, Chin Dimple and Lopsided Grin Pattern",
+        "file": "3626cp8i.dat"
+    },
+    {
+        "id": "6a5bbe4619a1c4.58841897",
+        "name": "Minifig Head with Open Smile with Teeth \/ Eyebrows, Scared 2-Sided Pattern",
+        "file": "3626cp8j.dat"
+    },
+    {
+        "id": "6a5bbe4619ad71.80351466",
+        "name": "Minifig Head with Brown Eyebrows, Open Lopsided Grin and White Pupils Pattern (Hollow Stud)",
+        "file": "3626cp8k.dat"
+    },
+    {
+        "id": "6a5bbe4619b802.25941811",
+        "name": "Minifig Head Female with Silver Glasses and Pink Lips Smiling Pattern",
+        "file": "3626cp8l.dat"
+    },
+    {
+        "id": "6a5bbe4619c288.27299979",
+        "name": "Minifig Head with Bright Light Blue Glasses with Black Squared Frame, Smile \/ Screaming Open Mouth 2-Sided Pattern",
+        "file": "3626cp8m.dat"
+    },
+    {
+        "id": "6a5bbe4619cc76.18719861",
+        "name": "Minifig Head Robot with Red Visor and 9 Black Squares Mouth Pattern",
+        "file": "3626cp8n.dat"
+    },
+    {
+        "id": "6a5bbe4619d673.88800604",
+        "name": "Minifig Head Robot with Red Visor and 4 Black Outlined Squares Mouth on Silver Background Pattern",
+        "file": "3626cp8o.dat"
+    },
+    {
+        "id": "6a5bbe4619e087.18295477",
+        "name": "Minifig Head Robot with Red Eyes and 4 Black Outlined Squares Mouth on Silver Background with Black Rivets Pattern",
+        "file": "3626cp8p.dat"
+    },
+    {
+        "id": "6a5bbe4619ea63.10646679",
+        "name": "Minifig Head Female with Brown Eyebrows, Peach Lips, Pensive Smile \/ Scared 2-Sided Pattern",
+        "file": "3626cp8q.dat"
+    },
+    {
+        "id": "6a5bbe4619f594.00693928",
+        "name": "Minifig Head Female with Black Eyebrows, Peach Lips, Open Smile with Teeth \/ Sleeping 2-Sided Pattern",
+        "file": "3626cp8r.dat"
+    },
+    {
+        "id": "6a5bbe461a0016.15202651",
+        "name": "Minifig Head with Black Eyebrows, Freckles, Smile \/ Worried 2-Sided Pattern",
+        "file": "3626cp8s.dat"
+    },
+    {
+        "id": "6a5bbe461a0989.89466636",
+        "name": "Minifig Head with White Bushy Eyebrows, Goatee, Wrinkles, Smile \/ Open Mouth Scared 2-Sided Pattern",
+        "file": "3626cp8t.dat"
+    },
+    {
+        "id": "6a5bbe461a1464.88242482",
+        "name": "Minifig Head Female with Medium Nougat Glasses, Laugh Lines, Red Lips, Neutral \/ Raised Eyebrows Amused 2-Sided Pattern",
+        "file": "3626cp8u.dat"
+    },
+    {
+        "id": "6a5bbe461a1f38.01880815",
+        "name": "Minifig Head Female with Black and Silver Sunglasses, Black Eyebrows, Peach Lips Pattern - Hollow Stud",
+        "file": "3626cp8v.dat"
+    },
+    {
+        "id": "6a5bbe461a28c6.34267857",
+        "name": "Minifig Head with Black Eyebrows, White Pupils, Scared \/ Lopside Smile 2-Sided Pattern",
+        "file": "3626cp8w.dat"
+    },
+    {
+        "id": "6a5bbe461a3465.24813892",
+        "name": "Minifig Head Female with Black Eyebrows, Pink Lips, Eyelashes \/ Sunglasses with Medium Lavender Frames 2-Sided Pattern",
+        "file": "3626cp8x.dat"
+    },
+    {
+        "id": "6a5bbe461a42a8.59218163",
+        "name": "Minifig Head with Glasses Rounded, Brown Eyebrows and Smile Pattern",
+        "file": "3626cp8y.dat"
+    },
+    {
+        "id": "6a5bbe461a4d98.79942998",
+        "name": "Minifig Head with Black\/Silver Sunglasses, Black Eyebrows, Chin Dimple and Grim Mouth Pattern",
+        "file": "3626cp8z.dat"
+    },
+    {
+        "id": "6a5bbe461a5896.46112036",
+        "name": "Minifig Head Wolf with Yellow Eyes, Black Scars, Fangs, Closed \/ Open Mouth 2-Sided Pattern",
+        "file": "3626cpap.dat"
+    },
+    {
+        "id": "6a5bbe461a6325.41474612",
+        "name": "Minifig Head with White Headband and Cheek Lines, Frown \/ Determined 2-Sided Pattern",
+        "file": "3626cpb1.dat"
+    },
+    {
+        "id": "6a5bbe461a6f52.88347736",
+        "name": "Minifig Head with Pumpkin Jack-o'-Lantern Open Semicircular Eyes with Vertical Lines on Back Pattern",
+        "file": "3626cpb2.dat"
+    },
+    {
+        "id": "6a5bbe461a79c3.12519538",
+        "name": "Minifig Head with Iron Spider Pattern",
+        "file": "3626cpb3.dat"
+    },
+    {
+        "id": "6a5bbe461a8416.74753356",
+        "name": "Minifig Head with Iron Man Armoured Suit Classic Pattern",
+        "file": "3626cpb4.dat"
+    },
+    {
+        "id": "6a5bbe461a8f04.19153423",
+        "name": "Minifig Head Female with Black Mask, Bright Blue Eye Shadow, Red Lips and Smile \/ Bare Teeth 2-Sided Pattern",
+        "file": "3626cpb5.dat"
+    },
+    {
+        "id": "6a5bbe461a99b2.28214835",
+        "name": "Minifig Head with Bright Green Eyebrows, Red Lips and Wide Smile Pattern",
+        "file": "3626cpb6.dat"
+    },
+    {
+        "id": "6a5bbe461aa312.66707061",
+        "name": "Minifig Head Female with Black Thick Eyebrows, Green Lips, Open Smile with Bright Light Yellow Teeth Pattern",
+        "file": "3626cpb7.dat"
+    },
+    {
+        "id": "6a5bbe461ab024.67675678",
+        "name": "Minifig Head with Black Eyebrows and Cheek Lines 2-Sided Pattern",
+        "file": "3626cpb9.dat"
+    },
+    {
+        "id": "6a5bbe461aba09.88094977",
+        "name": "Minifig Head with Beard, Happy\/Angry 2-Sided Pattern",
+        "file": "3626cpbb.dat"
+    },
+    {
+        "id": "6a5bbe461ac806.99946277",
+        "name": "Minifig Head with Grumpy\/Angry 2-Sided Pattern",
+        "file": "3626cpbd.dat"
+    },
+    {
+        "id": "6a5bbe461ad408.18278736",
+        "name": "Minifig Head with Beard, Sneering\/Scared 2-Sided Pattern",
+        "file": "3626cpbh.dat"
+    },
+    {
+        "id": "6a5bbe461ae318.50103785",
+        "name": "Minifig Head Female with DarkRed Lips, Open\/Closed Mouth, Freckles 2-Sided Pattern",
+        "file": "3626cpbj.dat"
+    },
+    {
+        "id": "6a5bbe461af335.64471382",
+        "name": "Minifig Head with Glasses, Grey Eyes, Eyebrows, Cheeks Pattern",
+        "file": "3626cpbk.dat"
+    },
+    {
+        "id": "6a5bbe461afd57.60198427",
+        "name": "Minifig Head with Eyes in Mask, White 'A' and Black Line on Back Pattern",
+        "file": "3626cpbl.dat"
+    },
+    {
+        "id": "6a5bbe461b0a63.59531871",
+        "name": "Minifig Head with Black Eyebrows, Black and White Goatee, Wrinkles and Cheek Lines, Neutral \/ Angry 2-Sided Pattern",
+        "file": "3626cpbm.dat"
+    },
+    {
+        "id": "6a5bbe461b14f0.19014084",
+        "name": "Minifig Head with Balaclava and Light Nougat Face, Cheek Lines, Frown\/Clenched Teeth 2-Sided Pattern",
+        "file": "3626cpbn.dat"
+    },
+    {
+        "id": "6a5bbe461b2045.87092558",
+        "name": "Minifig Head with Balaclava with Black Eye Mask with White Eye Openings and Light Nougat Face and Scowl Pattern",
+        "file": "3626cpbx.dat"
+    },
+    {
+        "id": "6a5bbe461b2af7.26836030",
+        "name": "Minifig Head with Brown Bushy Moustache and Eyebrows and Black Chin Strap Pattern",
+        "file": "3626cpcbe.dat"
+    },
+    {
+        "id": "6a5bbe461b34b1.39894267",
+        "name": "Minifig Head Female with Black Thin Straight Eyebrows and Light Bluish Grey Lips and Eyeshadow Pattern",
+        "file": "3626cpccg.dat"
+    },
+    {
+        "id": "6a5bbe461b3e73.62449729",
+        "name": "Minifig Head with Dark Bluish Grey around Eyes and Open Mouth Lopsided Pattern",
+        "file": "3626cpce7.dat"
+    },
+    {
+        "id": "6a5bbe461b4863.78096115",
+        "name": "Minifig Head Female with Red Eyes and Dark Bluish Grey Lips and Wrinkles, Open Smile with Missing Tooth Pattern",
+        "file": "3626cpce8.dat"
+    },
+    {
+        "id": "6a5bbe461b5210.06715190",
+        "name": "Minifig Head Female with Thin Black Eyebrows, White Eye Shadow, Orange Lips and Three Black Stripes on Cheeks Pattern",
+        "file": "3626cpce9.dat"
+    },
+    {
+        "id": "6a5bbe461b5c03.31345866",
+        "name": "Minifig Head with White Skull Mask, Yellow Eyes and White String Tied in Back Pattern",
+        "file": "3626cpceb.dat"
+    },
+    {
+        "id": "6a5bbe461b65c2.60039487",
+        "name": "Minifig Head with Thick Black Eyebrows, Lavender Black Eye, Adhesive Bandage and Frown Pattern",
+        "file": "3626cpcf4.dat"
+    },
+    {
+        "id": "6a5bbe461b6fd7.15946845",
+        "name": "Minifig Head with Medium Azure Zigzag Line Pattern",
+        "file": "3626cpcfb.dat"
+    },
+    {
+        "id": "6a5bbe461b79c3.38950609",
+        "name": "Minifig Head Female with Jagged Dark Azure Eyebrows, White at Sides of Eyes, Silver Lips Pattern",
+        "file": "3626cpcg1.dat"
+    },
+    {
+        "id": "6a5bbe461b8d03.16834509",
+        "name": "Minifig Head Female Robot with Red Eyes and Lips, 4 Metallic Silver Mouth Squares, Black Beauty Mark, Eyelashes and Headset Pattern",
+        "file": "3626cpd2b.dat"
+    },
+    {
+        "id": "6a5bbe461b9791.09904083",
+        "name": "Minifig Head Robot with Red Eyes, Metal Eyebrows with Rivets, Broken White Teeth and Stubble Bolts Pattern",
+        "file": "3626cpd2e.dat"
+    },
+    {
+        "id": "6a5bbe461ba2c2.40431068",
+        "name": "Minifig Head with White Headband and Nougat Cheek Lines, Smirk Pattern",
+        "file": "3626cpd61.dat"
+    },
+    {
+        "id": "6a5bbe461bad84.37403884",
+        "name": "Minifig Head with Bright Pink Headband with White Squinted Batman Eyes Pattern",
+        "file": "3626cpd63.dat"
+    },
+    {
+        "id": "6a5bbe461bb7e6.74747369",
+        "name": "Minifig Head with Reddish Brown Headband with Squinted Batman Eyes, Sad Mouth Pattern",
+        "file": "3626cpd64.dat"
+    },
+    {
+        "id": "6a5bbe461bc228.39748350",
+        "name": "Minifig Head Female with Black Eyebrows and Eyelashes, Beauty Mark Under Left Eye, Dark Red Lips Pattern",
+        "file": "3626cpd66.dat"
+    },
+    {
+        "id": "6a5bbe461bcc32.99969159",
+        "name": "Minifig Head with Large Glasses with Dark Grey Eyebrows, Moustache and Stubbles and Dark Brown Cheek Lines Pattern",
+        "file": "3626cpd67.dat"
+    },
+    {
+        "id": "6a5bbe461bd648.74118527",
+        "name": "Minifig Head with Green Eyebrows, Medium Blue Eyeshadow, Thick Red Lips Smile with Sharp Tooth \/ Very Sad Frown 2-Sided Pattern",
+        "file": "3626cpd68.dat"
+    },
+    {
+        "id": "6a5bbe461be014.21143359",
+        "name": "Minifig Head with Black Eyebrows, Reddish Brown Dimples, Lopsided Open Mouth Grin Pattern",
+        "file": "3626cpd69.dat"
+    },
+    {
+        "id": "6a5bbe461bea08.54478972",
+        "name": "Minifig Head Female with Magenta Eye Mask, Dark Red Lips, Grin with Teeth \/ Neutral 2-Sided Pattern",
+        "file": "3626cpd6a.dat"
+    },
+    {
+        "id": "6a5bbe461bf4d6.61864169",
+        "name": "Minifig Head with Black Mask and White Eye Holes and Contour Lines Pattern",
+        "file": "3626cpd6b.dat"
+    },
+    {
+        "id": "6a5bbe461bff70.50174957",
+        "name": "Minifig Head Female with Black Eye Mask, Dark Red Lips, Red Tongue and Diamond on Cheek, Open Smile with Top Teeth Pattern",
+        "file": "3626cpd6d.dat"
+    },
+    {
+        "id": "6a5bbe461c0958.71550537",
+        "name": "Minifig Head with Large Black Open Mouth with Uvula and Red Tongue Pattern",
+        "file": "3626cpd6e.dat"
+    },
+    {
+        "id": "6a5bbe461c1322.26972630",
+        "name": "Minifig Head with Balaclava with Black Eyes and Curled Eyelash, 'Z' in Black Circle, Light Nougat Mouth Hole with Sneer Pattern",
+        "file": "3626cpd6f.dat"
+    },
+    {
+        "id": "6a5bbe461c1cd8.99334221",
+        "name": "Minifig Head Female with Brown Eyebrows, Medium Nougat Lips and Brown Beauty Mark on Left Side Pattern",
+        "file": "3626cpd6h.dat"
+    },
+    {
+        "id": "6a5bbe461c2686.68353262",
+        "name": "Minifig Head with Balaclava with White Frowning Eyes and Light Nougat Mouth Hole, Reddish Brown Cheek Lines, Open Smile with Teeth Pattern",
+        "file": "3626cpd6i.dat"
+    },
+    {
+        "id": "6a5bbe461c3037.56244441",
+        "name": "Minifig Head with Black Eyebrows, Medium Nougat Cheek Lines, Dark Tan Chin Ornament and Sad Look Pattern",
+        "file": "3626cpd6j.dat"
+    },
+    {
+        "id": "6a5bbe461c3a37.16571476",
+        "name": "Minifig Head with White Face Paint, Black Lines Through Eyebrows and Eyes, Bright Pink Hearts on Cheeks Pattern",
+        "file": "3626cpd6k.dat"
+    },
+    {
+        "id": "6a5bbe461c4493.31348915",
+        "name": "Minifig Head Female with Large Round Glasses with Bright Light Blue Lenses and Black Frames, Orange Lips with Slight Crooked Smile Pattern",
+        "file": "3626cpd7i.dat"
+    },
+    {
+        "id": "6a5bbe461c4e93.44263312",
+        "name": "Minifig Head Female with Black Eye Mask, Dark Red Lips and Red Diamond Beauty Mark, Wink and Open Mouth \/ Licking Lips 2-Sided Pattern",
+        "file": "3626cpd81.dat"
+    },
+    {
+        "id": "6a5bbe461c5855.27820496",
+        "name": "Minifig Head with Black Headband with White Batman Eyes, Broad Smile Showing Teeth Pattern",
+        "file": "3626cpd85.dat"
+    },
+    {
+        "id": "6a5bbe461c62c2.76984729",
+        "name": "Minifig Head Female with Balaclava, Medium Nougat Face, Beauty Mark and Crooked Smile Pattern",
+        "file": "3626cpd89.dat"
+    },
+    {
+        "id": "6a5bbe461c6c95.56416466",
+        "name": "Minifig Head with Balaclava with Black Seams and White Eyes with Light Nougat Lower Face Pattern",
+        "file": "3626cpd8c.dat"
+    },
+    {
+        "id": "6a5bbe461c7651.77908072",
+        "name": "Minifig Head Female with Black Eyebrows and Eyes with Eyelash, Broad Grin Pattern",
+        "file": "3626cpd8e.dat"
+    },
+    {
+        "id": "6a5bbe461c8026.80658799",
+        "name": "Minifig Head with Black Eyebrows and Dark Brown Cheek Lines, Firm Expression Pattern",
+        "file": "3626cpd8f.dat"
+    },
+    {
+        "id": "6a5bbe461c8a11.03585533",
+        "name": "Minifig Head with Black Eye Mask with White Eye Holes and Dark Brown Cheek Lines Pattern",
+        "file": "3626cpd8k.dat"
+    },
+    {
+        "id": "6a5bbe461c93e5.19184179",
+        "name": "Minifig Head with Beethoven Bust Open\/Closed Eyes 2-Sided Pattern",
+        "file": "3626cpdg1.dat"
+    },
+    {
+        "id": "6a5bbe461c9db7.31317836",
+        "name": "Minifig Head with Wide Smile and Dark Pink Tounge Pattern",
+        "file": "3626cpdgb.dat"
+    },
+    {
+        "id": "6a5bbe461ca776.59063989",
+        "name": "Minifig Head Female with Black Eyebrows, Dark Red Lips, Smile \/ Worry 2-Sided Pattern",
+        "file": "3626cph0.dat"
+    },
+    {
+        "id": "6a5bbe461cb121.21938333",
+        "name": "Minifig Head with Reddish Brown Eyebrows, Cheek Lines, Open Smile\/Frown 2-Sided Pattern",
+        "file": "3626cph1.dat"
+    },
+    {
+        "id": "6a5bbe461cbb06.31297934",
+        "name": "Minifig Head with Lightning Scar, Glasses, Black Eyebrows and Smile \/ Angry 2-Sided Pattern",
+        "file": "3626cph2.dat"
+    },
+    {
+        "id": "6a5bbe461cc4b0.73125445",
+        "name": "Minifig Head with Reddish Brown Eyebrows, Cheek Lines, Open Mouth, Smile \/ Scowl 2-Sided Pattern",
+        "file": "3626cph3.dat"
+    },
+    {
+        "id": "6a5bbe461ccec9.29172345",
+        "name": "Minifig Head with White Eyebrows, Beard and Round Black Glasses Pattern",
+        "file": "3626cph5.dat"
+    },
+    {
+        "id": "6a5bbe461cd905.22011466",
+        "name": "Minifig Head with LOTR Uruk-Hai Scowl and White Hand 2-Sided Pattern (Hollow Stud)",
+        "file": "3626cpm0.dat"
+    },
+    {
+        "id": "6a5bbe461ce352.53358878",
+        "name": "Minifig Head with LOTR Thick Grey Eyebrows and Smile Pattern",
+        "file": "3626cpm1.dat"
+    },
+    {
+        "id": "6a5bbe461ced49.46260512",
+        "name": "Minifig Head with LOTR Worried \/ Smile 2-Sided Pattern",
+        "file": "3626cpm2.dat"
+    },
+    {
+        "id": "6a5bbe461cf6f4.58180647",
+        "name": "Minifig Head with LOTR Tired \/ Poisoned 2-Sided Pattern",
+        "file": "3626cpm3.dat"
+    },
+    {
+        "id": "6a5bbe461d00c6.90599441",
+        "name": "Minifig Head with LOTR Frowning \/ Scared 2-Sided Pattern",
+        "file": "3626cpm4.dat"
+    },
+    {
+        "id": "6a5bbe461d0a94.57606376",
+        "name": "Minifig Head with LOTR Frowning \/ Shouting 2-Sided Pattern",
+        "file": "3626cpm5.dat"
+    },
+    {
+        "id": "6a5bbe461d1466.73494940",
+        "name": "Minifig Head with LOTR Frowning \/ Grimacing 2-Sided Pattern",
+        "file": "3626cpm6.dat"
+    },
+    {
+        "id": "6a5bbe461d1e16.49661336",
+        "name": "Minifig Head with LOTR Darkbrown Beard, Stubble and Stern \/ Clenched Teeth 2-Sided Pattern",
+        "file": "3626cpm7.dat"
+    },
+    {
+        "id": "6a5bbe461d2809.09830824",
+        "name": "Minifig Head with LOTR Smirking \/ Shouting 2-Sided Pattern",
+        "file": "3626cpm8.dat"
+    },
+    {
+        "id": "6a5bbe461d32c6.00038080",
+        "name": "Minifig Head with LOTR Thick Grey Eyebrows and Smile Pattern",
+        "file": "3626cpm9.dat"
+    },
+    {
+        "id": "6a5bbe461d3cc4.35680448",
+        "name": "Minifig Head with Dark Bluish Grey Face Neutral \/ Frown 2-Sided Pattern",
+        "file": "3626cpmc.dat"
+    },
+    {
+        "id": "6a5bbe461d4690.56185884",
+        "name": "Minifig Head Skull Cracked with Metal Plates Pattern",
+        "file": "3626cpn2.dat"
+    },
+    {
+        "id": "6a5bbe461d5043.07211297",
+        "name": "Minifig Head Female with Black Eyebrows, Beauty Mark, Single Eyelash, Dark Tan Lips and Crooked Smile \/ Scowl 2-Sided Pattern",
+        "file": "3626cpna.dat"
+    },
+    {
+        "id": "6a5bbe461d59e1.52257983",
+        "name": "Minifig Head with Reddish Brown Eyebrows, Medium Nougat Scar, White Band-Aid, Lopsided Grin with Teeth \/ Determined 2-Sided Pattern",
+        "file": "3626cpnb.dat"
+    },
+    {
+        "id": "6a5bbe461d63c7.84418057",
+        "name": "Minifig Head with Reddish Brown Eyebrows, Green Eyes, Lopsided Open Mouth Grin \/ Gritted Teeth 2-Sided Pattern",
+        "file": "3626cpnc.dat"
+    },
+    {
+        "id": "6a5bbe461d6d92.10671495",
+        "name": "Minifig Head with White and Light Bluish Grey Eyebrows, Moustach and Goatee, Dark Orange Wrinkles, Concerned Expression Pattern",
+        "file": "3626cpnd.dat"
+    },
+    {
+        "id": "6a5bbe461d7795.24120111",
+        "name": "Minifig Head with Reddish Brown Eyebrows and Freckles, Lopsided Grin \/ Frown Pattern 2-Sided Pattern",
+        "file": "3626cpne.dat"
+    },
+    {
+        "id": "6a5bbe461d81b5.48727946",
+        "name": "Minifig Head with Black Bushy Eyebrows, Smile \/ Angry 2-Sided Pattern",
+        "file": "3626cpnf.dat"
+    },
+    {
+        "id": "6a5bbe461d8b68.64125858",
+        "name": "Minifig Head with Black Straight Eyebrows, Large Medium Blue Eyes, Big Smile with Teeth \/ Scowl with Teeth 2-Sided Pattern",
+        "file": "3626cpng.dat"
+    },
+    {
+        "id": "6a5bbe461d9571.25746584",
+        "name": "Minifig Head with Green Eyes, White Pupils, Reddish Brown Eyebrows and Scowl Pattern",
+        "file": "3626cpnh.dat"
+    },
+    {
+        "id": "6a5bbe461d9f28.17526899",
+        "name": "Minifig Head with Beard Stubble, Eyebrows, Smile, Scar Pattern",
+        "file": "3626cpq0.dat"
+    },
+    {
+        "id": "6a5bbe461da936.50171683",
+        "name": "Minifig Head with SW Jawa, Yellow Eyes with Orange Rim Pattern",
+        "file": "3626cps0.dat"
+    },
+    {
+        "id": "6a5bbe461db363.93742054",
+        "name": "Minifig Head with Reddish Brown Eyebrows, White Pupils and Dark Orange Dimple Pattern",
+        "file": "3626cps1.dat"
+    },
+    {
+        "id": "6a5bbe461dbd61.38838342",
+        "name": "Minifig Head with White Pupils, Dark Bluish Grey Eyebrows and Dark Red Scars Pattern",
+        "file": "3626cps2.dat"
+    },
+    {
+        "id": "6a5bbe461dc8d7.88793629",
+        "name": "Minifig Head with Black Eyebrows, White Pupils, Dark Nougat Cheek Lines and Dimple and Grimacing Pattern",
+        "file": "3626cps3.dat"
+    },
+    {
+        "id": "6a5bbe461dd220.72814536",
+        "name": "Minifig Head with Black Eyebrows, Sunken Eyes, Beauty Mark, Right Eye Scar, Neutral \/ Angry 2-Sided Pattern",
+        "file": "3626cps4.dat"
+    },
+    {
+        "id": "6a5bbe461ddb34.68546929",
+        "name": "Minifig Head with Black Eyebrows, White Pupils, Dark Nougat Dimple, Cheek Lines and Frown Pattern",
+        "file": "3626cps6.dat"
+    },
+    {
+        "id": "6a5bbe461de489.82475347",
+        "name": "Minifig Head with SW Black Eyebrows, White Pupils, Dark Brown Forhead Lines, Cheek Lines and Chin Dimple and Open Mouth pattern",
+        "file": "3626cps7.dat"
+    },
+    {
+        "id": "6a5bbe461deda0.50169754",
+        "name": "Minifig Head with SW Brown Eyebrows, Solid Black Eyes and Black Chin Strap Pattern",
+        "file": "3626cpsf.dat"
+    },
+    {
+        "id": "6a5bbe461df6d3.25269674",
+        "name": "Minifig Head with SW Brown Eyebrows, Smile and Black Chin Strap Pattern",
+        "file": "3626cpsg.dat"
+    },
+    {
+        "id": "6a5bbe461e0039.49269115",
+        "name": "Minifig Head with SW Stern Black Eyebrows, Pupils and Orange Visor Pattern",
+        "file": "3626cpsh.dat"
+    },
+    {
+        "id": "6a5bbe461e0964.65366223",
+        "name": "Minifig Head with SW Dark Bluish Grey Chin Strap, Stern Eyebrows \/ Black Goggles 2-Sided Pattern",
+        "file": "3626cpsi.dat"
+    },
+    {
+        "id": "6a5bbe461e12d9.42093866",
+        "name": "Minifig Head Female with SW Dark Brown Eyebrows, Black Eyelashes, Red Lips and Two Dots on Cheeks Pattern",
+        "file": "3626cpsq.dat"
+    },
+    {
+        "id": "6a5bbe461e1cf4.69556902",
+        "name": "Minifig Head Female with Black Eyebrows and Red Lips Determined Look \/ Open Mouth Smile 2-Sided Pattern",
+        "file": "3626cpx0.dat"
+    },
+    {
+        "id": "6a5bbe461e2657.15836453",
+        "name": "Minifig Head Female with Glasses with Gold Frames, Peach Lips, Smiling \/ Smiling with Teeth 2-Sided Pattern",
+        "file": "3626cpx1.dat"
+    },
+    {
+        "id": "6a5bbe461e2fa4.30656915",
+        "name": "Minifig Head Female with Glasses with Dark Green Frames, Red Lips, Smiling \/ Smiling with Teeth 2-Sided Pattern",
+        "file": "3626cpx2.dat"
+    },
+    {
+        "id": "6a5bbe461e38c0.70673825",
+        "name": "Minifig Head Female with Black Eyebrows and Long Eyelashes and Peach Lips with Closed Mouth, Eyebrow Raised \/ Open Smile 2-Sided Pattern",
+        "file": "3626cpx3.dat"
+    },
+    {
+        "id": "6a5bbe461e41f5.63623465",
+        "name": "Minifig Head with Full Black Beard with Side Burns, White Pupils, Open Mouth Grimace Pattern",
+        "file": "3626cpx4.dat"
+    },
+    {
+        "id": "6a5bbe461e4df6.30520711",
+        "name": "Minifig Head with Brown Eyebrows, Nougat Cheek Lines, Smile \/ Smile with Teeth 2-Sided Pattern",
+        "file": "3626cpx5.dat"
+    },
+    {
+        "id": "6a5bbe461e5b38.06201775",
+        "name": "Minifig Head with Eyebrows, Pupils, Cheek Lines, Dimple and Smile \/ Scared 2-Sided Pattern",
+        "file": "3626cpx6.dat"
+    },
+    {
+        "id": "6a5bbe461e6531.90874224",
+        "name": "Minifig Head with Brown Eyebrows, White Pupils, Chin Dimple, Smile \/ Scared Open Mouth 2-Sided Pattern",
+        "file": "3626cpx7.dat"
+    },
+    {
+        "id": "6a5bbe461e7576.82801861",
+        "name": "Minifig Head Female with Brown Eyebrows, Eyelashes, Orange Lips, Neutral \/ Angry 2-Sided Pattern",
+        "file": "3626cpx8.dat"
+    },
+    {
+        "id": "6a5bbe461e8383.65099854",
+        "name": "Minifig Head with Dark Bluish Grey Bushy Eyebrows, White Pupils and Wrinkles Pattern",
+        "file": "3626cpx9.dat"
+    },
+    {
+        "id": "6a5bbe461e8eb9.23681417",
+        "name": "Minifig Head with Small Black Eyes, Closed Mouth with Fangs \/ Open Wide Dark Red Mouth with Fangs 2-Sided Pattern",
+        "file": "3626cpxa.dat"
+    },
+    {
+        "id": "6a5bbe461e9979.59552242",
+        "name": "Minifig Head with Large Black Eyebrows, White Pupils, Cheek Lines and Chin Dimple Pattern",
+        "file": "3626cpxb.dat"
+    },
+    {
+        "id": "6a5bbe461ea2a6.41810541",
+        "name": "Minifig Head with Wide Set Eyes, Smile \/ Open Mouth with Teeth and Tongue 2-Sided Pattern",
+        "file": "3626cpxc.dat"
+    },
+    {
+        "id": "6a5bbe461eac10.79066237",
+        "name": "Minifig Head with Brown Eyebrows, Dark Tan Freckles and Crooked Smile\/Worried Mouth 2-Sided Pattern",
+        "file": "3626cpxf.dat"
+    },
+    {
+        "id": "6a5bbe46769226.07203780",
+        "name": "Minifig Head Yoda with Curved Ears",
+        "file": "41880.dat"
+    },
+    {
+        "id": "6a5bbe467cc471.24028714",
+        "name": "Minifig Head Goblin",
+        "file": "42109.dat"
+    },
+    {
+        "id": "6a5bbe46912849.74965994",
+        "name": "Minifig Head Skeleton Round with Stud",
+        "file": "43693.dat"
+    },
+    {
+        "id": "6a5bbe46924562.60558134",
+        "name": "Minifig Head Elf",
+        "file": "43745.dat"
+    },
+    {
+        "id": "6a5bbe469250b4.81614239",
+        "name": "Minifig Head Elf with Green Eyes Pattern",
+        "file": "43745p01.dat"
+    },
+    {
+        "id": "6a5bbe46b648a6.11574996",
+        "name": "Minifig Head Glasses, Thin Brown Eyebrows, Smile Pattern (Hollow Stud)",
+        "file": "46506.dat"
+    },
+    {
+        "id": "6a5bbe46c1fe29.22908856",
+        "name": "Minifig Head Rodian without Pattern",
+        "file": "47545.dat"
+    },
+    {
+        "id": "6a5bbe46c20831.89094474",
+        "name": "Minifig Head Rodian with Eyes and Nose Pattern",
+        "file": "47545p01.dat"
+    },
+    {
+        "id": "6a5bbe46d022b1.99742844",
+        "name": "Minifig Head Snake with Closed Mouth",
+        "file": "49588.dat"
+    },
+    {
+        "id": "6a5bbe46d02c71.86035394",
+        "name": "Minifig Head Snake with Closed Mouth with Trans Orange Flames and Eyes Pattern",
+        "file": "49588p01.dat"
+    },
+    {
+        "id": "6a5bbe46d03634.68677306",
+        "name": "Minifig Head Snake with Closed Mouth with Dark Turquoise Flames and Eyes Pattern",
+        "file": "49588p02.dat"
+    },
+    {
+        "id": "6a5bbe46d04017.93865920",
+        "name": "Minifig Head Snake with Closed Mouth with Orange Flames and Eyes Pattern",
+        "file": "49588p03.dat"
+    },
+    {
+        "id": "6a5bbe46d04a11.87331616",
+        "name": "Minifig Head Snake with Closed Mouth with Pearl Dark Grey Flames and Eyes Pattern",
+        "file": "49588p04.dat"
+    },
+    {
+        "id": "6a5bbe46d23802.81050333",
+        "name": "Minifig Head with Smirk, Black Hair and Goatee Pattern",
+        "file": "50003.dat"
+    },
+    {
+        "id": "6a5bbe46d90a46.72720668",
+        "name": "Minifig Head Lefty Mouth and Stubble Pattern",
+        "file": "51523.dat"
+    },
+    {
+        "id": "6a5bbe46e4e4e7.03018591",
+        "name": "Minifig Head SpongeBob",
+        "file": "54872.dat"
+    },
+    {
+        "id": "6a5bbe46e4eef4.03399792",
+        "name": "Minifig Head SpongeBob with Happy Pattern",
+        "file": "54872p01.dat"
+    },
+    {
+        "id": "6a5bbe46e4f8f2.52733087",
+        "name": "Minifig Head SpongeBob with Shocked Pattern",
+        "file": "54872p02.dat"
+    },
+    {
+        "id": "6a5bbe46e502d0.43891027",
+        "name": "Minifig Head SpongeBob with Super Hero Pattern",
+        "file": "54872p09.dat"
+    },
+    {
+        "id": "6a5bbe46e50cc3.86852270",
+        "name": "Minifig Head Spongebob Starfish",
+        "file": "54873.dat"
+    },
+    {
+        "id": "6a5bbe46f01aa1.73312687",
+        "name": "Minifig Head Nautolan",
+        "file": "57901.dat"
+    },
+    {
+        "id": "6a5bbe46f024f9.46534517",
+        "name": "Minifig Head Nautolan with Black Eyes & Mouth and Brown Tentacle Bands Pattern",
+        "file": "57901p01.dat"
+    },
+    {
+        "id": "6a5bbe471ef579.57549823",
+        "name": "Minifig Head Kel'Dor with Breathing Apparatus",
+        "file": "61200.dat"
+    },
+    {
+        "id": "6a5bbe471f0011.59340014",
+        "name": "Minifig Head Kel'Dor with Dark Bluish Grey Breathing Apparatus Pattern",
+        "file": "61200ps0.dat"
+    },
+    {
+        "id": "6a5bbe4762fc66.40677142",
+        "name": "Minifig Head Spongebob Octopus",
+        "file": "64767.dat"
+    },
+    {
+        "id": "6a5bbe4763e923.65170347",
+        "name": "Minifig Head Ewok",
+        "file": "64805.dat"
+    },
+    {
+        "id": "6a5bbe476408e7.32604996",
+        "name": "Minifig Head Mon Calamari",
+        "file": "64808.dat"
+    },
+    {
+        "id": "6a5bbe4776e1c7.78330194",
+        "name": "Minifig Head Minion  2 x  2 x  1.667 with Mono-Goggles",
+        "file": "67649.dat"
+    },
+    {
+        "id": "6a5bbe4776ec34.48271148",
+        "name": "Minifig Head Minion  2 x  2 x  1.667 with Black Mono-Goggles and Black Hair and Open Smile with White Teeth and Pattern",
+        "file": "67649p01.dat"
+    },
+    {
+        "id": "6a5bbe4776f6b5.11731954",
+        "name": "Minifig Head Minion  2 x  2 x  1.667 with Black Mono-Goggles and Black Hair and Slanted Smile Pattern",
+        "file": "67649p02.dat"
+    },
+    {
+        "id": "6a5bbe47770114.32899655",
+        "name": "Minifig Head Minion  2 x  2 x  1.667 with Black Mono-Goggles and Black Hair and Round Open Mouth Pattern",
+        "file": "67649p03.dat"
+    },
+    {
+        "id": "6a5bbe47770b92.60763673",
+        "name": "Minifig Head Minion  2 x  2 x  1.667 with Black Mono-Goggles and Black Hair and Frown Pattern",
+        "file": "67649p04.dat"
+    },
+    {
+        "id": "6a5bbe477715f7.55531771",
+        "name": "Minifig Head Minion  2 x  2 x  2.333 with Goggles",
+        "file": "67650.dat"
+    },
+    {
+        "id": "6a5bbe47772022.66236253",
+        "name": "Minifig Head Minion  2 x  2 x  2.333 with Black Goggles and Slanted Smile Pattern",
+        "file": "67650p01.dat"
+    },
+    {
+        "id": "6a5bbe47772a80.83916089",
+        "name": "Minifig Head Minion  2 x  2 x  2.333 with Black Goggles and Frown Pattern",
+        "file": "67650p02.dat"
+    },
+    {
+        "id": "6a5bbe4777e100.53582975",
+        "name": "Minifig Head Pig",
+        "file": "67887.dat"
+    },
+    {
+        "id": "6a5bbe4777eb54.69780729",
+        "name": "Minifig Head Pig with Black Grumpy Eyes and Nostrils Pattern",
+        "file": "67887p01.dat"
+    },
+    {
+        "id": "6a5bbe47780049.87126178",
+        "name": "Minifig Head Minion  2 x  2 x  1.333 with Goggles",
+        "file": "67902.dat"
+    },
+    {
+        "id": "6a5bbe47780ad1.50317017",
+        "name": "Minifig Head Minion  2 x  2 x  1.333 with Black Goggles and Black Smile Pattern",
+        "file": "67902p01.dat"
+    },
+    {
+        "id": "6a5bbe477b3de9.86421784",
+        "name": "Minifig Head with Stud with Small Hole",
+        "file": "6947.dat"
+    },
+    {
+        "id": "6a5bbe47c859f7.87141669",
+        "name": "Minifig Head  2 x  2 x  1.333 Giant",
+        "file": "79435.dat"
+    },
+    {
+        "id": "6a5bbe47d691a5.00183034",
+        "name": "Minifig Head with Skull Type 1 (Happy) Pattern",
+        "file": "82359.dat"
+    },
+    {
+        "id": "6a5bbe47da1df3.85528008",
+        "name": "Minifig Head Muppet Gonzo",
+        "file": "84859.dat"
+    },
+    {
+        "id": "6a5bbe47da2873.53091453",
+        "name": "Minifig Head Muppet Gonzo with Lavender Beak and Bright Light Orange Eyelids Pattern",
+        "file": "84859p01.dat"
+    },
+    {
+        "id": "6a5bbe47da3315.76620693",
+        "name": "Minifig Head Muppet Pig Girl",
+        "file": "84860.dat"
+    },
+    {
+        "id": "6a5bbe47da3d48.06523585",
+        "name": "Minifig Head Muppet Pig (Miss Piggy) with Lavender Eye Shadow and Bright Light Yellow Hair Pattern",
+        "file": "84860p01.dat"
+    },
+    {
+        "id": "6a5bbe47da4931.59900186",
+        "name": "Minifig Head Muppet Janice",
+        "file": "84861.dat"
+    },
+    {
+        "id": "6a5bbe47da5377.37014237",
+        "name": "Minifig Head Muppet Janice with Dark Tan Hat and Bright Light Yellow Hair Pattern",
+        "file": "84861p01.dat"
+    },
+    {
+        "id": "6a5bbe47da5df1.77914667",
+        "name": "Minifig Head Muppet Beaker",
+        "file": "84862.dat"
+    },
+    {
+        "id": "6a5bbe47da6831.92351470",
+        "name": "Minifig Head Muppet Beaker with Red Hair and Mouth, Bright Light Orange Nose and White Eye with Black Pupil Pattern",
+        "file": "84862p01.dat"
+    },
+    {
+        "id": "6a5bbe47da7261.99180988",
+        "name": "Minifig Head Muppet Chef",
+        "file": "84863.dat"
+    },
+    {
+        "id": "6a5bbe47da7cc8.70383532",
+        "name": "Minifig Head Muppet Swedish Chef with White Toque, Dark Orange Hair and Moustache Pattern",
+        "file": "84863p01.dat"
+    },
+    {
+        "id": "6a5bbe47dc5d71.82069340",
+        "name": "Minifig Head Alien Squidman",
+        "file": "85947.dat"
+    },
+    {
+        "id": "6a5bbe47dc6876.72430506",
+        "name": "Minifig Head Alien Squidman with Black Eyes & Lines Pattern",
+        "file": "85947p01.dat"
+    },
+    {
+        "id": "6a5bbe47e02ba9.66733555",
+        "name": "Minifig Head with Red Lips Annoyed \/ Smiling 2-Sided Pattern (Hollow Stud)",
+        "file": "86294.dat"
+    },
+    {
+        "id": "6a5bbe47e8af77.84847469",
+        "name": "Minifig Head Trandoshan",
+        "file": "87570.dat"
+    },
+    {
+        "id": "6a5bbe47e8b9b4.76567586",
+        "name": "Minifig Head Trandoshan with White Teeth and Orange Eyes with Black Pupil Pattern",
+        "file": "87570p01.dat"
+    },
+    {
+        "id": "6a5bbe47e8c428.02899260",
+        "name": "Minifig Head Trandoshan with White Teeth and Orange Eyes with Black and White Pupil Pattern",
+        "file": "87570p02.dat"
+    },
+    {
+        "id": "6a5bbe47f1b747.72743274",
+        "name": "Minifig Head Grin, Brown Beard, White Pupils Pattern (Hollow Stud)",
+        "file": "89510.dat"
+    },
+    {
+        "id": "6a5bbe47f1cbf8.71419977",
+        "name": "Minifig Head Muppet Frog",
+        "file": "89515.dat"
+    },
+    {
+        "id": "6a5bbe47f1d640.59529319",
+        "name": "Minifig Head Muppet Frog (Kermit) with White Eyes and Red Mouth Pattern",
+        "file": "89515p01.dat"
+    },
+    {
+        "id": "6a5bbe47f20986.96386396",
+        "name": "Minifig Head Muppet Bunsen Honeydew",
+        "file": "89534.dat"
+    },
+    {
+        "id": "6a5bbe47f213b2.91775518",
+        "name": "Minifig Head Muppet Bunsen Honeydew with Black Glasses Pattern",
+        "file": "89534p01.dat"
+    },
+    {
+        "id": "6a5bbe47f22867.01371047",
+        "name": "Minifig Head Muppet Bear",
+        "file": "89646.dat"
+    },
+    {
+        "id": "6a5bbe47f23312.34138952",
+        "name": "Minifig Head Muppet Bear (Fozzie) with Reddish Brown Hat and Eyebrows and Dark Pink Nose Pattern",
+        "file": "89646p01.dat"
+    },
+    {
+        "id": "6a5bbe47f23d83.95214656",
+        "name": "Minifig Head Muppet Animal",
+        "file": "89647.dat"
+    },
+    {
+        "id": "6a5bbe47f247f4.02979205",
+        "name": "Minifig Head Muppet Animal with Black Eyebrows, Orange Eyelids and Lip, Red Tongue and White Teeth Pattern",
+        "file": "89647p01.dat"
+    },
+    {
+        "id": "6a5bbe47f32555.37757649",
+        "name": "Minifig Head Muppet Rowlf",
+        "file": "89677.dat"
+    },
+    {
+        "id": "6a5bbe47f32ff5.14057506",
+        "name": "Minifig Head Muppet Rowlf with Medium Nougat Face and Black Nose Pattern",
+        "file": "89677p01.dat"
+    },
+    {
+        "id": "6a5bbe48044834.69258694",
+        "name": "Minifig Head Brown Eyebrows, Freckles, Open Smile Pattern (Hollow Stud)",
+        "file": "90787.dat"
+    },
+    {
+        "id": "6a5bbe48195fd0.15029051",
+        "name": "Minifig Head Gungan with Flat Eyes (Needs Work)",
+        "file": "92743.dat"
+    },
+    {
+        "id": "6a5bbe4819fd69.92620809",
+        "name": "Minifig Head Toydarian",
+        "file": "92759.dat"
+    },
+    {
+        "id": "6a5bbe481a07a6.92252398",
+        "name": "Minifig Head Toydarian with Watto Vest and Belt Pattern",
+        "file": "92759p01.dat"
+    },
+    {
+        "id": "6a5bbe481ccf14.71592978",
+        "name": "Minifig Head Skeleton with Five Spikes",
+        "file": "93064.dat"
+    },
+    {
+        "id": "6a5bbe481cd9d9.34049213",
+        "name": "Minifig Head Skeleton with Helmet",
+        "file": "93065.dat"
+    },
+    {
+        "id": "6a5bbe481ce3c1.47893923",
+        "name": "Minifig Head Skeleton with Stud",
+        "file": "93066.dat"
+    },
+    {
+        "id": "6a5bbe484ff818.90158787",
+        "name": "Minifig Head Muppet Aged Man",
+        "file": "97457.dat"
+    },
+    {
+        "id": "6a5bbe48500262.80370864",
+        "name": "Minifig Head Muppet Waldorf with White Hair and Moustache Pattern",
+        "file": "97457p01.dat"
+    },
+    {
+        "id": "6a5bbe48500f98.02601920",
+        "name": "Minifig Head Muppet Aged Grumpy Man",
+        "file": "97459.dat"
+    },
+    {
+        "id": "6a5bbe48501e41.38590155",
+        "name": "Minifig Head Muppet Statler with Light Bluish Grey Hair and Eyebrows Pattern",
+        "file": "97459p01.dat"
+    },
+    {
+        "id": "6a5bbe485cc000.33219806",
+        "name": "Minifig Head Snake Cobra",
+        "file": "98150.dat"
+    },
+    {
+        "id": "6a5bbe485cca85.74515555",
+        "name": "Minifig Head Snake Long Neck with Open Mouth",
+        "file": "98154.dat"
+    },
+    {
+        "id": "6a5bbe485ef487.11981271",
+        "name": "Minifig Head Robot",
+        "file": "98384.dat"
+    },
+    {
+        "id": "6a5bbe485efe69.59395539",
+        "name": "Minifig Head Robot with Blue Eyes and Red\/Yellow Teeth Display Pattern",
+        "file": "98384p01.dat"
+    },
+    {
+        "id": "6a5bbe486558d8.50050711",
+        "name": "Minifig Head Peach Lips, Smile, Black Eyebrows Pattern (Hollow Stud)",
+        "file": "99570.dat"
+    },
+    {
+        "id": "6a5bbe489ce187.54024034",
+        "name": "~Minifig Head Cuboid with Raised Rectangle and Hollow Squared Stud",
+        "file": "u9564.dat"
+    }
+]

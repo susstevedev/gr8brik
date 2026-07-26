@@ -1,0 +1,542 @@
+[
+    {
+        "id": "6a5bbe44a6cb66.17899611",
+        "name": "Hose Flexible 11.5L",
+        "file": "14301.dat"
+    },
+    {
+        "id": "6a5bbe44a6d5e1.35079455",
+        "name": "~Hose Flexible 11.5L End Segment",
+        "file": "14301k01.dat"
+    },
+    {
+        "id": "6a5bbe44a6e052.44839639",
+        "name": "~Hose Flexible 11.5L Segment",
+        "file": "14301k02.dat"
+    },
+    {
+        "id": "6a5bbe45111c49.75669066",
+        "name": "Technic Ribbed Hose 31L",
+        "file": "22678.dat"
+    },
+    {
+        "id": "6a5bbe4511d458.94389540",
+        "name": "Technic Ribbed Hose 17L",
+        "file": "22900.dat"
+    },
+    {
+        "id": "6a5bbe45133846.44510011",
+        "name": "Hose  3 x 32 x  2.333",
+        "file": "23221.dat"
+    },
+    {
+        "id": "6a5bbe451342a8.51232272",
+        "name": "~Hose  3 x 32 x  2.333 - Segment",
+        "file": "23221k01.dat"
+    },
+    {
+        "id": "6a5bbe45134ce0.31803052",
+        "name": "~Hose  3 x 32 x  2.333 - Segment End",
+        "file": "23221k02.dat"
+    },
+    {
+        "id": "6a5bbe451356d3.70841849",
+        "name": "~Hose Air Pump 16 x 14 x 13 Bellows (Needs Work)",
+        "file": "23222.dat"
+    },
+    {
+        "id": "6a5bbe45155ad0.69982970",
+        "name": "Technic Ribbed Hose 24L",
+        "file": "23397.dat"
+    },
+    {
+        "id": "6a5bbe453d6984.73830250",
+        "name": "Hose Reel  2 x  2 Holder",
+        "file": "2584.dat"
+    },
+    {
+        "id": "6a5bbe453d73f2.75612129",
+        "name": "Hose Reel  2 x  2",
+        "file": "2585.dat"
+    },
+    {
+        "id": "6a5bbe4542d229.19872685",
+        "name": "Cable Flexible 20L with  2 Bar Connectors and Bar Segments",
+        "file": "2630.dat"
+    },
+    {
+        "id": "6a5bbe4542de01.71990054",
+        "name": "~Cable Flexible 20L with  2 Bar Connectors and Bar Segments - End Segment",
+        "file": "2630k01.dat"
+    },
+    {
+        "id": "6a5bbe4542e832.16193109",
+        "name": "~Cable Flexible 20L with  2 Bar Connectors and Bar Segments - Bar Segment",
+        "file": "2630k02.dat"
+    },
+    {
+        "id": "6a5bbe4542f266.03483024",
+        "name": "~Cable Flexible 22L with  2 Bar Connectors Middle Segment",
+        "file": "2630k03.dat"
+    },
+    {
+        "id": "6a5bbe454df2c2.50835448",
+        "name": "Hose Flexible 10L",
+        "file": "27328.dat"
+    },
+    {
+        "id": "6a5bbe454dfd87.63880510",
+        "name": "~Hose Flexible 10L End Segment",
+        "file": "27328k01.dat"
+    },
+    {
+        "id": "6a5bbe454e0845.81424223",
+        "name": "~Hose Flexible 10L Middle Segment",
+        "file": "27328k02.dat"
+    },
+    {
+        "id": "6a5bbe454e12f4.55987813",
+        "name": "Hose Flexible 10L with Blue Core",
+        "file": "27328p01.dat"
+    },
+    {
+        "id": "6a5bbe454e1d51.64121897",
+        "name": "~Hose Flexible 10L Middle Segment with Blue Core Radius  3",
+        "file": "27328p01k02.dat"
+    },
+    {
+        "id": "6a5bbe454e2795.90166411",
+        "name": "~Hose Flexible 10L Middle Segment with Blue Core Radius  2.5",
+        "file": "27328p01k03.dat"
+    },
+    {
+        "id": "6a5bbe454e3170.41672854",
+        "name": "~Hose Flexible 10L Middle Segment with Blue Core Radius  2",
+        "file": "27328p01k04.dat"
+    },
+    {
+        "id": "6a5bbe454e3bb5.70216274",
+        "name": "~Hose Flexible 10L Middle Segment with Blue Core Radius  1.5",
+        "file": "27328p01k05.dat"
+    },
+    {
+        "id": "6a5bbe454e4615.31933225",
+        "name": "Hose Flexible 10L with Lime Core",
+        "file": "27328p02.dat"
+    },
+    {
+        "id": "6a5bbe454e5012.47935732",
+        "name": "~Hose Flexible 10L Middle Segment with Lime Core Radius  3",
+        "file": "27328p02k02.dat"
+    },
+    {
+        "id": "6a5bbe454e5a49.01365564",
+        "name": "~Hose Flexible 10L Middle Segment with Lime Core Radius  2.5",
+        "file": "27328p02k03.dat"
+    },
+    {
+        "id": "6a5bbe454e6432.09360917",
+        "name": "~Hose Flexible 10L Middle Segment with Lime Core Radius  2",
+        "file": "27328p02k04.dat"
+    },
+    {
+        "id": "6a5bbe454e6e77.51181303",
+        "name": "~Hose Flexible 10L Middle Segment with Lime Core Radius  1.5",
+        "file": "27328p02k05.dat"
+    },
+    {
+        "id": "6a5bbe454e7899.81899136",
+        "name": "~Hose Flexible 10L Middle Segment with Medium Lilac Core Radius  3",
+        "file": "27328p03k02.dat"
+    },
+    {
+        "id": "6a5bbe454e8283.31645926",
+        "name": "~Hose Flexible 10L Middle Segment with Medium Lilac Core Radius  2.5",
+        "file": "27328p03k03.dat"
+    },
+    {
+        "id": "6a5bbe454e8c85.04529334",
+        "name": "~Hose Flexible 10L Middle Segment with Medium Lilac Core Radius  2",
+        "file": "27328p03k04.dat"
+    },
+    {
+        "id": "6a5bbe454e96a2.84993803",
+        "name": "~Hose Flexible 10L Middle Segment with Medium Lilac Core Radius  1.5",
+        "file": "27328p03k05.dat"
+    },
+    {
+        "id": "6a5bbe454ea109.42169921",
+        "name": "~Hose Flexible 10L Middle Segment with Dark Green Core Radius  3",
+        "file": "27328p04k02.dat"
+    },
+    {
+        "id": "6a5bbe454eaaf8.97645938",
+        "name": "~Hose Flexible 10L Middle Segment with Dark Green Core Radius  2.5",
+        "file": "27328p04k03.dat"
+    },
+    {
+        "id": "6a5bbe454eb4d3.62890357",
+        "name": "~Hose Flexible 10L Middle Segment with Dark Green Core Radius  2",
+        "file": "27328p04k04.dat"
+    },
+    {
+        "id": "6a5bbe454ebee2.50234560",
+        "name": "~Hose Flexible 10L Middle Segment with Dark Green Core Radius  1.5",
+        "file": "27328p04k05.dat"
+    },
+    {
+        "id": "6a5bbe45520567.90990068",
+        "name": "Cable Flexible 22L with  2 Bar Connectors",
+        "file": "27965.dat"
+    },
+    {
+        "id": "6a5bbe45520fa3.40780596",
+        "name": "~Cable Flexible 22L with  2 Bar Connectors End Segment",
+        "file": "27965k01.dat"
+    },
+    {
+        "id": "6a5bbe45521974.86154521",
+        "name": "~Cable Flexible 22L with  2 Bar Connectors Middle Segment",
+        "file": "27965k02.dat"
+    },
+    {
+        "id": "6a5bbe45a26491.16201034",
+        "name": "~Hose Flexible 12L without Ends",
+        "file": "30527.dat"
+    },
+    {
+        "id": "6a5bbe45a26f84.08183517",
+        "name": "Hose Flexible 12L with Black Ends",
+        "file": "30527c01.dat"
+    },
+    {
+        "id": "6a5bbe45a27a06.08082197",
+        "name": "Hose Flexible 12L with Dark Grey Ends",
+        "file": "30527c02.dat"
+    },
+    {
+        "id": "6a5bbe45a28456.28165260",
+        "name": "Hose Flexible 12L with Dark Bluish Grey Ends",
+        "file": "30527c03.dat"
+    },
+    {
+        "id": "6a5bbe45a290c5.58962798",
+        "name": "~Hose Flexible 12L End Segment",
+        "file": "30527k01.dat"
+    },
+    {
+        "id": "6a5bbe45a29c79.28607407",
+        "name": "~Hose Flexible 12L Segment",
+        "file": "30527k02.dat"
+    },
+    {
+        "id": "6a5bbe45a394f5.92410817",
+        "name": "Hose Air Pump 16 x 14 x 13 Base",
+        "file": "30584a.dat"
+    },
+    {
+        "id": "6a5bbe45a39f43.19613149",
+        "name": "Hose Air Pump 16 x 14 x 13 Base with Fins",
+        "file": "30584b.dat"
+    },
+    {
+        "id": "6a5bbe45a3a9f6.45275079",
+        "name": "Hose Joiner  2 x  4 x  3",
+        "file": "30585a.dat"
+    },
+    {
+        "id": "6a5bbe45a3b474.32064036",
+        "name": "Hose Joiner  3 x  4 x  3",
+        "file": "30585b.dat"
+    },
+    {
+        "id": "6a5bbe45a3c9d2.75033375",
+        "name": "~Hose Air Pump 16 x 14 x 13 Valve Casing (Needs Work)",
+        "file": "30587.dat"
+    },
+    {
+        "id": "6a5bbe45a3d418.48391161",
+        "name": "Hose Air Pump 16 x 14 x 13 Valves and Pump (Complete)",
+        "file": "30587c01.dat"
+    },
+    {
+        "id": "6a5bbe45a3dea2.99091837",
+        "name": "Hose Air Pump 16 x 14 x 13 Valves and Pump with Dark Grey Casing and Ring (Complete)",
+        "file": "30587c01p01.dat"
+    },
+    {
+        "id": "6a5bbe45a3e901.90720553",
+        "name": "~Hose Air Pump 16 x 14 x 13 Valve Flap (Needs Work)",
+        "file": "30588.dat"
+    },
+    {
+        "id": "6a5bbe45a3f376.56213752",
+        "name": "~Hose Air Pump 16 x 14 x 13 Valve Lock Ring (Needs Work)",
+        "file": "30589.dat"
+    },
+    {
+        "id": "6a5bbe45a55343.43548708",
+        "name": "Hose Reel  1 x  4 x  1.667 Drum",
+        "file": "30635.dat"
+    },
+    {
+        "id": "6a5bbe45a55f13.84199141",
+        "name": "Hose Reel  1 x  4 x  1.667 Holder with Two Pins",
+        "file": "30636.dat"
+    },
+    {
+        "id": "6a5bbe45ee6970.89773145",
+        "name": "Technic Ribbed Hose 26L",
+        "file": "33763.dat"
+    },
+    {
+        "id": "6a5bbe467bb7e8.13768938",
+        "name": "Hose Reel  2 x  4 x  2 Drum",
+        "file": "4208.dat"
+    },
+    {
+        "id": "6a5bbe467bf8e1.82568715",
+        "name": "Hose Reel  2 x  4 x  2 Holder with Solid Studs",
+        "file": "4209a.dat"
+    },
+    {
+        "id": "6a5bbe467c1157.81172126",
+        "name": "Hose Reel  2 x  4 x  2 Holder with Fire Logo on Square Pattern",
+        "file": "4209ap01.dat"
+    },
+    {
+        "id": "6a5bbe467c1db7.59994587",
+        "name": "Hose Reel  2 x  4 x  2 Holder with Coastguard Pattern",
+        "file": "4209ap02.dat"
+    },
+    {
+        "id": "6a5bbe467c2aa5.08793584",
+        "name": "Hose Reel  2 x  4 x  2 Holder with Motorway Logo Pattern",
+        "file": "4209ap05.dat"
+    },
+    {
+        "id": "6a5bbe467c3b65.02009708",
+        "name": "Hose Reel  2 x  4 x  2 Holder with Fire Logo on Shield Pattern",
+        "file": "4209ap70.dat"
+    },
+    {
+        "id": "6a5bbe467c4698.73502831",
+        "name": "Hose Reel  2 x  4 x  2 Holder with Hollow Studs",
+        "file": "4209b.dat"
+    },
+    {
+        "id": "6a5bbe46911df4.71954918",
+        "name": "Technic Ribbed Hose 19L",
+        "file": "43675.dat"
+    },
+    {
+        "id": "6a5bbe46ed9f04.81581544",
+        "name": "Hose Flexible 19L",
+        "file": "57539.dat"
+    },
+    {
+        "id": "6a5bbe46eda986.20021908",
+        "name": "~Hose Flexible 19L End Segment",
+        "file": "57539k01.dat"
+    },
+    {
+        "id": "6a5bbe46edb3e7.13638314",
+        "name": "~Hose Flexible 19L Segment",
+        "file": "57539k02.dat"
+    },
+    {
+        "id": "6a5bbe46edbe38.15154400",
+        "name": "Hose Flexible 19L with Blue Core",
+        "file": "57539p01.dat"
+    },
+    {
+        "id": "6a5bbe46edc849.22604176",
+        "name": "Hose Flexible 19L with Lime Core",
+        "file": "57539p02.dat"
+    },
+    {
+        "id": "6a5bbe46edd2a5.86396477",
+        "name": "Hose Flexible 19L with Medium Lilac Core",
+        "file": "57539p03.dat"
+    },
+    {
+        "id": "6a5bbe46eddcd8.19058290",
+        "name": "Hose Flexible 19L with Dark Green Core",
+        "file": "57539p04.dat"
+    },
+    {
+        "id": "6a5bbe46ee50e0.83177107",
+        "name": "Technic Ribbed Hose  7L",
+        "file": "57719.dat"
+    },
+    {
+        "id": "6a5bbe478515a9.12730596",
+        "name": "Technic Ribbed Hose 12L",
+        "file": "71819.dat"
+    },
+    {
+        "id": "6a5bbe47855594.99121811",
+        "name": "Technic Ribbed Hose  9L",
+        "file": "71917.dat"
+    },
+    {
+        "id": "6a5bbe47855f90.44508101",
+        "name": "Technic Ribbed Hose 14L",
+        "file": "71923.dat"
+    },
+    {
+        "id": "6a5bbe478569b0.46185038",
+        "name": "Technic Ribbed Hose  6L",
+        "file": "71944.dat"
+    },
+    {
+        "id": "6a5bbe47858b55.07313833",
+        "name": "Technic Ribbed Hose 13L",
+        "file": "71945.dat"
+    },
+    {
+        "id": "6a5bbe47859773.47303714",
+        "name": "Technic Ribbed Hose 15L",
+        "file": "71946.dat"
+    },
+    {
+        "id": "6a5bbe4785a1b2.03885801",
+        "name": "Technic Ribbed Hose 16L",
+        "file": "71947.dat"
+    },
+    {
+        "id": "6a5bbe4785ac38.63509042",
+        "name": "Technic Ribbed Hose 10L",
+        "file": "71949.dat"
+    },
+    {
+        "id": "6a5bbe4785b654.92866650",
+        "name": "Technic Ribbed Hose  8L",
+        "file": "71951.dat"
+    },
+    {
+        "id": "6a5bbe4785c025.56326667",
+        "name": "Technic Ribbed Hose  4L",
+        "file": "71952.dat"
+    },
+    {
+        "id": "6a5bbe47860483.63770839",
+        "name": "Technic Ribbed Hose 11L",
+        "file": "71986.dat"
+    },
+    {
+        "id": "6a5bbe47863ba1.18185821",
+        "name": "Technic Ribbed Hose 18L",
+        "file": "72039.dat"
+    },
+    {
+        "id": "6a5bbe47875d39.54161084",
+        "name": "Technic Ribbed Hose  2L",
+        "file": "72504.dat"
+    },
+    {
+        "id": "6a5bbe47883700.49692092",
+        "name": "Technic Ribbed Hose  3L",
+        "file": "72706.dat"
+    },
+    {
+        "id": "6a5bbe47887b19.49455635",
+        "name": "Technic Ribbed Hose  5L",
+        "file": "72853.dat"
+    },
+    {
+        "id": "6a5bbe4792f8b7.16575328",
+        "name": "Hose Flexible  8.5L without Tabs",
+        "file": "73590a.dat"
+    },
+    {
+        "id": "6a5bbe479303b6.40008377",
+        "name": "Hose Flexible  8.5L without Tabs with Black Ends Pattern",
+        "file": "73590ap01.dat"
+    },
+    {
+        "id": "6a5bbe47930ff7.29031061",
+        "name": "Hose Flexible  8.5L with Tabs",
+        "file": "73590b.dat"
+    },
+    {
+        "id": "6a5bbe47931b00.85892516",
+        "name": "Hose Flexible  8.5L with Tabs with Black Ends Pattern",
+        "file": "73590bp01.dat"
+    },
+    {
+        "id": "6a5bbe47987290.60259403",
+        "name": "Hose Flexible End  1 x  1 x  0.667 with Tabs",
+        "file": "750.dat"
+    },
+    {
+        "id": "6a5bbe47988780.56342750",
+        "name": "~Hose Flexible Tube  7L",
+        "file": "751.dat"
+    },
+    {
+        "id": "6a5bbe4798cb77.90971634",
+        "name": "Hose Flexible End  1 x  1 x  0.667 without Tabs",
+        "file": "752.dat"
+    },
+    {
+        "id": "6a5bbe47996d57.33673721",
+        "name": "~Hose Flexible Segment Link Section",
+        "file": "754.dat"
+    },
+    {
+        "id": "6a5bbe479981d4.78529252",
+        "name": "~Hose Flexible Segment End Section",
+        "file": "755.dat"
+    },
+    {
+        "id": "6a5bbe479a2083.64800070",
+        "name": "~Hose Flexible Segment Center Section",
+        "file": "756.dat"
+    },
+    {
+        "id": "6a5bbe479a49b4.30819047",
+        "name": "~Hose Flexible 12L End  1 x  1 x  0.667 with Stud",
+        "file": "757.dat"
+    },
+    {
+        "id": "6a5bbe479bd071.83328365",
+        "name": "~Hose Flexible 12L Base  1 x  1 x  0.667",
+        "file": "760.dat"
+    },
+    {
+        "id": "6a5bbe47bfd5e4.37624407",
+        "name": "Hose Air Pump 16 x 14 x 13",
+        "file": "76543a.dat"
+    },
+    {
+        "id": "6a5bbe47bfe078.52605163",
+        "name": "Hose Air Pump 16 x 14 x 13 with Fins",
+        "file": "76543b.dat"
+    },
+    {
+        "id": "6a5bbe47c59ec6.39221100",
+        "name": "Hose Reel  2 x  2 with Stud and Pin Holes",
+        "file": "78333.dat"
+    },
+    {
+        "id": "6a5bbe48609490.76675552",
+        "name": "Tool Belt 17L",
+        "file": "98567-f1.dat"
+    },
+    {
+        "id": "6a5bbe48609f47.34641148",
+        "name": "~Tool Belt 17L, Extremity with Hole",
+        "file": "98567k01.dat"
+    },
+    {
+        "id": "6a5bbe4860a9c6.15029758",
+        "name": "~Tool Belt 17L, Little Segment",
+        "file": "98567k02.dat"
+    },
+    {
+        "id": "6a5bbe4860b403.21673587",
+        "name": "~Tool Belt 17L, Segment with Hole",
+        "file": "98567k03.dat"
+    }
+]

@@ -1,0 +1,4727 @@
+[
+    {
+        "id": "6a5bbe44859791.02258829",
+        "name": "Figure Friends Girl Torso Dual Mould without Pattern",
+        "file": "1006030.dat"
+    },
+    {
+        "id": "6a5bbe4485a217.35086635",
+        "name": "Figure Friends Girl Torso with Dark Turquoise Jacket with Tan Triangles over Dark Blue Shirt Pattern",
+        "file": "1006030p01.dat"
+    },
+    {
+        "id": "6a5bbe4485ac86.61058522",
+        "name": "Figure Friends Girl with Bright Light Yellow Tank Top over Medium Lavender Sleeveless Shirt, Black and Coral Panels and Music Note Necklace Pattern",
+        "file": "1006030p02.dat"
+    },
+    {
+        "id": "6a5bbe4485b688.36879743",
+        "name": "Figure Friends Girl with Coral and Bright Light Orange Shirt, Dark Blue Trim and White Flower Pattern",
+        "file": "1006030p04.dat"
+    },
+    {
+        "id": "6a5bbe4485c134.50641268",
+        "name": "Figure Friends Boy Torso Dual Mould without Pattern",
+        "file": "1006334.dat"
+    },
+    {
+        "id": "6a5bbe4485cb62.92381391",
+        "name": "Figure Friends Boy Torso with Coral and Dark Azure Hoodie with Coral and Yellow Squares Pattern",
+        "file": "1006334p01.dat"
+    },
+    {
+        "id": "6a5bbe4485d667.63168987",
+        "name": "Figure Friends Boy Torso with Sand Blue Jacket with Tan Lapels over Blue and White Shirt Pattern",
+        "file": "1006334p02.dat"
+    },
+    {
+        "id": "6a5bbe44862620.06932106",
+        "name": "Figure Friends Girl Torso with Left Limb Reduction",
+        "file": "100811.dat"
+    },
+    {
+        "id": "6a5bbe448633a3.67090896",
+        "name": "Figure Friends Girl Torso with Left Limb Reduction with Dark Turquoise Jacket with Tan Triangles over Dark Blue Shirt Pattern",
+        "file": "100811p01.dat"
+    },
+    {
+        "id": "6a5bbe44868997.37808679",
+        "name": "Figure Friends Legs with Folded Trousers (Thick Hinge)",
+        "file": "100937.dat"
+    },
+    {
+        "id": "6a5bbe448694a1.90871045",
+        "name": "Figure Friends Legs with Folded Trousers with Medium Tan Feet and Black Ballerina Shoes with White Sole Pattern",
+        "file": "100937p01.dat"
+    },
+    {
+        "id": "6a5bbe44869f44.21044404",
+        "name": "Figure Friends Legs with Folded Trousers with Nougat Feet and Black Ballerina Shoes with White Sole Pattern",
+        "file": "100937p02.dat"
+    },
+    {
+        "id": "6a5bbe4486adf6.65055215",
+        "name": "Figure Friends Legs with Folded Trousers with Nougat Feet and Dark Turquoise Shoes with White Laces and Sole Pattern",
+        "file": "100937p03.dat"
+    },
+    {
+        "id": "6a5bbe4486b8e2.82769256",
+        "name": "Figure Friends Legs with Folded Trousers with Medium Tan Feet and Black Shoes with White Laces and Sole Pattern",
+        "file": "100937p04.dat"
+    },
+    {
+        "id": "6a5bbe4486c3b0.87270863",
+        "name": "Figure Friends Legs with Folded Trousers with White Feet and Dark Blue Shoes with White Laces and Light Bluish Grey Sole Pattern",
+        "file": "100937p05.dat"
+    },
+    {
+        "id": "6a5bbe4486ce82.17293822",
+        "name": "Figure Friends Legs with Folded Trousers with white Feet and Medium Lavender Shoes with White Laces and Sole Pattern",
+        "file": "100937p06.dat"
+    },
+    {
+        "id": "6a5bbe4486d955.92113870",
+        "name": "Figure Friends Legs with Folded Trousers with White Feet and Metallic Pink Sandals Pattern",
+        "file": "100937p07.dat"
+    },
+    {
+        "id": "6a5bbe4486e3d2.02883315",
+        "name": "Figure Friends Legs with Folded Trousers with Nougat Feet and Black Shoes with White Laces and Sole Pattern",
+        "file": "100937p08.dat"
+    },
+    {
+        "id": "6a5bbe44872d35.87776673",
+        "name": "Figure Friends Hips and Legs with Bell-Bottoms Pants",
+        "file": "101117.dat"
+    },
+    {
+        "id": "6a5bbe448737b5.07010190",
+        "name": "Figure Friends Hips and Legs with Bell-Bottoms Pants  with Dark Blue Shoes Pattern",
+        "file": "101117p01.dat"
+    },
+    {
+        "id": "6a5bbe44874203.03693717",
+        "name": "Figure Friends Hips and Legs with Bell-Bottoms Pants with Black Shoes with White Soles Pattern",
+        "file": "101117p02.dat"
+    },
+    {
+        "id": "6a5bbe44874c87.19817775",
+        "name": "Figure Friends Hips and Legs with Bell-Bottoms Pants with Medium Lavender Shoes with White Soles Pattern",
+        "file": "101117p03.dat"
+    },
+    {
+        "id": "6a5bbe448756b4.38206116",
+        "name": "Figure Friends Hips and Legs with Bell-Bottoms Pants with Dark Red Shoes Pattern",
+        "file": "101117p04.dat"
+    },
+    {
+        "id": "6a5bbe44876107.46854397",
+        "name": "Figure Friends Hips and Legs with Bell-Bottoms Pants with Medium Nougat Shoes with Bright Light Yellow Soles Pattern",
+        "file": "101117p05.dat"
+    },
+    {
+        "id": "6a5bbe44876b45.11792697",
+        "name": "Figure Friends Hips and Legs with Bell-Bottoms Pants with Orange Shoes with White Soles Pattern",
+        "file": "101117p06.dat"
+    },
+    {
+        "id": "6a5bbe448775c2.42893932",
+        "name": "Figure Friends Hips and Legs with Bell-Bottoms Pants with Dark Red Shoes with White Soles Pattern",
+        "file": "101117p07.dat"
+    },
+    {
+        "id": "6a5bbe44878267.82711104",
+        "name": "Figure Friends Woman Torso Dual Mould",
+        "file": "1011297.dat"
+    },
+    {
+        "id": "6a5bbe44878d44.99955750",
+        "name": "Figure Friends Woman Torso with Bright Light Blue Strapless Dress Top with Dark Blue Trim, Metallic Light Blue Undershirt and Dots, Gold Necklace Pattern",
+        "file": "1011297p01.dat"
+    },
+    {
+        "id": "6a5bbe44879784.91361240",
+        "name": "Figure Friends Woman Torso with Blue Dress with Dark Blue Trim and Creases, Silver Straps Pattern",
+        "file": "1011297p02.dat"
+    },
+    {
+        "id": "6a5bbe4487a1b3.31355517",
+        "name": "Figure Friends Woman Torso with White Sleeveless Top with Dark Blue Trim, Lavender\/Yellow\/Green Rectangles, Green Belt and Silver Necklace Pattern",
+        "file": "1011297p03.dat"
+    },
+    {
+        "id": "6a5bbe4487add9.08691007",
+        "name": "Figure Friends Woman Torso with Metallic Light Blue Halter Top with Dark Blue Trim and Orange Belt Pattern",
+        "file": "1011297p04.dat"
+    },
+    {
+        "id": "6a5bbe4487c0f1.70434682",
+        "name": "Figure Friends Woman Torso with Medium Lavender Open Vest over Gold Top, Silver Buckle and Necklace Pattern",
+        "file": "1011297p05.dat"
+    },
+    {
+        "id": "6a5bbe4487dbb3.82427598",
+        "name": "Figure Friends Legs with Full Length Skirt (Thin Hinge)",
+        "file": "1011322.dat"
+    },
+    {
+        "id": "6a5bbe4487e933.76072252",
+        "name": "Figure Friends Man Torso Dual Mould",
+        "file": "1011355.dat"
+    },
+    {
+        "id": "6a5bbe4487f708.55769670",
+        "name": "Figure Friends Man Torso with Dark Azure and White Jacket with Silver Squares and Music Notes Necklace Pattern",
+        "file": "1011355p01.dat"
+    },
+    {
+        "id": "6a5bbe44880743.77192424",
+        "name": "Bigfig Arm Right",
+        "file": "10124.dat"
+    },
+    {
+        "id": "6a5bbe44881416.74596586",
+        "name": "Bigfig Hand Right",
+        "file": "10126.dat"
+    },
+    {
+        "id": "6a5bbe44882120.76761989",
+        "name": "Bigfig Hand Left",
+        "file": "10127.dat"
+    },
+    {
+        "id": "6a5bbe44882b97.58937853",
+        "name": "~Bigfig Hulk Body",
+        "file": "10128.dat"
+    },
+    {
+        "id": "6a5bbe44883817.55822162",
+        "name": "Bigfig Hulk Body with Dark Purple Trousers, Black Hair and Angry Face Pattern",
+        "file": "10128p01.dat"
+    },
+    {
+        "id": "6a5bbe44884b04.99753693",
+        "name": "Bigfig Figure Hulk with Dark Purple Trousers",
+        "file": "10128p01c01.dat"
+    },
+    {
+        "id": "6a5bbe44885c06.16925080",
+        "name": "Bigfig Hulk Body with Dark Tan Trousers, Black Hair and Angry Face Pattern",
+        "file": "10128p02.dat"
+    },
+    {
+        "id": "6a5bbe4488a043.42590832",
+        "name": "Figure Friends Hips and Legs with Folded Trousers (Thick Hinge)",
+        "file": "101347.dat"
+    },
+    {
+        "id": "6a5bbe4488aaf1.90358659",
+        "name": "Figure Friends Hips and Legs with Folded Trousers with Medium Tan Feet and Black Ballerina Shoes with White Sole Pattern",
+        "file": "101347p01.dat"
+    },
+    {
+        "id": "6a5bbe4488b586.96777035",
+        "name": "Figure Friends Hips and Legs with Folded Trousers with Nougat Feet and Black Ballerina Shoes with White Sole Pattern",
+        "file": "101347p02.dat"
+    },
+    {
+        "id": "6a5bbe4488c004.03159190",
+        "name": "Figure Friends Hips and Legs with Nougat Feet and Dark Turquoise Shoes with White Laces and Sole Pattern",
+        "file": "101347p03.dat"
+    },
+    {
+        "id": "6a5bbe4488ca45.45904299",
+        "name": "Figure Friends Hips and Legs with Folded Trousers with Medium Tan Feet and Black Shoes with White Laces and Sole Pattern",
+        "file": "101347p04.dat"
+    },
+    {
+        "id": "6a5bbe4488d4c9.75739295",
+        "name": "Figure Friends Hips and Legs with Folded Trousers with White Feet and Dark Blue Shoes with White Laces and Light Bluish Grey Sole Pattern",
+        "file": "101347p05.dat"
+    },
+    {
+        "id": "6a5bbe4488df41.04583328",
+        "name": "Figure Friends Hips and Legs with Folded Trousers with white Feet and Medium Lavender Shoes with White Laces and Sole Pattern",
+        "file": "101347p06.dat"
+    },
+    {
+        "id": "6a5bbe4488e9e0.77963305",
+        "name": "Figure Friends Hips and Legs with Folded Trousers with White Feet and Metallic Pink Sandals Pattern",
+        "file": "101347p07.dat"
+    },
+    {
+        "id": "6a5bbe4488f484.79390991",
+        "name": "Figure Friends Hips and Legs with Folded Trousers with Nougat Feet and Black Shoes with White Laces and Sole Pattern",
+        "file": "101347p08.dat"
+    },
+    {
+        "id": "6a5bbe4488ff84.11206271",
+        "name": "Figure Friends Hips with Thin Hinge",
+        "file": "1015152.dat"
+    },
+    {
+        "id": "6a5bbe448914f1.76816508",
+        "name": "Bigfig Arm Left",
+        "file": "10154.dat"
+    },
+    {
+        "id": "6a5bbe448b2b54.95965838",
+        "name": "Figure Friends Legs with Bell-Bottoms Pants",
+        "file": "1021704.dat"
+    },
+    {
+        "id": "6a5bbe448b3604.47466699",
+        "name": "Figure Friends Legs with Bell-Bottoms Pants with Dark Blue Shoes Pattern",
+        "file": "1021704p01.dat"
+    },
+    {
+        "id": "6a5bbe448b4105.14007999",
+        "name": "Figure Friends Legs with Bell-Bottoms Pants with Black Shoes with White Soles Pattern",
+        "file": "1021704p02.dat"
+    },
+    {
+        "id": "6a5bbe448b4ba9.77875568",
+        "name": "Figure Friends Legs with Bell-Bottoms Pants with Medium Lavender Shoes with White Soles Pattern",
+        "file": "1021704p03.dat"
+    },
+    {
+        "id": "6a5bbe448b5671.89520886",
+        "name": "Figure Friends Legs with Bell-Bottoms Pants with Dark Red Shoes Pattern",
+        "file": "1021704p04.dat"
+    },
+    {
+        "id": "6a5bbe448b60d0.79967842",
+        "name": "Figure Friends Legs with Bell-Bottoms Pants with Medium Nougat Shoes with Bright Light Yellow Soles Pattern",
+        "file": "1021704p05.dat"
+    },
+    {
+        "id": "6a5bbe448b6b73.41606251",
+        "name": "Figure Friends Legs with Bell-Bottoms Pants with Orange Shoes with White Soles Pattern",
+        "file": "1021704p06.dat"
+    },
+    {
+        "id": "6a5bbe448b75f5.55530412",
+        "name": "Figure Friends Legs with Bell-Bottoms Pants with Dark Red Shoes with White Soles Pattern",
+        "file": "1021704p07.dat"
+    },
+    {
+        "id": "6a5bbe448b80d0.81053998",
+        "name": "Figure Friends Legs with Shorts (Thin Hinge)",
+        "file": "1022657.dat"
+    },
+    {
+        "id": "6a5bbe448b8cf1.94696779",
+        "name": "Figure Friends Legs with Shorts with Medium Tan Legs, Coral Shoes with White Laces, Soles and Socks Pattern",
+        "file": "1022657p01.dat"
+    },
+    {
+        "id": "6a5bbe448b97b2.86491310",
+        "name": "Figure Friends Legs with Shorts with Medium Tan Legs, Lime Shoes with White Laces, Soles and Socks Pattern",
+        "file": "1022657p02.dat"
+    },
+    {
+        "id": "6a5bbe448ba211.90505517",
+        "name": "Figure Friends Legs with Shorts with Light Nougat Legs, Metallic Light Blue V-shaped Straps Sandals Pattern",
+        "file": "1022657p03.dat"
+    },
+    {
+        "id": "6a5bbe448bd398.94849545",
+        "name": "Figure Friends Legs with Cropped Trousers (Thin Hinge)",
+        "file": "1022968.dat"
+    },
+    {
+        "id": "6a5bbe448be065.79447843",
+        "name": "Figure Friends Legs with Cropped Trousers with Reddish Brown Boots Pattern",
+        "file": "1022968p01.dat"
+    },
+    {
+        "id": "6a5bbe448bed18.61412013",
+        "name": "Figure Friends Legs with Short Skirt (Thin Hinge)",
+        "file": "1023000.dat"
+    },
+    {
+        "id": "6a5bbe448bf8d0.52832126",
+        "name": "Figure Friends Legs with Short Skirt with Medium Nougat Legs and Silver Double Ankle and Foot Straps Sandals Pattern",
+        "file": "1023000p01.dat"
+    },
+    {
+        "id": "6a5bbe448c0943.46010592",
+        "name": "Figure Friends Legs with Short Skirt with Nougat Legs and Black Double Foot Straps Sandals Pattern",
+        "file": "1023000p02.dat"
+    },
+    {
+        "id": "6a5bbe448c17f0.62324228",
+        "name": "Figure Friends Legs with Short Skirt with Medium Nougat Legs and Gold Ankle and Foot Strap Sandals Pattern",
+        "file": "1023000p03.dat"
+    },
+    {
+        "id": "6a5bbe448c26a8.56646599",
+        "name": "Figure Friends Legs with Short Skirt with Medium Brown Legs and Metallic Pink Ankle and Foot Strap Sandals Pattern",
+        "file": "1023000p04.dat"
+    },
+    {
+        "id": "6a5bbe448c33b3.04765978",
+        "name": "Figure Friends Legs with Cargo Pants (Thin Hinge)",
+        "file": "1023035.dat"
+    },
+    {
+        "id": "6a5bbe448c3f43.02610763",
+        "name": "Figure Friends Legs with Cargo Pants with Medium Tan Legs, Medium Azure Shoes with White Laces and Soles Pattern",
+        "file": "1023035p01.dat"
+    },
+    {
+        "id": "6a5bbe448c4f40.05373977",
+        "name": "Figure Friends Legs with Cargo Pants with Reddish Brown Legs, Dark Blue Shoes with Light Bluish Grey Laces and Soles Pattern",
+        "file": "1023035p02.dat"
+    },
+    {
+        "id": "6a5bbe448c5c89.93612452",
+        "name": "Figure Friends Legs with Cargo Pants with Medium Nougat Legs, Tan Shoes with Dark Blue Laces and Soles Pattern",
+        "file": "1023035p03.dat"
+    },
+    {
+        "id": "6a5bbe448c67a8.99055467",
+        "name": "Figure Friends with Cargo Pants with Medium Tan Legs and Dark Blue V-Shaped Straps Sandals Pattern",
+        "file": "1023035p04.dat"
+    },
+    {
+        "id": "6a5bbe44900b39.17977774",
+        "name": "Figure Hand with Lower Arm with Bar Handle",
+        "file": "109866.dat"
+    },
+    {
+        "id": "6a5bbe449018a7.71367315",
+        "name": "Figure Hand with Black Lower Arm with Bar Handle Pattern",
+        "file": "109866p01.dat"
+    },
+    {
+        "id": "6a5bbe4492a616.40174592",
+        "name": "Figure Friends Baby Body",
+        "file": "111388.dat"
+    },
+    {
+        "id": "6a5bbe4492b1c5.00709124",
+        "name": "Figure Friends Baby Body with Bright Light Yellow Romper Pattern",
+        "file": "111388p01.dat"
+    },
+    {
+        "id": "6a5bbe4492bd56.63428035",
+        "name": "Figure Friends Baby Body with Magenta Romper Pattern",
+        "file": "111388p02.dat"
+    },
+    {
+        "id": "6a5bbe4492ca17.80910151",
+        "name": "Figure Friends Baby Body with Medium Lavender Romper Pattern",
+        "file": "111388p03.dat"
+    },
+    {
+        "id": "6a5bbe44939308.77920475",
+        "name": "Figure Friends Legs with Shorts",
+        "file": "11202.dat"
+    },
+    {
+        "id": "6a5bbe44939dc2.25271115",
+        "name": "Figure Friends Legs with Shorts with Medium Nougat Legs and Magenta Sandals Pattern",
+        "file": "11202p01.dat"
+    },
+    {
+        "id": "6a5bbe4493b333.59475988",
+        "name": "Figure Friends Legs with Shorts with Light Nougat Legs and Magenta Sandals Pattern",
+        "file": "11202p02.dat"
+    },
+    {
+        "id": "6a5bbe4493c869.04973510",
+        "name": "Figure Friends Legs with Shorts with Medium Nougat Legs and Shoes with Magenta Stripe Pattern",
+        "file": "11202p03.dat"
+    },
+    {
+        "id": "6a5bbe4493dd00.36762112",
+        "name": "Figure Friends Legs with Shorts, Light Nougat Legs and Sand Blue Laces on Yellow and White Shoes Pattern",
+        "file": "11202p04.dat"
+    },
+    {
+        "id": "6a5bbe4493fbc8.78628226",
+        "name": "Figure Friends Legs with Shorts with Medium Nougat Legs and Lime Flower Sandals Pattern",
+        "file": "11202p05.dat"
+    },
+    {
+        "id": "6a5bbe449560c0.69914622",
+        "name": "Figure Friends Legs with Wrap-around Skirt",
+        "file": "11244.dat"
+    },
+    {
+        "id": "6a5bbe44956b81.66230420",
+        "name": "Figure Friends Legs with Wrap-around Skirt with Light Nougat Legs and Dark Blue Sandals Pattern",
+        "file": "11244p01.dat"
+    },
+    {
+        "id": "6a5bbe449580a2.85464363",
+        "name": "Figure Friends Legs with Wrap-around Skirt with Light Nougat Legs and Medium Azure Sandals Pattern",
+        "file": "11244p02.dat"
+    },
+    {
+        "id": "6a5bbe449596e1.47076596",
+        "name": "Figure Friends Legs with Wrap-around Skirt with Blue Layer, Light Nougat Legs and Sandals with Ornamented Silver Straps Pattern",
+        "file": "11244p04.dat"
+    },
+    {
+        "id": "6a5bbe4495ac62.91120410",
+        "name": "Figure Friends Legs with Wrap-around Skirt with Tan Layer, Medium Nougat Legs and Bare Feet Pattern",
+        "file": "11244p05.dat"
+    },
+    {
+        "id": "6a5bbe44973b22.07909159",
+        "name": "Figure Friends Boy Torso",
+        "file": "11391.dat"
+    },
+    {
+        "id": "6a5bbe449745f9.71028710",
+        "name": "Figure Friends Boy Torso with Bright Light Blue Polo Shirt with Dark Blue Sailboat Pattern",
+        "file": "11391p01.dat"
+    },
+    {
+        "id": "6a5bbe44975072.88084321",
+        "name": "Figure Friends Boy Torso with Bright Green Polo Shirt Pattern",
+        "file": "11391p02.dat"
+    },
+    {
+        "id": "6a5bbe44975a98.72675144",
+        "name": "Figure Friends Boy Torso with Lime Vest over Bronze Diamond Shirt Pattern",
+        "file": "11391p03.dat"
+    },
+    {
+        "id": "6a5bbe4497e8c1.48017875",
+        "name": "Figure Friends Hips and Legs with Shorts",
+        "file": "11403.dat"
+    },
+    {
+        "id": "6a5bbe4497f523.26544615",
+        "name": "Figure Friends Hips and Legs with Shorts with Medium Nougat Legs and Magenta Sandals Pattern",
+        "file": "11403p01.dat"
+    },
+    {
+        "id": "6a5bbe44980356.60675603",
+        "name": "Figure Friends Hips and Legs with Shorts with Light Nougat Legs and Magenta Sandals Pattern",
+        "file": "11403p02.dat"
+    },
+    {
+        "id": "6a5bbe449818c1.04342016",
+        "name": "Figure Friends Hips and Legs with Shorts with Medium Nougat Legs and Shoes with Magenta Stripe Pattern",
+        "file": "11403p03.dat"
+    },
+    {
+        "id": "6a5bbe449826e9.88073117",
+        "name": "Figure Friends Hips and Legs with Shorts, Light Nougat Legs and Sand Blue Laces on Yellow and White Shoes Pattern",
+        "file": "11403p04.dat"
+    },
+    {
+        "id": "6a5bbe44983358.86492331",
+        "name": "Figure Friends Hips and Legs with Shorts with Medium Nougat Legs and Lime Flower Sandals Pattern",
+        "file": "11403p05.dat"
+    },
+    {
+        "id": "6a5bbe44984453.29377641",
+        "name": "Figure Friends Hips and Legs with Wrap-around Skirt",
+        "file": "11407.dat"
+    },
+    {
+        "id": "6a5bbe449854a4.87259168",
+        "name": "Figure Friends Hips and Legs with Wrap-around Skirt with Light Nougat Legs and Dark Blue Sandals Pattern",
+        "file": "11407p01.dat"
+    },
+    {
+        "id": "6a5bbe44986199.00261612",
+        "name": "Figure Friends Hips and Legs with Wrap-around Skirt with Light Nougat Legs and Medium Azure Sandals Pattern",
+        "file": "11407p02.dat"
+    },
+    {
+        "id": "6a5bbe44986c79.11378030",
+        "name": "Figure Friends Hips and Legs with Wrap-around Skirt with Blue Layer, Light Nougat Legs and Sandals with Ornamented Silver Straps Pattern",
+        "file": "11407p04.dat"
+    },
+    {
+        "id": "6a5bbe44987760.36188089",
+        "name": "Figure Friends Hips and Legs with Wrap-around Skirt with Tan Layer, Medium Nougat Legs and Bare Feet Pattern",
+        "file": "11407p05.dat"
+    },
+    {
+        "id": "6a5bbe44988387.69607218",
+        "name": "Figure Friends Boy Torso with Arms",
+        "file": "11408.dat"
+    },
+    {
+        "id": "6a5bbe44988ea0.65362131",
+        "name": "Figure Friends Boy Torso with Arms with Bright Light Blue Polo Shirt with Dark Blue Sailboat Pattern",
+        "file": "11408p01.dat"
+    },
+    {
+        "id": "6a5bbe44989b57.15621165",
+        "name": "Figure Friends Boy Torso with Arms with Bright Green Polo Shirt Pattern",
+        "file": "11408p02.dat"
+    },
+    {
+        "id": "6a5bbe4498a5d2.02681009",
+        "name": "Figure Friends Boy Torso with Arms with Lime Vest over Bronze Diamond Shirt Pattern",
+        "file": "11408p03.dat"
+    },
+    {
+        "id": "6a5bbe449c9d17.05593705",
+        "name": "Figure Friends Hair Long with Ponytail French Braided with  1 Pin Holes",
+        "file": "11605.dat"
+    },
+    {
+        "id": "6a5bbe44ba97f2.63488280",
+        "name": "Figure Friends Legs with Full Length Skirt",
+        "file": "15680.dat"
+    },
+    {
+        "id": "6a5bbe44baac29.54746258",
+        "name": "Figure Friends Legs with Full Length Skirt with Bright Light Blue Sides and Middle Triangle with Silver Stars Pattern",
+        "file": "15680p01.dat"
+    },
+    {
+        "id": "6a5bbe44bb77f4.83955496",
+        "name": "Figure Friends Hips and Legs with Full Length Skirt",
+        "file": "15875.dat"
+    },
+    {
+        "id": "6a5bbe44bb8315.32974325",
+        "name": "Figure Friends Hips and Legs with Full Length Skirt with Bright Light Blue Sides and Middle Triangle with Silver Stars Pattern",
+        "file": "15875p01.dat"
+    },
+    {
+        "id": "6a5bbe44c35d93.08509830",
+        "name": "Figure Friends Legs Mermaid Tail",
+        "file": "16529.dat"
+    },
+    {
+        "id": "6a5bbe44c36985.53670453",
+        "name": "Figure Friends Legs Mermaid Tail with Light Lime Tip Pattern",
+        "file": "16529p01.dat"
+    },
+    {
+        "id": "6a5bbe44c37dd3.29209309",
+        "name": "Figure Friends Legs Mermaid Tail with Light Pink Tip Pattern",
+        "file": "16529p02.dat"
+    },
+    {
+        "id": "6a5bbe44c39230.50082956",
+        "name": "Figure Friends Hips and Legs Mermaid Tail",
+        "file": "16530.dat"
+    },
+    {
+        "id": "6a5bbe44c39ca7.04039741",
+        "name": "Figure Friends Hips and Legs Mermaid Tail with Light Lime Tip Pattern",
+        "file": "16530p01.dat"
+    },
+    {
+        "id": "6a5bbe44c3a745.81701090",
+        "name": "Figure Friends Hips and Legs Mermaid Tail with Light Pink Tip Pattern",
+        "file": "16530p02.dat"
+    },
+    {
+        "id": "6a5bbe44ca3162.12874678",
+        "name": "Figure Friends Hips and Legs with Trousers and Shoes",
+        "file": "16925.dat"
+    },
+    {
+        "id": "6a5bbe44ca3c30.75424897",
+        "name": "Figure Friends Hips and Legs with Trousers with Tan Shoes Pattern",
+        "file": "16925p01.dat"
+    },
+    {
+        "id": "6a5bbe44ca46d2.96697803",
+        "name": "Figure Friends Hips and Legs with Trousers with Black Boots Pattern",
+        "file": "16925p02.dat"
+    },
+    {
+        "id": "6a5bbe44ca5151.10667690",
+        "name": "Figure Friends Hips and Legs with Trousers with Brown Boots Pattern",
+        "file": "16925p03.dat"
+    },
+    {
+        "id": "6a5bbe44ca5b92.08644675",
+        "name": "Figure Friends Hips and Legs with Trousers with Dark Red Low-Cut Shoes Pattern",
+        "file": "16925p04.dat"
+    },
+    {
+        "id": "6a5bbe44ca65e8.14271237",
+        "name": "Figure Friends Hips and Legs with Trousers with Light Nougat Ankles and Dark Turquoise Shoes Pattern",
+        "file": "16925p05.dat"
+    },
+    {
+        "id": "6a5bbe44ca7071.95986931",
+        "name": "Figure Friends Hips and Legs with Trousers with White Shoes, Dark Blue Laces and Soles Pattern",
+        "file": "16925p06.dat"
+    },
+    {
+        "id": "6a5bbe44ca7ad7.26729483",
+        "name": "Figure Friends Hips and Legs with Trousers with Reddish Brown Shoes Pattern",
+        "file": "16925p07.dat"
+    },
+    {
+        "id": "6a5bbe44d64f36.13438829",
+        "name": "Figure Arm Bent with Large Hand with Clip and Friction Pin",
+        "file": "1881.dat"
+    },
+    {
+        "id": "6a5bbe44e0ddd0.81745974",
+        "name": "Figure Friends Hips and Legs with Baggy Trousers",
+        "file": "19193.dat"
+    },
+    {
+        "id": "6a5bbe44e12206.69529340",
+        "name": "Figure Friends Hips and Legs with Baggy Trousers with Light Aqua Shoes Pattern",
+        "file": "19193p01.dat"
+    },
+    {
+        "id": "6a5bbe44e12c86.02046733",
+        "name": "Figure Friends Hips and Legs with Baggy Trousers with Dark Red Shoes Pattern",
+        "file": "19193p02.dat"
+    },
+    {
+        "id": "6a5bbe44e13683.25208872",
+        "name": "Figure Friends Hips and Legs with Baggy Trousers with Pearl Gold Shoes Pattern",
+        "file": "19193p03.dat"
+    },
+    {
+        "id": "6a5bbe44e140b3.09044797",
+        "name": "Figure Friends Hips and Legs with Baggy Trousers with Copper Shoes Pattern",
+        "file": "19193p04.dat"
+    },
+    {
+        "id": "6a5bbe44e14b94.80199889",
+        "name": "Figure Friends Hips and Legs with Baggy Trousers with Filigree and Pearl Gold Shoes Pattern",
+        "file": "19193p05.dat"
+    },
+    {
+        "id": "6a5bbe44ef8181.38882505",
+        "name": "Figure Friends Hips and Legs with Asymmetrical Layered Skirt",
+        "file": "20379.dat"
+    },
+    {
+        "id": "6a5bbe44ef8be7.05925788",
+        "name": "Figure Friends Hips and Legs with Asymmetrical Layered Skirt with Medium Lavender Ruffle, Light Nougat Legs and Dark Purple Sandals Pattern",
+        "file": "20379p01.dat"
+    },
+    {
+        "id": "6a5bbe44ef9673.24736436",
+        "name": "Figure Friends Hips and Legs with Asymmetrical Layered Skirt with Bright Light Yellow Ruffle and Medium Nougat Legs Pattern",
+        "file": "20379p02.dat"
+    },
+    {
+        "id": "6a5bbe44efa0b5.60971834",
+        "name": "Figure Friends Hips and Legs with Asymmetrical Layered Skirt with Bright Light Yellow Ruffle and Medium Nougat Legs Pattern",
+        "file": "20379p03.dat"
+    },
+    {
+        "id": "6a5bbe44efaab7.77878713",
+        "name": "Figure Friends Hips and Legs with Asymmetrical Layered Skirt with Gold Ruffle, Dark Red Legs and Dark Brown Boots Pattern",
+        "file": "20379p04.dat"
+    },
+    {
+        "id": "6a5bbe44efbfe5.45565266",
+        "name": "Figure Friends Legs with Asymmetric Layered Skirt Short",
+        "file": "20380.dat"
+    },
+    {
+        "id": "6a5bbe44efca40.54508549",
+        "name": "Figure Friends Legs with Asymmetric Layered Skirt Short with Medium Orange Ruffle, Medium Nougat Legs and Ornamented Gold Sandals Pattern",
+        "file": "20380p01.dat"
+    },
+    {
+        "id": "6a5bbe44efde92.60631045",
+        "name": "Figure Friends Legs with Asymmetric Layered Skirt Short with Magenta Ruffle, Medium Nougat Legs and Magenta Flame Sandals Pattern",
+        "file": "20380p02.dat"
+    },
+    {
+        "id": "6a5bbe44eff247.82028591",
+        "name": "Figure Friends Hips and Legs with Asymmetric Layered Skirt Short",
+        "file": "20381.dat"
+    },
+    {
+        "id": "6a5bbe44effd17.50905454",
+        "name": "Figure Friends Hips and Legs with Asymmetric Layered Skirt Short with Medium Orange Ruffle, Medium Nougat Legs and Ornamented Gold Sandals Pattern",
+        "file": "20381p01.dat"
+    },
+    {
+        "id": "6a5bbe44f007e7.27939561",
+        "name": "Figure Friends Hips and Legs with Asymmetric Layered Skirt Short with Magenta Ruffle, Medium Nougat Legs and Magenta Flame Sandals Pattern",
+        "file": "20381p02.dat"
+    },
+    {
+        "id": "6a5bbe45100a56.70652784",
+        "name": "Figure Friends Hips and Legs with Short Skirt (Thin Hinge)",
+        "file": "2241.dat"
+    },
+    {
+        "id": "6a5bbe45102a73.77008606",
+        "name": "Figure Friends Hips and Legs with Short Skirt with Medium Nougat Legs and Silver Double Ankle and Foot Straps Sandals Pattern",
+        "file": "2241p01.dat"
+    },
+    {
+        "id": "6a5bbe451037f7.66531367",
+        "name": "Figure Friends Hips and Legs with Short Skirt with Nougat Legs and Black Double Foot Straps Sandals Pattern",
+        "file": "2241p02.dat"
+    },
+    {
+        "id": "6a5bbe451044a1.03949565",
+        "name": "Figure Friends Hip And Legs with Short Skirt with Medium Nougat Legs and Gold Ankle and Foot Strap Sandals Pattern",
+        "file": "2241p03.dat"
+    },
+    {
+        "id": "6a5bbe45105220.75056699",
+        "name": "Figure Friends Hip And Legs with Short Skirt with Medium Brown Legs and Metallic Pink Ankle and Foot Strap Sandals Pattern",
+        "file": "2241p04.dat"
+    },
+    {
+        "id": "6a5bbe45105f95.24762948",
+        "name": "Figure Friends Hips and Legs with Cropped Trousers (Thin Hinge)",
+        "file": "2246.dat"
+    },
+    {
+        "id": "6a5bbe451082c2.96118994",
+        "name": "Figure Friends Hips and Legs with Cropped Trousers with Reddish Brown Boots Pattern",
+        "file": "2246p01.dat"
+    },
+    {
+        "id": "6a5bbe45109187.36675455",
+        "name": "Figure Scurrier Body",
+        "file": "22472.dat"
+    },
+    {
+        "id": "6a5bbe45109cb7.62108932",
+        "name": "Figure Scurrier Body With Jeremy Head Pattern",
+        "file": "22472p01.dat"
+    },
+    {
+        "id": "6a5bbe4510a687.76539856",
+        "name": "Figure Scurrier Body with Bright Light Orange Eyes and Open Smile with 10 Teeth Pattern",
+        "file": "22472p02.dat"
+    },
+    {
+        "id": "6a5bbe451126b7.83482060",
+        "name": "Figure Friends Hips and Legs with Cargo Pants (Thin Hinge)",
+        "file": "2268.dat"
+    },
+    {
+        "id": "6a5bbe45113108.06167667",
+        "name": "Figure Friends Hips and Legs with Cargo Pants with Medium Tan Legs, Medium Azure Shoes with White Laces and Soles Pattern",
+        "file": "2268p01.dat"
+    },
+    {
+        "id": "6a5bbe45113b33.07068799",
+        "name": "Figure Friends Hips and Legs with Cargo Pants with Reddish Brown Legs, Dark Blue Shoes with Light Bluish Grey Laces and Soles Pattern",
+        "file": "2268p02.dat"
+    },
+    {
+        "id": "6a5bbe45114591.57060138",
+        "name": "Figure Friends Hips and Legs with Cargo Pants with Medium Nougat Legs, Tan Shoes with Dark Blue Laces and Soles Pattern",
+        "file": "2268p03.dat"
+    },
+    {
+        "id": "6a5bbe45114fe9.16568336",
+        "name": "Figure Friends Hips and Legs with Cargo Pants with Medium Tan Legs and Dark Blue V-Shaped Straps Sandals Pattern",
+        "file": "2268p04.dat"
+    },
+    {
+        "id": "6a5bbe451fd346.51563675",
+        "name": "Figure Scurrier Body with Arms",
+        "file": "24133.dat"
+    },
+    {
+        "id": "6a5bbe451fdd67.41898127",
+        "name": "Figure Scurrier Body with Arms Jeremy Head Pattern",
+        "file": "24133p01.dat"
+    },
+    {
+        "id": "6a5bbe451fe798.10628797",
+        "name": "Figure Scurrier Body with Arms with Bright Light Orange Eyes and Open Smile with 10 Teeth Pattern",
+        "file": "24133p02.dat"
+    },
+    {
+        "id": "6a5bbe45330475.06474294",
+        "name": "Figure Arm Short Curved with Feathers",
+        "file": "24943.dat"
+    },
+    {
+        "id": "6a5bbe453bff33.06600286",
+        "name": "Figure Friends Legs with Cargo Pants (Thick Hinge)",
+        "file": "25727.dat"
+    },
+    {
+        "id": "6a5bbe453c09b7.65893876",
+        "name": "Figure Friends Legs with Cargo Pants with Light Nougat Legs and White Laces and Sole Sneakers Pattern",
+        "file": "25727p01.dat"
+    },
+    {
+        "id": "6a5bbe453c1482.47084152",
+        "name": "Figure Friends Legs with Cargo Pants with Medium Nougat Legs and White Laces and Sole Sneakers Pattern",
+        "file": "25727p02.dat"
+    },
+    {
+        "id": "6a5bbe453c1f14.51464068",
+        "name": "Figure Friends Legs with Cargo Pants with Light Nougat Legs and Dark Blue Sneakers Pattern",
+        "file": "25727p03.dat"
+    },
+    {
+        "id": "6a5bbe453c29a3.79166355",
+        "name": "Figure Friends Legs with Cargo Pants with Nougat Legs and White Laces Blue Sneakers Pattern",
+        "file": "25727p04.dat"
+    },
+    {
+        "id": "6a5bbe453c33f5.09635195",
+        "name": "Figure Friends Legs with Cargo Pants with Light Nougat Legs and Dark Blue V-Shaped Straps Sandals Pattern",
+        "file": "25727p05.dat"
+    },
+    {
+        "id": "6a5bbe45403897.04094912",
+        "name": "Figure Cloud",
+        "file": "26050.dat"
+    },
+    {
+        "id": "6a5bbe454042a9.24388758",
+        "name": "Figure Cloud with Yellow Star and Round Open Mouth Pattern",
+        "file": "26050p01.dat"
+    },
+    {
+        "id": "6a5bbe45449f73.00908098",
+        "name": "Figure Friends Hips and Legs with Cargo Pants (Thick Hinge)",
+        "file": "26490.dat"
+    },
+    {
+        "id": "6a5bbe4544a9b9.76016324",
+        "name": "Figure Friends Hips and Legs with Cargo Pants with Light Nougat Legs and White Laces and Sole Sneakers Pattern",
+        "file": "26490p01.dat"
+    },
+    {
+        "id": "6a5bbe4544b451.88282843",
+        "name": "Figure Friends Hips and Legs with Cargo Pants with Medium Nougat Legs and White Laces and Sole Sneakers Pattern",
+        "file": "26490p02.dat"
+    },
+    {
+        "id": "6a5bbe4544c431.95507922",
+        "name": "Figure Friends Hips and Legs with Cargo Pants with Light Nougat Legs and Dark Blue Sneakers Pattern",
+        "file": "26490p03.dat"
+    },
+    {
+        "id": "6a5bbe4544ced5.77243708",
+        "name": "Figure Friends Hips and Legs with Cargo Pants with Nougat Legs and White Laces Blue Sneakers Pattern",
+        "file": "26490p04.dat"
+    },
+    {
+        "id": "6a5bbe4544d922.92141179",
+        "name": "Figure Friends Hips and Legs with Cargo Pants with Light Nougat Legs and Dark Blue V-Shaped Straps Sandals Pattern",
+        "file": "26490p05.dat"
+    },
+    {
+        "id": "6a5bbe4549e1e0.17702199",
+        "name": "Technic Action Figure Torso",
+        "file": "2698.dat"
+    },
+    {
+        "id": "6a5bbe4549ec15.64293942",
+        "name": "Technic Action Figure (Complete)",
+        "file": "2698c01.dat"
+    },
+    {
+        "id": "6a5bbe4549f601.36970809",
+        "name": "Technic Action Figure Torso with White Zipper Pattern",
+        "file": "2698p01.dat"
+    },
+    {
+        "id": "6a5bbe4549ffc9.10639913",
+        "name": "Technic Action Figure Torso with Orca Pattern",
+        "file": "2698p02.dat"
+    },
+    {
+        "id": "6a5bbe454a0996.89473088",
+        "name": "Technic Action Figure Torso with Technic Logo and Gear Pattern",
+        "file": "2698p03.dat"
+    },
+    {
+        "id": "6a5bbe454a27d6.96014505",
+        "name": "Technic Action Figure Torso with Blue Seatbelt and Red Buckle Pattern",
+        "file": "2698p06.dat"
+    },
+    {
+        "id": "6a5bbe454a3193.27397014",
+        "name": "Technic Action Figure Torso with Red Chest and Triangle Pattern",
+        "file": "2698p07.dat"
+    },
+    {
+        "id": "6a5bbe454a3b96.46939989",
+        "name": "Technic Action Figure Torso with Blue Chest and Belt Pattern",
+        "file": "2698p08.dat"
+    },
+    {
+        "id": "6a5bbe454a45b7.01209468",
+        "name": "Technic Action Figure Body Connector",
+        "file": "2699.dat"
+    },
+    {
+        "id": "6a5bbe454a4f92.77068443",
+        "name": "Technic Action Figure Body",
+        "file": "2699c01.dat"
+    },
+    {
+        "id": "6a5bbe454a6ea6.66030163",
+        "name": "Technic Action Figure Arm Segment",
+        "file": "2700.dat"
+    },
+    {
+        "id": "6a5bbe454a78b5.63912123",
+        "name": "Technic Action Figure Arm Bearing",
+        "file": "2701.dat"
+    },
+    {
+        "id": "6a5bbe454a82e2.74639356",
+        "name": "Technic Action Figure Arm Bearing with Pin",
+        "file": "2701c01.dat"
+    },
+    {
+        "id": "6a5bbe454a8cf6.97242692",
+        "name": "Technic Action Figure Hand",
+        "file": "2702.dat"
+    },
+    {
+        "id": "6a5bbe454a96c0.68507475",
+        "name": "Technic Action Figure Leg Upper Left",
+        "file": "2703.dat"
+    },
+    {
+        "id": "6a5bbe454aa151.30832128",
+        "name": "Figure Cloud with Arms",
+        "file": "27039.dat"
+    },
+    {
+        "id": "6a5bbe454aac34.49025600",
+        "name": "Figure Cloud with Arms with Yellow Star and Round Open Mouth Pattern",
+        "file": "27039p01.dat"
+    },
+    {
+        "id": "6a5bbe454ab6c3.91802585",
+        "name": "Technic Action Figure Leg Lower",
+        "file": "2704.dat"
+    },
+    {
+        "id": "6a5bbe454ac0d8.38068583",
+        "name": "Technic Action Figure Arm Bearing Pin",
+        "file": "2705.dat"
+    },
+    {
+        "id": "6a5bbe454ad771.07536390",
+        "name": "Technic Action Figure Foot",
+        "file": "2706.dat"
+    },
+    {
+        "id": "6a5bbe454b1157.21484374",
+        "name": "Technic Action Figure Head",
+        "file": "2707.dat"
+    },
+    {
+        "id": "6a5bbe454b1b98.75993356",
+        "name": "Technic Action Figure Head with Black Shades Pattern",
+        "file": "2707p01.dat"
+    },
+    {
+        "id": "6a5bbe454b2591.57664208",
+        "name": "Technic Action Figure Head with Dark Blue Shades Pattern",
+        "file": "2707p02.dat"
+    },
+    {
+        "id": "6a5bbe454b2fc8.42143767",
+        "name": "Technic Action Figure Head with Frown and Smirk Pattern",
+        "file": "2707p03.dat"
+    },
+    {
+        "id": "6a5bbe454b39d9.80381198",
+        "name": "Technic Action Figure Head with Thick Eyebrows Pattern",
+        "file": "2707p04.dat"
+    },
+    {
+        "id": "6a5bbe454b4782.54813059",
+        "name": "Technic Action Figure Head with Beard Pattern",
+        "file": "2707p05.dat"
+    },
+    {
+        "id": "6a5bbe454b51a1.97823071",
+        "name": "Technic Action Figure Head with Standard Grin Pattern",
+        "file": "2707p06.dat"
+    },
+    {
+        "id": "6a5bbe454b5ba7.72711778",
+        "name": "Technic Action Figure Hair",
+        "file": "2708.dat"
+    },
+    {
+        "id": "6a5bbe454b65f9.46065228",
+        "name": "Technic Action Figure Leg Upper Right",
+        "file": "2709.dat"
+    },
+    {
+        "id": "6a5bbe454b90b5.26151438",
+        "name": "Technic Action Figure Body Lower",
+        "file": "2710.dat"
+    },
+    {
+        "id": "6a5bbe454bf686.21571299",
+        "name": "Technic Action Figure Helmet (Needs Work)",
+        "file": "2715.dat"
+    },
+    {
+        "id": "6a5bbe454c2b96.09546246",
+        "name": "Technic Action Figure Helmet Visor (Needs Work)",
+        "file": "2716.dat"
+    },
+    {
+        "id": "6a5bbe45501321.72822294",
+        "name": "Figure Friends Left Arm Stump",
+        "file": "2758.dat"
+    },
+    {
+        "id": "6a5bbe45573606.28002883",
+        "name": "~Figure Elves Goblin Body and Head",
+        "file": "28614.dat"
+    },
+    {
+        "id": "6a5bbe45574181.45624599",
+        "name": "Figure Elves Goblin Body and Head with Magenta Hair and Tunic with Utility Belt, Pouch and Candy Bar Pattern",
+        "file": "28614p01.dat"
+    },
+    {
+        "id": "6a5bbe45574f32.02267799",
+        "name": "_Figure Elves Goblin Roblin with Magenta Hair and Tunic",
+        "file": "28614p01c01.dat"
+    },
+    {
+        "id": "6a5bbe45585287.21179519",
+        "name": "Figure Arm Bent with Clip and Friction Pin",
+        "file": "28660.dat"
+    },
+    {
+        "id": "6a5bbe4605dfe7.41493275",
+        "name": "Figure Friends Legs with Baggy Trousers",
+        "file": "35608.dat"
+    },
+    {
+        "id": "6a5bbe4605ec73.32308055",
+        "name": "Figure Friends Legs with Baggy Trousers with Light Aqua Shoes Pattern",
+        "file": "35608p01.dat"
+    },
+    {
+        "id": "6a5bbe4605f758.85308531",
+        "name": "Figure Friends Legs with Baggy Trousers with Dark Red Shoes Pattern",
+        "file": "35608p02.dat"
+    },
+    {
+        "id": "6a5bbe46060273.64132171",
+        "name": "Figure Friends Legs with Baggy Trousers with Pearl Gold Shoes Pattern",
+        "file": "35608p03.dat"
+    },
+    {
+        "id": "6a5bbe46060e27.17800601",
+        "name": "Figure Friends Legs with Baggy Trousers with Copper Shoes Pattern",
+        "file": "35608p04.dat"
+    },
+    {
+        "id": "6a5bbe46061af3.97420355",
+        "name": "Figure Friends Hips and Legs with Baggy Trousers with Filigree and Pearl Gold Shoes Pattern",
+        "file": "35608p05.dat"
+    },
+    {
+        "id": "6a5bbe460bcb64.32716611",
+        "name": "Figure Friends Hips and Legs with Full Length Skirt (Thin Hinge)",
+        "file": "36187.dat"
+    },
+    {
+        "id": "6a5bbe460bd596.03198966",
+        "name": "Figure Friends Hips and Legs with Shorts (Thin Hinge)",
+        "file": "36198.dat"
+    },
+    {
+        "id": "6a5bbe460bdfe3.12965755",
+        "name": "Figure Friends Hips and Legs with Shorts  with Medium Tan Legs, Coral Shoes with White Laces, Soles and Socks Pattern",
+        "file": "36198p01.dat"
+    },
+    {
+        "id": "6a5bbe460bea01.50822986",
+        "name": "Figure Friends Hips and Legs with Shorts  with Medium Tan Legs, Lime Shoes with White Laces, Soles and Socks Pattern",
+        "file": "36198p02.dat"
+    },
+    {
+        "id": "6a5bbe460bf5f6.86803238",
+        "name": "Figure Friends Hips and Legs with Shorts with Light Nougat Legs, Metallic Light Blue V-shaped Straps Sandals Pattern",
+        "file": "36198p03.dat"
+    },
+    {
+        "id": "6a5bbe464d7ea7.03729693",
+        "name": "Figure Friends Legs with Asymmetrical Layered Skirt",
+        "file": "39199.dat"
+    },
+    {
+        "id": "6a5bbe464d8902.07742873",
+        "name": "Figure Friends Legs with Asymmetrical Layered Skirt with Medium Lavender Ruffle, Light Nougat Legs and Dark Purple Sandals Pattern",
+        "file": "39199p01.dat"
+    },
+    {
+        "id": "6a5bbe464d9331.82090936",
+        "name": "Figure Friends Legs with Asymmetrical Layered Skirt with Bright Light Yellow Ruffle and Medium Nougat Legs Pattern",
+        "file": "39199p02.dat"
+    },
+    {
+        "id": "6a5bbe464d9d66.65404632",
+        "name": "Figure Friends Legs with Asymmetrical Layered Skirt with Red Ruffle and Medium Nougat Legs Pattern",
+        "file": "39199p03.dat"
+    },
+    {
+        "id": "6a5bbe464da7c1.64160776",
+        "name": "Figure Friends Legs with Asymmetrical Layered Skirt with Gold Ruffle, Dark Red Legs and Dark Brown Boots Pattern",
+        "file": "39199p04.dat"
+    },
+    {
+        "id": "6a5bbe46bae688.74921656",
+        "name": "Figure Duplo Child Arm",
+        "file": "47198.dat"
+    },
+    {
+        "id": "6a5bbe46baf098.55609780",
+        "name": "Figure Duplo Child Arm with Nougat Hand Pattern",
+        "file": "47198p01.dat"
+    },
+    {
+        "id": "6a5bbe46bafab1.84929271",
+        "name": "Figure Duplo Child Arm with Medium Nougat Hand Pattern",
+        "file": "47198p02.dat"
+    },
+    {
+        "id": "6a5bbe46bb04c4.32443050",
+        "name": "Figure Duplo Child Arm with Reddish Brown Hand Pattern",
+        "file": "47198p03.dat"
+    },
+    {
+        "id": "6a5bbe46bb0ee1.06538460",
+        "name": "Figure Duplo Child Arm with Yellow Hand Pattern",
+        "file": "47198p04.dat"
+    },
+    {
+        "id": "6a5bbe46bb1963.02381703",
+        "name": "Figure Duplo Child Cap",
+        "file": "47199.dat"
+    },
+    {
+        "id": "6a5bbe46bb5f13.70869209",
+        "name": "Figure Duplo Child Hair with 2 Plaits",
+        "file": "47200.dat"
+    },
+    {
+        "id": "6a5bbe46bb6902.35384772",
+        "name": "Figure Duplo Child Torso",
+        "file": "47203.dat"
+    },
+    {
+        "id": "6a5bbe46bb7338.99627426",
+        "name": "Figure Duplo Child Torso with Top with \"SKATE\" Pattern",
+        "file": "47203p01.dat"
+    },
+    {
+        "id": "6a5bbe46bb7d38.82750227",
+        "name": "Figure Duplo Child Torso with Top with Pink and Lilac Flowers Pattern",
+        "file": "47203p02.dat"
+    },
+    {
+        "id": "6a5bbe46bb8722.90047006",
+        "name": "Figure Duplo Child Torso with Sweat Over Green Shirt with \"8\" Pattern",
+        "file": "47203p03.dat"
+    },
+    {
+        "id": "6a5bbe46bb9169.49001400",
+        "name": "Figure Duplo Child Hips",
+        "file": "47204.dat"
+    },
+    {
+        "id": "6a5bbe46bb9b53.96994051",
+        "name": "Figure Duplo Child Legs",
+        "file": "47205.dat"
+    },
+    {
+        "id": "6a5bbe46bba523.38251787",
+        "name": "Figure Duplo Child Head",
+        "file": "47206.dat"
+    },
+    {
+        "id": "6a5bbe46bbaf13.43143249",
+        "name": "Figure Duplo Child Head with Brown Eyes and Smile Pattern",
+        "file": "47206p01.dat"
+    },
+    {
+        "id": "6a5bbe46bbb8f9.15405179",
+        "name": "Figure Duplo Child Head with Brown Eyes, Eyelashes and Lopsided Smile Pattern",
+        "file": "47206p02.dat"
+    },
+    {
+        "id": "6a5bbe46bbc310.71216208",
+        "name": "Figure Duplo Hips Hinge Bar",
+        "file": "47207.dat"
+    },
+    {
+        "id": "6a5bbe46bdf4e0.45885854",
+        "name": "~Figure Duplo Arm Left Forward Bent",
+        "file": "47380.dat"
+    },
+    {
+        "id": "6a5bbe46bdff06.59757194",
+        "name": "Figure Duplo Arm Left Forward Bent with Nougat Hand Pattern",
+        "file": "47380p01.dat"
+    },
+    {
+        "id": "6a5bbe46be08f2.90995410",
+        "name": "Figure Duplo Arm Left Forward Bent with Medium Nougat Hand Pattern",
+        "file": "47380p02.dat"
+    },
+    {
+        "id": "6a5bbe46be12e7.75180406",
+        "name": "Figure Duplo Arm Left Forward Bent with Dark Bluish Grey Hand Pattern",
+        "file": "47380p03.dat"
+    },
+    {
+        "id": "6a5bbe46be1d28.64677934",
+        "name": "Figure Duplo Arm Left Forward Bent with Reddish Brown Hand Pattern",
+        "file": "47380p04.dat"
+    },
+    {
+        "id": "6a5bbe46be2732.33015398",
+        "name": "~Figure Duplo Arm Right Forward Bent",
+        "file": "47389.dat"
+    },
+    {
+        "id": "6a5bbe46be3122.54319836",
+        "name": "Figure Duplo Arm Right Forward Bent with Nougat Hand Pattern",
+        "file": "47389p01.dat"
+    },
+    {
+        "id": "6a5bbe46be3b58.33676561",
+        "name": "Figure Duplo Arm Right Forward Bent with Medium Nougat Hand Pattern",
+        "file": "47389p02.dat"
+    },
+    {
+        "id": "6a5bbe46be4527.64679427",
+        "name": "Figure Duplo Arm Right Forward Bent with Dark Bluish Grey Hand Pattern",
+        "file": "47389p03.dat"
+    },
+    {
+        "id": "6a5bbe46be4f50.53413772",
+        "name": "Figure Duplo Arm Right Forward Bent with Reddish Brown Hand Pattern",
+        "file": "47389p04.dat"
+    },
+    {
+        "id": "6a5bbe46be7835.97007671",
+        "name": "~Figure Duplo Head Adult",
+        "file": "47391.dat"
+    },
+    {
+        "id": "6a5bbe46be82d4.46088432",
+        "name": "Figure Duplo Head Adult with Brown Eyes and Lopsided Open Mouth Pattern",
+        "file": "47391p01.dat"
+    },
+    {
+        "id": "6a5bbe46be8cf7.33471144",
+        "name": "Figure Duplo Adult Torso",
+        "file": "47392.dat"
+    },
+    {
+        "id": "6a5bbe46be96f2.92281729",
+        "name": "Figure Duplo Adult Torso with Vest Open over White Shirt Pattern",
+        "file": "47392p01.dat"
+    },
+    {
+        "id": "6a5bbe46bea0b4.41864024",
+        "name": "Figure Duplo Adult Hips",
+        "file": "47393.dat"
+    },
+    {
+        "id": "6a5bbe46beaad0.22772722",
+        "name": "Figure Duplo Adult Legs",
+        "file": "47394.dat"
+    },
+    {
+        "id": "6a5bbe46c1aac4.96694393",
+        "name": "Figure Duplo Child Girl",
+        "file": "47510.dat"
+    },
+    {
+        "id": "6a5bbe46c1b631.98250512",
+        "name": "Figure Duplo Child Girl with Green Legs, Medium Blue Top with Flowers and Black Hair Pattern",
+        "file": "47510p01.dat"
+    },
+    {
+        "id": "6a5bbe46c1c088.23477832",
+        "name": "Figure Duplo Child Boy with Cap",
+        "file": "47511.dat"
+    },
+    {
+        "id": "6a5bbe46c1cac5.37527042",
+        "name": "Figure Duplo Child Boy with Medium Blue Legs, Blue Top with \"SKATE\" and Lime Cap Pattern",
+        "file": "47511p01.dat"
+    },
+    {
+        "id": "6a5bbe46ef30f5.29502922",
+        "name": "Figure Hand with Bottom Stud Tube and 45\u00b0 Wrist Bar",
+        "file": "5786.dat"
+    },
+    {
+        "id": "6a5bbe46ef3b10.25228757",
+        "name": "Figure Hand with Bottom Stud Tube and 45\u00b0 Wrist Bar with Nougat Scars Pattern",
+        "file": "5786p01.dat"
+    },
+    {
+        "id": "6a5bbe46f0e086.22080495",
+        "name": "Figure Legs Mario",
+        "file": "58101.dat"
+    },
+    {
+        "id": "6a5bbe46f0ead7.37821109",
+        "name": "Figure Legs Mario Id \"100001\" with Reddish Brown Feet Pattern",
+        "file": "58101p01.dat"
+    },
+    {
+        "id": "6a5bbe46f28330.92212862",
+        "name": "Figure Arm Mario",
+        "file": "58213.dat"
+    },
+    {
+        "id": "6a5bbe46f28de9.32368979",
+        "name": "Figure Arm Mario with White Hand Pattern",
+        "file": "58213p01.dat"
+    },
+    {
+        "id": "6a5bbe4704b3a7.31653121",
+        "name": "Figure Friends Legs with Skirt with Ankles",
+        "file": "59595.dat"
+    },
+    {
+        "id": "6a5bbe4704be49.95957427",
+        "name": "Figure Friends Legs with Skirt with Ankles with Light Nougat Legs, Metallic Pink Filigree and Lavender Triangle Pattern",
+        "file": "59595p01.dat"
+    },
+    {
+        "id": "6a5bbe4704c8b3.57641404",
+        "name": "Figure Friends Legs with Skirt with Ankles with Black Boots and Metallic Copper Corn Pattern",
+        "file": "59595p02.dat"
+    },
+    {
+        "id": "6a5bbe4704fc27.48623092",
+        "name": "Figure Friends Hips and Legs with Skirt with Ankles",
+        "file": "59794.dat"
+    },
+    {
+        "id": "6a5bbe470506a7.19368155",
+        "name": "Figure Friends Hips and Legs with Skirt with Ankles with Light Nougat Legs, Metallic Pink Filigree and Lavender Triangle Pattern",
+        "file": "59794p01.dat"
+    },
+    {
+        "id": "6a5bbe47051145.41500896",
+        "name": "Figure Friends Hips and Legs with Skirt with Ankles with Light Nougat Legs, Metallic Pink Filigree and Lavender Triangle Pattern",
+        "file": "59794p02.dat"
+    },
+    {
+        "id": "6a5bbe47151785.40780845",
+        "name": "~Figure Troll Body Armoured Back",
+        "file": "60634.dat"
+    },
+    {
+        "id": "6a5bbe471521f9.97503804",
+        "name": "~Figure Troll Body Right",
+        "file": "60635.dat"
+    },
+    {
+        "id": "6a5bbe47152c21.91968424",
+        "name": "~Figure Troll Body Right with Metallic Dark Grey Armour Pattern",
+        "file": "60635p01.dat"
+    },
+    {
+        "id": "6a5bbe47153655.77478406",
+        "name": "~Figure Troll Body Right with Metallic Copper Armour Pattern",
+        "file": "60635p02.dat"
+    },
+    {
+        "id": "6a5bbe47154048.27086842",
+        "name": "~Figure Troll Body Right with Metallic Silver on Black Armour Pattern",
+        "file": "60635p03.dat"
+    },
+    {
+        "id": "6a5bbe47154a97.04600100",
+        "name": "~Figure Troll Helmet",
+        "file": "60636.dat"
+    },
+    {
+        "id": "6a5bbe47155485.63617086",
+        "name": "~Figure Troll Helmet with Metallic Copper Skull Pattern",
+        "file": "60636p03.dat"
+    },
+    {
+        "id": "6a5bbe47155eb7.32116533",
+        "name": "~Figure Troll Body Left",
+        "file": "60637.dat"
+    },
+    {
+        "id": "6a5bbe471568d5.38181833",
+        "name": "~Figure Troll Body Left with Metallic Dark Grey Armour Pattern",
+        "file": "60637p01.dat"
+    },
+    {
+        "id": "6a5bbe47157337.38224613",
+        "name": "~Figure Troll Body Left with Metallic Copper Armour Pattern",
+        "file": "60637p02.dat"
+    },
+    {
+        "id": "6a5bbe47157dc1.35390949",
+        "name": "~Figure Troll Body Left with Metallic Silver on Black Armour Pattern",
+        "file": "60637p03.dat"
+    },
+    {
+        "id": "6a5bbe471587f6.84019597",
+        "name": "~Figure Troll Body Belt",
+        "file": "60638.dat"
+    },
+    {
+        "id": "6a5bbe471591d3.93370693",
+        "name": "~Figure Troll Body Belt with Metallic Copper Beltbuckle Pattern",
+        "file": "60638p03.dat"
+    },
+    {
+        "id": "6a5bbe47159bd5.70968805",
+        "name": "~Figure Troll Arm Right",
+        "file": "60639.dat"
+    },
+    {
+        "id": "6a5bbe4715afc4.47280451",
+        "name": "Figure Troll Hand Right",
+        "file": "60640.dat"
+    },
+    {
+        "id": "6a5bbe4715b9b2.66062088",
+        "name": "Figure Troll Hand Left",
+        "file": "60641.dat"
+    },
+    {
+        "id": "6a5bbe4715c455.59016522",
+        "name": "~Figure Troll Arm Left",
+        "file": "60642.dat"
+    },
+    {
+        "id": "6a5bbe4715ce91.69898254",
+        "name": "~Figure Troll Wrist Cuff Right",
+        "file": "60643.dat"
+    },
+    {
+        "id": "6a5bbe4715d8b8.90328916",
+        "name": "~Figure Troll Body Legs and Skirt",
+        "file": "60644.dat"
+    },
+    {
+        "id": "6a5bbe4715e2b0.93265408",
+        "name": "~Figure Troll Body Legs and Black Skirt Pattern",
+        "file": "60644p01.dat"
+    },
+    {
+        "id": "6a5bbe4715eca9.08033026",
+        "name": "~Figure Troll Body Legs and Dark Brown Skirt Pattern",
+        "file": "60644p03.dat"
+    },
+    {
+        "id": "6a5bbe471634a4.99373456",
+        "name": "~Figure Club with Spikes - Half with Handle",
+        "file": "60659a.dat"
+    },
+    {
+        "id": "6a5bbe471648b8.56592847",
+        "name": "~Figure Club with Spikes - Half without Handle",
+        "file": "60660.dat"
+    },
+    {
+        "id": "6a5bbe47165d78.80844801",
+        "name": "Figure Troll Body (Complete)",
+        "file": "60671.dat"
+    },
+    {
+        "id": "6a5bbe47166a18.47772918",
+        "name": "Figure Troll Body with Pearl Dark Grey Armour Pattern",
+        "file": "60671p01.dat"
+    },
+    {
+        "id": "6a5bbe471675c5.82526182",
+        "name": "Figure Troll Body with Copper Armour Pattern",
+        "file": "60671p02.dat"
+    },
+    {
+        "id": "6a5bbe47168051.68180798",
+        "name": "Figure Troll Body with Black Decorated Armour Pattern",
+        "file": "60671p03.dat"
+    },
+    {
+        "id": "6a5bbe47168b41.79543620",
+        "name": "Figure Troll Arm Right with Wrist Cuff",
+        "file": "60672.dat"
+    },
+    {
+        "id": "6a5bbe47169639.02445504",
+        "name": "Figure Troll Arm Right with Pearl Dark Grey Wrist Cuff Pattern",
+        "file": "60672c01.dat"
+    },
+    {
+        "id": "6a5bbe4716a0d8.37615855",
+        "name": "Figure Troll Arm Right with Copper Wrist Cuff Pattern",
+        "file": "60672c02.dat"
+    },
+    {
+        "id": "6a5bbe4716aba0.93959983",
+        "name": "Figure Troll Arm Right with Black Wrist Cuff and Black Skull Tattoo Pattern",
+        "file": "60672c03p01.dat"
+    },
+    {
+        "id": "6a5bbe4716b5e4.82703671",
+        "name": "Figure Troll Arm Left with  Wrist Cuff",
+        "file": "60673.dat"
+    },
+    {
+        "id": "6a5bbe4716c049.15403447",
+        "name": "Figure Troll Arm Left with Pearl Dark Grey Wrist Cuff Pattern",
+        "file": "60673c01.dat"
+    },
+    {
+        "id": "6a5bbe4716cba6.37619797",
+        "name": "Figure Troll Arm Left with Copper Wrist Cuff Pattern",
+        "file": "60673c02.dat"
+    },
+    {
+        "id": "6a5bbe4716d763.13899779",
+        "name": "Figure Troll Arm Left with Black Wrist Cuff and Black Skull Tattoo Pattern",
+        "file": "60673c03p01.dat"
+    },
+    {
+        "id": "6a5bbe4716e1b8.84609270",
+        "name": "Figure Club with Spikes (Complete)",
+        "file": "60674.dat"
+    },
+    {
+        "id": "6a5bbe472fc0d1.53096664",
+        "name": "~Figure Troll Wrist Cuff Left",
+        "file": "61531.dat"
+    },
+    {
+        "id": "6a5bbe475671d2.66973235",
+        "name": "Figure Duplo Cap Adult",
+        "file": "63351.dat"
+    },
+    {
+        "id": "6a5bbe47597569.89784036",
+        "name": "Figure Duplo Adult Male with Cap",
+        "file": "63710.dat"
+    },
+    {
+        "id": "6a5bbe47597ff4.77939719",
+        "name": "Figure Duplo Adult Male with Medium Blue Legs, Dark Red Top and Blue Baseball Cap Pattern",
+        "file": "63710p01.dat"
+    },
+    {
+        "id": "6a5bbe4767c635.13502558",
+        "name": "Figure Micro Doll Body with Long Dress",
+        "file": "65203.dat"
+    },
+    {
+        "id": "6a5bbe476a1521.67703858",
+        "name": "Figure Legs Mario Id \"010010\" with Reddish Brown Feet Pattern",
+        "file": "65497p01.dat"
+    },
+    {
+        "id": "6a5bbe476b90c9.63802909",
+        "name": "Figure Friends Baby Head with Cap",
+        "file": "6569.dat"
+    },
+    {
+        "id": "6a5bbe476b9ab5.56130510",
+        "name": "Figure Friends Baby Head with Lime Cap, Bright Light Blue Eyes and Pacifier Pattern",
+        "file": "6569p01.dat"
+    },
+    {
+        "id": "6a5bbe476ba4d6.19470246",
+        "name": "Figure Friends Baby Head with Lime Cap, Dark Orange Eyes and Smirk Pattern",
+        "file": "6569p02.dat"
+    },
+    {
+        "id": "6a5bbe476baed5.56098487",
+        "name": "Figure Friends Baby Head with White Cap, Bright Light Blue Eyes and Surprised Round Mouth Pattern",
+        "file": "6569p03.dat"
+    },
+    {
+        "id": "6a5bbe477220b9.82116153",
+        "name": "Figure Arm Bent Long with Clip and Friction Pin",
+        "file": "66788.dat"
+    },
+    {
+        "id": "6a5bbe47737d78.13181104",
+        "name": "Figure Feet  2 x  2 x  0.667",
+        "file": "66858.dat"
+    },
+    {
+        "id": "6a5bbe47738819.64177572",
+        "name": "Figure Feet  2 x  2 x  0.667 with 3 Toe Pattern",
+        "file": "66858p01.dat"
+    },
+    {
+        "id": "6a5bbe47739294.26103429",
+        "name": "Figure Feet  2 x  3 x  0.667",
+        "file": "66859.dat"
+    },
+    {
+        "id": "6a5bbe477440a4.40197614",
+        "name": "Figure Cap on Brick  2 x  2 with Flat Bill",
+        "file": "67017.dat"
+    },
+    {
+        "id": "6a5bbe47744c51.05304911",
+        "name": "Figure Cap on Brick  2 x  2 with Flat Bill with Super Mario \"M\" in Oval Pattern",
+        "file": "67017p01.dat"
+    },
+    {
+        "id": "6a5bbe47766d43.92971794",
+        "name": "Figure Legs Mario Id \"001100\" with Vertical White Stripe and Blue Feet Pattern",
+        "file": "67611p01.dat"
+    },
+    {
+        "id": "6a5bbe4776c268.18708440",
+        "name": "~Figure Lower Body  2 x  2 x  1.667 with Four Hollow Studs and Two Pegholes",
+        "file": "67644.dat"
+    },
+    {
+        "id": "6a5bbe4776ccc4.92448348",
+        "name": "Figure Lower Body  2 x  2 x  1.667 with Blue Overall and Black Pocket, Button and Dark Blue Stiching Pattern",
+        "file": "67644p01.dat"
+    },
+    {
+        "id": "6a5bbe4776d789.22666784",
+        "name": "Figure Lower Body  2 x  2 x  1.667 with Bright Light Blue Overall with White Stripes Pattern",
+        "file": "67644p03.dat"
+    },
+    {
+        "id": "6a5bbe47781559.11063726",
+        "name": "Figure Arm with Friction Pin for Minifig Hand",
+        "file": "67906.dat"
+    },
+    {
+        "id": "6a5bbe477823d5.53460451",
+        "name": "Figure Arm with Friction Pin for Minifig Hand with Black Stripe Pattern",
+        "file": "67906p01.dat"
+    },
+    {
+        "id": "6a5bbe4779c421.25321412",
+        "name": "Maxifig Head",
+        "file": "685.dat"
+    },
+    {
+        "id": "6a5bbe477a17a9.14584077",
+        "name": "Maxifig Head with Face Pattern",
+        "file": "685p01.dat"
+    },
+    {
+        "id": "6a5bbe477a21b6.88483239",
+        "name": "Maxifig Head (Complete) with Face Pattern",
+        "file": "685p01c01.dat"
+    },
+    {
+        "id": "6a5bbe477a2c16.71853168",
+        "name": "Maxifig Head with Face with Eyebrows Pattern",
+        "file": "685p02.dat"
+    },
+    {
+        "id": "6a5bbe477a3641.98918171",
+        "name": "Maxifig Head with Face with Moustache Pattern",
+        "file": "685p03.dat"
+    },
+    {
+        "id": "6a5bbe477a4012.37537054",
+        "name": "Maxifig Head with Face with Freckles Pattern",
+        "file": "685p04.dat"
+    },
+    {
+        "id": "6a5bbe477a49d0.80398391",
+        "name": "Maxifig Head with Face with Glasses Pattern",
+        "file": "685p05.dat"
+    },
+    {
+        "id": "6a5bbe47898378.14367734",
+        "name": "Figure Friends Girl Torso Dual Mould with Arms",
+        "file": "73141.dat"
+    },
+    {
+        "id": "6a5bbe47898f29.01093214",
+        "name": "Figure Friends Girl Torso with Arms with Bright Light Yellow Tank Top over Medium Lavender Sleeveless Shirt, Black and Coral Panels and Music Note Necklace Pattern",
+        "file": "73141p01.dat"
+    },
+    {
+        "id": "6a5bbe47899994.42227770",
+        "name": "Figure Friends Girl Torso with Arms with Coral and Bright Light Orange Shirt, Dark Blue Trim and White Flower Pattern",
+        "file": "73141p04.dat"
+    },
+    {
+        "id": "6a5bbe4789a3b0.80073243",
+        "name": "Figure Friends Woman Torso Dual Mould with Arms",
+        "file": "73152.dat"
+    },
+    {
+        "id": "6a5bbe4789ad97.43174300",
+        "name": "Figure Friends Woman Torso with Arms with Bright Light Blue Strapless Dress Top with Dark Blue Trim, Metallic Light Blue Undershirt and Dots, Gold Necklace Pattern",
+        "file": "73152p01.dat"
+    },
+    {
+        "id": "6a5bbe4789b7d9.94516244",
+        "name": "Figure Friends Woman Torso with Arms with Blue Dress with Dark Blue Trim and Creases, Silver Straps Pattern",
+        "file": "73152p02.dat"
+    },
+    {
+        "id": "6a5bbe4789c219.11860431",
+        "name": "Figure Friends Woman Torso with Arms with White Sleeveless Top with Dark Blue Trim, Lavender\/Yellow\/Green Rectangles, Green Belt and Silver Necklace Pattern",
+        "file": "73152p03.dat"
+    },
+    {
+        "id": "6a5bbe4789cc06.66975948",
+        "name": "Figure Friends Woman Torso with Arms with Metallic Light Blue Halter Top with Dark Blue Trim and Orange Belt Pattern",
+        "file": "73152p04.dat"
+    },
+    {
+        "id": "6a5bbe4789d704.81976158",
+        "name": "Figure Friends Woman Torso with Arms with Medium Lavender Open Vest over Gold Top, Silver Buckle and Necklace Pattern",
+        "file": "73152p05.dat"
+    },
+    {
+        "id": "6a5bbe4789e302.74458935",
+        "name": "Figure Friends Boy Torso Dual Mould with Arms",
+        "file": "73161.dat"
+    },
+    {
+        "id": "6a5bbe4789ed15.88448419",
+        "name": "Figure Friends Boy Torso with Arms and Dark Azure Hoodie with Coral Short Sleeves Pattern",
+        "file": "73161p01.dat"
+    },
+    {
+        "id": "6a5bbe4789f780.36697147",
+        "name": "Figure Friends Boy Torso with Sand Blue Jacket and Sleeve Arms with Tan Lapels over Blue and White Shirt Pattern",
+        "file": "73161p02.dat"
+    },
+    {
+        "id": "6a5bbe47924306.02712016",
+        "name": "Figure Friends Man Torso Dual Mould with Arms",
+        "file": "73441.dat"
+    },
+    {
+        "id": "6a5bbe47924de9.52594491",
+        "name": "Figure Friends Man Torso with Arms with Dark Azure and White Jacket with Silver Squares and Music Notes Necklace Pattern",
+        "file": "73441p01.dat"
+    },
+    {
+        "id": "6a5bbe47c34758.57341170",
+        "name": "Figure Cap on Brick  2 x  2 with Arched Bill",
+        "file": "77710.dat"
+    },
+    {
+        "id": "6a5bbe47c351a4.47352468",
+        "name": "Figure Cap on Brick  2 x  2 with Arched Bill with Luigi \"L\" in Oval Pattern",
+        "file": "77710p01.dat"
+    },
+    {
+        "id": "6a5bbe47c49917.52346015",
+        "name": "Figure Legs Luigi",
+        "file": "77873.dat"
+    },
+    {
+        "id": "6a5bbe47c4a3c9.49477769",
+        "name": "Figure Legs Luigi with Reddish Brown Feet Pattern",
+        "file": "77873p01.dat"
+    },
+    {
+        "id": "6a5bbe47cbff59.74510554",
+        "name": "Figure Friends Skirt Long Full Octagonal",
+        "file": "80336.dat"
+    },
+    {
+        "id": "6a5bbe47da8731.14904450",
+        "name": "Figure Feet  2 x  2 x  0.667 with  4 Feet",
+        "file": "84867.dat"
+    },
+    {
+        "id": "6a5bbe47dc2ab5.75763234",
+        "name": "Microfig",
+        "file": "85863.dat"
+    },
+    {
+        "id": "6a5bbe47ec2249.79909643",
+        "name": "Figure Tail  8 x  6 Curved",
+        "file": "87846.dat"
+    },
+    {
+        "id": "6a5bbe48065e34.76168664",
+        "name": "Figure Friends Head without Pattern",
+        "file": "92198.dat"
+    },
+    {
+        "id": "6a5bbe48067214.09078468",
+        "name": "Figure Friends Girl\/Woman Template",
+        "file": "92198c01.dat"
+    },
+    {
+        "id": "6a5bbe480681c9.42960974",
+        "name": "Figure Friends Female Head with Light Blue Eyes, Pink Lips and Open Mouth Pattern",
+        "file": "92198p01.dat"
+    },
+    {
+        "id": "6a5bbe48068e12.47629710",
+        "name": "_Figure Friends Stephanie with Medium Lavender Pleated Skirt, White Top",
+        "file": "92198p01c01.dat"
+    },
+    {
+        "id": "6a5bbe480698f2.65662889",
+        "name": "_Figure Friends Cinderella with Two-Coloured Blue Dress, Long Gloves",
+        "file": "92198p01c02.dat"
+    },
+    {
+        "id": "6a5bbe4806a3f5.09881531",
+        "name": "_Figure Friends Stephanie with Magenta Layered Skirt, White Top",
+        "file": "92198p01c03.dat"
+    },
+    {
+        "id": "6a5bbe4806ae60.28039153",
+        "name": "_Figure Friends Stephanie with Lime Cropped Trousers, White Top",
+        "file": "92198p01c04.dat"
+    },
+    {
+        "id": "6a5bbe4806b8a4.10063669",
+        "name": "_Figure Friends Sophie with Bright Pink Layered Skirt, Light Aqua Long Sleeve Blouse Top",
+        "file": "92198p01c05.dat"
+    },
+    {
+        "id": "6a5bbe4806c338.74354089",
+        "name": "_Figure Friends Stephanie with White Riding Pants, Light Aqua Long Sleeve Blouse Top",
+        "file": "92198p01c06.dat"
+    },
+    {
+        "id": "6a5bbe4806cda0.55355812",
+        "name": "_Figure Friends Stephanie with Dark Purple Pleated Skirt, Magenta Top with White Jacket",
+        "file": "92198p01c07.dat"
+    },
+    {
+        "id": "6a5bbe4806d7e3.83342206",
+        "name": "_Figure Friends Stephanie with Magenta Wrap-around Skirt, Lime Top with White Stripes, Dark Pink Visor",
+        "file": "92198p01c08.dat"
+    },
+    {
+        "id": "6a5bbe4806e2d7.63521973",
+        "name": "_Figure Friends Stephanie with Magenta Wrap-around Skirt, Lime Top with White Stripes, Sunglasses",
+        "file": "92198p01c09.dat"
+    },
+    {
+        "id": "6a5bbe4806ed56.78104905",
+        "name": "_Figure Friends Liza with White Riding Pants, Magenta Top and White Jacket with Bow",
+        "file": "92198p01c10.dat"
+    },
+    {
+        "id": "6a5bbe4806f7f1.74976809",
+        "name": "_Figure Friends Stephanie with Dark Pink Shorts, White Top with Outlined Stars",
+        "file": "92198p01c11.dat"
+    },
+    {
+        "id": "6a5bbe48070241.47588484",
+        "name": "_Figure Friends Stephanie with Magenta Layered Skirt, White Top with Outlined Stars",
+        "file": "92198p01c12.dat"
+    },
+    {
+        "id": "6a5bbe48070c97.23537745",
+        "name": "_Figure Friends Stephanie with Medium Lavender Skirt, White Top with Outlined Stars",
+        "file": "92198p01c13.dat"
+    },
+    {
+        "id": "6a5bbe480716f9.85884262",
+        "name": "_Figure Friends Stephanie with Sand Green Riding Pants, White Top with Outlined Stars",
+        "file": "92198p01c14.dat"
+    },
+    {
+        "id": "6a5bbe48072178.92331627",
+        "name": "Figure Friends Female Head with Green Eyes, Pink Lips and Closed Mouth Pattern",
+        "file": "92198p02.dat"
+    },
+    {
+        "id": "6a5bbe48072c06.02591556",
+        "name": "_Figure Friends Emma with Magenta Layered Skirt, Medium Violet Top",
+        "file": "92198p02c01.dat"
+    },
+    {
+        "id": "6a5bbe48073665.57491404",
+        "name": "_Figure Friends Emma with Dark Blue Layered Skirt, Medium Violet Top",
+        "file": "92198p02c02.dat"
+    },
+    {
+        "id": "6a5bbe48074188.84556930",
+        "name": "_Figure Friends Emma with White Riding Pants, Medium Violet Top",
+        "file": "92198p02c03.dat"
+    },
+    {
+        "id": "6a5bbe48074cf4.69625966",
+        "name": "_Figure Friends Emma with Bright Light Blue Pleated Skirt, White Vest Top",
+        "file": "92198p02c04.dat"
+    },
+    {
+        "id": "6a5bbe48075756.59245222",
+        "name": "_Figure Friends Emma with Sand Green Pleated Skirt, Magenta Top with White Jacket",
+        "file": "92198p02c05.dat"
+    },
+    {
+        "id": "6a5bbe48076198.75771176",
+        "name": "_Figure Friends Alana with Dark Pink Mermaid Tail, Pink Bikini Top",
+        "file": "92198p02c06.dat"
+    },
+    {
+        "id": "6a5bbe48076bb8.52301202",
+        "name": "_Figure Friends Emma with Medium Lavender Skirt, White Top with Pink Flowers",
+        "file": "92198p02c07.dat"
+    },
+    {
+        "id": "6a5bbe480775d8.34463314",
+        "name": "Figure Friends Female Head with Brown Eyes, Bright Pink Lips and Open Mouth Pattern",
+        "file": "92198p03.dat"
+    },
+    {
+        "id": "6a5bbe48078064.94359650",
+        "name": "Figure Friends Female Head with Green Eyes, Light Pink Lips and Open Mouth Pattern",
+        "file": "92198p04.dat"
+    },
+    {
+        "id": "6a5bbe48078a98.68849629",
+        "name": "_Figure Friends Andrea with White Cropped Trousers, Lime Halter Neck Top",
+        "file": "92198p04c01.dat"
+    },
+    {
+        "id": "6a5bbe480794c3.09645473",
+        "name": "_Figure Friends Andrea with Light Aqua Layered Skirt, Lime Halter Neck Top",
+        "file": "92198p04c02.dat"
+    },
+    {
+        "id": "6a5bbe48079fb0.95936462",
+        "name": "_Figure Friends Chloe with Light Aqua Layered Skirt, White Top",
+        "file": "92198p04c03.dat"
+    },
+    {
+        "id": "6a5bbe4807aa38.63199081",
+        "name": "_Figure Friends Sarah with Light Aqua Layered Skirt, White Top",
+        "file": "92198p04c04.dat"
+    },
+    {
+        "id": "6a5bbe4807b4d3.88798962",
+        "name": "_Figure Friends Andrea with Light Aqua Layered Skirt, Bright Light Orange Top",
+        "file": "92198p04c05.dat"
+    },
+    {
+        "id": "6a5bbe4807bf52.23422959",
+        "name": "_Figure Friends Nicole with Light Aqua Layered Skirt, Light Yellow Halter Top",
+        "file": "92198p04c06.dat"
+    },
+    {
+        "id": "6a5bbe4807ca48.20956695",
+        "name": "Figure Friends Female Head with Light Brown Eyes, Freckles, Pink Lips and Closed Mouth Pattern",
+        "file": "92198p05.dat"
+    },
+    {
+        "id": "6a5bbe4807d5e6.83119860",
+        "name": "_Figure Friends Mia with Black Trousers, Black Formal Jacket with Bow Tie",
+        "file": "92198p05c01.dat"
+    },
+    {
+        "id": "6a5bbe4807e096.82509080",
+        "name": "_Figure Friends Mia with Medium Lavender Pleated Skirt, Light Blue Top",
+        "file": "92198p05c02.dat"
+    },
+    {
+        "id": "6a5bbe4807eab5.19664393",
+        "name": "_Figure Friends Mia with Lime Cropped Trousers, Light Blue Top",
+        "file": "92198p05c03.dat"
+    },
+    {
+        "id": "6a5bbe4807f536.46986866",
+        "name": "_Figure Friends Mia with Light Blue Pleated Skirt, Lime Top with White Stripes",
+        "file": "92198p05c04.dat"
+    },
+    {
+        "id": "6a5bbe4807ff45.22122183",
+        "name": "_Figure Friends Mia with Dark Blue Cropped Trousers, Lime Top with White Stripes, Magenta Helmet",
+        "file": "92198p05c05.dat"
+    },
+    {
+        "id": "6a5bbe48080b51.93347250",
+        "name": "Figure Friends Female Head with Light Blue Eyes with Eye Shadow, Red Lips and Closed Mouth Pattern",
+        "file": "92198p06.dat"
+    },
+    {
+        "id": "6a5bbe48081581.45810274",
+        "name": "_Figure Friends Anna with Red Long Skirt, Dark Blue Sleeveless Blouse Top",
+        "file": "92198p06c01.dat"
+    },
+    {
+        "id": "6a5bbe48082036.86605473",
+        "name": "Figure Friends Female Head with Brown Eyes, Pink Lips and Closed Mouth Pattern",
+        "file": "92198p07.dat"
+    },
+    {
+        "id": "6a5bbe48082ad8.17276563",
+        "name": "_Figure Friends Maya with Wrap-Around Skirt, White Vest Top",
+        "file": "92198p07c01.dat"
+    },
+    {
+        "id": "6a5bbe48083630.21800653",
+        "name": "Figure Friends Female Head with Light Brown Eyes, Pink Lips and Closed Mouth Pattern",
+        "file": "92198p08.dat"
+    },
+    {
+        "id": "6a5bbe48084062.43740998",
+        "name": "_Figure Friends Olivia with Dark Blue Layered Skirt, Dark Pink Top",
+        "file": "92198p08c01.dat"
+    },
+    {
+        "id": "6a5bbe48084ae0.72888571",
+        "name": "_Figure Friends Olivia with Medium Lavender Pleated Skirt, Dark Pink Top",
+        "file": "92198p08c02.dat"
+    },
+    {
+        "id": "6a5bbe48085521.54480386",
+        "name": "_Figure Friends Olivia with Dark Blue Layered Skirt, White Vest Top",
+        "file": "92198p08c03.dat"
+    },
+    {
+        "id": "6a5bbe48086086.43764016",
+        "name": "_Figure Friends Naya with Dark Purple Pleated Skirt, White Vest Top",
+        "file": "92198p08c04.dat"
+    },
+    {
+        "id": "6a5bbe48086a97.91566226",
+        "name": "_Figure Friends Marie with Bright Pink Pleated Skirt, Bright Pink Sleeveless Blouse Top",
+        "file": "92198p08c05.dat"
+    },
+    {
+        "id": "6a5bbe48087490.39746631",
+        "name": "_Figure Friends Theresa with White Riding Pants, Light Aqua Long Sleeve Blouse Top",
+        "file": "92198p08c06.dat"
+    },
+    {
+        "id": "6a5bbe48088048.78609081",
+        "name": "_Figure Friends Olivia with Sand Blue Pleated Skirt, Lime Top with White Stripes",
+        "file": "92198p08c07.dat"
+    },
+    {
+        "id": "6a5bbe48088ad7.28091647",
+        "name": "Figure Friends Boy Head with Open Mouth and Light Blue Eyes Pattern",
+        "file": "92198p09.dat"
+    },
+    {
+        "id": "6a5bbe48089530.71744265",
+        "name": "_Figure Friends Andrew with Dark Blue Cropped Trousers, Bright Light Blue Polo Shirt",
+        "file": "92198p09c01.dat"
+    },
+    {
+        "id": "6a5bbe48089f98.07759574",
+        "name": "_Figure Friends Andrew with Dark Blue Cropped Trousers, Bright Light Blue Polo Shirt, Blue Cap with Headphones",
+        "file": "92198p09c02.dat"
+    },
+    {
+        "id": "6a5bbe4808a9b6.12304344",
+        "name": "Figure Friends Boy Head with Open Mouth and Brown Eyes Pattern",
+        "file": "92198p10.dat"
+    },
+    {
+        "id": "6a5bbe4808b3c6.63466547",
+        "name": "_Figure Friends Matthew with Dark Blue Trousers, Bright Green Polo Shirt",
+        "file": "92198p10c01.dat"
+    },
+    {
+        "id": "6a5bbe4808bde0.46679475",
+        "name": "_Figure Friends Robert with Dark Blue Trousers, Bright Green Polo Shirt",
+        "file": "92198p10c02.dat"
+    },
+    {
+        "id": "6a5bbe4808c7f7.45461045",
+        "name": "Figure Friends Head with Green Eyes, Glasses, Orange Lips and Closed Mouth Pattern",
+        "file": "92198p11.dat"
+    },
+    {
+        "id": "6a5bbe4808d266.12187833",
+        "name": "_Figure Friends Ms. Stevens with White Long Skirt, Medium Lavender Vest over Lavender Shirt",
+        "file": "92198p11c01.dat"
+    },
+    {
+        "id": "6a5bbe4808dcc1.22574381",
+        "name": "Figure Friends Female Head with Light Blue Eyes, Dark Pink Lips and Open Mouth Pattern",
+        "file": "92198p12.dat"
+    },
+    {
+        "id": "6a5bbe4808e700.57263609",
+        "name": "_Figure Friends Ariel with Bright Green Mermaid Tail, Violet Bikini Top",
+        "file": "92198p12c01.dat"
+    },
+    {
+        "id": "6a5bbe4808f1a4.92625030",
+        "name": "Figure Friends Female Head with Bright Light Orange Eyes, Wide Open Smile and Magenta Elves Tribal Pattern",
+        "file": "92198p13.dat"
+    },
+    {
+        "id": "6a5bbe4808fc11.08400586",
+        "name": "_Figure Friends Azari Firedancer with Asymmetric Laced Bright Light Orange Dress",
+        "file": "92198p13c01.dat"
+    },
+    {
+        "id": "6a5bbe48090694.02467467",
+        "name": "Figure Friends Female Head with Bright Light Orange Eyes, Open Mouth and Magenta Elves Tribal Pattern",
+        "file": "92198p14.dat"
+    },
+    {
+        "id": "6a5bbe480910a8.11754792",
+        "name": "_Figure Friends Azari Firedancer with Asymmetric Magenta Dress",
+        "file": "92198p14c01.dat"
+    },
+    {
+        "id": "6a5bbe48091bc0.22342004",
+        "name": "_Figure Friends Azari Firedancer with Asymmetric Magenta Dress and Orange Cape",
+        "file": "92198p14c02.dat"
+    },
+    {
+        "id": "6a5bbe48092652.40075034",
+        "name": "Figure Friends Head with Green Eyes, Nougat Lips, Freckles and Closed Mouth Pattern",
+        "file": "92198p15.dat"
+    },
+    {
+        "id": "6a5bbe48093106.68350689",
+        "name": "_Figure Friends Emily Jones with Sand Blue Shorts, White Top with Blue Stripes",
+        "file": "92198p15c01.dat"
+    },
+    {
+        "id": "6a5bbe48093b43.82758582",
+        "name": "_Figure Friends Emily Jones with Sand Blue Shorts, White Top with Blue Stripes, Dark Blue Cape",
+        "file": "92198p15c02.dat"
+    },
+    {
+        "id": "6a5bbe48094560.46347234",
+        "name": "Figure Friends Head with Green Eyes, Nougat Lips, Freckles and Open Mouth Smile Pattern",
+        "file": "92198p16.dat"
+    },
+    {
+        "id": "6a5bbe48094fd7.51558819",
+        "name": "Figure Friends Head with Medium Azure Eyes and Elves Tribal Pattern",
+        "file": "92198p17.dat"
+    },
+    {
+        "id": "6a5bbe480978a6.39540725",
+        "name": "Figure Friends Male Head without Pattern",
+        "file": "92240.dat"
+    },
+    {
+        "id": "6a5bbe480982e0.76751354",
+        "name": "Figure Friends Male Template",
+        "file": "92240c01.dat"
+    },
+    {
+        "id": "6a5bbe48098d02.73981420",
+        "name": "Figure Friends Male Head with Light Brown Eyes and Beard Pattern",
+        "file": "92240p01.dat"
+    },
+    {
+        "id": "6a5bbe48099896.75387548",
+        "name": "_Figure Friends Peter with Dark Blue Trousers, White Shirt and Red Tie",
+        "file": "92240p01c01.dat"
+    },
+    {
+        "id": "6a5bbe4809a2b2.93254625",
+        "name": "Figure Friends Male Head with Lime Eyes, Slight Smile and Lime Elves Tribal Pattern",
+        "file": "92240p02.dat"
+    },
+    {
+        "id": "6a5bbe4809acb8.29077392",
+        "name": "Figure Friends Male Head with Lime Eyes, Smile with Teeth and Lime Elves Tribal Pattern",
+        "file": "92240p03.dat"
+    },
+    {
+        "id": "6a5bbe4809b794.37357023",
+        "name": "Figure Friends Girl Torso without Pattern",
+        "file": "92241.dat"
+    },
+    {
+        "id": "6a5bbe4809c228.54173443",
+        "name": "Figure Friends Girl Torso with Blue Bikini Top With Whistle Pattern",
+        "file": "92241p00.dat"
+    },
+    {
+        "id": "6a5bbe4809cd08.96370315",
+        "name": "Figure Friends Girl Torso with White Halter Top, Magenta and Dark Pink Stars Pattern",
+        "file": "92241p01.dat"
+    },
+    {
+        "id": "6a5bbe4809e165.83204187",
+        "name": "Figure Friends Girl Torso with Dark Pink Vest Top with Hearts Pattern",
+        "file": "92241p02.dat"
+    },
+    {
+        "id": "6a5bbe4809f4f3.38454235",
+        "name": "Figure Friends Girl Torso with Halter Neck Top with Music Notes and Butterfly Pattern",
+        "file": "92241p03.dat"
+    },
+    {
+        "id": "6a5bbe480a0971.32864150",
+        "name": "Figure Friends Girl Torso with Lavender Vest Top with Flower Pattern",
+        "file": "92241p04.dat"
+    },
+    {
+        "id": "6a5bbe480a1df2.70358722",
+        "name": "Figure Friends Girl Torso with Medium Blue Halter Top with Paw and Butterflies Pattern",
+        "file": "92241p05.dat"
+    },
+    {
+        "id": "6a5bbe480a3253.64408531",
+        "name": "Figure Friends Girl Torso with White Vest Top with Squares Pattern",
+        "file": "92241p06.dat"
+    },
+    {
+        "id": "6a5bbe480a45a9.62978702",
+        "name": "Figure Friends Girl Torso with Black Jacket Formal with Bow Tie and Cummerband Pattern",
+        "file": "92241p07.dat"
+    },
+    {
+        "id": "6a5bbe480a59b3.53554257",
+        "name": "Figure Friends Girl Torso with Medium Blue Top with Silver Stars and Scrolls Pattern",
+        "file": "92241p08.dat"
+    },
+    {
+        "id": "6a5bbe480a71b0.31486166",
+        "name": "Figure Friends Girl Torso with Violet and Medium Lavender Bikini Top Pattern",
+        "file": "92241p09.dat"
+    },
+    {
+        "id": "6a5bbe480a8997.94300081",
+        "name": "Figure Friends Girl Torso with Magenta Top with Floral Pattern",
+        "file": "92241p0a.dat"
+    },
+    {
+        "id": "6a5bbe480aa203.32607074",
+        "name": "Figure Friends Girl Torso with Black Jacket with White Blouse Pattern",
+        "file": "92241p0b.dat"
+    },
+    {
+        "id": "6a5bbe480ab8f7.51586785",
+        "name": "Figure Friends Girl Torso with Light Aqua Sweater with Christmas Pattern",
+        "file": "92241p0c.dat"
+    },
+    {
+        "id": "6a5bbe480ad092.12730259",
+        "name": "Figure Friends Girl Torso with Red Top with Christmas Pattern",
+        "file": "92241p0d.dat"
+    },
+    {
+        "id": "6a5bbe480ae514.29612331",
+        "name": "Figure Friends Girl Torso with Bright Light Orange Vest Top with Hearts Pattern",
+        "file": "92241p0e.dat"
+    },
+    {
+        "id": "6a5bbe480afc72.44640671",
+        "name": "Figure Friends Girl Torso with Light Aqua Halter Neck Top with Paw Prints Pattern",
+        "file": "92241p0f.dat"
+    },
+    {
+        "id": "6a5bbe480b10a3.50968049",
+        "name": "Figure Friends Girl Torso with Light Aqua Long Vest Top with Star Pattern",
+        "file": "92241p0g.dat"
+    },
+    {
+        "id": "6a5bbe480b2511.69892550",
+        "name": "Figure Friends Girl Torso with Medium Lavender Halter Top with Butterflies and Flower Pattern",
+        "file": "92241p0h.dat"
+    },
+    {
+        "id": "6a5bbe480b2f20.08840623",
+        "name": "Figure Friends Girl Torso with Magenta and White Striped Bikini Top Pattern",
+        "file": "92241p0i.dat"
+    },
+    {
+        "id": "6a5bbe480b3960.05229257",
+        "name": "Figure Friends Girl Torso with Karate Top and Dark Blue Belt Pattern",
+        "file": "92241p0j.dat"
+    },
+    {
+        "id": "6a5bbe480b4341.13075590",
+        "name": "Figure Friends Girl Torso with Magenta Top with Butterflies and Leaves Pattern",
+        "file": "92241p0k.dat"
+    },
+    {
+        "id": "6a5bbe480b4d67.74062444",
+        "name": "Figure Friends Girl Torso with White Sleeveless One Strap Top with Metallic Silver Dots and Magenta Star Pattern",
+        "file": "92241p0l.dat"
+    },
+    {
+        "id": "6a5bbe480b5799.88595565",
+        "name": "Figure Friends Girl Torso with Lavender Vest Top with Black and White Flowers Pattern",
+        "file": "92241p0m.dat"
+    },
+    {
+        "id": "6a5bbe480b61c3.36244318",
+        "name": "Figure Friends Girl Torso with White Jacket with Buttons and Dark Red Scarf Pattern",
+        "file": "92241p0n.dat"
+    },
+    {
+        "id": "6a5bbe480b6bc2.19730782",
+        "name": "Figure Friends Girl Torso with Dark Blue and White Halter Top with Flowers and Necklace Pattern",
+        "file": "92241p0o.dat"
+    },
+    {
+        "id": "6a5bbe480b75c7.70079967",
+        "name": "Figure Friends Girl Torso with Bright Light Orange Halter Top with Magenta and White Pattern",
+        "file": "92241p0p.dat"
+    },
+    {
+        "id": "6a5bbe480b7f73.44373619",
+        "name": "Figure Friends Girl Torso with Dark Azure Bikini Top Pattern",
+        "file": "92241p0q.dat"
+    },
+    {
+        "id": "6a5bbe480b8997.79264116",
+        "name": "Figure Friends Girl Torso with Lime Bikini Top and Lei Pattern",
+        "file": "92241p0r.dat"
+    },
+    {
+        "id": "6a5bbe480b9373.25033374",
+        "name": "Figure Friends Girl Torso with White Vest Top with Magenta Necklace Pattern",
+        "file": "92241p0s.dat"
+    },
+    {
+        "id": "6a5bbe480b9d56.52822697",
+        "name": "Figure Friends Girl Torso with Bright Pink Halter Top with Palm Tree, Waves and Flowers Pattern",
+        "file": "92241p0t.dat"
+    },
+    {
+        "id": "6a5bbe480ba737.05959397",
+        "name": "Figure Friends Girl Torso with White Soccer Jersey with Number \"7\" Pattern",
+        "file": "92241p0u.dat"
+    },
+    {
+        "id": "6a5bbe480bb142.04163876",
+        "name": "Figure Friends Girl Torso with Light Aqua Vest Top with Flower Pattern",
+        "file": "92241p0v.dat"
+    },
+    {
+        "id": "6a5bbe480bbb92.82202999",
+        "name": "Figure Friends Girl Torso with Lavender Jacket with Bright Light Blue Scarf Pattern",
+        "file": "92241p0w.dat"
+    },
+    {
+        "id": "6a5bbe480bc638.65557741",
+        "name": "Figure Friends Girl Torso with White Sweater Fair Isle with Red Moose Pattern",
+        "file": "92241p0x.dat"
+    },
+    {
+        "id": "6a5bbe480bd0e0.84475270",
+        "name": "Figure Friends Girl Torso with Sand Green Vest Top with Flower and Butterfly Pattern",
+        "file": "92241p0y.dat"
+    },
+    {
+        "id": "6a5bbe480bdb03.32280795",
+        "name": "Figure Friends Girl Torso with Medium Lavender Top with Bright Pink Lacing and Bow Pattern",
+        "file": "92241p0z.dat"
+    },
+    {
+        "id": "6a5bbe480be544.96955009",
+        "name": "Figure Friends Girl Torso with White Plaid Button Top over Lavender Shirt Pattern",
+        "file": "92241p10.dat"
+    },
+    {
+        "id": "6a5bbe480bef78.34418802",
+        "name": "Figure Friends Girl Torso with White Vest Top with Light Pink and Black Flowers Pattern",
+        "file": "92241p11.dat"
+    },
+    {
+        "id": "6a5bbe480c03f3.94891332",
+        "name": "Figure Friends Girl Torso with Light Aqua Blouse Top with Open Collar and Button Pattern",
+        "file": "92241p12.dat"
+    },
+    {
+        "id": "6a5bbe480c1949.15599454",
+        "name": "Figure Friends Girl Torso with Bright Pink Blouse Top with Open Collar and Button Pattern",
+        "file": "92241p13.dat"
+    },
+    {
+        "id": "6a5bbe480c59e0.89965174",
+        "name": "Figure Friends Girl Torso with White Open Jacket with Belt over Magenta Shirt Pattern",
+        "file": "92241p14.dat"
+    },
+    {
+        "id": "6a5bbe480c6da5.68129212",
+        "name": "Figure Friends Girl Torso with Lime Vest Top with White Stripes, Magenta Dolphin and Starfish Pattern",
+        "file": "92241p15.dat"
+    },
+    {
+        "id": "6a5bbe480c8170.93015760",
+        "name": "Figure Friends Girl Torso with Bright Light Orange Top with Music Notes and Circles Pattern",
+        "file": "92241p16.dat"
+    },
+    {
+        "id": "6a5bbe480c9572.32866397",
+        "name": "Figure Friends Girl Torso with Light Yellow Halter Top with Orange Flower Pattern",
+        "file": "92241p17.dat"
+    },
+    {
+        "id": "6a5bbe480ca929.42304139",
+        "name": "Figure Friends Girl Torso with Light and Dark Pink Bikini Top Pattern",
+        "file": "92241p18.dat"
+    },
+    {
+        "id": "6a5bbe480cbcc0.45288506",
+        "name": "Figure Friends Girl Torso with White Halter Top, Pink Outlined Stars Pattern",
+        "file": "92241p19.dat"
+    },
+    {
+        "id": "6a5bbe480cd0f8.57221791",
+        "name": "Figure Friends Girl Torso with Medium Azure Halter Top Pattern",
+        "file": "92241p1a.dat"
+    },
+    {
+        "id": "6a5bbe480cdb67.34322018",
+        "name": "Figure Friends Girl Torso with Magenta Jungle Rescue Logo, White Collar and Magenta Scarf Pattern",
+        "file": "92241p1c.dat"
+    },
+    {
+        "id": "6a5bbe480ce581.54402363",
+        "name": "Figure Friends Girl Torso with Magenta and Bright Light Orange Strapless Top with Belt Pattern",
+        "file": "92241p20.dat"
+    },
+    {
+        "id": "6a5bbe480cf927.45957692",
+        "name": "Figure Friends Girl Torso with Magenta and Bright Light Orange Top with Laces and Magenta Flame Trim Pattern",
+        "file": "92241p21.dat"
+    },
+    {
+        "id": "6a5bbe480d0cf3.21757622",
+        "name": "Figure Friends Girl Torso with White Top with Dark Blue Stripes and Necklace Pattern",
+        "file": "92241p22.dat"
+    },
+    {
+        "id": "6a5bbe480d2108.48067623",
+        "name": "Figure Friends Girl Torso with Blue and Dark Azure Strapless Top with Light Aqua Trim and Silver Necklace Pattern",
+        "file": "92241p23.dat"
+    },
+    {
+        "id": "6a5bbe480d3543.16502067",
+        "name": "Figure Friends Man Torso",
+        "file": "92242.dat"
+    },
+    {
+        "id": "6a5bbe480d3f53.53467337",
+        "name": "Figure Friends Man Torso with White Shirt and Brown Tie Pattern",
+        "file": "92242p01.dat"
+    },
+    {
+        "id": "6a5bbe480d52d6.77855679",
+        "name": "Figure Friends Woman Torso",
+        "file": "92243.dat"
+    },
+    {
+        "id": "6a5bbe480d5ce3.18467520",
+        "name": "Figure Friends Woman Torso with Dark Blue Blouse Top with Open Collar, Necklace with Red Pendant and Belt Pattern",
+        "file": "92243p01.dat"
+    },
+    {
+        "id": "6a5bbe480d7202.47927340",
+        "name": "Figure Friends Woman Torso with Medium Lavender Vest over Lavender Shirt Pattern",
+        "file": "92243p02.dat"
+    },
+    {
+        "id": "6a5bbe480d8660.07342033",
+        "name": "Figure Friends Female Left Arm",
+        "file": "92244.dat"
+    },
+    {
+        "id": "6a5bbe480d9076.88726824",
+        "name": "Figure Friends Female Left Arm with White Sleeve Pattern",
+        "file": "92244p01.dat"
+    },
+    {
+        "id": "6a5bbe480d9b59.02244425",
+        "name": "Figure Friends Female Left Arm Light Nougat with Short Sleeve and Glove Pattern",
+        "file": "92244p02.dat"
+    },
+    {
+        "id": "6a5bbe480da5e0.73242227",
+        "name": "Figure Friends Female Left Arm with Lavender Short Sleeve Pattern",
+        "file": "92244p03.dat"
+    },
+    {
+        "id": "6a5bbe480db077.97190702",
+        "name": "Figure Friends Female Left Arm with Black Sleeve Pattern",
+        "file": "92244p04.dat"
+    },
+    {
+        "id": "6a5bbe480dbbd1.91332672",
+        "name": "Figure Friends Female Left Arm with Light Aqua Sleeve Pattern",
+        "file": "92244p05.dat"
+    },
+    {
+        "id": "6a5bbe480dc7c0.55557128",
+        "name": "Figure Friends Female Left Arm with Bright Light Blue Short Sleeve Pattern",
+        "file": "92244p06.dat"
+    },
+    {
+        "id": "6a5bbe480dd263.04740181",
+        "name": "Figure Friends Female Left Arm with Medium Lavender Sleeve Pattern",
+        "file": "92244p07.dat"
+    },
+    {
+        "id": "6a5bbe480ddd35.20110375",
+        "name": "Figure Friends Female Left Arm with Red Sleeve Pattern",
+        "file": "92244p08.dat"
+    },
+    {
+        "id": "6a5bbe480deb23.74938391",
+        "name": "Figure Friends Female Left Arm with Bright Green Short Sleeve Pattern",
+        "file": "92244p09.dat"
+    },
+    {
+        "id": "6a5bbe480df5a5.14610915",
+        "name": "Figure Friends Female Left Arm with Coral Short Sleeve Pattern",
+        "file": "92244p0a.dat"
+    },
+    {
+        "id": "6a5bbe480e0000.23886213",
+        "name": "Figure Friends Female Left Arm with Lavender Sleeve Pattern",
+        "file": "92244p10.dat"
+    },
+    {
+        "id": "6a5bbe480e0a21.89560197",
+        "name": "Figure Friends Female Left Arm with Magenta Flame Tattoo Pattern",
+        "file": "92244p11.dat"
+    },
+    {
+        "id": "6a5bbe480e1477.33569707",
+        "name": "Figure Friends Female Left Arm with Gold Flame and Swirls Tattoo Pattern",
+        "file": "92244p12.dat"
+    },
+    {
+        "id": "6a5bbe480e1eb6.85876632",
+        "name": "Figure Friends Female Left Arm with Reddish Brown Leaf Tattoo Pattern",
+        "file": "92244p13.dat"
+    },
+    {
+        "id": "6a5bbe480e2931.21186756",
+        "name": "Figure Friends Female Left Arm with Dark Azure Water Symbol Tattoo Pattern",
+        "file": "92244p14.dat"
+    },
+    {
+        "id": "6a5bbe480e33d3.95186437",
+        "name": "Figure Friends Female Left Arm with Sand Blue Sleeve Pattern",
+        "file": "92244p15.dat"
+    },
+    {
+        "id": "6a5bbe480e3e32.17582961",
+        "name": "Figure Friends Female Right Arm",
+        "file": "92245.dat"
+    },
+    {
+        "id": "6a5bbe480e4951.66731424",
+        "name": "Figure Friends Female Right Arm with White Sleeve Pattern",
+        "file": "92245p01.dat"
+    },
+    {
+        "id": "6a5bbe480e53a2.30354638",
+        "name": "Figure Friends Female Right Arm Light Nougat with Short Sleeve and Glove Pattern",
+        "file": "92245p02.dat"
+    },
+    {
+        "id": "6a5bbe480e5dd3.15088951",
+        "name": "Figure Friends Female Right Arm with Lavender Short Sleeve Pattern",
+        "file": "92245p03.dat"
+    },
+    {
+        "id": "6a5bbe480e67e6.10353137",
+        "name": "Figure Friends Female Right Arm with Black Sleeve Pattern",
+        "file": "92245p04.dat"
+    },
+    {
+        "id": "6a5bbe480e7216.67694695",
+        "name": "Figure Friends Female Right Arm with Light Aqua Sleeve Pattern",
+        "file": "92245p05.dat"
+    },
+    {
+        "id": "6a5bbe480e7d53.21509234",
+        "name": "Figure Friends Female Right Arm with Bright Light Blue Short Sleeve Pattern",
+        "file": "92245p06.dat"
+    },
+    {
+        "id": "6a5bbe480e8992.08770593",
+        "name": "Figure Friends Female Right Arm with Medium Lavender Sleeve Pattern",
+        "file": "92245p07.dat"
+    },
+    {
+        "id": "6a5bbe480e9513.73685100",
+        "name": "Figure Friends Female Right Arm with Red Sleeve Pattern",
+        "file": "92245p08.dat"
+    },
+    {
+        "id": "6a5bbe480ea3d5.87829064",
+        "name": "Figure Friends Female Right Arm with Bright Green Short Sleeve Pattern",
+        "file": "92245p09.dat"
+    },
+    {
+        "id": "6a5bbe480eb3f3.97971378",
+        "name": "Figure Friends Female Right Arm with Coral Short Sleeve Pattern",
+        "file": "92245p0a.dat"
+    },
+    {
+        "id": "6a5bbe480ec025.41702714",
+        "name": "Figure Friends Female Right Arm with Lavender Sleeve Pattern",
+        "file": "92245p10.dat"
+    },
+    {
+        "id": "6a5bbe480ecb12.23086834",
+        "name": "Figure Friends Female Right Arm with Sand Blue Sleeve Pattern",
+        "file": "92245p15.dat"
+    },
+    {
+        "id": "6a5bbe480ed601.97054142",
+        "name": "Figure Friends Male Left Arm",
+        "file": "92246.dat"
+    },
+    {
+        "id": "6a5bbe480ee078.70714588",
+        "name": "Figure Friends Male Left Arm with White Sleeve Pattern",
+        "file": "92246p01.dat"
+    },
+    {
+        "id": "6a5bbe480eeb52.10545203",
+        "name": "Figure Friends Male Left Arm with Bright Green Short Sleeve Pattern",
+        "file": "92246p02.dat"
+    },
+    {
+        "id": "6a5bbe480ef5f1.34655061",
+        "name": "Figure Friends Male Left Arm with Medium Blue Short Sleeve Pattern",
+        "file": "92246p03.dat"
+    },
+    {
+        "id": "6a5bbe480f0045.27421381",
+        "name": "Figure Friends Male Left Arm with Bright Light Blue Short Sleeve Pattern",
+        "file": "92246p04.dat"
+    },
+    {
+        "id": "6a5bbe480f0a58.81450368",
+        "name": "Figure Friends Male Left Arm with Sand Green Sleeve Pattern",
+        "file": "92246p05.dat"
+    },
+    {
+        "id": "6a5bbe480f1476.15894297",
+        "name": "Figure Friends Male Left Arm with Tan Short Sleeve Pattern",
+        "file": "92246p06.dat"
+    },
+    {
+        "id": "6a5bbe480f1f68.62172829",
+        "name": "Figure Friends Male Left Arm with White Short Sleeve Pattern",
+        "file": "92246p07.dat"
+    },
+    {
+        "id": "6a5bbe480f2995.65165113",
+        "name": "Figure Friends Male Left Arm with Bright Light Blue Sleeve Pattern",
+        "file": "92246p08.dat"
+    },
+    {
+        "id": "6a5bbe480f34c8.48681868",
+        "name": "Figure Friends Male Left Arm with Dark Azure Sleeve Pattern",
+        "file": "92246p09.dat"
+    },
+    {
+        "id": "6a5bbe480f3fc8.33805411",
+        "name": "Figure Friends Male Right Arm",
+        "file": "92247.dat"
+    },
+    {
+        "id": "6a5bbe480f49e7.85604340",
+        "name": "Figure Friends Male Right Arm with White Sleeve Pattern",
+        "file": "92247p01.dat"
+    },
+    {
+        "id": "6a5bbe480f53d5.80941509",
+        "name": "Figure Friends Male Right Arm with Bright Green Short Sleeve Pattern",
+        "file": "92247p02.dat"
+    },
+    {
+        "id": "6a5bbe480f5db5.54356053",
+        "name": "Figure Friends Male Right Arm with Medium Blue Short Sleeve Pattern",
+        "file": "92247p03.dat"
+    },
+    {
+        "id": "6a5bbe480f67c7.32702289",
+        "name": "Figure Friends Male Right Arm with Bright Light Blue Short Sleeve Pattern",
+        "file": "92247p04.dat"
+    },
+    {
+        "id": "6a5bbe480f71e7.89888030",
+        "name": "Figure Friends Male Right Arm with Sand Green Sleeve Pattern",
+        "file": "92247p05.dat"
+    },
+    {
+        "id": "6a5bbe480f7bb6.87392984",
+        "name": "Figure Friends Male Right Arm with Tan Short Sleeve Pattern",
+        "file": "92247p06.dat"
+    },
+    {
+        "id": "6a5bbe480f8593.61437447",
+        "name": "Figure Friends Male Right Arm with White Short Sleeve Pattern",
+        "file": "92247p07.dat"
+    },
+    {
+        "id": "6a5bbe480f8fb1.31430637",
+        "name": "Figure Friends Male Right Arm with Bright Light Blue Sleeve Pattern",
+        "file": "92247p08.dat"
+    },
+    {
+        "id": "6a5bbe480f9ba3.91479846",
+        "name": "Figure Friends Male Right Arm with Dark Azure Sleeve Pattern",
+        "file": "92247p09.dat"
+    },
+    {
+        "id": "6a5bbe480fa691.32830452",
+        "name": "Figure Friends Hips",
+        "file": "92248.dat"
+    },
+    {
+        "id": "6a5bbe480fb2a8.41594704",
+        "name": "Figure Friends Legs with Long Skirt",
+        "file": "92249.dat"
+    },
+    {
+        "id": "6a5bbe480fbd61.02659074",
+        "name": "Figure Friends Legs with Long Skirt with Light Nougat Legs and Open Toe Shoes Pattern",
+        "file": "92249p01.dat"
+    },
+    {
+        "id": "6a5bbe480fd262.30728392",
+        "name": "Figure Friends Legs with Long Skirt with Light Nougat Legs and Medium Lavender Shoes Pattern",
+        "file": "92249p02.dat"
+    },
+    {
+        "id": "6a5bbe480fe883.05884844",
+        "name": "Figure Friends Legs with Layered Skirt",
+        "file": "92250.dat"
+    },
+    {
+        "id": "6a5bbe480ff2e2.36483607",
+        "name": "Figure Friends Legs with Layered Skirt with Light Nougat Legs, Shoes with White Tops and Laces Pattern",
+        "file": "92250p01.dat"
+    },
+    {
+        "id": "6a5bbe481006e1.88612008",
+        "name": "Figure Friends Legs with Layered Skirt with Bright Pink Legs, and White Boots Pattern",
+        "file": "92250p02.dat"
+    },
+    {
+        "id": "6a5bbe48101b63.15266579",
+        "name": "Figure Friends Legs with Layered Skirt with White Legs, and Dark Blue Boots with White Laces Pattern",
+        "file": "92250p03.dat"
+    },
+    {
+        "id": "6a5bbe48102f55.07804927",
+        "name": "Figure Friends Legs with Layered Skirt with Light Nougat Legs and Medium Lavender Shoes with Ankle Straps Pattern",
+        "file": "92250p04.dat"
+    },
+    {
+        "id": "6a5bbe48104352.98171663",
+        "name": "Figure Friends Legs with Layered Skirt with Medium Nougat Legs and Magenta Shoes with Ankle Straps Pattern",
+        "file": "92250p05.dat"
+    },
+    {
+        "id": "6a5bbe48105735.08639655",
+        "name": "Figure Friends Legs with Layered Skirt with White Legs and Magenta Shoes with Ankle Straps Pattern",
+        "file": "92250p06.dat"
+    },
+    {
+        "id": "6a5bbe48106dc9.70649264",
+        "name": "Figure Friends Legs with Layered Skirt with Medium Nougat and Magenta Crossed Straps Sandals Pattern",
+        "file": "92250p07.dat"
+    },
+    {
+        "id": "6a5bbe481082b4.97675356",
+        "name": "Figure Friends Legs with Layered Skirt with Light Nougat Legs and White Shoes Pattern",
+        "file": "92250p08.dat"
+    },
+    {
+        "id": "6a5bbe48109730.82817480",
+        "name": "Figure Friends Legs with Cropped Trousers",
+        "file": "92251.dat"
+    },
+    {
+        "id": "6a5bbe4810a150.77340518",
+        "name": "Figure Friends Legs with Cropped Trousers with Dark Pink Butterfly, Light Nougat Legs and Medium Lavender Sandals Pattern",
+        "file": "92251p01.dat"
+    },
+    {
+        "id": "6a5bbe4810b550.93477826",
+        "name": "Figure Friends Legs with Cropped Trousers with Medium Lavender Flower, Medium Nougat Legs and Bright Pink Sandals Pattern",
+        "file": "92251p02.dat"
+    },
+    {
+        "id": "6a5bbe4810c9d3.51561652",
+        "name": "Figure Friends Legs with Cropped Trousers, Light Nougat Legs and Shoes with White Tops and Bright Light Blue Laces Pattern",
+        "file": "92251p03.dat"
+    },
+    {
+        "id": "6a5bbe4810de94.37730944",
+        "name": "Figure Friends Legs with Cropped Trousers, Medium Nougat Legs and White Shoes Pattern",
+        "file": "92251p04.dat"
+    },
+    {
+        "id": "6a5bbe4810f274.11378343",
+        "name": "Figure Friends Legs with Cropped Trousers, Light Nougat Legs and Shoes with Dark Blue Soles and Stripe Pattern",
+        "file": "92251p05.dat"
+    },
+    {
+        "id": "6a5bbe481106e5.51992805",
+        "name": "Figure Friends Legs with Cropped Trousers, Light Nougat Legs and Brown Shoes with  2 Crossed Laces Pattern",
+        "file": "92251p06.dat"
+    },
+    {
+        "id": "6a5bbe48111db8.42430512",
+        "name": "Figure Friends Legs with Pleated Skirt",
+        "file": "92252.dat"
+    },
+    {
+        "id": "6a5bbe48112840.08215587",
+        "name": "Figure Friends Legs with Pleated Skirt with Light Nougat Legs and Pink Crossed Straps Sandals Pattern",
+        "file": "92252p01.dat"
+    },
+    {
+        "id": "6a5bbe48113d44.45760216",
+        "name": "Figure Friends Legs with Pleated Skirt with Black Boots, White Fur Border Pattern",
+        "file": "92252p02.dat"
+    },
+    {
+        "id": "6a5bbe481152f4.40672251",
+        "name": "Figure Friends Legs with Pleated Skirt with Light Nougat Legs and Magenta Shoes with Ankle Straps Pattern",
+        "file": "92252p03.dat"
+    },
+    {
+        "id": "6a5bbe48116788.36624726",
+        "name": "Figure Friends Legs with Pleated Skirt with Light Nougat Legs and Shoes with Magenta Stripe Pattern",
+        "file": "92252p04.dat"
+    },
+    {
+        "id": "6a5bbe48117bc8.81340969",
+        "name": "Figure Friends Legs with Pleated Skirt with Light Nougat Legs and Shoes with White Tops and Magenta Laces Pattern",
+        "file": "92252p05.dat"
+    },
+    {
+        "id": "6a5bbe48118fc1.80774453",
+        "name": "Figure Friends Legs with Pleated Skirt with Light Nougat Legs and White Shoes Pattern",
+        "file": "92252p06.dat"
+    },
+    {
+        "id": "6a5bbe4811a428.35168181",
+        "name": "Figure Friends Legs with Pleated Skirt with Light Nougat Legs and Magenta Shoes Pattern",
+        "file": "92252p07.dat"
+    },
+    {
+        "id": "6a5bbe4811b869.95016767",
+        "name": "Figure Friends Legs with Trousers",
+        "file": "92253.dat"
+    },
+    {
+        "id": "6a5bbe4811c289.95136099",
+        "name": "Figure Friends Legs with Trousers with Dark Tan Shoes Pattern",
+        "file": "92253p01.dat"
+    },
+    {
+        "id": "6a5bbe4811d693.20197080",
+        "name": "Figure Friends Legs with Trousers with Black Boots Pattern",
+        "file": "92253p02.dat"
+    },
+    {
+        "id": "6a5bbe4811ea72.01273612",
+        "name": "Figure Friends Legs with Trousers with Reddish Brown Boots Pattern",
+        "file": "92253p03.dat"
+    },
+    {
+        "id": "6a5bbe4811fe96.57796789",
+        "name": "Figure Friends Legs with Trousers with Dark Red Low-Cut Shoes Pattern",
+        "file": "92253p04.dat"
+    },
+    {
+        "id": "6a5bbe481212e7.82244558",
+        "name": "Figure Friends Legs with Trousers with Light Nougat Ankles and Dark Turquoise Shoes Pattern",
+        "file": "92253p05.dat"
+    },
+    {
+        "id": "6a5bbe48121d37.79862555",
+        "name": "Figure Friends Legs with Trousers with White Shoes, Dark Blue Laces and Soles Pattern",
+        "file": "92253p06.dat"
+    },
+    {
+        "id": "6a5bbe481227c7.88842756",
+        "name": "Figure Friends Legs with Trousers with Reddish Brown Shoes Pattern",
+        "file": "92253p07.dat"
+    },
+    {
+        "id": "6a5bbe481251b8.11680053",
+        "name": "Figure Friends Hair Long Straight",
+        "file": "92255.dat"
+    },
+    {
+        "id": "6a5bbe48127989.78280446",
+        "name": "Figure Friends Hair Short, Bob Cut",
+        "file": "92259.dat"
+    },
+    {
+        "id": "6a5bbe4813b849.98552270",
+        "name": "Figure Friends Girl Torso with Arms",
+        "file": "92456.dat"
+    },
+    {
+        "id": "6a5bbe4813c2a1.57131143",
+        "name": "Figure Friends Girl Torso with Arms with Blue Bikini Top With Whistle Pattern",
+        "file": "92456p00.dat"
+    },
+    {
+        "id": "6a5bbe4813ccf8.55787291",
+        "name": "Figure Friends Girl Torso with Arms with White Halter Top, Pink Stars Pattern",
+        "file": "92456p01.dat"
+    },
+    {
+        "id": "6a5bbe4813d743.81770399",
+        "name": "Figure Friends Girl Torso with Arms with Dark Pink Vest Top with Hearts Pattern",
+        "file": "92456p02.dat"
+    },
+    {
+        "id": "6a5bbe4813e174.42813323",
+        "name": "Figure Friends Girl Torso with Arms with Halter Neck Top with Music Notes and Butterfly Pattern",
+        "file": "92456p03.dat"
+    },
+    {
+        "id": "6a5bbe4813ebf1.00328431",
+        "name": "Figure Friends Girl Torso with Arms with Lavender Vest Top with Flower Pattern",
+        "file": "92456p04.dat"
+    },
+    {
+        "id": "6a5bbe4813f623.25282328",
+        "name": "Figure Friends Girl Torso with Arms with Medium Halter Top with Paw and Butterflies Pattern",
+        "file": "92456p05.dat"
+    },
+    {
+        "id": "6a5bbe481400b9.64070214",
+        "name": "Figure Friends Girl Torso with Arms with White Vest Top with Squares Pattern",
+        "file": "92456p06.dat"
+    },
+    {
+        "id": "6a5bbe48140b09.20354846",
+        "name": "Figure Friends Girl Torso with Arms with Black Jacket Formal with Bow Tie and Cummerband Pattern",
+        "file": "92456p07.dat"
+    },
+    {
+        "id": "6a5bbe48141549.54366571",
+        "name": "Figure Friends Girl Torso with Arms with Medium Blue Top with Silver Stars and Scrolls Pattern",
+        "file": "92456p08.dat"
+    },
+    {
+        "id": "6a5bbe48141f47.52426139",
+        "name": "Figure Friends Girl Torso with Arms with Violet and Medium Lavender Bikini Top Pattern",
+        "file": "92456p09.dat"
+    },
+    {
+        "id": "6a5bbe48142984.31423528",
+        "name": "Figure Friends Girl Torso with Arms with Magenta Top with Floral Pattern",
+        "file": "92456p0a.dat"
+    },
+    {
+        "id": "6a5bbe48143417.52982033",
+        "name": "Figure Friends Girl Torso with Arms with Black Jacket with White Blouse Pattern",
+        "file": "92456p0b.dat"
+    },
+    {
+        "id": "6a5bbe48143e00.61690782",
+        "name": "Figure Friends Girl Torso with Arms with Light Aqua Sweater with Christmas Pattern",
+        "file": "92456p0c.dat"
+    },
+    {
+        "id": "6a5bbe48144cb5.76230596",
+        "name": "Figure Friends Girl Torso with Arms with Red Top with Christmas Pattern",
+        "file": "92456p0d.dat"
+    },
+    {
+        "id": "6a5bbe48145764.12493839",
+        "name": "Figure Friends Girl Torso with Arms with Bright Light Orange Vest Top with Hearts Pattern",
+        "file": "92456p0e.dat"
+    },
+    {
+        "id": "6a5bbe481461a5.04554834",
+        "name": "Figure Friends Girl Torso with Arms with Light Aqua Halter Neck Top with Paw Prints Pattern",
+        "file": "92456p0f.dat"
+    },
+    {
+        "id": "6a5bbe48146bf5.89676651",
+        "name": "Figure Friends Girl Torso with Arms with Light Aqua Long Vest Top with Star Pattern",
+        "file": "92456p0g.dat"
+    },
+    {
+        "id": "6a5bbe48147609.26219914",
+        "name": "Figure Friends Girl Torso with Arms with Medium Lavender Halter Top with Butterflies and Flower Pattern",
+        "file": "92456p0h.dat"
+    },
+    {
+        "id": "6a5bbe48148016.41750477",
+        "name": "Figure Friends Girl Torso with Arms with Magenta and White Striped Bikini Top Pattern",
+        "file": "92456p0i.dat"
+    },
+    {
+        "id": "6a5bbe48148a53.96022026",
+        "name": "Figure Friends Girl Torso with Arms with Karate Top and Dark Blue Belt Pattern",
+        "file": "92456p0j.dat"
+    },
+    {
+        "id": "6a5bbe481494d2.78716486",
+        "name": "Figure Friends Girl Torso with Arms with Magenta Top with Butterflies and Leaves Pattern",
+        "file": "92456p0k.dat"
+    },
+    {
+        "id": "6a5bbe48149ee3.18794819",
+        "name": "Figure Friends Girl Torso with Arms with White Sleeveless One Strap Top with Metallic Silver Dots and Magenta Star Pattern",
+        "file": "92456p0l.dat"
+    },
+    {
+        "id": "6a5bbe4814a904.31820926",
+        "name": "Figure Friends Girl Torso with Arms with Lavender Vest Top with Black and White Flowers Pattern",
+        "file": "92456p0m.dat"
+    },
+    {
+        "id": "6a5bbe4814b375.77829335",
+        "name": "Figure Friends Girl Torso with Arms with White Jacket with Buttons and Dark Red Scarf Pattern",
+        "file": "92456p0n.dat"
+    },
+    {
+        "id": "6a5bbe4814bde7.41229262",
+        "name": "Figure Friends Girl Torso with Arms with Dark Blue and White Halter Top with Flowers and Necklace Pattern",
+        "file": "92456p0o.dat"
+    },
+    {
+        "id": "6a5bbe4814c7c1.99703259",
+        "name": "Figure Friends Girl Torso with Arms with Bright Light Orange Halter Top with Magenta and White Pattern",
+        "file": "92456p0p.dat"
+    },
+    {
+        "id": "6a5bbe4814d1e3.38661394",
+        "name": "Figure Friends Girl Torso with Arms with Dark Azure Bikini Top Pattern",
+        "file": "92456p0q.dat"
+    },
+    {
+        "id": "6a5bbe4814dbf0.28080520",
+        "name": "Figure Friends Girl Torso with Arms with Lime Bikini Top and Lei Pattern",
+        "file": "92456p0r.dat"
+    },
+    {
+        "id": "6a5bbe4814e667.85939405",
+        "name": "Figure Friends Girl Torso with Arms with White Vest Top with Magenta Necklace Pattern",
+        "file": "92456p0s.dat"
+    },
+    {
+        "id": "6a5bbe4814f071.69759458",
+        "name": "Figure Friends Girl Torso with Arms with Bright Pink Halter Top with Palm Tree, Waves and Flowers Pattern",
+        "file": "92456p0t.dat"
+    },
+    {
+        "id": "6a5bbe4814fb28.86999186",
+        "name": "Figure Friends Girl Torso with Arms with White Soccer Jersey with Number \"7\" Pattern",
+        "file": "92456p0u.dat"
+    },
+    {
+        "id": "6a5bbe48150599.61060403",
+        "name": "Figure Friends Girl Torso with Arms with Light Aqua Vest Top with Flower Pattern",
+        "file": "92456p0v.dat"
+    },
+    {
+        "id": "6a5bbe48150fb7.51864939",
+        "name": "Figure Friends Girl Torso with Arms with Lavender Jacket with Bright Light Blue Scarf Pattern",
+        "file": "92456p0w.dat"
+    },
+    {
+        "id": "6a5bbe481519e8.18713122",
+        "name": "Figure Friends Girl Torso with Arms with White Sweater Fair Isle with Red Moose Pattern",
+        "file": "92456p0x.dat"
+    },
+    {
+        "id": "6a5bbe481523e1.93310960",
+        "name": "Figure Friends Girl Torso with Arms with Sand Green Vest Top with Flower and Butterfly Pattern",
+        "file": "92456p0y.dat"
+    },
+    {
+        "id": "6a5bbe48152ee7.82991736",
+        "name": "Figure Friends Girl Torso with Arms with Medium Lavender Top with Bright Pink Lacing and Bow Pattern",
+        "file": "92456p0z.dat"
+    },
+    {
+        "id": "6a5bbe48153912.08410578",
+        "name": "Figure Friends Girl Torso with Arms with White Plaid Button Top over Lavender Shirt Pattern",
+        "file": "92456p10.dat"
+    },
+    {
+        "id": "6a5bbe48154324.43687653",
+        "name": "Figure Friends Girl Torso with Arms with White Vest Top with Light Pink and Black Flowers Pattern",
+        "file": "92456p11.dat"
+    },
+    {
+        "id": "6a5bbe48154d71.08451773",
+        "name": "Figure Friends Girl Torso with Arms with Light Aqua Blouse Top with Open Collar and Button Pattern",
+        "file": "92456p12.dat"
+    },
+    {
+        "id": "6a5bbe481557a0.43699676",
+        "name": "Figure Friends Girl Torso with Arms with Bright Pink Sleeveless Blouse Top with Open Collar and Button Pattern",
+        "file": "92456p13.dat"
+    },
+    {
+        "id": "6a5bbe48156213.50839666",
+        "name": "Figure Friends Girl Torso with Arms with White Open Jacket with Belt over Magenta Shirt Pattern",
+        "file": "92456p14.dat"
+    },
+    {
+        "id": "6a5bbe48156c01.09939033",
+        "name": "Figure Friends Girl Torso with Arms with Lime Vest Top with White Stripes, Magenta Dolphin and Starfish Pattern",
+        "file": "92456p15.dat"
+    },
+    {
+        "id": "6a5bbe48157623.99578071",
+        "name": "Figure Friends Girl Torso with Arms with Bright Light Orange Top with Music Notes and Circles Pattern",
+        "file": "92456p16.dat"
+    },
+    {
+        "id": "6a5bbe48158011.08408713",
+        "name": "Figure Friends Girl Torso with Arms with Light Yellow Halter Top with Orange Flower Pattern",
+        "file": "92456p17.dat"
+    },
+    {
+        "id": "6a5bbe48158a09.14703556",
+        "name": "Figure Friends Girl Torso with Arms with Light and Dark Pink Bikini Top Pattern",
+        "file": "92456p18.dat"
+    },
+    {
+        "id": "6a5bbe48159450.30690898",
+        "name": "Figure Friends Girl Torso with Arms with White Halter Top, Pink Outlined Stars Pattern",
+        "file": "92456p19.dat"
+    },
+    {
+        "id": "6a5bbe48159ef8.85171736",
+        "name": "Figure Friends Girl Torso with Arms with Magenta and Bright Light Orange Strapless Top with Belt Pattern",
+        "file": "92456p20.dat"
+    },
+    {
+        "id": "6a5bbe4815a924.71012893",
+        "name": "Figure Friends Girl Torso with Arms with Magenta and Bright Light Orange Top with Laces and Magenta Flame Trim Pattern",
+        "file": "92456p21.dat"
+    },
+    {
+        "id": "6a5bbe4815b323.79415181",
+        "name": "Figure Friends Girl Torso with Arms with White Top with Dark Blue Stripes and Necklace Pattern",
+        "file": "92456p22.dat"
+    },
+    {
+        "id": "6a5bbe4815bd76.15346812",
+        "name": "Figure Friends Girl Torso with Arms with Blue and Dark Azure Strapless Top with Light Aqua Trim and Silver Necklace Pattern",
+        "file": "92456p23.dat"
+    },
+    {
+        "id": "6a5bbe481a2553.89682957",
+        "name": "Figure Friends Man Torso with Arms",
+        "file": "92815.dat"
+    },
+    {
+        "id": "6a5bbe481a31d9.71319345",
+        "name": "Figure Friends Man Torso with Arms with White Shirt and Brown Tie Pattern",
+        "file": "92815p01.dat"
+    },
+    {
+        "id": "6a5bbe481a3cd3.96096205",
+        "name": "Figure Friends Woman Torso with Arms",
+        "file": "92816.dat"
+    },
+    {
+        "id": "6a5bbe481a4761.11094339",
+        "name": "Figure Friends Woman Torso with Arms with Dark Blue Blouse Top with Open Collar, Necklace with Red Pendant and Belt Pattern",
+        "file": "92816p01.dat"
+    },
+    {
+        "id": "6a5bbe481a51b5.34481708",
+        "name": "Figure Friends Woman Torso with Arms with Medium Lavender Vest over Lavender Shirt Pattern",
+        "file": "92816p02.dat"
+    },
+    {
+        "id": "6a5bbe481a5cc7.75563746",
+        "name": "Figure Friends Hips and Legs with Long Skirt",
+        "file": "92817.dat"
+    },
+    {
+        "id": "6a5bbe481a6731.81805843",
+        "name": "Figure Friends Hips and Legs with Long Skirt with Light Nougat Legs and Open Toe Shoes Pattern",
+        "file": "92817p01.dat"
+    },
+    {
+        "id": "6a5bbe481a7168.33944268",
+        "name": "Figure Friends Hips and Legs with Long Skirt with Light Nougat Legs and Medium Lavender Shoes Pattern",
+        "file": "92817p02.dat"
+    },
+    {
+        "id": "6a5bbe481a7b69.30022543",
+        "name": "Figure Friends Hips and Legs with Layered Skirt",
+        "file": "92818.dat"
+    },
+    {
+        "id": "6a5bbe481a85a2.88811700",
+        "name": "Figure Friends Hips and Legs with Layered Skirt with Light Nougat Legs, Shoes with White Tops and Laces Pattern",
+        "file": "92818p01.dat"
+    },
+    {
+        "id": "6a5bbe481a9036.88538758",
+        "name": "Figure Friends Hips and Legs with Layered Skirt with Bright Pink Legs, and White Boots Pattern",
+        "file": "92818p02.dat"
+    },
+    {
+        "id": "6a5bbe481a9b42.24304640",
+        "name": "Figure Friends Hips and Legs with Layered Skirt with White Legs, and Dark Blue Boots with White Laces Pattern",
+        "file": "92818p03.dat"
+    },
+    {
+        "id": "6a5bbe481aa5b6.12871825",
+        "name": "Figure Friends Hips and Legs with Layered Skirt with Light Nougat Legs and Medium Lavender Shoes with Ankle Straps Pattern",
+        "file": "92818p04.dat"
+    },
+    {
+        "id": "6a5bbe481ab501.73707173",
+        "name": "Figure Friends Hips and Legs with Layered Skirt with Medium Nougat Legs and Magenta Shoes with Ankle Straps Pattern",
+        "file": "92818p05.dat"
+    },
+    {
+        "id": "6a5bbe481ac955.55016250",
+        "name": "Figure Friends Hips and Legs with Layered Skirt with White Legs and Magenta Shoes with Ankle Straps Pattern",
+        "file": "92818p06.dat"
+    },
+    {
+        "id": "6a5bbe481ad929.92980192",
+        "name": "Figure Friends Hips and Legs with Layered Skirt with Medium Nougat and Magenta Crossed Straps Sandals Pattern",
+        "file": "92818p07.dat"
+    },
+    {
+        "id": "6a5bbe481ae7c6.04096566",
+        "name": "Figure Friends Hips and Legs with Layered Skirt with Light Nougat Legs and White Shoes Pattern",
+        "file": "92818p08.dat"
+    },
+    {
+        "id": "6a5bbe481af5e9.16275542",
+        "name": "Figure Friends Hips and Legs with Cropped Trousers",
+        "file": "92819.dat"
+    },
+    {
+        "id": "6a5bbe481b0349.47905521",
+        "name": "Figure Friends Hips and Legs with Cropped Trousers with Dark Pink Butterfly, Light Nougat Legs and Medium Lavender Sandals Pattern",
+        "file": "92819p01.dat"
+    },
+    {
+        "id": "6a5bbe481b1084.61323553",
+        "name": "Figure Friends Hips and Legs with Cropped Trousers with Medium Lavender Flower, Medium Nougat Legs and Bright Pink Sandals Pattern",
+        "file": "92819p02.dat"
+    },
+    {
+        "id": "6a5bbe481b2176.76254342",
+        "name": "Figure Friends Hips and Legs with Cropped Trousers, Light Nougat Legs and Shoes with White Tops and Bright Light Blue Laces Pattern",
+        "file": "92819p03.dat"
+    },
+    {
+        "id": "6a5bbe481b2e11.09216624",
+        "name": "Figure Friends Hips and Legs with Cropped Trousers, Medium Nougat Legs and White Shoes Pattern",
+        "file": "92819p04.dat"
+    },
+    {
+        "id": "6a5bbe481b3c54.66254037",
+        "name": "Figure Friends Hips and Legs with Cropped Trousers, Light Nougat Legs and Shoes with Dark Blue Soles and Stripe Pattern",
+        "file": "92819p05.dat"
+    },
+    {
+        "id": "6a5bbe481b4a53.30513545",
+        "name": "Figure Friends Hips and Legs with Cropped Trousers, Light Nougat Legs and Brown Shoes with  2 Crossed Laces Pattern",
+        "file": "92819p06.dat"
+    },
+    {
+        "id": "6a5bbe481b56f3.19442714",
+        "name": "Figure Friends Hips and Legs with Pleated Skirt",
+        "file": "92820.dat"
+    },
+    {
+        "id": "6a5bbe481b62b0.26368251",
+        "name": "Figure Friends Hips and Legs with Pleated Skirt with Light Nougat Legs and Pink Crossed Straps Sandals Pattern",
+        "file": "92820p01.dat"
+    },
+    {
+        "id": "6a5bbe481b7154.36794530",
+        "name": "Figure Friends Hips and Legs with Pleated Skirt with Black Boots, White Fur Border Pattern",
+        "file": "92820p02.dat"
+    },
+    {
+        "id": "6a5bbe481b7d16.26357321",
+        "name": "Figure Friends Hips and Legs with Pleated Skirt with Light Nougat Legs and Magenta Shoes with Ankle Straps Pattern",
+        "file": "92820p03.dat"
+    },
+    {
+        "id": "6a5bbe481b88c6.25713078",
+        "name": "Figure Friends Hips and Legs with Pleated Skirt with Light Nougat Legs and Shoes with Magenta Stripe Pattern",
+        "file": "92820p04.dat"
+    },
+    {
+        "id": "6a5bbe481b9492.57146092",
+        "name": "Figure Friends Hips and Legs with Pleated Skirt with Light Nougat Legs and Shoes with White Tops and Magenta Laces Pattern",
+        "file": "92820p05.dat"
+    },
+    {
+        "id": "6a5bbe481b9f99.53531970",
+        "name": "Figure Friends Hips and Legs with Pleated Skirt with Light Nougat Legs and White Shoes Pattern",
+        "file": "92820p06.dat"
+    },
+    {
+        "id": "6a5bbe481baac5.00845613",
+        "name": "Figure Friends Hips and Legs with Pleated Skirt with Light Nougat Legs and Magenta Shoes Pattern",
+        "file": "92820p07.dat"
+    },
+    {
+        "id": "6a5bbe481e2197.29900644",
+        "name": "Figure Friends Accessories Bag Round with Ruffle",
+        "file": "93090.dat"
+    },
+    {
+        "id": "6a5bbe481e2c32.64365125",
+        "name": "Figure Friends Accessories Bag Round with Bright Pink Ruffle Pattern",
+        "file": "93090p01.dat"
+    },
+    {
+        "id": "6a5bbe481e3735.15036136",
+        "name": "Figure Friends Accessories Bag Round with Dark Pink Ruffle Pattern",
+        "file": "93090p02.dat"
+    },
+    {
+        "id": "6a5bbe481e41a9.81660699",
+        "name": "Figure Friends Accessories Bag Round with Light Aqua Ruffle Pattern",
+        "file": "93090p03.dat"
+    },
+    {
+        "id": "6a5bbe481e4c22.00036727",
+        "name": "Figure Friends Handbag with Zipper",
+        "file": "93091.dat"
+    },
+    {
+        "id": "6a5bbe481e56a8.37055126",
+        "name": "Figure Friends Handbag with Metallic Silver Zipper and Medium Lavender Side Pattern",
+        "file": "93091p01.dat"
+    },
+    {
+        "id": "6a5bbe481e6139.70752721",
+        "name": "Figure Friends Handbag with Zipper and Magenta Jungle Rescue Logo Pattern",
+        "file": "93091p02.dat"
+    },
+    {
+        "id": "6a5bbe485fd918.06906017",
+        "name": "Figure Friends Medical Nurse Hat",
+        "file": "98393h.dat"
+    },
+    {
+        "id": "6a5bbe486f9d44.03334876",
+        "name": "Maxifig Hair Short",
+        "file": "u197.dat"
+    },
+    {
+        "id": "6a5bbe486fb149.87787297",
+        "name": "Maxifig Hair with Bun",
+        "file": "u406.dat"
+    },
+    {
+        "id": "6a5bbe487028d6.09511578",
+        "name": "~Figure Fabuland Bird Head without Pattern",
+        "file": "u586.dat"
+    },
+    {
+        "id": "6a5bbe48703302.41519564",
+        "name": "~Figure Fabuland Bird Head  1",
+        "file": "u586p01.dat"
+    },
+    {
+        "id": "6a5bbe48703ee1.91333907",
+        "name": "Figure Fabuland Bird Head  1 with Neck",
+        "file": "u586p01c01.dat"
+    },
+    {
+        "id": "6a5bbe48704b78.53502989",
+        "name": "Figure Fabuland Bird Head  1 with Neck and Aviator Helmet Red",
+        "file": "u586p01c02.dat"
+    },
+    {
+        "id": "6a5bbe487056e9.59578020",
+        "name": "_Figure Fabuland Bird  1 with Body Black\/Black\/Yellow",
+        "file": "u586p01c03.dat"
+    },
+    {
+        "id": "6a5bbe487061f3.41776037",
+        "name": "_Figure Fabuland Bird  1 Body Black\/Black\/Yellow Aviator Helmet",
+        "file": "u586p01c04.dat"
+    },
+    {
+        "id": "6a5bbe48706d19.53190375",
+        "name": "~Figure Fabuland Bird Head  2",
+        "file": "u586p02.dat"
+    },
+    {
+        "id": "6a5bbe48707803.90044382",
+        "name": "Figure Fabuland Bird Head  2 with Neck",
+        "file": "u586p02c01.dat"
+    },
+    {
+        "id": "6a5bbe487082a4.37718209",
+        "name": "Figure Fabuland Bird Head  2 with Neck and Aviator Helmet Red",
+        "file": "u586p02c02.dat"
+    },
+    {
+        "id": "6a5bbe48708d20.02325447",
+        "name": "_Figure Fabuland Bird  2 Body Red\/Blue\/Yellow",
+        "file": "u586p02c03.dat"
+    },
+    {
+        "id": "6a5bbe48709765.69757935",
+        "name": "_Figure Fabuland Bird  2 Body Red\/White\/Yellow Aviator Helmet",
+        "file": "u586p02c04.dat"
+    },
+    {
+        "id": "6a5bbe4870a473.95742354",
+        "name": "~Figure Fabuland Bird Head  3",
+        "file": "u586p03.dat"
+    },
+    {
+        "id": "6a5bbe4870aee1.97214410",
+        "name": "Figure Fabuland Bird Head  3 with Neck",
+        "file": "u586p03c01.dat"
+    },
+    {
+        "id": "6a5bbe4870b8f2.91997607",
+        "name": "Figure Fabuland Bird Head  3 with Neck and Aviator Helmet Red",
+        "file": "u586p03c02.dat"
+    },
+    {
+        "id": "6a5bbe4870c317.57467869",
+        "name": "_Figure Fabuland Bird  3 Body Black\/Black\/Yellow Aviator Helmet",
+        "file": "u586p03c03.dat"
+    },
+    {
+        "id": "6a5bbe4870cd66.85096049",
+        "name": "~Figure Fabuland Dog Head without Pattern",
+        "file": "u587.dat"
+    },
+    {
+        "id": "6a5bbe4870d809.70627163",
+        "name": "~Figure Fabuland Dog Head",
+        "file": "u587p01.dat"
+    },
+    {
+        "id": "6a5bbe4870e1f4.03221022",
+        "name": "Figure Fabuland Dog Head with Neck",
+        "file": "u587p01c01.dat"
+    },
+    {
+        "id": "6a5bbe4870ecb3.94243382",
+        "name": "_Figure Fabuland Dog with Body White\/White\/Black",
+        "file": "u587p01c02.dat"
+    },
+    {
+        "id": "6a5bbe4870f727.60370600",
+        "name": "~Figure Fabuland Elephant Head without Pattern",
+        "file": "u588.dat"
+    },
+    {
+        "id": "6a5bbe487101a0.52118036",
+        "name": "~Figure Fabuland Elephant Head  1",
+        "file": "u588p01.dat"
+    },
+    {
+        "id": "6a5bbe48710be5.79025309",
+        "name": "Figure Fabuland Elephant Head  1 with Neck",
+        "file": "u588p01c01.dat"
+    },
+    {
+        "id": "6a5bbe48711639.14004768",
+        "name": "Figure Fabuland Elephant Head  1 w Neck and Sou'wester Yellow",
+        "file": "u588p01c02.dat"
+    },
+    {
+        "id": "6a5bbe48712060.72606541",
+        "name": "_Figure Fabuland Elephant  1 with Body Blue\/Blue\/Grey",
+        "file": "u588p01c03.dat"
+    },
+    {
+        "id": "6a5bbe48712ad1.10456493",
+        "name": "_Figure Fabuland Elephant  1 with Body Red\/Red\/Grey",
+        "file": "u588p01c04.dat"
+    },
+    {
+        "id": "6a5bbe48713533.68021258",
+        "name": "_Figure Fabuland Elephant  1 w Body Yellw\/Yellw\/Blk Sou'wester",
+        "file": "u588p01c05.dat"
+    },
+    {
+        "id": "6a5bbe48713fc2.76286236",
+        "name": "~Figure Fabuland Elephant Head  2",
+        "file": "u588p02.dat"
+    },
+    {
+        "id": "6a5bbe48714a12.80150181",
+        "name": "Figure Fabuland Elephant Head  2 with Neck",
+        "file": "u588p02c01.dat"
+    },
+    {
+        "id": "6a5bbe48715438.99537483",
+        "name": "Figure Fabuland Elephant Head  2 w Neck and Sou'wester Yellow",
+        "file": "u588p02c02.dat"
+    },
+    {
+        "id": "6a5bbe48715e51.59239133",
+        "name": "_Figure Fabuland Elephant  2 w Body Red\/Red\/Grey with Braces",
+        "file": "u588p02c03.dat"
+    },
+    {
+        "id": "6a5bbe48716912.83342338",
+        "name": "_Figure Fabuland Elephant  2 w Body Yellw\/Yellw\/Blk Sou'wester",
+        "file": "u588p02c04.dat"
+    },
+    {
+        "id": "6a5bbe48717317.30806186",
+        "name": "~Figure Fabuland Fox Head without Pattern",
+        "file": "u589.dat"
+    },
+    {
+        "id": "6a5bbe48717df8.89829825",
+        "name": "~Figure Fabuland Fox Head  1",
+        "file": "u589p01.dat"
+    },
+    {
+        "id": "6a5bbe487188f0.53679061",
+        "name": "Figure Fabuland Fox Head  1 with Neck",
+        "file": "u589p01c01.dat"
+    },
+    {
+        "id": "6a5bbe48719323.53653210",
+        "name": "_Figure Fabuland Fox  1 with Body Black\/Red\/Red",
+        "file": "u589p01c02.dat"
+    },
+    {
+        "id": "6a5bbe48719da0.04810512",
+        "name": "~Figure Fabuland Fox Head  2",
+        "file": "u589p02.dat"
+    },
+    {
+        "id": "6a5bbe4871a822.25873654",
+        "name": "Figure Fabuland Fox Head  2 with Neck",
+        "file": "u589p02c01.dat"
+    },
+    {
+        "id": "6a5bbe4871b265.28433052",
+        "name": "Figure Fabuland Fox Head  2 with Neck and Yellow Straw Hat",
+        "file": "u589p02c02.dat"
+    },
+    {
+        "id": "6a5bbe4871bce2.99801896",
+        "name": "_Figure Fabuland Fox  2 w Body Red\/Red\/Blue Dungarees and Hat",
+        "file": "u589p02c03.dat"
+    },
+    {
+        "id": "6a5bbe4871c737.84678807",
+        "name": "~Figure Fabuland Goat Head without Pattern",
+        "file": "u590.dat"
+    },
+    {
+        "id": "6a5bbe4871d186.53983320",
+        "name": "~Figure Fabuland Goat Head  1",
+        "file": "u590p01.dat"
+    },
+    {
+        "id": "6a5bbe4871db90.37223851",
+        "name": "Figure Fabuland Goat Head  1 with Neck",
+        "file": "u590p01c01.dat"
+    },
+    {
+        "id": "6a5bbe4871e5b9.25430800",
+        "name": "_Figure Fabuland Goat  1 with Body Blue\/Yellow\/Yellow",
+        "file": "u590p01c02.dat"
+    },
+    {
+        "id": "6a5bbe4871efc3.26177104",
+        "name": "~Figure Fabuland Goat Head  2",
+        "file": "u590p02.dat"
+    },
+    {
+        "id": "6a5bbe4871fa18.83685048",
+        "name": "Figure Fabuland Goat Head  2 with Neck",
+        "file": "u590p02c01.dat"
+    },
+    {
+        "id": "6a5bbe48720476.20769830",
+        "name": "_Figure Fabuland Goat  2 with Body White\/White\/White",
+        "file": "u590p02c02.dat"
+    },
+    {
+        "id": "6a5bbe48720f26.23921773",
+        "name": "~Figure Fabuland Horse Head without Pattern",
+        "file": "u592.dat"
+    },
+    {
+        "id": "6a5bbe48721997.07847868",
+        "name": "~Figure Fabuland Horse  1",
+        "file": "u592p01.dat"
+    },
+    {
+        "id": "6a5bbe48722381.91451043",
+        "name": "Figure Fabuland Horse Head  1 with Neck",
+        "file": "u592p01c01.dat"
+    },
+    {
+        "id": "6a5bbe48722de3.88187628",
+        "name": "_Figure Fabuland Horse  1 with Body Black\/Red\/Red",
+        "file": "u592p01c02.dat"
+    },
+    {
+        "id": "6a5bbe48723881.64409620",
+        "name": "_Figure Fabuland Horse  1 with Body Yellow\/Yellow\/Blue",
+        "file": "u592p01c03.dat"
+    },
+    {
+        "id": "6a5bbe48724297.76898964",
+        "name": "_Figure Fabuland Horse  1 with Body Blue\/Yellow\/Yellow",
+        "file": "u592p01c04.dat"
+    },
+    {
+        "id": "6a5bbe48724cf5.30871936",
+        "name": "~Figure Fabuland Horse  2",
+        "file": "u592p02.dat"
+    },
+    {
+        "id": "6a5bbe487256f3.19029986",
+        "name": "Figure Fabuland Horse Head  2 with Neck",
+        "file": "u592p02c01.dat"
+    },
+    {
+        "id": "6a5bbe48726107.92594704",
+        "name": "_Figure Fabuland Horse  2 with Body White\/White\/Grey Dungarees",
+        "file": "u592p02c02.dat"
+    },
+    {
+        "id": "6a5bbe48726bb6.66224590",
+        "name": "~Figure Fabuland Monkey Head without Pattern",
+        "file": "u595.dat"
+    },
+    {
+        "id": "6a5bbe48727645.68012945",
+        "name": "~Figure Fabuland Monkey Head  1",
+        "file": "u595p01.dat"
+    },
+    {
+        "id": "6a5bbe487280c8.79069238",
+        "name": "Figure Fabuland Monkey Head  1 with Neck",
+        "file": "u595p01c01.dat"
+    },
+    {
+        "id": "6a5bbe48728ae7.51880821",
+        "name": "Figure Fabuland Monkey Head  1 with Neck and Sailor's Cap White",
+        "file": "u595p01c02.dat"
+    },
+    {
+        "id": "6a5bbe487294d0.83659715",
+        "name": "Figure Fabuland Monkey Head  1 with Neck and Captain's Cap White",
+        "file": "u595p01c03.dat"
+    },
+    {
+        "id": "6a5bbe48729f78.69162873",
+        "name": "_Figure Fabuland Monkey  1 with Body Yellow\/Red\/Red",
+        "file": "u595p01c04.dat"
+    },
+    {
+        "id": "6a5bbe4872a9a4.14097185",
+        "name": "_Figure Fabuland Monkey  1 with Body Blue\/Red\/Red",
+        "file": "u595p01c05.dat"
+    },
+    {
+        "id": "6a5bbe4872b4a9.65908179",
+        "name": "_Figure Fabuland Monkey  1 with Body Green\/Yellow\/Black",
+        "file": "u595p01c06.dat"
+    },
+    {
+        "id": "6a5bbe4872bee0.62321084",
+        "name": "_Figure Fabuland Monkey  1 with Body Red\/Red\/White",
+        "file": "u595p01c07.dat"
+    },
+    {
+        "id": "6a5bbe4872c908.95125090",
+        "name": "_Figure Fabuland Monkey  1 with Body White\/Black\/Blue",
+        "file": "u595p01c08.dat"
+    },
+    {
+        "id": "6a5bbe4872d414.84029509",
+        "name": "_Figure Fabuland Monkey  1 w Body White\/Blue\/Blue Sailor's Cap",
+        "file": "u595p01c09.dat"
+    },
+    {
+        "id": "6a5bbe4872de44.16380575",
+        "name": "_Figure Fabuland Monkey  1 with Body White\/Blue\/Yellow with Cap",
+        "file": "u595p01c10.dat"
+    },
+    {
+        "id": "6a5bbe4872e866.37016535",
+        "name": "~Figure Fabuland Monkey Head  2",
+        "file": "u595p02.dat"
+    },
+    {
+        "id": "6a5bbe4872f281.72629122",
+        "name": "Figure Fabuland Monkey Head  2 with Neck",
+        "file": "u595p02c01.dat"
+    },
+    {
+        "id": "6a5bbe4872fcb4.31289119",
+        "name": "Figure Fabuland Monkey Head  2 with Neck and Captain's Cap Grey",
+        "file": "u595p02c02.dat"
+    },
+    {
+        "id": "6a5bbe487306b5.65442545",
+        "name": "Figure Fabuland Monkey Head  2 with Neck and Captain's Cap Red",
+        "file": "u595p02c03.dat"
+    },
+    {
+        "id": "6a5bbe487310b6.38486623",
+        "name": "_Figure Fabuland Monkey  2 w Body White\/White\/Black, Cap, Tie",
+        "file": "u595p02c04.dat"
+    },
+    {
+        "id": "6a5bbe48731ac5.86173180",
+        "name": "_Figure Fabuland Monkey  2 w Body White\/White\/Black, Cap, Tie",
+        "file": "u595p02c05.dat"
+    },
+    {
+        "id": "6a5bbe48732504.56691316",
+        "name": "~Figure Fabuland Poodle without Pattern",
+        "file": "u600.dat"
+    },
+    {
+        "id": "6a5bbe48732f65.83138399",
+        "name": "~Figure Fabuland Poodle Head  1",
+        "file": "u600p01.dat"
+    },
+    {
+        "id": "6a5bbe48733a33.22215459",
+        "name": "Figure Fabuland Poodle Head  1 with Neck",
+        "file": "u600p01c01.dat"
+    },
+    {
+        "id": "6a5bbe487344f0.22952965",
+        "name": "_Figure Fabuland Poodle  1 with Body Red\/White\/White",
+        "file": "u600p01c02.dat"
+    },
+    {
+        "id": "6a5bbe48735008.20471087",
+        "name": "~Figure Fabuland Poodle Head  2",
+        "file": "u600p02.dat"
+    },
+    {
+        "id": "6a5bbe48735a31.26663832",
+        "name": "Figure Fabuland Poodle Head  2 with Neck",
+        "file": "u600p02c01.dat"
+    },
+    {
+        "id": "6a5bbe487364d8.32232716",
+        "name": "_Figure Fabuland Poodle  2 with Body Red\/White\/White",
+        "file": "u600p02c02.dat"
+    },
+    {
+        "id": "6a5bbe487f9989.46268506",
+        "name": "Figure Fabuland Leg",
+        "file": "u9100.dat"
+    },
+    {
+        "id": "6a5bbe487fa550.84564863",
+        "name": "Figure Fabuland Arm",
+        "file": "u9101.dat"
+    },
+    {
+        "id": "6a5bbe487fb006.47964120",
+        "name": "Figure Fabuland Torso",
+        "file": "u9102.dat"
+    },
+    {
+        "id": "6a5bbe487fba87.11042044",
+        "name": "Figure Fabuland Torso with Black \"8\" Pattern",
+        "file": "u9102p01.dat"
+    },
+    {
+        "id": "6a5bbe487fc4e8.37275210",
+        "name": "Figure Fabuland Torso with Black Dungarees Pattern",
+        "file": "u9102p02.dat"
+    },
+    {
+        "id": "6a5bbe487fcec0.38948297",
+        "name": "Figure Fabuland Torso with Red Collar Pattern",
+        "file": "u9102p03.dat"
+    },
+    {
+        "id": "6a5bbe487fd8f3.01694008",
+        "name": "Figure Fabuland Torso with White Dress and Red Buttons Pattern",
+        "file": "u9102p04.dat"
+    },
+    {
+        "id": "6a5bbe487fe357.39033805",
+        "name": "Figure Fabuland Torso with Light Grey Dress and Red Buttons Pattern",
+        "file": "u9102p05.dat"
+    },
+    {
+        "id": "6a5bbe487fedb3.21281571",
+        "name": "Figure Fabuland Torso with Red Bow Tie Pattern",
+        "file": "u9102p06.dat"
+    },
+    {
+        "id": "6a5bbe487ff7b3.87241856",
+        "name": "Figure Fabuland Torso with Necklace Pattern",
+        "file": "u9102p07.dat"
+    },
+    {
+        "id": "6a5bbe48800221.73140585",
+        "name": "Figure Fabuland Torso with Three Black Buttons",
+        "file": "u9102p08.dat"
+    },
+    {
+        "id": "6a5bbe48800c50.86506595",
+        "name": "Figure Fabuland Torso with Two Gold Buttons",
+        "file": "u9102p09.dat"
+    },
+    {
+        "id": "6a5bbe48801645.41439571",
+        "name": "Figure Fabuland Torso with Gold Chain Necklace",
+        "file": "u9102p10.dat"
+    },
+    {
+        "id": "6a5bbe488020a5.21554602",
+        "name": "Figure Fabuland Torso with White Anchor Pattern",
+        "file": "u9102p11.dat"
+    },
+    {
+        "id": "6a5bbe48802a99.62658733",
+        "name": "Figure Fabuland Torso with Red Bow Tie and White Outline Pattern",
+        "file": "u9102p12.dat"
+    },
+    {
+        "id": "6a5bbe48803522.49786126",
+        "name": "Figure Fabuland Torso with Post Logo Pattern",
+        "file": "u9102p13.dat"
+    },
+    {
+        "id": "6a5bbe48803f72.68078846",
+        "name": "Figure Fabuland Torso with Blue Dungarees Black Outline Pattern",
+        "file": "u9102p14.dat"
+    },
+    {
+        "id": "6a5bbe48804955.83446291",
+        "name": "Figure Fabuland Torso with Braces Pattern",
+        "file": "u9102p15.dat"
+    },
+    {
+        "id": "6a5bbe48805416.93621892",
+        "name": "Figure Fabuland Torso with Blue Tie Pattern",
+        "file": "u9102p16.dat"
+    },
+    {
+        "id": "6a5bbe48805ec1.25626166",
+        "name": "Figure Fabuland Torso with Grey Dungarees Pattern",
+        "file": "u9102p17.dat"
+    },
+    {
+        "id": "6a5bbe488068e7.07748645",
+        "name": "Figure Fabuland Hips Hinge",
+        "file": "u9103.dat"
+    },
+    {
+        "id": "6a5bbe488072d1.45214736",
+        "name": "~Figure Fabuland Neck",
+        "file": "u9104.dat"
+    },
+    {
+        "id": "6a5bbe48807d32.97865492",
+        "name": "~Figure Fabuland Mouse Head without Pattern",
+        "file": "u9105.dat"
+    },
+    {
+        "id": "6a5bbe48808d60.57854719",
+        "name": "~Figure Fabuland Mouse Head  1",
+        "file": "u9105p01.dat"
+    },
+    {
+        "id": "6a5bbe48809909.41317955",
+        "name": "Figure Fabuland Mouse Head  1 with Neck",
+        "file": "u9105p01c01.dat"
+    },
+    {
+        "id": "6a5bbe4880a508.61792341",
+        "name": "_Figure Fabuland Mouse  1 Brown with Body Black\/Black\/Yellow",
+        "file": "u9105p01c02.dat"
+    },
+    {
+        "id": "6a5bbe4880b0e2.91224493",
+        "name": "_Figure Fabuland Mouse  1 Grey with Body Blue\/Black\/Black",
+        "file": "u9105p01c03.dat"
+    },
+    {
+        "id": "6a5bbe4880bc05.06423628",
+        "name": "Figure Fabuland Mouse Head  1 with Neck and White Sailor's Cap",
+        "file": "u9105p01c04.dat"
+    },
+    {
+        "id": "6a5bbe4880c7c2.63281441",
+        "name": "_Figure Fabuland Mouse  1 Grey w\/ Body Blue\/Blk\/Blk w Cap White",
+        "file": "u9105p01c05.dat"
+    },
+    {
+        "id": "6a5bbe4880d468.64730124",
+        "name": "_Figure Fabuland Mouse  1 Brown with Body Red\/Red\/Yellow",
+        "file": "u9105p01c06.dat"
+    },
+    {
+        "id": "6a5bbe4880e330.87244977",
+        "name": "~Figure Fabuland Mouse Head  2",
+        "file": "u9105p02.dat"
+    },
+    {
+        "id": "6a5bbe4880f791.74748508",
+        "name": "Figure Fabuland Mouse Head  2 with Neck",
+        "file": "u9105p02c01.dat"
+    },
+    {
+        "id": "6a5bbe48810488.15524242",
+        "name": "_Figure Fabuland Mouse  2 Brown Body Red\/Red\/Yellow 8 Pattern",
+        "file": "u9105p02c02.dat"
+    },
+    {
+        "id": "6a5bbe48811033.50095354",
+        "name": "~Figure Fabuland Mouse Head  3",
+        "file": "u9105p03.dat"
+    },
+    {
+        "id": "6a5bbe48811b90.06203542",
+        "name": "Figure Fabuland Mouse Head  3 with Neck",
+        "file": "u9105p03c01.dat"
+    },
+    {
+        "id": "6a5bbe48812621.23771693",
+        "name": "_Figure Fabuland Mouse  3 White w Body Yellow\/White\/White",
+        "file": "u9105p03c02.dat"
+    },
+    {
+        "id": "6a5bbe488130a0.12187688",
+        "name": "~Figure Fabuland Mouse Head  4",
+        "file": "u9105p04.dat"
+    },
+    {
+        "id": "6a5bbe48813b76.91109047",
+        "name": "Figure Fabuland Mouse Head  4 with Neck",
+        "file": "u9105p04c01.dat"
+    },
+    {
+        "id": "6a5bbe48814604.47362861",
+        "name": "_Figure Fabuland Mouse 4 Wht w Body Yel\/Wht\/Wht Dress Pattern",
+        "file": "u9105p04c02.dat"
+    },
+    {
+        "id": "6a5bbe488150a3.02476960",
+        "name": "~Figure Fabuland Bunny Head without Pattern",
+        "file": "u9106.dat"
+    },
+    {
+        "id": "6a5bbe48815b09.57849232",
+        "name": "~Figure Fabuland Bunny Head  1",
+        "file": "u9106p01.dat"
+    },
+    {
+        "id": "6a5bbe48816528.91201337",
+        "name": "Figure Fabuland Bunny Head  1 with Neck",
+        "file": "u9106p01c01.dat"
+    },
+    {
+        "id": "6a5bbe48816f94.64717951",
+        "name": "_Figure Fabuland Bunny  1 Brown with Body Yellow\/Red\/Red",
+        "file": "u9106p01c02.dat"
+    },
+    {
+        "id": "6a5bbe48817a93.37456978",
+        "name": "_Figure Fabuland Bunny  1 Brown with Body Red\/Red\/White",
+        "file": "u9106p01c03.dat"
+    },
+    {
+        "id": "6a5bbe48818536.74817796",
+        "name": "~Figure Fabuland Bunny Head  2",
+        "file": "u9106p02.dat"
+    },
+    {
+        "id": "6a5bbe48819065.28543757",
+        "name": "Figure Fabuland Bunny Head  2 with Neck",
+        "file": "u9106p02c01.dat"
+    },
+    {
+        "id": "6a5bbe48819ad9.02208423",
+        "name": "_Figure Fabuland Bunny  2 Tan with Body White\/Yellow\/Yellow",
+        "file": "u9106p02c02.dat"
+    },
+    {
+        "id": "6a5bbe4881a523.48552285",
+        "name": "~Figure Fabuland Bunny Head  3",
+        "file": "u9106p03.dat"
+    },
+    {
+        "id": "6a5bbe4881af72.57845749",
+        "name": "Figure Fabuland Bunny Head  3 with Neck",
+        "file": "u9106p03c01.dat"
+    },
+    {
+        "id": "6a5bbe4881bc55.14330491",
+        "name": "_Figure Fabuland Bunny  3 Tan Body White\/Yel.\/Yel. Red Collar",
+        "file": "u9106p03c02.dat"
+    },
+    {
+        "id": "6a5bbe4881c776.73394796",
+        "name": "~Figure Fabuland Bear, Raccoon or Panda Head without Pattern",
+        "file": "u9107.dat"
+    },
+    {
+        "id": "6a5bbe4881d240.72755181",
+        "name": "~Figure Fabuland Bear Head  1",
+        "file": "u9107p01.dat"
+    },
+    {
+        "id": "6a5bbe4881dc93.98971403",
+        "name": "Figure Fabuland Bear Head  1 with Neck",
+        "file": "u9107p01c01.dat"
+    },
+    {
+        "id": "6a5bbe4881e750.48749142",
+        "name": "_Figure Fabuland Bear  1 with Body Blue\/Blue\/Red",
+        "file": "u9107p01c02.dat"
+    },
+    {
+        "id": "6a5bbe4881f1b3.36522300",
+        "name": "_Figure Fabuland Bear  1 with Body Red\/Yellow\/Black",
+        "file": "u9107p01c03.dat"
+    },
+    {
+        "id": "6a5bbe4881fc18.43772476",
+        "name": "~Figure Fabuland Bear Head  2",
+        "file": "u9107p02.dat"
+    },
+    {
+        "id": "6a5bbe48820634.44556871",
+        "name": "Figure Fabuland Bear Head  2 with Neck",
+        "file": "u9107p02c01.dat"
+    },
+    {
+        "id": "6a5bbe488210d9.89060319",
+        "name": "_Figure Fabuland Bear  2 with Body White\/Black\/Black",
+        "file": "u9107p02c02.dat"
+    },
+    {
+        "id": "6a5bbe48821c01.23457863",
+        "name": "~Figure Fabuland Panda Head",
+        "file": "u9107p03.dat"
+    },
+    {
+        "id": "6a5bbe48822693.82469700",
+        "name": "Figure Fabuland Panda Head with Neck",
+        "file": "u9107p03c01.dat"
+    },
+    {
+        "id": "6a5bbe48823161.69291743",
+        "name": "_Figure Fabuland Panda with Body Black\/White\/White",
+        "file": "u9107p03c02.dat"
+    },
+    {
+        "id": "6a5bbe48823c38.09648310",
+        "name": "_Figure Fabuland Panda with Body White\/White\/Black",
+        "file": "u9107p03c03.dat"
+    },
+    {
+        "id": "6a5bbe48824715.83897149",
+        "name": "~Figure Fabuland Raccoon Head  1",
+        "file": "u9107p04.dat"
+    },
+    {
+        "id": "6a5bbe488251a8.55708333",
+        "name": "Figure Fabuland Raccoon Head  1 with Neck",
+        "file": "u9107p04c01.dat"
+    },
+    {
+        "id": "6a5bbe48825c46.36920595",
+        "name": "_Figure Fabuland Raccoon  1 with Body Black\/Yellow\/Blue",
+        "file": "u9107p04c02.dat"
+    },
+    {
+        "id": "6a5bbe488266b1.51788590",
+        "name": "_Figure Fabuland Raccoon  1 with Body White\/Yellow\/Black",
+        "file": "u9107p04c03.dat"
+    },
+    {
+        "id": "6a5bbe48827181.74545795",
+        "name": "~Figure Fabuland Raccoon Head  2",
+        "file": "u9107p05.dat"
+    },
+    {
+        "id": "6a5bbe48827c67.76172421",
+        "name": "Figure Fabuland Raccoon Head  2 with Neck",
+        "file": "u9107p05c01.dat"
+    },
+    {
+        "id": "6a5bbe48828711.06234445",
+        "name": "_Figure Fabuland Raccoon  2 with Body Red\/Red\/Black",
+        "file": "u9107p05c02.dat"
+    },
+    {
+        "id": "6a5bbe488291c1.06832219",
+        "name": "_Figure Fabuland Raccoon  2 with Body White\/Yellow\/Black",
+        "file": "u9107p05c03.dat"
+    },
+    {
+        "id": "6a5bbe48829cd8.32404482",
+        "name": "~Figure Fabuland Raccoon Head  3",
+        "file": "u9107p06.dat"
+    },
+    {
+        "id": "6a5bbe4882a6f2.01653332",
+        "name": "Figure Fabuland Raccoon Head  3 with Neck",
+        "file": "u9107p06c01.dat"
+    },
+    {
+        "id": "6a5bbe4882b1a7.08098329",
+        "name": "_Figure Fabuland Raccoon  3 Body Red\/Red\/Black Black Dungarees",
+        "file": "u9107p06c02.dat"
+    },
+    {
+        "id": "6a5bbe4882bbe3.26052875",
+        "name": "~Figure Fabuland Cat Head without Pattern",
+        "file": "u9108.dat"
+    },
+    {
+        "id": "6a5bbe4882c7a6.67392181",
+        "name": "~Figure Fabuland Cat Head  1",
+        "file": "u9108p01.dat"
+    },
+    {
+        "id": "6a5bbe4882d344.27976285",
+        "name": "Figure Fabuland Cat Head  1 with Neck",
+        "file": "u9108p01c01.dat"
+    },
+    {
+        "id": "6a5bbe4882df15.34881068",
+        "name": "_Figure Fabuland Cat  1 Orange with Body Blue\/Blue\/Yellow",
+        "file": "u9108p01c02.dat"
+    },
+    {
+        "id": "6a5bbe4882eab1.29542072",
+        "name": "_Figure Fabuland Cat  1 White with Body White\/Red\/Red",
+        "file": "u9108p01c03.dat"
+    },
+    {
+        "id": "6a5bbe4882f5e9.63502776",
+        "name": "~Figure Fabuland Cat Head  2",
+        "file": "u9108p02.dat"
+    },
+    {
+        "id": "6a5bbe488300a9.51314709",
+        "name": "Figure Fabuland Cat Head  2 with Neck",
+        "file": "u9108p02c01.dat"
+    },
+    {
+        "id": "6a5bbe48830b51.06681428",
+        "name": "_Figure Fabuland Cat  2 Orange with Body Red\/Yellow\/Yellow",
+        "file": "u9108p02c02.dat"
+    },
+    {
+        "id": "6a5bbe488315d4.50031646",
+        "name": "~Figure Fabuland Cat Head  3",
+        "file": "u9108p03.dat"
+    },
+    {
+        "id": "6a5bbe48832085.60017003",
+        "name": "Figure Fabuland Cat Head  3 with Neck",
+        "file": "u9108p03c01.dat"
+    },
+    {
+        "id": "6a5bbe48832b21.01991517",
+        "name": "_Figure Fabuland Cat  3 White w Body White\/Red\/Red w Bow Tie",
+        "file": "u9108p03c02.dat"
+    },
+    {
+        "id": "6a5bbe488335b4.86636388",
+        "name": "~Figure Fabuland Hippo Head without Pattern",
+        "file": "u9109.dat"
+    },
+    {
+        "id": "6a5bbe48834003.41291138",
+        "name": "~Figure Fabuland Hippo Head  1",
+        "file": "u9109p01.dat"
+    },
+    {
+        "id": "6a5bbe48834a62.10996683",
+        "name": "Figure Fabuland Hippo Head  1 with Neck",
+        "file": "u9109p01c01.dat"
+    },
+    {
+        "id": "6a5bbe488354f5.25652880",
+        "name": "_Figure Fabuland Hippo  1 with Body Yellow\/Red\/Red",
+        "file": "u9109p01c02.dat"
+    },
+    {
+        "id": "6a5bbe48835f90.25491885",
+        "name": "~Figure Fabuland Hippo Head  2",
+        "file": "u9109p02.dat"
+    },
+    {
+        "id": "6a5bbe48836bb9.20895656",
+        "name": "Figure Fabuland Hippo Head  2 with Neck",
+        "file": "u9109p02c01.dat"
+    },
+    {
+        "id": "6a5bbe48837685.28072629",
+        "name": "_Figure Fabuland Hippo  2 w Body Yellow\/Red\/Red Necklace Pat.",
+        "file": "u9109p02c02.dat"
+    },
+    {
+        "id": "6a5bbe4884a777.08046860",
+        "name": "~Figure Fabuland Lamb Head without Pattern",
+        "file": "u9140.dat"
+    },
+    {
+        "id": "6a5bbe4884b467.31772510",
+        "name": "~Figure Fabuland Lamb Head  1",
+        "file": "u9140p01.dat"
+    },
+    {
+        "id": "6a5bbe4884c702.17148988",
+        "name": "Figure Fabuland Lamb Head  1 with Neck",
+        "file": "u9140p01c01.dat"
+    },
+    {
+        "id": "6a5bbe4884d597.60018712",
+        "name": "_Figure Fabuland Lamb  1 with Body Green\/White\/White",
+        "file": "u9140p01c02.dat"
+    },
+    {
+        "id": "6a5bbe4884e561.49713549",
+        "name": "_Figure Fabuland Lamb  1 with Body Blue\/White\/White",
+        "file": "u9140p01c03.dat"
+    },
+    {
+        "id": "6a5bbe4884fa89.33560200",
+        "name": "_Figure Fabuland Lamb  1 with Body Yellow\/White\/White",
+        "file": "u9140p01c04.dat"
+    },
+    {
+        "id": "6a5bbe48850648.74738470",
+        "name": "~Figure Fabuland Lamb Head  2",
+        "file": "u9140p02.dat"
+    },
+    {
+        "id": "6a5bbe48851127.74189594",
+        "name": "Figure Fabuland Lamb Head  2 with Neck",
+        "file": "u9140p02c01.dat"
+    },
+    {
+        "id": "6a5bbe48851c36.22822023",
+        "name": "_Figure Fabuland Lamb  2 with Body Yellow\/White\/White",
+        "file": "u9140p02c02.dat"
+    },
+    {
+        "id": "6a5bbe48852707.73595978",
+        "name": "~Figure Fabuland Cow Head without Pattern",
+        "file": "u9141.dat"
+    },
+    {
+        "id": "6a5bbe48853168.69767934",
+        "name": "~Figure Fabuland Cow Head",
+        "file": "u9141p01.dat"
+    },
+    {
+        "id": "6a5bbe48853d60.29708685",
+        "name": "Figure Fabuland Cow Head with Neck",
+        "file": "u9141p01c01.dat"
+    },
+    {
+        "id": "6a5bbe488547e9.85726909",
+        "name": "_Figure Fabuland Cow with Body Blue\/White\/White",
+        "file": "u9141p01c02.dat"
+    },
+    {
+        "id": "6a5bbe48855277.58682639",
+        "name": "~Figure Fabuland Bulldog Head without Pattern",
+        "file": "u9142.dat"
+    },
+    {
+        "id": "6a5bbe48855d77.59930143",
+        "name": "~Figure Fabuland Bulldog Head  1",
+        "file": "u9142p01.dat"
+    },
+    {
+        "id": "6a5bbe488567e6.83980764",
+        "name": "Figure Fabuland Bulldog Head 1 with Neck",
+        "file": "u9142p01c01.dat"
+    },
+    {
+        "id": "6a5bbe48857215.10599513",
+        "name": "Figure Fabuland Bulldog Head 1 with Neck and Black Police Hat",
+        "file": "u9142p01c02.dat"
+    },
+    {
+        "id": "6a5bbe48857c38.15154031",
+        "name": "Figure Fabuland Bulldog Head 1 w Neck and Red Fireman Helmet",
+        "file": "u9142p01c03.dat"
+    },
+    {
+        "id": "6a5bbe48858704.24581389",
+        "name": "_Figure Fabuland Bulldog 1 Brown with Body Blue\/Blue\/Black",
+        "file": "u9142p01c04.dat"
+    },
+    {
+        "id": "6a5bbe488591e0.39589424",
+        "name": "_Figure Fabuland Bulldog 1 Brown Blue\/Blue\/Black with Police Hat",
+        "file": "u9142p01c05.dat"
+    },
+    {
+        "id": "6a5bbe48859c31.70863675",
+        "name": "_Figure Fabuland Bulldog 1 White Blue\/Blue\/Black w Police Hat",
+        "file": "u9142p01c06.dat"
+    },
+    {
+        "id": "6a5bbe4885a665.80578784",
+        "name": "_Figure Fabuland Bulldog 1 Brown Blue\/Blue\/Blk Fireman Helmet",
+        "file": "u9142p01c07.dat"
+    },
+    {
+        "id": "6a5bbe4885b083.93591806",
+        "name": "_Figure Fabuland Bulldog 1 Brown with Body Red\/Red\/Yellow",
+        "file": "u9142p01c08.dat"
+    },
+    {
+        "id": "6a5bbe4885bac2.62348610",
+        "name": "_Figure Fabuland Bulldog 1 Brown Red\/Red\/Yellow Fireman Helmet",
+        "file": "u9142p01c09.dat"
+    },
+    {
+        "id": "6a5bbe4885c569.44109789",
+        "name": "_Figure Fabuland Bulldog 1 White Red\/Red\/Black",
+        "file": "u9142p01c10.dat"
+    },
+    {
+        "id": "6a5bbe4885cfc5.19286074",
+        "name": "_Figure Fabuland Bulldog 1 White Red\/Red\/Black Fireman Helmet",
+        "file": "u9142p01c11.dat"
+    },
+    {
+        "id": "6a5bbe4885da09.88887708",
+        "name": "~Figure Fabuland Bulldog Head  2",
+        "file": "u9142p02.dat"
+    },
+    {
+        "id": "6a5bbe4885e493.58246934",
+        "name": "Figure Fabuland Bulldog Head 2 with Neck",
+        "file": "u9142p02c01.dat"
+    },
+    {
+        "id": "6a5bbe4885ef13.81731739",
+        "name": "Figure Fabuland Bulldog Head 2 with Neck and Blue Police Hat",
+        "file": "u9142p02c02.dat"
+    },
+    {
+        "id": "6a5bbe4885f9a4.19613869",
+        "name": "_Figure Fabuland Bulldog 2 White with Body Blue\/Blue\/Yellow",
+        "file": "u9142p02c03.dat"
+    },
+    {
+        "id": "6a5bbe48860421.70251291",
+        "name": "_Figure Fabuland Bulldog 2 White Blue\/Blue\/Yellow Postman Hat",
+        "file": "u9142p02c04.dat"
+    },
+    {
+        "id": "6a5bbe48860ec8.23561478",
+        "name": "~Figure Fabuland Bulldog Head  3",
+        "file": "u9142p03.dat"
+    },
+    {
+        "id": "6a5bbe488618f2.15833890",
+        "name": "Figure Fabuland Bulldog Head 3 with Neck",
+        "file": "u9142p03c01.dat"
+    },
+    {
+        "id": "6a5bbe48862386.93318391",
+        "name": "Figure Fabuland Bulldog Head 3 w Neck and Red Fireman Helmet",
+        "file": "u9142p03c02.dat"
+    },
+    {
+        "id": "6a5bbe48862eb5.64227125",
+        "name": "_Figure Fabuland Bulldog 3 Brown Red\/Red\/Black Fireman Helmet",
+        "file": "u9142p03c03.dat"
+    },
+    {
+        "id": "6a5bbe48863a88.78247745",
+        "name": "_Figure Fabuland Bulldog 3 White Red\/Red\/Black Fireman Helmet",
+        "file": "u9142p03c04.dat"
+    },
+    {
+        "id": "6a5bbe48864683.86356545",
+        "name": "~Figure Fabuland Bulldog Head  4",
+        "file": "u9142p04.dat"
+    },
+    {
+        "id": "6a5bbe48865112.91349497",
+        "name": "Figure Fabuland Bulldog Head 4 with Neck",
+        "file": "u9142p04c01.dat"
+    },
+    {
+        "id": "6a5bbe48865ba4.21157839",
+        "name": "Figure Fabuland Bulldog Head 4 with Neck and Blue Police Hat",
+        "file": "u9142p04c02.dat"
+    },
+    {
+        "id": "6a5bbe48866600.70841313",
+        "name": "_Figure Fabuland Bulldog 4 White Blue\/Blue\/Yellow Postman Hat",
+        "file": "u9142p04c03.dat"
+    },
+    {
+        "id": "6a5bbe4886a340.70595103",
+        "name": "~Figure Fabuland Pig Head without Pattern",
+        "file": "u9147.dat"
+    },
+    {
+        "id": "6a5bbe4886b032.96210168",
+        "name": "~Figure Fabuland Pig Head  1",
+        "file": "u9147p01.dat"
+    },
+    {
+        "id": "6a5bbe4886bb15.49723419",
+        "name": "Figure Fabuland Pig Head  1 with Neck",
+        "file": "u9147p01c01.dat"
+    },
+    {
+        "id": "6a5bbe4886c5a9.19397408",
+        "name": "_Figure Fabuland Pig  1 with Body Blue\/Yellow\/Yellow",
+        "file": "u9147p01c02.dat"
+    },
+    {
+        "id": "6a5bbe4886d052.03507345",
+        "name": "_Figure Fabuland Pig  1 with Body Black\/Yellow\/Blue",
+        "file": "u9147p01c03.dat"
+    },
+    {
+        "id": "6a5bbe4886dac7.97561887",
+        "name": "_Figure Fabuland Pig  1 with Body Red\/Red\/Blue",
+        "file": "u9147p01c04.dat"
+    },
+    {
+        "id": "6a5bbe4886e7b1.70597669",
+        "name": "_Figure Fabuland Pig  1 with Body Red\/Red\/White",
+        "file": "u9147p01c05.dat"
+    },
+    {
+        "id": "6a5bbe4886f245.39139185",
+        "name": "_Figure Fabuland Pig  1 with Body White\/White\/Red",
+        "file": "u9147p01c06.dat"
+    },
+    {
+        "id": "6a5bbe4886fcc5.72265270",
+        "name": "~Figure Fabuland Pig Head  2",
+        "file": "u9147p02.dat"
+    },
+    {
+        "id": "6a5bbe488706f0.22808907",
+        "name": "Figure Fabuland Pig Head  2 with Neck",
+        "file": "u9147p02c01.dat"
+    },
+    {
+        "id": "6a5bbe48871144.52102916",
+        "name": "_Figure Fabuland Pig  2 with Body Yellow\/Red\/Red",
+        "file": "u9147p02c02.dat"
+    },
+    {
+        "id": "6a5bbe48871b70.61743616",
+        "name": "~Figure Fabuland Pig Head  3",
+        "file": "u9147p03.dat"
+    },
+    {
+        "id": "6a5bbe488725c1.20215909",
+        "name": "Figure Fabuland Pig Head  3 with Neck",
+        "file": "u9147p03c01.dat"
+    },
+    {
+        "id": "6a5bbe48873166.54226571",
+        "name": "_Figure Fabuland Pig  3 with Body White\/White\/Light Grey Trousers Pattern",
+        "file": "u9147p03c02.dat"
+    },
+    {
+        "id": "6a5bbe48875ad6.71867658",
+        "name": "~Figure Fabuland Lion Head without Pattern",
+        "file": "u9150.dat"
+    },
+    {
+        "id": "6a5bbe48876541.97612465",
+        "name": "~Figure Fabuland Lion Head  1",
+        "file": "u9150p01.dat"
+    },
+    {
+        "id": "6a5bbe48876fb3.16078864",
+        "name": "Figure Fabuland Lion Head  1 with Neck",
+        "file": "u9150p01c01.dat"
+    },
+    {
+        "id": "6a5bbe48877ab8.03282473",
+        "name": "_Figure Fabuland Lion  1 with Body Black\/Black\/Yellow",
+        "file": "u9150p01c02.dat"
+    },
+    {
+        "id": "6a5bbe488784f0.97501437",
+        "name": "~Figure Fabuland Lion Head  2",
+        "file": "u9150p02.dat"
+    },
+    {
+        "id": "6a5bbe48878fe2.67770317",
+        "name": "Figure Fabuland Lion Head  2 with Neck",
+        "file": "u9150p02c01.dat"
+    },
+    {
+        "id": "6a5bbe48879a27.00959143",
+        "name": "Figure Fabuland Lion Head  2 with Neck and White Boater",
+        "file": "u9150p02c02.dat"
+    },
+    {
+        "id": "6a5bbe4887a4a7.81721393",
+        "name": "_Figure Fabuland Lion  2 w Body Black\/Black\/Yellow Gold Chain",
+        "file": "u9150p02c03.dat"
+    },
+    {
+        "id": "6a5bbe4887b0e7.42375072",
+        "name": "_Figure Fabuland Lion  2 w Body Black\/Black\/Yellow White Boater",
+        "file": "u9150p02c04.dat"
+    },
+    {
+        "id": "6a5bbe4887bb43.29707479",
+        "name": "~Figure Fabuland Walrus Head without Pattern",
+        "file": "u9151.dat"
+    },
+    {
+        "id": "6a5bbe4887c5d6.17631257",
+        "name": "~Figure Fabuland Walrus Head  1",
+        "file": "u9151p01.dat"
+    },
+    {
+        "id": "6a5bbe4887d023.16090387",
+        "name": "Figure Fabuland Walrus Head  1 with Neck",
+        "file": "u9151p01c01.dat"
+    },
+    {
+        "id": "6a5bbe4887da58.74944032",
+        "name": "Figure Fabuland Walrus Head  1 with Neck and Captain's Cap Blue",
+        "file": "u9151p01c02.dat"
+    },
+    {
+        "id": "6a5bbe4887e530.97058959",
+        "name": "_Figure Fabuland Walrus  1 with Body Red\/Red\/Blue",
+        "file": "u9151p01c03.dat"
+    },
+    {
+        "id": "6a5bbe4887eff8.93969676",
+        "name": "_Figure Fabuland Walrus  1 w Body Blue\/Blue\/Red Captain's Cap",
+        "file": "u9151p01c04.dat"
+    },
+    {
+        "id": "6a5bbe4887fa87.44827921",
+        "name": "~Figure Fabuland Walrus Head  2",
+        "file": "u9151p02.dat"
+    },
+    {
+        "id": "6a5bbe488804d0.04309175",
+        "name": "Figure Fabuland Walrus Head  2 with Neck",
+        "file": "u9151p02c01.dat"
+    },
+    {
+        "id": "6a5bbe48880ee6.90299028",
+        "name": "Figure Fabuland Walrus Head  2 with Neck and Captain's Cap Blue",
+        "file": "u9151p02c02.dat"
+    },
+    {
+        "id": "6a5bbe488819f5.63840244",
+        "name": "_Figure Fabuland Walrus  2 w Body Blue\/Blue\/Red Captain's Cap",
+        "file": "u9151p02c03.dat"
+    },
+    {
+        "id": "6a5bbe48882e43.77396975",
+        "name": "~Figure Fabuland Crocodile Head without Pattern",
+        "file": "u9153.dat"
+    },
+    {
+        "id": "6a5bbe488838f9.36918147",
+        "name": "~Figure Fabuland Crocodile Head  1",
+        "file": "u9153p01.dat"
+    },
+    {
+        "id": "6a5bbe48884323.95208745",
+        "name": "Figure Fabuland Crocodile Head  1 with Neck",
+        "file": "u9153p01c01.dat"
+    },
+    {
+        "id": "6a5bbe48884d50.03084910",
+        "name": "_Figure Fabuland Crocodile  1 with Body Black\/Black\/Lime",
+        "file": "u9153p01c02.dat"
+    },
+    {
+        "id": "6a5bbe488857e6.59289470",
+        "name": "~Figure Fabuland Crocodile Head  2",
+        "file": "u9153p02.dat"
+    },
+    {
+        "id": "6a5bbe48886243.90262113",
+        "name": "Figure Fabuland Crocodile Head  2 with Neck",
+        "file": "u9153p02c01.dat"
+    },
+    {
+        "id": "6a5bbe48886c60.37546276",
+        "name": "_Figure Fabuland Crocodile  2 w Body Black\/Black\/Lime Red BowTie",
+        "file": "u9153p02c02.dat"
+    },
+    {
+        "id": "6a5bbe488a7c22.95936481",
+        "name": "Fabuland Aviator Helmet",
+        "file": "u9200.dat"
+    },
+    {
+        "id": "6a5bbe488a8658.56276515",
+        "name": "Fabuland Straw Hat",
+        "file": "u9201.dat"
+    },
+    {
+        "id": "6a5bbe48991e43.59456341",
+        "name": "Figure Duplo Bust Tall Body",
+        "file": "u9491.dat"
+    },
+    {
+        "id": "6a5bbe489929c4.29237917",
+        "name": "Figure Duplo Bust Tall Head",
+        "file": "u9492.dat"
+    },
+    {
+        "id": "6a5bbe48993665.26776993",
+        "name": "Figure Duplo Bust Tall Head with Smile, Eyes Looking Left and Freckles on Nose Pattern",
+        "file": "u9492p01.dat"
+    },
+    {
+        "id": "6a5bbe489941e1.49971478",
+        "name": "Figure Duplo Bust Hair Female with Short Bangs",
+        "file": "u9493.dat"
+    }
+]

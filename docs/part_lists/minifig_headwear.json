@@ -1,0 +1,2982 @@
+[
+    {
+        "id": "6a5bbe4484e596.25979061",
+        "name": "Minifig Hair Tousled",
+        "file": "10048.dat"
+    },
+    {
+        "id": "6a5bbe44850e29.57022105",
+        "name": "Minifig Helmet Castle Uruk-Hai with Lateral Comb",
+        "file": "10051.dat"
+    },
+    {
+        "id": "6a5bbe448518a7.93712760",
+        "name": "Minifig Helmet Castle Uruk-Hai with Lateral Comb & Hand Pattern",
+        "file": "10051p01.dat"
+    },
+    {
+        "id": "6a5bbe448536e0.28681284",
+        "name": "Minifig Helmet Castle Rohan with Cheek Protection & Comb",
+        "file": "10054.dat"
+    },
+    {
+        "id": "6a5bbe44854165.61629953",
+        "name": "Minifig Helmet Castle Rohan with Cheek Protection & Comb with Eomer Pattern",
+        "file": "10054p01.dat"
+    },
+    {
+        "id": "6a5bbe44854bc1.41614514",
+        "name": "Minifig Helmet Castle Rohan with Cheek Protection & Comb with Th\u00e9oden Pattern",
+        "file": "10054p02.dat"
+    },
+    {
+        "id": "6a5bbe44855607.18167438",
+        "name": "Minifig Hair Long Straight with Three Braids and Elves Ears",
+        "file": "10055.dat"
+    },
+    {
+        "id": "6a5bbe448561c5.06418044",
+        "name": "Minifig Hair Long Straight with Three Braids and Light Nougat Elves Ears Pattern",
+        "file": "10055p01.dat"
+    },
+    {
+        "id": "6a5bbe4485e150.63929007",
+        "name": "Minifig Hair Orc with Ears",
+        "file": "10066.dat"
+    },
+    {
+        "id": "6a5bbe44860634.10585749",
+        "name": "Minifig Hair Orc with Dark Tan Ears Pattern",
+        "file": "10066p01.dat"
+    },
+    {
+        "id": "6a5bbe44861134.98389704",
+        "name": "Minifig Hair Orc with Medium Nougat Ears Pattern",
+        "file": "10066p02.dat"
+    },
+    {
+        "id": "6a5bbe44861b92.40650474",
+        "name": "Minifig Hair Orc with Olive Green Ears Pattern",
+        "file": "10066p03.dat"
+    },
+    {
+        "id": "6a5bbe44865f64.20941141",
+        "name": "Minifig Hair Female Curled Fringe and Bun, Hole on Top with Molded Band and Earrings",
+        "file": "100907.dat"
+    },
+    {
+        "id": "6a5bbe44866a06.80813881",
+        "name": "Minifig Hair Female Curled Fringe and Bun, Hole on Top with Molded Bright Light Blue Band and Earrings Pattern",
+        "file": "100907p01.dat"
+    },
+    {
+        "id": "6a5bbe4487ccd9.25283022",
+        "name": "Minifig Headdress Batman with Angular Ears",
+        "file": "10113.dat"
+    },
+    {
+        "id": "6a5bbe44891f24.78077173",
+        "name": "Minifig Headdress Beanie with Pom Pom",
+        "file": "10164.dat"
+    },
+    {
+        "id": "6a5bbe44892958.82643670",
+        "name": "Minifig Headdress Beanie with Pom Pom with Red Outer Pattern",
+        "file": "10164p01.dat"
+    },
+    {
+        "id": "6a5bbe448933f1.14144628",
+        "name": "Minifig Hat Cowboy with Hair in Braid",
+        "file": "10168.dat"
+    },
+    {
+        "id": "6a5bbe44893f46.59514734",
+        "name": "Minifig Hat Cowboy with Medium Nougat Hair in Braid and Sheriff Star Pattern",
+        "file": "10168p01.dat"
+    },
+    {
+        "id": "6a5bbe4489a7d4.00593711",
+        "name": "Minifig Top Hat with Band",
+        "file": "101777.dat"
+    },
+    {
+        "id": "6a5bbe4489b453.42506715",
+        "name": "Minifig Top Hat with Bright Light Orange Band Pattern",
+        "file": "101777p01.dat"
+    },
+    {
+        "id": "6a5bbe448ccd65.57611729",
+        "name": "Minifig Helmet with Front Prongs",
+        "file": "10305.dat"
+    },
+    {
+        "id": "6a5bbe448cd910.27459760",
+        "name": "Minifig Helmet with Front Prongs with Dark Purple Highlight Pattern",
+        "file": "10305p01.dat"
+    },
+    {
+        "id": "6a5bbe448fa815.37085795",
+        "name": "Minifig Helmet Visor Iron Man",
+        "file": "10908.dat"
+    },
+    {
+        "id": "6a5bbe448fb253.36588421",
+        "name": "Minifig Helmet Visor Iron Man with Gold Face, White Eyes Pattern",
+        "file": "10908p01.dat"
+    },
+    {
+        "id": "6a5bbe448fbcb6.19817749",
+        "name": "Minifig Helmet Visor Iron Man with Gold Face, Blue Eyes Pattern",
+        "file": "10908p02.dat"
+    },
+    {
+        "id": "6a5bbe448fc723.23019942",
+        "name": "Minifig Helmet Visor Iron Man with Silver Face, White Eyes Pattern",
+        "file": "10908p03.dat"
+    },
+    {
+        "id": "6a5bbe448fd288.79214020",
+        "name": "Minifig Helmet Visor Iron Man with Silver Face and DkRed Line Pattern",
+        "file": "10908p04.dat"
+    },
+    {
+        "id": "6a5bbe44950211.99492201",
+        "name": "Minifig Helmet SW Clone Trooper Phase 2",
+        "file": "11217.dat"
+    },
+    {
+        "id": "6a5bbe44950c27.39428156",
+        "name": "Minifig Mask Wolf",
+        "file": "11233.dat"
+    },
+    {
+        "id": "6a5bbe44951674.06650231",
+        "name": "Minifig Mask Wolf with Fangs, Scars and White Ears Pattern",
+        "file": "11233p01.dat"
+    },
+    {
+        "id": "6a5bbe44960709.21699116",
+        "name": "Minifig Hair Long with Curls",
+        "file": "11255.dat"
+    },
+    {
+        "id": "6a5bbe449610f2.66054696",
+        "name": "Minifig Hair Short, Wavy with Side Part",
+        "file": "11256.dat"
+    },
+    {
+        "id": "6a5bbe44962a07.04986389",
+        "name": "Minifig Headdress Chicken",
+        "file": "11262.dat"
+    },
+    {
+        "id": "6a5bbe449634d8.97064720",
+        "name": "Minifig Headdress Chicken with Yellow Beak and Red Comb and Wattles Pattern",
+        "file": "11262p01.dat"
+    },
+    {
+        "id": "6a5bbe449649e9.02754089",
+        "name": "Minifig Hair Short with Laurel Wreath",
+        "file": "11264.dat"
+    },
+    {
+        "id": "6a5bbe449655c1.13750177",
+        "name": "Minifig Hair Short with Metallic Gold Laurel Wreath Pattern",
+        "file": "11264p01.dat"
+    },
+    {
+        "id": "6a5bbe4496fc67.99422324",
+        "name": "Minifig Cap with Short Arched Peak with Seams and Top Pin Hole",
+        "file": "11303.dat"
+    },
+    {
+        "id": "6a5bbe449706b6.97613964",
+        "name": "Minifig Cap with Short Arched Peak and Black Headphones \/ Ear Protection",
+        "file": "11303c01.dat"
+    },
+    {
+        "id": "6a5bbe4498b003.25394095",
+        "name": "Minifig Headdress Bald with Large Pointed Ears",
+        "file": "11418.dat"
+    },
+    {
+        "id": "6a5bbe4498dba7.74119982",
+        "name": "Minifig Helmet Ornament Horn Elaborate",
+        "file": "11437.dat"
+    },
+    {
+        "id": "6a5bbe449bd337.28157302",
+        "name": "Minifig Helmet with Cheek Protectors and Communicator",
+        "file": "11538.dat"
+    },
+    {
+        "id": "6a5bbe449bdd41.29317214",
+        "name": "Minifig Helmet SW Rebel with Dark Tan, Sand Blue and Dark Blue Pattern",
+        "file": "11538p01.dat"
+    },
+    {
+        "id": "6a5bbe449be770.10713572",
+        "name": "Minifig Helmet SW Rebel with Dark Brown and Dark Tan Pattern",
+        "file": "11538p03.dat"
+    },
+    {
+        "id": "6a5bbe449bf172.07067383",
+        "name": "Minifig Helmet SW Rebel with Dark Tan, Sand Blue and Dark Red Pattern",
+        "file": "11538p05.dat"
+    },
+    {
+        "id": "6a5bbe449d6a82.34513938",
+        "name": "Minifig Helmet with Front Prongs with Dark Purple Highlight Pattern",
+        "file": "11809.dat"
+    },
+    {
+        "id": "6a5bbe44a04886.07323105",
+        "name": "Minifig Hair with Snakes",
+        "file": "12889.dat"
+    },
+    {
+        "id": "6a5bbe44a05500.24483224",
+        "name": "Minifig Hair Female Long Straight",
+        "file": "12890.dat"
+    },
+    {
+        "id": "6a5bbe44a08ee4.12970417",
+        "name": "Minifig Hair Short with Bald Top",
+        "file": "12893.dat"
+    },
+    {
+        "id": "6a5bbe44a09b70.95010252",
+        "name": "Minifig Hair Short with Bald Top with White Hair Pattern",
+        "file": "12893p01.dat"
+    },
+    {
+        "id": "6a5bbe44a0ad31.60576733",
+        "name": "Minifig Hair Short with Bald Top with Dark Bluish Grey Hair Pattern",
+        "file": "12893p02.dat"
+    },
+    {
+        "id": "6a5bbe44a0b7f4.99868184",
+        "name": "Minifig Hair Short with Bald Top with Black Hair Pattern",
+        "file": "12893p03.dat"
+    },
+    {
+        "id": "6a5bbe44a0c2b4.02618024",
+        "name": "Minifig Hat Cone",
+        "file": "12894.dat"
+    },
+    {
+        "id": "6a5bbe44a0cd84.18671132",
+        "name": "Minifig Hat Cone with Black Rim and Two Pom-Pom Pattern",
+        "file": "12894p01.dat"
+    },
+    {
+        "id": "6a5bbe44a0dc59.58554272",
+        "name": "Minifig Captains Hat",
+        "file": "12895.dat"
+    },
+    {
+        "id": "6a5bbe44a0e785.26318263",
+        "name": "Minifig Captains Hat with Black Visor and Narrow Golden Braid Pattern",
+        "file": "12895p01.dat"
+    },
+    {
+        "id": "6a5bbe44a0f247.69363197",
+        "name": "Minifig Captains Hat with Golden Braid with Black Insignia and Reddish Brown Top Pattern",
+        "file": "12895p02.dat"
+    },
+    {
+        "id": "6a5bbe44a0fc41.83538092",
+        "name": "Minifig Captains Hat with Narrow Metallic Silver Braid and Batman Logo Pattern",
+        "file": "12895p03.dat"
+    },
+    {
+        "id": "6a5bbe44a10687.53872023",
+        "name": "Minifig Captains Hat with Black Visor and Red Braid Pattern",
+        "file": "12895p04.dat"
+    },
+    {
+        "id": "6a5bbe44a110e6.80538472",
+        "name": "Minifig Captains Hat with Golden Braid Pattern",
+        "file": "12895p05.dat"
+    },
+    {
+        "id": "6a5bbe44a11ac2.98972361",
+        "name": "Minifig Captains Hat with Black Visor, Gold Anchor and Narrow Braid Pattern",
+        "file": "12895p06.dat"
+    },
+    {
+        "id": "6a5bbe44a14778.35730174",
+        "name": "Minifig Helmet Sport with Front Handle",
+        "file": "12899.dat"
+    },
+    {
+        "id": "6a5bbe44a19955.12530796",
+        "name": "Minifig Hair Female with Elaborate Knot Bun",
+        "file": "13251.dat"
+    },
+    {
+        "id": "6a5bbe44a44dd2.16806203",
+        "name": "Minifig Hair Long Wavy with Braid and Elf Ears",
+        "file": "13766.dat"
+    },
+    {
+        "id": "6a5bbe44a458d1.89801577",
+        "name": "Minifig Hair Long Wavy with Braid and Light Nougat Elf Ears Pattern",
+        "file": "13766p01.dat"
+    },
+    {
+        "id": "6a5bbe44a47106.01782813",
+        "name": "Minifig Hair Female Long with Braided Pigtails",
+        "file": "13784.dat"
+    },
+    {
+        "id": "6a5bbe44a48313.77291515",
+        "name": "Minifig Hair with Ponytail and Fringe",
+        "file": "13785.dat"
+    },
+    {
+        "id": "6a5bbe44a48fa8.59563362",
+        "name": "Minifig Hair with Ponytail and Fringe with Dark Pink Highlight Pattern",
+        "file": "13785p01.dat"
+    },
+    {
+        "id": "6a5bbe44a52356.22469783",
+        "name": "Minifig Hat Elf with Pointy Ears",
+        "file": "13787.dat"
+    },
+    {
+        "id": "6a5bbe44a52ec6.20813171",
+        "name": "Minifig Hat Elf with Pointy Ears with Bright Green Top Pattern",
+        "file": "13787p01.dat"
+    },
+    {
+        "id": "6a5bbe44a538d6.78018862",
+        "name": "Minifig Hat Elf with Pointy Ears with Red Top Pattern",
+        "file": "13787p02.dat"
+    },
+    {
+        "id": "6a5bbe44a542c8.26218278",
+        "name": "Minifig Hat Elf with Pointy Ears with Dark Pink Top Pattern",
+        "file": "13787p03.dat"
+    },
+    {
+        "id": "6a5bbe44a54d08.14274384",
+        "name": "Minifig Hat with Wide Brim Down",
+        "file": "13788.dat"
+    },
+    {
+        "id": "6a5bbe44a55711.74012661",
+        "name": "Minifig Police Helmet",
+        "file": "13789.dat"
+    },
+    {
+        "id": "6a5bbe44a56284.24137870",
+        "name": "Minifig Police Helmet with Silver Badge Pattern",
+        "file": "13789p01.dat"
+    },
+    {
+        "id": "6a5bbe44a57702.07642649",
+        "name": "Minifig Helmet Welding",
+        "file": "13792.dat"
+    },
+    {
+        "id": "6a5bbe44a58183.15705158",
+        "name": "Minifig Helmet Welding with Dark Blue Stripes on Black Visor Pattern",
+        "file": "13792p01.dat"
+    },
+    {
+        "id": "6a5bbe44b31381.64623499",
+        "name": "Figure Friends Hair Long with Ponytail, Side Bangs and Sun Visor",
+        "file": "15284.dat"
+    },
+    {
+        "id": "6a5bbe44b320e9.16284503",
+        "name": "Figure Friends Hair Long with Ponytail, Side Bangs and Dark Pink Sun Visor Pattern",
+        "file": "15284p01.dat"
+    },
+    {
+        "id": "6a5bbe44b4c769.19972906",
+        "name": "Minifig Hat Cowboy Type 2",
+        "file": "15424.dat"
+    },
+    {
+        "id": "6a5bbe44b4d240.48909712",
+        "name": "Minifig Hair Ponytail Off-centre",
+        "file": "15427.dat"
+    },
+    {
+        "id": "6a5bbe44b4dc89.45363857",
+        "name": "Minifig Hair Ponytail Off-centre with Magenta and Medium Azure Stripes Pattern",
+        "file": "15427p01.dat"
+    },
+    {
+        "id": "6a5bbe44b4e662.02513628",
+        "name": "Minifig Hair Ponytail Off-centre with Magenta Stripe Pattern",
+        "file": "15427p02.dat"
+    },
+    {
+        "id": "6a5bbe44b57a86.11227298",
+        "name": "~Minifig Helmet Large Square - Side Extensions",
+        "file": "15436.dat"
+    },
+    {
+        "id": "6a5bbe44b5a346.63970657",
+        "name": "Minifig Hair with  2 Locks on Left Side",
+        "file": "15443.dat"
+    },
+    {
+        "id": "6a5bbe44b5b7c4.76533404",
+        "name": "Minifig Helmet Visor with Night Vision",
+        "file": "15446.dat"
+    },
+    {
+        "id": "6a5bbe44b6fd51.40958761",
+        "name": "Minifig Hair Female Beehive Style with Sideways Fringe",
+        "file": "15503.dat"
+    },
+    {
+        "id": "6a5bbe44b80324.77121649",
+        "name": "Minifig Hat Police",
+        "file": "15530.dat"
+    },
+    {
+        "id": "6a5bbe44b80d63.03914685",
+        "name": "Minifig Hat Police With Gold Badge Pattern",
+        "file": "15530p01.dat"
+    },
+    {
+        "id": "6a5bbe44b90dd3.84713511",
+        "name": "Minifig Headdress Batgirl with Hair",
+        "file": "15553.dat"
+    },
+    {
+        "id": "6a5bbe44b91970.76483042",
+        "name": "Minifig Headdress Batgirl with Red Hair Pattern",
+        "file": "15553p01.dat"
+    },
+    {
+        "id": "6a5bbe44b94427.72040939",
+        "name": "Minifig Hair Trapezoid Swept Back",
+        "file": "15557.dat"
+    },
+    {
+        "id": "6a5bbe44b94e37.05259166",
+        "name": "Minifig Hair Trapezoid Swept Back with Tan Neck Pattern",
+        "file": "15557p01.dat"
+    },
+    {
+        "id": "6a5bbe44ba5a17.07275626",
+        "name": "Figure Friends Hair with Top Knot Bun and Hair Band",
+        "file": "15673.dat"
+    },
+    {
+        "id": "6a5bbe44ba63f5.11180761",
+        "name": "Figure Friends Hair with Top Knot Bun and Medium Blue Hair Band Pattern",
+        "file": "15673p01.dat"
+    },
+    {
+        "id": "6a5bbe44ba6f25.11023014",
+        "name": "Figure Friends Hair with Top Knot Bun and Yellowish Green Hair Band Pattern",
+        "file": "15673p02.dat"
+    },
+    {
+        "id": "6a5bbe44ba7966.49090943",
+        "name": "Figure Friends Hair Long with Ponytail French Braided with  3 Pin Holes",
+        "file": "15675.dat"
+    },
+    {
+        "id": "6a5bbe44ba8330.58392519",
+        "name": "Figure Friends Hair Wavy with Curls and  2 Pinholes",
+        "file": "15677.dat"
+    },
+    {
+        "id": "6a5bbe44bb3a21.79346408",
+        "name": "Minifig Helmet Motorcycle with Open Face and Visor",
+        "file": "15851.dat"
+    },
+    {
+        "id": "6a5bbe44bb4460.97507101",
+        "name": "Minifig Helmet Motorcycle with Open Face and Visor, White Top Pattern",
+        "file": "15851p01.dat"
+    },
+    {
+        "id": "6a5bbe44bb60f1.90806059",
+        "name": "Minifig Helmet Large Square with Side Extensions",
+        "file": "15864.dat"
+    },
+    {
+        "id": "6a5bbe44bb6cb5.83209896",
+        "name": "Minifig Helmet Large Square with Black Side Extensions Pattern",
+        "file": "15864p01.dat"
+    },
+    {
+        "id": "6a5bbe44bd4b04.66523877",
+        "name": "~Minifig Helmet Large Square - Bottom",
+        "file": "16095.dat"
+    },
+    {
+        "id": "6a5bbe44bd6ad7.89296362",
+        "name": "Minifig Construction Helmet with Hair Short",
+        "file": "16175.dat"
+    },
+    {
+        "id": "6a5bbe44bd7542.28260864",
+        "name": "Minifig Construction Helmet with Reddish Brown Hair Short Pattern",
+        "file": "16175p01.dat"
+    },
+    {
+        "id": "6a5bbe44bd7fd6.09599943",
+        "name": "Minifig Construction Helmet with Medium Nougat Hair Short Pattern",
+        "file": "16175p02.dat"
+    },
+    {
+        "id": "6a5bbe44bd89e2.14553993",
+        "name": "Minifig Construction Helmet with Hair Ponytail",
+        "file": "16178.dat"
+    },
+    {
+        "id": "6a5bbe44bd93f9.79199857",
+        "name": "Minifig Construction Helmet with Dark Brown Hair Ponytail Pattern",
+        "file": "16178p01.dat"
+    },
+    {
+        "id": "6a5bbe44bd9df3.34733152",
+        "name": "Minifig Construction Helmet with Nougat Hair Ponytail",
+        "file": "16178p02.dat"
+    },
+    {
+        "id": "6a5bbe44c2f1e2.92689899",
+        "name": "Minifig SW Imperial Officer Cap",
+        "file": "16497.dat"
+    },
+    {
+        "id": "6a5bbe44c2fcc0.75779518",
+        "name": "Minifig SW Imperial Officer Cap with Silver and Black Code Disc Pattern",
+        "file": "16497p01.dat"
+    },
+    {
+        "id": "6a5bbe44c30768.86797092",
+        "name": "Minifig SW Imperial Officer Cap with Silver Code Disc Pattern",
+        "file": "16497p02.dat"
+    },
+    {
+        "id": "6a5bbe44c31277.55141982",
+        "name": "Minifig SW Imperial Officer Cap with Silver and Black Code Disc and Dark Brown Stains Pattern",
+        "file": "16497p03.dat"
+    },
+    {
+        "id": "6a5bbe44c56ac2.91330814",
+        "name": "Minifig Helmet Classic with Thin Chin Guard Cracked",
+        "file": "16599.dat"
+    },
+    {
+        "id": "6a5bbe44cc3db9.56089206",
+        "name": "Minifig Helmet Wolverine",
+        "file": "17018.dat"
+    },
+    {
+        "id": "6a5bbe44cc47c5.30711642",
+        "name": "Minifig Helmet Wolverine with Black Pattern",
+        "file": "17018p01.dat"
+    },
+    {
+        "id": "6a5bbe44cd6249.04032399",
+        "name": "Minifig Hat Wizard without Brim",
+        "file": "17349.dat"
+    },
+    {
+        "id": "6a5bbe44cd6c93.63079131",
+        "name": "Minifig Headdress Pig",
+        "file": "17351.dat"
+    },
+    {
+        "id": "6a5bbe44cd7692.18723230",
+        "name": "Minifig Headdress Pig with Black Eyes Pattern",
+        "file": "17351p01.dat"
+    },
+    {
+        "id": "6a5bbe44cebbe8.16579376",
+        "name": "Minifig Carrot Nose",
+        "file": "1756.dat"
+    },
+    {
+        "id": "6a5bbe44ced9d6.58379976",
+        "name": "Minifig Hair Straight Cut with Short Ponytail",
+        "file": "17630.dat"
+    },
+    {
+        "id": "6a5bbe44cf5ed8.76299314",
+        "name": "Minifig Crown with  4 Spikes",
+        "file": "18165.dat"
+    },
+    {
+        "id": "6a5bbe44d09292.09495010",
+        "name": "Minifig Hat Fedora Outback Style with Wide Brim with Molded Band and Short Hair",
+        "file": "1849.dat"
+    },
+    {
+        "id": "6a5bbe44d09cb8.73022433",
+        "name": "Minifig Hat Fedora Outback Style with Wide Brim with Dark Brown Band and Short Hair Pattern",
+        "file": "1849p01.dat"
+    },
+    {
+        "id": "6a5bbe44d68137.20225335",
+        "name": "Minifig Hair Mid-Length Straight with Crown",
+        "file": "18835.dat"
+    },
+    {
+        "id": "6a5bbe44d68af0.43245212",
+        "name": "Minifig Hair Mid-Length Straight with Gold Crown Pattern",
+        "file": "18835p01.dat"
+    },
+    {
+        "id": "6a5bbe44d69490.47646791",
+        "name": "Minifig Hair Mid-Length Straight with Blue Crown Pattern",
+        "file": "18835p02.dat"
+    },
+    {
+        "id": "6a5bbe44d82009.95312513",
+        "name": "Minifig Cloth Wrap \/ Bandana with Rounded Top",
+        "file": "18927.dat"
+    },
+    {
+        "id": "6a5bbe44e18152.30191262",
+        "name": "Figure Elves Hair Long Wavy with Braid, Bangs and Ears",
+        "file": "19201.dat"
+    },
+    {
+        "id": "6a5bbe44e18be0.88670454",
+        "name": "Figure Elves Hair Long Wavy with Dark Azure Tips, Braid, Bangs and Light Nougat Elves Ears Pattern",
+        "file": "19201p01.dat"
+    },
+    {
+        "id": "6a5bbe44e19611.66514955",
+        "name": "Figure Elves Hair Short Spiked with Ears",
+        "file": "19203.dat"
+    },
+    {
+        "id": "6a5bbe44e19ff4.29872406",
+        "name": "Figure Elves Hair Short Spiked with Light Nougat Ears",
+        "file": "19203p01.dat"
+    },
+    {
+        "id": "6a5bbe44e1aa81.36669114",
+        "name": "Figure Elves Hair Short Spiked with Medium Nougat Ears",
+        "file": "19203p02.dat"
+    },
+    {
+        "id": "6a5bbe44e1b484.80214571",
+        "name": "Figure Elves Hair Long Wavy with Ears",
+        "file": "19204.dat"
+    },
+    {
+        "id": "6a5bbe44e1be97.14798515",
+        "name": "Figure Elves Hair Long Wavy with Ears with Yellow Tips and Medium Nougat Ears Pattern",
+        "file": "19204p01.dat"
+    },
+    {
+        "id": "6a5bbe44e1cb50.38867050",
+        "name": "Figure Elves Hair Long Tapered in Back with Braids and Elves Ears",
+        "file": "19206.dat"
+    },
+    {
+        "id": "6a5bbe44e1d596.75226454",
+        "name": "Figure Elves Hair Long Tapered in Back with Braids, White Tips, Bangs and Light Nougat Elves Ears Pattern",
+        "file": "19206p01.dat"
+    },
+    {
+        "id": "6a5bbe44e1dfb6.65100385",
+        "name": "Figure Elves Hair Long Tapered in Back with Braids and Medium Lavender Highlight in Bangs and Light Nougat Elves Ears Pattern",
+        "file": "19206p02.dat"
+    },
+    {
+        "id": "6a5bbe44e1e9a4.37843589",
+        "name": "Figure Elves Hair Long Tapered in Back with Braids and Gold Highlight at Ends and Medium Nougat Elves Ears Pattern",
+        "file": "19206p03.dat"
+    },
+    {
+        "id": "6a5bbe44eb9cc8.30224323",
+        "name": "Minifig Helmet Square Head",
+        "file": "19730.dat"
+    },
+    {
+        "id": "6a5bbe44ee04e1.35150838",
+        "name": "Minifig Helmet SW Darth Vader Upper Part",
+        "file": "19916.dat"
+    },
+    {
+        "id": "6a5bbe44ee72b1.99462587",
+        "name": "Minifig Hair Short Layered Mop Top",
+        "file": "2003.dat"
+    },
+    {
+        "id": "6a5bbe45014d29.23260246",
+        "name": "Minifig Hair Mid-Length Flipped Ends with Cat Ears",
+        "file": "20592.dat"
+    },
+    {
+        "id": "6a5bbe45015750.52124410",
+        "name": "Minifig Hair Mid-Length Flipped Ends with Bright Light Orange Cat Ears Pattern",
+        "file": "20592p01.dat"
+    },
+    {
+        "id": "6a5bbe450162e4.94369177",
+        "name": "Minifig Hair Mid-Length Flipped Ends with Black Cat Ears Pattern",
+        "file": "20592p02.dat"
+    },
+    {
+        "id": "6a5bbe45016cf2.87292235",
+        "name": "Minifig Hair Mid-Length Flipped Ends with Light Aqua Cat Ears Pattern",
+        "file": "20592p03.dat"
+    },
+    {
+        "id": "6a5bbe450176b6.64686973",
+        "name": "Minifig Hair Long Tousled with Centre Parting",
+        "file": "20595.dat"
+    },
+    {
+        "id": "6a5bbe450181c1.52166323",
+        "name": "Minifig Hair Female Pigtails High, Long Bangs, Hole on Top",
+        "file": "20596.dat"
+    },
+    {
+        "id": "6a5bbe45019594.80034669",
+        "name": "Minifig Hair Female Pigtails High, Long Bangs, Hole on Top with Dark Green Hair Ties Pattern",
+        "file": "20596p01.dat"
+    },
+    {
+        "id": "6a5bbe4501a212.29381100",
+        "name": "Minifig Hair Female Pigtails High, Long Bangs, Hole on Top with Blue Left Half Pattern",
+        "file": "20596p02.dat"
+    },
+    {
+        "id": "6a5bbe4501ad23.01188954",
+        "name": "Minifig Hair Female Pigtails High, Long Bangs, Hole on Top with Dark Azure Hair Ties and Dark Azure and Red Tips Pattern",
+        "file": "20596p03.dat"
+    },
+    {
+        "id": "6a5bbe4501b821.30579798",
+        "name": "Minifig Hair Female Pigtails High, Long Bangs, Hole on Top with Dark Pink Hair Ties and Dark Azure and Dark Pink Tips Pattern",
+        "file": "20596p04.dat"
+    },
+    {
+        "id": "6a5bbe4501c280.62593676",
+        "name": "Minifig Hair Short Tousled with Side Part and Lock Sticking Up",
+        "file": "20597.dat"
+    },
+    {
+        "id": "6a5bbe450202a0.00930386",
+        "name": "Minifig Headdress Pumpkin Carved",
+        "file": "20695.dat"
+    },
+    {
+        "id": "6a5bbe45020cb5.19858927",
+        "name": "Minifig Headdress Pumpkin Carved with Green Stalk Pattern",
+        "file": "20695p01.dat"
+    },
+    {
+        "id": "6a5bbe45028837.29522441",
+        "name": "Minifig Hair Female Short Swept Sideways",
+        "file": "20877.dat"
+    },
+    {
+        "id": "6a5bbe4502a622.67587978",
+        "name": "Minifig Helmet SW Stormtrooper Episode  7",
+        "file": "20904.dat"
+    },
+    {
+        "id": "6a5bbe4502b038.08331911",
+        "name": "Minifig Helmet SW Stormtrooper Episode  8 with Pointed Mouth Pattern",
+        "file": "20904ps0.dat"
+    },
+    {
+        "id": "6a5bbe4502bb06.94768573",
+        "name": "Minifig Helmet SW Stormtrooper Executioner Episode  8 with Pointed Mouth and Right Sided Black Stripe on Top Pattern",
+        "file": "20904ps1.dat"
+    },
+    {
+        "id": "6a5bbe4502cfd2.03862520",
+        "name": "Minifig Helmet SW First Order Flametrooper Episode  7 Pattern",
+        "file": "20905ps0.dat"
+    },
+    {
+        "id": "6a5bbe4502d9e7.51626652",
+        "name": "Minifig Helmet SW First Order Walker Driver Episode  8 with Light Bluish Grey Stripe on Right Side Pattern",
+        "file": "20905ps1.dat"
+    },
+    {
+        "id": "6a5bbe4502e3d9.49683792",
+        "name": "Minifig Helmet Kylo Ren",
+        "file": "20950.dat"
+    },
+    {
+        "id": "6a5bbe45058ce4.30913630",
+        "name": "Minifig Hair Short Swept Back with Sideburns and Widow's Peak",
+        "file": "21268.dat"
+    },
+    {
+        "id": "6a5bbe450598d9.73028372",
+        "name": "Minifig Hair Swept Back with Widow's Peak, Chin-Length and Bushy in Back",
+        "file": "21269.dat"
+    },
+    {
+        "id": "6a5bbe4506f822.66398371",
+        "name": "Minifig Hair Coiled",
+        "file": "21778.dat"
+    },
+    {
+        "id": "6a5bbe450701c1.67211935",
+        "name": "Minifig Hair Short Quiff",
+        "file": "21787.dat"
+    },
+    {
+        "id": "6a5bbe45070ba1.97919962",
+        "name": "Minifig Hair Short Smooth",
+        "file": "21788.dat"
+    },
+    {
+        "id": "6a5bbe4507d785.17588999",
+        "name": "Minifig Hat Ninja Wrap Smooth",
+        "file": "2187.dat"
+    },
+    {
+        "id": "6a5bbe45094f04.91059154",
+        "name": "Minifig Helmet Space with Air Intakes and Top Pin Hole",
+        "file": "22380.dat"
+    },
+    {
+        "id": "6a5bbe45101fb9.91969122",
+        "name": "Minifig Plume Horsetail with Bar 0.5L",
+        "file": "22411.dat"
+    },
+    {
+        "id": "6a5bbe45132dd3.01469611",
+        "name": "Minifig Hair Swept Left Tousled",
+        "file": "23186.dat"
+    },
+    {
+        "id": "6a5bbe45154662.00351245",
+        "name": "Minifig Hat High Cone Shaped",
+        "file": "2338.dat"
+    },
+    {
+        "id": "6a5bbe451d58d6.27274409",
+        "name": "Minifig Headdress Bandage Wrapped",
+        "file": "24073.dat"
+    },
+    {
+        "id": "6a5bbe451d6e65.97416370",
+        "name": "Minifig Headdress Shark with Tail and Fin",
+        "file": "24076.dat"
+    },
+    {
+        "id": "6a5bbe451d7899.93714715",
+        "name": "Minifig Headdress Shark with Tail and Fin with Black Eye and White Teeth Pattern",
+        "file": "24076p01.dat"
+    },
+    {
+        "id": "6a5bbe451d82e9.73753422",
+        "name": "Minifig Headdress Shark with Tail and Fin with Red Eye and White Orca Marks and Teeth Pattern",
+        "file": "24076p02.dat"
+    },
+    {
+        "id": "6a5bbe451deee6.87388956",
+        "name": "Minifig Helmet with Wings and Eagle Head",
+        "file": "24088.dat"
+    },
+    {
+        "id": "6a5bbe45211be2.43969098",
+        "name": "Minifig Hair Faun",
+        "file": "24230.dat"
+    },
+    {
+        "id": "6a5bbe45212637.46508952",
+        "name": "Minifig Hair Faun with Yellow Ears and Dark Tan Horns Pattern",
+        "file": "24230p01.dat"
+    },
+    {
+        "id": "6a5bbe452bec12.93455305",
+        "name": "Minifig Hat Ninja Wrap",
+        "file": "24496.dat"
+    },
+    {
+        "id": "6a5bbe452bfb66.71207866",
+        "name": "Minifig Hat Ninja Wrap with Green Bandana and Metallic Gold Ninjago Logogram Pattern",
+        "file": "24496p01.dat"
+    },
+    {
+        "id": "6a5bbe452c06f0.04912409",
+        "name": "Minifig Hat Ninja Wrap with Dark Blue Bandana and Blue Lines Pattern",
+        "file": "24496p06.dat"
+    },
+    {
+        "id": "6a5bbe452ffd56.93358918",
+        "name": "Minifig Hat Sailor with Ribbon and Pin",
+        "file": "24635.dat"
+    },
+    {
+        "id": "6a5bbe453007a3.72902345",
+        "name": "Minifig Hat Sailor with Ribbon and Pin with Blue Top Pattern",
+        "file": "24635p01.dat"
+    },
+    {
+        "id": "6a5bbe453011b8.02496035",
+        "name": "Minifig Headdress with Widow's Peak and Two Large Curved Segmented Horns",
+        "file": "24636.dat"
+    },
+    {
+        "id": "6a5bbe45350920.88332138",
+        "name": "Minifig Hat Newsboy Cap",
+        "file": "2514.dat"
+    },
+    {
+        "id": "6a5bbe4535d847.87522858",
+        "name": "Minifig Headdress with Panther Ears",
+        "file": "25264.dat"
+    },
+    {
+        "id": "6a5bbe4536a465.35593032",
+        "name": "Minifig Hat Bicorne",
+        "file": "2528a.dat"
+    },
+    {
+        "id": "6a5bbe4536b224.05678926",
+        "name": "Minifig Hat Bicorne with White Evil Skull and Crossbones Pattern",
+        "file": "2528ap30.dat"
+    },
+    {
+        "id": "6a5bbe4536bc94.82421978",
+        "name": "Minifig Hat Bicorne with Small Rounded Skull and Crossbones Pattern",
+        "file": "2528ap31.dat"
+    },
+    {
+        "id": "6a5bbe4536c6e9.39116555",
+        "name": "Minifig Hat Bicorne with Admiral Pattern",
+        "file": "2528ap32.dat"
+    },
+    {
+        "id": "6a5bbe4536d0f5.53642900",
+        "name": "Minifig Hat Bicorne with Metallic Gold Skull and Crossbones and Dots Pattern",
+        "file": "2528ap33.dat"
+    },
+    {
+        "id": "6a5bbe4536dac7.73903656",
+        "name": "Minifig Hat Bicorne with Minifigure Skull and Crossed Spanners Pattern",
+        "file": "2528ap34.dat"
+    },
+    {
+        "id": "6a5bbe4536e505.92197868",
+        "name": "Minifig Hat Bicorne with Metallic Gold Captain Pattern",
+        "file": "2528ap35.dat"
+    },
+    {
+        "id": "6a5bbe4536eeb2.76548817",
+        "name": "Minifig Hat Bicorne with White Slanted Skull with X Eyes and Crossbones Pattern",
+        "file": "2528ap36.dat"
+    },
+    {
+        "id": "6a5bbe4536f854.27559822",
+        "name": "Minifig Hat Bicorne with White Slanted Skull with Eyepatch and Crossed Spanners Pattern",
+        "file": "2528ap37.dat"
+    },
+    {
+        "id": "6a5bbe453701d8.90632209",
+        "name": "Minifig Hat Bicorne with Dark Bluish Grey Tattered Lines and Spots and Metallic Silver Emblem Pattern",
+        "file": "2528ap38.dat"
+    },
+    {
+        "id": "6a5bbe45370b96.70633385",
+        "name": "Minifig Hat Bicorne with Large Square Skull with Crossbones Behind and Red Line Pattern",
+        "file": "2528ap39.dat"
+    },
+    {
+        "id": "6a5bbe45371535.25668357",
+        "name": "Minifig Hat Bicorne with Corrugated Metallic Silver Minifigure Skull and Crossed Spanners on Dark Bluish Grey Background Pattern",
+        "file": "2528ap3a.dat"
+    },
+    {
+        "id": "6a5bbe45371ed0.63272480",
+        "name": "Minifig Hat Bicorne with White Skull and Crossed Cutlasses Pattern",
+        "file": "2528ap3b.dat"
+    },
+    {
+        "id": "6a5bbe45372987.28759234",
+        "name": "Minifig Hat Bicorne with Gold Trim, Gold Button and Blue Flower Pattern",
+        "file": "2528ap3c.dat"
+    },
+    {
+        "id": "6a5bbe45373378.83358498",
+        "name": "Minifig Hat Bicorne with Squared Skull and Crossbones Pattern",
+        "file": "2528ap3d.dat"
+    },
+    {
+        "id": "6a5bbe45384341.91739826",
+        "name": "Minifig Hair Tousled with Long Bangs",
+        "file": "25378.dat"
+    },
+    {
+        "id": "6a5bbe4538a332.84076346",
+        "name": "Minifig Hair Mid-Length Tousled with Side Part",
+        "file": "25409.dat"
+    },
+    {
+        "id": "6a5bbe4538b932.57768098",
+        "name": "Minifig Hair Tousled and Sticking Out on Both Sides",
+        "file": "25412.dat"
+    },
+    {
+        "id": "6a5bbe4538d3a3.48088892",
+        "name": "Minifig Hat Rag",
+        "file": "2543.dat"
+    },
+    {
+        "id": "6a5bbe4538ddc8.56311219",
+        "name": "Minifig Hat Tricorne",
+        "file": "2544.dat"
+    },
+    {
+        "id": "6a5bbe4538e810.86653504",
+        "name": "Minifig Hat Tricorne with White Plume (Complete)",
+        "file": "2544c01.dat"
+    },
+    {
+        "id": "6a5bbe4538f2a9.29471262",
+        "name": "Minifig Hat Imperial Guard Shako",
+        "file": "2545.dat"
+    },
+    {
+        "id": "6a5bbe453925b4.99569583",
+        "name": "Minifig Hat Imperial Guard Shako with Red Plume and Gold Badge Pattern",
+        "file": "2545p01.dat"
+    },
+    {
+        "id": "6a5bbe453b2dc0.70808704",
+        "name": "Minifig Hair Female with Top Knot Bun and Fringe",
+        "file": "25613.dat"
+    },
+    {
+        "id": "6a5bbe453e9e33.84358713",
+        "name": "Minifig Ghost Shroud",
+        "file": "2588.dat"
+    },
+    {
+        "id": "6a5bbe453f04b3.14306931",
+        "name": "Minifig Helmet Visor Pointed with Rounded Nose",
+        "file": "2594a.dat"
+    },
+    {
+        "id": "6a5bbe453f0f56.97375941",
+        "name": "Minifig Helmet Visor Pointed with Squared Nose",
+        "file": "2594b.dat"
+    },
+    {
+        "id": "6a5bbe453f2404.45476844",
+        "name": "Minifig Headdress Bird",
+        "file": "25971.dat"
+    },
+    {
+        "id": "6a5bbe453f2e43.41479752",
+        "name": "Minifig Headdress Bird with Penguin White Face and Orange Beak Pattern",
+        "file": "25971p01.dat"
+    },
+    {
+        "id": "6a5bbe453f38a1.28537279",
+        "name": "Minifig Headdress Bird with Black Eye and Bright Light Yellow Beak Pattern",
+        "file": "25971p02.dat"
+    },
+    {
+        "id": "6a5bbe453f42c5.65086602",
+        "name": "Minifig Hair Swept Back with Slight Widow's Peak and Short Sideburns",
+        "file": "25972.dat"
+    },
+    {
+        "id": "6a5bbe453f4cd4.66852268",
+        "name": "Minifig Hair Swept Back with Slight Widow's Peak and Short Sideburns with White Side Streaks Pattern",
+        "file": "25972p01.dat"
+    },
+    {
+        "id": "6a5bbe453f5707.41079497",
+        "name": "Minifig Headdress Bald Head with Tied Bandana",
+        "file": "25973.dat"
+    },
+    {
+        "id": "6a5bbe453f7e89.86057285",
+        "name": "Minifig Headdress Banana",
+        "file": "25977.dat"
+    },
+    {
+        "id": "6a5bbe453f8855.85391174",
+        "name": "Minifig Headdress Banana with Black Ends Pattern",
+        "file": "25977p01.dat"
+    },
+    {
+        "id": "6a5bbe453f91f9.53401862",
+        "name": "Minifig Headdress Banana with Black Ends and White \"BANANA\" on Medium Blue Patch Pattern",
+        "file": "25977p02.dat"
+    },
+    {
+        "id": "6a5bbe453fe586.00762486",
+        "name": "Minifig Hat Conical Asian with Curved Sides",
+        "file": "26007.dat"
+    },
+    {
+        "id": "6a5bbe45401932.37515588",
+        "name": "Minifig Headdress Bear Costume with Ears",
+        "file": "26045.dat"
+    },
+    {
+        "id": "6a5bbe4541a068.32908565",
+        "name": "Minifig Hair Short Wavy with Centre Parting",
+        "file": "26139.dat"
+    },
+    {
+        "id": "6a5bbe4542fd12.44195310",
+        "name": "Minifig Hair Short Spiked, Swept Up in Front",
+        "file": "2631.dat"
+    },
+    {
+        "id": "6a5bbe454307b5.38892601",
+        "name": "Minifig Hair Female Mid-Length, Wavy, Parted in Center",
+        "file": "2632.dat"
+    },
+    {
+        "id": "6a5bbe45431377.90377574",
+        "name": "Minifig Hair Long with Parted Bangs Swept Back in Bun with Pin Hole in Back",
+        "file": "2633.dat"
+    },
+    {
+        "id": "6a5bbe45439134.42076285",
+        "name": "Minifig Hair Wavy Parted on Right with Loose Braid in Back",
+        "file": "2640.dat"
+    },
+    {
+        "id": "6a5bbe45445667.41309365",
+        "name": "Figure Friends Hair Long Parted on Side, Swept Back over Forehead with  1 Pin Hole",
+        "file": "2645.dat"
+    },
+    {
+        "id": "6a5bbe454bcde5.88753970",
+        "name": "Minifig Hat Cylinder Tapered with Hatband",
+        "file": "27149.dat"
+    },
+    {
+        "id": "6a5bbe454bd797.62747975",
+        "name": "Minifig Hat Cylinder Tapered with Hatband with Half Side Dark Turquoise and Medium Lilac Flower Pattern",
+        "file": "27149p01.dat"
+    },
+    {
+        "id": "6a5bbe454c5e84.71784167",
+        "name": "Minifig Hair with Large High Bun",
+        "file": "27186.dat"
+    },
+    {
+        "id": "6a5bbe454f0ce9.82345127",
+        "name": "Minifig Hair Mohawk Wide",
+        "file": "27385.dat"
+    },
+    {
+        "id": "6a5bbe45533aa0.20205326",
+        "name": "Minifig Headdress Bald Head High",
+        "file": "28125.dat"
+    },
+    {
+        "id": "6a5bbe45535020.80803339",
+        "name": "Minifig Hair Wavy Parted with Large Thick Glasses",
+        "file": "28145.dat"
+    },
+    {
+        "id": "6a5bbe45535b17.72978587",
+        "name": "Minifig Hair Wavy Parted with Black Large Thick Glasses and Light Nougat Eyes Pattern",
+        "file": "28145p01.dat"
+    },
+    {
+        "id": "6a5bbe455365b0.84501300",
+        "name": "Minifig Hair Wavy Parted with Black Large Thick Glasses and Green Eyes Winking Pattern",
+        "file": "28145p02.dat"
+    },
+    {
+        "id": "6a5bbe455372d2.38372071",
+        "name": "Minifig Hair Wavy Parted with Black Large Thick Glasses and Green Eyes Looking Up Pattern",
+        "file": "28145p03.dat"
+    },
+    {
+        "id": "6a5bbe45537cf5.73061678",
+        "name": "Minifig Hair Wavy Parted with Black Large Thick Glasses and Green Eyes Pattern",
+        "file": "28145p04.dat"
+    },
+    {
+        "id": "6a5bbe4554ddf0.78215798",
+        "name": "Minifig Police Hat with Hair Pulled Into Bun",
+        "file": "28424.dat"
+    },
+    {
+        "id": "6a5bbe4554ed71.75157884",
+        "name": "Minifig Police Hat Dark Blue with Hair Pulled Into Bun with Metallic Gold Badge Pattern",
+        "file": "28424p01.dat"
+    },
+    {
+        "id": "6a5bbe4554f809.75649507",
+        "name": "Minifig Police Hat Dark Blue with Hair Pulled Into Bun with Metallic Gold Badge and Laurel on Black Visor Pattern",
+        "file": "28424p02.dat"
+    },
+    {
+        "id": "6a5bbe45550272.95017743",
+        "name": "Minifig Police Hat Dark Blue with Hair Pulled Into Bun with Metallic Gold Heartshaped Badge and Laurel Pattern",
+        "file": "28424p03.dat"
+    },
+    {
+        "id": "6a5bbe45566c13.46097101",
+        "name": "Minifig Hair Bushy Swept Back",
+        "file": "28551.dat"
+    },
+    {
+        "id": "6a5bbe455a01b3.07567485",
+        "name": "Minifig Hair Female Pigtails High Bouncy, Hole on Top",
+        "file": "28798.dat"
+    },
+    {
+        "id": "6a5bbe455a0c79.28377781",
+        "name": "Minifig Hair Female Pigtails High Bouncy, Hole on Top with Black on Left Pattern",
+        "file": "28798p01.dat"
+    },
+    {
+        "id": "6a5bbe455a16d1.06561820",
+        "name": "Minifig Hair Female Pigtails High Bouncy, Hole on Top with Bright Light Blue on Left Pattern",
+        "file": "28798p02.dat"
+    },
+    {
+        "id": "6a5bbe455a20f3.86552967",
+        "name": "Minifig Hair Female Pigtails High Bouncy, Hole on Top with Bright Pink on Left Pattern",
+        "file": "28798p03.dat"
+    },
+    {
+        "id": "6a5bbe455a2af1.94835596",
+        "name": "Minifig Hair Female Pigtails High Bouncy, Hole on Top with Red on Left Pattern",
+        "file": "28798p04.dat"
+    },
+    {
+        "id": "6a5bbe455a34b1.15969523",
+        "name": "Minifig Hair Female Pigtails High Bouncy, Hole on Top with Coral on Left Pattern",
+        "file": "28798p05.dat"
+    },
+    {
+        "id": "6a5bbe45609981.56547883",
+        "name": "Minifig Headdress Rocket Costume",
+        "file": "29580.dat"
+    },
+    {
+        "id": "6a5bbe4560a406.71104214",
+        "name": "Minifig Headdress Rocket Costume with Red Top, Visor and Base and Rivets Pattern",
+        "file": "29580p01.dat"
+    },
+    {
+        "id": "6a5bbe45613e87.00182699",
+        "name": "Minifig Hair Bob Cut Parted in Middle",
+        "file": "29633.dat"
+    },
+    {
+        "id": "6a5bbe45614a25.81770812",
+        "name": "Minifig Hair Female Very Curly - Parted in Middle",
+        "file": "29634.dat"
+    },
+    {
+        "id": "6a5bbe4569c174.24109296",
+        "name": "Minifig Helmet Morion",
+        "file": "30048.dat"
+    },
+    {
+        "id": "6a5bbe4578da92.33369060",
+        "name": "Minifig Helmet Visor Diver Mask",
+        "file": "30090b.dat"
+    },
+    {
+        "id": "6a5bbe457d08c8.30181674",
+        "name": "Minifig Helmet with Bat Wings",
+        "file": "30105.dat"
+    },
+    {
+        "id": "6a5bbe4582fac5.45536384",
+        "name": "Minifig Headdress American Indian Buffalo Horned",
+        "file": "30113.dat"
+    },
+    {
+        "id": "6a5bbe458304c4.81681150",
+        "name": "Minifig Hair Long with Headband",
+        "file": "30114.dat"
+    },
+    {
+        "id": "6a5bbe45830f74.82439641",
+        "name": "Minifig Hair Long with Headband and Feathers (Complete)",
+        "file": "30114c01.dat"
+    },
+    {
+        "id": "6a5bbe45840c79.74181125",
+        "name": "Minifig Helmet with Hexagonal Top and Hoses",
+        "file": "30120.dat"
+    },
+    {
+        "id": "6a5bbe45841932.87186123",
+        "name": "Minifig Helmet with Hexagonal Top and Gold Alien Pattern",
+        "file": "30120p01.dat"
+    },
+    {
+        "id": "6a5bbe45842352.29143180",
+        "name": "Minifig Helmet with Hexagonal Top and Silver Alien Pattern",
+        "file": "30120p02.dat"
+    },
+    {
+        "id": "6a5bbe458445a7.88298602",
+        "name": "Minifig Helmet Standard",
+        "file": "30124b.dat"
+    },
+    {
+        "id": "6a5bbe45844fd7.61266385",
+        "name": "Minifig Helmet Standard with 1 Red and 2 Green Stripes Pattern",
+        "file": "30124bp01.dat"
+    },
+    {
+        "id": "6a5bbe45845a49.98089796",
+        "name": "Minifig Helmet Standard with Red Lines and White Stars Pattern",
+        "file": "30124bp02.dat"
+    },
+    {
+        "id": "6a5bbe45846516.45080436",
+        "name": "Minifig Helmet Standard with 7 White Stars Pattern",
+        "file": "30124bp03.dat"
+    },
+    {
+        "id": "6a5bbe45846ed8.23515460",
+        "name": "Minifig Helmet Standard with Black 'POLICE' and Red Line Pattern",
+        "file": "30124bp04.dat"
+    },
+    {
+        "id": "6a5bbe458478b0.65280561",
+        "name": "Minifig Helmet Standard with Blue and Silver Spyrius Pattern",
+        "file": "30124bp50.dat"
+    },
+    {
+        "id": "6a5bbe458482b0.66098375",
+        "name": "Minifig Helmet Standard with Black, Blue and Silver Unitron Pattern",
+        "file": "30124bp51.dat"
+    },
+    {
+        "id": "6a5bbe4584c033.40572971",
+        "name": "Minifig Feathers with Clip",
+        "file": "30127.dat"
+    },
+    {
+        "id": "6a5bbe4584ca70.87144729",
+        "name": "Minifig Feathers with Clip and Black Tip Pattern",
+        "file": "30127p01.dat"
+    },
+    {
+        "id": "6a5bbe4584de40.06074224",
+        "name": "Figure Friends Hair Long, Left Side Part and High Bangs, Hole on Top and Left",
+        "file": "3013.dat"
+    },
+    {
+        "id": "6a5bbe45851d01.15449721",
+        "name": "Minifig Hat Kepi",
+        "file": "30135.dat"
+    },
+    {
+        "id": "6a5bbe45853b99.80656002",
+        "name": "Minifig Headdress American Indian Warbonnet",
+        "file": "30138.dat"
+    },
+    {
+        "id": "6a5bbe45854556.37915885",
+        "name": "Minifig Headdress American Indian Warbonnet with Coloured Feathers Pattern",
+        "file": "30138p01.dat"
+    },
+    {
+        "id": "6a5bbe45872fd5.13429850",
+        "name": "Minifig Hat Wide Brim Flat",
+        "file": "30167.dat"
+    },
+    {
+        "id": "6a5bbe45874e95.13077418",
+        "name": "Minifig Headdress Nemes Type 1",
+        "file": "30168b.dat"
+    },
+    {
+        "id": "6a5bbe45877806.12714935",
+        "name": "Minifig Cap Aviator Goggles",
+        "file": "30170b.dat"
+    },
+    {
+        "id": "6a5bbe45878c23.01222365",
+        "name": "Minifig Cap Aviator",
+        "file": "30171b.dat"
+    },
+    {
+        "id": "6a5bbe4587a0b2.43706087",
+        "name": "Minifig Hat Pith Helmet",
+        "file": "30172.dat"
+    },
+    {
+        "id": "6a5bbe4587d263.25755969",
+        "name": "Minifig Helmet Samurai",
+        "file": "30175.dat"
+    },
+    {
+        "id": "6a5bbe4587dc40.16515369",
+        "name": "Minifig Helmet Samurai with Horn (Complete)",
+        "file": "30175c01.dat"
+    },
+    {
+        "id": "6a5bbe4587f276.15072097",
+        "name": "Minifig Ninja Wrap",
+        "file": "30177.dat"
+    },
+    {
+        "id": "6a5bbe458a4c37.53957263",
+        "name": "Minifig Helmet Underwater Stingray",
+        "file": "30202.dat"
+    },
+    {
+        "id": "6a5bbe458ac5e6.84653554",
+        "name": "Minifig Helmet Round Bubble",
+        "file": "30214.dat"
+    },
+    {
+        "id": "6a5bbe458f9792.25052972",
+        "name": "Minifig Helmet with Chinstrap and Wide Brim",
+        "file": "30273.dat"
+    },
+    {
+        "id": "6a5bbe458fb505.77559761",
+        "name": "Minifig Headdress with Hooked Beak and Feathers",
+        "file": "30276.dat"
+    },
+    {
+        "id": "6a5bbe45901181.30807659",
+        "name": "Minifig Hood Fur-lined",
+        "file": "30287.dat"
+    },
+    {
+        "id": "6a5bbe45901e09.01006777",
+        "name": "Minifig Hood Fur-lined with White Fur Trim Pattern",
+        "file": "30287p01.dat"
+    },
+    {
+        "id": "6a5bbe4591a488.75726217",
+        "name": "Minifig Helmet Mining",
+        "file": "30325.dat"
+    },
+    {
+        "id": "6a5bbe4596c844.63129400",
+        "name": "Minifig Helmet Darth Vader",
+        "file": "30368.dat"
+    },
+    {
+        "id": "6a5bbe4596d303.93736413",
+        "name": "Minifig Helmet Scout Trooper",
+        "file": "30369.dat"
+    },
+    {
+        "id": "6a5bbe4596e7b2.58681528",
+        "name": "Minifig Helmet Star Wars Rebel Pilot",
+        "file": "30370.dat"
+    },
+    {
+        "id": "6a5bbe4596f1b3.42877053",
+        "name": "Minifig Helmet SW Rebel Pilot with Yellow Grid on BluishGrey Pattern",
+        "file": "30370ps1.dat"
+    },
+    {
+        "id": "6a5bbe4596fbb1.47668486",
+        "name": "Minifig Helmet Star Wars Rebel Pilot with Red Rebel Logo Pattern",
+        "file": "30370ps2.dat"
+    },
+    {
+        "id": "6a5bbe459705b3.82768502",
+        "name": "Minifig Helmet Star Wars Rebel Pilot with Blue Rebel Logo Pattern",
+        "file": "30370ps3.dat"
+    },
+    {
+        "id": "6a5bbe45970fa7.07133251",
+        "name": "Minifig Helmet SW Rebel Pilot with Checkered Pattern",
+        "file": "30370ps4.dat"
+    },
+    {
+        "id": "6a5bbe45971993.48788875",
+        "name": "Minifig Helmet SW Rebel Pilot with Yellow Grid on Grey Pattern",
+        "file": "30370ps5.dat"
+    },
+    {
+        "id": "6a5bbe45991710.99258912",
+        "name": "Minifig Helmet SW Mandalorian with Rocket Pack",
+        "file": "30380.dat"
+    },
+    {
+        "id": "6a5bbe45992162.77177108",
+        "name": "Minifig Helmet SW Mandalorian with Rocket Pack and Dark Red Boba Fett Colours Pattern",
+        "file": "30380p01.dat"
+    },
+    {
+        "id": "6a5bbe45992bd6.74936868",
+        "name": "Minifig Helmet SW Mandalorian with Rocket Pack and Blue Jango Fett Colours Pattern",
+        "file": "30380p02.dat"
+    },
+    {
+        "id": "6a5bbe45993633.89080301",
+        "name": "Minifig Helmet SW Mandalorian with Rocket Pack and Dark Brown Boba Fett Colours Pattern",
+        "file": "30380p03.dat"
+    },
+    {
+        "id": "6a5bbe45994008.26981662",
+        "name": "Minifig Hood",
+        "file": "30381.dat"
+    },
+    {
+        "id": "6a5bbe459e0b08.73026108",
+        "name": "Minifig Helmet Stormtrooper",
+        "file": "30408.dat"
+    },
+    {
+        "id": "6a5bbe459e15e2.02627213",
+        "name": "Minifig Helmet Stormtrooper with Stormtrooper Pattern",
+        "file": "30408p01.dat"
+    },
+    {
+        "id": "6a5bbe459e2637.07106181",
+        "name": "Minifig Helmet Stormtrooper with TIE-Fighter Pilot Pattern",
+        "file": "30408p02.dat"
+    },
+    {
+        "id": "6a5bbe459e3070.16785657",
+        "name": "Minifig Helmet Stormtrooper with Shadow Trooper Pattern",
+        "file": "30408p03.dat"
+    },
+    {
+        "id": "6a5bbe459e3bc4.29473446",
+        "name": "Minifig Hair with Two Buns",
+        "file": "30409.dat"
+    },
+    {
+        "id": "6a5bbe45a06662.95561418",
+        "name": "Minifig Hair Long and Half Braided (Needs Work)",
+        "file": "30475.dat"
+    },
+    {
+        "id": "6a5bbe45a34611.86540443",
+        "name": "Minifig Headdress SW Royal Guard",
+        "file": "30561.dat"
+    },
+    {
+        "id": "6a5bbe45a46a59.43944987",
+        "name": "Minifig Hair Flat Top",
+        "file": "30608.dat"
+    },
+    {
+        "id": "6a5bbe45a67d73.06469835",
+        "name": "Minifig Hood with Fringe",
+        "file": "30668.dat"
+    },
+    {
+        "id": "6a5bbe45a68815.65189144",
+        "name": "Minifig Hood with Tan Fringe Pattern",
+        "file": "30668p01.dat"
+    },
+    {
+        "id": "6a5bbe45a69300.67560049",
+        "name": "Minifig Hood with Dark Brown Fringe Pattern",
+        "file": "30668p02.dat"
+    },
+    {
+        "id": "6a5bbe45d3de88.74519588",
+        "name": "Minifig Hair Long Ponytail, French Braided, Blunt End, Hole on Top,  2 Holes on Back",
+        "file": "3201.dat"
+    },
+    {
+        "id": "6a5bbe45e3fa58.95973814",
+        "name": "Minifig Hair Wavy Windblown to One Side",
+        "file": "32602.dat"
+    },
+    {
+        "id": "6a5bbe45e45f24.64314949",
+        "name": "Minifig Hair Short Wavy Parted on Right",
+        "file": "3277.dat"
+    },
+    {
+        "id": "6a5bbe45ec15f7.43174940",
+        "name": "Minifig Crown Tiara",
+        "file": "33322.dat"
+    },
+    {
+        "id": "6a5bbe4604bfc4.62945675",
+        "name": "Minifig Helmet Dirt Bike",
+        "file": "35458.dat"
+    },
+    {
+        "id": "6a5bbe46051bb1.73627291",
+        "name": "Minifig Hair Mid-Length Wavy with Center Part and Sidelocks",
+        "file": "35494.dat"
+    },
+    {
+        "id": "6a5bbe46066de1.48921192",
+        "name": "Minifig Hair with Ponytail and Baseball Cap",
+        "file": "35660.dat"
+    },
+    {
+        "id": "6a5bbe46067885.46409061",
+        "name": "Minifig Hair with Ponytail and Red Baseball Cap Pattern",
+        "file": "35660p01.dat"
+    },
+    {
+        "id": "6a5bbe460682e0.04600134",
+        "name": "Minifig Hair with Ponytail and Dark Blue Baseball Cap Pattern",
+        "file": "35660p02.dat"
+    },
+    {
+        "id": "6a5bbe46068d18.78664606",
+        "name": "Minifig Hair with Ponytail and White Baseball Cap Pattern",
+        "file": "35660p03.dat"
+    },
+    {
+        "id": "6a5bbe460697a7.93329299",
+        "name": "Minifig Hair with Ponytail and Dark Red Baseball Cap Pattern",
+        "file": "35660p04.dat"
+    },
+    {
+        "id": "6a5bbe4606a290.57309689",
+        "name": "Minifig Hair with Ponytail and Dark Turquoise Baseball Cap Pattern",
+        "file": "35660p05.dat"
+    },
+    {
+        "id": "6a5bbe4606ac80.87000356",
+        "name": "Minifig Hair with Ponytail and Bright Pink Baseball Cap Pattern",
+        "file": "35660p06.dat"
+    },
+    {
+        "id": "6a5bbe4606b660.48391982",
+        "name": "Minifig Hair with Ponytail and Coral Baseball Cap Pattern",
+        "file": "35660p07.dat"
+    },
+    {
+        "id": "6a5bbe4606df45.62423298",
+        "name": "Minifig Hair Smooth with Spiked Bangs",
+        "file": "35699.dat"
+    },
+    {
+        "id": "6a5bbe460728e3.81013614",
+        "name": "Minifig Hair Short Parted with Two Pigtails and Pin Hole on Top",
+        "file": "35701.dat"
+    },
+    {
+        "id": "6a5bbe46075cc4.64797481",
+        "name": "Minifig Hair Female Parted in Center, Two Braids Hanging in Front",
+        "file": "35714.dat"
+    },
+    {
+        "id": "6a5bbe460766e7.44006601",
+        "name": "Minifig Hair Female Parted in Center, Two Braids Hanging in Front with Bright Light Blue Bows Pattern",
+        "file": "35714p01.dat"
+    },
+    {
+        "id": "6a5bbe460770b6.03448640",
+        "name": "Minifig Hair Female Parted in Center, Two Braids Hanging in Front with White Bows Pattern",
+        "file": "35714p02.dat"
+    },
+    {
+        "id": "6a5bbe4607c4c2.44463790",
+        "name": "Minifig Headdress Fireworks Rocket Costume",
+        "file": "35759.dat"
+    },
+    {
+        "id": "6a5bbe460b3318.75137585",
+        "name": "Minifig Hair Female Mid-Length Combed Behind Ear",
+        "file": "36037.dat"
+    },
+    {
+        "id": "6a5bbe460df5c7.19108232",
+        "name": "Minifig Police Hat",
+        "file": "3624.dat"
+    },
+    {
+        "id": "6a5bbe460e0179.17340277",
+        "name": "Minifig Hair Female with Pigtails",
+        "file": "3625.dat"
+    },
+    {
+        "id": "6a5bbe461eeac8.91287927",
+        "name": "Minifig Hat Cowboy",
+        "file": "3629.dat"
+    },
+    {
+        "id": "6a5bbe461ef889.21211513",
+        "name": "Minifig Hat Cowboy with Cavalry Logo Pattern",
+        "file": "3629pw1.dat"
+    },
+    {
+        "id": "6a5bbe461f0637.03124763",
+        "name": "Minifig Hat Cowboy with Silver Star Pattern",
+        "file": "3629pw2.dat"
+    },
+    {
+        "id": "6a5bbe46223b94.87904537",
+        "name": "Minifig Hair Thick and Messy",
+        "file": "36762.dat"
+    },
+    {
+        "id": "6a5bbe4623bdf2.78885439",
+        "name": "Minifig Hair Long Parted in Center",
+        "file": "36806.dat"
+    },
+    {
+        "id": "6a5bbe46462a36.61376799",
+        "name": "Minifig Construction Helmet",
+        "file": "3833.dat"
+    },
+    {
+        "id": "6a5bbe464657e6.23372426",
+        "name": "Minifig Fire Helmet",
+        "file": "3834.dat"
+    },
+    {
+        "id": "6a5bbe46466c75.75679380",
+        "name": "Minifig Fire Helmet with Fire Logo Shield Pattern",
+        "file": "3834p01.dat"
+    },
+    {
+        "id": "6a5bbe46475563.37283690",
+        "name": "Minifig Helmet Classic with Thin Chin Guard and Visor Dimples",
+        "file": "3842a.dat"
+    },
+    {
+        "id": "6a5bbe46475f43.90135481",
+        "name": "Minifig Helmet Classic with Thick Chin Guard and Visor Dimples",
+        "file": "3842b.dat"
+    },
+    {
+        "id": "6a5bbe46476b59.46551760",
+        "name": "Minifig Helmet Classic with Thick Chin Guard",
+        "file": "3842c.dat"
+    },
+    {
+        "id": "6a5bbe46477551.37475282",
+        "name": "Minifig Helmet Visor with Grille and Feather",
+        "file": "3843.dat"
+    },
+    {
+        "id": "6a5bbe46477fe8.82421180",
+        "name": "Minifig Helmet Castle with Neck Protector",
+        "file": "3844.dat"
+    },
+    {
+        "id": "6a5bbe46495d81.46087837",
+        "name": "Minifig Hair Female Mid Length, Bangs Part in Middle, Ringlets and Hole for Pin in Back",
+        "file": "3850.dat"
+    },
+    {
+        "id": "6a5bbe46499d07.88114796",
+        "name": "Minifig Hair Long and Straight, Hat with Tassel",
+        "file": "38541.dat"
+    },
+    {
+        "id": "6a5bbe4649a720.31887848",
+        "name": "Minifig Hair Long and Straight, Sand Blue Hat with Gold Tassel Pattern",
+        "file": "38541p01.dat"
+    },
+    {
+        "id": "6a5bbe4649b184.51820685",
+        "name": "Minifig Hair Long and Straight, Dark Tan Hat with Dark Brown Tassel Pattern",
+        "file": "38541p02.dat"
+    },
+    {
+        "id": "6a5bbe464b4544.21215910",
+        "name": "Minifig Top Hat",
+        "file": "3878.dat"
+    },
+    {
+        "id": "6a5bbe464b7dc2.38226721",
+        "name": "Minifig Hair Mid-Length Swept Right with Side Part",
+        "file": "3884.dat"
+    },
+    {
+        "id": "6a5bbe464b93d7.25373195",
+        "name": "Minifig Hair Long Full Curly, Parted on Left without Internal Supports",
+        "file": "3886.dat"
+    },
+    {
+        "id": "6a5bbe464c3c90.72816386",
+        "name": "Minifig Helmet Castle with Chin-Guard",
+        "file": "3896.dat"
+    },
+    {
+        "id": "6a5bbe464c6562.14745651",
+        "name": "Minifig Cook's Hat",
+        "file": "3898.dat"
+    },
+    {
+        "id": "6a5bbe464d0370.98604528",
+        "name": "Minifig Hair Male",
+        "file": "3901.dat"
+    },
+    {
+        "id": "6a5bbe464db1c4.66071833",
+        "name": "Minifig Crown with 5 Points",
+        "file": "39262.dat"
+    },
+    {
+        "id": "6a5bbe46554433.30724293",
+        "name": "Minifig Hair Short Tousled",
+        "file": "40233.dat"
+    },
+    {
+        "id": "6a5bbe46555900.42101815",
+        "name": "Minifig Headdress Turban",
+        "file": "40235.dat"
+    },
+    {
+        "id": "6a5bbe46556303.18809474",
+        "name": "Minifig Hair Long Straight",
+        "file": "40239.dat"
+    },
+    {
+        "id": "6a5bbe465581a7.06013128",
+        "name": "Minifig Hair Short Bowl Cut",
+        "file": "40240.dat"
+    },
+    {
+        "id": "6a5bbe4655ca22.26299281",
+        "name": "Minifig Hair Long Wavy",
+        "file": "40251.dat"
+    },
+    {
+        "id": "6a5bbe4665c5b1.96599034",
+        "name": "Minifig Hat Knit Cap",
+        "file": "41334.dat"
+    },
+    {
+        "id": "6a5bbe466995b8.96320473",
+        "name": "Minifig Garrison Cap",
+        "file": "4156.dat"
+    },
+    {
+        "id": "6a5bbe466a2db7.17674543",
+        "name": "Minifig Hair Long and Straight Parted in the Middle",
+        "file": "41612.dat"
+    },
+    {
+        "id": "6a5bbe46838579.82115774",
+        "name": "Minifig Headdress Werewolf",
+        "file": "42443.dat"
+    },
+    {
+        "id": "6a5bbe468399f4.48114005",
+        "name": "Minifig Hair Peaked",
+        "file": "42444.dat"
+    },
+    {
+        "id": "6a5bbe4692b6f4.68253068",
+        "name": "Minifig Hair Wavy",
+        "file": "43751.dat"
+    },
+    {
+        "id": "6a5bbe469335a0.02299100",
+        "name": "Minifig Russian Fur Cap",
+        "file": "43894.dat"
+    },
+    {
+        "id": "6a5bbe46968269.44485546",
+        "name": "Minifig Helmet SW Snowtrooper",
+        "file": "44360.dat"
+    },
+    {
+        "id": "6a5bbe46991d13.94440685",
+        "name": "Minifig Hat Tall Hat with Small Brim and Pin",
+        "file": "44553.dat"
+    },
+    {
+        "id": "6a5bbe469926f5.47323740",
+        "name": "Minifig Hat Tall Hat with Small Brim and Pin with Silver Top Pattern",
+        "file": "44553p01.dat"
+    },
+    {
+        "id": "6a5bbe46993121.55541048",
+        "name": "Minifig Hat Tall Hat with Small Brim and Pin with Black Top Pattern",
+        "file": "44553p02.dat"
+    },
+    {
+        "id": "6a5bbe469cabe8.32615786",
+        "name": "Minifig Cap with Long Flat Peak",
+        "file": "4485b.dat"
+    },
+    {
+        "id": "6a5bbe469cb630.80999159",
+        "name": "Minifig Cap with Long Flat Peak with Blue EMT Star of Life Pattern",
+        "file": "4485bp02.dat"
+    },
+    {
+        "id": "6a5bbe469cbff3.50388638",
+        "name": "Minifig Cap with Long Flat Peak with Coast Guard Logo Pattern",
+        "file": "4485bp03.dat"
+    },
+    {
+        "id": "6a5bbe469f8598.99990850",
+        "name": "Minifig Helmet Castle with Fixed Face Grille",
+        "file": "4503.dat"
+    },
+    {
+        "id": "6a5bbe469fc431.01901146",
+        "name": "Minifig Hood Medieval Cowl",
+        "file": "4505a.dat"
+    },
+    {
+        "id": "6a5bbe469fce15.13517102",
+        "name": "Minifig Forestman Cap",
+        "file": "4506.dat"
+    },
+    {
+        "id": "6a5bbe469ff6c9.94358481",
+        "name": "Minifig Forestman Cap with Small Red Plume (Complete)",
+        "file": "4506c01.dat"
+    },
+    {
+        "id": "6a5bbe46a2ffd1.13891782",
+        "name": "Minifig Hair Shoulder Length",
+        "file": "4530.dat"
+    },
+    {
+        "id": "6a5bbe46a869a5.81542110",
+        "name": "Minifig Headdress Circular Slice 60 Degrees",
+        "file": "45755.dat"
+    },
+    {
+        "id": "6a5bbe46a87396.43318854",
+        "name": "Minifig Headdress Circular Slice 60 Degrees with Green and White Rind and Black Watermelon Seeds Pattern",
+        "file": "45755p01.dat"
+    },
+    {
+        "id": "6a5bbe46a87d89.46140270",
+        "name": "Minifig Headdress Circular Slice 60 Degrees with Yellow Cheese Red and Dark Red Pepperoni and Sauce Pattern",
+        "file": "45755p02.dat"
+    },
+    {
+        "id": "6a5bbe46b4b861.68962805",
+        "name": "Minifig Helmet Skateboard",
+        "file": "46303.dat"
+    },
+    {
+        "id": "6a5bbe46b4c328.82020251",
+        "name": "Minifig Helmet Visor Snow Goggles",
+        "file": "46304.dat"
+    },
+    {
+        "id": "6a5bbe46b84e38.05113237",
+        "name": "Minifig Helmet with Ear Antenna",
+        "file": "46534.dat"
+    },
+    {
+        "id": "6a5bbe46b858c2.17580553",
+        "name": "Minifig Helmet with Ear Antenna with Red Goggles and Breathing Mask Pattern",
+        "file": "46534pb1.dat"
+    },
+    {
+        "id": "6a5bbe46c714d7.24149467",
+        "name": "Minifig Helmet SW Scout Trooper",
+        "file": "48156.dat"
+    },
+    {
+        "id": "6a5bbe46c71ef7.95800867",
+        "name": "Minifig Helmet SW Scout Trooper with Black and Light Bluish Grey Markings Pattern",
+        "file": "48156p01.dat"
+    },
+    {
+        "id": "6a5bbe46c8e524.10245133",
+        "name": "Minifig Helmet Visor with Pointy Sides and Eye Slit",
+        "file": "48489.dat"
+    },
+    {
+        "id": "6a5bbe46c90336.78265412",
+        "name": "Minifig Helmet Castle with Angled Cheek Protection",
+        "file": "48493.dat"
+    },
+    {
+        "id": "6a5bbe46d00535.21080521",
+        "name": "Minifig Helmet with Mask",
+        "file": "49556.dat"
+    },
+    {
+        "id": "6a5bbe46d3ef56.64241524",
+        "name": "Minifig Helmet Classic with Thin Chin Guard Unbroken",
+        "file": "50665.dat"
+    },
+    {
+        "id": "6a5bbe46d850c2.50049820",
+        "name": "Minifig Helmet Round Fishbowl",
+        "file": "51283.dat"
+    },
+    {
+        "id": "6a5bbe46d8a325.56128942",
+        "name": "Minifig Headdress Shark",
+        "file": "51349.dat"
+    },
+    {
+        "id": "6a5bbe46dbced5.84556364",
+        "name": "Minifig Headdress SW Luminara Unduli",
+        "file": "52345.dat"
+    },
+    {
+        "id": "6a5bbe46dd4813.23385733",
+        "name": "Minifig Hair Put Up with Braids",
+        "file": "53126.dat"
+    },
+    {
+        "id": "6a5bbe46dddbd7.87710680",
+        "name": "Minifig Helmet Viking with Nose Protector",
+        "file": "53450.dat"
+    },
+    {
+        "id": "6a5bbe46dde5f6.94243235",
+        "name": "Minifig Helmet Viking with White Horns (Complete)",
+        "file": "53450c01.dat"
+    },
+    {
+        "id": "6a5bbe46df7299.87972431",
+        "name": "Minifig Hair Spiky Short",
+        "file": "53981.dat"
+    },
+    {
+        "id": "6a5bbe46df7c12.65485721",
+        "name": "Minifig Hair Spiky Long",
+        "file": "53982.dat"
+    },
+    {
+        "id": "6a5bbe46e516e4.95437168",
+        "name": "Minifig Hair Short Tousled with Beanie",
+        "file": "5492.dat"
+    },
+    {
+        "id": "6a5bbe46e55577.77988000",
+        "name": "Minifig Hair Short Tousled with Coral Beanie Pattern",
+        "file": "5492p01.dat"
+    },
+    {
+        "id": "6a5bbe46e55f65.55396056",
+        "name": "Minifig Hair Short Tousled with Red Beanie Pattern",
+        "file": "5492p02.dat"
+    },
+    {
+        "id": "6a5bbe46e56922.40688106",
+        "name": "Minifig Hair Short Tousled with Dark Blue Beanie Pattern",
+        "file": "5492p03.dat"
+    },
+    {
+        "id": "6a5bbe46e69067.58797124",
+        "name": "Minifig Hair Decoration Vintage Sci-Fi Antenna",
+        "file": "5525.dat"
+    },
+    {
+        "id": "6a5bbe46e78810.53780692",
+        "name": "Minifig Headdress Batman",
+        "file": "55704.dat"
+    },
+    {
+        "id": "6a5bbe46e79225.19807646",
+        "name": "Minifig Headdress Catwoman Short with Wider Apart Eyeholes",
+        "file": "55705.dat"
+    },
+    {
+        "id": "6a5bbe46ef63c2.57392112",
+        "name": "Minifig Hat Rain",
+        "file": "57881.dat"
+    },
+    {
+        "id": "6a5bbe46f00ff1.40872634",
+        "name": "Minifig Helmet Imperial AT-ST Pilot",
+        "file": "57900.dat"
+    },
+    {
+        "id": "6a5bbe47045545.86010418",
+        "name": "Minifig Hair Short with Curled Ends",
+        "file": "59362.dat"
+    },
+    {
+        "id": "6a5bbe47046000.08076846",
+        "name": "Minifig Hair Long with French Braid",
+        "file": "59363.dat"
+    },
+    {
+        "id": "6a5bbe47059a17.33685727",
+        "name": "Minifig Hat Sandogasa",
+        "file": "5987.dat"
+    },
+    {
+        "id": "6a5bbe470c1ad8.19372616",
+        "name": "Minifig Hair Islander",
+        "file": "6025.dat"
+    },
+    {
+        "id": "6a5bbe470c6d82.61302602",
+        "name": "Minifig Mask Islander",
+        "file": "6030.dat"
+    },
+    {
+        "id": "6a5bbe471856d6.95381969",
+        "name": "Minifig Helmet Cap with Wings",
+        "file": "60747.dat"
+    },
+    {
+        "id": "6a5bbe471860c6.20464543",
+        "name": "Minifig Helmet Cap",
+        "file": "60748.dat"
+    },
+    {
+        "id": "6a5bbe47189463.89779145",
+        "name": "Minifig Helmet with Cheek Protection and Thin Bands",
+        "file": "60751.dat"
+    },
+    {
+        "id": "6a5bbe471a4696.46274082",
+        "name": "Minifig Helmet with Underwater Antenna and Clips",
+        "file": "6088.dat"
+    },
+    {
+        "id": "6a5bbe471abbf8.84467069",
+        "name": "Minifig Helmet Visor Underwater",
+        "file": "6090.dat"
+    },
+    {
+        "id": "6a5bbe471b47a8.90492416",
+        "name": "Minifig Hair Ponytail",
+        "file": "6093a.dat"
+    },
+    {
+        "id": "6a5bbe471e0921.70123303",
+        "name": "Minifig Hair Swept Back Tousled",
+        "file": "61183.dat"
+    },
+    {
+        "id": "6a5bbe471e1d96.54137138",
+        "name": "Minifig Helmet SW Clone Trooper Phase I",
+        "file": "61189.dat"
+    },
+    {
+        "id": "6a5bbe471e27f7.11525668",
+        "name": "Minifig Helmet SW Clone Trooper Phase I with Dark Bluish Grey Rangefinder",
+        "file": "61189c01.dat"
+    },
+    {
+        "id": "6a5bbe471e31e5.82069179",
+        "name": "Minifig Helmet SW Clone Trooper Phase I with Grey Markings and Black Visor Pattern",
+        "file": "61189ps0.dat"
+    },
+    {
+        "id": "6a5bbe471e3ba0.34583940",
+        "name": "Minifig Helmet SW Clone Trooper Commander Phase I Front Face with Yellow Markings and Silver Visor Pattern",
+        "file": "61189ps1.dat"
+    },
+    {
+        "id": "6a5bbe471e4567.69944828",
+        "name": "Minifig Helmet SW Clone Trooper Pilot Phase I Front Face with Yellow Markings and Black Visor Pattern",
+        "file": "61189ps2.dat"
+    },
+    {
+        "id": "6a5bbe471e8212.14455570",
+        "name": "Minifig Helmet Floodlight for SW Clone Trooper Helmet",
+        "file": "61190e.dat"
+    },
+    {
+        "id": "6a5bbe471e8eb4.96957094",
+        "name": "Minifig Helmet Visor SW Clone Trooper",
+        "file": "61190f.dat"
+    },
+    {
+        "id": "6a5bbe471ea526.03505770",
+        "name": "Minifig Hair Obi Wan",
+        "file": "61196.dat"
+    },
+    {
+        "id": "6a5bbe471ec5a6.03489681",
+        "name": "Minifig Helmet Visor Shielded with Antenna",
+        "file": "6119b.dat"
+    },
+    {
+        "id": "6a5bbe471f1494.48567818",
+        "name": "Minifig Helmet Castle with Dragon Crown Top",
+        "file": "6122.dat"
+    },
+    {
+        "id": "6a5bbe471f1ef4.47743109",
+        "name": "Minifig Helmet Castle w\/ Dragon Crown Top Black w\/ Dragon Plume",
+        "file": "6122c01.dat"
+    },
+    {
+        "id": "6a5bbe471f2905.66252563",
+        "name": "Minifig Helmet Castle w\/ Dragon Crown Top w\/ Cattlehorn White",
+        "file": "6122c02.dat"
+    },
+    {
+        "id": "6a5bbe47208700.11404057",
+        "name": "Minifig Wizards Hat",
+        "file": "6131.dat"
+    },
+    {
+        "id": "6a5bbe472090a4.57518091",
+        "name": "Minifig Wizards Hat with Silver Buckle and Stars Pattern",
+        "file": "6131p01.dat"
+    },
+    {
+        "id": "6a5bbe472f2772.92093853",
+        "name": "Minifig Hat Fedora",
+        "file": "61506.dat"
+    },
+    {
+        "id": "6a5bbe47495505.25331609",
+        "name": "Minifig Jester's Cap",
+        "file": "62537.dat"
+    },
+    {
+        "id": "6a5bbe47495f32.69734785",
+        "name": "Minifig Jester's Cap with Blue Half and Blue Pom Pattern",
+        "file": "62537p01.dat"
+    },
+    {
+        "id": "6a5bbe474969c7.59487721",
+        "name": "Minifig Jester's Cap with Black Half and White Poms Pattern",
+        "file": "62537p02.dat"
+    },
+    {
+        "id": "6a5bbe47497426.99668940",
+        "name": "Minifig Jester's Cap with Red Half and Red Pom Pattern",
+        "file": "62537p03.dat"
+    },
+    {
+        "id": "6a5bbe47497eb1.13939365",
+        "name": "Minifig Jester's Cap with Medium Lilac Left Half and Right Pom Pattern",
+        "file": "62537p04.dat"
+    },
+    {
+        "id": "6a5bbe474988c6.53925808",
+        "name": "Minifig Jester's Cap with Medium Lilac Half and Metallic Gold Poms Pattern",
+        "file": "62537p05.dat"
+    },
+    {
+        "id": "6a5bbe474992b9.74301038",
+        "name": "Minifig Jester's Cap with Medium Lilac Right Half and Left Pom Pattern",
+        "file": "62537p06.dat"
+    },
+    {
+        "id": "6a5bbe47499e66.72473239",
+        "name": "Minifig Jester's Cap with Dark Azure Poms Pattern",
+        "file": "62537p07.dat"
+    },
+    {
+        "id": "6a5bbe474e0a81.38846088",
+        "name": "Minifig Hair Ponytail with Long Bangs",
+        "file": "62696.dat"
+    },
+    {
+        "id": "6a5bbe474e5477.68116825",
+        "name": "Minifig Hair Spiked Top",
+        "file": "62699.dat"
+    },
+    {
+        "id": "6a5bbe474e5ea7.86079387",
+        "name": "Minifig Hair Spiked Top with Orange Streaks Pattern",
+        "file": "62699p01.dat"
+    },
+    {
+        "id": "6a5bbe474e6887.41272153",
+        "name": "Minifig Hair Spiked Top with Lime Streaks Pattern",
+        "file": "62699p02.dat"
+    },
+    {
+        "id": "6a5bbe474e9142.62912042",
+        "name": "Minifig Hair Short Bob Cut",
+        "file": "62711.dat"
+    },
+    {
+        "id": "6a5bbe474feff8.05442590",
+        "name": "Minifig Hair Short, Tousled with Side Parting",
+        "file": "62810.dat"
+    },
+    {
+        "id": "6a5bbe47592cf7.76326633",
+        "name": "Minifig Helmet Floodlight for SW Clone Trooper Helmet",
+        "file": "63585.dat"
+    },
+    {
+        "id": "6a5bbe4761d0a2.40574292",
+        "name": "Minifig Plume\/Flame Triple",
+        "file": "64647.dat"
+    },
+    {
+        "id": "6a5bbe4763abb0.42777635",
+        "name": "Minifig Hair Backslick",
+        "file": "64798.dat"
+    },
+    {
+        "id": "6a5bbe4763f914.38017821",
+        "name": "Minifig Hair Female Short with Braids on Sides and Pin Hole on Top",
+        "file": "64807.dat"
+    },
+    {
+        "id": "6a5bbe476be191.53608663",
+        "name": "Minifig Hair Short Tousled with Backwards Cap",
+        "file": "65730.dat"
+    },
+    {
+        "id": "6a5bbe476bec08.65212854",
+        "name": "Minifig Hair Short Tousled with Red Backwards Cap with Black Pattern",
+        "file": "65730p01.dat"
+    },
+    {
+        "id": "6a5bbe476bf678.92872982",
+        "name": "Minifig Hair Short Tousled with Red Backwards Cap Pattern",
+        "file": "65730p02.dat"
+    },
+    {
+        "id": "6a5bbe476c00b1.49470352",
+        "name": "Minifig Hair Short Tousled with Black Backwards Cap Pattern",
+        "file": "65730p03.dat"
+    },
+    {
+        "id": "6a5bbe47745761.45476522",
+        "name": "Minifig Helmet with Cheek Guard and Neck Protector",
+        "file": "67037.dat"
+    },
+    {
+        "id": "6a5bbe477463f7.62140556",
+        "name": "Minifig Helmet with Cheek Guard and Neck Protector with Gold Front Pattern",
+        "file": "67037p01.dat"
+    },
+    {
+        "id": "6a5bbe47815f88.19050898",
+        "name": "Minifig Hat Crown",
+        "file": "71015.dat"
+    },
+    {
+        "id": "6a5bbe47816a71.74438554",
+        "name": "Minifig Helmet Visor Space",
+        "file": "71016.dat"
+    },
+    {
+        "id": "6a5bbe47839960.73401178",
+        "name": "Minifig Helmet Ornament Horn",
+        "file": "71591.dat"
+    },
+    {
+        "id": "6a5bbe47c1b994.77859825",
+        "name": "Minifig Top Hat with Pin Attachment and Anti-Stud",
+        "file": "77108.dat"
+    },
+    {
+        "id": "6a5bbe47c22477.96669122",
+        "name": "Minifig Plume Road Runner",
+        "file": "77309.dat"
+    },
+    {
+        "id": "6a5bbe47c7bbb2.21250815",
+        "name": "Minifig Helmet SW Dark Trooper",
+        "file": "79230.dat"
+    },
+    {
+        "id": "6a5bbe47cd62a4.68976489",
+        "name": "Minifig Hair Long Wavy with Knit Ski Cap",
+        "file": "80577.dat"
+    },
+    {
+        "id": "6a5bbe47cd6d24.81427627",
+        "name": "Minifig Hair Long Wavy with Bright Pink Knit Ski Cap Pattern",
+        "file": "80577p01.dat"
+    },
+    {
+        "id": "6a5bbe47cd7789.71684856",
+        "name": "Minifig Hair Long Wavy with Bright Light Yellow Knit Ski Cap Pattern",
+        "file": "80577p02.dat"
+    },
+    {
+        "id": "6a5bbe47cd81a6.52400498",
+        "name": "Minifig Hair Long Wavy with Red Knit Ski Cap Pattern",
+        "file": "80577p03.dat"
+    },
+    {
+        "id": "6a5bbe47cf1c15.13866705",
+        "name": "Minifig Hair with Nurse Hat with Long Back",
+        "file": "80834.dat"
+    },
+    {
+        "id": "6a5bbe47cf25d3.10567598",
+        "name": "Minifig Hair with Nurse Hat with Long Back with Light Bluish Grey Hair Pattern",
+        "file": "80834p01.dat"
+    },
+    {
+        "id": "6a5bbe47d7c998.36494348",
+        "name": "Minifig Feathers with Pin and Black Tip Pattern",
+        "file": "82805.dat"
+    },
+    {
+        "id": "6a5bbe47d882b9.06835918",
+        "name": "Minifig Hat Imperial Guard Shako, Red Plume, Gold Badge Pattern",
+        "file": "84625.dat"
+    },
+    {
+        "id": "6a5bbe47dc5327.69943665",
+        "name": "Minifig Helmet Alien Skull with Fangs",
+        "file": "85945.dat"
+    },
+    {
+        "id": "6a5bbe47dce060.61363981",
+        "name": "Minifig Hair Long with One Front Lock",
+        "file": "85974.dat"
+    },
+    {
+        "id": "6a5bbe47dceaa0.98286649",
+        "name": "Minifig Hat Fez",
+        "file": "85975.dat"
+    },
+    {
+        "id": "6a5bbe47dfa217.72419775",
+        "name": "Minifig Cap with Short Arched Peak",
+        "file": "86035.dat"
+    },
+    {
+        "id": "6a5bbe47e95726.06428906",
+        "name": "Minifig Helmet Mandalorian",
+        "file": "87610.dat"
+    },
+    {
+        "id": "6a5bbe47e96149.59816623",
+        "name": "Minifig Helmet Mandalorian with Dark Red Visor, Dark Green Cheeks, Yellow Strokes and Metallic Silver Weathering Pattern",
+        "file": "87610ps0.dat"
+    },
+    {
+        "id": "6a5bbe47e96b54.85635223",
+        "name": "Minifig Helmet Mandalorian with Blue Visor and White Upper Cheeks Pattern",
+        "file": "87610ps1.dat"
+    },
+    {
+        "id": "6a5bbe47e975a4.61742808",
+        "name": "Minifig Helmet Mandalorian with Dark Grey Visor, Blue Upper Cheek and Light Lime Trident Pattern",
+        "file": "87610ps2.dat"
+    },
+    {
+        "id": "6a5bbe47e97f74.84250936",
+        "name": "Minifig Helmet Mandalorian with Blue Visor, Dark Blue Upper Cheeks and Side and Two Black Horizontal Stripes Pattern",
+        "file": "87610ps3.dat"
+    },
+    {
+        "id": "6a5bbe47e98927.26454812",
+        "name": "Minifig Helmet Mandalorian with Dark Red Visor, Black Mark on Right Cheek and Black Hand Print Pattern",
+        "file": "87610ps4.dat"
+    },
+    {
+        "id": "6a5bbe47e99348.18557459",
+        "name": "Minifig Helmet Mandalorian with Olive Green Forehead, Dark Green Goggles and Black Jaw Line Pattern",
+        "file": "87610ps5.dat"
+    },
+    {
+        "id": "6a5bbe47e99d38.99206082",
+        "name": "Minifig Helmet Mandalorian with Red Triangle on Forehead and Light Bluish Grey Cheek Pattern",
+        "file": "87610ps6.dat"
+    },
+    {
+        "id": "6a5bbe47e9a724.66678461",
+        "name": "Minifig Helmet Mandalorian with Reddish Brown Visor with Slanted Eyeslits Dark Bluish Grey Cheeks and Reddish Brown Pattern",
+        "file": "87610ps7.dat"
+    },
+    {
+        "id": "6a5bbe47e9b147.13019118",
+        "name": "Minifig Helmet Mandalorian with Black Visor Opening Pattern",
+        "file": "87610ps8.dat"
+    },
+    {
+        "id": "6a5bbe47ea6cf8.63680785",
+        "name": "Minifig Plume Dragon Wing Left",
+        "file": "87685.dat"
+    },
+    {
+        "id": "6a5bbe47ea76c7.48245103",
+        "name": "Minifig Plume Dragon Wing Right",
+        "file": "87686.dat"
+    },
+    {
+        "id": "6a5bbe47ea80b1.94549360",
+        "name": "Minifig Plume Dragon",
+        "file": "87687.dat"
+    },
+    {
+        "id": "6a5bbe47eab463.51115804",
+        "name": "Minifig Plume Triple",
+        "file": "87692.dat"
+    },
+    {
+        "id": "6a5bbe47eabe50.95639361",
+        "name": "Minifig Plume Small",
+        "file": "87693.dat"
+    },
+    {
+        "id": "6a5bbe47eac7f1.87471326",
+        "name": "Minifig Plume Large",
+        "file": "87694.dat"
+    },
+    {
+        "id": "6a5bbe47eb7635.52511231",
+        "name": "Minifig Helmet Underwater",
+        "file": "87754.dat"
+    },
+    {
+        "id": "6a5bbe47ec0317.19617134",
+        "name": "Minifig Helmet Space with Front Handle",
+        "file": "87781.dat"
+    },
+    {
+        "id": "6a5bbe47ece819.05935566",
+        "name": "Minifig Hair with Ponytail and Swept Sideways Fringe",
+        "file": "87990.dat"
+    },
+    {
+        "id": "6a5bbe47ecf244.69784991",
+        "name": "Minifig Hair with Ponytail and Swept Sideways Fringe with Purple Highlights Pattern",
+        "file": "87990p01.dat"
+    },
+    {
+        "id": "6a5bbe47ecfc30.94126284",
+        "name": "Minifig Hair with Ponytail and Swept Sideways Fringe with Yellow Hairband Pattern",
+        "file": "87990p02.dat"
+    },
+    {
+        "id": "6a5bbe47ed0601.26133017",
+        "name": "Minifig Hair Tousled with Side Parting",
+        "file": "87991.dat"
+    },
+    {
+        "id": "6a5bbe47ed30a6.63602259",
+        "name": "Minifig Hair Bubble Style (Afro)",
+        "file": "87995.dat"
+    },
+    {
+        "id": "6a5bbe47ed6d48.62110962",
+        "name": "Minifig Helmet Army",
+        "file": "87998.dat"
+    },
+    {
+        "id": "6a5bbe47ed76e5.35273596",
+        "name": "Minifig Helmet Army with White Stencil Cross Pattern",
+        "file": "87998p01.dat"
+    },
+    {
+        "id": "6a5bbe47edd4e6.53709319",
+        "name": "Minifig Hair Mid-Length Tousled with Centre Parting",
+        "file": "88283.dat"
+    },
+    {
+        "id": "6a5bbe47eddf35.15810847",
+        "name": "Minifig Helmet Persian",
+        "file": "88284.dat"
+    },
+    {
+        "id": "6a5bbe47edff53.67092209",
+        "name": "Minifig Hair Female Ponytail with Long French Braid",
+        "file": "88286.dat"
+    },
+    {
+        "id": "6a5bbe47ef5b91.58806972",
+        "name": "Minifig Top Hat",
+        "file": "88412.dat"
+    },
+    {
+        "id": "6a5bbe47f18462.18914994",
+        "name": "Minifig Helmet Visor Large with Trapezoid Area on Top",
+        "file": "89159.dat"
+    },
+    {
+        "id": "6a5bbe47f1eac5.47950765",
+        "name": "Minifig Helmet Castle Closed with Eye Slit",
+        "file": "89520.dat"
+    },
+    {
+        "id": "6a5bbe47f3abb0.59815957",
+        "name": "Minifig Helmet Underwater Atlantis Portal Emperor",
+        "file": "89918.dat"
+    },
+    {
+        "id": "6a5bbe4800bb30.77473114",
+        "name": "Minifig Hat Beret",
+        "file": "90386.dat"
+    },
+    {
+        "id": "6a5bbe4800c566.50215102",
+        "name": "Minifig Hat Sombrero",
+        "file": "90388.dat"
+    },
+    {
+        "id": "6a5bbe48015ff0.14856392",
+        "name": "Minifig Wizards Hat",
+        "file": "90460.dat"
+    },
+    {
+        "id": "6a5bbe480192a9.55347029",
+        "name": "Minifig Headdress Nemes Type 2",
+        "file": "90462b.dat"
+    },
+    {
+        "id": "6a5bbe48019d84.14131995",
+        "name": "Minifig Headdress Nemes with 2 Darkblue Snakes Pattern",
+        "file": "90462bpq0.dat"
+    },
+    {
+        "id": "6a5bbe4801a7d7.40282692",
+        "name": "Minifig Headdress Nemes with Darkblue Stripes on Metallic Gold Pattern",
+        "file": "90462bpq1.dat"
+    },
+    {
+        "id": "6a5bbe4801b204.86440504",
+        "name": "Minifig Headdress Nemes with Medium Blue Stripes on Metallic Gold Pattern",
+        "file": "90462bpq2.dat"
+    },
+    {
+        "id": "6a5bbe4801bc05.87885695",
+        "name": "Minifig Headdress Nemes with Dark Red Stripes on Metallic Gold Pattern",
+        "file": "90462bpq3.dat"
+    },
+    {
+        "id": "6a5bbe4801c612.64683657",
+        "name": "Minifig Headdress Nemes with Metallic Gold Stripes Pattern",
+        "file": "90462bpq4.dat"
+    },
+    {
+        "id": "6a5bbe4802dbf2.88271850",
+        "name": "Minifig Cap Aviator",
+        "file": "90510.dat"
+    },
+    {
+        "id": "6a5bbe4802efb9.46329548",
+        "name": "Minifig Hat Fedora with Wide Brim",
+        "file": "90538.dat"
+    },
+    {
+        "id": "6a5bbe480303d5.43289930",
+        "name": "Minifig Hat Beanie",
+        "file": "90541.dat"
+    },
+    {
+        "id": "6a5bbe4805eac5.03663988",
+        "name": "Minifig Hair Combed Front to Rear",
+        "file": "92081.dat"
+    },
+    {
+        "id": "6a5bbe4805f490.68947699",
+        "name": "Minifig Hair Female Long Straight with Left Side Parting",
+        "file": "92083.dat"
+    },
+    {
+        "id": "6a5bbe481231f4.50336775",
+        "name": "Figure Friends Hair Long with Ponytail, Side Bangs and Horse Riding Helmet",
+        "file": "92254.dat"
+    },
+    {
+        "id": "6a5bbe48123c28.73636780",
+        "name": "Figure Friends Hair Long with Ponytail, Side Bangs and Black Horse Riding Helmet Pattern",
+        "file": "92254p01.dat"
+    },
+    {
+        "id": "6a5bbe481246c7.84011107",
+        "name": "Figure Friends Hair Long with Ponytail, Side Bangs and Magenta Horse Riding Helmet Pattern",
+        "file": "92254p02.dat"
+    },
+    {
+        "id": "6a5bbe48125bb8.17051474",
+        "name": "Figure Friends Hair Long Wavy",
+        "file": "92256.dat"
+    },
+    {
+        "id": "6a5bbe481265a4.88254564",
+        "name": "Figure Friends Hair Long with Ponytail and Side Bangs",
+        "file": "92257.dat"
+    },
+    {
+        "id": "6a5bbe48126f45.11694423",
+        "name": "Figure Friends Hair Long Wavy Partially Tied Back",
+        "file": "92258.dat"
+    },
+    {
+        "id": "6a5bbe48196a12.99779567",
+        "name": "Minifig Headdress SW Togruta Montrals",
+        "file": "92745.dat"
+    },
+    {
+        "id": "6a5bbe48197417.47046172",
+        "name": "Minifig Hair Tousled and Layered",
+        "file": "92746.dat"
+    },
+    {
+        "id": "6a5bbe4819f394.36847653",
+        "name": "Minifig Hair Pulled Back",
+        "file": "92756.dat"
+    },
+    {
+        "id": "6a5bbe481a1167.43892464",
+        "name": "Minifig Headdress SW Zabrak Horns",
+        "file": "92761.dat"
+    },
+    {
+        "id": "6a5bbe481a1b29.91513007",
+        "name": "Minifig Hat Square Academic with Tassel",
+        "file": "92814.dat"
+    },
+    {
+        "id": "6a5bbe481c98f7.94384716",
+        "name": "Minifig Hat Conical Asian",
+        "file": "93059.dat"
+    },
+    {
+        "id": "6a5bbe481f2a18.93197888",
+        "name": "Minifig Baseball Cap with Button on Top",
+        "file": "93219.dat"
+    },
+    {
+        "id": "6a5bbe481fc194.82555525",
+        "name": "Minifig Hair Swept Back with Pointed Ears",
+        "file": "93230.dat"
+    },
+    {
+        "id": "6a5bbe481fcb80.40640373",
+        "name": "Minifig Hair Swept Back with Yellow Pointed Ears Pattern",
+        "file": "93230p01.dat"
+    },
+    {
+        "id": "6a5bbe481fd564.54018411",
+        "name": "Minifig Hair Swept Back with Reddish Brown Pointed Ears Pattern",
+        "file": "93230p02.dat"
+    },
+    {
+        "id": "6a5bbe481fe155.95748888",
+        "name": "Minifig Hair Swept Back with Green Pointed Ears Pattern",
+        "file": "93230p03.dat"
+    },
+    {
+        "id": "6a5bbe481feb79.68323505",
+        "name": "Minifig Hair Swept Back with Light Nougat Pointed Ears Pattern",
+        "file": "93230p04.dat"
+    },
+    {
+        "id": "6a5bbe481ff514.83563105",
+        "name": "Minifig Hair Swept Back with Medium Nougat Pointed Ears Pattern",
+        "file": "93230p05.dat"
+    },
+    {
+        "id": "6a5bbe48201281.95890291",
+        "name": "Minifig Headdress Anubis Guard",
+        "file": "93248.dat"
+    },
+    {
+        "id": "6a5bbe48201c88.69419629",
+        "name": "Minifig Headdress Anubis Guard w. Gold Eye and Stripes Pattern",
+        "file": "93248pq0.dat"
+    },
+    {
+        "id": "6a5bbe48202708.15676834",
+        "name": "Minifig Headdress Horus",
+        "file": "93249.dat"
+    },
+    {
+        "id": "6a5bbe48203143.73937810",
+        "name": "Minifig Headdress Horus with Eye Pattern",
+        "file": "93249pq0.dat"
+    },
+    {
+        "id": "6a5bbe482228b2.11658203",
+        "name": "Figure Friends Hair Long with Curls",
+        "file": "93352.dat"
+    },
+    {
+        "id": "6a5bbe48233c12.05011983",
+        "name": "Minifig Hat Sailor",
+        "file": "93557.dat"
+    },
+    {
+        "id": "6a5bbe48234dc3.43665163",
+        "name": "Minifig Hat Sailor with Dark Blue Anchor Pattern",
+        "file": "93557p01.dat"
+    },
+    {
+        "id": "6a5bbe482368c5.97765670",
+        "name": "Minifig Hair Female with Top Knot Bun and Forelock",
+        "file": "93562.dat"
+    },
+    {
+        "id": "6a5bbe48237388.51813805",
+        "name": "Minifig Hair Mohawk",
+        "file": "93563.dat"
+    },
+    {
+        "id": "6a5bbe4828fd20.31225968",
+        "name": "Minifig Hair Long Wavy Parted in Center",
+        "file": "95225.dat"
+    },
+    {
+        "id": "6a5bbe48296f30.58242024",
+        "name": "Minifig Hair Mid-Length Smooth Wide Bob Cut",
+        "file": "95328.dat"
+    },
+    {
+        "id": "6a5bbe482978f3.65918503",
+        "name": "Minifig Hair Mid-Length Smooth Wide Bob Cut with Gold Diadem Pattern",
+        "file": "95328p01.dat"
+    },
+    {
+        "id": "6a5bbe482b2dd1.98119572",
+        "name": "Minifig Hat Bowler",
+        "file": "95674.dat"
+    },
+    {
+        "id": "6a5bbe482b3e39.06336562",
+        "name": "Minifig Hat Bowler with Red Flower with Yellow Centre Pattern",
+        "file": "95674p01.dat"
+    },
+    {
+        "id": "6a5bbe482b4da8.18294563",
+        "name": "Minifig Hat Bowler with Black Question Mark Pattern",
+        "file": "95674p02.dat"
+    },
+    {
+        "id": "6a5bbe482b5de5.19072136",
+        "name": "Minifig Helmet Gladiator",
+        "file": "95676.dat"
+    },
+    {
+        "id": "6a5bbe482c9326.23327910",
+        "name": "Minifig Crown Tiara Flat with Arched Bottom",
+        "file": "96491.dat"
+    },
+    {
+        "id": "6a5bbe4851d7f3.66398113",
+        "name": "Minifig Hair Bun with Braid and Hood",
+        "file": "98119.dat"
+    },
+    {
+        "id": "6a5bbe4851e204.66042419",
+        "name": "Minifig Hair Bun with Braid and Gold Hood with Royal Insignia Pattern",
+        "file": "98119p01.dat"
+    },
+    {
+        "id": "6a5bbe485200e0.15806815",
+        "name": "Minifig Helmet with Clip and Long Visor",
+        "file": "98128.dat"
+    },
+    {
+        "id": "6a5bbe48521664.81261890",
+        "name": "Minifig Kendo Mask",
+        "file": "98130.dat"
+    },
+    {
+        "id": "6a5bbe485220c7.04953114",
+        "name": "Minifig Kendo Mask with White Grille Pattern",
+        "file": "98130p01.dat"
+    },
+    {
+        "id": "6a5bbe48522ac0.21967114",
+        "name": "Minifig Kendo Mask with Metallic Silver Grille and Red Trim Pattern",
+        "file": "98130p02.dat"
+    },
+    {
+        "id": "6a5bbe485234d2.15459415",
+        "name": "Minifig Kendo Mask with Metallic Gold Grille and Red Trim Pattern",
+        "file": "98130p03.dat"
+    },
+    {
+        "id": "6a5bbe48523ed2.43842991",
+        "name": "Minifig Kendo Mask with Metallic Gold Grille and White Trim Pattern",
+        "file": "98130p04.dat"
+    },
+    {
+        "id": "6a5bbe485248e2.11433487",
+        "name": "Minifig Kendo Mask with Metallic Gold Grille Pattern",
+        "file": "98130p05.dat"
+    },
+    {
+        "id": "6a5bbe48525347.14199732",
+        "name": "Minifig Kendo Mask with Metallic Gold Grille and Reddish Brown Trim Pattern",
+        "file": "98130p06.dat"
+    },
+    {
+        "id": "6a5bbe48525d13.22679585",
+        "name": "Minifig Kendo Mask with Metallic Gold Grille and Blue Trim Pattern",
+        "file": "98130p07.dat"
+    },
+    {
+        "id": "6a5bbe485266d0.24189222",
+        "name": "Minifig Kendo Mask with Metallic Gold Grille and Green Trim Pattern",
+        "file": "98130p08.dat"
+    },
+    {
+        "id": "6a5bbe485d8294.23780129",
+        "name": "Minifig Hat Campaign",
+        "file": "98279.dat"
+    },
+    {
+        "id": "6a5bbe485e3417.56243324",
+        "name": "Minifig Helmet Roman Soldier",
+        "file": "98366.dat"
+    },
+    {
+        "id": "6a5bbe485e7b75.13709914",
+        "name": "Minifig Hair Rocker with Sideburns",
+        "file": "98371.dat"
+    },
+    {
+        "id": "6a5bbe485ecc13.40890654",
+        "name": "Minifig Hat Flat Chef",
+        "file": "98381.dat"
+    },
+    {
+        "id": "6a5bbe485f0809.16153533",
+        "name": "Minifig Hair Spiked",
+        "file": "98385.dat"
+    },
+    {
+        "id": "6a5bbe48618835.61769286",
+        "name": "Minifig Hair Swept Right with Front Curl",
+        "file": "98726.dat"
+    },
+    {
+        "id": "6a5bbe48619304.00516144",
+        "name": "Minifig Headdress Catwoman",
+        "file": "98729.dat"
+    },
+    {
+        "id": "6a5bbe486323d9.75737499",
+        "name": "Minifig Hair Swept Back Into Bun",
+        "file": "99240.dat"
+    },
+    {
+        "id": "6a5bbe48632da3.48961180",
+        "name": "Minifig Headdress Aztec Bird",
+        "file": "99243.dat"
+    },
+    {
+        "id": "6a5bbe48633808.42236125",
+        "name": "Minifig Headdress Aztec Bird with Eyes and Cheeks Pattern",
+        "file": "99243p01.dat"
+    },
+    {
+        "id": "6a5bbe486341f8.92533557",
+        "name": "Minifig Headdress Rabbit",
+        "file": "99244.dat"
+    },
+    {
+        "id": "6a5bbe48634c33.52960415",
+        "name": "Minifig Headdress Rabbit with Bright Pink Inner Ear Pattern",
+        "file": "99244p01.dat"
+    },
+    {
+        "id": "6a5bbe486356a4.19276272",
+        "name": "Minifig Headdress Rabbit with Dark Tan Inner Ear Pattern",
+        "file": "99244p02.dat"
+    },
+    {
+        "id": "6a5bbe48662f49.48857677",
+        "name": "Minifig Hair Short Combed Sideways with Left Parting",
+        "file": "99930.dat"
+    },
+    {
+        "id": "6a5bbe489cd741.69418564",
+        "name": "~Minifig Hat Cuboid with 3 Sloped Steps",
+        "file": "u9563.dat"
+    }
+]
