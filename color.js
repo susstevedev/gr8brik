@@ -1,228 +1,120 @@
 document.addEventListener('DOMContentLoaded', function () {
 	let picker = document.getElementById('color-picker');
 	let colorList = document.getElementById('color-picker-list');
-	let partColor = '#C91A09FF';
+	window.partColor = "4";
 
-	/*let colorPalette = [
-    	"#C91A09", // Bright Red
-       	"#F8CC00", // Bright Yellow
-        "#0020A0", // Bright Blue
-        "#005700", // Dark Green
-        "#FE8A18", // Bright Orange
-        "#D941BB", // Bright Violet
-        "#000000", // Black
-        "#FFFFFF", // White
-        "#747371", // Dark Stone Grey (Dark Bluish Grey)
-        "#A3A2A4", // Medium Stone Grey (Light Bluish Grey)
-        "#958A73", // Dark Tan (Brick Yellow)
-        "#6C5C4D", // Brown
-        "#812A00", // Dark Brown
-        "#5883C1", // Medium Blue
-        "#4B974B", // Sand Green
-        "#A52A2A", // Dark Red
-        "#B36D2C", // Dark Orange
-        "#FCB7BC", // Bright Pink
-        "#60C0E0", // Bright Light Blue
-        "#FBE696", // Earth Yellow (Light Yellow)
-        "#84B68D", // Bright Green
-        "#92B28B", // Lime Green
-        "#002A5A", // Dark Blue
-        "#DDDD22", // Vibrant Yellow
-	];*/
+	window.ldrawColors =  [ { "code": 0, "name": "Black", "hex": "#1B2A34", "edge": "#808080", "alpha": 255, "type": "solid" }, { "code": 1, "name": "Blue", "hex": "#1E5AA8", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 2, "name": "Green", "hex": "#00852B", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 3, "name": "Dark Turquoise", "hex": "#069D9F", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 4, "name": "Red", "hex": "#B40000", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 5, "name": "Dark Pink", "hex": "#D3359D", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 6, "name": "Brown", "hex": "#543324", "edge": "#1E1E1E", "alpha": 255, "type": "solid" }, { "code": 7, "name": "Light Grey", "hex": "#8A928D", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 8, "name": "Dark Grey", "hex": "#545955", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 9, "name": "Light Blue", "hex": "#97CBD9", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 10, "name": "Bright Green", "hex": "#58AB41", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 11, "name": "Light Turquoise", "hex": "#00AAA4", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 12, "name": "Salmon", "hex": "#F06D61", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 13, "name": "Pink", "hex": "#F6A9BB", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 14, "name": "Yellow", "hex": "#FAC80A", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 15, "name": "White", "hex": "#F4F4F4", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 17, "name": "Light Green", "hex": "#ADD9A8", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 18, "name": "Light Yellow", "hex": "#FFD67F", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 19, "name": "Tan", "hex": "#D7BA8C", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20, "name": "Light Violet", "hex": "#AFBED6", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 22, "name": "Purple", "hex": "#671F81", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 23, "name": "Dark Blue Violet", "hex": "#0E3E9A", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 25, "name": "Orange", "hex": "#D67923", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 26, "name": "Magenta", "hex": "#901F76", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 27, "name": "Lime", "hex": "#A5CA18", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 28, "name": "Dark Tan", "hex": "#897D62", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 29, "name": "Bright Pink", "hex": "#FF9ECD", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30, "name": "Medium Lavender", "hex": "#A06EB9", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 31, "name": "Lavender", "hex": "#CDA4DE", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 68, "name": "Very Light Orange", "hex": "#FDC383", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 69, "name": "Bright Reddish Lilac", "hex": "#8A12A8", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 70, "name": "Reddish Brown", "hex": "#5F3109", "edge": "#808080", "alpha": 255, "type": "solid" }, { "code": 71, "name": "Light Bluish Grey", "hex": "#969696", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 72, "name": "Dark Bluish Grey", "hex": "#646464", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 73, "name": "Medium Blue", "hex": "#7396C8", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 74, "name": "Medium Green", "hex": "#7FC475", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 77, "name": "Light Pink", "hex": "#FECCCF", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 78, "name": "Light Nougat", "hex": "#FFC995", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 84, "name": "Medium Nougat", "hex": "#AA7D55", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 85, "name": "Medium Lilac", "hex": "#441A91", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 86, "name": "Light Brown", "hex": "#7B5D41", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 89, "name": "Blue Violet", "hex": "#1C58A7", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 92, "name": "Nougat", "hex": "#BB805A", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 100, "name": "Light Salmon", "hex": "#F9B7A5", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 110, "name": "Violet", "hex": "#26469A", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 112, "name": "Medium Violet", "hex": "#4861AC", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 115, "name": "Medium Lime", "hex": "#B7D425", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 118, "name": "Aqua", "hex": "#9CD6CC", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 120, "name": "Light Lime", "hex": "#DEEA92", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 121, "name": "Light Orange", "hex": "#F89A39", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 123, "name": "Dark Salmon", "hex": "#EE5434", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 125, "name": "Spud Orange", "hex": "#F9A777", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 128, "name": "Dark Nougat", "hex": "#AD6140", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 151, "name": "Very Light Bluish Grey", "hex": "#C8C8C8", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 180, "name": "Dark Yellow", "hex": "#DD982E", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 191, "name": "Bright Light Orange", "hex": "#FCAC00", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 212, "name": "Bright Light Blue", "hex": "#9DC3F7", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 213, "name": "Medium Blue Violet", "hex": "#476FB6", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 216, "name": "Rust", "hex": "#872B17", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 218, "name": "Reddish Lilac", "hex": "#8E5597", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 219, "name": "Lilac", "hex": "#564E9D", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 220, "name": "Light Lilac", "hex": "#9195CA", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 225, "name": "Warm Yellowish Orange", "hex": "#FAA964", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 226, "name": "Bright Light Yellow", "hex": "#FFEC6C", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 232, "name": "Sky Blue", "hex": "#77C9D8", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 272, "name": "Dark Blue", "hex": "#19325A", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 288, "name": "Dark Green", "hex": "#00451A", "edge": "#808080", "alpha": 255, "type": "solid" }, { "code": 295, "name": "Flamingo Pink", "hex": "#FF94C2", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 308, "name": "Dark Brown", "hex": "#352100", "edge": "#808080", "alpha": 255, "type": "solid" }, { "code": 313, "name": "Maersk Blue", "hex": "#ABD9FF", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 320, "name": "Dark Red", "hex": "#720012", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 321, "name": "Dark Azure", "hex": "#469BC3", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 322, "name": "Medium Azure", "hex": "#68C3E2", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 323, "name": "Light Aqua", "hex": "#D3F2EA", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 326, "name": "Yellowish Green", "hex": "#E2F99A", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 330, "name": "Olive Green", "hex": "#77774E", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 335, "name": "Sand Red", "hex": "#88605E", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 351, "name": "Medium Dark Pink", "hex": "#F785B1", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 353, "name": "Coral", "hex": "#FF6D77", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 366, "name": "Earth Orange", "hex": "#D86D2C", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 368, "name": "Neon Yellow", "hex": "#EDFF21", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 370, "name": "Medium Brown", "hex": "#755945", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 371, "name": "Medium Tan", "hex": "#CCA373", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 373, "name": "Sand Purple", "hex": "#75657D", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 378, "name": "Sand Green", "hex": "#708E7C", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 379, "name": "Sand Blue", "hex": "#70819A", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 402, "name": "Reddish Orange", "hex": "#CA4C0B", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 422, "name": "Sienna Brown", "hex": "#915C3C", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 423, "name": "Umber Brown", "hex": "#543F33", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 424, "name": "Ochre Yellow", "hex": "#DD9E47", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 430, "name": "Warm Pink", "hex": "#F79B9B", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 431, "name": "Bright Blue Violet", "hex": "#665EA7", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 450, "name": "Fabuland Brown", "hex": "#D27744", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 462, "name": "Medium Orange", "hex": "#F58624", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 484, "name": "Dark Orange", "hex": "#91501C", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 503, "name": "Very Light Grey", "hex": "#BCB4A5", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 508, "name": "Fabuland Red", "hex": "#C65127", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 509, "name": "Fabuland Orange", "hex": "#CF8A47", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 510, "name": "Fabuland Lime", "hex": "#ACE35A", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 10015, "name": "Lemon", "hex": "#FFF230", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 10017, "name": "Rose Pink", "hex": "#FF9494", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 10022, "name": "Yellowish Dark Pink", "hex": "#D05098", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 32, "name": "Trans Black IR Lens", "hex": "#000000", "edge": "#333333", "alpha": 210, "type": "transparent" }, { "code": 33, "name": "Trans Dark Blue", "hex": "#0020A0", "edge": "#000B38", "alpha": 128, "type": "transparent" }, { "code": 34, "name": "Trans Green", "hex": "#237841", "edge": "#174F2B", "alpha": 128, "type": "transparent" }, { "code": 35, "name": "Trans Bright Green", "hex": "#56E646", "edge": "#27AF18", "alpha": 128, "type": "transparent" }, { "code": 36, "name": "Trans Red", "hex": "#C91A09", "edge": "#660D05", "alpha": 128, "type": "transparent" }, { "code": 37, "name": "Trans Dark Pink", "hex": "#DF6695", "edge": "#B9275F", "alpha": 128, "type": "transparent" }, { "code": 38, "name": "Trans Neon Orange", "hex": "#FF800D", "edge": "#A85100", "alpha": 128, "type": "transparent" }, { "code": 39, "name": "Trans Very Light Blue", "hex": "#C1DFF0", "edge": "#6FB4DC", "alpha": 128, "type": "transparent" }, { "code": 40, "name": "Trans Brown", "hex": "#635F52", "edge": "#2A2823", "alpha": 128, "type": "transparent" }, { "code": 41, "name": "Trans Medium Blue", "hex": "#559AB7", "edge": "#326276", "alpha": 128, "type": "transparent" }, { "code": 42, "name": "Trans Neon Green", "hex": "#C0FF00", "edge": "#739900", "alpha": 128, "type": "transparent" }, { "code": 43, "name": "Trans Light Blue", "hex": "#AEE9EF", "edge": "#59D1DE", "alpha": 128, "type": "transparent" }, { "code": 44, "name": "Trans Bright Reddish Lilac", "hex": "#96709F", "edge": "#5F4365", "alpha": 128, "type": "transparent" }, { "code": 45, "name": "Trans Pink", "hex": "#FC97AC", "edge": "#F9345B", "alpha": 128, "type": "transparent" }, { "code": 46, "name": "Trans Yellow", "hex": "#F5CD2F", "edge": "#B49208", "alpha": 128, "type": "transparent" }, { "code": 47, "name": "Trans Clear", "hex": "#FCFCFC", "edge": "#C9C9C9", "alpha": 128, "type": "transparent" }, { "code": 52, "name": "Trans Purple", "hex": "#A5A5CB", "edge": "#6464A6", "alpha": 128, "type": "transparent" }, { "code": 54, "name": "Trans Neon Yellow", "hex": "#DAB000", "edge": "#755E00", "alpha": 128, "type": "transparent" }, { "code": 57, "name": "Trans Orange", "hex": "#F08F1C", "edge": "#9E5C0A", "alpha": 128, "type": "transparent" }, { "code": 158, "name": "Trans Neon Red", "hex": "#F18EBB", "edge": "#E63384", "alpha": 128, "type": "transparent" }, { "code": 227, "name": "Trans Bright Light Green", "hex": "#B5D96C", "edge": "#86B22E", "alpha": 128, "type": "transparent" }, { "code": 231, "name": "Trans Bright Light Orange", "hex": "#FCB76D", "edge": "#FA860A", "alpha": 128, "type": "transparent" }, { "code": 234, "name": "Trans Fire Yellow", "hex": "#FBE890", "edge": "#F7D22B", "alpha": 128, "type": "transparent" }, { "code": 284, "name": "Trans Reddish Lilac", "hex": "#C281A5", "edge": "#944771", "alpha": 128, "type": "transparent" }, { "code": 285, "name": "Trans Light Green", "hex": "#7DC291", "edge": "#46955D", "alpha": 128, "type": "transparent" }, { "code": 293, "name": "Trans Light Blue Violet", "hex": "#6BABE4", "edge": "#247BC6", "alpha": 128, "type": "transparent" }, { "code": 10375, "name": "Trans Black", "hex": "#212121", "edge": "#545454", "alpha": 128, "type": "transparent" }, { "code": 11015, "name": "Trans White", "hex": "#F4F4F4", "edge": "#C1C1C1", "alpha": 174, "type": "transparent" }, { "code": 11019, "name": "Trans Tan", "hex": "#D7BA8C", "edge": "#BC8D41", "alpha": 128, "type": "transparent" }, { "code": 60, "name": "Chrome Antique Brass", "hex": "#645A4C", "edge": "#665B4D", "alpha": 255, "type": "chrome" }, { "code": 61, "name": "Chrome Blue", "hex": "#6C96BF", "edge": "#3D638A", "alpha": 255, "type": "chrome" }, { "code": 62, "name": "Chrome Green", "hex": "#3CB371", "edge": "#226741", "alpha": 255, "type": "chrome" }, { "code": 63, "name": "Chrome Pink", "hex": "#AA4D8E", "edge": "#632C52", "alpha": 255, "type": "chrome" }, { "code": 64, "name": "Chrome Black", "hex": "#1B2A34", "edge": "#3D5F76", "alpha": 255, "type": "chrome" }, { "code": 334, "name": "Chrome Gold", "hex": "#DFC176", "edge": "#C2982E", "alpha": 255, "type": "chrome" }, { "code": 383, "name": "Chrome Silver", "hex": "#CECECE", "edge": "#9C9C9C", "alpha": 255, "type": "chrome" }, { "code": 83, "name": "Pearl Black", "hex": "#0A1327", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 134, "name": "Copper", "hex": "#764D3B", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 135, "name": "Pearl Light Grey", "hex": "#A0A0A0", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 137, "name": "Metallic Blue", "hex": "#5B7590", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 142, "name": "Pearl Light Gold", "hex": "#DEAC66", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 147, "name": "Pearl Dark Gold", "hex": "#83724F", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 148, "name": "Pearl Dark Grey", "hex": "#484D48", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 150, "name": "Pearl Very Light Grey", "hex": "#989B99", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 176, "name": "Pearl Red", "hex": "#945148", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 178, "name": "Pearl Yellow", "hex": "#AB673A", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 179, "name": "Pearl Silver", "hex": "#898788", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 183, "name": "Pearl White", "hex": "#F6F2DF", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 184, "name": "Metallic Bright Red", "hex": "#D60026", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 185, "name": "Metallic Bright Blue", "hex": "#0059A3", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 186, "name": "Metallic Dark Green", "hex": "#008E3C", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 187, "name": "Pearl Brown", "hex": "#57392C", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 189, "name": "Reddish Gold", "hex": "#AC8247", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 200, "name": "Lemon Metallic", "hex": "#708224", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 296, "name": "Cool Silver", "hex": "#ADADAD", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 297, "name": "Pearl Gold", "hex": "#AA7F2E", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 315, "name": "Flat Silver", "hex": "#8C8C8C", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 316, "name": "Titanium Metallic", "hex": "#3E3C39", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 342, "name": "Conductive Black", "hex": "#3E3C39", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 346, "name": "Reddish Copper", "hex": "#803D07", "edge": "#333333", "alpha": 255, "type": "pearlescent" }, { "code": 80, "name": "Metallic Silver", "hex": "#767676", "edge": "#333333", "alpha": 255, "type": "metallic" }, { "code": 81, "name": "Metallic Green", "hex": "#C2C06F", "edge": "#333333", "alpha": 255, "type": "metallic" }, { "code": 82, "name": "Metallic Gold", "hex": "#DBAC34", "edge": "#333333", "alpha": 255, "type": "metallic" }, { "code": 87, "name": "Metallic Dark Grey", "hex": "#3E3C39", "edge": "#333333", "alpha": 255, "type": "metallic" }, { "code": 300, "name": "Metallic Copper", "hex": "#C27F53", "edge": "#333333", "alpha": 255, "type": "metallic" }, { "code": 10045, "name": "Metallic Light Blue", "hex": "#97CBD9", "edge": "#333333", "alpha": 255, "type": "metallic" }, { "code": 10046, "name": "Metallic Pink", "hex": "#AD659A", "edge": "#333333", "alpha": 255, "type": "metallic" }, { "code": 10049, "name": "Metallic Light Pink", "hex": "#FECCCF", "edge": "#333333", "alpha": 255, "type": "metallic" }, { "code": 332, "name": "Fluorescent Red Ink", "hex": "#D06D4F", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 333, "name": "Fluorescent Green Ink", "hex": "#DBEA7A", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 21, "name": "Glow In Dark Opaque", "hex": "#E0FFB0", "edge": "#B8FF4D", "alpha": 240, "type": "transparent" }, { "code": 79, "name": "Milky White", "hex": "#EEEEEE", "edge": "#BABABA", "alpha": 240, "type": "transparent" }, { "code": 294, "name": "Glow In Dark Trans", "hex": "#BDC6AD", "edge": "#8D9D72", "alpha": 240, "type": "transparent" }, { "code": 329, "name": "Glow In Dark White", "hex": "#F5F3D7", "edge": "#E0DA85", "alpha": 240, "type": "transparent" }, { "code": 114, "name": "Glitter Trans Dark Pink", "hex": "#DF6695", "edge": "#B9275F", "alpha": 128, "type": "glitter" }, { "code": 117, "name": "Glitter Trans Clear", "hex": "#EEEEEE", "edge": "#BABABA", "alpha": 128, "type": "glitter" }, { "code": 129, "name": "Glitter Trans Purple", "hex": "#640061", "edge": "#000000", "alpha": 128, "type": "glitter" }, { "code": 302, "name": "Glitter Trans Light Blue", "hex": "#AEE9EF", "edge": "#59D1DE", "alpha": 128, "type": "glitter" }, { "code": 339, "name": "Glitter Trans Neon Green", "hex": "#C0FF00", "edge": "#739900", "alpha": 128, "type": "glitter" }, { "code": 341, "name": "Glitter Trans Orange", "hex": "#F08F1C", "edge": "#9E5C0A", "alpha": 128, "type": "glitter" }, { "code": 10351, "name": "Glitter Trans Bright Green", "hex": "#56E646", "edge": "#27AF18", "alpha": 128, "type": "glitter" }, { "code": 360, "name": "Opal Trans Clear", "hex": "#FCFCFC", "edge": "#C9C9C9", "alpha": 240, "type": "glitter" }, { "code": 362, "name": "Opal Trans Light Blue", "hex": "#AEE9EF", "edge": "#59D1DE", "alpha": 200, "type": "glitter" }, { "code": 363, "name": "Opal Trans Black", "hex": "#635F52", "edge": "#2A2823", "alpha": 200, "type": "glitter" }, { "code": 364, "name": "Opal Trans Dark Pink", "hex": "#DF6695", "edge": "#B9275F", "alpha": 200, "type": "glitter" }, { "code": 365, "name": "Opal Trans Purple", "hex": "#671F81", "edge": "#441456", "alpha": 200, "type": "glitter" }, { "code": 367, "name": "Opal Trans Green", "hex": "#237841", "edge": "#174F2B", "alpha": 200, "type": "glitter" }, { "code": 376, "name": "Opal Trans Yellow", "hex": "#F5CD2F", "edge": "#B49208", "alpha": 200, "type": "glitter" }, { "code": 10366, "name": "Opal Trans Dark Blue", "hex": "#0020A0", "edge": "#000B38", "alpha": 200, "type": "glitter" }, { "code": 75, "name": "Speckle Black Copper", "hex": "#000000", "edge": "#AB6038", "alpha": 255, "type": "speckle" }, { "code": 76, "name": "Speckle Dark Bluish Grey Silver", "hex": "#635F61", "edge": "#898788", "alpha": 255, "type": "speckle" }, { "code": 132, "name": "Speckle Black Silver", "hex": "#000000", "edge": "#898788", "alpha": 255, "type": "speckle" }, { "code": 133, "name": "Speckle Black Gold", "hex": "#000000", "edge": "#DBAC34", "alpha": 255, "type": "speckle" }, { "code": 30000, "name": "Modulex Clear", "hex": "#FCFCFC", "edge": "#C9C9C9", "alpha": 128, "type": "transparent" }, { "code": 30001, "name": "Modulex White", "hex": "#F4F4F4", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30002, "name": "Modulex Light Grey", "hex": "#8A928D", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30003, "name": "Modulex Black", "hex": "#34434D", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30004, "name": "Modulex Terracotta", "hex": "#D27744", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30005, "name": "Modulex Buff", "hex": "#D7BA8C", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30006, "name": "Modulex Ochre Yellow", "hex": "#FED557", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30007, "name": "Modulex Olive Green", "hex": "#7C9051", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30008, "name": "Modulex Teal Blue", "hex": "#467083", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30009, "name": "Modulex Brown", "hex": "#907450", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30010, "name": "Modulex Strong Red", "hex": "#B40000", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30011, "name": "Modulex Pastel Blue", "hex": "#ABD9FF", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30012, "name": "Modulex Orange", "hex": "#D86D2C", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30013, "name": "Modulex Red", "hex": "#C65127", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30014, "name": "Modulex Pastel Green", "hex": "#78FC78", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30015, "name": "Modulex Lemon", "hex": "#FFF230", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30016, "name": "Modulex Pink", "hex": "#F785B1", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30032, "name": "Modulex Light Bluish Grey", "hex": "#AFB5C7", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30033, "name": "Modulex Pink Red", "hex": "#F45C40", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30034, "name": "Modulex Aqua Green", "hex": "#27867E", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30035, "name": "Modulex Light Yellow", "hex": "#FFE371", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30037, "name": "Modulex Violet", "hex": "#BD7D85", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30038, "name": "Modulex Medium Blue", "hex": "#61AFFF", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30039, "name": "Modulex Light Orange", "hex": "#F7AD63", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30040, "name": "Modulex Charcoal Grey", "hex": "#595D60", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30054, "name": "Modulex Dark Brown", "hex": "#330000", "edge": "#808080", "alpha": 255, "type": "solid" }, { "code": 30080, "name": "Modulex Foil White", "hex": "#F4F4F4", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30081, "name": "Modulex Foil Black", "hex": "#34434D", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30082, "name": "Modulex Foil Dark Grey", "hex": "#595D60", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30083, "name": "Modulex Foil Light Grey", "hex": "#9C9C9C", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30084, "name": "Modulex Foil Dark Green", "hex": "#006400", "edge": "#808080", "alpha": 255, "type": "solid" }, { "code": 30085, "name": "Modulex Foil Light Green", "hex": "#7DB538", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30086, "name": "Modulex Foil Dark Blue", "hex": "#0057A6", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30087, "name": "Modulex Foil Light Blue", "hex": "#68AECE", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30088, "name": "Modulex Foil Violet", "hex": "#4B0082", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30089, "name": "Modulex Foil Dark Red", "hex": "#8B0000", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30090, "name": "Modulex Foil Yellow", "hex": "#FED557", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 30091, "name": "Modulex Foil Orange", "hex": "#F7AD63", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 31000, "name": "Modulex Dark Grey", "hex": "#6B5A5A", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 31001, "name": "Modulex Blue", "hex": "#0057A6", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 31002, "name": "Modulex Very Light Grey", "hex": "#D9D5CC", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 65, "name": "Rubber Yellow", "hex": "#FAC80A", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 256, "name": "Rubber Black", "hex": "#1B2A34", "edge": "#808080", "alpha": 255, "type": "rubber" }, { "code": 273, "name": "Rubber Blue", "hex": "#1E5AA8", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 324, "name": "Rubber Red", "hex": "#B40000", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 350, "name": "Rubber Orange", "hex": "#D67923", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 375, "name": "Rubber Light Grey", "hex": "#8A928D", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 406, "name": "Rubber Dark Blue", "hex": "#19325A", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 449, "name": "Rubber Purple", "hex": "#671F81", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 490, "name": "Rubber Lime", "hex": "#A5CA18", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 496, "name": "Rubber Light Bluish Grey", "hex": "#969696", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 504, "name": "Rubber Flat Silver", "hex": "#898788", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 511, "name": "Rubber White", "hex": "#F4F4F4", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10002, "name": "Rubber Green", "hex": "#00852B", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10003, "name": "Rubber Dark Turquoise", "hex": "#069D9F", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10005, "name": "Rubber Dark Pink", "hex": "#D3359D", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10008, "name": "Rubber Dark Grey", "hex": "#545955", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10010, "name": "Rubber Bright Green", "hex": "#58AB41", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10019, "name": "Rubber Tan", "hex": "#D7BA8C", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10026, "name": "Rubber Magenta", "hex": "#901F76", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10028, "name": "Rubber Dark Tan", "hex": "#897D62", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10029, "name": "Rubber Bright Pink", "hex": "#FF9ECD", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10030, "name": "Rubber Medium Lavender", "hex": "#A06EB9", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10031, "name": "Rubber Lavender", "hex": "#CDA4DE", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10070, "name": "Rubber Reddish Brown", "hex": "#5F3109", "edge": "#808080", "alpha": 255, "type": "rubber" }, { "code": 10072, "name": "Rubber Dark Bluish Grey", "hex": "#646464", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10073, "name": "Rubber Medium Blue", "hex": "#7396C8", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10078, "name": "Rubber Light Nougat", "hex": "#FFC995", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10084, "name": "Rubber Medium Nougat", "hex": "#AA7D55", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10085, "name": "Rubber Medium Lilac", "hex": "#441A91", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10092, "name": "Rubber Nougat", "hex": "#BB805A", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10135, "name": "Rubber Pearl Light Grey", "hex": "#A0A0A0", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10137, "name": "Rubber Metallic Blue", "hex": "#5B7590", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10147, "name": "Rubber Pearl Dark Gold", "hex": "#83724F", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10148, "name": "Rubber Pearl Dark Grey", "hex": "#484D48", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10150, "name": "Rubber Pearl Very Light Grey", "hex": "#989B99", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10151, "name": "Rubber Very Light Bluish Grey", "hex": "#C8C8C8", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10189, "name": "Rubber Reddish Gold", "hex": "#AC8247", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10191, "name": "Rubber Bright Light Orange", "hex": "#FCAC00", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10200, "name": "Rubber Lemon Metallic", "hex": "#708224", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10212, "name": "Rubber Bright Light Blue", "hex": "#9DC3F7", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10226, "name": "Rubber Bright Light Yellow", "hex": "#FFEC6C", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10288, "name": "Rubber Dark Green", "hex": "#00451A", "edge": "#808080", "alpha": 255, "type": "rubber" }, { "code": 10297, "name": "Rubber Pearl Gold", "hex": "#AA7F2E", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10308, "name": "Rubber Dark Brown", "hex": "#352100", "edge": "#808080", "alpha": 255, "type": "rubber" }, { "code": 10320, "name": "Rubber Dark Red", "hex": "#720012", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10321, "name": "Rubber Dark Azure", "hex": "#469BC3", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10322, "name": "Rubber Medium Azure", "hex": "#68C3E2", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10323, "name": "Rubber Light Aqua", "hex": "#D3F2EA", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10326, "name": "Rubber Yellowish Green", "hex": "#E2F99A", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10330, "name": "Rubber Olive Green", "hex": "#77774E", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10378, "name": "Rubber Sand Green", "hex": "#708E7C", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 10484, "name": "Rubber Dark Orange", "hex": "#91501C", "edge": "#333333", "alpha": 255, "type": "rubber" }, { "code": 66, "name": "Rubber Trans Yellow", "hex": "#F5CD2F", "edge": "#B49208", "alpha": 128, "type": "rubber" }, { "code": 67, "name": "Rubber Trans Clear", "hex": "#FCFCFC", "edge": "#C9C9C9", "alpha": 128, "type": "rubber" }, { "code": 10035, "name": "Rubber Trans Bright Green", "hex": "#56E646", "edge": "#27AF18", "alpha": 128, "type": "rubber" }, { "code": 10036, "name": "Rubber Trans Red", "hex": "#C91A09", "edge": "#660D05", "alpha": 128, "type": "rubber" }, { "code": 10043, "name": "Rubber Trans Light Blue", "hex": "#AEE9EF", "edge": "#59D1DE", "alpha": 128, "type": "rubber" }, { "code": 10057, "name": "Rubber Trans Orange", "hex": "#F08F1C", "edge": "#9E5C0A", "alpha": 128, "type": "rubber" }, { "code": 10079, "name": "Rubber Milky White", "hex": "#EEEEEE", "edge": "#BABABA", "alpha": 240, "type": "rubber" }, { "code": 20000, "name": "Canvas Black", "hex": "#1B2A34", "edge": "#808080", "alpha": 255, "type": "solid" }, { "code": 20001, "name": "Canvas Blue", "hex": "#1E5AA8", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20002, "name": "Canvas Green", "hex": "#00852B", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20004, "name": "Canvas Red", "hex": "#B40000", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20006, "name": "Canvas Brown", "hex": "#543324", "edge": "#1E1E1E", "alpha": 255, "type": "solid" }, { "code": 20007, "name": "Canvas Light Grey", "hex": "#8A928D", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20010, "name": "Canvas Bright Green", "hex": "#58AB41", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20014, "name": "Canvas Yellow", "hex": "#FAC80A", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20015, "name": "Canvas White", "hex": "#F4F4F4", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20019, "name": "Canvas Tan", "hex": "#D7BA8C", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20022, "name": "Canvas Purple", "hex": "#671F81", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20028, "name": "Canvas Dark Tan", "hex": "#897D62", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20070, "name": "Canvas Reddish Brown", "hex": "#5F3109", "edge": "#808080", "alpha": 255, "type": "solid" }, { "code": 20071, "name": "Canvas Light Bluish Grey", "hex": "#969696", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20072, "name": "Canvas Dark Bluish Grey", "hex": "#646464", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20086, "name": "Canvas Light Brown", "hex": "#7B5D41", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20288, "name": "Canvas Dark Green", "hex": "#00451A", "edge": "#808080", "alpha": 255, "type": "solid" }, { "code": 20320, "name": "Canvas Dark Red", "hex": "#720012", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20335, "name": "Canvas Sand Red", "hex": "#88605E", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 20500, "name": "Canvas Cream", "hex": "#F8F3E4", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 507, "name": "Obsolete Light Orange Brown", "hex": "#FA9C1C", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 16, "name": "Main Colour", "hex": "#FFFF80", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 24, "name": "Edge Colour", "hex": "#7F7F7F", "edge": "#333333", "alpha": 255, "type": "solid" }, { "code": 493, "name": "Magnet", "hex": "#656761", "edge": "#333333", "alpha": 255, "type": "metallic" }, { "code": 494, "name": "Electric Contact Alloy", "hex": "#D0D0D0", "edge": "#333333", "alpha": 255, "type": "metallic" }, { "code": 495, "name": "Electric Contact Copper", "hex": "#AE7A59", "edge": "#333333", "alpha": 255, "type": "metallic" }, { "code": 10047, "name": "Trans Sticker", "hex": "#FFFFFF", "edge": "#FFFFFF", "alpha": 16, "type": "transparent" } ]
 
-	window.ldrawColors = [
-		{ code: 0, name: "Black", hex: "#05131D", type: "solid" },
-		{ code: 1, name: "Blue", hex: "#0055BF", type: "solid" },
-		{ code: 2, name: "Green", hex: "#237841", type: "solid" },
-		{ code: 3, name: "Dark Turquoise", hex: "#008F9B", type: "solid" },
-		{ code: 4, name: "Red", hex: "#C91A09", type: "solid" },
-		{ code: 5, name: "Dark Pink", hex: "#C870A0", type: "solid" },
-		{ code: 6, name: "Brown", hex: "#583927", type: "solid" },
-		{ code: 7, name: "Light Gray", hex: "#9C9C9C", type: "solid" },
-		{ code: 8, name: "Dark Gray", hex: "#636363", type: "solid" },
-		{ code: 9, name: "Light Blue", hex: "#A5CBEB", type: "solid" },
-		{ code: 10, name: "Bright Green", hex: "#4B9F38", type: "solid" },
-		{ code: 11, name: "Light Turquoise", hex: "#55C6D4", type: "solid" },
-		{ code: 12, name: "Salmon", hex: "#F27072", type: "solid" },
-		{ code: 13, name: "Pink", hex: "#FC97AC", type: "solid" },
-		{ code: 14, name: "Yellow", hex: "#F2CD37", type: "solid" },
-		{ code: 15, name: "White", hex: "#FFFFFF", type: "solid" },
-		{ code: 16, name: "Main Colour", hex: "#808080", type: "special" },
-		{ code: 19, name: "Tan", hex: "#E4CD9E", type: "solid" },
-		{ code: 20, name: "Light Violet", hex: "#C9D6E8", type: "solid" },
-		{ code: 21, name: "Violet", hex: "#875A9C", type: "solid" },
-		{ code: 22, name: "Purple", hex: "#671F81", type: "solid" },
-		{ code: 23, name: "Dark Blue Violet", hex: "#0E3E9A", type: "solid" },
-		{ code: 24, name: "Edge Colour", hex: "#333333", type: "special" },
-		{ code: 25, name: "Orange", hex: "#D67923", type: "solid" },
-		{ code: 26, name: "Magenta", hex: "#901F76", type: "solid" },
-		{ code: 27, name: "Lime", hex: "#A5CA18", type: "solid" },
-		{ code: 28, name: "Dark Tan", hex: "#958A73", type: "solid" },
-		{ code: 29, name: "Bricks Yellow", hex: "#E4C387", type: "solid" },
-		{ code: 30, name: "Brick Orange", hex: "#B05329", type: "solid" },
-		{ code: 31, name: "Bright Light Orange", hex: "#F88B14", type: "solid" },
-		{ code: 32, name: "Black Ink", hex: "#1A1A1A", type: "solid" },
-		{ code: 33, name: "Dark Orange", hex: "#A95812", type: "solid" },
-		{ code: 34, name: "Medium Reddish Violet", hex: "#9B6396", type: "solid" },
-		{ code: 35, name: "Sand Blue", hex: "#6074A5", type: "solid" },
-		{ code: 36, name: "Sand Green", hex: "#5F8969", type: "solid" },
-		{ code: 37, name: "Sand Red", hex: "#88605E" , type: "solid" },
-		{ code: 38, name: "Dark Gray Glow", hex: "#757575", type: "solid" },
-		{ code: 39, name: "Spec Black", hex: "#1B2A34", type: "solid" },
-		{ code: 40, name: "Trans Black", hex: "#635F52", type: "transparent" },
-		{ code: 41, name: "Trans Dark Blue", hex: "#002060", type: "transparent" },
-		{ code: 42, name: "Trans Light Blue", hex: "#A6CAF0", type: "transparent" },
-		{ code: 43, name: "Trans Green", hex: "#006237", type: "transparent" },
-		{ code: 44, name: "Trans Bright Green", hex: "#78FC78", type: "transparent" },
-		{ code: 45, name: "Trans Red", hex: "#900000", type: "transparent" },
-		{ code: 46, name: "Trans Yellow", hex: "#F5CD2F", type: "transparent" },
-		{ code: 47, name: "Trans Clear", hex: "#FCFCFC", type: "transparent" },
-		{ code: 50, name: "Trans Purple", hex: "#52296E", type: "transparent" },
-		{ code: 52, name: "Trans Neon Cyan", hex: "#00FFFF", type: "transparent" },
-		{ code: 54, name: "Trans Light Purple", hex: "#9B5094", type: "transparent" },
-		{ code: 57, name: "Trans Neon Green", hex: "#D0F800", type: "transparent" },
-		{ code: 60, name: "Chrome Antique Bronze", hex: "#6B5D3D", type: "chrome" },
-		{ code: 61, name: "Chrome Blue", hex: "#6C9ACA", type: "chrome" },
-		{ code: 62, name: "Chrome Green", hex: "#60A956", type: "chrome" },
-		{ code: 63, name: "Chrome Pink", hex: "#AA4D8E", type: "chrome" },
-		{ code: 64, name: "Chrome Black", hex: "#2C2C2C", type: "chrome" },
-		{ code: 68, name: "Very Light Orange", hex: "#F3C396", type: "solid" },
-		{ code: 69, name: "Light Reddish Violet", hex: "#D9A3D6", type: "solid" },
-		{ code: 70, name: "Medium Reddish Violet", hex: "#9E3D8A", type: "solid" },
-		{ code: 71, name: "Light Bluish Gray", hex: "#A0A5A9", type: "solid" },
-		{ code: 72, name: "Dark Bluish Gray", hex: "#6C6E68", type: "solid" },
-		{ code: 73, name: "Medium Blue", hex: "#5A82C2", type: "solid" },
-		{ code: 74, name: "Medium Green", hex: "#55A359", type: "solid" },
-		{ code: 77, name: "Light Bluish Violet", hex: "#8C9BC2", type: "solid" },
-		{ code: 78, name: "Metallic Silver", hex: "#899499", type: "metallic" },
-		{ code: 79, name: "Metallic Green", hex: "#5D7363", type: "metallic" },
-		{ code: 80, name: "Metallic Gold", hex: "#CBA347", type: "metallic" },
-		{ code: 81, name: "Milky White", hex: "#FFFFFF", type: "solid" },
-		{ code: 82, name: "Metallic Dark Gray", hex: "#57585A", type: "metallic" },
-		{ code: 84, name: "Speckle Black Copper", hex: "#1A1A1A", type: "speckle" },
-		{ code: 85, name: "Speckle Dark Gray Silver", hex: "#4D4D4D", type: "speckle" },
-		{ code: 86, name: "Speckle Light Gray Silver", hex: "#8C8C8C", type: "speckle" },
-		{ code: 87, name: "Coral", hex: "#FF6D77", type: "solid" },
-		{ code: 88, name: "Salmon Red", hex: "#F25E5E", type: "solid" },
-		{ code: 89, name: "Medium Dark Pink", hex: "#F785B1", type: "solid" },
-		{ code: 98, name: "Very Light Bluish Gray", hex: "#E5E5E5", type: "solid" },
-		{ code: 112, name: "Blue Violet", hex: "#3C508C", type: "solid" },
-		{ code: 115, name: "Light Orange Brown", hex: "#B67B54", type: "solid" },
-		{ code: 116, name: "Medium Orange Brown", hex: "#A25F38", type: "solid" },
-		{ code: 117, name: "Dark Orange Brown", hex: "#7E3C1D", type: "solid" },
-		{ code: 118, name: "Light Yellowish Green", hex: "#D6E882", type: "solid" },
-		{ code: 119, name: "Bricks Brown", hex: "#8A5A36", type: "solid" },
-		{ code: 120, name: "Dark Green", hex: "#0E291C", type: "solid" },
-		{ code: 125, name: "Flourescent Red Orange", hex: "#FF4A3B", type: "solid" },
-		{ code: 128, name: "Dark Purple", hex: "#3F1558", type: "solid" },
-		{ code: 133, name: "Sand Violet", hex: "#82799A", type: "solid" },
-		{ code: 151, name: "Medium Red", hex: "#E03C31", type: "solid" },
-		{ code: 154, name: "Light Brown", hex: "#86614E", type: "solid" },
-		{ code: 158, name: "Flourescent Azure", hex: "#00A2F7", type: "solid" },
-		{ code: 191, name: "Flourescent Rose", hex: "#FF66C4", type: "solid" },
-		{ code: 212, name: "Rust Orange", hex: "#9B3B11", type: "solid" },
-		{ code: 232, name: "Light Aqua", hex: "#ADDFD8", type: "solid" },
-		{ code: 297, name: "Warm Yellow", hex: "#FFB329", type: "solid" },
-		{ code: 320, name: "Dark Royal Blue", hex: "#202050", type: "solid" },
-		{ code: 322, name: "Medium Lilac", hex: "#3A2E5C", type: "solid" },
-		{ code: 511, name: "Flourescent Green", hex: "#00FF00", type: "solid" },
-		{ code: 512, name: "Flourescent Yellow", hex: "#FFFF00", type: "solid" }
-	];
+	const MATERIAL_ORDER = {
+		solid: 0,
+		transparent: 1,
+		chrome: 2,
+		metallic: 3,
+		matteMetallic: 4,
+		pearlescent: 5,
+		rubber: 6,
+		glitter: 7,
+		speckle: 8,
+		special: 9
+	};
 
-	picker.setAttribute('color', partColor);
-	let color = picker.getAttribute('color');
-	picker.value = color;
+	ldrawColors.sort((a, b) => {
+		return MATERIAL_ORDER[a.type] - MATERIAL_ORDER[b.type];
+	});
+
 	picker.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i>';
-	picker.style.backgroundColor = color;
 	picker.style.color = '#d3d3d3';
 	picker.style.paddingLeft = "5px";
 	picker.style.paddingRight = "5px";
 	picker.style.marginLeft = "5px";
 	picker.style.width = "fit-content";
 	picker.style.cursor = 'pointer';
-	picker.style.border = '#d3d3d3 1px solid'
+	picker.style.border = '#d3d3d3 1px solid';
 
 	colorList.style.display = "none";
 	colorList.style.border = "1px solid #d3d3d3"
 	colorList.style.borderRadius = "2px";
 	colorList.style.gridTemplateColumns = "auto auto auto auto auto auto";
 
-	picker.addEventListener("mouseover", function() {
+	picker.addEventListener("mouseover", function () {
 		picker.style.opacity = '0.8';
 	});
 
-	picker.addEventListener("mouseout", function() {
+	picker.addEventListener("mouseout", function () {
 		picker.style.opacity = '';
 	});
 
-	picker.addEventListener('click', function() {
+	picker.addEventListener('click', function () {
 		if (colorList.style.display === "grid") {
-        	colorList.style.display = "none";
-    	} else {
-        	colorList.style.display = "grid";
-    	}
+			colorList.style.display = "none";
+		} else {
+			colorList.style.display = "grid";
+		}
 	});
 
-	colorList.addEventListener('click', function(e) {
+	colorList.addEventListener('click', function (e) {
 		const span = e.target.closest("span");
 
-	    if (!span) {
-	        return;
-	    }
+		if (!span) {
+			return;
+		}
 
-	    const selected = span.getAttribute("value");
+		const selected = span.getAttribute("value");
 
-	    if (!selected) {
-	        return;
-	    }
+		if (!selected) {
+			return;
+		}
 
-	    partColor = selected;
-	    if (selected) {
-            window.changeBlockColor(selected);
-        }
+		partColor = selected;
+		if (selected) {
+			window.changeBlockColor(selected);
+		}
 	});
 
 	function displayColorListItems() {
-	    colorList.innerHTML = '';
-	    let i = 0;
+		colorList.innerHTML = '';
+		let i = 0;
 
-	    ldrawColors.forEach(color => {
-			if(color.type === 'special') {
+		ldrawColors.forEach(color => {
+			if (color.type === 'special') {
 				return;
 			}
 
-	        let span = document.createElement("span");
+			let span = document.createElement("span");
 			let title = document.createElement("span");
 
 			title.classList.add('ui-tooltip-text');
-	        title.textContent = color.name;
+			title.textContent = color.name;
 			span.appendChild(title);
 
 			span.id = color.code;
 			span.title = color.name;
-	        span.setAttribute("value", color.hex);
+			span.setAttribute("value", color.code);
 			span.classList.add('ui-tooltip');
-	        span.style.backgroundColor = color.hex;
-	        span.style.color = '#d3d3d3';
-	        span.style.paddingLeft = "5px";
-	        span.style.paddingRight = "5px";
-	        span.style.margin = "0.25em";
-	        span.style.width = "25px";
-	        span.style.height = "25px";
-	        span.style.display = "inline-block";
-	        span.style.cursor = 'pointer';
-	        span.style.border = '#d3d3d3 1px solid'
+			span.style.backgroundColor = color.hex;
+			span.style.color = '#d3d3d3';
+			span.style.paddingLeft = "5px";
+			span.style.paddingRight = "5px";
+			span.style.margin = "0.25em";
+			span.style.width = "25px";
+			span.style.height = "25px";
+			span.style.display = "inline-block";
+			span.style.cursor = 'pointer';
+			span.style.border = '#d3d3d3 1px solid'
 			span.style.boxShadow = "rgba(2, 2, 2, 0.06) 2px 2px 2px 2px";
 
-	        i += 1;
-	        colorList.appendChild(span);
-	    });
+			i += 1;
+			colorList.appendChild(span);
+		});
 	}
 	displayColorListItems();
-	
-	window.updatecolorelement = function() {
+
+	window.updatecolorelement = function () {
 		picker.setAttribute('color', partColor);
 		picker.value = partColor;
-		picker.style.backgroundColor = partColor;
+
+		let ldrawHexMap = new Map(ldrawColors.map(c => [String(c.code), c.hex]));
+		picker.style.backgroundColor = ldrawHexMap.get(partColor);
 	}
+	updatecolorelement();
 });

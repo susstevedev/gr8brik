@@ -7,8 +7,10 @@ body {
   --ui-button-lightblue: #add8e6;
   --ui-elm-noglass: rgba(211, 211, 211, 0.8);
 
-  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-family: sans-serif;
   font-size: 16px;
+  font-size: 100%;
+  font-display: swap;
   background-color: var(--ui-color);
   color: var(--ui-text-color);
   margin: 0px;
@@ -28,7 +30,7 @@ body.hdri-active {
 }
 
 select {
-  color: var(--ui-anti-text) !important;
+  color: var(--ui-text-color) !important;
   background-color: var(--ui-button-blue) !important;
   border: none;
   cursor: pointer;
@@ -167,40 +169,35 @@ option {
 .btn,
 .btn-alt {
   transition: all 0.2s ease-in-out;
-  background-image: linear-gradient(var(--ui-button-lightblue), var(--ui-button-blue));
-  color: #000;
+  background-color: var(--ui-button-blue);
+  color: var(--ui-text-color);
   padding: 10px;
   margin-bottom: 5px;
   text-align: center;
-  font-size: 13px;
-  border: none;
-  border-radius: 2px;
+  /*font-size: 13px;*/
+  border: 1px var(--ui-button-lightblue) solid;
+  border-radius: 4px;
   cursor: pointer;
 }
 
 .btn:hover {
-  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.10) !important;
-  background-image: linear-gradient(var(--ui-button-blue), var(--ui-button-lightblue));
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 
 .btn-alt:active,.btn-alt:hover {
-  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3); 
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
 .btn-disabled {
-  background-image: linear-gradient(#D3D3D3, #808080);
-}
-
-.btn-disabled:hover {
+  background-color: #D3D3D3;
   cursor: not-allowed;
-  background-image: linear-gradient(#808080, #D3D3D3);
 }
 
 .tab-button {
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px, inset 0 4px 8px rgba(0, 0, 0, 0);
+  color: var(--ui-text-color);
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px, inset 0 2px 4px rgba(0, 0, 0, 0);
   background-color: var(--ui-button-blue);
-  color: var(--ui-anti-text);
   cursor: pointer;
   padding: 8px;
   border-radius: 2px;
@@ -210,7 +207,7 @@ option {
 }
 
 .tab-button:hover,.tab-button:active {
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px, inset 0 4px 8px rgba(0, 0, 0, 0.3); 
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px, inset 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
 .dialog {
@@ -232,7 +229,8 @@ option {
 #export-popup,
 #settings-popup,
 #ui-loading-file,
-#help-popup {
+#help-popup,
+#login-popup {
   display: none;
 }
 
@@ -286,11 +284,11 @@ option {
   overflow-y: auto;
   
   a, a:visited {
-	color: var(--ui-button-blue);
+	  color: var(--ui-button-blue);
   }
   
   a:hover, a:visited:hover {
-	color: var(--ui-anti-text);
+	  color: var(--ui-anti-text);
   }
 }
 
@@ -302,8 +300,8 @@ option {
 }
 
 #nav-wheel {
-  position: absolute; 
-  bottom: 50%;
+  position: fixed;
+  bottom: 25%;
   right: 20px;
   width: 120px;
   height: 120px;
@@ -470,6 +468,7 @@ option {
 
 .dropdown-item:hover {
   background-color: var(--ui-button-blue);
+  color: var(--ui-text-color);
 }
 
 .dropdown-main {
@@ -559,8 +558,17 @@ option {
   padding: 3px;
   border: none;
   background-color: #F3F7F8;
+  color: #000;
   box-shadow: rgba(30, 30, 30, 0.06) 0px 0px 4px 4px;
   border-radius: 2px;
+}
+
+.ldraw-logo a, .ldraw-logo a:visited {
+  color: #000;
+}
+
+.ldraw-logo a:hover, .ldraw-logo a:active {
+  color: #242424;
 }
 
 .tag {
@@ -621,7 +629,7 @@ option {
 }
 
 #search-parts,
-#save-popup input[type=text],
+.ui-popup-contain input[type=password],
 .ui-popup-contain input[type=text] {
   border: 1px solid #000;
   border-radius: 2px;
@@ -661,14 +669,14 @@ option {
 }
 
 #wgl-disabled {
-  display: none !important;
+  display: none;
   background-color: rgb(175, 175, 175);
   width: 100%;
   height: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 999999;
+  z-index: 99999;
   position: absolute;
 }
 
@@ -677,20 +685,18 @@ option {
   border-radius: 2px;
   background-color: rgb(250, 250, 250);
   width: 50%;
-  height: 25%;
+  height: 50%;
   top: 25%;
   left: 25%;
   position: absolute;
 }
 
-#wgl-disabled-head {
-  color: #000;
+#wgl-disabled h2 {
   left: 50%;
   position: absolute;
 }
 
-#wgl-disabled-txt {
-  color: #000;
+#wgl-disabled p, #wgl-disabled a {
   top: 20%;
   padding-left: 15%;
   padding-right: 15%;
@@ -698,11 +704,21 @@ option {
   text-align: center;
 }
 
+#wgl-disabled p, #wgl-disabled h2 {
+  color: #000;
+}
+
 #wgl-disabled-img {
+  width: 200px;
+  height: 150px;
   top: 40%;
   left: 40%;
   position: absolute;
-  border: 1px #242424 solid;
+  z-index: 9999;
+  border: none;
+  background-image: url('img/misc/minifig_minifix.png');
+  background-size: cover;
+  box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes fromright {

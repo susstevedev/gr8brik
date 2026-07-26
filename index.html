@@ -16,28 +16,12 @@
     }
   </script>
 
-  <script src="https://cdn.jsdelivr.net/gh/susstevedev/gr8brik/lib/ColladaExporter-modded.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/gh/GitHubDragonFly/GitHubDragonFly.github.io/viewers/static/js/exporters/OBJExporter.js" crossorigin="anonymous"></script>
-
-  <!-- es5 fixes -->
-  <!-- probably won't work just here to fix older browser maybe idk not tested -->
-  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.14/es5-shim.min.js"></script>
-  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.14/es5-sham.min.js"></script>
-  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
-  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.5/es6-shim.min.js"></script>
-  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.5/es6-sham.min.js"></script>
-
-  <!-- non threejs related -->
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jszip@latest/dist/jszip.min.js" crossorigin="anonymous"></script>
-  
-  <!-- MAIN | ES6 -->
-  <script type="module" src="index.js?v=03-30-26"></script>
 
-  <!-- STYLES -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" crossorigin="anonymous" >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="index.css?v=03-30-26">
+  <link rel="stylesheet" type="text/css" href="index.css?v07-18-26">
 </head>
 
 <body>
@@ -53,6 +37,7 @@
     </span>
     <span class="dropdown-main">
       <span class="dropdown-element" id="dropdown-file">
+        <div class="dropdown-item" id="clear-scene"><i class="fa fa-plus-square-o" aria-hidden="true"></i>New creation</div>
         <div class="dropdown-item" id="save-popup-open"><i class="fa fa-database" aria-hidden="true"></i>Save to cloud</div>
         <div class="dropdown-item" id="import-popup-open"><i class="fa fa-download" aria-hidden="true"></i>Import...</div>
         <div class="dropdown-item" id="export-popup-open"><i class="fa fa-upload" aria-hidden="true"></i>Export...</div>
@@ -61,11 +46,12 @@
         <div class="dropdown-item" id="move-block-t"><i class="fa fa-arrows-alt" aria-hidden="true"></i>Drag <small><kbd>T</kbd></small></div>
         <div class="dropdown-item" id="move-block-r"><i class="fa fa-refresh" aria-hidden="true"></i>Rotate <small><kbd>R</kbd></small></div>
         <div class="dropdown-item" id="duplicate-part"><i class="fa fa-files-o" aria-hidden="true"></i>Duplicate part</div>
+        <div class="dropdown-item" id="make-group"><i class="fa fa-object-group" aria-hidden="true"></i>Group parts</div>
         <div class="dropdown-item" id="delete-block"><i class="fa fa-trash" aria-hidden="true"></i>Delete part <small><kbd>Del</kbd></small></div>
-        <div class="dropdown-item" id="read_autosave"><i class="fa fa-floppy-o" aria-hidden="true"></i>Recover autosave</div>
+        <div class="dropdown-item read_autosave"><i class="fa fa-floppy-o" aria-hidden="true"></i>Recover autosave</div>
       </span>
     </span>
-    <a href="https://gr8brik.rf.gd/acc/login" target="_blank" id="username-field">Login</a>
+    <a href="#" id="username-field">Login</a>
   </div>
 
 	<div class="mobile-toggle-contain">
@@ -94,10 +80,8 @@
     <p style="height: 2vh;"></p>
 
     <span>Color</span><br />
-
     <div id="color-picker"></div><br />
-    <div id="color-picker-list">
-    </div>
+    <div id="color-picker-list"></div>
 
 		<span class="sub">Selected layer</span><br />
 		<input type="number" title="Most textured parts have more than three layers." id="selected-map" min="0" max="50" step="1" value="0"><br />
@@ -110,24 +94,6 @@
     <span>Filter</span><br />
 
     <select id="part-type-filter" style="display: inline-block;">
-        <option value="brick" selected>Bricks</option>
-        <option value="plate">Plates & Baseplates</option>
-        <option value="tile">Tiles</option>
-        <option value="slope">Slopes</option>
-        <option value="minifig">Minifigs</option>
-        <option value="duplo">Duplo</option>
-        <option value="animal">Animals</option>
-        <option value="technic">Technic</option>
-        <option value="wedge">Wedges</option>
-        <option value="hinge">Hinges</option>
-        <option value="clip_&_bar">Clips & Bars</option>
-        <option value="connector">Connectors</option>
-        <option value="wheel_&_tyre">Wheels & Tyres</option>
-        <option value="train">Train Parts</option>
-        <option value="panel">Panels</option>
-        <option value="round_&_curved">Round & Curved</option>
-        <option value="other">Miscellaneous</option>
-		    <option id="usr-custom" value="customparts.php">User Custom Parts</option>
     </select><br /><br />
 
     <input type="text" id="search-parts" placeholder="Search parts (current category only)..." /><span>&nbsp;</span><button id="search-submit" class="btn">Go</button><hr />
@@ -136,7 +102,7 @@
     <button data-tabbtnid="tab2" id="tab2" class="tab-button">Parts in scene</button><br /><br />
     
 	  <input type="file" id="cre-import" accept=".json,.gr8" style="display: none;"><input type="file" id="cre-import-gr8z" accept=".zip,.gr8z" style="display: none;"><input type="file" id="cre-import-three" accept=".json" style="display: none;"><input type="file" id="cre-import-ldr" accept=".ldr,.dat" style="display: none;">
-	  <span id="cre-export" style="display: none;"></span><span id="cre-export-gr8" style="display: none;"></span><span id="cre-export-gr8z" style="display: none;"></span><span id="cre-export-ldd" style="display: none;"></span><span id="selected-object-export-three" style="display: none;"></span><span id="cre-export-three" style="display: none;"></span><span id="cre-export-dae" style="display: none;"></span>
+	  <span id="cre-export" style="display: none;"></span><span id="cre-export-gr8" style="display: none;"></span><span id="cre-export-gr8z" style="display: none;"></span><span id="cre-export-ldd" style="display: none;"></span><span id="selected-object-export-three" style="display: none;"></span><span id="cre-export-three" style="display: none;"></span>
 
     <span id="select-block"></span>
 
@@ -155,7 +121,8 @@
     <div id="dev-welcome-popup-form">
       <p>Would you like to:</p>
       <p><button class="close btn" title="Start a new creation">Start a new creation</button></p>
-      <p><button class="import btn" title="Import an existing creation">Import an existing creation</button></p>
+      <p><button class="btn" onclick="document.getElementById('cre-import').click()" title="Import an existing creation">Import an existing creation</button></p>
+      <p><button class="btn read_autosave" title="Recover autosave">Recover autosave</button></p>
     </div>
   </div>
 
@@ -174,6 +141,16 @@
     </div>
   </div>
 
+  <div class="ui-popup-contain ui-canbe-trans" id="login-popup">
+    <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
+    <h3><span style="color: var(--ui-text-color);;">Login</span></h3>
+    <div id="dev-login-popup-form">
+      <p><input type="text" name="mail" placeholder="Email or username"></p>
+      <p><input type="password" name="pwd" placeholder="Password"></p>
+      <p><button class="btn" title="Login" id="login-complete">Login</button></p>
+    </div>
+  </div>
+
   <div class="ui-popup-contain ui-canbe-trans" id="save-popup">
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: #fff;">Save Creation</span></h3>
@@ -187,7 +164,7 @@
         </label><br />
 
         <label>
-          <input type="radio" name="visible" value="unlist"> Unlisted
+          <input type="radio" name="visible" value="unlisted"> Unlisted
         </label><br />
 
         <label>
@@ -227,7 +204,6 @@
 			<option value="three">ThreeJS (.json)</option>
       <option value="selectedobj">Selected object geometry (.json)</option>
 			<option value="lxf">Lego Digital Designer (.lxf)</option>
-			<option value="dae">Collada (.dae)</option>
       <option value="obj">Wavefront (.obj)</option>
       <option value="glb">Graphics Library Transmission Format (.glb)</option>
 		</select><br />
@@ -278,6 +254,10 @@
           <option id="parts-lib-1" value="https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/" selected>Default</option>
           <option id="parts-lib-2" value="https://library.ldraw.org/library/official/">Ldraw.org offical</option>
     </select><br />
+
+    <h5><span style="color: var(--ui-text-color);">Backend</span></h5>
+    <input type="checkbox" id="gpu-enable">
+    <label for="gpu-enable">Enable WebGPU</label><br />
 	</div>
 
   <div data-settingsid="display">
@@ -305,6 +285,9 @@
     <input type="checkbox" id="trans-enable" checked>
     <label for="trans-enable">Enable transparent UI elements</label><br />
 
+    <input type="checkbox" id="display-lines-grid" checked>
+    <label for="display-lines-grid">Enable lines on grid</label><br />
+
     <h5><span style="color: var(--ui-text-color);">Lighting</span></h5>
 
     <input type="checkbox" id="hdr-enable" checked>
@@ -322,14 +305,13 @@
     <label for="flatcamera-enable">Orthographic camera</label><br />
 
     <select id="camera-selector">
-
     </select>
   </div>
 
   <div data-settingsid="saving">
     <p><span style="color: var(--ui-text-color);"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Saving & recovery</span></p>
 
-		<button class="btn" title="Load autosave from device" id="read_autosave"><i class="fa fa-floppy-o" aria-hidden="true"></i>Recover Autosave</button><br />
+		<button class="read_autosave btn" title="Load autosave from device"><i class="fa fa-floppy-o" aria-hidden="true"></i>Recover Autosave</button><br />
     <button class="btn" title="Clear autosave from device" id="clear_autosave"><i class="fa fa-trash" aria-hidden="true"></i>Trash Autosave</button><br />
 
 		<button class="btn" title="Load settings from device" id="read_settings">
@@ -358,27 +340,27 @@
 
   <!-- LDRAW.ORG CC BY 2.0 PARTS LIBRARY ATTRIBUTION -->
   <div class="ldraw-logo">
-        <a href="http://www.ldraw.org">
-            <img style="width: 145px" src="img/ldraw.png">
-        </a>
-    <br />
-    <a href="http://www.ldraw.org/" style="color:#000;">This software uses the LDraw Parts Library &amp; LDrawLoader.js</a>
+    <a href="http://www.ldraw.org">
+      <img style="width: 145px" src="img/ldraw.png"><br />
+      <span>This software uses LDraw's Parts Library</span>
+    </a>
   </div>
 
-  <div class="stats-contain">
-    
-  </div>
+  <div class="stats-contain"></div>
 
   <div id="wgl-disabled">
     <div id="wgl-disabled-bg">
-      <h2 id="wgl-disabled-head">Drat!</h2>
+      <h2>Drat!</h2>
       <p id="wgl-disabled-txt"></p>
-      <img id="wgl-disabled-img" src="img/misc/minifig_minifix.png" width="25%" alt="Minfig with wrench" title="Minfig with wrench" />
+      <a id="wgl-disabled-link"></a>
+      <div id="wgl-disabled-img" title="Minfig with wrench"></div>
     </div>
   </div>
 
-  <script src="color.js"></script>
+  <script src="basic.js?v=07-18-26"></script>
+  <script type="module" src="index.js?v=07-18-26"></script>
   <script src="settings.js"></script>
+  <script src="color.js"></script>
   <script src="ui.js"></script>
 </body>
 </html>

@@ -1,0 +1,78 @@
+{
+    "lastUpdated": "Fri, 17 Jul 2026 23:08:28 GMT",
+    "customParts": false,
+    "displayLines": false,
+    "highRes": true,
+    "noSnap": false,
+    "ui_trans": true,
+    "use_hdri": true,
+    "export_full_scene": false,
+    "hdri_background": false,
+    "flatcamera": false,
+    "grid_lines": false,
+    "use_webgpu": false,
+    "hideWelcome" : false,
+    "camera": [
+        {
+            "id": 0,
+            "type": "perspective",
+            "fov": 45,
+            "pos": {
+                "x": 250,
+                "y": 250,
+                "z": 250
+            },
+            "name": "Perspective camera"
+        },
+        {
+            "id": 1,
+            "type": "perspective",
+            "fov": 45,
+            "pos": {
+                "x": -250,
+                "y": 250,
+                "z": 250
+            },
+            "name": "Perspective camera 2"
+        },
+        {
+            "id": 2,
+            "type": "orthographic",
+            "pos": {
+                "x": 250,
+                "y": 250,
+                "z": 250
+            },
+            "name": "Orthographic camera"
+        },
+        {
+            "id": 3,
+            "type": "orthographic",
+            "pos": {
+                "x": -250,
+                "y": 250,
+                "z": 250
+            },
+            "name": "Orthographic camera 2"
+        }
+    ],
+    "hdris": {
+        "0": {
+            "url": "hdris/autumn_field_puresky_1k.hdr",
+            "name": "Autumn Field (Pure Sky) (default)"
+        },
+        "1": {
+            "url": "hdris/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
+            "name": "Kloofendal 48d Partly Cloudy (Pure Sky)"
+        },
+        "2": {
+            "url": "hdris/studio_small_03_1k.hdr",
+            "name": "Studio Small 03"
+        },
+        "3": {
+            "url": "hdris/venice_sunset_1k.hdr",
+            "name": "Venice Sunset"
+        },
+        "selected": 2
+    }
+}
