@@ -1,0 +1,372 @@
+{
+    "categories": [
+        {
+            "name": "Animal",
+            "file": "animal.json"
+        },
+        {
+            "name": "Antenna",
+            "file": "antenna.json"
+        },
+        {
+            "name": "Arch",
+            "file": "arch.json"
+        },
+        {
+            "name": "Arm",
+            "file": "arm.json"
+        },
+        {
+            "name": "Bar",
+            "file": "bar.json"
+        },
+        {
+            "name": "Baseplate",
+            "file": "baseplate.json"
+        },
+        {
+            "name": "Belville",
+            "file": "belville.json"
+        },
+        {
+            "name": "Boat",
+            "file": "boat.json"
+        },
+        {
+            "name": "Bracket",
+            "file": "bracket.json"
+        },
+        {
+            "name": "Brick",
+            "file": "brick.json"
+        },
+        {
+            "name": "Car",
+            "file": "car.json"
+        },
+        {
+            "name": "Clikits",
+            "file": "clikits.json"
+        },
+        {
+            "name": "Cockpit",
+            "file": "cockpit.json"
+        },
+        {
+            "name": "Cone",
+            "file": "cone.json"
+        },
+        {
+            "name": "Constraction",
+            "file": "constraction.json"
+        },
+        {
+            "name": "Constraction Accessory",
+            "file": "constraction_accessory.json"
+        },
+        {
+            "name": "Container",
+            "file": "container.json"
+        },
+        {
+            "name": "Conveyor",
+            "file": "conveyor.json"
+        },
+        {
+            "name": "Crane",
+            "file": "crane.json"
+        },
+        {
+            "name": "Cylinder",
+            "file": "cylinder.json"
+        },
+        {
+            "name": "Dish",
+            "file": "dish.json"
+        },
+        {
+            "name": "Door",
+            "file": "door.json"
+        },
+        {
+            "name": "Duplo",
+            "file": "duplo.json"
+        },
+        {
+            "name": "Electric",
+            "file": "electric.json"
+        },
+        {
+            "name": "Exhaust",
+            "file": "exhaust.json"
+        },
+        {
+            "name": "Fence",
+            "file": "fence.json"
+        },
+        {
+            "name": "Figure",
+            "file": "figure.json"
+        },
+        {
+            "name": "Figure Accessory",
+            "file": "figure_accessory.json"
+        },
+        {
+            "name": "Flag",
+            "file": "flag.json"
+        },
+        {
+            "name": "Garage",
+            "file": "garage.json"
+        },
+        {
+            "name": "Glass",
+            "file": "glass.json"
+        },
+        {
+            "name": "Helper",
+            "file": "helper.json"
+        },
+        {
+            "name": "Hinge",
+            "file": "hinge.json"
+        },
+        {
+            "name": "Homemaker",
+            "file": "homemaker.json"
+        },
+        {
+            "name": "Hose",
+            "file": "hose.json"
+        },
+        {
+            "name": "Ladder",
+            "file": "ladder.json"
+        },
+        {
+            "name": "Magnet",
+            "file": "magnet.json"
+        },
+        {
+            "name": "Minifig",
+            "file": "minifig.json"
+        },
+        {
+            "name": "Minifig Accessory",
+            "file": "minifig_accessory.json"
+        },
+        {
+            "name": "Minifig Arm",
+            "file": "minifig_arm.json"
+        },
+        {
+            "name": "Minifig Body",
+            "file": "minifig_body.json"
+        },
+        {
+            "name": "Minifig Footwear",
+            "file": "minifig_footwear.json"
+        },
+        {
+            "name": "Minifig Hand",
+            "file": "minifig_hand.json"
+        },
+        {
+            "name": "Minifig Head",
+            "file": "minifig_head.json"
+        },
+        {
+            "name": "Minifig Headwear",
+            "file": "minifig_headwear.json"
+        },
+        {
+            "name": "Minifig Hips",
+            "file": "minifig_hips.json"
+        },
+        {
+            "name": "Minifig Hipwear",
+            "file": "minifig_hipwear.json"
+        },
+        {
+            "name": "Minifig Leg",
+            "file": "minifig_leg.json"
+        },
+        {
+            "name": "Minifig Neckwear",
+            "file": "minifig_neckwear.json"
+        },
+        {
+            "name": "Minifig Torso",
+            "file": "minifig_torso.json"
+        },
+        {
+            "name": "Modulex",
+            "file": "modulex.json"
+        },
+        {
+            "name": "Monorail",
+            "file": "monorail.json"
+        },
+        {
+            "name": "Obsolete",
+            "file": "obsolete.json"
+        },
+        {
+            "name": "Panel",
+            "file": "panel.json"
+        },
+        {
+            "name": "Plane",
+            "file": "plane.json"
+        },
+        {
+            "name": "Plant",
+            "file": "plant.json"
+        },
+        {
+            "name": "Plate",
+            "file": "plate.json"
+        },
+        {
+            "name": "Platform",
+            "file": "platform.json"
+        },
+        {
+            "name": "Propeller",
+            "file": "propeller.json"
+        },
+        {
+            "name": "Rack",
+            "file": "rack.json"
+        },
+        {
+            "name": "Roadsign",
+            "file": "roadsign.json"
+        },
+        {
+            "name": "Rock",
+            "file": "rock.json"
+        },
+        {
+            "name": "Scala",
+            "file": "scala.json"
+        },
+        {
+            "name": "Screw",
+            "file": "screw.json"
+        },
+        {
+            "name": "Sheet Cardboard",
+            "file": "sheet_cardboard.json"
+        },
+        {
+            "name": "Sheet Fabric",
+            "file": "sheet_fabric.json"
+        },
+        {
+            "name": "Sheet Plastic",
+            "file": "sheet_plastic.json"
+        },
+        {
+            "name": "Slope",
+            "file": "slope.json"
+        },
+        {
+            "name": "Sphere",
+            "file": "sphere.json"
+        },
+        {
+            "name": "Staircase",
+            "file": "staircase.json"
+        },
+        {
+            "name": "Sticker",
+            "file": "sticker.json"
+        },
+        {
+            "name": "Sticker Shortcut",
+            "file": "sticker_shortcut.json"
+        },
+        {
+            "name": "String",
+            "file": "string.json"
+        },
+        {
+            "name": "Support",
+            "file": "support.json"
+        },
+        {
+            "name": "Tail",
+            "file": "tail.json"
+        },
+        {
+            "name": "Tap",
+            "file": "tap.json"
+        },
+        {
+            "name": "Technic",
+            "file": "technic.json"
+        },
+        {
+            "name": "Tile",
+            "file": "tile.json"
+        },
+        {
+            "name": "Tipper",
+            "file": "tipper.json"
+        },
+        {
+            "name": "Tractor",
+            "file": "tractor.json"
+        },
+        {
+            "name": "Trailer",
+            "file": "trailer.json"
+        },
+        {
+            "name": "Train",
+            "file": "train.json"
+        },
+        {
+            "name": "Turntable",
+            "file": "turntable.json"
+        },
+        {
+            "name": "Tyre",
+            "file": "tyre.json"
+        },
+        {
+            "name": "Vehicle",
+            "file": "vehicle.json"
+        },
+        {
+            "name": "Wedge",
+            "file": "wedge.json"
+        },
+        {
+            "name": "Wheel",
+            "file": "wheel.json"
+        },
+        {
+            "name": "Winch",
+            "file": "winch.json"
+        },
+        {
+            "name": "Window",
+            "file": "window.json"
+        },
+        {
+            "name": "Windscreen",
+            "file": "windscreen.json"
+        },
+        {
+            "name": "Wing",
+            "file": "wing.json"
+        },
+        {
+            "name": "Znap",
+            "file": "znap.json"
+        }
+    ]
+}
