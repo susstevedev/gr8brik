@@ -142,12 +142,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
         /* Other */
         document.getElementById("clear_settings").addEventListener("click", function () {
-            clearSettings(); // new
+            clearSettings();
         });
 
         document.getElementById("read_settings").addEventListener("click", function () {
-            readSettings(); // new
+            readSettings();
         });
+
+        //hide username field on click of menu item
+        //complements ui, prevents username from displaying under right side buttons
+        document.querySelectorAll(".menu-item").forEach(i => {
+            let id = i.id;
+            if(id === "menu-file" || id === "menu-edit") {
+                i.addEventListener("click", function () {
+                    let elm = document.getElementById("username-field");
+                    elm.classList.toggle("hidden");
+                });
+            }
+        });
+
 
         // file menu
         document.querySelector("#menu-file").addEventListener("click", function () {

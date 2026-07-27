@@ -170,11 +170,11 @@ option {
 .btn-alt {
   transition: all 0.2s ease-in-out;
   background-color: var(--ui-button-blue);
+  box-shadow: inset 2px 1px 2px rgba(0, 0, 0, 0.1);
   color: var(--ui-text-color);
   padding: 10px;
   margin-bottom: 5px;
   text-align: center;
-  /*font-size: 13px;*/
   border: 1px var(--ui-button-lightblue) solid;
   border-radius: 4px;
   cursor: pointer;
@@ -196,7 +196,7 @@ option {
 
 .tab-button {
   color: var(--ui-text-color);
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px, inset 0 2px 4px rgba(0, 0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px, inset 2px 1px 2px rgba(0, 0, 0, 0.1);
   background-color: var(--ui-button-blue);
   cursor: pointer;
   padding: 8px;
@@ -401,6 +401,10 @@ option {
   padding-right: 40px;
   top: 5px;
   position: relative;
+}
+
+#username-field.hidden {
+  display: none;
 }
 
 #link-home {
