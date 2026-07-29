@@ -428,9 +428,8 @@
                 if (model_data.blocks) {
                     total = model_data?.blocks?.length;
                 }
-                window.file_ver = model_data?.metadata?.file_version || '0.0';
-                console.log(window.file_ver);
 
+                window.file_ver = model_data?.metadata?.file_version || '0.0';
                 var complete = false;
                 var partsIntersecting = [];
 
@@ -450,31 +449,27 @@
                         return;
                     }
 
-                    //try {
                     loader.load(`${block.ldraw}`, function (group) {
                         group.traverse((child) => {
+                            //Default LDrawLoader lines
+                            //I removed my own custom ones because they didn't look good
                             if (window.globalPlayerConfig.model._lines.ldraw === "false" && child.isLineSegments && child.userData.ldr_line != true) {
                                 child.visible = false;
                                 return;
                             }
 
                             let colorHex;
-                            if (window.file_ver <= "1.2") {
-                                colorHex = "#" + block.color;
-                            } else {
+                            if (window.file_ver >= "1.2.1.2") {
                                 colorHex = block?.materials;
+                            } else {
+                                colorHex = "#" + block.color;
                             }
 
                             if (!child.isLineSegments) {
                                 if (!Array.isArray(colorHex)) {
-                                    let custommaterial = createMaterialv2(colorHex);
-                                    if (custommaterial) {
-                                        child.material = custommaterial;
-                                    } else {
-                                        child.material = new THREE.MeshPhysicalMaterial({
-                                            color: new THREE.Color("#ffffff")
-                                        });
-                                    }
+                                    child.material = new THREE.MeshPhysicalMaterial({
+                                        color: new THREE.Color(colorHex || "#ffffff")
+                                    });
                                 } else if (Array.isArray(colorHex)) {
                                     if (colorHex.length < 2) {
                                         let color = colorHex[0]?.colorcode || "0";
@@ -490,56 +485,8 @@
                                 }
                             }
 
-                            if (child.isMesh && !Array.isArray(child.material)) {
-                                const edges = new THREE.EdgesGeometry(child.geometry, 10);
-                                const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000 }));
-                                line.userData.ldr_line = true;
-
-                                if (window.globalPlayerConfig.model._lines.custom === "false") {
-                                    line.visible = false;
-                                }
-
-                                child.add(line);
-                            }
-
                             if (child.isMesh && Array.isArray(child.material)) {
                                 child.material.forEach((mat) => {
-                                    console.log(mat.name);
-
-                                    /*if (mat.name.includes("Main_Colour")) {
-                                        var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
-
-                                        child.material[index] = mat.clone();
-                                        child.material[index].needsUpdate = true;
-
-                                        mat.name = child.material[index].name + '_' + child.uuid;
-
-                                        child.userData.main_mat_uuid = mat.uuid;
-                                        child.userData.main_mat_name = mat.name;
-
-                                        child.userData.main_mat_index = index;
-                                        console.log(index);
-
-                                        if (colorHex) {
-                                            if (Array.isArray(colorHex)) {
-                                                let match = colorHex.find(m => m.id === index);
-
-                                                if (match?.color) {
-                                                    child.material[index].color = new THREE.Color("#" + match.color);
-                                                } else {
-                                                    child.material[index].color = new THREE.Color("#ffffff");
-                                                }
-                                            } else {
-                                                child.material[index].color = new THREE.Color(colorHex || "#ffffff");
-                                            }
-                                        }
-                                    } else {
-                                        var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
-                                        child.material[index] = mat.clone();
-                                        child.material[index].name = child.material[index].name + '_' + child.uuid;
-                                        child.material[index].needsUpdate = true;
-                                    }*/
-
                                     let originalMap = mat.map;
                                     if (mat.name.includes("Main_Colour")) {
                                         var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
@@ -579,8 +526,6 @@
                                 });
                             }
 
-                            console.log(child.userData);
-                            console.log(child.children);
                             if (child.isMesh && child.userData.fileName) {
                                 let childBB = new THREE.Box3().setFromObject(child);
                                 childBB.cloneid = child.id;
@@ -607,7 +552,6 @@
                         scene.add(group);
 
                         loadParts(blocks, index + 1);
-                        //});
                     }, undefined, function (error) {
                         console.warn(`Failed to load block ${block.ldraw} ` + error);
                         console.log(block.ldraw);
