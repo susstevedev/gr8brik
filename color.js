@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-	let picker = document.getElementById('color-picker');
+	window.picker = document.getElementById('color-picker');
 	let colorList = document.getElementById('color-picker-list');
 	window.partColor = "4";
 
@@ -110,11 +110,15 @@ document.addEventListener('DOMContentLoaded', function () {
 	displayColorListItems();
 
 	window.updatecolorelement = function () {
-		picker.setAttribute('color', partColor);
-		picker.value = partColor;
+		console.log('ran!');
+		window.picker.setAttribute('color', partColor);
+		window.picker.value = partColor;
 
-		let ldrawHexMap = new Map(ldrawColors.map(c => [String(c.code), c.hex]));
-		picker.style.backgroundColor = ldrawHexMap.get(partColor);
+		let ldrawHexMap = new Map(window.ldrawColors.map(c => [String(c.code), c.hex]));
+		window.picker.style.backgroundColor = ldrawHexMap.get(partColor);
+
+		console.log(ldrawHexMap.get(partColor));
+		console.log(window.picker);
 	}
 	updatecolorelement();
 });

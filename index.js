@@ -8,7 +8,7 @@ window.addEventListener('beforeunload', function (e) {
     e.returnValue = '';
 });
 
-window.version = '2026.07.25';
+window.version = '2026.08.14';
 console.log('Gr8brik ' + window.version);
 
 // new imports
@@ -34,7 +34,7 @@ THREE.HDRLoader = HDRLoader;
 THREE.RGBELoader = HDRLoader;
 THREE.OBJExporter = OBJExporter;
 
-window.debug = true; // debug mode
+window.debug = false; // debug mode
 
 // globals
 let container = null, stats = null, animationFrameId = null, camera = null, scene = null, renderer = null, controls = null, transformControls = null, grid_helper = null, directional_lighting = null, ambient_lighting = null, ldraw_loader = null, loading_manager = null, mouse = null, raycaster = null, mesh_color = null, partName = null, partMat = null, partIcon = null, part = null, partMatrixWorld = null, partTexture = null, partOpacity = null, activeObject = null, partRotation = null, partPosition = null, selectedObject = null, multiSelectedObject = null, selectionGroup = null, customPosition = null, selectedMap = null, selectedExport = null;
@@ -93,7 +93,6 @@ function login() {
                 }
                 window.loggedin = true;
             } else {
-                tooltip(response.error);
                 console.error("An error occured while authenticating: " + response.error);
                 document.getElementById("username-field").innerHTML = "Login";
                 window.loggedin = false;
@@ -104,11 +103,9 @@ function login() {
             window.loggedin = false;
             try {
                 let res = await err.response.json();
-                tooltip(res.error);
                 console.error(res.error);
                 ui_login_v2(res);
             } catch {
-                tooltip("An error occured while authenticating");
                 console.error("An error occured while authenticating: " + err);
                 ui_login_v2(null);
             }
@@ -2856,6 +2853,7 @@ function addBlockV3(partJson, partSpan, originalPSImg, throwSuccess, throwError)
     partMat = partJson.materials;
     partMatrixWorld = partJson.matrixw.elements;
     console.log(partMatrixWorld);
+    console.log(partMat);
 
     if (!part) {
         return;
@@ -3052,7 +3050,7 @@ function addPartMaterials(group, partJson, partMat, partMatrixWorld, partIsLdr =
             });
         }
 
-        child.userData.parentName = partName;
+        child.userData.parentName = group.userData.fileName;
         child.userData.id = child.uuid;
         child.userData.original_mat = child.material;
 
@@ -3487,7 +3485,7 @@ document.getElementById("part-library-filter").addEventListener("change", functi
     ldraw_loader.setPartsLibraryPath(new_ldraw_path);
 });
 
-function generateSceneJSON() {
+function generateSceneJSON(legacy = false) {
     const scenedata_name = document.querySelector("#save-popup input[name='name']").value.trim();
     const scenedata_desc = document.querySelector("#save-popup textarea[name='desc']").value.trim();
 
@@ -3543,7 +3541,8 @@ function generateSceneJSON() {
                 mesh_color = mesh_child.material[1].color.getHexString().toLowerCase();
 
                 if (mesh_child.material[1].transparent) {
-                    mesh_opacity = mesh_child[1]?.material?.opacity || "1.0";
+                    let opa_num = mesh_child[1]?.material?.opacity || 1.0;
+                    mesh_opacity = +opa_num.toFixed(2);
                 }
 
                 if (mesh_child.material[1].map) {
@@ -3552,13 +3551,16 @@ function generateSceneJSON() {
                 }
 
                 mesh_child.material.forEach(mat => {
+                    let opa_num = mat.opacity || 1.0;
+                    mat_opacity = +opa_num.toFixed(2);
+
                     const materialData = {
                         id: LAYER_INDEX,
                         name: mat.name,
                         obj: mesh_child.userData.id || mesh_child.uuid,
                         colorcode: mat.userData.colorcode,
                         texturedata: mesh_child.userData.textureData || null,
-                        opacity: mat.opacity || "1.0",
+                        opacity: mat_opacity,
                     }
                     materials.push(materialData);
                     LAYER_INDEX += 1;
@@ -3567,7 +3569,8 @@ function generateSceneJSON() {
                 mesh_color = mesh_child.material.color.getHexString().toLowerCase();
 
                 if (mesh_child.material.transparent) {
-                    mesh_opacity = mesh_child?.material?.opacity || "1.0";
+                    let opa_num = mesh_child?.material?.opacity || 1.0;
+                    mesh_opacity = +opa_num.toFixed(2);
                 }
 
                 if (mesh_child.material.map) {
@@ -3580,35 +3583,39 @@ function generateSceneJSON() {
                     name: mesh_child.material.name,
                     colorcode: mesh_child.material.userData.colorcode || 0,
                     texturedata: mesh_texturedata || null,
-                    opacity: mesh_opacity || "1.0",
+                    opacity: mesh_opacity,
                 }
                 materials.push(materialData);
             }
 
             const blockData = {
                 color: mesh_color,
+                matrixw: {
+                    elements: clean_matrix(mesh_child.matrixWorld.elements)
+                },
+                id: mesh_child.userData.id || mesh_child.uuid,
+                ldraw: mesh_child.userData.ldraw.replace("parts/", ""),
+                materials,
+            };
+
+            if (legacy) {
                 //legacy position and rotation
                 //for compatablity for old format
-                position: {
-                    type: 'legacy',
+                blockData.position = {
                     x: Math.round(pos.x),
                     y: Math.round(pos.y),
                     z: Math.round(pos.z)
-                },
-                rotation: {
-                    type: 'legacy',
+                }
+
+                blockData.rotation = {
                     x: Math.round(euler.x),
                     y: Math.round(euler.y),
                     z: Math.round(euler.z)
-                },
-                matrixw: mesh_child.matrixWorld.clone(),
-                id: mesh_child.userData.id || mesh_child.uuid,
-                ldraw: mesh_child.userData.ldraw.replace("parts/", ""),
-                name: mesh_child.userData.name,
-                materials,
-                texturedata: mesh_texturedata || null,
-                opacity: mesh_opacity || "1.0",
-            };
+                }
+
+                blockData.texturedata = mesh_texturedata || null;
+                blockData.opacity = mesh_opacity || "1.0";
+            }
 
             sceneData.blocks.push(blockData);
         });
@@ -3616,6 +3623,7 @@ function generateSceneJSON() {
 
     return JSON.stringify(sceneData);
 }
+window.generateSceneJSON = generateSceneJSON;
 
 //life support please just export as ldraw
 function generateSceneLXFML() {
@@ -3869,6 +3877,14 @@ function wipe_scene() {
     init();
 }
 
+//cleans matrixes to save file output size
+function clean_matrix(elm, precision = 4) {
+  return elm.map(val => {
+    let round = parseFloat(val.toFixed(precision));
+    return round === -0 ? 0 : round;
+  });
+}
+
 const geometry_cache = new Map();
 // does what it says
 function clone_mesh_clean(obj) {
@@ -4067,6 +4083,10 @@ function updateSelection() {
                 if (Array.isArray(child.material)) {
                     child.material.forEach(mat => mat.needsUpdate = true);
                 } else {
+                    if(child.material.userData && child.material.userData.colorcode) {
+                        partColor = child.material.userData.colorcode;
+                    }
+
                     child.material.needsUpdate = true;
                 }
             }
@@ -4078,6 +4098,7 @@ function updateSelection() {
 
     updateSceneData();
     updateBLItems();
+    window.updatecolorelement();
 }
 
 function deselect(obj) {
