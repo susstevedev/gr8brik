@@ -180,14 +180,14 @@
     <h3><span style="color: #fff;">Import Model</span></h3>
     <div id="import-popup-form">
 		<select id="import-format" style="display: inline-block;" onclick="if(document.querySelector('option[value=cloud2]').selected) { document.getElementById('import-url').style.display='block' } else { document.getElementById('import-url').style.display='none' }">
-			<option value="cloud" disabled="true" aria-disabled="true">From account</option>
       <option value="cloud2" onclick="document.getElementById('import-url').style.display='block'" selected>From URL</option>
 			<option value="json">Gr8brik (.json, .gr8)</option>
       <option value="gr8z">Gr8brik zipped (.gr8z)</option>
 			<option value="three">ThreeJS (.json)</option>
       <option value="ldr">Ldraw (.ldr, .dat, .mpd)</option>
 		</select><br />
-    <p><input style='display:none;' type="text" id="import-url" placeholder="Enter a model json url..." /></p>
+    <p><input style='display:none;' type="text" id="import-url" placeholder="Enter a creation url..." /></p>
+    <p><label><input type="checkbox" name="open" value="true" selected> Close current creation</label></p>
 		<p><button class="btn" title="Finish importing" id="import-finish">Select file</button></p>
     </div>
   </div>

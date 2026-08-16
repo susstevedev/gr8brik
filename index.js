@@ -598,26 +598,30 @@ if (build_id !== undefined && build_id !== null) {
 // import modal
 document.getElementById("import-finish").addEventListener("click", function () {
     const format = document.getElementById("import-format").value;
-    if (format === "cloud") {
-        tooltip('Gr8brik models from your account cannot be imported yet.');
-        return;
+    const checkbox = document.querySelector('#import-popup-form [name="open"]');
+    let open_creation = false;
+
+    if (checkbox.checked) {
+        open_creation = true;
     }
+
     if (format === "cloud2") {
         let model_id = document.getElementById('import-url').value.split('/').pop();
-        loadJSONFromCloud(model_id);
+        loadJSONFromCloud(model_id, open_creation);
     }
+
     if (format === "three") {
         document.getElementById("cre-import-three").click();
     }
+
     if (format === "json") {
         document.getElementById("cre-import").click();
     }
+
     if (format === "gr8z") {
         document.getElementById("cre-import-gr8z").click();
     }
-    /*if (format === "lxf") {
-        document.getElementById("cre-export-ldd").click();
-    }*/
+
     if (format === "ldr") {
         document.getElementById("cre-import-ldr").click();
     }
@@ -1187,7 +1191,7 @@ document.getElementById("cre-import").addEventListener("change", function (event
     reader.readAsText(file);
 });
 
-function loadJSONFromCloud(model) {
+function loadJSONFromCloud(model, open = true) {
     fetch(start_url + `/ajax/build?buildId=${model}&fetch=true`, {
         credentials: 'include',
     })
@@ -1226,7 +1230,20 @@ function loadJSONFromCloud(model) {
                             return;
                         }
 
-                        if (data) {   
+                        if (data) {
+                            if(open === true) {
+                                wipe_scene();
+                                params.set("build_id", model);
+                                window.history.pushState(null, '', window.location.pathname + '?' + params.toString());
+                                if(data.camera) {
+                                    if(data.camera.x && data.camera.y && data.camera.z) {
+                                        camera.position.x = data.camera.x || 250;
+                                        camera.position.y = data.camera.y || 250;
+                                        camera.position.z = data.camera.z || 250;
+                                    }
+                                }
+                            }
+
                             if(modelLegacy) {
                                 loadLegacyJSON(data);
                             } else {
@@ -1468,7 +1485,7 @@ async function loadSceneFromJSON(data) {
         document.getElementById('ui-loading-file').style.display = "none";
         document.getElementsByClassName('scene')[0].style.opacity = "1.0";
     }
-    updateSceneData(false);
+    updateSceneData();
 }
 
 async function loadLegacyJSON(data) {
