@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function init_cam_ui() {
         const selector = document.getElementById("camera-selector");
-        const cameras = scene.userData.camera;
+        const cameras = window.settings.camera;
 
         if (!selector || !Array.isArray(cameras)) {
             return;
@@ -71,10 +71,10 @@ document.addEventListener('DOMContentLoaded', function () {
             selector.appendChild(option);
         });
 
-        selector.value = scene.userData.activeCameraId ?? 0;
+        selector.value = window.settings.activeCameraId ?? 0;
 
         selector.addEventListener("change", (event) => {
-            scene.userData.activeCameraId = Number(event.target.value);
+            window.settings.activeCameraId = Number(event.target.value);
             update_camera();
             save_settings();
         });

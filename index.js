@@ -40,7 +40,7 @@ window.debug = false; // debug mode
 let container = null, stats = null, animationFrameId = null, camera = null, scene = null, renderer = null, controls = null, transformControls = null, grid_helper = null, directional_lighting = null, ambient_lighting = null, ldraw_loader = null, loading_manager = null, mouse = null, raycaster = null, mesh_color = null, partName = null, partMat = null, partIcon = null, part = null, partMatrixWorld = null, partTexture = null, partOpacity = null, activeObject = null, partRotation = null, partPosition = null, selectedObject = null, multiSelectedObject = null, selectionGroup = null, customPosition = null, selectedMap = null, selectedExport = null;
 //let partColor = '#C91A09';
 let start_url = 'https://gr8brik.rf.gd', gh_base_url = 'https://susstevedev.github.io/gr8brik/', DEFAULT_TITLE = 'Modeler - Gr8brik', show_import_animation = true;
-const studSize = 1000;
+const studSize = 1000, ldraw_path = "https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-ldraw-fork@main/ldraw-parts/", ldraw_icon_path = "https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-ldraw-fork@main/ldraw-icons/";
 
 let blocks = [];
 let blockGroups = [];
@@ -325,12 +325,14 @@ function displayParts(displayed_parts, new_category) {
 
             let span = document.createElement("span");
             span.id = part.file;
-            span.title = part.name + " (uid " + part.id + ")";
+            span.title = part.name;
+            span.classList.add('ui-tooltip');
             span.setAttribute("value", part.file);
             span.innerHTML = `
-                <img src="https://library.ldraw.org/media/ldraw/official/parts/${part.file.split(".")[0]}.png" loading="lazy" width="45px" />
+                <img src="${ldraw_icon_path + part.file.split(".")[0]}.png" loading="lazy" />
                 <br />
                 <small class="part-list-number">${part.file.split(".")[0]}</small>
+                <small class="ui-tooltip-text">${part.name}</small>
             `;
 
             select_block_contain.insertBefore(span, sentinel);
@@ -430,16 +432,16 @@ document.getElementById("select-block").addEventListener("click", function (e) {
     let ldrawHexMap = new Map(ldrawColors.map(c => [String(c.code), c.hex]));
 
     let partJson = {
+        "id": partName,
         "ldraw": partName,
-        "partMatrixWorld": null,
         "texturedata": span.getAttribute("texture"),
-        'opacity': '1.0',
         'materials': [
             {
-                'id': 0,
+                'id': partName,
                 'color': ldrawHexMap.get(partColor),
                 'colorcode': partColor,
                 "texturedata": span.getAttribute("texture"),
+                "opacity": 1,
             },
         ],
         'matrixw': {},
@@ -487,7 +489,7 @@ document.getElementById("download-json").addEventListener("click", function () {
         }
 
         let params = new URLSearchParams(window.location.search);
-        let build_id = params.get("build_id") || null;
+        let build_id = params.get("build_id");
 
         const name = document.querySelector("#save-popup input[name='name']").value.trim();
         const desc = document.querySelector("#save-popup textarea[name='desc']").value.trim();
@@ -501,7 +503,7 @@ document.getElementById("download-json").addEventListener("click", function () {
             credentials: 'include',
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams({
-                save_build: true,
+                save_build_v2: true,
                 build_id: build_id,
                 creation: sceneJSON,
                 name,
@@ -515,6 +517,8 @@ document.getElementById("download-json").addEventListener("click", function () {
                 if (response.success) {
                     tooltip(response.success);
                     this.innerText = "Save Creation as a copy";
+                    params.set("build_id", response.build_id);
+                    window.history.pushState(null, '', window.location.pathname + '?' + params.toString());
                 } else if (response.error) {
                     tooltip(response.error);
                     console.error(response.error);
@@ -1190,28 +1194,49 @@ function loadJSONFromCloud(model) {
         .then(res => res.json())
         .then(data => {
             if (data === null) {
-                alert('Empty response');
+                tooltip('Empty response');
+                return;
             }
 
             if (data.error) {
                 tooltip(data.error + ' ' + data.message);
+                return;
+            }
+
+            if(data.can_edit != 1) {
+                tooltip('You are not allowed to edit this creation. Please contact the creator via direct messages.');
+                return;
+            }
+
+            if(data.is_removed != 0) {
+                tooltip('Creation has been removed by an admin.');
+                return;
             }
 
             let modelData = data.model;
-            tooltip('Importing model "' + data.name + '"');
+            let modelLegacy = data.legacy;
+            tooltip('Importing creation "' + data.name + '"');
 
             if (modelData) {
                 fetch(start_url + `${data.model}`)
                     .then(res => res.json())
                     .then(data => {
                         if (data === null) {
-                            alert('Empty model');
+                            tooltip('Empty creation');
+                            return;
                         }
 
-                        if (data) {
-                            loadSceneFromJSON(data);
+                        if (data) {   
+                            if(modelLegacy) {
+                                loadLegacyJSON(data);
+                            } else {
+                                loadSceneFromJSON(data);
+                            }
                         }
-                    });
+                    });                
+            } else {
+                tooltip('No creation URL was found in model JSON');
+                return;
             }
         });
 };
@@ -1388,7 +1413,7 @@ async function loadSceneFromJSON(data) {
         let objname = block?.id || block?.ldraw;
 
         if (block.matrixw && Array.isArray(block.matrixw.elements)) {
-            block.matrixw.elements = new THREE.Matrix4().fromArray(block.matrixw.elements);
+            block.matrixw = new THREE.Matrix4().fromArray(block.matrixw.elements);
         } else if (partPosition && partRotation) {
             const position = new THREE.Vector3(partPosition.x, partPosition.y, partPosition.z);
             const scale = new THREE.Vector3(1, 1, 1);
@@ -1396,9 +1421,7 @@ async function loadSceneFromJSON(data) {
             const rotationEuler = new THREE.Euler(partRotation.x, partRotation.y, partRotation.z, 'XYZ');
             const quaternion = new THREE.Quaternion().setFromEuler(rotationEuler);
 
-            block.matrixw = {
-                'elements': new THREE.Matrix4().compose(position, quaternion, scale)
-            };
+            block.matrixw = new THREE.Matrix4().compose(position, quaternion, scale);
         } else {
             throw new Error('Object ' + objname + ' is missing elements: matrixw.elements (can also use traditional block.position and block.rotation');
         }
@@ -1435,6 +1458,125 @@ async function loadSceneFromJSON(data) {
         } catch (err) {
             console.warn(`Failed to add block: ${block.ldraw}`, err);
             tooltip(`Failed to load ${block.ldraw}`);
+        }
+    }
+    document.title = modelName + ' - ' + DEFAULT_TITLE;
+
+    if (show_import_animation === true) {
+        console.log("Creation imported.");
+        tooltip("Creation imported.");
+        document.getElementById('ui-loading-file').style.display = "none";
+        document.getElementsByClassName('scene')[0].style.opacity = "1.0";
+    }
+    updateSceneData(false);
+}
+
+async function loadLegacyJSON(data) {
+    if (!data) {
+        console.error("Invalid legacy JSON data.");
+        tooltip("Invalid JSON.");
+        return;
+    }
+
+    if (show_import_animation === true) {
+        document.getElementById('ui-loading-file').style.display = "block";
+        document.getElementsByClassName('scene')[0].style.opacity = "0.1";
+    }
+
+    //legacy LEGACY colors (like, really old)
+    const legacyLegacyColorPalette = {
+        "#FF0000": 4, // Red
+        "#F0E100": 14, // Yellow
+        "#0011CF": 1, // Blue
+        "#FF9800": 25, // Orange
+        "#000000": 0, // Black
+        "#FFFFFF": 15, // White
+        "#652A0C": 6, // Reddish Brown
+        "#00DE00": 10, // Bright Green
+    };
+
+    //legacy part types
+    const legacyPartPalette = {
+        "2X2": "3003",
+        "4X2": "3001",
+        "1X1": "3005",
+        "2X1": "3004",
+        "3X1": "3622",
+        "3X2": "3002",
+        "4X1": "3010",
+    };
+
+    let modelName = "Unnamed legacy project";
+    for (const block of data) {
+        let block2 = {};
+        block2.matrixw = new THREE.Matrix4();
+        block2.ldraw = null;
+        console.log('loading');
+
+        let partDim = block?.dimensions || null;
+        let partMatType = block?.intersect?.object?.materials[0]?.type;
+        partPosition = block?.intersect?.point;
+        partTexture = null;
+        partOpacity = '1.0';
+        let partMaterials;
+        let objname = block?.intersect?.object?.object?.uuid || makeid(8);
+
+        if (Array.isArray(block?.intersect?.object?.object?.matrix) && block.intersect.object.object.matrix.length === 16) {
+            const partmatrix = new THREE.Matrix4().fromArray(block.intersect.object.object.matrix);
+            const transformMatrix = new THREE.Matrix4().makeScale(-1, -1, 1);
+
+            partmatrix.premultiply(transformMatrix);
+            block2.matrixw.copy(partmatrix);
+
+            console.log("matrix:", block2.matrixw);
+            console.log("is Matrix4:", block2.matrixw instanceof THREE.Matrix4);
+        } else {
+            throw new Error('Object ' + objname + ' is missing elements: matrix');
+        }
+
+        if (block?.color) {
+            let colorhex = String(block.color).toUpperCase().trim();
+            let colorcode = 0;
+
+            if (colorhex in legacyLegacyColorPalette) {
+                colorcode = legacyLegacyColorPalette[colorhex];
+            }
+
+            block2.materials = [
+                {
+                    'id': objname,
+                    'colorcode': String(colorcode),
+                    'texturedata': null
+                }
+            ];
+        } else {
+            throw new Error('Object ' + objname + ' is missing elements: color');
+        }
+
+        if(partDim) {
+            let dim = partDim?.x + "x" + partDim.z;
+            console.log(dim);
+            let dim2 = String(dim).toUpperCase().trim();
+            console.log(dim2);
+
+            if (dim2 in legacyPartPalette) {
+                let ldrawp = legacyPartPalette[dim2]
+                block2.ldraw = ldrawp + '.dat';
+            } else {
+                continue;
+            }
+        } else {
+            continue;
+        }
+
+        try {
+            await new Promise((resolve, reject) => {
+                console.log(block2);
+                addBlockV3(block2, null, null, resolve, reject);
+            });
+        } catch (err) {
+            console.warn(`Failed to add block: ${block2.ldraw}`, err);
+            tooltip(`Failed to load ${block2.ldraw}`);
         }
     }
     document.title = modelName + ' - ' + DEFAULT_TITLE;
@@ -1516,9 +1658,6 @@ document.getElementById("cre-import-three").addEventListener("change", function 
     reader.readAsArrayBuffer(file);
 });
 
-init();
-//animate();
-
 function getCookie(name) {
     var cookies = document.cookie;
     var parts = cookies.split(name + "=");
@@ -1527,267 +1666,6 @@ function getCookie(name) {
         cookieValue = parts.pop().split(";").shift();
     }
     return cookieValue;
-}
-
-function toggleGlobalSnap() {
-    if (scene.userData.noSnap === true) {
-        scene.userData.noSnap = false;
-    } else {
-        scene.userData.noSnap = true;
-    }
-    scene.updateMatrixWorld(true);
-    saveSettings();
-}
-
-document.getElementById("hide-welcome").addEventListener("change", function () {
-    if (scene.userData.hideWelcome === true) {
-        scene.userData.hideWelcome = false;
-    } else {
-        scene.userData.hideWelcome = true;
-    }
-    scene.updateMatrixWorld(true);
-    saveSettings();
-});
-
-if (scene.userData.hideWelcome === true) {
-    document.getElementById("welcome-popup").remove();
-    document.getElementById("hide-welcome").setAttribute('checked', 'true');
-}
-
-document.getElementById("flatcamera-enable").addEventListener("change", function () {
-    if (scene.userData.flatcamera === true) {
-        scene.userData.flatcamera = false;
-        update_camera();
-    } else {
-        scene.userData.flatcamera = true;
-        update_camera();
-    }
-    scene.updateMatrixWorld(true);
-    saveSettings();
-});
-
-document.getElementById("snapping-enable").addEventListener("change", function () {
-    const snapping = this.checked;
-    scene.userData.noSnap = snapping;
-    toggleGlobalSnap();
-});
-
-// toggle smooth normals
-document.getElementById("smooth-normals-enable").addEventListener("change", function () {
-    ldraw_loader.smoothNormals = this.checked;
-
-    scene.traverse((child) => {
-        if (child.isMesh && child.userData.isBlock && child.geometry) {
-            if (Array.isArray(child.material)) {
-                child.material.forEach(mat => {
-                    mat.flatShading = !ldraw_loader.smoothNormals;
-                    mat.needsUpdate = true;
-                });
-            } else {
-                child.material.flatShading = !ldraw_loader.smoothNormals;
-                child.material.needsUpdate = true;
-            }
-        }
-    });
-    scene.updateMatrixWorld(true);
-    saveSettings();
-});
-
-document.getElementById("display-lines-enable").addEventListener("change", function () {
-    const displayLines = this.checked;
-    scene.userData.displayLines = displayLines;
-
-    scene.traverse((obj) => {
-        if (obj.isLineSegments && obj.userData && obj.userData.ldr_line === true) {
-            obj.visible = displayLines;
-        }
-    });
-
-    scene.updateMatrixWorld(true);
-    saveSettings();
-});
-
-document.getElementById("pbr-enable").addEventListener("change", function () {
-    const highRes = this.checked;
-    scene.userData.highRes = highRes;
-
-    scene.traverse(function (obj) {
-        if (obj?.userData && obj?.userData?.isBlock === true) {
-            if (highRes) {
-                obj.material = new THREE.MeshPhysicalMaterial({
-                    color: new THREE.Color(obj?.material?.color),
-                    reflectivity: 0.5,
-                    roughness: 0.4,
-                    metalness: 0.1,
-                    envMapIntensity: 0.5,
-                });
-            } else {
-                obj.material = new THREE.MeshLambertMaterial({
-                    color: new THREE.Color(obj?.material?.color)
-                });
-            }
-        }
-    });
-
-    scene.updateMatrixWorld(true);
-    saveSettings();
-});
-
-document.getElementById("trans-enable").addEventListener("change", function () {
-    const ui_trans = this.checked;
-    scene.userData.ui_trans = ui_trans;
-
-    applyTransparent(scene.userData.ui_trans);
-});
-
-document.getElementById("display-lines-grid").addEventListener("change", function () {
-    if (this.checked) {
-        scene.userData.grid_lines = true;
-    } else {
-        scene.userData.grid_lines = false;
-    }
-
-    if (grid_helper) {
-        scene.remove(grid_helper);
-    }
-
-    makegrid();
-    scene.updateMatrixWorld(true);
-    saveSettings();
-});
-
-document.getElementById("hdr-enable").addEventListener("change", function () {
-    const use_hdri = this.checked;
-    scene.userData.use_hdri = use_hdri;
-
-    document.getElementById("hdr-background-enable").disabled = !use_hdri;
-    if (!use_hdri) {
-        scene.userData.hdri_background = false;
-        document.getElementById("hdr-background-enable").checked = false;
-    }
-
-    applyHdri(use_hdri, scene.userData.hdri_background);
-});
-
-document.getElementById("hdr-background-enable").addEventListener("change", function () {
-    const hdri_background = this.checked;
-
-    if (!scene.userData.use_hdri) {
-        this.checked = false;
-        scene.userData.hdri_background = false;
-        tooltip('Please enable "HDRI lighting" to change the background');
-        return;
-    }
-
-    scene.userData.hdri_background = hdri_background;
-    applyHdri(scene.userData.use_hdri, scene.userData.hdri_background);
-});
-
-document.getElementById("gpu-enable").addEventListener("change", function () {
-    const gpu = this.checked;
-    scene.userData.use_webgpu = gpu;
-
-    document.getElementById("gpu-enable").checked = gpu;
-    saveSettings();
-});
-
-document.getElementById("export-fullscene-enable").addEventListener("change", function () {
-    const export_full_scene = this.checked;
-    scene.userData.export_full_scene = export_full_scene;
-
-    scene.updateMatrixWorld(true);
-    saveSettings();
-});
-
-document.getElementById("darkmode-enable").addEventListener("change", function () {
-    const enabled = this.checked;
-    scene.userData.darkmode = enabled;
-
-    if (enabled == true) {
-        document.cookie = "mode=dark; max-age=315360000; path=/";
-    } else {
-        document.cookie = "mode=light; max-age=315360000; path=/";
-    }
-
-    scene.updateMatrixWorld(true);
-    saveSettings();
-});
-
-function applyTransparent(ui_trans) {
-    if (ui_trans) {
-        let elements = document.querySelectorAll('.ui-canbe-trans');
-        elements.forEach(element => {
-            element.classList.add('trans');
-        });
-    } else {
-        let elements = document.querySelectorAll('.ui-canbe-trans');
-        elements.forEach(element => {
-            element.classList.remove('trans');
-        });
-    }
-    scene.updateMatrixWorld(true);
-    saveSettings();
-}
-
-function applyHdri(use_hdri, background) {
-    if (use_hdri) {
-        let rgbe_loader = new THREE.HDRLoader();
-        let hdris = scene.userData.hdris;
-        let selected = hdris.selected;
-        let hdr_url;
-
-        let selectedHdr = hdris[selected];
-        hdr_url = selectedHdr ? selectedHdr.url : null;
-
-        if (!hdr_url) {
-            hdr_url = hdris[0].url;
-        }
-
-        rgbe_loader.load(hdr_url, function (texture) {
-            texture.mapping = THREE.EquirectangularReflectionMapping;
-            scene.environment = texture;
-
-            if (background) {
-                scene.background = texture;
-                document.body.classList.add('hdri-active');
-
-                if (isDark()) {
-                    document.body.classList.add("dark");
-                    document.getElementById("darkmode-enable").setAttribute('checked', 'true');
-                } else {
-                    if (document.body.classList.contains("dark")) {
-                        document.body.classList.remove("dark");
-                        document.getElementById("darkmode-enable").setAttribute('checked', 'false');
-                    }
-                }
-            } else {
-                renderer.setClearAlpha(0);
-                document.body.classList.remove('hdri-active');
-                scene.background = null;
-            }
-        });
-
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.0;
-    } else {
-        renderer.setClearAlpha(0);
-        document.body.classList.remove('hdri-active');
-        scene.background = null;
-        scene.environment = null;
-    }
-
-    if (isDark()) {
-        document.body.classList.add("dark");
-        document.getElementById("darkmode-enable").setAttribute('checked', 'true');
-    } else {
-        if (document.body.classList.contains("dark")) {
-            document.body.classList.remove("dark");
-            document.getElementById("darkmode-enable").setAttribute('checked', 'false');
-        }
-    }
-
-    scene.updateMatrixWorld(true);
-    saveSettings();
 }
 
 function isDark() {
@@ -1810,14 +1688,118 @@ function snapToGrid(value, gridSize) {
     return Math.round(value / gridSize) * gridSize;
 }
 
-function getDate() {
-    /*const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const dd = String(today.getDate()).padStart(2, '0');
+let grid_lines = null;
+let imagePlane = null;
+let planeTexture = null;
 
-    return `${yyyy}-${mm}-${dd}`;*/
-    return new Error;
+class GridClass {
+    constructor() {
+        this.MIN_STUDS = 16;
+        this.GRID_STUD_X = this.MIN_STUDS;
+        this.GRID_STUD_Z = this.MIN_STUDS;
+    }
+
+    update(obj) {
+        let changed = false;
+        let req_x = Math.ceil((Math.abs(obj.position.x) * 2) / 20);
+        let req_z = Math.ceil((Math.abs(obj.position.z) * 2) / 20);
+
+        if (req_x > this.GRID_STUD_X) {
+            this.GRID_STUD_X = Math.max(this.MIN_STUDS, req_x);
+            changed = true;
+        }
+
+        if (req_z > this.GRID_STUD_Z) {
+            this.GRID_STUD_Z = Math.max(this.MIN_STUDS, req_z);
+            changed = true;
+        }
+
+        if (changed) {
+            this.create(this.GRID_STUD_X, this.GRID_STUD_Z);
+        }
+    }
+
+    create(studs_x = this.MIN_STUDS, studs_z = this.MIN_STUDS) {
+        const color = isDark() ? 0xfafafa : 0x242424;
+        const texturepath = isDark() ? 'img/misc/griddark.webp' : 'img/misc/gridlight.webp';
+        const sizeX = studs_x * 20;
+        const sizeZ = studs_z * 20;
+        const halfX = sizeX / 2;
+        const halfZ = sizeZ / 2;
+
+        if (!imagePlane) {
+            const textureLoader = new THREE.TextureLoader();
+
+            planeTexture = textureLoader.load(texturepath);
+            planeTexture.wrapS = THREE.RepeatWrapping;
+            planeTexture.wrapT = THREE.RepeatWrapping;
+
+            const planeGeometry = new THREE.PlaneGeometry(1, 1);
+
+            const planeMaterial = new THREE.MeshBasicMaterial({
+                map: planeTexture,
+                transparent: true,
+                side: THREE.DoubleSide
+            });
+
+            imagePlane = new THREE.Mesh(planeGeometry, planeMaterial);
+            imagePlane.rotation.x = -Math.PI / 2;
+            scene.add(imagePlane);
+        }
+
+        imagePlane.scale.set(sizeX, sizeZ, 1);
+        //planeTexture.repeat.set(sizeX, sizeZ);
+        planeTexture.repeat.set(studs_x, studs_z);
+
+        if (planeTexture.source && planeTexture.source.data && !planeTexture.source.data.src.includes(texturepath)) {
+            const textureLoader = new THREE.TextureLoader();
+
+            planeTexture = textureLoader.load(texturepath);
+            planeTexture.wrapS = THREE.RepeatWrapping;
+            planeTexture.wrapT = THREE.RepeatWrapping;
+            imagePlane.material.map = planeTexture;
+            imagePlane.material.needsUpdate = true;
+        }
+
+        if (grid_lines) {
+            scene.remove(grid_lines);
+            grid_lines.geometry.dispose();
+            grid_lines.material.dispose();
+            grid_lines = null;
+        }
+
+        if (!scene.userData.grid_lines) {
+            return;
+        }
+
+        const vertices = [];
+        for (let x = -halfX; x <= halfX; x += 20) {
+            vertices.push(
+                x, 0, -halfZ,
+                x, 0,  halfZ
+            );
+        }
+
+        for (let z = -halfZ; z <= halfZ; z += 20) {
+            vertices.push(
+                -halfX, 0, z,
+                halfX, 0, z
+            );
+        }
+
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+        const material = new THREE.LineBasicMaterial({
+            color: color,
+            transparent: true,
+            opacity: 0.5
+        });
+
+        grid_lines = new THREE.LineSegments(geometry, material);
+        grid_lines.position.y = -0.1;
+        scene.add(grid_lines);
+    };
 }
 
 function init() {
@@ -2013,7 +1995,7 @@ function init() {
     let imagePlane = null;
     let planeTexture = null;
 
-    window.makegrid = function (studs_x = 16, studs_z = 16) {
+    /*window.makegrid = function (studs_x = 16, studs_z = 16) {
         let stud_size = 20; // 1 stud = 20 three/ldr units
         let size_x = stud_size * studs_x;
         let size_z = stud_size * studs_z;
@@ -2062,11 +2044,74 @@ function init() {
 
             scene.add(grid_helper);
         }
-    }
-    makegrid();
+    }*/
+
+    /*window.makegrid = function (studs_x = 16, studs_z = 16) {
+        const stud_size = 20;
+        const size_x = stud_size * studs_x;
+        const size_z = stud_size * studs_z;
+
+        const texturepath = isDark() ? 'img/misc/griddark.webp' : 'img/misc/gridlight.webp';
+
+        if (!imagePlane) {
+            const textureLoader = new THREE.TextureLoader();
+
+            planeTexture = textureLoader.load(texturepath);
+            planeTexture.wrapS = THREE.RepeatWrapping;
+            planeTexture.wrapT = THREE.RepeatWrapping;
+
+            const planeGeometry = new THREE.PlaneGeometry(1, 1);
+
+            const planeMaterial = new THREE.MeshBasicMaterial({
+                map: planeTexture,
+                transparent: true,
+                side: THREE.DoubleSide
+            });
+
+            imagePlane = new THREE.Mesh(planeGeometry, planeMaterial);
+
+            imagePlane.rotation.x = -Math.PI / 2;
+            scene.add(imagePlane);
+        }
+
+        imagePlane.scale.set(size_x, size_z, 1);
+        planeTexture.repeat.set(studs_x, studs_z);
+
+        if (planeTexture.source && planeTexture.source.data && !planeTexture.source.data.src.includes(texturepath)) {
+            const textureLoader = new THREE.TextureLoader();
+
+            planeTexture = textureLoader.load(texturepath);
+            planeTexture.wrapS = THREE.RepeatWrapping;
+            planeTexture.wrapT = THREE.RepeatWrapping;
+
+            imagePlane.material.map = planeTexture;
+            imagePlane.material.needsUpdate = true;
+        }
+
+        if (grid_helper) {
+            scene.remove(grid_helper);
+            grid_helper.geometry.dispose();
+            grid_helper.material.dispose();
+            grid_helper = null;
+        }
+
+        if (scene.userData.grid_lines) {
+            const color = isDark() ? 0xfafafa : 0x242424;
+
+            const size_max = Math.max(size_x, size_z);
+            const divisions_max = Math.max(studs_x, studs_z);
+
+            grid_helper = new THREE.GridHelper(size_max, divisions_max, color, color);
+
+            grid_helper.position.y = -0.1;
+            scene.add(grid_helper);
+        }
+    };*/
+
+    let grid_class = new GridClass();
+    grid_class.create();
 
     // please read ldrawloader docs before changing these values
-    const ldraw_path = "https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-ldraw-fork@main/ldraw-parts/";
     //const ldraw_path = "https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/"; // FOR TESTING ONLY
 
     ldraw_loader = new THREE.LDrawLoader();
@@ -2215,9 +2260,11 @@ function init() {
             obj.rot = obj.rotation.clone();
         }
 
-        let studs_x = Math.max(16, Math.ceil((Math.abs(obj.position.x) * 2) / 20));
+        /*let studs_x = Math.max(16, Math.ceil((Math.abs(obj.position.x) * 2) / 20));
         let studs_z = Math.max(16, Math.ceil((Math.abs(obj.position.z) * 2) / 20));
-        window.makegrid(studs_x, studs_z);
+        window.makegrid(studs_x, studs_z);*/
+        let grid = new GridClass();
+        grid.update(obj);
 
         updateSceneData();
     });
@@ -2240,6 +2287,269 @@ function init() {
 
     initRenderer();
 }
+init();
+
+function toggleGlobalSnap() {
+    if (scene.userData.noSnap === true) {
+        scene.userData.noSnap = false;
+    } else {
+        scene.userData.noSnap = true;
+    }
+    scene.updateMatrixWorld(true);
+    saveSettings();
+}
+
+document.getElementById("hide-welcome").addEventListener("change", function () {
+    if (scene.userData.hideWelcome === true) {
+        scene.userData.hideWelcome = false;
+    } else {
+        scene.userData.hideWelcome = true;
+    }
+    scene.updateMatrixWorld(true);
+    saveSettings();
+});
+
+if (scene.userData.hideWelcome === true) {
+    document.getElementById("welcome-popup").remove();
+    document.getElementById("hide-welcome").setAttribute('checked', 'true');
+}
+
+document.getElementById("flatcamera-enable").addEventListener("change", function () {
+    if (scene.userData.flatcamera === true) {
+        scene.userData.flatcamera = false;
+        update_camera();
+    } else {
+        scene.userData.flatcamera = true;
+        update_camera();
+    }
+    scene.updateMatrixWorld(true);
+    saveSettings();
+});
+
+document.getElementById("snapping-enable").addEventListener("change", function () {
+    const snapping = this.checked;
+    scene.userData.noSnap = snapping;
+    toggleGlobalSnap();
+});
+
+// toggle smooth normals
+document.getElementById("smooth-normals-enable").addEventListener("change", function () {
+    ldraw_loader.smoothNormals = this.checked;
+
+    scene.traverse((child) => {
+        if (child.isMesh && child.userData.isBlock && child.geometry) {
+            if (Array.isArray(child.material)) {
+                child.material.forEach(mat => {
+                    mat.flatShading = !ldraw_loader.smoothNormals;
+                    mat.needsUpdate = true;
+                });
+            } else {
+                child.material.flatShading = !ldraw_loader.smoothNormals;
+                child.material.needsUpdate = true;
+            }
+        }
+    });
+    scene.updateMatrixWorld(true);
+    saveSettings();
+});
+
+document.getElementById("display-lines-enable").addEventListener("change", function () {
+    const displayLines = this.checked;
+    scene.userData.displayLines = displayLines;
+
+    scene.traverse((obj) => {
+        if (obj.isLineSegments && obj.userData && obj.userData.ldr_line === true) {
+            obj.visible = displayLines;
+        }
+    });
+
+    scene.updateMatrixWorld(true);
+    saveSettings();
+});
+
+document.getElementById("pbr-enable").addEventListener("change", function () {
+    const highRes = this.checked;
+    scene.userData.highRes = highRes;
+
+    scene.traverse(function (obj) {
+        if (obj?.userData && obj?.userData?.isBlock === true) {
+            if (highRes) {
+                obj.material = new THREE.MeshPhysicalMaterial({
+                    color: new THREE.Color(obj?.material?.color),
+                    reflectivity: 0.5,
+                    roughness: 0.4,
+                    metalness: 0.1,
+                    envMapIntensity: 0.5,
+                });
+            } else {
+                obj.material = new THREE.MeshLambertMaterial({
+                    color: new THREE.Color(obj?.material?.color)
+                });
+            }
+        }
+    });
+
+    scene.updateMatrixWorld(true);
+    saveSettings();
+});
+
+document.getElementById("trans-enable").addEventListener("change", function () {
+    const ui_trans = this.checked;
+    scene.userData.ui_trans = ui_trans;
+
+    applyTransparent(scene.userData.ui_trans);
+});
+
+document.getElementById("display-lines-grid").addEventListener("change", function () {
+    if (this.checked) {
+        scene.userData.grid_lines = true;
+    } else {
+        scene.userData.grid_lines = false;
+    }
+
+    if (grid_helper) {
+        scene.remove(grid_helper);
+    }
+
+    let grid_class = new GridClass();
+    grid_class.create();
+    scene.updateMatrixWorld(true);
+    saveSettings();
+});
+
+document.getElementById("hdr-enable").addEventListener("change", function () {
+    const use_hdri = this.checked;
+    scene.userData.use_hdri = use_hdri;
+
+    document.getElementById("hdr-background-enable").disabled = !use_hdri;
+    if (!use_hdri) {
+        scene.userData.hdri_background = false;
+        document.getElementById("hdr-background-enable").checked = false;
+    }
+
+    applyHdri(use_hdri, scene.userData.hdri_background);
+});
+
+document.getElementById("hdr-background-enable").addEventListener("change", function () {
+    const hdri_background = this.checked;
+
+    if (!scene.userData.use_hdri) {
+        this.checked = false;
+        scene.userData.hdri_background = false;
+        tooltip('Please enable "HDRI lighting" to change the background');
+        return;
+    }
+
+    scene.userData.hdri_background = hdri_background;
+    applyHdri(scene.userData.use_hdri, scene.userData.hdri_background);
+});
+
+document.getElementById("gpu-enable").addEventListener("change", function () {
+    const gpu = this.checked;
+    scene.userData.use_webgpu = gpu;
+
+    document.getElementById("gpu-enable").checked = gpu;
+    saveSettings();
+});
+
+document.getElementById("export-fullscene-enable").addEventListener("change", function () {
+    const export_full_scene = this.checked;
+    scene.userData.export_full_scene = export_full_scene;
+
+    scene.updateMatrixWorld(true);
+    saveSettings();
+});
+
+document.getElementById("darkmode-enable").addEventListener("change", function () {
+    const enabled = this.checked;
+    scene.userData.darkmode = enabled;
+
+    if (enabled == true) {
+        document.cookie = "mode=dark; max-age=315360000; path=/";
+    } else {
+        document.cookie = "mode=light; max-age=315360000; path=/";
+    }
+
+    scene.updateMatrixWorld(true);
+    saveSettings();
+});
+
+function applyTransparent(ui_trans) {
+    if (ui_trans) {
+        let elements = document.querySelectorAll('.ui-canbe-trans');
+        elements.forEach(element => {
+            element.classList.add('trans');
+        });
+    } else {
+        let elements = document.querySelectorAll('.ui-canbe-trans');
+        elements.forEach(element => {
+            element.classList.remove('trans');
+        });
+    }
+    scene.updateMatrixWorld(true);
+    saveSettings();
+}
+
+function applyHdri(use_hdri, background) {
+    if (use_hdri) {
+        let rgbe_loader = new THREE.HDRLoader();
+        let hdris = scene.userData.hdris;
+        let selected = hdris.selected;
+        let hdr_url;
+
+        let selectedHdr = hdris[selected];
+        hdr_url = selectedHdr ? selectedHdr.url : null;
+
+        if (!hdr_url) {
+            hdr_url = hdris[0].url;
+        }
+
+        rgbe_loader.load(hdr_url, function (texture) {
+            texture.mapping = THREE.EquirectangularReflectionMapping;
+            scene.environment = texture;
+
+            if (background) {
+                scene.background = texture;
+                document.body.classList.add('hdri-active');
+
+                if (isDark()) {
+                    document.body.classList.add("dark");
+                    document.getElementById("darkmode-enable").setAttribute('checked', 'true');
+                } else {
+                    if (document.body.classList.contains("dark")) {
+                        document.body.classList.remove("dark");
+                        document.getElementById("darkmode-enable").setAttribute('checked', 'false');
+                    }
+                }
+            } else {
+                renderer.setClearAlpha(0);
+                document.body.classList.remove('hdri-active');
+                scene.background = null;
+            }
+        });
+
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.0;
+    } else {
+        renderer.setClearAlpha(0);
+        document.body.classList.remove('hdri-active');
+        scene.background = null;
+        scene.environment = null;
+    }
+
+    if (isDark()) {
+        document.body.classList.add("dark");
+        document.getElementById("darkmode-enable").setAttribute('checked', 'true');
+    } else {
+        if (document.body.classList.contains("dark")) {
+            document.body.classList.remove("dark");
+            document.getElementById("darkmode-enable").setAttribute('checked', 'false');
+        }
+    }
+
+    scene.updateMatrixWorld(true);
+    saveSettings();
+}
 
 class statehistoryManager {
     constructor(scene) {
@@ -2259,8 +2569,6 @@ class statehistoryManager {
         if (this.undoStack.length > this.maxHistory) {
             this.undoStack.shift();
         }
-
-        console.log('Save state');
     }
 
     undo() {
@@ -2276,7 +2584,7 @@ class statehistoryManager {
     }
 
     redo() {
-        if (this.redoStack.length <= 0) {
+        if (this.redoStack.length === 0) {
             return;
         }
 
@@ -2293,7 +2601,7 @@ class statehistoryManager {
                     g.geometry.dispose();
                 }
                 if (g.material) {
-                    if (Array.isArray(obj.material)) {
+                    if (Array.isArray(g.material)) {
                         g.material.forEach(m => m.dispose());
                     } else {
                         g.material.dispose();
@@ -2543,10 +2851,10 @@ function capture() {
     }
 
     let light2 = new THREE.DirectionalLight(0xffffff, 2);
-    light2.position.set(250, 250, 250);
+    light2.position.set(camera.position.x || 250, camera.position.y || 250, camera.position.z || 250);
     thumb.add(light2);
 
-    let ambient2 = new THREE.AmbientLight(0xdddddd);
+    let ambient2 = new THREE.AmbientLight(0xdddddd, 1);
     thumb.add(ambient2);
 
     let capture_height = 240;
@@ -2562,7 +2870,7 @@ function capture() {
     tempRenderer.setSize(capture_width, capture_height);
 
     tempRenderer.render(thumb, camera2);
-    let thumbnail = tempRenderer.domElement.toDataURL("image/webp", 0.75);
+    let thumbnail = tempRenderer.domElement.toDataURL("image/webp");
 
     tempRenderer.dispose();
     thumb.clear();
@@ -2842,8 +3150,32 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
     });
 }
 
-// Like addBlockv2, but it takes JSON instead.
-// Will be rolled out to functions gradually
+/*
+Helper to add parts to scene (should be pretty clear)
+Main function for block data (eg, translation/rotation, materials) is now addPartMaterials()
+Which is called by addBlockv3
+Like addBlockv2, but it takes JSON instead.
+Will be rolled out to functions gradually
+
+Example:
+part, partColor, partMatrixW, span, original_img, part, null, null, null, null
+let partJson = {
+    "ldraw": "3001.dat",
+    "texturedata": null,
+    "id": 67,
+    'materials': [
+        {
+            "id": 67,
+            "name": "Blue",
+            'colorcode': 1,
+            "texturedata": null,
+            'opacity': 1,
+        },
+    ],
+    'matrixw': {},
+};
+
+*/
 function addBlockV3(partJson, partSpan, originalPSImg, throwSuccess, throwError) {
     if (!ldraw_loader) {
         return;
@@ -2851,7 +3183,7 @@ function addBlockV3(partJson, partSpan, originalPSImg, throwSuccess, throwError)
 
     part = partJson.ldraw;
     partMat = partJson.materials;
-    partMatrixWorld = partJson.matrixw.elements;
+    partMatrixWorld = partJson.matrixw;
     console.log(partMatrixWorld);
     console.log(partMat);
 
@@ -3338,10 +3670,10 @@ function renderBLItem(obj, group) {
     let part;
     if (obj.userData.isBlock && obj.userData.ldraw) {
         part = (obj?.userData?.ldraw || obj?.parent?.userData?.ldraw || "").replace(/^(parts\/)?|(?:_?\.(dat|ldr))$/gi, "");
-        partIcon = `https://library.ldraw.org/media/ldraw/official/parts/${part}.png`;
+        partIcon = `${ldraw_icon_path + part}.png`;
     } else if (obj.userData.isGroup) {
         part = "Group of parts";
-        partIcon = 'https://library.ldraw.org/media/ldraw/official/parts/3001.png';
+        partIcon = `${ldraw_icon_path}3001.png`;
     }
 
     const img = document.createElement('img');
@@ -3531,6 +3863,7 @@ function generateSceneJSON(legacy = false) {
 
             const materials = [];
             let mesh_opacity;
+            let mat_opacity;
             let mesh_texture;
             let mesh_texturedata;
 

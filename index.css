@@ -144,6 +144,7 @@ option {
   position: relative;
   display: inline-block;
   border-bottom: 0.5px dotted black;
+  transition: all 0.2s ease-in-out;
 }
 
 .ui-tooltip .ui-tooltip-text {
@@ -159,7 +160,8 @@ option {
   border-radius: 2px;
   box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.10);
   position: absolute;
-  z-index: 1;
+  z-index: 1100;
+  opacity: 1 !important;
 }
 
 .ui-tooltip:hover .ui-tooltip-text {
@@ -600,10 +602,17 @@ option {
   transition: all 0.2s ease-in-out;
 }
 
+#select-block span img {
+  transition: all 0.2s ease-in-out;
+  width: 45px;
+}
+
 #select-block span:hover {
   cursor: pointer;
-  opacity: 0.8 !important;
   box-shadow: rgba(2, 2, 2, 0.06) 2px 2px 2px 2px;
+  img {
+    opacity: 0.8 !important;
+  }
 }
 
 #select-block span img {
