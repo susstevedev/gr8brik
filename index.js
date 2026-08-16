@@ -469,7 +469,7 @@ document.querySelector("#block-list").addEventListener("click", function (e) {
 // save creation
 document.getElementById("download-json").addEventListener("click", function () {
     if (multiSelectedObject) {
-        clearSelection();
+        selector.clearSelection();
     }
 
     if (selectedObject) {
@@ -494,6 +494,7 @@ document.getElementById("download-json").addEventListener("click", function () {
         const name = document.querySelector("#save-popup input[name='name']").value.trim();
         const desc = document.querySelector("#save-popup textarea[name='desc']").value.trim();
         const visible = document.querySelector('input[name="visible"]:checked');
+        const can_edit = document.querySelector('input[name="can_edit"]');
         const screenshot = capture();
 
         this.innerHTML = `<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>`;
@@ -510,15 +511,34 @@ document.getElementById("download-json").addEventListener("click", function () {
                 desc,
                 screenshot,
                 visibility: visible.value,
+                can_edit: can_edit,
             })
         })
             .then(res => res.json())
             .then(response => {
                 if (response.success) {
-                    tooltip(response.success);
+                    //tooltip(response.success);
                     this.innerText = "Save Creation as a copy";
-                    params.set("build_id", response.build_id);
+                    params.set("build_id", response.creation.id);
                     window.history.pushState(null, '', window.location.pathname + '?' + params.toString());
+
+                    //save model success
+                    document.querySelector("#just-have-saved-popup form").reset();
+                    document.querySelector("#save-popup").style.display = "none";
+                    document.querySelector("#just-have-saved-popup").style.display = "block";
+                    document.querySelector("#just-have-saved-popup #name").innerText = response.creation.name;
+                    document.querySelector("#just-have-saved-popup #success-message").innerText = response.success;
+
+                    if(response.creation.visibility !== 'private') {
+                        document.querySelector("#just-have-saved-popup #link-share").innerText = start_url + response.creation.url;
+                        document.querySelector("#just-have-saved-popup #link-view").href = start_url + response.creation.url;
+                    } else {
+                        document.querySelector("#just-have-saved-popup #link-share").innerText = "Creation is not public, cannot be shared";
+                        document.querySelector("#just-have-saved-popup #link-view").href = window.location.pathname + '?' + params.toString();
+                    }
+
+                    document.querySelector("#just-have-saved-popup #link-edit").href = start_url + response.creation.url_edit;
+                    document.querySelector("#just-have-saved-popup #link-profile").href = start_url + "/user/" + response.user.id;
                 } else if (response.error) {
                     tooltip(response.error);
                     console.error(response.error);
@@ -532,6 +552,7 @@ document.getElementById("download-json").addEventListener("click", function () {
                     this.innerText = "Save Creation";
                 } catch {
                     tooltip("An unknown error occurred.");
+                    console.log(err);
                     this.innerText = "Save Creation";
                     this.disabled = true;
                     this.classList.add('btn-disabled');
@@ -635,7 +656,7 @@ document.getElementById("export-finish").addEventListener("click", function () {
     }
 
     if (multiSelectedObject) {
-        clearSelection();
+        selector.clearSelection();
     }
 
     const format = document.getElementById("export-format").value;
@@ -1638,7 +1659,7 @@ document.getElementById("cre-import-three").addEventListener("change", function 
             }
 
             if (multiSelectedObject) {
-                clearSelection();
+                selector.clearSelection();
             }
 
             if (!Array.isArray(data)) {
@@ -1765,7 +1786,6 @@ class GridClass {
         }
 
         imagePlane.scale.set(sizeX, sizeZ, 1);
-        //planeTexture.repeat.set(sizeX, sizeZ);
         planeTexture.repeat.set(studs_x, studs_z);
 
         if (planeTexture.source && planeTexture.source.data && !planeTexture.source.data.src.includes(texturepath)) {
@@ -1817,6 +1837,34 @@ class GridClass {
         grid_lines.position.y = -0.1;
         scene.add(grid_lines);
     };
+
+    remove = function() {
+        if(imagePlane) {
+            this.removeHelper(imagePlane);
+        }
+
+        if(planeTexture) {
+            this.removeHelper(planeTexture);
+        }
+
+        if(grid_lines) {
+            this.removeHelper(grid_lines);
+        }
+
+        grid_lines = null, planeTexture = null, imagePlane = null;
+    }
+
+    removeHelper = function(elm) {
+        scene.remove(elm);
+
+        if (elm.geometry) {
+            elm.geometry.dispose();
+        }
+
+        if (elm.material) {
+            elm.material.dispose();
+        }
+    }
 }
 
 function init() {
@@ -1844,8 +1892,11 @@ function init() {
     // Scene
     if (!scene) {
         scene = new THREE.Scene();
-        scene.userData = window.settings;
         window.scene = scene;
+
+        if (window.settings) {
+            mergeConfig(scene.userData, window.settings);
+        }
     }
 
     // WebGl renderer
@@ -1859,7 +1910,7 @@ function init() {
 
         renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-        // @the_an0nym pointed out how if your screen resolution isn't 100% (and in some cases just always), the scene looks buggy
+        // @the_an0nym pointed out how if your screen resolution isn't 100% (and in some cases just always), the scene looks blurry
         renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
     }
@@ -1868,6 +1919,7 @@ function init() {
     if(selectionGroup && selectionGroup instanceof THREE.Object3D) {
         scene.add(selectionGroup);
     }
+
     if(transformControls && transformControls instanceof THREE.Object3D) {
         scene.add(transformControls);
     }
@@ -1973,158 +2025,6 @@ function init() {
         controls.dampingFactor = 0.8;
     }
 
-    /*window.makegrid = function () {
-        let stud_size = 20; // 1 stud = 20 three/ldr units
-        let grid_size = stud_size * 16; // 16 studs wide
-        let divisions = 16; // 1 division per stud
-
-        let planeGeometry = new THREE.PlaneGeometry(grid_size, grid_size);
-
-        let texturepath = isDark() ? 'img/misc/griddark.webp' : 'img/misc/gridlight.webp';
-        let textureLoader = new THREE.TextureLoader();
-        let texture = textureLoader.load(texturepath);
-
-        texture.wrapS = THREE.RepeatWrapping;
-        texture.wrapT = THREE.RepeatWrapping;
-        texture.repeat.set(divisions, divisions);
-
-        let planeMaterial = new THREE.MeshBasicMaterial({ map: texture, transparent: true, side: THREE.DoubleSide });
-        let imagePlane = new THREE.Mesh(planeGeometry, planeMaterial);
-
-        imagePlane.rotation.x = -Math.PI / 2;
-        scene.add(imagePlane);
-
-        if (scene.userData.grid_lines) {
-            if (isDark()) {
-                grid_helper = new THREE.GridHelper(grid_size, divisions, 0xfafafa, 0xfafafa);
-                scene.add(grid_helper);
-            } else {
-                grid_helper = new THREE.GridHelper(grid_size, divisions, 0x242424, 0x242424);
-                scene.add(grid_helper);
-            }
-
-            grid_helper.transparent = true;
-            grid_helper.position.y = -0.1;
-            grid_helper.needsUpdate = true;
-        }
-    }*/
-
-    let imagePlane = null;
-    let planeTexture = null;
-
-    /*window.makegrid = function (studs_x = 16, studs_z = 16) {
-        let stud_size = 20; // 1 stud = 20 three/ldr units
-        let size_x = stud_size * studs_x;
-        let size_z = stud_size * studs_z;
-
-        let texturepath = isDark() ? 'img/misc/griddark.webp' : 'img/misc/gridlight.webp';
-
-        if (!imagePlane) {
-            let textureLoader = new THREE.TextureLoader();
-            planeTexture = textureLoader.load(texturepath);
-            planeTexture.wrapS = THREE.RepeatWrapping;
-            planeTexture.wrapT = THREE.RepeatWrapping;
-
-            let planeGeometry = new THREE.PlaneGeometry(1, 1);
-            let planeMaterial = new THREE.MeshBasicMaterial({ map: planeTexture, transparent: true, side: THREE.DoubleSide });
-
-            imagePlane = new THREE.Mesh(planeGeometry, planeMaterial);
-            imagePlane.rotation.x = -Math.PI / 2;
-            scene.add(imagePlane);
-        }
-
-        imagePlane.scale.set(size_x, size_z, 1);
-        planeTexture.repeat.set(studs_x, studs_z);
-
-        if (planeTexture.source && planeTexture.source.data && !planeTexture.source.data.src.includes(texturepath)) {
-            let textureLoader = new THREE.TextureLoader();
-            planeTexture = textureLoader.load(texturepath);
-            planeTexture.wrapS = THREE.RepeatWrapping;
-            planeTexture.wrapT = THREE.RepeatWrapping;
-            imagePlane.material.map = planeTexture;
-        }
-
-        if (grid_helper) {
-            scene.remove(grid_helper);
-        }
-
-        if (scene.userData.grid_lines) {
-            let color = isDark() ? 0xfafafa : 0x242424;
-
-            let max_size = Math.max(size_x, size_z);
-            let max_divisions = Math.max(studs_x, studs_z);
-
-            grid_helper = new THREE.GridHelper(max_size, max_divisions, color, color);
-            grid_helper.transparent = true;
-            grid_helper.position.y = -0.1;
-            grid_helper.scale.set(size_x / max_size, 1, size_z / max_size);
-
-            scene.add(grid_helper);
-        }
-    }*/
-
-    /*window.makegrid = function (studs_x = 16, studs_z = 16) {
-        const stud_size = 20;
-        const size_x = stud_size * studs_x;
-        const size_z = stud_size * studs_z;
-
-        const texturepath = isDark() ? 'img/misc/griddark.webp' : 'img/misc/gridlight.webp';
-
-        if (!imagePlane) {
-            const textureLoader = new THREE.TextureLoader();
-
-            planeTexture = textureLoader.load(texturepath);
-            planeTexture.wrapS = THREE.RepeatWrapping;
-            planeTexture.wrapT = THREE.RepeatWrapping;
-
-            const planeGeometry = new THREE.PlaneGeometry(1, 1);
-
-            const planeMaterial = new THREE.MeshBasicMaterial({
-                map: planeTexture,
-                transparent: true,
-                side: THREE.DoubleSide
-            });
-
-            imagePlane = new THREE.Mesh(planeGeometry, planeMaterial);
-
-            imagePlane.rotation.x = -Math.PI / 2;
-            scene.add(imagePlane);
-        }
-
-        imagePlane.scale.set(size_x, size_z, 1);
-        planeTexture.repeat.set(studs_x, studs_z);
-
-        if (planeTexture.source && planeTexture.source.data && !planeTexture.source.data.src.includes(texturepath)) {
-            const textureLoader = new THREE.TextureLoader();
-
-            planeTexture = textureLoader.load(texturepath);
-            planeTexture.wrapS = THREE.RepeatWrapping;
-            planeTexture.wrapT = THREE.RepeatWrapping;
-
-            imagePlane.material.map = planeTexture;
-            imagePlane.material.needsUpdate = true;
-        }
-
-        if (grid_helper) {
-            scene.remove(grid_helper);
-            grid_helper.geometry.dispose();
-            grid_helper.material.dispose();
-            grid_helper = null;
-        }
-
-        if (scene.userData.grid_lines) {
-            const color = isDark() ? 0xfafafa : 0x242424;
-
-            const size_max = Math.max(size_x, size_z);
-            const divisions_max = Math.max(studs_x, studs_z);
-
-            grid_helper = new THREE.GridHelper(size_max, divisions_max, color, color);
-
-            grid_helper.position.y = -0.1;
-            scene.add(grid_helper);
-        }
-    };*/
-
     let grid_class = new GridClass();
     grid_class.create();
 
@@ -2159,7 +2059,10 @@ function init() {
                 moveBlock('s')
                 break
             case 'Escape':
-                clearSelection(multiSelectedObject);
+                selector.clearSelection(multiSelectedObject);
+                break
+            case 'KeyG':
+                groupParts(selectionGroup);
                 break
             case 'Delete':
                 deleteBlock(getPartByUUID());
@@ -2277,12 +2180,8 @@ function init() {
             obj.rot = obj.rotation.clone();
         }
 
-        /*let studs_x = Math.max(16, Math.ceil((Math.abs(obj.position.x) * 2) / 20));
-        let studs_z = Math.max(16, Math.ceil((Math.abs(obj.position.z) * 2) / 20));
-        window.makegrid(studs_x, studs_z);*/
         let grid = new GridClass();
         grid.update(obj);
-
         updateSceneData();
     });
 
@@ -2424,8 +2323,8 @@ document.getElementById("display-lines-grid").addEventListener("change", functio
         scene.userData.grid_lines = false;
     }
 
-    if (grid_helper) {
-        scene.remove(grid_helper);
+    if (grid_lines) {
+        scene.remove(grid_lines);
     }
 
     let grid_class = new GridClass();
@@ -2635,7 +2534,7 @@ class statehistoryManager {
         }
 
         if (multiSelectedObject) {
-            clearSelection();
+            selector.clearSelection();
         }
 
         show_import_animation = false;
@@ -2709,7 +2608,7 @@ function deleteBlock(targetUUID) {
     }
 
     if (multiSelectedObject.size > 1) {
-        clearSelection();
+        selector.clearSelection();
         return;
     }
 
@@ -2741,7 +2640,7 @@ function deleteBlock(targetUUID) {
         }
 
         if (multiSelectedObject.has(part)) {
-            deselect(part);
+            selector.deselect(part);
         }
 
         selectionGroup.remove(part);
@@ -2842,11 +2741,11 @@ function capture() {
     let count = 0;
 
     if (selectedObject) {
-        deselect(selectedObject);
+        selector.deselect(selectedObject);
     }
 
     if (multiSelectedObject) {
-        clearSelection();
+        selector.clearSelection();
     }
 
     scene.traverse(function (object) {
@@ -3217,7 +3116,7 @@ function addBlockV3(partJson, partSpan, originalPSImg, throwSuccess, throwError)
     }
 
     if (multiSelectedObject) {
-        clearSelection();
+        selector.clearSelection();
     }
 
     ldraw_loader.load('parts/' + part, function (loadedGroup) {
@@ -3435,7 +3334,7 @@ function addPartMaterials(group, partJson, partMat, partMatrixWorld, partIsLdr =
 
     blocks.push(blockGroup);
     blockGroups.push(blockGroup);
-    selectObject(blockGroup);
+    selector.selectObject(blockGroup);
 
     updateBLItems();
     updatecolorelement();
@@ -3654,30 +3553,7 @@ function spanImg(original_img, span) {
     }
 }
 
-function getBLItems() {
-    const items = [];
-    scene.traverse(obj => {
-        if (obj?.isMesh || obj?.userData?.isBlock || obj?.userData?.ldraw) {
-            if (obj?.userData?.fileName || obj?.parent?.userData?.fileName) {
-                items.push(obj);
-            }
-        }
-    });
-    return items;
-}
-
-function updateBLItems() {
-    const items = getBLItems();
-    const blockList = document.getElementById('block-list');
-    blockList.innerHTML = "";
-
-    items.forEach(obj => {
-        const item = renderBLItem(obj, false);
-        blockList.appendChild(item);
-    });
-}
-
-function renderBLItem(obj, group) {
+/*function renderBLItem(obj) {
     const id = obj.uuid;
 
     let colormap = new Map(ldrawColors.map(c => [String(c.code), c.name]));
@@ -3708,7 +3584,7 @@ function renderBLItem(obj, group) {
 
         obj.children.forEach(child => {
             if (child.isMesh) {
-                const childLi = renderBLItem(child, false);
+                const childLi = renderBLItem(child);
                 ul.appendChild(childLi);
             }
         });
@@ -3716,6 +3592,133 @@ function renderBLItem(obj, group) {
         li.appendChild(ul);
     }
     li.appendChild(img);
+
+    return li;
+}*/
+
+function BLItemValid(obj) {
+    if (!obj) {
+        return false;
+    }
+
+    const isPart = obj.isMesh && obj.userData?.isBlock && obj.userData?.ldraw;
+
+    const isGroup = obj.userData?.isGroup;
+
+    return isPart || isGroup;
+}
+
+function getBLItems() {
+    const roots = [];
+
+    scene.children.forEach(child => {
+        findTopBL(child, roots);
+    });
+
+    return roots;
+}
+
+function findTopBL(node, roots) {
+    if (!node) {
+        return;
+    }
+
+    if (BLItemValid(node)) {
+        roots.push(node);
+        return;
+    }
+
+    if (node.children) {
+        node.children.forEach(child => {
+            findTopBL(child, roots);
+        });
+    }
+}
+
+function getBLChildren(node) {
+    const children = [];
+
+    if (!node?.children) {
+        return children;
+    }
+
+    node.children.forEach(child => {
+        findTopBL(child, children);
+    });
+
+    return children;
+}
+
+function updateBLItems() {
+    const items = getBLItems();
+    const blockList = document.getElementById('block-list');
+
+    blockList.innerHTML = "";
+
+    items.forEach(obj => {
+        const item = renderBLItem(obj);
+        blockList.appendChild(item);
+    });
+}
+
+function renderBLItem(obj) {
+    const id = obj.uuid;
+
+    const colormap = new Map(
+        ldrawColors.map(c => [String(c.code), c.name])
+    );
+
+    const colorid = obj.material?.userData?.colorcode || '4';
+
+    const color =
+        colormap.get(String(colorid).trim()) || 'Unknown color';
+
+    let part = "Unknown part";
+    let partIcon = `${ldraw_icon_path}3001.png`;
+
+    if (obj.userData?.isBlock && obj.userData?.ldraw) {
+        part = (
+            obj.userData.ldraw ||
+            obj.parent?.userData?.ldraw ||
+            ""
+        ).replace(/^(parts\/)|(?:_?\.(dat|ldr))$/gi, "");
+
+        partIcon = `${ldraw_icon_path}${part}.png`;
+    } else if (obj.userData?.isGroup) {
+        part = obj.name || "Group of parts";
+    }
+
+    const li = document.createElement('li');
+    li.classList.add('scene-block-item');
+    li.setAttribute('data-id', id);
+
+    const content = document.createElement('div');
+
+    const img = document.createElement('img');
+    img.setAttribute('src', partIcon);
+    img.setAttribute('loading', 'lazy');
+    img.setAttribute('width', '45px');
+
+    const text = document.createElement('span');
+    text.textContent = `${part} (${color})`;
+
+    content.appendChild(img);
+    content.appendChild(text);
+    li.appendChild(content);
+
+    const validChildren = getBLChildren(obj);
+
+    if (validChildren.length > 0) {
+        const ul = document.createElement('ul');
+        ul.classList.add('nested');
+
+        validChildren.forEach(child => {
+            const childLi = renderBLItem(child);
+            ul.appendChild(childLi);
+        });
+
+        li.appendChild(ul);
+    }
 
     return li;
 }
@@ -3728,7 +3731,7 @@ function groupParts(objects) {
     scene.add(group);
 
     if (objects.children.length > 1) {
-        objects.forEach(obj => {
+        objects.children.forEach(obj => {
             obj.updateMatrixWorld(true);
             group.attach(obj);
         });
@@ -3808,7 +3811,7 @@ function getPartByUUID() {
     } else if (selectedObject === selectionGroup && selectionGroup.children.length === 1) {
         obj = selectionGroup.children[0].uuid;
     } else {
-        return new Error('Bad object');
+        return;
     }
 
     return obj;
@@ -3989,7 +3992,7 @@ function generateSceneLXFML() {
     }
 
     if (multiSelectedObject) {
-        clearSelection();
+        selector.clearSelection();
     }
 
     const ldd_colors = [{ "ldraw": "15", "lego": "1" }, { "ldraw": "7", "lego": "2" }, { "ldraw": "18", "lego": "3" }, { "ldraw": "12", "lego": "4" }, { "ldraw": "19", "lego": "5" }, { "ldraw": "17", "lego": "6" }, { "ldraw": "13", "lego": "9" }, { "ldraw": "313", "lego": "11" }, { "ldraw": "450", "lego": "12" }, { "ldraw": "92", "lego": "18" }, { "ldraw": "79", "lego": "20" }, { "ldraw": "4", "lego": "21" }, { "ldraw": "351", "lego": "22" }, { "ldraw": "1", "lego": "23" }, { "ldraw": "14", "lego": "24" }, { "ldraw": "6", "lego": "25" }, { "ldraw": "0", "lego": "26" }, { "ldraw": "8", "lego": "27" }, { "ldraw": "2", "lego": "28" }, { "ldraw": "74", "lego": "29" }, { "ldraw": "68", "lego": "36" }, { "ldraw": "10", "lego": "37" }, { "ldraw": "484", "lego": "38" }, { "ldraw": "20", "lego": "39" }, { "ldraw": "47", "lego": "40" }, { "ldraw": "36", "lego": "41" }, { "ldraw": "43", "lego": "42" }, { "ldraw": "33", "lego": "43" }, { "ldraw": "46", "lego": "44" }, { "ldraw": "9", "lego": "45" }, { "ldraw": "38", "lego": "47" }, { "ldraw": "34", "lego": "48" }, { "ldraw": "42", "lego": "49" }, { "ldraw": "294", "lego": "50" }, { "ldraw": "100", "lego": "100" }, { "ldraw": "73", "lego": "102" }, { "ldraw": "503", "lego": "103" }, { "ldraw": "22", "lego": "104" }, { "ldraw": "462", "lego": "105" }, { "ldraw": "25", "lego": "106" }, { "ldraw": "3", "lego": "107" }, { "ldraw": "110", "lego": "110" }, { "ldraw": "40", "lego": "111" }, { "ldraw": "112", "lego": "112" }, { "ldraw": "37", "lego": "113" }, { "ldraw": "114", "lego": "114" }, { "ldraw": "115", "lego": "115" }, { "ldraw": "11", "lego": "116" }, { "ldraw": "117", "lego": "117" }, { "ldraw": "118", "lego": "118" }, { "ldraw": "27", "lego": "119" }, { "ldraw": "120", "lego": "120" }, { "ldraw": "26", "lego": "124" }, { "ldraw": "125", "lego": "125" }, { "ldraw": "52", "lego": "126" }, { "ldraw": "142", "lego": "127" }, { "ldraw": "129", "lego": "129" }, { "ldraw": "179", "lego": "131" }, { "ldraw": "133", "lego": "132" }, { "ldraw": "379", "lego": "135" }, { "ldraw": "373", "lego": "136" }, { "ldraw": "28", "lego": "138" }, { "ldraw": "134", "lego": "139" }, { "ldraw": "272", "lego": "140" }, { "ldraw": "288", "lego": "141" }, { "ldraw": "41", "lego": "143" }, { "ldraw": "143", "lego": "143" }, { "ldraw": "137", "lego": "145" }, { "ldraw": "178", "lego": "147" }, { "ldraw": "148", "lego": "148" }, { "ldraw": "150", "lego": "150" }, { "ldraw": "378", "lego": "151" }, { "ldraw": "335", "lego": "153" }, { "ldraw": "320", "lego": "154" }, { "ldraw": "54", "lego": "157" }, { "ldraw": "135", "lego": "179" }, { "ldraw": "57", "lego": "182" }, { "ldraw": "183", "lego": "183" }, { "ldraw": "191", "lego": "191" }, { "ldraw": "70", "lego": "192" }, { "ldraw": "71", "lego": "194" }, { "ldraw": "89", "lego": "195" }, { "ldraw": "23", "lego": "196" }, { "ldraw": "69", "lego": "198" }, { "ldraw": "72", "lego": "199" }, { "ldraw": "81", "lego": "200" }, { "ldraw": "151", "lego": "208" }, { "ldraw": "212", "lego": "212" }, { "ldraw": "216", "lego": "216" }, { "ldraw": "6", "lego": "217" }, { "ldraw": "5", "lego": "221" }, { "ldraw": "29", "lego": "222" }, { "ldraw": "77", "lego": "223" }, { "ldraw": "226", "lego": "226" }, { "ldraw": "39", "lego": "229" }, { "ldraw": "45", "lego": "230" }, { "ldraw": "232", "lego": "232" }, { "ldraw": "44", "lego": "236" }, { "ldraw": "85", "lego": "268" }, { "ldraw": "78", "lego": "283" }, { "ldraw": "21", "lego": "294" }, { "ldraw": "297", "lego": "297" }, { "ldraw": "80", "lego": "298" }, { "ldraw": "82", "lego": "299" }, { "ldraw": "117", "lego": "304" }, { "ldraw": "308", "lego": "308" }, { "ldraw": "26", "lego": "309" }, { "ldraw": "334", "lego": "310" }, { "ldraw": "35", "lego": "311" }, { "ldraw": "86", "lego": "312" }, { "ldraw": "87", "lego": "315" }, { "ldraw": "83", "lego": "316" }, { "ldraw": "321", "lego": "321" }, { "ldraw": "323", "lego": "323" }];
@@ -4191,14 +4194,22 @@ function clear_autosave() {
     }
 }
 
+// clears all scene content and restores defaults
 function wipe_scene() {
     if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
     }
 
     if(multiSelectedObject) {
-        clearSelection();
+        selector.clearSelection();
     }
+
+    if(selectedObject) {
+        selectedObject = null;
+    }
+
+    let grid_class = new GridClass();
+    grid_class.remove();
 
     const meshes = [];
     scene.traverse(function (obj) {
@@ -4223,8 +4234,32 @@ function wipe_scene() {
         }
     });
 
+    if (blockGroups && blockGroups.length > 0) {
+        blockGroups.forEach(function (g) {
+            g.traverse(function (child) {
+                if (child.geometry) {
+                    child.geometry.dispose();
+                }
+
+                if (child.material) {
+                    if (Array.isArray(child.material)) {
+                        child.material.forEach(function (mat) {
+                            mat.dispose();
+                        });
+                    } else {
+                        child.material.dispose();
+                    }
+                }
+            });
+        });
+    }
+
+    scene.updateMatrixWorld(true);
+    window.history.pushState(null, '', window.location.pathname);
+
     scene.clear();
     init();
+    updateBLItems();
 }
 
 //cleans matrixes to save file output size
@@ -4323,6 +4358,9 @@ function filter_objects_peices() {
 }
 
 //complex selection logic
+multiSelectedObject = new Set();
+selectionGroup = new THREE.Group();
+scene.add(selectionGroup);
 
 window.addEventListener('pointerdown', function (event) {
     let target = event.target;
@@ -4353,144 +4391,170 @@ window.addEventListener('pointerdown', function (event) {
 
     if (intersects.length > 0) {
         let hit = intersects[0].object;
-        while (hit.parent && !hit.userData.isBlock && !hit.userData.ldraw) {
-            hit = hit.parent;
-        }
-
-        if (event.shiftKey) {
-            selectObject(hit, "add");
-        } else if (event.ctrlKey) {
-            selectObject(hit, "toggle");
-        } else {
-            selectObject(hit, "replace");
-        }
+        selector.getIntersects(hit);
     } else {
-        clearSelection();
+        selector.clearSelection();
     }
 });
 
-multiSelectedObject = new Set();
-selectionGroup = new THREE.Group();
-scene.add(selectionGroup);
+class SelectorClass {
+    getIntersects(hit) {
+        let block = null;
+        let group = null;
 
-function selectObject(obj, mode = "replace") {
-    while (obj.parent && !obj.userData.isBlock && !obj.userData.ldraw) {
-        obj = obj.parent;
-    }
+        let current = hit;
 
-    if (!obj.userData.isBlock && !obj.userData.ldraw) {
-        return;
-    }
+        while (current) {
+            if (current.userData?.isGroup) {
+                group = current;
+                break;
+            }
 
-    if (mode === "replace") {
-        clearSelection();
-    }
+            if (current.userData?.isBlock && current.userData?.ldraw) {
+                block = current;
+            }
 
-    if (mode === "toggle" && multiSelectedObject.has(obj)) {
-        deselect(obj);
-        return;
-    }
-
-    multiSelectedObject.add(obj);
-    updateSelection();
-}
-
-function updateSelection() {
-    if (multiSelectedObject.size === 0) {
-        transformControls.detach();
-        selectedObject = null;
-        return;
-    }
-
-    let children = [...selectionGroup.children];
-    children.forEach(child => {
-        let ogparent = child.userData.ogparent || scene;
-        ogparent.attach(child);
-    });
-
-    let box = new THREE.Box3();
-    multiSelectedObject.forEach(o => {
-        highlight(o);
-        box.expandByObject(o);
-    });
-
-    let center = new THREE.Vector3();
-    box.getCenter(center);
-
-    selectionGroup.position.copy(center);
-    selectionGroup.rotation.set(0, 0, 0);
-    selectionGroup.scale.set(1, 1, 1);
-    selectionGroup.updateMatrixWorld(true);
-
-    multiSelectedObject.forEach(o => {
-        if (!o.userData.ogparent) {
-            o.userData.ogparent = o.parent || scene;
+            current = current.parent;
         }
-        selectionGroup.attach(o);
 
-        o.traverse(child => {
+        hit = group || block;
+
+        if (hit) {
+            if (event.shiftKey) {
+                this.selectObject(hit, "add");
+            } else if (event.ctrlKey) {
+                this.selectObject(hit, "toggle");
+            } else {
+                this.selectObject(hit, "replace");
+            }
+        }
+    }
+
+    selectObject(obj, mode = "replace") {
+        while (obj?.parent && !obj?.userData?.isBlock && !obj?.userData?.ldraw && !obj?.userData?.isGroup) {
+            obj = this.getIntersects(obj);
+        }
+
+        if (!obj?.userData?.isBlock && !obj?.userData?.ldraw && !obj?.userData?.isGroup) {
+            return;
+        }
+
+        if (mode === "replace") {
+            this.clearSelection();
+        }
+
+        if (mode === "toggle" && multiSelectedObject.has(obj)) {
+            this.deselect(obj);
+            return;
+        }
+
+        multiSelectedObject.add(obj);
+        this.updateSelection();
+    }
+
+    updateSelection() {
+        if (multiSelectedObject.size === 0) {
+            transformControls.detach();
+            selectedObject = null;
+            return;
+        }
+
+        let children = [...selectionGroup.children];
+        children.forEach(child => {
+            let ogparent = child.userData.ogparent || scene;
+            ogparent.attach(child);
+        });
+
+        let box = new THREE.Box3();
+        multiSelectedObject.forEach(o => {
+            highlight(o);
+            box.expandByObject(o);
+        });
+
+        let center = new THREE.Vector3();
+        box.getCenter(center);
+
+        selectionGroup.position.copy(center);
+        selectionGroup.rotation.set(0, 0, 0);
+        selectionGroup.scale.set(1, 1, 1);
+        selectionGroup.updateMatrixWorld(true);
+
+        multiSelectedObject.forEach(o => {
+            if (!o.userData.ogparent) {
+                o.userData.ogparent = o.parent;
+            }
+
+            selectionGroup.attach(o);
+
+            o.traverse(child => {
+                if (child.isMesh && child.material) {
+                    if (Array.isArray(child.material)) {
+                        child.material.forEach(mat => mat.needsUpdate = true);
+                    } else {
+                        if (
+                            child.material.userData &&
+                            child.material.userData.colorcode
+                        ) {
+                            partColor = child.material.userData.colorcode;
+                        }
+
+                        child.material.needsUpdate = true;
+                    }
+                }
+            });
+        });
+
+        transformControls.attach(selectionGroup);
+        selectedObject = selectionGroup;
+
+        updateSceneData();
+        updateBLItems();
+        window.updatecolorelement();
+    }
+
+    deselect(obj) {
+        if (!multiSelectedObject.has(obj)) {
+            return;
+        }
+
+        unhighlight(obj);
+        multiSelectedObject.delete(obj);
+
+        const ogparent = obj.userData.ogparent || scene;
+        ogparent.attach(obj);
+
+        obj.traverse(child => {
             if (child.isMesh && child.material) {
                 if (Array.isArray(child.material)) {
                     child.material.forEach(mat => mat.needsUpdate = true);
                 } else {
-                    if(child.material.userData && child.material.userData.colorcode) {
-                        partColor = child.material.userData.colorcode;
-                    }
-
                     child.material.needsUpdate = true;
                 }
             }
         });
-    });
 
-    transformControls.attach(selectionGroup);
-    selectedObject = selectionGroup;
+        delete obj.userData.ogparent;
 
-    updateSceneData();
-    updateBLItems();
-    window.updatecolorelement();
-}
-
-function deselect(obj) {
-    if (!multiSelectedObject.has(obj)) {
-        return;
-    }
-
-    unhighlight(obj);
-    multiSelectedObject.delete(obj);
-
-    const ogparent = obj.userData.ogparent || scene;
-    ogparent.attach(obj);
-
-    obj.traverse(child => {
-        if (child.isMesh && child.material) {
-            if (Array.isArray(child.material)) {
-                child.material.forEach(mat => mat.needsUpdate = true);
-            } else {
-                child.material.needsUpdate = true;
-            }
+        if (multiSelectedObject.size > 0) {
+            this.updateSelection();
+        } else {
+            transformControls.detach();
+            selectedObject = null;
         }
-    });
 
-    delete obj.userData.ogparent;
-
-    if (multiSelectedObject.size > 0) {
-        updateSelection();
-    } else {
-        transformControls.detach();
-        selectedObject = null;
+        updateSceneData();
+        updateBLItems();
     }
 
-    updateSceneData();
-    updateBLItems();
-}
+    clearSelection() {
+        const items = [...multiSelectedObject];
 
-function clearSelection() {
-    const items = [...multiSelectedObject];
-    for (let i = items.length - 1; i >= 0; i--) {
-        deselect(items[i]);
+        for (let i = items.length - 1; i >= 0; i--) {
+            this.deselect(items[i]);
+        }
     }
 }
+window.selector = new SelectorClass();
 
 function highlight(obj) {
     obj.traverse(child => {
@@ -4524,6 +4588,8 @@ function onWindowResize() {
     } else {
         camera.aspect = window.innerWidth / window.innerHeight;
     }
+
+    transformControls.size = 0.75;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 }

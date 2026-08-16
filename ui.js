@@ -102,6 +102,10 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("save-popup").style.display = "none";
         });
 
+        document.querySelector("#just-have-saved-popup .btn-alt").addEventListener("click", function () {
+            document.getElementById("just-have-saved-popup").style.display = "none";
+        });
+
         // import popup open and close
         document.getElementById("import-popup-open").addEventListener("click", function () {
             document.getElementById("import-popup").style.display = "block";

@@ -232,7 +232,8 @@ option {
 #settings-popup,
 #ui-loading-file,
 #help-popup,
-#login-popup {
+#login-popup,
+#just-have-saved-popup {
   display: none;
 }
 
@@ -629,6 +630,12 @@ option {
   border: 2px rgba(0, 0, 0, 0.16) solid;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+}
+
+#block-list .nested {
+  padding-left: 20px;
+  border-left: 1px dashed #ccc;
+  margin-top: 5px;
 }
 
 #block-list li:hover {

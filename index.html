@@ -157,7 +157,7 @@
     <div id="save-popup-form">
       <p><input type="text" name="name" placeholder="Name"></p>
       <p><textarea name="desc" rows="4" cols="32" placeholder="Description"></textarea></p>
-      <div style="display:none">
+      <div>
         <p><b>Model visiblity</b></p>
         <label>
           <input type="radio" name="visible" value="private" selected> Private
@@ -171,8 +171,21 @@
           <input type="radio" name="visible" value="public" checked="true"> Public
         </label>
       </div>
+      <p><label><input type="checkbox" name="can_edit"> Let other users open this creation in the modeler</label></p>
       <p><button class="btn" title="Finish saving" id="download-json">Save Creation</button></p>
     </div>
+  </div>
+
+  <div class="ui-popup-contain ui-canbe-trans" id="just-have-saved-popup">
+    <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
+    <form>
+      <h3><span id="name" style="color: #fff;">Creation</span></h3>
+      <p><b id="success-message"></b></p>
+      <p>View it <a id="link-view" href="">here</a>. You can change more settings, like opening public modeler access, from <a id="link-edit" href="">this link</a>.</p>
+      <p><a href="/acc/creations">My creations</a> • <a id="link-profile" href="">My profile</a></p>
+      <p>Share:</p>
+      <p><textarea id="link-share" name="link-share" rows="1" cols="64" readonly aria-readonly="true"></textarea></p>
+    </form>
   </div>
   
   <div class="ui-popup-contain ui-canbe-trans" id="import-popup">
