@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    let debug = window.debug;
-    let settings = window.settings;
-
     document.querySelectorAll('button[data-settingsid]').forEach(element => {
         element.addEventListener('click', function (event) {
             let value = element.getAttribute('data-settingsid');
@@ -75,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         selector.addEventListener("change", (event) => {
             window.settings.activeCameraId = Number(event.target.value);
-            update_camera();
-            save_settings();
+            window.update_camera();
+            saveSettings();
         });
     }
     init_cam_ui();

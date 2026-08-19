@@ -49,6 +49,18 @@ option {
   background-color: var(--ui-color) !important;
 }
 
+kbd {
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+  color: #333;
+  font-family: inherit;
+  font-size: 0.85em;
+  padding: 0.1em 0.6em;
+  text-shadow: 0 1px 0 #fff;
+}
+
 .fa {
 	padding: 2px 2px 2px 2px;
 }
@@ -88,13 +100,21 @@ option {
   top: 0;
   width: 20%;
   height: 100%;
-  background: var(--ui-elm-noglass);
+  background: var(--ui-color);
   color: var(--ui-text-color);
   font-size: 20px;
   padding: 5px;
   border: 2px rgba(0, 0, 0, 0.16) solid;
   overflow-y: scroll;
   transition: all 0.2s ease-in-out;
+
+  label[for="trans-block"] {
+    display: none;
+  }
+
+  input[id="trans-block"] {
+    display: none;
+  }
 }
 
 #left-container::-webkit-scrollbar {
@@ -132,10 +152,18 @@ option {
 
 #current-camera {
   position: absolute;
-  bottom: 0;
+  bottom: 5px;
   left: 50%;
   right: 50%;
   width: 50%;
+  pointer-events: none;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+}
+
+#part-count {
+  position: absolute;
+  bottom: 5px;
+  left: 25%;
   pointer-events: none;
   text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
 }
@@ -168,27 +196,29 @@ option {
   visibility: visible;
 }
 
-.btn,
-.btn-alt {
+.btn {
   transition: all 0.2s ease-in-out;
   background-color: var(--ui-button-blue);
-  box-shadow: inset 2px 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
   color: var(--ui-text-color);
   padding: 10px;
   margin-bottom: 5px;
   text-align: center;
-  border: 1px var(--ui-button-lightblue) solid;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn-alt {
+  transition: all 0.2s ease-in-out;
+  background-color: var(--ui-button-blue);
+  color: var(--ui-text-color);
+  padding: 8px;
+  margin-bottom: 5px;
+  text-align: center;
+  border: none;
   border-radius: 4px;
   cursor: pointer;
-}
-
-.btn:hover {
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-}
-
-.btn-alt:active,.btn-alt:hover {
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3); 
 }
 
 .btn-disabled {
@@ -198,7 +228,7 @@ option {
 
 .tab-button {
   color: var(--ui-text-color);
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px, inset 2px 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
   background-color: var(--ui-button-blue);
   cursor: pointer;
   padding: 8px;
@@ -208,8 +238,8 @@ option {
   transition: all 0.2s ease-in-out;
 }
 
-.tab-button:hover,.tab-button:active {
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px, inset 0 2px 4px rgba(0, 0, 0, 0.3); 
+.btn:active,.btn:hover,.tab-button:hover,.tab-button:active {
+  opacity: 0.8;
 }
 
 .dialog {
@@ -250,13 +280,13 @@ option {
 #ui-loading-file {
   border-radius: 2px;
   padding: 10px;
-  background: var(--ui-elm-noglass);
+  background: var(--ui-color);
   border: 1px var(--ui-anti-text) solid;
   color: var(--ui-text-color);
   position: fixed;
   z-index: 9999;
   width: 75%;
-  height: 10%;
+  height: 20%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -270,7 +300,7 @@ option {
   border-radius: 2px;
   padding: 10px;
   /* background-color: var(--ui-color); */
-  background: var(--ui-elm-noglass);
+  background: var(--ui-color);
   border: 1px var(--ui-anti-text) solid;
   color: var(--ui-text-color);
   position: fixed;
@@ -341,12 +371,13 @@ option {
   top: 35%;
   right: 35%;
   left: 35%;
+  bottom: 35%;
 }
 
 #tooltipAlert {
   border-radius: 2px;
   padding: 10px;
-  background: var(--ui-elm-noglass);
+  background: var(--ui-color);
   border: 1px var(--ui-anti-text) solid;
   color: var(--ui-text-color);
   position: fixed;

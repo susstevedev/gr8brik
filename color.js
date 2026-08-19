@@ -110,15 +110,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	displayColorListItems();
 
 	window.updatecolorelement = function () {
-		console.log('ran!');
 		window.picker.setAttribute('color', partColor);
 		window.picker.value = partColor;
 
 		let ldrawHexMap = new Map(window.ldrawColors.map(c => [String(c.code), c.hex]));
 		window.picker.style.backgroundColor = ldrawHexMap.get(partColor);
-
-		console.log(ldrawHexMap.get(partColor));
-		console.log(window.picker);
 	}
 	updatecolorelement();
 });

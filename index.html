@@ -38,16 +38,16 @@
     <span class="dropdown-main">
       <span class="dropdown-element" id="dropdown-file">
         <div class="dropdown-item" id="clear-scene"><i class="fa fa-plus-square-o" aria-hidden="true"></i>New creation</div>
-        <div class="dropdown-item" id="save-popup-open"><i class="fa fa-database" aria-hidden="true"></i>Save to cloud</div>
+        <div class="dropdown-item" id="save-popup-open"><i class="fa fa-database" aria-hidden="true"></i>Save to cloud <small><kbd>Ctrl</kbd> + <kbd>S</kbd></small></div>
         <div class="dropdown-item" id="import-popup-open"><i class="fa fa-download" aria-hidden="true"></i>Import...</div>
         <div class="dropdown-item" id="export-popup-open"><i class="fa fa-upload" aria-hidden="true"></i>Export...</div>
       </span>
       <span class="dropdown-element" id="dropdown-edit">
         <div class="dropdown-item" id="move-block-t"><i class="fa fa-arrows-alt" aria-hidden="true"></i>Drag <small><kbd>T</kbd></small></div>
         <div class="dropdown-item" id="move-block-r"><i class="fa fa-refresh" aria-hidden="true"></i>Rotate <small><kbd>R</kbd></small></div>
-        <div class="dropdown-item" id="duplicate-part"><i class="fa fa-files-o" aria-hidden="true"></i>Duplicate part</div>
-        <div class="dropdown-item" id="make-group"><i class="fa fa-object-group" aria-hidden="true"></i>Group parts</div>
-        <div class="dropdown-item" id="delete-block"><i class="fa fa-trash" aria-hidden="true"></i>Delete part <small><kbd>Del</kbd></small></div>
+        <div class="dropdown-item" id="duplicate-part"><i class="fa fa-files-o" aria-hidden="true"></i>Duplicate <kbd>Ctrl</kbd> + <kbd>c</kbd> + <kbd>v</kbd></div>
+        <div class="dropdown-item" id="make-group"><i class="fa fa-object-group" aria-hidden="true"></i>Group</div>
+        <div class="dropdown-item" id="delete-block"><i class="fa fa-trash" aria-hidden="true"></i>Delete <small><kbd>Del</kbd></small></div>
         <div class="dropdown-item read_autosave"><i class="fa fa-floppy-o" aria-hidden="true"></i>Recover autosave</div>
       </span>
     </span>
@@ -56,15 +56,11 @@
 
 	<div class="mobile-toggle-contain">
       <button id="toggleMenu" class="mobile-toggle ui-canbe-trans" style="top: 60px; padding-right: 0px; padding-left: 0px;">
-		    <i class="fa fa-bars" aria-hidden="true" title="Reset the camera location"></i>
+		    <i class="fa fa-bars" aria-hidden="true" title="Hide sidebar"></i>
 	    </button>
 	
 	    <button id="takeScreenshot" class="mobile-toggle ui-canbe-trans" style="top: 160px; padding-right: 0px; padding-left: 0px;">
 		    <i class="fa fa-camera" aria-hidden="true" title="Take a screenshot"></i>
-	    </button>
-
-	    <button id="resetCamera" class="mobile-toggle ui-canbe-trans" style="top: 260px; padding-right: 0px; padding-left: 0px;">
-		    <i class="fa fa-refresh" aria-hidden="true" title="Reset the camera location"></i>
 	    </button>
 	</div>
 
@@ -130,14 +126,17 @@
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: var(--ui-text-color);;">Help</span></h3>
     <div id="dev-help-popup-form">
-      <p><span style="color: var(--ui-text-color);"><i class="fa fa-keyboard-o" aria-hidden="true"></i>&nbsp;Keyboard shortcuts</span></p>
+      <b><span style="color: var(--ui-text-color);"><i class="fa fa-keyboard-o" aria-hidden="true"></i>&nbsp;Keyboard shortcuts</span></b>
       <div id="keyboard-shortcuts">
-        <p><b><kbd>R</kbd></b> - Change to rotate parts mode</p>
-        <p><b><kbd>T</kbd></b> - Change to drag parts mode</p>
-        <p><b><kbd>Del</kbd></b> - Delete part and dispose of part data</p>
-        <p><b><kbd>Esc</kbd></b> - Deselect object</p>
+        <p><kbd>R</kbd> - Change to rotate parts mode</p>
+        <p><kbd>T</kbd> - Change to drag parts mode</p>
+        <p><kbd>Del</kbd> - Delete part</p>
+        <p><kbd>Esc</kbd> - Deselect object</p>
+        <p><kbd>Ctrl S</kbd> - Save to cloud</p>
+        <p><kbd>Ctrl C</kbd> - Copy part</p>
+        <p><kbd>Ctrl V</kbd> - Paste part</p>
       </div>
-      <p><button class="close btn" title="Okay, got it">Okay, got it</button></p>
+      <p><button class="close btn" title="Okay">Okay</button></p>
     </div>
   </div>
 
@@ -199,7 +198,7 @@
 			<option value="three">ThreeJS (.json)</option>
       <option value="ldr">Ldraw (.ldr, .dat, .mpd)</option>
 		</select><br />
-    <p><input style='display:none;' type="text" id="import-url" placeholder="Enter a creation url..." /></p>
+    <p><input type="text" id="import-url" placeholder="Enter a creation url..." /></p>
     <p><label><input type="checkbox" name="open" value="true" selected> Close current creation</label></p>
 		<p><button class="btn" title="Finish importing" id="import-finish">Select file</button></p>
     </div>
@@ -350,7 +349,13 @@
     <div class="img"></div>
   </div>
 
-  <div id="current-camera"></div>
+  <div id="current-camera">
+    <span class="text"></span> • <span class="pos"></span>
+  </div>
+
+  <div id="part-count">
+    <span class="count">0</span> parts in scene
+  </div>
 
   <!-- LDRAW.ORG CC BY 2.0 PARTS LIBRARY ATTRIBUTION -->
   <div class="ldraw-logo">

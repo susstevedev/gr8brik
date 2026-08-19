@@ -42,7 +42,6 @@ let container = null, stats = null, animationFrameId = null, camera = null, scen
 let start_url = 'https://gr8brik.rf.gd', gh_base_url = 'https://susstevedev.github.io/gr8brik/', DEFAULT_TITLE = 'Modeler - Gr8brik', show_import_animation = true;
 const studSize = 1000, ldraw_path = "https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-ldraw-fork@main/ldraw-parts/", ldraw_icon_path = "https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-ldraw-fork@main/ldraw-icons/";
 
-let blocks = [];
 let blockGroups = [];
 
 // debug only
@@ -192,6 +191,12 @@ function loadCategory() {
 
                 filter_elm.appendChild(option);
             });
+
+            const custom_option = document.createElement('option');
+            custom_option.value = 'custom';
+            custom_option.textContent = 'User custom parts';
+
+            filter_elm.appendChild(custom_option);
         })
         .catch(err => {
             console.error('error loading categories ', err);
@@ -204,6 +209,8 @@ loadCategory();
 function loadParts(type) {
     console.log(`loading ${type} category`);
     current_type = type;
+    let fetch_str;
+    let custom = false;
 
     if (cached_parts[type]) {
         console.log(`${type} parts loaded from cache`);
@@ -212,69 +219,59 @@ function loadParts(type) {
         return;
     }
 
-    if (type !== "customparts.php") {
-        //fetch(`https://susstevedev.github.io/gr8brik/parts/${type}.json`)
-        fetch(`${gh_base_url}part_lists/${type}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(`${type} parts loaded`);
-                displayed_parts = data;
-                cached_parts[type] = data;
-                displayParts(displayed_parts, true);
-            })
-            .catch(err => {
-                console.error('error loading parts ', err);
-                tooltip('Failed to load parts');
-            });
+    if (type !== "custom") {
+        fetch_str = fetch(gh_base_url + "part_lists/" + type)
     } else {
-        if (scene.userData.customParts === false) {
-            console.warn("Custom parts disabled");
-            return;
-        }
-
-        fetch(`customparts.php`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(`Custom parts loaded`);
-                tooltip('Custom parts loaded');
-                displayed_parts = data;
-                cached_parts[type] = data;
-
-                const container = document.getElementById("select-block");
-                container.innerHTML = '';
-
-                displayed_parts.forEach(part => {
-                    const span = document.createElement("span");
-                    span.id = part.reference;
-                    span.title = part.name;
-                    span.setAttribute("value", part.part);
-                    span.setAttribute("texture", part.texture);
-                    span.innerHTML = `
-								<img src="${part.texture}" loading="lazy" width="45px" />
-								<br />
-								<small class="part-list-number">${part.reference}</small>
-								&nbsp;
-								<!-- <small class="hover-only">${part.name}</small> -->
-							`;
-                    container.appendChild(span);
-                });
-            })
-            .catch(err => {
-                console.error('error loading parts ', err);
-                tooltip('Failed to load parts');
-            });
+        fetch_str = fetch(start_url + "/ajax/customparts", {credentials: 'include'})
+        custom = true;
     }
+
+    fetch_str
+        .then(res => res.text())
+        .then(data => {
+            displayed_parts = data;
+            cached_parts[type] = data;
+            displayParts(displayed_parts, true, custom);
+        })
+        .catch(err => {
+            console.error(err);
+        });
 }
 
 // display parts function
-function displayParts(displayed_parts, new_category) {
+function displayParts(displayed_parts, new_category, custom = false) {
     let select_block_contain = document.getElementById("select-block");
+    displayed_parts = JSON.parse(displayed_parts);
 
     let MAX_LOAD_AMOUNT = 50;
     let currentIndex = 0;
     let observer = null;
     let sentinel = null;
     let isRendering = false;
+
+    if(displayed_parts.error && displayed_parts.code) {
+        console.error('error fetching custom parts ' + displayed_parts.code);
+        let error = "Something went wrong.";
+
+        if(displayed_parts.code == "LOGGED_OUT") {
+            error = "Please login to view and add custom parts to the scene.";
+        }
+
+        if(displayed_parts.code == "INV_LOGIN") {
+            error = "Invalid login.";
+        }
+
+        if(displayed_parts.code == "USR_NOT_VERIFY") {
+            error = "Please verify your account to view and add custom parts to the scene.";
+        }
+
+        if(displayed_parts.code == "NO_PARTS") {
+            error = "No parts found in query.";
+        }
+
+        tooltip(error);
+        return;
+    }
 
     displayed_parts = displayed_parts.sort((a, b) => a.name.length - b.name.length);
 
@@ -322,16 +319,32 @@ function displayParts(displayed_parts, new_category) {
 
         for (let i = startIndex; i < loadLimit; i++) {
             let part = displayed_parts[i];
-
             let span = document.createElement("span");
-            span.id = part.file;
+
+            let icon_path;
+            let part_file_name;
+            let part_file;
+            let texture;
+
+            if(custom) {
+                icon_path = part.texture;
+                part_file_name = part.reference;
+                part_file = part.part;
+                span.setAttribute("texture", part.texture);
+            } else {
+                icon_path = `${ldraw_icon_path + part.file.split(".")[0]}.png`;
+                part_file_name = part.file.split(".")[0];
+                part_file = part.file;
+            }
+
+            span.id = part_file;
             span.title = part.name;
             span.classList.add('ui-tooltip');
-            span.setAttribute("value", part.file);
+            span.setAttribute("value", part_file);
             span.innerHTML = `
-                <img src="${ldraw_icon_path + part.file.split(".")[0]}.png" loading="lazy" />
+                <img src="${icon_path}" loading="lazy" />
                 <br />
-                <small class="part-list-number">${part.file.split(".")[0]}</small>
+                <small class="part-list-number">${part_file_name}</small>
                 <small class="ui-tooltip-text">${part.name}</small>
             `;
 
@@ -447,7 +460,7 @@ document.getElementById("select-block").addEventListener("click", function (e) {
         'matrixw': {},
     };
 
-    addBlockV3(partJson, span, original_img, null, null)
+    addBlockV3(partJson, span, original_img, null, null);
 });
 
 // list for items that are already in the scene
@@ -751,7 +764,9 @@ document.getElementById("part-type-filter").addEventListener("change", function 
 });
 
 document.getElementById("clear-scene").addEventListener("click", function () {
-    wipe_scene();
+    if (confirm("Are you sure you want to proceed? Doing so will clear your current scene.")) {
+        wipe_scene();
+    };
 });
 
 // Transparency
@@ -780,8 +795,10 @@ document.querySelectorAll(".read_autosave").forEach(elm => {
 });
 
 document.getElementById("duplicate-part").addEventListener("click", function () {
-    if (selectedObject) {
-        duplicatePart();
+    if (multiSelectedObject) {
+        let obj = duplicatePart();
+        scene.add(obj);
+        statehistory.saveState();
     }
 });
 
@@ -1243,7 +1260,9 @@ function loadJSONFromCloud(model, open = true) {
             tooltip('Importing creation "' + data.name + '"');
 
             if (modelData) {
-                fetch(start_url + `${data.model}`)
+                fetch(start_url + `${data.model}`, {
+                    credentials: 'include',
+                })
                     .then(res => res.json())
                     .then(data => {
                         if (data === null) {
@@ -1545,6 +1564,7 @@ async function loadLegacyJSON(data) {
     };
 
     let modelName = "Unnamed legacy project";
+
     for (const block of data) {
         let block2 = {};
         block2.matrixw = new THREE.Matrix4();
@@ -1561,7 +1581,7 @@ async function loadLegacyJSON(data) {
 
         if (Array.isArray(block?.intersect?.object?.object?.matrix) && block.intersect.object.object.matrix.length === 16) {
             const partmatrix = new THREE.Matrix4().fromArray(block.intersect.object.object.matrix);
-            const transformMatrix = new THREE.Matrix4().makeScale(-1, -1, 1);
+            const transformMatrix = new THREE.Matrix4().makeScale(1, 1, 1);
 
             partmatrix.premultiply(transformMatrix);
             block2.matrixw.copy(partmatrix);
@@ -1609,7 +1629,6 @@ async function loadLegacyJSON(data) {
 
         try {
             await new Promise((resolve, reject) => {
-                console.log(block2);
                 addBlockV3(block2, null, null, resolve, reject);
             });
         } catch (err) {
@@ -1948,7 +1967,7 @@ function init() {
     }
 
     function update_camera() {
-        let activeId = scene.userData.camera.selected ?? 0;
+        let activeId = scene.userData.activeCameraId ?? 0;
         let cameraScene = scene.userData.camera;
         let camConfig = cameraScene.find(c => c.id === activeId);
 
@@ -1992,7 +2011,8 @@ function init() {
             camera.position.set(camConfig.pos.x, camConfig.pos.y, camConfig.pos.z);
             camera.name = camConfig.name || "Default Camera";
 
-            document.getElementById("current-camera").innerText = camera.name;
+            document.querySelector("#current-camera .text").innerText = camera.name;
+            document.querySelector("#current-camera .pos").innerText = camConfig.pos.x + ", " + camConfig.pos.y + ", " + camConfig.pos.z;
             camera.updateProjectionMatrix();
 
             if (typeof controls !== "undefined" && controls) {
@@ -2005,6 +2025,7 @@ function init() {
         }
     }
     update_camera();
+    window.update_camera = update_camera;
 
     // Lighting
     ambient_lighting = new THREE.AmbientLight(0xdddddd, 1);
@@ -2040,6 +2061,7 @@ function init() {
 
     raycaster = new THREE.Raycaster();
     mouse = new THREE.Vector2();
+    let _clipboard = null;
 
     window.addEventListener('keydown', function (event) {
         let activeElement = document.activeElement;
@@ -2048,41 +2070,66 @@ function init() {
             return;
         }
 
-        switch (event.code) {
-            case 'KeyT':
-                moveBlock('t')
-                break
-            case 'KeyR':
-                moveBlock('r')
-                break
-            case 'KeyS':
-                moveBlock('s')
-                break
-            case 'Escape':
-                selector.clearSelection(multiSelectedObject);
-                break
-            case 'KeyG':
-                groupParts(selectionGroup);
-                break
-            case 'Delete':
-                deleteBlock(getPartByUUID());
-                break
-            case 'ArrowUp':
-                selectedObject.rotation.x -= THREE.MathUtils.degToRad(45);
-                updateSceneData();
-                break;
-            case 'ArrowDown':
-                selectedObject.rotation.x += THREE.MathUtils.degToRad(45);
-                updateSceneData();
-                break;
-            case 'ArrowLeft':
-                selectedObject.rotation.y -= THREE.MathUtils.degToRad(45);
-                updateSceneData();
-                break;
-            case 'ArrowRight':
-                selectedObject.rotation.y += THREE.MathUtils.degToRad(45);
-                updateSceneData();
-                break;
+        if (event.ctrlKey) {
+            switch (event.code) {
+                case 'KeyC':
+                    event.preventDefault();
+                    _clipboard = duplicatePart();
+                    break
+                case 'KeyV':
+                    event.preventDefault();
+                    if(_clipboard && _clipboard.isMesh && _clipboard?.userData?.ldraw) {
+                        scene.add(_clipboard);
+                        statehistory.saveState();
+                    }
+                    break
+                case 'KeyS':
+                    event.preventDefault();
+                    document.getElementById("save-popup").style.display = "block";
+                    break
+            }
+        } else {
+            switch (event.code) {
+                case 'KeyT':
+                    moveBlock('t')
+                    break
+                case 'KeyR':
+                    moveBlock('r')
+                    break
+                case 'KeyS':
+                    moveBlock('s')
+                    break
+                case 'Escape':
+                    event.preventDefault();
+                    selector.clearSelection(multiSelectedObject);
+                    break
+                case 'KeyG':
+                    groupParts(selectionGroup);
+                    break
+                case 'Delete':
+                    deleteBlock(getPartByUUID());
+                    break
+                case 'ArrowUp':
+                    event.preventDefault();
+                    multiSelectedObject.rotation.x -= THREE.MathUtils.degToRad(45);
+                    updateSceneData();
+                    break;
+                case 'ArrowDown':
+                    event.preventDefault();
+                    multiSelectedObject.rotation.x += THREE.MathUtils.degToRad(45);
+                    updateSceneData();
+                    break;
+                case 'ArrowLeft':
+                    event.preventDefault();
+                    multiSelectedObject.rotation.y -= THREE.MathUtils.degToRad(45);
+                    updateSceneData();
+                    break;
+                case 'ArrowRight':
+                    event.preventDefault();
+                    multiSelectedObject.rotation.y += THREE.MathUtils.degToRad(45);
+                    updateSceneData();
+                    break;
+            }
         }
     })
 
@@ -2103,6 +2150,11 @@ function init() {
     let original_pos = new THREE.Vector3();
     let original_rot = new THREE.Euler();
     let init_control_drag = false;
+
+    controls.addEventListener('change', function() {
+        document.querySelector("#current-camera .pos").innerText = Math.round(camera.position.x) + ", " + Math.round(camera.position.y) + ", " + Math.round(camera.position.z);
+    });
+
 
     transformControls.addEventListener('mouseDown', function () {
         controls.enabled = false;
@@ -2200,6 +2252,10 @@ function init() {
     versionstrings.forEach(elm => {
         elm.textContent = window.version;
     });
+
+    if (document.getElementById("preloaded-logo")) {
+        document.getElementById("preloaded-logo").style.display = "none";
+    }
 
     initRenderer();
 }
@@ -3032,9 +3088,7 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
         multiSelectedObject = new Set();
         scene.add(blockGroup);
 
-        blocks.push(blockGroup);
         blockGroups.push(blockGroup);
-        blockGroup.sceneCount = blocks.length;
 
         if (show_import_animation === true) {
             tooltip(`Added part ${part.replace("parts/", "")}`);
@@ -3249,7 +3303,7 @@ function addPartMaterials(group, partJson, partMat, partMatrixWorld, partIsLdr =
                         child.material[index] = mat.clone();
                         child.material[index].needsUpdate = true;
                         child.material[index].name = child.material[index].name + '_' + makeid(5);
-                        child.material[index].userData.colorcode = mat.userData.code;
+                        child.material[index].userData.colorcode = mat.userData.code ?? 0;
                     }
                 });
             }
@@ -3258,21 +3312,23 @@ function addPartMaterials(group, partJson, partMat, partMatrixWorld, partIsLdr =
         const textureLoader = new THREE.TextureLoader();
 
         if (child.material && child.isMesh && !child.material.map && !child.isLineSegments && partJson.texturedata && !Array.isArray(child.material)) {
+            child.userData.isTexture = true;
             textureLoader.load(partJson.texturedata, (texturemap) => {
                 texturemap.colorSpace = THREE.SRGBColorSpace;
                 texturemap.wrapS = THREE.RepeatWrapping;
                 texturemap.wrapT = THREE.RepeatWrapping;
                 texturemap.needsUpdate = true;
 
-                const decalMat = new THREE.MeshStandardMaterial({
+                let decalMat = {
                     map: texturemap,
                     transparent: true,
                     alphaTest: 0.5,
-                    side: THREE.FrontSide
-                });
+                    side: THREE.FrontSide,
+                    color: new THREE.Color("#ffffff"),
+                };
 
-                child.material = decalMat;
-                child.material.color = new THREE.Color("#ffffff");
+                child.material = child.material.clone();
+                Object.assign(child.material, decalMat);
                 child.material.needsUpdate = true;
                 child.userData.main_mat_index = child.material[1];
 
@@ -3294,7 +3350,7 @@ function addPartMaterials(group, partJson, partMat, partMatrixWorld, partIsLdr =
                     child.userData.textureData = dataUrl;
                 });
             }, undefined, (err) => {
-                console.warn("Texture load failed or doesn't exist: " + err);
+                console.warn("texture load failed " + err);
             });
         }
 
@@ -3332,9 +3388,11 @@ function addPartMaterials(group, partJson, partMat, partMatrixWorld, partIsLdr =
     blockGroup.userData.partName = partName;
     scene.add(blockGroup);
 
-    blocks.push(blockGroup);
     blockGroups.push(blockGroup);
     selector.selectObject(blockGroup);
+
+    let grid = new GridClass();
+    grid.update(blockGroup);
 
     updateBLItems();
     updatecolorelement();
@@ -3652,6 +3710,7 @@ function getBLChildren(node) {
 function updateBLItems() {
     const items = getBLItems();
     const blockList = document.getElementById('block-list');
+    let partCount = 0;
 
     blockList.innerHTML = "";
 
@@ -3659,6 +3718,15 @@ function updateBLItems() {
         const item = renderBLItem(obj);
         blockList.appendChild(item);
     });
+
+    //part count at bottom of page
+    scene.traverse((obj) => {
+        if (obj.visible && obj.userData?.isBlock) {
+            partCount++;
+        }
+    });
+
+    document.querySelector('#part-count .count').innerHTML = partCount;
 }
 
 function renderBLItem(obj) {
@@ -3817,18 +3885,45 @@ function getPartByUUID() {
     return obj;
 }
 
-function duplicatePart() {
-    if (selectedObject) {
-        part = `parts/${selectedObject.userData.parentName}`;
-        partName = selectedObject.userData.parentName;
-        partColor = `#${selectedObject.material.color.getHexString().toLowerCase()}`;
-
-        selectedObject.updateMatrixWorld(true);
-        let partMatrixW = selectedObject.matrixWorld.clone();
-
-        addBlockV2(part, partColor, partMatrixW, null, null, part, null, null, null, null);
-        statehistory.saveState();
+/*function duplicatePart() {
+    if(!multiSelectedObject) {
+        return;
     }
+
+    if (multiSelectedObject.size > 1) {
+        tooltip('You can only duplicate one part at a time')
+        return;
+    }
+
+    let clone;
+
+    console.log(selectionGroup);
+
+    clone = selectionGroup.clone();
+    clone.material = selectionGroup.material.clone(); 
+    scene.add(clone);
+
+    statehistory.saveState();
+}*/
+
+function duplicatePart() {
+    if (!multiSelectedObject || multiSelectedObject.size === 0) {
+        return;
+    }
+
+    if (multiSelectedObject.size > 1) {
+        tooltip('You can only duplicate one part at a time');
+        return;
+    }
+
+    let ogmesh = Array.from(multiSelectedObject)[0];
+    let clone = ogmesh.clone();
+
+    if (clone.material) {
+        clone.material = clone.material.clone();
+    }
+
+    return clone;
 }
 
 document.getElementById("part-library-filter").addEventListener("change", function () {
@@ -3856,11 +3951,19 @@ function generateSceneJSON(legacy = false) {
         blocks: []
     };
 
-    blockGroups.forEach(function (group) {
+    console.log(blockGroups);
+
+    scene.traverse(function (o) {
+        if (o.isMesh && o.userData.isBlock) {
+            console.log(o);
+        }
+    });
+
+    /*blockGroups.forEach(function (group) {
         if (!group) {
             return;
-        }
-
+        }*/
+    scene.traverse(function (group) {
         const meshes = [];
 
         group.traverse(function (child) {
@@ -3915,6 +4018,7 @@ function generateSceneJSON(legacy = false) {
                         texturedata: mesh_child.userData.textureData || null,
                         opacity: mat_opacity,
                     }
+                    console.log(materialData);
                     materials.push(materialData);
                     LAYER_INDEX += 1;
                 });
@@ -3934,6 +4038,7 @@ function generateSceneJSON(legacy = false) {
                 const materialData = {
                     id: mesh_child.userData.id || mesh_child.uuid,
                     name: mesh_child.material.name,
+                    obj: mesh_child.userData.id || mesh_child.uuid,
                     colorcode: mesh_child.material.userData.colorcode || 0,
                     texturedata: mesh_texturedata || null,
                     opacity: mesh_opacity,
@@ -4432,7 +4537,7 @@ class SelectorClass {
 
     selectObject(obj, mode = "replace") {
         while (obj?.parent && !obj?.userData?.isBlock && !obj?.userData?.ldraw && !obj?.userData?.isGroup) {
-            obj = this.getIntersects(obj);
+            obj = obj.parent;
         }
 
         if (!obj?.userData?.isBlock && !obj?.userData?.ldraw && !obj?.userData?.isGroup) {
@@ -4452,6 +4557,20 @@ class SelectorClass {
         this.updateSelection();
     }
 
+    getParent(child) {
+        let uuid = child.userData.ogpraent;
+
+        if (uuid) {
+            let parent = scene.getObjectByProperty('uuid', uuid);
+
+            if (parent) {
+                return parent;
+            }
+        }
+
+        return scene;
+    }
+
     updateSelection() {
         if (multiSelectedObject.size === 0) {
             transformControls.detach();
@@ -4461,7 +4580,7 @@ class SelectorClass {
 
         let children = [...selectionGroup.children];
         children.forEach(child => {
-            let ogparent = child.userData.ogparent || scene;
+            let ogparent = this.getParent(child);
             ogparent.attach(child);
         });
 
@@ -4480,8 +4599,8 @@ class SelectorClass {
         selectionGroup.updateMatrixWorld(true);
 
         multiSelectedObject.forEach(o => {
-            if (!o.userData.ogparent) {
-                o.userData.ogparent = o.parent;
+            if (!o.userData.ogparent && o.parent) {
+                o.userData.ogparent = o.parent.uuid;
             }
 
             selectionGroup.attach(o);
@@ -4520,7 +4639,7 @@ class SelectorClass {
         unhighlight(obj);
         multiSelectedObject.delete(obj);
 
-        const ogparent = obj.userData.ogparent || scene;
+        const ogparent = this.getParent(obj);
         ogparent.attach(obj);
 
         obj.traverse(child => {
@@ -4619,11 +4738,6 @@ document.getElementById("redo-action").addEventListener("click", function () {
     statehistory.redo();
 });
 
-document.getElementById("resetCamera").addEventListener("click", function () {
-    controls.reset();
-    updateSceneData();
-});
-
 function animate() {
     stats.update();
     document.querySelector('.stats-contain').appendChild(stats.domElement);
@@ -4640,13 +4754,20 @@ async function initRenderer() {
 }
 
 function tooltip(text) {
+    const existing_tooltip = document.getElementById('tooltip');
+
+    if(existing_tooltip) {
+        existing_tooltip.remove();
+    }
+
     const tooltip = document.createElement('div');
 
-    tooltip.textContent = text;
-    tooltip.setAttribute('id', 'tooltip');
-    document.body.appendChild(tooltip);
-
     if (tooltip) {
+        tooltip.innerHTML = text;
+        tooltip.setAttribute('id', 'tooltip');
+
+        document.body.appendChild(tooltip);
+
         setTimeout(() => {
             tooltip.remove();
         }, 5500);
@@ -4684,10 +4805,10 @@ function tooltipAlert(title, text, additionalText, buttonText) {
     }
 }
 
-window.addEventListener('load', () => {
+/*window.addEventListener('load', () => {
     setTimeout(() => {
         if (document.getElementById("preloaded-logo")) {
             document.getElementById("preloaded-logo").style.display = "none";
         }
     }, 500);
-});
+});*/
