@@ -374,6 +374,12 @@ kbd {
   bottom: 35%;
 }
 
+#left-container #cutespinny {
+  position: relative;
+  top: 50%;
+  left: 50%;
+}
+
 #tooltipAlert {
   border-radius: 2px;
   padding: 10px;

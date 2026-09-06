@@ -227,7 +227,7 @@ function loadParts(type) {
     }
 
     fetch_str
-        .then(res => res.text())
+        .then(res => res.json())
         .then(data => {
             displayed_parts = data;
             cached_parts[type] = data;
@@ -241,8 +241,7 @@ function loadParts(type) {
 // display parts function
 function displayParts(displayed_parts, new_category, custom = false) {
     let select_block_contain = document.getElementById("select-block");
-    displayed_parts = JSON.parse(displayed_parts);
-
+    let cutespinny = document.getElementById('cutespinny');
     let MAX_LOAD_AMOUNT = 50;
     let currentIndex = 0;
     let observer = null;
@@ -304,15 +303,14 @@ function displayParts(displayed_parts, new_category, custom = false) {
 
         isRendering = true;
 
-        let currentCount = select_block_contain.children.length - 1;
-        let loadLimit = Math.min(currentIndex + MAX_LOAD_AMOUNT, displayed_parts.length);
+        cutespinny.style.display = 'block';
 
+        let loadLimit = Math.min(currentIndex + MAX_LOAD_AMOUNT, displayed_parts.length);
         if (loadLimit > displayed_parts.length) {
             loadLimit = displayed_parts.length;
         }
 
         let startIndex = currentIndex;
-
         if (startIndex >= displayed_parts.length) {
             return;
         }
@@ -324,7 +322,6 @@ function displayParts(displayed_parts, new_category, custom = false) {
             let icon_path;
             let part_file_name;
             let part_file;
-            let texture;
 
             if(custom) {
                 icon_path = part.texture;
@@ -357,6 +354,7 @@ function displayParts(displayed_parts, new_category, custom = false) {
             observer.disconnect();
         }
 
+        cutespinny.style.display = 'none';
         isRendering = false;
     }
 
@@ -369,8 +367,8 @@ function displayParts(displayed_parts, new_category, custom = false) {
         currentIndex = 0;
 
         let existingSpans = select_block_contain.querySelectorAll('span');
-        existingSpans.forEach(span => span.remove());
 
+        existingSpans.forEach(span => span.remove());
         prepareParts();
         renderParts();
     } else {
@@ -383,32 +381,26 @@ function displayParts(displayed_parts, new_category, custom = false) {
 // Will have bugs please report them if you can
 function searchParts() {
     let searchbox = document.getElementById("search-parts");
+    let value = searchbox.value.toLowerCase().replace(/\s+/g, " ").trim();
+    let items = displayed_parts;
+    let matchedItems = [];
+    let queryTokens = value.toLowerCase().trim().split(/\s+/).filter(Boolean);
 
-    const value = searchbox.value.toLowerCase().replace(/\s+/g, " ").trim();
-    const items = displayed_parts;
+    console.log(items);
 
-    const matchedItems = [];
+    for (let i = 0; i < items.length; i++) {
+        let item = items[i];
 
-    const queryTokens = value
-        .toLowerCase()
-        .trim()
-        .split(/\s+/)
-        .filter(Boolean);
-
-    items.forEach(item => {
-        const title_txt = (item.name || "").toLowerCase();
-        const num = (item.file || "").toLowerCase();
-
-        const match = queryTokens.every(token =>
-            title_txt.includes(token) || num.includes(token)
-        );
+        let title_txt = (item.name || "").toLowerCase();
+        let num = (item.file || "").toLowerCase();
+        let match = queryTokens.every(token => title_txt.includes(token) || num.includes(token));
 
         if (match) {
             matchedItems.push(item);
         }
-    });
+    }
 
-    const container = document.getElementById("select-block");
+    console.log(matchedItems);
     displayParts(matchedItems, true);
 }
 
@@ -507,7 +499,7 @@ document.getElementById("download-json").addEventListener("click", function () {
         const name = document.querySelector("#save-popup input[name='name']").value.trim();
         const desc = document.querySelector("#save-popup textarea[name='desc']").value.trim();
         const visible = document.querySelector('input[name="visible"]:checked');
-        const can_edit = document.querySelector('input[name="can_edit"]');
+        const can_edit = document.querySelector('input[name="can_edit"]').checked;
         const screenshot = capture();
 
         this.innerHTML = `<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>`;
@@ -1754,35 +1746,46 @@ class GridClass {
         this.MIN_STUDS = 16;
         this.GRID_STUD_X = this.MIN_STUDS;
         this.GRID_STUD_Z = this.MIN_STUDS;
+        this.min_x = -(this.MIN_STUDS / 2);
+        this.max_x = this.MIN_STUDS / 2;
+        this.min_z = -(this.MIN_STUDS / 2);
+        this.max_z = this.MIN_STUDS / 2;
     }
 
     update(obj) {
         let changed = false;
-        let req_x = Math.ceil((Math.abs(obj.position.x) * 2) / 20);
-        let req_z = Math.ceil((Math.abs(obj.position.z) * 2) / 20);
+        let cell_x = Math.floor(obj.position.x / 20);
+        let cell_z = Math.floor(obj.position.z / 20);
 
-        if (req_x > this.GRID_STUD_X) {
-            this.GRID_STUD_X = Math.max(this.MIN_STUDS, req_x);
+        if (cell_x < this.min_x) {
+            this.min_x = cell_x;
+            changed = true;
+        } else if (cell_x >= this.max_x) {
+            this.max_x = cell_x + 1;
             changed = true;
         }
 
-        if (req_z > this.GRID_STUD_Z) {
-            this.GRID_STUD_Z = Math.max(this.MIN_STUDS, req_z);
+        if (cell_z < this.min_z) {
+            this.min_z = cell_z;
+            changed = true;
+        } else if (cell_z >= this.max_z) {
+            this.max_z = cell_z + 1;
             changed = true;
         }
 
         if (changed) {
-            this.create(this.GRID_STUD_X, this.GRID_STUD_Z);
+            this.create(this.min_x, this.max_x, this.min_z, this.max_z);
         }
     }
 
-    create(studs_x = this.MIN_STUDS, studs_z = this.MIN_STUDS) {
+    create(minX = this.min_x, maxX = this.max_x, minZ = this.min_z, maxZ = this.max_z) {
         const color = isDark() ? 0xfafafa : 0x242424;
         const texturepath = isDark() ? 'img/misc/griddark.webp' : 'img/misc/gridlight.webp';
+        
+        const studs_x = maxX - minX;
+        const studs_z = maxZ - minZ;
         const sizeX = studs_x * 20;
         const sizeZ = studs_z * 20;
-        const halfX = sizeX / 2;
-        const halfZ = sizeZ / 2;
 
         if (!imagePlane) {
             const textureLoader = new THREE.TextureLoader();
@@ -1805,6 +1808,8 @@ class GridClass {
         }
 
         imagePlane.scale.set(sizeX, sizeZ, 1);
+        imagePlane.position.x = (minX + maxX) * 20 / 2;
+        imagePlane.position.z = (minZ + maxZ) * 20 / 2;
         planeTexture.repeat.set(studs_x, studs_z);
 
         if (planeTexture.source && planeTexture.source.data && !planeTexture.source.data.src.includes(texturepath)) {
@@ -1829,18 +1834,17 @@ class GridClass {
         }
 
         const vertices = [];
-        for (let x = -halfX; x <= halfX; x += 20) {
-            vertices.push(
-                x, 0, -halfZ,
-                x, 0,  halfZ
-            );
+        const startX = minX * 20;
+        const endX = maxX * 20;
+        const startZ = minZ * 20;
+        const endZ = maxZ * 20;
+
+        for (let x = startX; x <= endX; x += 20) {
+            vertices.push(x, 0, startZ, x, 0, endZ);
         }
 
-        for (let z = -halfZ; z <= halfZ; z += 20) {
-            vertices.push(
-                -halfX, 0, z,
-                halfX, 0, z
-            );
+        for (let z = startZ; z <= endZ; z += 20) {
+            vertices.push(startX, 0, z, endX, 0, z);
         }
 
         const geometry = new THREE.BufferGeometry();
@@ -1853,9 +1857,9 @@ class GridClass {
         });
 
         grid_lines = new THREE.LineSegments(geometry, material);
-        grid_lines.position.y = -0.1;
+        grid_lines.position.set(0, -0.1, 0); 
         scene.add(grid_lines);
-    };
+    }
 
     remove = function() {
         if(imagePlane) {
@@ -3289,10 +3293,17 @@ function addPartMaterials(group, partJson, partMat, partMatrixWorld, partIsLdr =
 
                                 if (match?.colorcode) {
                                     let colorMatch = colorMap.get(match.colorcode);
-                                    child.material[index].color = new THREE.Color(colorMatch);
-                                    child.material[index].userData.colorcode = partMat?.colorcode;
+
+                                    if(colorMatch) {
+                                        child.material[index].color = new THREE.Color(colorMatch);
+                                        child.material[index].userData.colorcode = partMat?.colorcode;
+                                    } else {
+                                        child.material[index].color = new THREE.Color("#ffffff");
+                                        child.material[index].userData.colorcode = '15';
+                                    }
                                 } else {
                                     child.material[index].color = new THREE.Color("#ffffff");
+                                    child.material[index].userData.colorcode = '15';
                                 }
                             } else {
                                 child.material[index].color = new THREE.Color(partMat || "#ffffff");
@@ -3731,16 +3742,18 @@ function updateBLItems() {
 
 function renderBLItem(obj) {
     const id = obj.uuid;
+    const colormap = new Map(ldrawColors.map(c => [String(c.code), c.name]));
+    const main_mat_index = obj?.userData?.main_mat_index || 1;
 
-    const colormap = new Map(
-        ldrawColors.map(c => [String(c.code), c.name])
-    );
+    //quicky for fixing some issues with multi colored parts :p
+    let colorid;
+    if(Array.isArray(obj?.material)) {
+        colorid = String(obj.material[main_mat_index].userData?.colorcode) || '4';
+    } else {
+        colorid = String(obj.material?.userData?.colorcode) || '4';
+    }
 
-    const colorid = obj.material?.userData?.colorcode || '4';
-
-    const color =
-        colormap.get(String(colorid).trim()) || 'Unknown color';
-
+    const color = colormap.get(colorid) || 'Unknown color';
     let part = "Unknown part";
     let partIcon = `${ldraw_icon_path}3001.png`;
 

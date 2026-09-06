@@ -80,11 +80,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function ui_event_listens() {
         // login
-        if (!window.loggedin) {
-            document.getElementById("username-field").addEventListener('click', function () {
-                document.getElementById("login-popup").style.display = 'block';
-            });
-        }
+        document.getElementById("username-field").addEventListener('click', function () {
+            if (window.loggedin) {
+                return;
+            }
+            document.getElementById("login-popup").style.display = 'block';
+        });
 
         document.querySelector("#login-popup .btn-alt").addEventListener("click", function () {
             document.getElementById("login-popup").style.display = "none";
@@ -161,7 +162,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         });
-
 
         // file menu
         document.querySelector("#menu-file").addEventListener("click", function () {
