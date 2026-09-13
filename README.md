@@ -18,7 +18,6 @@ Not updated automatically. Whenever something is complete I update it. For the r
 * [LDrawLoader](https://threejs.org/docs/#examples/en/loaders/LDrawLoader) - LDraw parts loader for Three.js
 * [OrbitControls](https://threejs.org/docs/#examples/en/controls/OrbitControls) - Camera navigation for Three.js
 * [TransformControls](https://threejs.org/docs/#examples/en/controls/TransformControls) - Translation/Rotation/Scale tools for Three.js
-* [jQuery](https://jquery.com/) - DOM utilities, no longer used but included
 * [FontAwesome v4](https://fontawesome.com/v4/) - Icons
 
 ## license & credits
