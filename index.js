@@ -8,8 +8,8 @@ window.addEventListener('beforeunload', function (e) {
     e.returnValue = '';
 });
 
-window.version = '2026.08.14';
-console.log('Gr8brik ' + window.version);
+window.version = '2026.09b';
+console.info('Gr8brik ' + window.version);
 
 // new imports
 import * as THREE_NS from 'three';
@@ -2242,7 +2242,6 @@ function init() {
     });
 
     if (document.querySelector('.stats-contain') && !stats) {
-        console.log('test');
         stats = new Stats();
         stats.dom.classList.add('stats');
         stats.dom.style.left = '';
@@ -3158,8 +3157,6 @@ function addBlockV3(partJson, partSpan, originalPSImg, throwSuccess, throwError)
     part = partJson.ldraw;
     partMat = partJson.materials;
     partMatrixWorld = partJson.matrixw;
-    console.log(partMatrixWorld);
-    console.log(partMat);
 
     if (!part) {
         return;
@@ -3964,8 +3961,6 @@ function generateSceneJSON(legacy = false) {
         blocks: []
     };
 
-    console.log(blockGroups);
-
     scene.traverse(function (o) {
         if (o.isMesh && o.userData.isBlock) {
             console.log(o);
@@ -4141,7 +4136,7 @@ function generateSceneLXFML() {
             let ldraw_code = 15;
 
             if (!mesh_child.material.map && !mesh_child.isLineSegments) {
-                let ldraw_code = mesh_child.material?.userData?.colorcode;
+                ldraw_code = mesh_child.material?.userData?.colorcode;
                 colorID = lddmap.get(String(ldraw_code));
                 console.log(ldraw_code);
                 console.log(colorID);

@@ -267,6 +267,18 @@ kbd {
   display: none;
 }
 
+#welcome-popup {
+  height: 75%;
+
+  .start-image {
+    width: 640px;
+    height: 360px;
+    border-radius: 4px;
+    border: var(--ui-anti-color) 1px solid;
+    box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
+  }
+}
+
 #settings-popup {
   div[data-settingsid] {
     display: none;
@@ -723,6 +735,13 @@ kbd {
   height: 200px;
   z-index: 999998;
   border-radius: 50%;
+}
+
+#preloaded-logo .text {
+  z-index: 999998;
+  top: 75%;
+  position: absolute;
+  font-size: 20px;
 }
 
 #wgl-disabled {
