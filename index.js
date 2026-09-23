@@ -9,6 +9,7 @@ window.addEventListener('beforeunload', function (e) {
 });
 
 window.version = '2026.09b';
+window.CURRENT_APP = 'modeler';
 console.info('Gr8brik ' + window.version);
 
 // new imports
@@ -22,6 +23,7 @@ import { LDrawConditionalLineMaterial } from 'three/addons/materials/LDrawCondit
 import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
 import { HDRLoader } from 'three/addons/loaders/HDRLoader.js';
 import { OBJExporter } from 'three/addons/exporters/OBJExporter.js';
+import { DecalGeometry } from 'three/addons/geometries/DecalGeometry.js';
 import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
 import Stats from 'three/addons/libs/stats.module.js';
 
@@ -222,7 +224,7 @@ function loadParts(type) {
     if (type !== "custom") {
         fetch_str = fetch(gh_base_url + "part_lists/" + type)
     } else {
-        fetch_str = fetch(start_url + "/ajax/customparts", {credentials: 'include'})
+        fetch_str = fetch(start_url + "/ajax/custompartsv2", { method: "POST", credentials: 'include', headers: { "Content-Type": "application/json" }, body: JSON.stringify({all: true}) })
         custom = true;
     }
 
@@ -272,7 +274,9 @@ function displayParts(displayed_parts, new_category, custom = false) {
         return;
     }
 
-    displayed_parts = displayed_parts.sort((a, b) => a.name.length - b.name.length);
+    if(!custom) {
+        displayed_parts = displayed_parts.sort((a, b) => a.name.length - b.name.length);
+    }
 
     function prepareParts() {
         let oldSentinel = document.getElementById('scroll-sentinel');
@@ -328,6 +332,7 @@ function displayParts(displayed_parts, new_category, custom = false) {
                 part_file_name = part.reference;
                 part_file = part.part;
                 span.setAttribute("texture", part.texture);
+                span.setAttribute("textureID", part.id);
             } else {
                 icon_path = `${ldraw_icon_path + part.file.split(".")[0]}.png`;
                 part_file_name = part.file.split(".")[0];
@@ -440,19 +445,22 @@ document.getElementById("select-block").addEventListener("click", function (e) {
         "id": partName,
         "ldraw": partName,
         "texturedata": span.getAttribute("texture"),
+        "textureID": span.getAttribute("textureID"),
         'materials': [
             {
                 'id': partName,
                 'color': ldrawHexMap.get(partColor),
                 'colorcode': partColor,
                 "texturedata": span.getAttribute("texture"),
+                "textureID": span.getAttribute("textureID"),
                 "opacity": 1,
             },
         ],
         'matrixw': {},
     };
 
-    addBlockV3(partJson, span, original_img, null, null);
+    let pmanager = new PartManager();
+    pmanager.addPart(partJson, span, original_img, null, null);
 });
 
 // list for items that are already in the scene
@@ -618,7 +626,7 @@ let params = new URLSearchParams(window.location.search);
 let build_id = params.get("build_id");
 
 if (build_id !== undefined && build_id !== null) {
-    loadJSONFromCloud(build_id);
+    loadJSONFromCloud(build_id, true);
 }
 
 // import modal
@@ -999,138 +1007,8 @@ document.getElementById("selected-object-export-three").addEventListener("click"
     URL.revokeObjectURL(url);
 });
 
-/* function exportSceneToMPD(name) {
-    const lines = [];
-
-    const ldraw_color_map = {
-    "C91A09": 4, // Bright Red
-    "F8CC00": 14, // Bright Yellow
-    "0020A0": 12, // Bright Blue
-    "005700": 28, // Dark Green
-    "FE8A18": 10, // Bright Orange
-    "D941BB": 124, // Bright Violet / Dark Purple
-
-    "000000": 0, // Black
-    "FFFFFF": 15, // White
-    "747371": 294, // Dark Stone Grey / Dark Bluish Grey
-    "A3A2A4": 295, // Medium Stone Grey / Light Bluish Grey
-    "958A73": 5, // Brick Yellow / Tan
-    "6C5C4D": 8, // Dark Stone Grey / Dark Brown
-
-    "812A00": 308, // Reddish Brown
-    "5883C1": 23, // Medium Blue
-    "4B974B": 37, // Sand Green
-    "A52A2A": 59, // Dark Red
-    "B36D2C": 38, // Dark Orange
-    "FCB7BC": 223, // Bright Pink
-
-    "60C0E0": 212, // Bright Light Blue
-    "FBE696": 226, // Light Yellow
-    "84B68D": 36, // Bright Green
-    "92B28B": 335, // Bright Yellowish Green / Lime
-    "002A5A": 26, // Dark Blue
-    "DDDD22": 334, // Vibrant Yellow
-    };
-
-    lines.push(`0 FILE ${name}.ldr`);
-    lines.push(`0 ${name}`);
-    lines.push(`0 Name: ${name}.ldr`);
-    lines.push(`0 Author: Exported from Three.js`);
-    lines.push(`0 !LDRAW_ORG Model`);
-    lines.push(`0 !LICENSE Redistributable under CCAL version 2.0`);
-    lines.push(`0`);
-
-    scene.updateMatrixWorld(true);
-
-    scene.traverse(child => {
-    if (!child.isMesh || !child.userData.ldraw || !child.userData.isBlock) {
-        return;
-    }
-
-    const obj = child.clone();
-    obj.applyMatrix4(new THREE.Matrix4().makeScale(1, 1, -1));
-    obj.updateMatrixWorld(true);
-
-    let color_code = 16;
-    if(obj.material && !Array.isArray(obj.material)) {
-        const hex = obj.material.color.getHexString() || "ffffff";
-        color_code = ldraw_color_map[hex.toUpperCase()];
-    }
-
-    const file = obj.userData.ldraw.replace("parts/", "");
-    const color = color_code;
-
-    const pos = new THREE.Vector3();
-    const quat = new THREE.Quaternion();
-    const scale = new THREE.Vector3();
-    obj.matrixWorld.decompose(pos, quat, scale);
-
-    /* const matrix = new THREE.Matrix3().setFromMatrix4(obj.matrixWorld);
-
-    const e = matrix.elements;
-
-    const rot = e;
-    const x = pos.x;
-    const y = pos.y;
-    const z = pos.z; */
-
-//const scaleFactor = 1000 / 0.4;
-
-//const matrix = new THREE.Matrix3().setFromMatrix4(obj.matrixWorld);
-//const rot = matrix.elements.map(n => n.toFixed(5));
-//const e = matrix.elements;
-
-//const e = obj.matrixWorld.elements; */
-
-/*const rot = [
-    e[0], e[4], e[8],  e[12] * scaleFactor,
-    e[1], e[5], e[9],  e[13] * scaleFactor,
-    e[2], e[6], e[10], e[14] * scaleFactor,
-].map(n => n.toFixed(5)); */
-
-/* const x = (pos.x * scaleFactor).toFixed(2);
-const y = (pos.y * scaleFactor).toFixed(2);
-const z = (pos.z * scaleFactor).toFixed(2); */
-
-//const line = `1 ${color} ${x} ${y} ${z} ${rot.join(' ')} ${file}`;
-//const line = `1 ${color} ${rot.join(' ')} ${file}`;
-
-// const rot = [
-// e[0], e[4], e[8],  e[12],
-//  e[1], e[5], e[9],  e[13],
-//   e[2], e[6], e[10], e[14],
-// ].map(n => n.toFixed(5));
-
-// const line = `1 ${color} ${rot[3]} ${rot[7]} ${rot[11]} ${rot[0]} ${rot[1]} ${rot[2]} ${rot[4]} ${rot[5]} ${rot[6]} ${rot[8]} ${rot[9]} ${rot[10]} ${file}`;
-
-//const x = (e[12] * scaleFactor).toFixed(2);
-//const y = (e[13] * scaleFactor).toFixed(2);
-//const z = (-e[14] * scaleFactor).toFixed(2);
-
-// const a = e[0].toFixed(5), b = e[4].toFixed(5), c = e[8].toFixed(5);
-//  const d = e[1].toFixed(5), e2 = e[5].toFixed(5), f = e[9].toFixed(5);
-// const g = e[2].toFixed(5), h = e[6].toFixed(5), i = e[10].toFixed(5);
-
-// const line = `1 ${color} ${x} ${y} ${z} ${a} ${b} ${c} ${d} ${e2} ${f} ${g} ${h} ${i} ${file}`;
-//lines.push(line);
-/* }); */
-
-/* let result =  lines.join('\n');
-const date = getDate();
-
-const blob = new Blob([result], { type: 'text/plain' });
-const url = URL.createObjectURL(blob);
-const a = document.createElement('a');
-a.href = url;
-a.download = `creation-${date}.mpd`;
-a.click();
-
-setTimeout(() => URL.revokeObjectURL(url), 10000);
-} */
-
 function exportSceneToMPD(name) {
     const lines = [];
-    const ldraw_color_map = new Map(ldrawColors.map(c => [c.code]));
 
     lines.push(`0 FILE ${name}.ldr`);
     lines.push(`0 ${name}`);
@@ -1225,8 +1103,16 @@ function loadJSONFromCloud(model, open = true) {
     fetch(start_url + `/ajax/build?buildId=${model}&fetch=true`, {
         credentials: 'include',
     })
-        .then(res => res.json())
+        .then(res => res.text())
         .then(data => {
+            try {
+                data = JSON.parse(data);
+            } catch (error) {
+                tooltip('Could not parse as JSON');
+                console.error(error);
+                return;
+            }
+
             if (data === null) {
                 tooltip('Empty response');
                 return;
@@ -1378,7 +1264,8 @@ document.getElementById("cre-import-ldr").addEventListener("change", function (e
                         matrixw: null
                     };
 
-                    addPartMaterials(part, partJson, partJson.materials, null, true);
+                    let pmanager = new PartManager();
+                    pmanager.addPartMaterials(part, partJson, partJson.materials, null, true);
                 }
 
                 document.title = filename + ' - ' + DEFAULT_TITLE;
@@ -1501,8 +1388,8 @@ async function loadSceneFromJSON(data) {
 
         try {
             await new Promise((resolve, reject) => {
-                //addBlockV2(part, partMaterials, partMatrixWorld, null, null, part, partTexture, partOpacity, resolve, reject);
-                addBlockV3(block, null, null, resolve, reject);
+                let pmanager = new PartManager();
+                pmanager.addPart(block, null, null, resolve, reject);
             });
         } catch (err) {
             console.warn(`Failed to add block: ${block.ldraw}`, err);
@@ -1621,7 +1508,8 @@ async function loadLegacyJSON(data) {
 
         try {
             await new Promise((resolve, reject) => {
-                addBlockV3(block2, null, null, resolve, reject);
+                let pmanager = new PartManager();
+                pmanager.addPart(block2, null, null, resolve, reject);
             });
         } catch (err) {
             console.warn(`Failed to add block: ${block2.ldraw}`, err);
@@ -1924,7 +1812,7 @@ function init() {
 
     // WebGl renderer
     if (!renderer) {
-        let options = { alpha: true, antialias: true };
+        let options = { alpha: true, antialias: true, precision: "mediump" };
         if (!scene.userData.use_webgpu) {
             renderer = new THREE.WebGLRenderer(options);
         } else {
@@ -2054,7 +1942,6 @@ function init() {
     grid_class.create();
 
     // please read ldrawloader docs before changing these values
-    //const ldraw_path = "https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/"; // FOR TESTING ONLY
 
     ldraw_loader = new THREE.LDrawLoader();
     ldraw_loader.preloadMaterials(ldraw_path + 'colors/ldconfig.ldr');
@@ -2090,6 +1977,11 @@ function init() {
                 case 'KeyS':
                     event.preventDefault();
                     document.getElementById("save-popup").style.display = "block";
+                    break
+                case 'KeyD':
+                    event.preventDefault();
+                    let decal = new Decalify(scene, camera);
+                    decal.init_ui();
                     break
             }
         } else {
@@ -2150,15 +2042,11 @@ function init() {
     });
 
     window.addEventListener('resize', onWindowResize, true);
-
-    let original_pos = new THREE.Vector3();
-    let original_rot = new THREE.Euler();
     let init_control_drag = false;
 
     controls.addEventListener('change', function() {
         document.querySelector("#current-camera .pos").innerText = Math.round(camera.position.x) + ", " + Math.round(camera.position.y) + ", " + Math.round(camera.position.z);
     });
-
 
     transformControls.addEventListener('mouseDown', function () {
         controls.enabled = false;
@@ -2218,8 +2106,7 @@ function init() {
             obj.position.copy(orig.pos).add(snapped_pos);
 
             const snapAngle = THREE.MathUtils.degToRad(45);
-            const delta_quat = new THREE.Quaternion()
-                .multiplyQuaternions(obj.quaternion, orig.quat.clone().invert());
+            const delta_quat = new THREE.Quaternion().multiplyQuaternions(obj.quaternion, orig.quat.clone().invert());
 
             const delta_euler = new THREE.Euler().setFromQuaternion(delta_quat, 'XYZ');
             const snapped_euler = new THREE.Euler(
@@ -2612,6 +2499,8 @@ window.changeBlockColor = function (color) {
         return;
     }
 
+    let pmanager = new PartManager();
+
     selectedObject.traverse((child) => {
         if (child.isMesh && child.material) {
 
@@ -2636,7 +2525,7 @@ window.changeBlockColor = function (color) {
 
                 const currentMat = child.material[targetIdx];
                 if (currentMat && currentMat.color && !currentMat.map) {
-                    child.material[targetIdx] = createMaterialv2(color);
+                    child.material[targetIdx] = pmanager.createMaterial(color);
                 }
 
                 document.querySelector('#selected-map').value = targetIdx;
@@ -2644,7 +2533,7 @@ window.changeBlockColor = function (color) {
 
                 //single material
             } else if (child.material.color) {
-                child.material = createMaterialv2(color);
+                child.material = pmanager.createMaterial(color);
             }
         }
     });
@@ -2704,6 +2593,9 @@ function deleteBlock(targetUUID) {
 
         selectionGroup.remove(part);
 
+        let grid_class_e = new GridClass();
+        grid_class_e.update(part);
+
         if (part.parent) {
             part.parent.remove(part);
         }
@@ -2745,51 +2637,350 @@ function deleteBlock(targetUUID) {
 }
 
 /* decal functions */
-function prep_decal_target(group) {
-    const geos = [];
 
-    group.updateMatrixWorld(true);
+class Decalify {
+    constructor(scene, camera) {
+        this.camera = camera;
+        this.size = new THREE.Vector3(20, 20, 40);
+        this.activeTexture = null;
+        this.selectedObject = null;
 
-    group.traverse((node) => {
-        if (node.isMesh && !node.isLine && node.geometry) {
-            const tempgeo = node.geometry.clone();
+        this.proxyHelper = null;
+        this.activeDecalMesh = null;
 
-            tempgeo.applyMatrix4(node.matrixWorld);
-            geos.push(tempgeo);
+        this.image_name = null;
+        this.image_ref = null;
+
+        this.transformControls = new TransformControls(this.camera, renderer.domElement);
+        console.log(this.transformControls);
+        scene.add(this.transformControls.getHelper());
+
+        this.setup_transform_events();
+        this.setup_hotkeys();
+    }
+
+    popup_toggle() {
+        const popup = document.getElementById('decal-popup');
+        if (popup) {
+            popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
         }
-    });
-
-    if (geos.length === 0) {
-        return null;
     }
 
-    const target = BufferGeometryUtils.mergeGeometries(geos);
-    const targetMesh = new THREE.Mesh(targetGeo);
-    targetMesh.matrixAutoUpdate = false;
-    targetMesh.matrixWorld.identity();
+    init_ui() {
+        this.popup_toggle();
+        const image_input = document.querySelector('#upload-part-decal--file');
+        const image_save = document.querySelector('#upload-part-decal--submit');
 
-    return targetMesh;
-}
+        if (image_input && !image_input.dataset.listenerAttached) {
+            image_input.dataset.listenerAttached = "true";
+            image_save.addEventListener('click', () => { this.handle_file_upload(image_input) });
+        }
 
-function serialize_decal_mesh(decalmesh, texture) {
-    const partid = decalmesh.userData.ldraw;
-
-    if (!partid) {
-        return new Error('Object has no ldraw part id');
+        this.selectedObject = [...multiSelectedObject][0] || selectionGroup.children[0] || null;
     }
 
-    const geometry = decalmesh.geometry;
-    const positions = geometry.attributes.position.array;
-    const uvs = geometry.attributes.uv.array;
+    handle_file_upload(input) {
+        this.cancel_session();
 
-    const customizedPartData = {
-        basePartId: partid,
-        texture: texture,
-        vertices: Array.from(positions),
-        uvs: Array.from(uvs)
-    };
+        const file = input.files[0];
+        if (!file) {
+            tooltip('No file selected');
+            return;
+        }
 
-    localStorage.setItem(partid + "_sticker_" + makeid(5), JSON.stringify(customizedPartData));
+        if (!this.selectedObject) {
+            tooltip('Select a part first');
+            return;
+        }
+
+        this.image_ref = document.querySelector('#upload-part-decal--ref').value || makeid(8);
+        this.image_name = document.querySelector('#upload-part-decal--name').value || 'Unnamed part';
+
+        const textureLoader = new THREE.TextureLoader();
+        const imageURL = URL.createObjectURL(file);
+
+        textureLoader.load(imageURL, (texture) => {
+            this.activeTexture = texture;
+            this.start_decal_session();
+        });
+    }
+
+    // Source - https://stackoverflow.com/a/18650249
+    // Posted by Arun Killu, modified by community. See post 'Timeline' for change history
+    // Retrieved 2026-09-22, License - CC BY-SA 4.0
+    async toB64(blobUrl) {
+        let res = await fetch(blobUrl);
+        let blob = await res.blob();
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = () => resolve(reader.result);
+            reader.onerror = (error) => reject(error);
+        });
+    }
+
+    start_decal_session() {
+        console.log(this.selectedObject);
+        console.log(this.activeTexture);
+
+        if (!this.selectedObject || !this.activeTexture) {
+            return;
+        }
+
+        this.popup_toggle();
+        tooltip('You can now ajust the texture on the object');
+        window.CURRENT_APP = 'texture';
+
+        const helperGeo = new THREE.BoxGeometry(this.size.x, this.size.y, this.size.z);
+        const helperMat = new THREE.MeshBasicMaterial({
+            color: 0x00ff00,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.4,
+            depthTest: false
+        });
+
+        this.proxyHelper = new THREE.Mesh(helperGeo, helperMat);
+        const boundingBox = new THREE.Box3().setFromObject(this.selectedObject);
+        boundingBox.getCenter(this.proxyHelper.position);
+
+        scene.add(this.proxyHelper);
+        this.transformControls.attach(this.proxyHelper);
+        this.transformControls.setMode('translate');
+        this.update_projection();
+    }
+
+    setup_transform_events() {
+        this.transformControls.addEventListener('change', () => {
+            if (this.proxyHelper && this.activeTexture) {
+                this.update_projection();
+            }
+        });
+
+        this.transformControls.addEventListener('mouseDown', function () {
+            if(controls) {
+                controls.enabled = false;
+            }
+        });
+
+        this.transformControls.addEventListener('mouseUp', function () {
+            if(controls) {
+                controls.enabled = true;
+            }
+        });
+    }
+
+    setup_hotkeys() {
+        window.addEventListener('keydown', (e) => {
+            if (!this.transformControls.object || !e.shiftKey) {
+                return;
+            }
+
+            switch (e.key.toLowerCase()) {
+                case 't': this.transformControls.setMode('translate'); break;
+                case 'r': this.transformControls.setMode('rotate'); break;
+                case 's': this.transformControls.setMode('scale'); break;
+                case 'escape': this.cancel_session(); break;
+                case 'enter': this.bake(); break;
+            }
+        });
+    }
+
+    update_projection() {
+        if (!this.selectedObject || !this.proxyHelper || !this.activeTexture) {
+            return;
+        }
+
+        if (this.activeDecalMesh) {
+            scene.remove(this.activeDecalMesh);
+            this.activeDecalMesh.geometry.dispose();
+        }
+
+        const position = this.proxyHelper.position.clone();
+        const orientation = this.proxyHelper.rotation.clone();
+
+        const size = new THREE.Vector3(
+            this.size.x * this.proxyHelper.scale.x,
+            this.size.y * this.proxyHelper.scale.y,
+            this.size.z * this.proxyHelper.scale.z
+        );
+
+        const targetTarget = this.selectedObject.geometry ? this.selectedObject : this.prep(this.selectedObject);
+        if (!targetTarget) {
+            return;
+        }
+
+        const decalGeometry = new DecalGeometry(targetTarget, position, orientation, size);
+        const decalMaterial = new THREE.MeshBasicMaterial({
+            map: this.activeTexture,
+            transparent: true,
+            depthWrite: false,
+            polygonOffset: true,
+            polygonOffsetFactor: -9
+        });
+
+        this.activeDecalMesh = new THREE.Mesh(decalGeometry, decalMaterial);
+        this.activeDecalMesh.updateMatrixWorld(true);
+        this.proxyHelper.updateMatrixWorld(true);
+        scene.add(this.activeDecalMesh);
+        scene.updateMatrixWorld(true);
+    }
+
+    async bake() {
+        if (!this.activeDecalMesh || !this.activeTexture) {
+            return;
+        }
+
+        if(!window.loggedin) {
+            tooltip('Login to save custom parts');
+            return;
+        }
+
+        const decal = this.activeDecalMesh;
+        const texture = this.activeTexture;
+        decal.material = decal.material.clone();
+        const obj = this.selectedObject;
+        const textureImg = texture.image;
+        
+        this.selectedObject.updateMatrixWorld(true);
+        this.proxyHelper.updateMatrixWorld(true);
+
+        const matrixW = this.proxyHelper.matrixWorld.clone();
+        const objectInverse = new THREE.Matrix4().copy(this.selectedObject.matrixWorld).invert();
+        const localMatrix = new THREE.Matrix4().multiplyMatrices(objectInverse, this.proxyHelper.matrixWorld);
+
+        if (!textureImg) {
+            tooltip("Texture image is missing");
+            return;
+        }
+
+        let canvas = document.createElement('canvas');
+        canvas.width = textureImg.width || textureImg.videoWidth || textureImg.naturalWidth;
+        canvas.height = textureImg.height || textureImg.videoHeight || textureImg.naturalHeight;
+
+        let ctx = canvas.getContext('2d');
+        ctx.drawImage(textureImg, 0, 0);
+        let b64_str = canvas.toDataURL('image/png');
+
+        if(!b64_str) {
+            tooltip("Texture base64 failed to generate");
+            return;
+        }
+
+        obj.attach(decal);
+        obj.userData.isTexture = true;
+
+        const decalData = {
+            reference: this.image_ref,
+            name: this.image_name,
+            ldraw: obj.userData.ldraw.replace("parts/", ""),
+            texture: {
+                url: b64_str,
+            },
+            matrix: {
+                world: matrixW.toArray(),
+                local: localMatrix.toArray(),
+                size: [
+                    this.size.x * this.proxyHelper.scale.x,
+                    this.size.y * this.proxyHelper.scale.y,
+                    this.size.z * this.proxyHelper.scale.z
+                ],
+            },
+        };
+
+        const upload = await this.upload(decalData);
+        if (!upload) {
+            return;
+        }
+
+        if(upload.success === true) {
+            obj.userData.textureArray = decalData;
+            obj.userData.textureID = upload.id;
+
+            this.cancel_session();
+            updateSceneData();
+            tooltip('Decal successfully baked onto part');
+        } else if(upload.message) {
+            tooltip(upload.message);
+            console.error(upload.message);
+        }
+
+        return;
+    }
+
+    upload(decalData) {
+        decalData.upload = true;
+
+        return fetch(start_url + "/ajax/custompartsv2", {
+            method: "PUT",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(decalData)
+        })
+        .then(res => res.json())
+        .catch(err => {
+            tooltip("An unknown error occurred.");
+            console.error(err);
+            return false;
+        });
+    }
+
+    cancel_session() {
+        this.transformControls.detach();
+
+        if (this.proxyHelper) {
+            scene.remove(this.proxyHelper);
+            this.proxyHelper.geometry.dispose();
+            this.proxyHelper = null;
+        }
+
+        if(this.activeDecalMesh) {
+            scene.remove(this.activeDecalMesh);
+            this.activeDecalMesh.geometry.dispose();
+        }
+
+        this.activeDecalMesh = null;
+        this.activeTexture = null;
+        window.CURRENT_APP = 'modeler';
+    }
+
+    prep(group) {
+        const geos = [];
+        group.updateMatrixWorld(true);
+
+        group.traverse((node) => {
+            if (node.isMesh && !node.isLine && node.geometry) {
+                const tempgeo = node.geometry.clone();
+                tempgeo.applyMatrix4(node.matrixWorld);
+                geos.push(tempgeo);
+            }
+        });
+
+        if (geos.length === 0) {
+            return null;
+        }
+
+        const targetGeo = BufferGeometryUtils.mergeGeometries(geos);
+        const targetMesh = new THREE.Mesh(targetGeo);
+        targetMesh.matrixAutoUpdate = false;
+        targetMesh.matrixWorld.identity();
+
+        return targetMesh;
+    }
+
+    serialize(mesh, decalData) {
+        const partid = mesh.userData.ldraw;
+        const data = JSON.stringify(decalData);
+
+        if (!partid) {
+            console.error('Object has no ldraw part id');
+            return;
+        }
+
+        localStorage.setItem(partid + "_sticker_" + makeid(5), data);
+    }
 }
 
 /* Screenshot function */
@@ -3123,289 +3314,452 @@ function addBlockV2(part, partColor, partMatrixW, partSpan, originalPSImg, fileN
     });
 }
 
-/*
-Helper to add parts to scene (should be pretty clear)
-Main function for block data (eg, translation/rotation, materials) is now addPartMaterials()
-Which is called by addBlockv3
-Like addBlockv2, but it takes JSON instead.
-Will be rolled out to functions gradually
+/**
+ * Class that will eventually host most of the part functions
+ */
+class PartManager {
+    /*
+    Helper to add parts to scene (should be pretty clear), but inside of the new PartManager class
+    Main function for part data (eg, translation/rotation, materials) is now addPartMaterials()
+    Which is called by addPart
+    Like addBlockv2, but it takes JSON instead.
 
-Example:
-part, partColor, partMatrixW, span, original_img, part, null, null, null, null
-let partJson = {
-    "ldraw": "3001.dat",
-    "texturedata": null,
-    "id": 67,
-    'materials': [
-        {
-            "id": 67,
-            "name": "Blue",
-            'colorcode': 1,
-            "texturedata": null,
-            'opacity': 1,
-        },
-    ],
-    'matrixw': {},
-};
+    Example:
+    part, partColor, partMatrixW, span, original_img, part, null, null, null, null
+    let partJson = {
+        "ldraw": "3001.dat",
+        "texturedata": null,
+        "id": 67,
+        'materials': [
+            {
+                "id": 67,
+                "name": "Blue",
+                'colorcode': 1,
+                "texturedata": null,
+                'opacity': 1,
+            },
+        ],
+        'matrixw': {},
+    };
 
-*/
-function addBlockV3(partJson, partSpan, originalPSImg, throwSuccess, throwError) {
-    if (!ldraw_loader) {
-        return;
-    }
-
-    part = partJson.ldraw;
-    partMat = partJson.materials;
-    partMatrixWorld = partJson.matrixw;
-
-    if (!part) {
-        return;
-    }
-
-    if (!partMat) {
-        return;
-    }
-
-    if (selectedObject) {
-        transformControls.detach(selectedObject);
-    }
-
-    if (multiSelectedObject) {
-        selector.clearSelection();
-    }
-
-    ldraw_loader.load('parts/' + part, function (loadedGroup) {
-        addPartMaterials(loadedGroup, partJson, partMat, partMatrixWorld, false);
-
-        if (partSpan && partSpan !== null && partSpan !== undefined) {
-            partSpan.querySelector('img').setAttribute("src", originalPSImg);
-        }
-
-        if (show_import_animation === true) {
-            tooltip(`Added part ${serialize_part_name(part)}`);
-        }
-
-        if (typeof throwSuccess === "function") {
-            throwSuccess();
-        }
-    }, undefined, function (error) {
-        console.error(error);
-        tooltip('Could not add this part to this scene');
-
-        if (partSpan && partSpan !== null && partSpan !== undefined) {
-            partSpan.querySelector('img').setAttribute("src", originalPSImg);
-        }
-
-        if (typeof throwError === "function") {
-            throwError(error);
-        }
-    });
-}
-
-function addPartMaterials(group, partJson, partMat, partMatrixWorld, partIsLdr = false) {
-    if (!group) {
-        console.error("Loaded group does not exist");
-        return;
-    }
-
-    let blockGroup = new THREE.Group();
-    blockGroup.name = `ldgroup_${blockGroup.uuid}`;
-    blockGroup.ldraw = part;
-
-    let display_lines = scene.userData.displayLines;
-    let colormap = new Map(ldrawColors.map(c => [c.hex.toUpperCase(), c.type]));
-
-    group.traverse((child) => {
-        if (child.isLineSegments && child.parent.isGroup) {
-            child.visible = false;
+    */
+    addPart(partJson, partSpan, originalPSImg, throwSuccess, throwError) {
+        if (!ldraw_loader) {
             return;
         }
 
-        if (child.isMesh && !child.material.map && !child.isLineSegments && !Array.isArray(child.material)) {
-            const pos = new THREE.Vector3();
-            const pos2 = child.getWorldPosition(pos);
-            const geometry = child.geometry;
+        part = partJson.ldraw;
+        partMat = partJson.materials;
+        partMatrixWorld = partJson.matrixw;
 
-            if (!geometry.attributes.uv) {
-                partUVGen(geometry);
-            }
-
-            if (!Array.isArray(partMat)) {
-                let custommaterial = createLegacyMaterial(partMat);
-                if (custommaterial && scene?.userData?.highRes === true) {
-                    child.material = custommaterial;
-                } else {
-                    child.material = new THREE.MeshPhysicalMaterial({
-                        color: new THREE.Color(partMat || "#ffffff")
-                    });
-                }
-            } else if (Array.isArray(partMat)) {
-                if (partMat.length < 2) {
-                    let color = partMat[0]?.colorcode || 0;
-                    let custommaterial = createMaterialv2(color);
-                    if (custommaterial && scene?.userData?.highRes === true) {
-                        child.material = custommaterial;
-                        child.material.userData.colorcode = color;
-                    } else {
-                        child.material = new THREE.MeshPhysicalMaterial({
-                            color: new THREE.Color(color)
-                        });
-                        child.material.userData.colorcode = 0;
-                    }
-                }
-            }
-
-            child.userData.isBlock = true;
-            child.userData.isTexture = false;
-            child.userData.ldraw = child.parent.userData.fileName;
-            child.userData.ldr_line = false;
+        if (!part) {
+            return;
         }
 
-        if (child.material && child.material.map && child.isMesh && !child.isLineSegments) {
-            child.userData.isBlock = true;
-            child.userData.isTexture = true;
-            child.userData.ldraw = child.parent.userData.fileName;
-            child.userData.ldr_line = false;
+        if (!partMat) {
+            return;
+        }
 
-            // main color uuid, for minifig textures
-            if (Array.isArray(child.material)) {
-                child.material.forEach((mat) => {
-                    let originalMap = mat.map;
-                    if (mat.name.includes("Main_Colour")) {
-                        var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
+        if (selectedObject) {
+            transformControls.detach(selectedObject);
+        }
 
-                        child.material[index] = mat.clone();
-                        child.material[index].needsUpdate = true;
+        if (multiSelectedObject) {
+            selector.clearSelection();
+        }
 
-                        mat.name = child.material[index].name + '_' + makeid(5);
+        ldraw_loader.load('parts/' + part, function (loadedGroup) {
+            let pmanager = new PartManager();
+            pmanager.addPartMaterials(loadedGroup, partJson, partMat, partMatrixWorld, false);
 
-                        child.userData.main_mat_uuid = mat.uuid;
-                        child.userData.main_mat_name = mat.name;
-                        child.userData.main_mat_index = index;
+            if (partSpan && partSpan !== null && partSpan !== undefined) {
+                partSpan.querySelector('img').setAttribute("src", originalPSImg);
+            }
 
-                        if (partMat) {
-                            if (Array.isArray(partMat)) {
-                                let match = partMat.find(m => m.id === index);
-                                let colorMap = new Map(ldrawColors.map(c => [String(c.code), c.hex]));
+            if (show_import_animation === true) {
+                tooltip(`Added part ${serialize_part_name(part)}`);
+            }
 
-                                if (match?.colorcode) {
-                                    let colorMatch = colorMap.get(match.colorcode);
+            if (typeof throwSuccess === "function") {
+                throwSuccess();
+            }
+        }, undefined, function (error) {
+            console.error(error);
+            tooltip('Could not add this part to this scene');
 
-                                    if(colorMatch) {
-                                        child.material[index].color = new THREE.Color(colorMatch);
-                                        child.material[index].userData.colorcode = partMat?.colorcode;
+            if (partSpan && partSpan !== null && partSpan !== undefined) {
+                partSpan.querySelector('img').setAttribute("src", originalPSImg);
+            }
+
+            if (typeof throwError === "function") {
+                throwError(error);
+            }
+        });
+    }
+
+    addPartMaterials(group, partJson, partMat, partMatrixWorld, partIsLdr = false) {
+        if (!group) {
+            console.error("Loaded group does not exist");
+            return;
+        }
+
+        let blockGroup = new THREE.Group();
+        blockGroup.name = `ldgroup_${blockGroup.uuid}`;
+        blockGroup.ldraw = part;
+
+        let display_lines = scene.userData.displayLines;
+
+        group.traverse((child) => {
+            if (child.isLineSegments && child.parent.isGroup) {
+                child.visible = false;
+                return;
+            }
+
+            if (child.isMesh && !child.material.map && !child.isLineSegments && !Array.isArray(child.material)) {
+                const pos = new THREE.Vector3();
+                const geometry = child.geometry;
+
+                if (!geometry.attributes.uv) {
+                    partUVGen(geometry);
+                }
+
+                if (!Array.isArray(partMat)) {
+                    let custommaterial = this.createLegacyMaterial(partMat);
+                    if (custommaterial && scene?.userData?.highRes === true) {
+                        child.material = custommaterial;
+                    } else {
+                        child.material = new THREE.MeshPhysicalMaterial({
+                            color: new THREE.Color(partMat || "#ffffff")
+                        });
+                    }
+                } else if (Array.isArray(partMat)) {
+                    if (partMat.length < 2) {
+                        let color = partMat[0]?.colorcode || 0;
+                        let custommaterial = this.createMaterial(color);
+                        if (custommaterial && scene?.userData?.highRes === true) {
+                            child.material = custommaterial;
+                            child.material.userData.colorcode = color;
+                        } else {
+                            child.material = new THREE.MeshPhysicalMaterial({
+                                color: new THREE.Color(color)
+                            });
+                            child.material.userData.colorcode = 0;
+                        }
+                    }
+                }
+
+                child.userData.isBlock = true;
+                child.userData.isTexture = false;
+                child.userData.ldraw = child.parent.userData.fileName;
+                child.userData.ldr_line = false;
+            }
+
+            if (child.material && child.material.map && child.isMesh && !child.isLineSegments) {
+                child.userData.isBlock = true;
+                child.userData.isTexture = true;
+                child.userData.ldraw = child.parent.userData.fileName;
+                child.userData.ldr_line = false;
+
+                // main color uuid, for minifig textures
+                if (Array.isArray(child.material)) {
+                    child.material.forEach((mat) => {
+                        if (mat.name.includes("Main_Colour")) {
+                            var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
+
+                            child.material[index] = mat.clone();
+                            child.material[index].needsUpdate = true;
+
+                            mat.name = child.material[index].name + '_' + makeid(5);
+
+                            child.userData.main_mat_uuid = mat.uuid;
+                            child.userData.main_mat_name = mat.name;
+                            child.userData.main_mat_index = index;
+
+                            if (partMat) {
+                                if (Array.isArray(partMat)) {
+                                    let match = partMat.find(m => m.id === index);
+                                    let colorMap = new Map(ldrawColors.map(c => [String(c.code), c.hex]));
+
+                                    if (match?.colorcode) {
+                                        let colorMatch = colorMap.get(match.colorcode);
+
+                                        if(colorMatch) {
+                                            child.material[index].color = new THREE.Color(colorMatch);
+                                            child.material[index].userData.colorcode = partMat?.colorcode;
+                                        } else {
+                                            child.material[index].color = new THREE.Color("#ffffff");
+                                            child.material[index].userData.colorcode = '15';
+                                        }
                                     } else {
                                         child.material[index].color = new THREE.Color("#ffffff");
                                         child.material[index].userData.colorcode = '15';
                                     }
                                 } else {
-                                    child.material[index].color = new THREE.Color("#ffffff");
-                                    child.material[index].userData.colorcode = '15';
+                                    child.material[index].color = new THREE.Color(partMat || "#ffffff");
                                 }
-                            } else {
-                                child.material[index].color = new THREE.Color(partMat || "#ffffff");
                             }
+                        } else {
+                            var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
+                            child.material[index] = mat.clone();
+                            child.material[index].needsUpdate = true;
+                            child.material[index].name = child.material[index].name + '_' + makeid(5);
+                            child.material[index].userData.colorcode = mat.userData.code ?? 0;
                         }
-                    } else {
-                        var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
-                        child.material[index] = mat.clone();
-                        child.material[index].needsUpdate = true;
-                        child.material[index].name = child.material[index].name + '_' + makeid(5);
-                        child.material[index].userData.colorcode = mat.userData.code ?? 0;
-                    }
-                });
-            }
-        }
-
-        const textureLoader = new THREE.TextureLoader();
-
-        if (child.material && child.isMesh && !child.material.map && !child.isLineSegments && partJson.texturedata && !Array.isArray(child.material)) {
-            child.userData.isTexture = true;
-            textureLoader.load(partJson.texturedata, (texturemap) => {
-                texturemap.colorSpace = THREE.SRGBColorSpace;
-                texturemap.wrapS = THREE.RepeatWrapping;
-                texturemap.wrapT = THREE.RepeatWrapping;
-                texturemap.needsUpdate = true;
-
-                let decalMat = {
-                    map: texturemap,
-                    transparent: true,
-                    alphaTest: 0.5,
-                    side: THREE.FrontSide,
-                    color: new THREE.Color("#ffffff"),
-                };
-
-                child.material = child.material.clone();
-                Object.assign(child.material, decalMat);
-                child.material.needsUpdate = true;
-                child.userData.main_mat_index = child.material[1];
-
-                function toDataURL(url, callback) {
-                    var xhr = new XMLHttpRequest();
-                    xhr.onload = function () {
-                        var reader = new FileReader();
-                        reader.onloadend = function () {
-                            callback(reader.result);
-                        }
-                        reader.readAsDataURL(xhr.response);
-                    };
-                    xhr.open('GET', url);
-                    xhr.responseType = 'blob';
-                    xhr.send();
+                    });
                 }
-
-                toDataURL(partJson.texturedata, function (dataUrl) {
-                    child.userData.textureData = dataUrl;
-                });
-            }, undefined, (err) => {
-                console.warn("texture load failed " + err);
-            });
-        }
-
-        child.userData.parentName = group.userData.fileName;
-        child.userData.id = child.uuid;
-        child.userData.original_mat = child.material;
-
-        if (child.material && child.isMesh && !child.isLineSegments) {
-            const edges = new THREE.EdgesGeometry(child.geometry);
-            const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000 }));
-            line.userData.ldr_line = true;
-            child.add(line);
-
-            if (display_lines != true) {
-                line.visible = false;
             }
+
+            if (child.material && child.isMesh && !child.material.map && !child.isLineSegments) {
+                if (partMat) {
+                    if (Array.isArray(partMat)) {
+                        partMat.forEach(mat => {
+                            if(mat.textureID) {
+                                fetch(start_url + '/ajax/custompartsv2?fetch=true&id=' + mat.textureID, {
+                                    method: "GET",
+                                    credentials: "include",
+                                })
+                                .then(res => res.json())
+                                .then(res => this.loadDecal(res, child))
+                                .catch(err => {
+                                    tooltip("An unknown error occurred.");
+                                    console.error(err);
+                                    return false;
+                                });
+                            }
+                        });
+                    }
+                }
+            }
+
+            child.userData.parentName = group.userData.fileName;
+            child.userData.id = child.uuid;
+            child.userData.original_mat = child.material;
+
+            if (child.material && child.isMesh && !child.isLineSegments) {
+                const edges = new THREE.EdgesGeometry(child.geometry);
+                const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000 }));
+                line.userData.ldr_line = true;
+                child.add(line);
+
+                if (display_lines != true) {
+                    line.visible = false;
+                }
+            }
+        });
+
+        blockGroup.attach(group);
+
+        if (partMatrixWorld instanceof THREE.Matrix4) {
+            blockGroup.matrixAutoUpdate = true;
+            partMatrixWorld.decompose(blockGroup.position, blockGroup.quaternion, blockGroup.scale);
+            blockGroup.updateMatrix();
+            blockGroup.updateMatrixWorld(true);
+        } else {
+            if(!partIsLdr) {
+                blockGroup.position.y = objectSize(blockGroup).y;
+            }
+
+            blockGroup.rotation.x = Math.PI;
         }
-    });
 
-    blockGroup.attach(group);
+        blockGroup.userData.partName = partName;
+        scene.add(blockGroup);
 
-    if (partMatrixWorld instanceof THREE.Matrix4) {
-        blockGroup.matrixAutoUpdate = true;
-        partMatrixWorld.decompose(blockGroup.position, blockGroup.quaternion, blockGroup.scale);
-        blockGroup.updateMatrix();
-        blockGroup.updateMatrixWorld(true);
-    } else {
-        if(!partIsLdr) {
-            blockGroup.position.y = objectSize(blockGroup).y;
-        }
+        blockGroups.push(blockGroup);
+        selector.selectObject(blockGroup);
 
-        blockGroup.rotation.x = Math.PI;
+        let grid = new GridClass();
+        grid.update(blockGroup);
+
+        updateBLItems();
+        updatecolorelement();
+        updateSceneData();
+        statehistory.saveState();
     }
 
-    blockGroup.userData.partName = partName;
-    scene.add(blockGroup);
+    loadDecal(decal, obj) {
+        const textureLoader = new THREE.TextureLoader();
 
-    blockGroups.push(blockGroup);
-    selector.selectObject(blockGroup);
+        if(!decal.part) {
+            return;
+        }
 
-    let grid = new GridClass();
-    grid.update(blockGroup);
+        if(!decal.part.texture) {
+            return;
+        }
 
-    updateBLItems();
-    updatecolorelement();
-    updateSceneData();
-    statehistory.saveState();
+        if(!decal.part.texture.url) {
+            return;
+        }
+
+        if(!decal.part.matrix.local) {
+            return;
+        }
+        
+        if(!decal.part.matrix.size) {
+            return;
+        }
+
+        textureLoader.load(decal.part.texture.url, (texture) => {
+            texture.colorSpace = THREE.SRGBColorSpace;
+
+            const localMatrix = new THREE.Matrix4().fromArray(decal.part.matrix.local);
+            const worldMatrix = new THREE.Matrix4().multiplyMatrices(obj.matrixWorld, localMatrix);
+            const position = new THREE.Vector3();
+            const quaternion = new THREE.Quaternion();
+            const scale = new THREE.Vector3();
+
+            worldMatrix.decompose(position, quaternion, scale);
+
+            const rotation = new THREE.Euler().setFromQuaternion(quaternion);
+            const size = new THREE.Vector3().fromArray(decal.part.matrix.size);
+            const geometry = new DecalGeometry(obj, position, rotation, size);
+
+            const material = new THREE.MeshBasicMaterial({
+                map: texture,
+                transparent: true,
+                depthWrite: false,
+                polygonOffset: true,
+                polygonOffsetFactor: -9
+            });
+
+            const decal_mesh = new THREE.Mesh(geometry, material);
+            obj.userData.isTexture = true;
+            obj.attach(decal_mesh);
+        });
+    }
+
+    createMaterial(partColor) {
+        const colorMap = new Map(ldrawColors.map(c => [String(c.code), c]));
+        const colorMatch = colorMap.get(partColor);
+
+        const materialType = colorMatch?.type || 'solid';
+        const materialColor = colorMatch?.hex || '#ffffff';
+
+        const params = {
+            color: new THREE.Color(materialColor),
+            opacity: colorMatch?.alpha / 255,
+            transparent: true,
+            reflectivity: 0.5,
+            roughness: 0.15,
+            metalness: 0.0,
+            clearcoat: 0.4,
+            envMapIntensity: 0.5,
+            clearcoatRoughness: 0.1
+        };
+
+        switch (materialType) {
+            case 'transparent':
+                params.roughness = 0.02;
+                params.transmission = 0.75;
+                params.ior = 1.55;
+                break;
+
+            case 'chrome':
+                params.roughness = 0.0;
+                params.metalness = 1.0;
+                params.clearcoat = 0.0;
+                break;
+
+            case 'metallic':
+                params.roughness = 0.25;
+                params.metalness = 0.75;
+                params.clearcoatRoughness = 0.05;
+                break;
+
+            case 'matteMetallic':
+                params.roughness = 0.45;
+                params.metalness = 0.8;
+                params.clearcoat = 0;
+                break;
+
+            case 'pearlescent':
+                params.roughness = 0.3;
+                params.clearcoat = 0.8;
+                params.clearcoatRoughness = 0.1;
+                break;
+
+            case 'rubber':
+                params.roughness = 0.9;
+                params.metalness = 0;
+                params.clearcoat = 0;
+                break;
+
+            case 'glitter':
+                params.clearcoat = 1;
+                params.roughness = 0.15;
+                break;
+
+            case 'speckle':
+                params.roughness = 0.5;
+                params.clearcoat = 0.2;
+                break;
+
+            case 'special':
+            case 'solid':
+            default:
+                break;
+        }
+
+        let material = new THREE.MeshPhysicalMaterial(params);
+        material.userData.colorcode = partColor;
+        material.name = partColor;
+        return material;
+    }
+
+    createLegacyMaterial(colorhex) {
+        const legacyColorPalette = {
+            "C91A09": 4, // Bright Red
+            "F8CC00": 14, // Bright Yellow
+            "0020A0": 12, // Bright Blue
+            "005700": 28, // Dark Green
+            "FE8A18": 10, // Bright Orange
+            "D941BB": 124, // Bright Violet / Dark Purple
+
+            "000000": 0, // Black
+            "FFFFFF": 15, // White
+            "747371": 294, // Dark Stone Grey / Dark Bluish Grey
+            "A3A2A4": 295, // Medium Stone Grey / Light Bluish Grey
+            "958A73": 5, // Brick Yellow / Tan
+            "6C5C4D": 8, // Dark Stone Grey / Dark Brown
+
+            "812A00": 308, // Reddish Brown
+            "5883C1": 23, // Medium Blue
+            "4B974B": 37, // Sand Green
+            "A52A2A": 59, // Dark Red
+            "B36D2C": 38, // Dark Orange
+            "FCB7BC": 223, // Bright Pink
+
+            "60C0E0": 212, // Bright Light Blue
+            "FBE696": 226, // Light Yellow
+            "84B68D": 36, // Bright Green
+            "92B28B": 335, // Bright Yellowish Green / Lime
+            "002A5A": 26, // Dark Blue
+            "DDDD22": 334, // Vibrant Yellow
+        };
+
+        let params = {
+            reflectivity: 0.5,
+            roughness: 0.15,
+            metalness: 0.0,
+            clearcoat: 0.4,
+            envMapIntensity: 0.5,
+            clearcoatRoughness: 0.1
+        };
+
+        let colorcode;
+        if (colorhex in legacyColorPalette) {
+            params.color = new THREE.Color(`#${colorhex}`);
+            colorcode = legacyColorPalette[colorhex];
+        } else {
+            params.color = new THREE.Color("#FFFFFF");
+            colorcode = 15;
+        }
+
+        let material = new THREE.MeshPhysicalMaterial(params);
+        material.userData.colorcode = colorcode;
+        return material;
+    }
 }
 
 function createCustomMaterial(partColor, colormap) {
@@ -3479,144 +3833,6 @@ function createCustomMaterial(partColor, colormap) {
     }
 
     return new THREE.MeshPhysicalMaterial(params);
-}
-
-function createMaterialv2(partColor) {
-    const colorMap = new Map(ldrawColors.map(c => [String(c.code), c]));
-    const colorMatch = colorMap.get(partColor);
-
-    const materialType = colorMatch?.type || 'solid';
-    const materialColor = colorMatch?.hex || '#ffffff';
-
-    const params = {
-        color: new THREE.Color(materialColor),
-        opacity: colorMatch?.alpha / 255,
-        transparent: true,
-        reflectivity: 0.5,
-        roughness: 0.15,
-        metalness: 0.0,
-        clearcoat: 0.4,
-        envMapIntensity: 0.5,
-        clearcoatRoughness: 0.1
-    };
-
-    switch (materialType) {
-        case 'transparent':
-            params.roughness = 0.02;
-            params.transmission = 0.75;
-            params.ior = 1.55;
-            break;
-
-        case 'chrome':
-            params.roughness = 0.0;
-            params.metalness = 1.0;
-            params.clearcoat = 0.0;
-            break;
-
-        case 'metallic':
-            params.roughness = 0.25;
-            params.metalness = 0.75;
-            params.clearcoatRoughness = 0.05;
-            break;
-
-        case 'matteMetallic':
-            params.roughness = 0.45;
-            params.metalness = 0.8;
-            params.clearcoat = 0;
-            break;
-
-        case 'pearlescent':
-            params.roughness = 0.3;
-            params.clearcoat = 0.8;
-            params.clearcoatRoughness = 0.1;
-            break;
-
-        case 'rubber':
-            params.roughness = 0.9;
-            params.metalness = 0;
-            params.clearcoat = 0;
-            break;
-
-        case 'glitter':
-            params.clearcoat = 1;
-            params.roughness = 0.15;
-            break;
-
-        case 'speckle':
-            params.roughness = 0.5;
-            params.clearcoat = 0.2;
-            break;
-
-        case 'special':
-        case 'solid':
-        default:
-            break;
-    }
-
-    let material = new THREE.MeshPhysicalMaterial(params);
-    material.userData.colorcode = partColor;
-    material.name = partColor;
-    return material;
-}
-
-function createLegacyMaterial(colorhex) {
-    const legacyColorPalette = {
-        "C91A09": 4, // Bright Red
-        "F8CC00": 14, // Bright Yellow
-        "0020A0": 12, // Bright Blue
-        "005700": 28, // Dark Green
-        "FE8A18": 10, // Bright Orange
-        "D941BB": 124, // Bright Violet / Dark Purple
-
-        "000000": 0, // Black
-        "FFFFFF": 15, // White
-        "747371": 294, // Dark Stone Grey / Dark Bluish Grey
-        "A3A2A4": 295, // Medium Stone Grey / Light Bluish Grey
-        "958A73": 5, // Brick Yellow / Tan
-        "6C5C4D": 8, // Dark Stone Grey / Dark Brown
-
-        "812A00": 308, // Reddish Brown
-        "5883C1": 23, // Medium Blue
-        "4B974B": 37, // Sand Green
-        "A52A2A": 59, // Dark Red
-        "B36D2C": 38, // Dark Orange
-        "FCB7BC": 223, // Bright Pink
-
-        "60C0E0": 212, // Bright Light Blue
-        "FBE696": 226, // Light Yellow
-        "84B68D": 36, // Bright Green
-        "92B28B": 335, // Bright Yellowish Green / Lime
-        "002A5A": 26, // Dark Blue
-        "DDDD22": 334, // Vibrant Yellow
-    };
-
-    let params = {
-        reflectivity: 0.5,
-        roughness: 0.15,
-        metalness: 0.0,
-        clearcoat: 0.4,
-        envMapIntensity: 0.5,
-        clearcoatRoughness: 0.1
-    };
-
-    let colorcode;
-    if (colorhex in legacyColorPalette) {
-        params.color = new THREE.Color(`#${colorhex}`);
-        colorcode = legacyColorPalette[colorhex];
-    } else {
-        params.color = new THREE.Color("#FFFFFF");
-        colorcode = 15;
-    }
-
-    let material = new THREE.MeshPhysicalMaterial(params);
-    material.userData.colorcode = colorcode;
-    return material;
-}
-
-function spanImg(original_img, span) {
-    if (partSpan && partSpan !== null && partSpan !== undefined) {
-        partSpan.querySelector('img').setAttribute("src", originalPSImg);
-    }
 }
 
 /*function renderBLItem(obj) {
@@ -3949,7 +4165,7 @@ function generateSceneJSON(legacy = false) {
     let sceneData = {
         metadata: {
             generator: 'Gr8brik',
-            file_version: '1.2.1.3',
+            file_version: '1.2.1.4',
             name: scenedata_name || "Unnamed project",
             description: scenedata_desc || ""
         },
@@ -3961,16 +4177,6 @@ function generateSceneJSON(legacy = false) {
         blocks: []
     };
 
-    scene.traverse(function (o) {
-        if (o.isMesh && o.userData.isBlock) {
-            console.log(o);
-        }
-    });
-
-    /*blockGroups.forEach(function (group) {
-        if (!group) {
-            return;
-        }*/
     scene.traverse(function (group) {
         const meshes = [];
 
@@ -4023,7 +4229,8 @@ function generateSceneJSON(legacy = false) {
                         name: mat.name,
                         obj: mesh_child.userData.id || mesh_child.uuid,
                         colorcode: mat.userData.colorcode,
-                        texturedata: mesh_child.userData.textureData || null,
+                        texturedata: mesh_child.userData.textureData || null, //legacy, will probably be removed
+                        textureID: mesh_child.userData.textureID || null,
                         opacity: mat_opacity,
                     }
                     console.log(materialData);
@@ -4040,7 +4247,7 @@ function generateSceneJSON(legacy = false) {
 
                 if (mesh_child.material.map) {
                     mesh_texture = mesh_child.material.map;
-                    mesh_texturedata = mesh_child.userData.textureData;
+                    mesh_texturedata = mesh_child.userData.textureData; //legacy, will probably be removed
                 }
 
                 const materialData = {
@@ -4049,6 +4256,7 @@ function generateSceneJSON(legacy = false) {
                     obj: mesh_child.userData.id || mesh_child.uuid,
                     colorcode: mesh_child.material.userData.colorcode || 0,
                     texturedata: mesh_texturedata || null,
+                    textureID: mesh_child.userData.textureID || null,
                     opacity: mesh_opacity,
                 }
                 materials.push(materialData);
@@ -4480,6 +4688,11 @@ window.addEventListener('pointerdown', function (event) {
     let container = document.querySelector(".scene");
     const rect = container.getBoundingClientRect();
 
+    if(window.CURRENT_APP === 'texture') {
+        selector.clearSelection();
+        return;
+    }
+
     if (!container.contains(target)) {
         return;
     }
@@ -4722,6 +4935,10 @@ function onWindowResize() {
 }
 
 function moveBlock(mode) {
+    if(window.CURRENT_APP === 'texture') {
+        return;
+    }
+
     if (mode === "t") {
         transformControls.setMode('translate');
         tooltip('Changed to drag parts');

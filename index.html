@@ -116,7 +116,12 @@
   <div class="ui-popup-contain ui-canbe-trans" id="welcome-popup">
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: #fff;">Welcome to Gr8brik</span></h3>
-    
+
+    <div id="github-help-me">
+      <h4>Hey! Are you a Javascript/ThreeJS developer?</h4>
+      <p>If you are, you can help me develop the project on <a href="https://github.com/susstevedev/gr8brik">GitHub</a>. I want to make more of the code class based and eventually make it follow better standards for module-based ThreeJS apps.</p>
+    </div>
+
     <img class="start-image" src="img/misc/start.png" width="640px" height="360px" />
 
     <div id="dev-welcome-popup-form">
@@ -149,6 +154,26 @@
     </div>
   </div>
 
+  <div class="ui-popup-contain ui-canbe-trans" id="decal-popup">
+    <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
+    <h3><span style="color: var(--ui-text-color);">Decorate part</span></h3>
+    <div id="dev-decal-part-form">
+      <b><span style="color: var(--ui-text-color);"><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;Image</span></b>
+
+      <div id="upload-part-decal">
+        <p><input type="text" id="upload-part-decal--name" placeholder="Name" /></p>
+        <p><input type="text" id="upload-part-decal--ref" placeholder="Reference (unique name used for querying and identifying)" /></p>
+
+        <p><label for="upload-part-decal--file">Select image</label></p>
+        <p><input type="file" id="upload-part-decal--file" accept="image" /></p>
+
+        <p><button id="upload-part-decal--submit" class="start btn" title="Start">Save and transform</button></p>
+        <p><button class="close btn" title="Cancel">Cancel</button></p>
+      </div>
+
+    </div>
+  </div>
+
   <div class="ui-popup-contain ui-canbe-trans" id="login-popup">
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: var(--ui-text-color);;">Login</span></h3>
@@ -156,6 +181,10 @@
       <p><input type="text" name="mail" placeholder="Email or username"></p>
       <p><input type="password" name="pwd" placeholder="Password"></p>
       <p><button class="btn" title="Login" id="login-complete">Login</button></p>
+    </div>
+    <div id="dev-login-oauth">
+      <h4>Using Google or Github to authenticate?</h4>
+      <p>If using Google or GitHub, please <a href="/acc/login">login from the website</a> and reload the page.</p>
     </div>
   </div>
 

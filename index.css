@@ -263,6 +263,7 @@ kbd {
 #ui-loading-file,
 #help-popup,
 #login-popup,
+#decal-popup,
 #just-have-saved-popup {
   display: none;
 }
