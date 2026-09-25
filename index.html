@@ -45,8 +45,9 @@
       <span class="dropdown-element" id="dropdown-edit">
         <div class="dropdown-item" id="move-block-t"><i class="fa fa-arrows-alt" aria-hidden="true"></i>Drag <small><kbd>T</kbd></small></div>
         <div class="dropdown-item" id="move-block-r"><i class="fa fa-refresh" aria-hidden="true"></i>Rotate <small><kbd>R</kbd></small></div>
-        <div class="dropdown-item" id="duplicate-part"><i class="fa fa-files-o" aria-hidden="true"></i>Duplicate <kbd>Ctrl</kbd> + <kbd>c</kbd> + <kbd>v</kbd></div>
+        <div class="dropdown-item" id="duplicate-part"><i class="fa fa-files-o" aria-hidden="true"></i>Duplicate <kbd>Ctrl</kbd> + <kbd>C</kbd> + <kbd>V</kbd></div>
         <div class="dropdown-item" id="make-group"><i class="fa fa-object-group" aria-hidden="true"></i>Group</div>
+        <div class="dropdown-item" id="decal-part"><i class="fa fa-paint-brush" aria-hidden="true"></i>Decorate <kbd>Ctrl</kbd> + <kbd>D</kbd></div>
         <div class="dropdown-item" id="delete-block"><i class="fa fa-trash" aria-hidden="true"></i>Delete <small><kbd>Del</kbd></small></div>
         <div class="dropdown-item read_autosave"><i class="fa fa-floppy-o" aria-hidden="true"></i>Recover autosave</div>
       </span>
@@ -72,7 +73,7 @@
     <button class="nav-arrow btn-alt" id="nav-cam-reset"><i class="fa fa-refresh" aria-hidden="true"></i></button>
   </div>
 
-  <div id="left-container" class="ui-canbe-trans">
+  <div id="left-container" class="nano-scroll ui-canbe-trans">
     <p style="height: 2vh;"></p>
 
     <span>Color</span><br />
@@ -108,6 +109,10 @@
       <i id="block-list-no-parts">No parts added yet...</i>
     </ul>
   </div>
+
+  <button id="left-container-toggle">
+		<i class="fa fa-arrow-right" aria-hidden="true" title="Hide left siderbar"></i>
+	</button>
 
   <div id="ui-loading-file" class="ui-loading-file ui-canbe-trans">
     <p>Loading creation...</p>
@@ -281,8 +286,14 @@
           <div class="message"></div>
           <div class="text"></div>
         </span>
-        <img id="settings-account-auth-pfp" alt="Profile image"></img>
-        <span id="settings-account-auth-username"></span>
+        <div class="pfp"><img id="settings-account-auth-pfp" alt="Profile image" /></div>
+        <span id="settings-account-auth-username" class="username"></span>
+        <span id="settings-account-auth-stats" class="stats">
+          <span class="followers"><b class="stat"></b> followers</span>
+          <span> • </span>
+          <span class="following"><b class="stat"></b> following</span>
+        </span>
+        <span class="notverified">Account not verified, please check your inbox (or spam folder) for an email that contains a link to activate your account.</span>
       </div>
     </div>
 
@@ -336,7 +347,7 @@
     <input type="checkbox" id="trans-enable" checked>
     <label for="trans-enable">Enable transparent UI elements</label><br />
 
-    <input type="checkbox" id="display-lines-grid" checked>
+    <input type="checkbox" id="display-lines-grid">
     <label for="display-lines-grid">Enable lines on grid</label><br />
 
     <h5><span style="color: var(--ui-text-color);">Lighting</span></h5>
@@ -344,7 +355,7 @@
     <input type="checkbox" id="hdr-enable" checked>
     <label for="hdr-enable">Enable HDRI lighting</label><br />
 
-    <input type="checkbox" id="hdr-background-enable" checked>
+    <input type="checkbox" id="hdr-background-enable">
     <label for="hdr-background-enable">Enable HDRI background (hdri lighting MUST be enabled also)</label><br />
 
     <select data-testid="selected-hdri" style="display: inline-block;">

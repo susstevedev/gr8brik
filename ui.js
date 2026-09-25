@@ -10,10 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('div[data-settingsid]').forEach(elementchild => {
                 let elementchildattr = elementchild.getAttribute('data-settingsid');
 
-                if (debug) {
-                    console.log(elementchildattr);
-                }
-
                 if (elementchildattr != value) {
                     elementchild.style.display = 'none';
                 } else {
@@ -144,7 +140,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         /* Other */
         document.getElementById("clear_settings").addEventListener("click", function () {
-            clearSettings();
+            if(confirm('Are you sure you want to delete all of your settings? This will also reload the page.')) {
+                clearSettings();
+                window.location.reload();
+            }
         });
 
         document.getElementById("read_settings").addEventListener("click", function () {
@@ -202,17 +201,33 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector("#help-popup .close").addEventListener("click", function () {
             document.querySelector("#help-popup").style.display = "none";
         });
-        
-        let partList = document.getElementById('blk');
-        let colList = document.getElementById('select-color');
+
+        // decorate menu
+        document.querySelector("#decal-part").addEventListener("click", function () {
+            let elm = document.getElementById("decal-popup");
+
+            if (elm.style.display === "block") {
+                elm.style.display = "none";
+            } else {
+                elm.style.display = "block";
+            }
+        });
+
+        document.querySelector("#decal-popup").addEventListener('click', (event) => {
+            if (event.target.matches('.btn-alt') || event.target.matches('.close')) {
+                document.querySelector("#decal-popup").style.display = "none";
+            }
+        });
 
         document.getElementById("toggleMenu").addEventListener("click", function () {
             var left = document.getElementById("left-container");
-            if (left.style.left === "0px" || left.style.left === "") {
-                left.style.left = "-999px";
-            } else {
-                left.style.left = "0px";
-            }
+            left.classList.toggle('inactive');
+        });
+
+        document.getElementById("left-container-toggle").addEventListener("click", function () {
+            var left = document.getElementById("left-container");
+            left.classList.toggle('inactive');
+            this.classList.toggle('active');
         });
 
         document.querySelectorAll('[data-tabbtnid].tab-button').forEach(button => {
