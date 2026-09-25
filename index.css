@@ -370,7 +370,7 @@ kbd {
   }
   
   a:hover, a:visited:hover {
-	  color: var(--ui-anti-text);
+	  color: var(--ui-text-color);
   }
 }
 

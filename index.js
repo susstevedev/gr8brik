@@ -341,7 +341,6 @@ function displayParts(displayed_parts, new_category, custom = false) {
                 icon_path = part.thumbnail || part.url;
                 part_file_name = part.reference;
                 part_file = part.part;
-                span.setAttribute("texture", part.url);
                 span.setAttribute("textureID", part.id);
             } else {
                 icon_path = `${ldraw_icon_path + part.file.split(".")[0]}.png`;
@@ -2235,32 +2234,6 @@ document.getElementById("display-lines-enable").addEventListener("change", funct
     saveSettings();
 });
 
-document.getElementById("pbr-enable").addEventListener("change", function () {
-    const highRes = this.checked;
-    scene.userData.highRes = highRes;
-
-    scene.traverse(function (obj) {
-        if (obj?.userData && obj?.userData?.isBlock === true) {
-            if (highRes) {
-                obj.material = new THREE.MeshPhysicalMaterial({
-                    color: new THREE.Color(obj?.material?.color),
-                    reflectivity: 0.5,
-                    roughness: 0.4,
-                    metalness: 0.1,
-                    envMapIntensity: 0.5,
-                });
-            } else {
-                obj.material = new THREE.MeshLambertMaterial({
-                    color: new THREE.Color(obj?.material?.color)
-                });
-            }
-        }
-    });
-
-    scene.updateMatrixWorld(true);
-    saveSettings();
-});
-
 document.getElementById("trans-enable").addEventListener("change", function () {
     const ui_trans = this.checked;
     scene.userData.ui_trans = ui_trans;
@@ -2499,17 +2472,16 @@ class statehistoryManager {
 
 window.statehistory = new statehistoryManager(scene);
 
-window.changeBlockColor = function (color) {
-    if (!selectedObject) {
+function changeBlockColor(color) {
+    if (!selectionGroup) {
         tooltip("No part selected");
         return;
     }
 
     let pmanager = new PartManager();
 
-    selectedObject.traverse((child) => {
-        if (child.isMesh && child.material) {
-
+    selectionGroup.traverse((child) => {
+        if (child.isMesh && child.material && child.userData && child.userData?.ldraw) {
             //array material
             if (Array.isArray(child.material)) {
                 let targetIdx;
@@ -2531,8 +2503,22 @@ window.changeBlockColor = function (color) {
 
                 const currentMat = child.material[targetIdx];
                 if (currentMat && currentMat.color && !currentMat.map) {
-                    child.material[targetIdx] = pmanager.createMaterial(color);
-                    pmanager.loadDecal(child.userData.textureObj, child);
+                    let material = pmanager.createMaterial(color);
+
+                    child.material[targetIdx] = material;
+                    pmanager.loadDecal(child.userData.textureObj, child, false);
+
+                    child.traverse((o) => {
+                        if (o.isLineSegments && o.material && !Array.isArray(o.material) && o.material?.color) {
+                            o.material.color.set(material.userData.edgecolor); 
+                        } else if(o.isLineSegments && o.material && Array.isArray(o.material)) {
+                            o.material.forEach(mat => {
+                                if(mat?.color) {
+                                    mat.color.set(material.userData.edgecolor);
+                                }
+                            });
+                        }
+                    });
                 }
 
                 document.querySelector('#selected-map').value = targetIdx;
@@ -2544,14 +2530,12 @@ window.changeBlockColor = function (color) {
 
                 child.traverse((o) => {
                     if (o.isLineSegments && o.material) {
-                        console.log(o.material);
-                        console.log(material.userData);
                         o.material.color.set(material.userData.edgecolor); 
                     }
                 });
 
                 child.material = material;
-                pmanager.loadDecal(child.userData.textureObj, child);
+                pmanager.loadDecal(child.userData.textureObj, child, false);
             }
         }
     });
@@ -2561,11 +2545,12 @@ window.changeBlockColor = function (color) {
     updatecolorelement();
     statehistory.saveState();
 
-    let namemap = new Map(ldrawColors.map(c => [c.code, c.name]));
+    let namemap = new Map(ldrawColors.map(c => [String(c.code), c.name]));
     let colorname = namemap.get(color) || color;
 
     tooltip(`Part color changed to ${colorname}`);
 }
+window.changeBlockColor = changeBlockColor;
 
 function deleteBlock(targetUUID) {
     if (!targetUUID) {
@@ -2861,7 +2846,17 @@ class Decalify {
         decal.material = decal.material.clone();
         const obj = this.selectedObject;
         const textureImg = texture.image;
-        
+
+        let obj_color = null;
+        if(obj?.material && Array.isArray(obj.material)) {
+            let main_mat_index = obj?.userData?.main_mat_index || 1;
+            obj_color = obj.material[main_mat_index].userData.colorcode || 4;
+        } else if(obj?.material && obj?.material?.userData && obj?.material?.userData?.colorcode) {
+            obj_color = obj.material.userData.colorcode || 4;
+        } else {
+            obj_color = 4;
+        }
+
         this.selectedObject.updateMatrixWorld(true);
         this.proxyHelper.updateMatrixWorld(true);
 
@@ -2894,6 +2889,7 @@ class Decalify {
             reference: this.image_ref,
             name: this.image_name,
             ldraw: obj.userData.ldraw.replace("parts/", ""),
+            color: obj_color ?? 15,
             texture: {
                 url: b64_str,
                 thumbnail: this.capture(obj),
@@ -3262,7 +3258,7 @@ class PartManager {
 
                 if (!Array.isArray(partMat)) {
                     let custommaterial = this.createLegacyMaterial(partMat);
-                    if (custommaterial && scene?.userData?.highRes === true) {
+                    if (custommaterial) {
                         child.material = custommaterial;
                     } else {
                         child.material = new THREE.MeshPhysicalMaterial({
@@ -3273,9 +3269,15 @@ class PartManager {
                     if (partMat.length < 2) {
                         let color = partMat[0]?.colorcode || 0;
                         let custommaterial = this.createMaterial(color);
-                        if (custommaterial && scene?.userData?.highRes === true) {
+                        if (custommaterial) {
                             child.material = custommaterial;
                             child.material.userData.colorcode = color;
+
+                            child.traverse((o) => {
+                                if (o.isLineSegments && o.material) {
+                                    o.material.color.set(custommaterial.userData.edgecolor); 
+                                }
+                            });
                         } else {
                             child.material = new THREE.MeshPhysicalMaterial({
                                 color: new THREE.Color(color)
@@ -3315,14 +3317,27 @@ class PartManager {
                             if (partMat) {
                                 if (Array.isArray(partMat)) {
                                     let match = partMat.find(m => m.id === index);
-                                    let colorMap = new Map(ldrawColors.map(c => [String(c.code), c.hex]));
 
                                     if (match?.colorcode) {
-                                        let colorMatch = colorMap.get(match.colorcode);
+                                        let new_material = this.createMaterial(String(match.colorcode));
 
-                                        if(colorMatch) {
-                                            child.material[index].color = new THREE.Color(colorMatch);
+                                        console.log('new mat', new_material);
+                                        if(new_material) {
+                                            Object.assign(child.material[index], new_material);
+                                            console.log(child.material[index]);
                                             child.material[index].userData.colorcode = partMat?.colorcode;
+
+                                            child.traverse((o) => {
+                                                if (o.isLineSegments && o.material && !Array.isArray(o.material) && o.material?.color) {
+                                                    o.material.color.set(custommaterial.userData.edgecolor); 
+                                                } else if(o.isLineSegments && o.material && Array.isArray(o.material)) {
+                                                    o.material.forEach(mat => {
+                                                        if(mat?.color) {
+                                                            mat.color.set(custommaterial.userData.edgecolor);
+                                                        }
+                                                    });
+                                                }
+                                            });
                                         } else {
                                             child.material[index].color = new THREE.Color("#ffffff");
                                             child.material[index].userData.colorcode = '15';
@@ -3425,7 +3440,7 @@ class PartManager {
         statehistory.saveState();
     }
 
-    loadDecal(decal, obj) {
+    loadDecal(decal, obj, recolor = true) {
         const textureLoader = new THREE.TextureLoader();
 
         if(!decal?.part) {
@@ -3433,6 +3448,10 @@ class PartManager {
         }
 
         if(!decal?.part?.texture) {
+            return;
+        }
+
+        if(!decal?.part?.color) {
             return;
         }
 
@@ -3473,6 +3492,19 @@ class PartManager {
             });
 
             const decal_mesh = new THREE.Mesh(geometry, material);
+
+            if(recolor === true) {
+                let obj_color = String(decal.part.color);
+                if(obj?.material && Array.isArray(obj.material)) {
+                    let main_mat_index = obj?.userData?.main_mat_index || 1;
+                    obj.material = this.createMaterial(obj_color);
+                    obj.material[main_mat_index].userData.colorcode = obj_color;
+                } else if(obj?.material && obj?.material?.userData && obj?.material?.userData?.colorcode) {
+                    obj.material = this.createMaterial(obj_color);
+                    obj.material.userData.colorcode = obj_color;
+                }
+            }
+
             obj.userData.isTexture = true;
             obj.userData.textureObj = decal;
             obj.userData.textureID = decal.id;
@@ -3716,49 +3748,6 @@ function createCustomMaterial(partColor, colormap) {
     return new THREE.MeshPhysicalMaterial(params);
 }
 
-/*function renderBLItem(obj) {
-    const id = obj.uuid;
-
-    let colormap = new Map(ldrawColors.map(c => [String(c.code), c.name]));
-    let colorid = obj.material?.userData?.colorcode || '4';
-    let color = colormap.get(String(colorid).toUpperCase().trim());
-
-    let part;
-    if (obj.userData.isBlock && obj.userData.ldraw) {
-        part = (obj?.userData?.ldraw || obj?.parent?.userData?.ldraw || "").replace(/^(parts\/)?|(?:_?\.(dat|ldr))$/gi, "");
-        partIcon = `${ldraw_icon_path + part}.png`;
-    } else if (obj.userData.isGroup) {
-        part = "Group of parts";
-        partIcon = `${ldraw_icon_path}3001.png`;
-    }
-
-    const img = document.createElement('img');
-    img.setAttribute('src', partIcon);
-    img.setAttribute('loading', 'lazy');
-    img.setAttribute('width', '45px');
-
-    const li = document.createElement('li');
-    li.classList.add('scene-block-item');
-    li.setAttribute('data-id', id);
-    li.innerHTML = `${part} (${color})`;
-
-    if (obj.children && obj.children.length > 0) {
-        const ul = document.createElement('ul');
-
-        obj.children.forEach(child => {
-            if (child.isMesh) {
-                const childLi = renderBLItem(child);
-                ul.appendChild(childLi);
-            }
-        });
-
-        li.appendChild(ul);
-    }
-    li.appendChild(img);
-
-    return li;
-}*/
-
 function BLItemValid(obj) {
     if (!obj) {
         return false;
@@ -3852,11 +3841,7 @@ function renderBLItem(obj) {
     let partIcon = `${ldraw_icon_path}3001.png`;
 
     if (obj.userData?.isBlock && obj.userData?.ldraw) {
-        part = (
-            obj.userData.ldraw ||
-            obj.parent?.userData?.ldraw ||
-            ""
-        ).replace(/^(parts\/)|(?:_?\.(dat|ldr))$/gi, "");
+        part = serialize_part_name(obj.userData.ldraw || obj.parent?.userData?.ldraw || obj.parent?.userData?.fileName);
 
         partIcon = `${ldraw_icon_path}${part}.png`;
     } else if (obj.userData?.isGroup) {
@@ -4166,7 +4151,6 @@ function generateSceneJSON(legacy = false) {
         }
     });
 
-    console.log(sceneData.blocks.length, 'parts exported to JSON');
     return JSON.stringify(sceneData);
 }
 window.generateSceneJSON = generateSceneJSON;
