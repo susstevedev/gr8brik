@@ -229,13 +229,46 @@
       <p><textarea id="link-share" name="link-share" rows="1" cols="64" readonly aria-readonly="true"></textarea></p>
     </form>
   </div>
+
+  <div class="ui-popup-contain ui-canbe-trans" id="user-creations-popup">
+    <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
+    <h3><span style="color: var(--ui-text-color);">Your creations</span></h3>
+    <div id="user-creations-wrapper">
+      <template id="gr8-creation-template">
+            <div class="creation-wrapper">
+                <div class="creation-card">
+                    <div class="creation-link">
+                        <img src="" loading="lazy" class="cre-image w3-card-2 w3-grey creation-thumbnail">
+                        <h4 class="creation-title"></h4>
+                    </div>
+
+                    <div class="creation-meta">
+                        <span class="meta-author">
+                            By <span class="user"></span> <span class="date"></span>
+                        </span>
+
+                        <div class="meta-stats">
+                            <span class="views"><i class="fa fa-eye"></i> </span> •
+                            <span class="favs"><i class="fa fa-star"></i> </span> •
+                            <span class="comments"><i class="fa fa-comments"></i> </span> •
+                            <span class="size"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+
+    <br /><button id="user-creations-foward-button" class="btn fullblock">More...</button>
+  </div>
   
   <div class="ui-popup-contain ui-canbe-trans" id="import-popup">
     <button class="btn-alt" style="float: right; top: 0;">&#10006;</button>
     <h3><span style="color: #fff;">Import Model</span></h3>
     <div id="import-popup-form">
 		<select id="import-format" style="display: inline-block;" onclick="if(document.querySelector('option[value=cloud2]').selected) { document.getElementById('import-url').style.display='block' } else { document.getElementById('import-url').style.display='none' }">
-      <option value="cloud2" onclick="document.getElementById('import-url').style.display='block'" selected>From URL</option>
+      <option value="cloud" selected>From account</option>
+      <option value="cloud2" onclick="document.getElementById('import-url').style.display='block'">From URL</option>
 			<option value="json">Gr8brik (.json, .gr8)</option>
       <option value="gr8z">Gr8brik zipped (.gr8z)</option>
 			<option value="three">ThreeJS (.json)</option>

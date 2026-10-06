@@ -8,7 +8,7 @@ window.addEventListener('beforeunload', function (e) {
     e.returnValue = '';
 });
 
-window.version = '2026.09b';
+window.version = '2026.10b';
 window.CURRENT_APP = 'modeler';
 console.info('Gr8brik ' + window.version);
 
@@ -61,6 +61,7 @@ function mergeConfig(settings, defaults) {
 
 // user login function
 window.loggedin = false;
+window.currentUser = null;
 function login() {
     fetch(start_url + "/ajax/user.php?ajax=true", {
         credentials: 'include',
@@ -92,7 +93,16 @@ function login() {
 
                     field.appendChild(notification);
                 }
+
                 window.loggedin = true;
+                window.currentUser = {
+                    'userid': response.id,
+                    'username': response.user,
+                    'picture': start_url + response.pfp,
+                    'verified': response.is_verified,
+                };
+
+                console.log(window.currentUser);
             } else {
                 console.error("An error occured while authenticating: " + response.error);
                 document.getElementById("username-field").innerHTML = "Login";
@@ -639,12 +649,13 @@ document.getElementById("import-finish").addEventListener("click", function () {
     const format = document.getElementById("import-format").value;
     const checkbox = document.querySelector('#import-popup-form [name="open"]');
     let open_creation = false;
+    let cloud = new fromCloud();
 
     if (checkbox.checked) {
         open_creation = true;
     }
 
-    if (format === "cloud2") {
+    /*if (format === "cloud2") {
         let model_id = document.getElementById('import-url').value.split('/').pop();
         loadJSONFromCloud(model_id, open_creation);
     }
@@ -663,6 +674,33 @@ document.getElementById("import-finish").addEventListener("click", function () {
 
     if (format === "ldr") {
         document.getElementById("cre-import-ldr").click();
+    }*/
+
+    document.getElementById("import-popup").style.display = 'none';
+
+    switch (format) {
+        case "cloud":
+            cloud.get_user_creations(open_creation);
+            break;
+        case "cloud2":
+            let model_id = document.getElementById('import-url').value.split('/').pop();
+            loadJSONFromCloud(model_id, open_creation);
+            break;
+        case "three":
+            document.getElementById("cre-import-three").click();
+            break;
+        case "json":
+            document.getElementById("cre-import").click();
+            break;
+        case "gr8z":
+            document.getElementById("cre-import-gr8z").click();
+            break;
+        case "ldr":
+            document.getElementById("cre-import-ldr").click();
+            break;
+        default:
+            tooltip('Invalid import option')
+            break;
     }
 });
 
@@ -2307,8 +2345,16 @@ document.getElementById("darkmode-enable").addEventListener("change", function (
 
     if (enabled == true) {
         document.cookie = "mode=dark; max-age=315360000; path=/";
+
+        document.body.classList.add("dark");
+        document.getElementById("darkmode-enable").setAttribute('checked', 'true');
     } else {
         document.cookie = "mode=light; max-age=315360000; path=/";
+
+        if (document.body.classList.contains("dark")) {
+            document.body.classList.remove("dark");
+            document.getElementById("darkmode-enable").setAttribute('checked', 'false');
+        }
     }
 
     scene.updateMatrixWorld(true);
@@ -2638,6 +2684,117 @@ function deleteBlock(targetUUID) {
     updateSceneData();
     statehistory.saveState();
 }
+
+class fromCloud {
+    SERVER_CODES = {
+        'NO_LOGIN': 'Please sign in to continue',
+        'QUERY_NO_CREATIONS': 'No creations found',
+        'ACC_NO_CREATIONS': 'You don\'t have any creations yet',
+        'CREATION_404': 'Creation not found',
+        'EDIT_GENERIC': 'Failed to update creation',
+    };
+
+    get_user_creations(open_model = true, page = 1) {
+        if(!window.loggedin) {
+            tooltip('Please login to import models from your account');
+            return;
+        }
+
+        const popup = document.getElementById('user-creations-popup');
+        const container = document.getElementById('user-creations-wrapper');
+        const nextbutton = document.getElementById('user-creations-foward-button');
+        const template = document.getElementById('gr8-creation-template');
+
+        fetch(start_url + `/acc/creations?my_creations=true&page=${page}`, {
+            credentials: 'include',
+        })
+        .then(res => res.text())
+        .then(data => {
+            try {
+                data = JSON.parse(data);
+            } catch (error) {
+                tooltip('Could not parse as JSON');
+                console.error(error);
+                return;
+            }
+
+            if (data === null) {
+                tooltip('Empty response');
+                return;
+            }
+
+            console.log(data);
+
+            if(data.success && data.creations) {
+                data.creations.forEach(function(r) {
+                    const clone = template.content.cloneNode(true);
+
+                    clone.querySelector('.creation-card').setAttribute('data-id', r.model_id);
+                    clone.querySelector('.creation-card').setAttribute('data-doopen', open_model);
+                    clone.querySelector('.creation-title').innerHTML = r.title;
+                    clone.querySelector('.meta-author .user').innerHTML = window.currentUser.username ?? 'you';
+                    clone.querySelector('.meta-author .date').innerHTML = r.date;
+                    clone.querySelector('.creation-thumbnail').setAttribute('src', start_url + r.thumb);
+
+                    clone.querySelector('.views').append(r.views + ' views');
+                    clone.querySelector('.favs').append(r.likes + ' favorites');
+                    clone.querySelector('.size').append(r.size);
+                    clone.querySelector('.comments').append(r.comments + ' comments');
+
+                    container.appendChild(clone);
+                });
+
+                let nextpage = page + 1;
+
+                popup.style.display = 'block';
+                nextbutton.setAttribute('data-doopen', open_model);
+                nextbutton.setAttribute('data-nextpage', nextpage);
+            } else if (data.code) {
+                tooltip(this.SERVER_CODES[response.code] || 'An error has occured');
+                return;
+            } else {
+                nextbutton.remove();
+            }
+        });
+    };
+}
+
+document.getElementById('user-creations-wrapper').addEventListener('click', function(event) {
+    let item = event.target.closest('.creation-card');
+
+    if (item) {
+        let model_id = item.getAttribute('data-id');
+        let do_open = item.getAttribute('data-doopen');
+
+        if (model_id) {
+            loadJSONFromCloud(model_id, do_open);
+
+            //cleans up the listed creations
+            let elms = document.querySelector("#user-creations-wrapper").querySelectorAll(':not(template)');
+            elms.forEach(e => { e.remove(); });
+
+            document.querySelector("#user-creations-popup").style.display = "none";
+
+            return;
+        }
+    }
+
+    return false;
+});
+
+document.getElementById('user-creations-foward-button').addEventListener('click', function(event) {
+    let cloud = new fromCloud();
+    let btn = document.getElementById('user-creations-foward-button');
+
+    let open_model = btn.getAttribute('data-doopen');
+    let page = parseInt(btn.getAttribute('data-nextpage'));
+
+    if(page && open_model) {
+        cloud.get_user_creations(open_model, page);
+    }
+
+    return;
+});
 
 /* decal functions */
 

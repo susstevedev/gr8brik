@@ -202,6 +202,17 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector("#help-popup").style.display = "none";
         });
 
+        document.querySelector("#user-creations-popup .btn-alt").addEventListener("click", function () {
+            let container = document.querySelector("#user-creations-wrapper");
+            let elms = container.querySelectorAll(':not(template)');
+
+            elms.forEach(e => {
+                e.remove();
+            });
+
+            document.querySelector("#user-creations-popup").style.display = "none";
+        });
+
         // decorate menu
         document.querySelector("#decal-part").addEventListener("click", function () {
             let elm = document.getElementById("decal-popup");
