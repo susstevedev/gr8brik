@@ -1,7 +1,7 @@
-autumn_field_puresky_1k.hdr - https://polyhaven.com/a/autumn_field_puresky
-kloofendal_48d_partly_cloudy_puresky_1k.hdr - https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky
-studio_small_03_1k.hdr - https://polyhaven.com/a/studio_small_03
-venice_sunset_1k.hdr - https://polyhaven.com/a/venice_sunset
+autumn_field_puresky_1k.hdr - https://polyhaven.com/a/autumn_field_puresky 
+kloofendal_48d_partly_cloudy_puresky_1k.hdr - https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky 
+studio_small_03_1k.hdr - https://polyhaven.com/a/studio_small_03 
+venice_sunset_1k.hdr - https://polyhaven.com/a/venice_sunset 
 
 Polyhaven Asset License - https://polyhaven.com/license
 =============
