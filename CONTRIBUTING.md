@@ -4,6 +4,9 @@ Thank you for considering contributing to Gr8Brik. This means a lot ♥. I don't
 ## PRs
 PRs in general. For LLM PRs, read the section below.
 
+- **Make sure someone hasn't already submitted similar code**. If I said no less than a year ago, chances are I am not going to allow your PR to go through.
+- **Your code shouldn't be bullshit**. Make sure it matches the formatting of other code in the repository. There doesn't need to be useless comments.
+
 ## LLM PRs
 The reason I wanted to make this document.
 Large Language Models are a touchy subject. Some people see it as a bubble and some see it as everything. My personal opinions aside, these are the guidelines:
