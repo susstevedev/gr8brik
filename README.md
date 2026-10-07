@@ -1,17 +1,17 @@
-# GR8BRIK (Beta)
+# Gr8Brik (Beta)
 
 > **This project is currently in beta**.
 >
 > Feel free to submit pull requests and open issues.
 
-## what is gr8brik?
+## What is Gr8Brik?
 
-GR8BRIK is an all-in-browser online LEGO CAD tool that runs entirely in your browser with no installation required. It uses the LDraw parts library and WebGl via Three.js.
+Gr8Brik is an all-in-browser online LEGO CAD tool that runs entirely in your browser with no installation required. It uses the LDraw parts library and WebGl via Three.js.
 
-Demo: https://gr8brik.rf.gd/modeler?src=github \
+Demo: https://gr8brik.rf.gd/modeler \
 Not updated automatically. Whenever something is complete I update it. For the rest of the website's source: https://github.com/susstevdev/gr8brik-website
 
-## built with
+## Libraries
 
 * [Three.js](https://threejs.org/) -WebGl rendering
 * [LDraw](http://www.ldraw.org/) - LEGO CAD part library
@@ -20,11 +20,9 @@ Not updated automatically. Whenever something is complete I update it. For the r
 * [TransformControls](https://threejs.org/docs/#examples/en/controls/TransformControls) - Translation/Rotation/Scale tools for Three.js
 * [FontAwesome v4](https://fontawesome.com/v4/) - Icons
 
-## license & credits
-GR8BRIK uses components licensed under the MIT License and is itself open source under the same.
+## License
+Gr8Brik uses components licensed under the MIT License and is itself open source under the same.
 
 > This project includes code from the Three.js project and other libraries. Please see individual licenses where applicable.
 
-## contributing
-
-If you find a bug or have a feature request, please [open an issue](https://github.com/susstevedev/gr8brik/issues) or submit a PR.
+## [Contributing](CONTRIBUTING.md)
