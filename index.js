@@ -1,4 +1,29 @@
-/* The mess that runs the entire modeler */
+/* 
+The mess that runs the entire modeler 
+Credits: susstevedev, the_an0nym
+
+This code follows the MIT License
+
+Copyright (c) 2024 The Gr8brik Team
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
 
 // Used for debugging sometimes
 //'use strict';
@@ -77,10 +102,9 @@ function login() {
                 name.style.paddingRight = "10px";
 
                 field.appendChild(name);
-                field.setAttribute("href", "/acc/creations");
+                field.setAttribute("href", start_url + "/acc/creations");
 
                 tooltip('Logged in as ' + response.user);
-                window.sessionData = response;
 
                 if (response.alert != null && response.alert != undefined && response.alert != 0) {
                     const notification = document.createElement('span');
@@ -101,8 +125,6 @@ function login() {
                     'picture': start_url + response.pfp,
                     'verified': response.is_verified,
                 };
-
-                console.log(window.currentUser);
             } else {
                 console.error("An error occured while authenticating: " + response.error);
                 document.getElementById("username-field").innerHTML = "Login";
@@ -185,7 +207,7 @@ function ui_login_v2(response) {
         let loggedoutelm = document.querySelector('#settings-account-loggedout');
         loggedoutelm.style.display = 'block';
         loggedoutelm.querySelector('.message').textContent = 'Logged out';
-        loggedoutelm.querySelector('.text').textContent = 'Log in to an account to save creations to our servers';
+        loggedoutelm.querySelector('.text').innerHTML = `Log in to an account to save creations to node <a href="${start_url}"><b>${start_url}</b></a>`;
     }
 }
 
@@ -410,8 +432,6 @@ function searchParts() {
     let matchedItems = [];
     let queryTokens = value.toLowerCase().trim().split(/\s+/).filter(Boolean);
 
-    console.log(items);
-
     for (let i = 0; i < items.length; i++) {
         let item = items[i];
 
@@ -424,7 +444,6 @@ function searchParts() {
         }
     }
 
-    console.log(matchedItems);
     displayParts(matchedItems, true);
 }
 
@@ -483,11 +502,6 @@ document.querySelector("#block-list").addEventListener("click", function (e) {
         const obj = scene.getObjectByProperty('uuid', id);
 
         if (obj) {
-            /*transformControls.detach(selectedObject);
-            selectedObject = null;
-            transformControls.attach(obj);
-            selectedObject = obj;*/
-
             selector.selectObject(obj);
             tooltip('Part selected');
         }
@@ -545,7 +559,6 @@ document.getElementById("download-json").addEventListener("click", function () {
             .then(res => res.json())
             .then(response => {
                 if (response.success) {
-                    //tooltip(response.success);
                     this.innerText = "Save Creation as a copy";
                     params.set("build_id", response.creation.id);
                     window.history.pushState(null, '', window.location.pathname + '?' + params.toString());
@@ -577,14 +590,12 @@ document.getElementById("download-json").addEventListener("click", function () {
                 try {
                     const res = await err.response.json();
                     tooltip(res.error);
-                    this.innerText = "Save Creation";
                 } catch {
                     tooltip("An unknown error occurred.");
-                    console.log(err);
-                    this.innerText = "Save Creation";
-                    this.disabled = true;
-                    this.classList.add('btn-disabled');
                 }
+
+                console.log(err);
+                this.innerText = "Save Creation";
             });
     } else {
         tooltip('Problem while generating scene');
@@ -655,27 +666,6 @@ document.getElementById("import-finish").addEventListener("click", function () {
         open_creation = true;
     }
 
-    /*if (format === "cloud2") {
-        let model_id = document.getElementById('import-url').value.split('/').pop();
-        loadJSONFromCloud(model_id, open_creation);
-    }
-
-    if (format === "three") {
-        document.getElementById("cre-import-three").click();
-    }
-
-    if (format === "json") {
-        document.getElementById("cre-import").click();
-    }
-
-    if (format === "gr8z") {
-        document.getElementById("cre-import-gr8z").click();
-    }
-
-    if (format === "ldr") {
-        document.getElementById("cre-import-ldr").click();
-    }*/
-
     document.getElementById("import-popup").style.display = 'none';
 
     switch (format) {
@@ -691,6 +681,9 @@ document.getElementById("import-finish").addEventListener("click", function () {
             break;
         case "json":
             document.getElementById("cre-import").click();
+            break;
+        case "oldjson":
+            document.getElementById("cre-import-legacy").click();
             break;
         case "gr8z":
             document.getElementById("cre-import-gr8z").click();
@@ -717,88 +710,36 @@ document.getElementById("export-finish").addEventListener("click", function () {
 
     const format = document.getElementById("export-format").value;
     selectedExport = document.getElementById("export-format").value;
+    let exportclass = new ModelExports(scene);
 
-    if (format === "three") {
-        document.getElementById("cre-export-three").click();
-    }
-
-    if (format === "selectedobj") {
-        document.getElementById("selected-object-export-three").click();
-    }
-
-    if (format === "json") {
-        document.getElementById("cre-export").click();
-    }
-
-    if (format === "gr8") {
-        document.getElementById("cre-export-gr8").click();
-    }
-
-    if (format === "gr8z") {
-        document.getElementById("cre-export-gr8z").click();
-    }
-
-    if (format === "lxf") {
-        document.getElementById("cre-export-ldd").click();
-    }
-
-    if (format === "glb") {
-        const exporter = new THREE.GLTFExporter();
-        const date = new Date();
-
-        let scene_ = scene;
-        if (scene.userData.export_full_scene === false) {
-            scene_ = filter_objects_peices();
-        }
-
-        exporter.parse(
-            scene_,
-            function (result) {
-                if (result instanceof ArrayBuffer) {
-                    const blob = new Blob([result], { type: 'model/gltf-binary' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `creation-${date}.glb`;
-                    a.click();
-
-                    setTimeout(() =>
-                        URL.revokeObjectURL(url),
-                        10000);
-                } else {
-                    console.error('Invalid object, expecting gltf');
-                }
-            },
-            function (error) {
-                console.error(error);
-            },
-            {
-                binary: true,
-                onlyVisible: true,
-                embedImages: true,
-                forceIndices: true,
-                forcePowerOfTwoTextures: true,
-            }
-        );
-    }
-
-    if (format === "obj") {
-        const exporter = new OBJExporter();
-        const date = new Date();
-        const result = exporter.parse(filter_objects_peices());
-
-        const blob = new Blob([result], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `obj-mtl-${date}.obj`;
-        a.click();
-
-        setTimeout(() => URL.revokeObjectURL(url), 10000);
-    }
-
-    if (format === "mpd") {
-        exportSceneToMPD("creation");
+    switch (selectedExport) {
+        case "three":
+            exportclass.threeJson();
+            break;
+        case "json":
+            exportclass.gr8brikItselfYeahBitch(true);
+            break;
+        case "gr8":
+            exportclass.gr8brikItselfYeahBitch(false);
+            break;
+        case "gr8z":
+            exportclass.zippedGr8();
+            break;
+        case "lxf":
+            exportclass.lxf();
+            break;
+        case "mpd":
+            exportSceneToMPD("creation");
+            break;
+        case "glb":
+            exportclass.glb();
+            break;
+        case "obj":
+            exportclass.obj();
+            break;
+        default:
+            tooltip('Invalid import option')
+            break;
     }
 });
 
@@ -913,150 +854,166 @@ function setcamangle(anglehor, anglever) {
     controls.update();
 }
 
-document.getElementById("cre-export").addEventListener("click", () => {
-    const jsonData = generateSceneJSON();
-    const jsonBlob = new Blob([jsonData], { type: "application/json" });
-    const elm = this;
+class ModelExports {
+    constructor(scene) {
+        if(!window.loggedin) {
+            return;
+        }
 
-    const url = URL.createObjectURL(jsonBlob);
-    const date = new Date();
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `json-creation-${date}.json`;
-    a.click();
+        if(!scene) {
+            return;
+        }
+    }
 
-    setTimeout(() => {
-        URL.revokeObjectURL(url);
-    }, 10000);
-});
+    gr8brikItselfYeahBitch(json = false) {
+        let data = generateSceneJSON();
+        let blob = new Blob([data], { type: "application/json" });
 
-document.getElementById("cre-export-gr8").addEventListener("click", () => {
-    const fileData = generateSceneJSON();
-    const dataBlob = new Blob([fileData], { type: "application/json" });
-    const elm = this;
-
-    const url = URL.createObjectURL(dataBlob);
-    const date = new Date();
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `gr8brik-creation-${date}.gr8`;
-    a.click();
-
-    setTimeout(() => {
-        URL.revokeObjectURL(url);
-    }, 10000);
-});
-
-document.getElementById("cre-export-gr8z").addEventListener("click", () => {
-    let fileData = generateSceneJSON();
-    let setting = JSON.stringify(window.settings, null, 2);
-    let zip = new JSZip();
-
-    zip.file("creation.gr8", fileData, {
-        compression: "DEFLATE",
-        compressionOptions: { level: 9 }
-    });
-
-    zip.file("setting.json", setting, {
-        compression: "DEFLATE",
-        compressionOptions: { level: 9 }
-    });
-
-    zip.generateAsync({ type: "blob", compression: "DEFLATE", compressionOptions: { level: 9 }, comment: "Zipped Gr8Brik.rf.gd creation" }).then(function (blob) {
         let url = URL.createObjectURL(blob);
         let date = new Date();
         let a = document.createElement("a");
+
         a.href = url;
-        a.download = `gr8brik-compressed-creation-${date}.gr8z`;
+
+        if(json) {
+            a.download = `gr8brik-creation-${date}.json`;
+        } else {
+            a.download = `gr8brik-creation-${date}.gr8`;
+        }
+
         a.click();
 
         setTimeout(() => {
             URL.revokeObjectURL(url);
         }, 10000);
-    });
-});
-
-document.getElementById("cre-export-ldd").addEventListener("click", () => {
-    const legoData = generateSceneLXFML();
-    const zip = new JSZip();
-    zip.file("IMAGE100.LXFML", legoData);
-    const elm = this;
-
-    zip.generateAsync({ type: "blob" }).then(function (blob) {
-        const url = URL.createObjectURL(blob);
-        const date = new Date();
-
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `ldd-creation-${date}.lxf`;
-        a.click();
-
-        URL.revokeObjectURL(url);
-    });
-});
-
-document.getElementById("cre-export-three").addEventListener("click", () => {
-    if (!scene) {
-        tooltip("Scene is empty");
-        return;
     }
 
-    let fileData = JSON.stringify(scene.toJSON());
-    let zip = new JSZip();
-    let date = new Date();
+    zippedGr8() {
+        let data = generateSceneJSON();
+        let setting = JSON.stringify(window.settings, null, 2);
+        let zip = new JSZip();
+        let options = {compression: "DEFLATE",compressionOptions: { level: 9 }};
 
-    zip.file(`scene.json`, fileData, {
-        compression: "DEFLATE",
-        compressionOptions: { level: 9 }
-    });
+        zip.file("creation.gr8", data, options);
+        zip.file("setting.json", setting, options);
 
-    zip.generateAsync({ type: "blob", compression: "DEFLATE", compressionOptions: { level: 9 } }).then(function (blob) {
-        let url = URL.createObjectURL(blob);
+        zip.generateAsync({ type: "blob", compression: "DEFLATE", compressionOptions: { level: 9 }, comment: `Zipped ${start_url} creation` }).then(function (blob) {
+            let url = URL.createObjectURL(blob);
+            let date = new Date();
+            let a = document.createElement("a");
+            a.href = url;
+            a.download = `gr8brik-compressed-creation-${date}.gr8z`;
+            a.click();
+
+            setTimeout(() => {
+                URL.revokeObjectURL(url);
+            }, 10000);
+        });
+    }
+
+    lxf() {
+        let data = generateSceneLXFML();
+        let zip = new JSZip();
+        zip.file("IMAGE100.LXFML", data);
+
+        zip.generateAsync({ type: "blob" }).then(function (blob) {
+            let url = URL.createObjectURL(blob);
+            let date = new Date();
+            let a = document.createElement("a");
+            a.href = url;
+            a.download = `ldd-creation-${date}.lxf`;
+            a.click();
+
+            setTimeout(() => {
+                URL.revokeObjectURL(url);
+            }, 10000);
+        });
+    }
+
+    threeJson() {
+        let fileData = JSON.stringify(scene.toJSON());
+        let zip = new JSZip();
+
+        zip.file(`scene.json`, fileData, {compression: "DEFLATE",compressionOptions: { level: 9 }});
+
+        zip.generateAsync({ type: "blob", compression: "DEFLATE", compressionOptions: { level: 9 } }).then(function (blob) {
+            let url = URL.createObjectURL(blob);
+            let date = new Date();
+            let a = document.createElement("a");
+            a.href = url;
+            a.download = `threejs-${date}.zip`;
+            a.click();
+
+            setTimeout(() => {
+                URL.revokeObjectURL(url);
+            }, 10000);
+        });
+    }
+
+    glb() {
+        let exporter = new THREE.GLTFExporter();
         let date = new Date();
-        let a = document.createElement("a");
+        let scene_ = scene;
+
+        if (scene.userData.export_full_scene === false) {
+            scene_ = filter_objects_peices();
+        }
+
+        exporter.parse(
+            scene_,
+            function (result) {
+                let blob = new Blob([result], { type: 'model/gltf-binary' });
+                let url = URL.createObjectURL(blob);
+                let a = document.createElement('a');
+
+                a.href = url;
+                a.download = `creation-${date}.glb`;
+                a.click();
+
+                setTimeout(() => URL.revokeObjectURL(url), 10000);
+            },
+            function (error) {
+                console.error(error);
+            },
+            {
+                binary: true,
+                onlyVisible: true,
+                embedImages: true,
+                forceIndices: true,
+                forcePowerOfTwoTextures: true,
+            }
+        );
+    }
+
+    obj() {
+        let exporter = new OBJExporter();
+        let date = new Date();
+        let result = exporter.parse(filter_objects_peices());
+
+        let blob = new Blob([result], { type: 'text/plain' });
+        let url = URL.createObjectURL(blob);
+        let a = document.createElement('a');
+
         a.href = url;
-        a.download = `threejs-${date}.zip`;
+        a.download = `obj-mtl-${date}.obj`;
         a.click();
 
-        setTimeout(() => {
-            URL.revokeObjectURL(url);
-        }, 10000);
-    });
-});
-
-document.getElementById("selected-object-export-three").addEventListener("click", () => {
-    if (!scene) {
-        tooltip("Scene is empty");
-        return;
+        setTimeout(() => URL.revokeObjectURL(url), 10000);
     }
-
-    if (!selectedObject || !selectedObject.geometry) {
-        tooltip("Please select an object")
-    }
-
-    const name = selectedObject.userData.ldraw.replace("parts/", "");
-    const date = new Date();
-    const json = selectedObject.geometry.toJSON();
-
-    const jsonString = JSON.stringify(json);
-    const blob = new Blob([jsonString], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${name}-${date}.json`;
-
-    a.click();
-    URL.revokeObjectURL(url);
-});
+}
 
 function exportSceneToMPD(name) {
     const lines = [];
+    let userName = 'user';
+
+    if(window.currentUser && window.currentUser?.username) {
+        userName = '@' + window.currentUser.username;
+    }
 
     lines.push(`0 FILE ${name}.ldr`);
     lines.push(`0 ${name}`);
     lines.push(`0 Name: ${name}.ldr`);
-    lines.push(`0 Author: Exported from Three.js`);
+    lines.push(`0 Author: ${userName} on Gr8Brik`);
     lines.push(`0 !LDRAW_ORG Model`);
     lines.push(`0 !LICENSE Redistributable under CCAL version 2.0`);
     lines.push(`0`);
@@ -1072,6 +1029,14 @@ function exportSceneToMPD(name) {
         if (child.material && !Array.isArray(child.material)) {
             if (child.material?.userData?.colorcode) {
                 color_code = child.material.userData.colorcode;
+            }
+        } else if(child.material && Array.isArray(child.material)) {
+            if(child.userData && child.material.userData && child.userData.main_mat_index) {
+                let id = child.userData.main_mat_index;
+
+                if (child.material.userData[id]?.userData?.colorcode) {
+                    color_code = child.material.userData[id].userData.colorcode;
+                }
             }
         }
 
@@ -1142,81 +1107,104 @@ document.getElementById("cre-import").addEventListener("change", function (event
     reader.readAsText(file);
 });
 
+document.getElementById("cre-import-legacy").addEventListener("change", function (event) {
+    let file = event.target.files[0];
+    if (!file) {
+        console.error("No file selected");
+        tooltip("No file selected.");
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        try {
+            const jsonData = JSON.parse(e.target.result);
+            loadLegacyJSON(jsonData);
+        } catch (err) {
+            tooltip("Invalid legacy JSON file.");
+            console.error(err);
+        }
+        event.target.value = "";
+    };
+    reader.readAsText(file);
+});
+
 function loadJSONFromCloud(model, open = true) {
     fetch(start_url + `/ajax/build?buildId=${model}&fetch=true`, {
         credentials: 'include',
     })
-        .then(res => res.text())
-        .then(data => {
-            try {
-                data = JSON.parse(data);
-            } catch (error) {
-                tooltip('Could not parse as JSON');
-                console.error(error);
-                return;
-            }
+    .then(res => res.text())
+    .then(data => {
+        try {
+            data = JSON.parse(data);
+        } catch (error) {
+            tooltip('Could not parse as JSON');
+            console.error(error);
+            return;
+        }
 
-            if (data === null) {
-                tooltip('Empty response');
-                return;
-            }
+        if (data === null) {
+            tooltip('Empty response');
+            return;
+        }
 
-            if (data.error) {
-                tooltip(data.error + ' ' + data.message);
-                return;
-            }
+        if (data.error) {
+            tooltip(data.error + ' ' + data.message);
+            return;
+        }
 
-            if(data.can_edit != 1) {
-                tooltip('You are not allowed to edit this creation. Please contact the creator via direct messages.');
-                return;
-            }
+        if(data.can_edit != 1) {
+            tooltip('You are not allowed to edit this creation. Please contact the creator via direct messages.');
+            return;
+        }
 
-            if(data.is_removed != 0) {
-                tooltip('Creation has been removed by an admin.');
-                return;
-            }
+        if(data.is_removed != 0) {
+            tooltip('Creation has been removed by an admin.');
+            return;
+        }
 
-            let modelData = data.model;
-            let modelLegacy = data.legacy;
-            tooltip('Importing creation "' + data.name + '"');
+        let modelLegacy = data.legacy;
+        tooltip('Importing creation "' + data.name + '"');
 
-            if (modelData) {
-                fetch(start_url + `${data.model}`, {
-                    credentials: 'include',
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data === null) {
-                            tooltip('Empty creation');
-                            return;
-                        }
+        try {
+            fetch(start_url + `/ajax/creationFile`, {
+                credentials: "include",
+                method: "POST",
+                body: JSON.stringify({'iwantthejsonbruh': true, 'creID': model, 'viewer': null}),
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data === null) {
+                    tooltip('Empty creation');
+                    return;
+                }
 
-                        if (data) {
-                            if(open === true) {
-                                wipe_scene();
-                                params.set("build_id", model);
-                                window.history.pushState(null, '', window.location.pathname + '?' + params.toString());
-                                if(data.camera) {
-                                    if(data.camera.x && data.camera.y && data.camera.z) {
-                                        camera.position.x = data.camera.x || 250;
-                                        camera.position.y = data.camera.y || 250;
-                                        camera.position.z = data.camera.z || 250;
-                                    }
-                                }
-                            }
-
-                            if(modelLegacy) {
-                                loadLegacyJSON(data);
-                            } else {
-                                loadSceneFromJSON(data);
+                if (data) {
+                    if(open === true) {
+                        wipe_scene();
+                        params.set("build_id", model);
+                        window.history.pushState(null, '', window.location.pathname + '?' + params.toString());
+                        if(data.camera) {
+                            if(data.camera.x && data.camera.y && data.camera.z) {
+                                camera.position.x = data.camera.x || 250;
+                                camera.position.y = data.camera.y || 250;
+                                camera.position.z = data.camera.z || 250;
                             }
                         }
-                    });                
-            } else {
-                tooltip('No creation URL was found in model JSON');
-                return;
-            }
-        });
+                    }
+
+                    if(modelLegacy) {
+                        loadLegacyJSON(data);
+                    } else {
+                        loadSceneFromJSON(data);
+                    }
+                }
+            });
+        } catch(error) {
+            tooltip('No creation URL was found in model JSON');
+            return;
+        }
+    });
 };
 
 document.getElementById("cre-import-gr8z").addEventListener("change", function (event) {
@@ -1255,12 +1243,27 @@ document.getElementById("cre-import-ldr").addEventListener("change", function (e
 
     let filename = file.name || "Unnamed project";
     const reader = new FileReader();
+    let modal = new importModal();
+
+    reader.onprogress = function (xhr) {
+        if (show_import_animation === true && xhr.lengthComputable) {
+            modal.show();
+            let progress = (xhr.loaded / xhr.total) * 100;
+            document.getElementById('ui-loading-file-percentile').textContent = `${progress}%`;
+        }
+    };
 
     reader.onload = function (e) {
         try {
             if (show_import_animation === true) {
-                document.getElementById('ui-loading-file').style.display = "block";
-                document.getElementsByClassName('scene')[0].style.opacity = "0.1";
+                let loading_manager_ldr = new THREE.LoadingManager();
+
+                loading_manager_ldr.onProgress = function(url, loaded, total) {
+                    let progress = Math.round((loaded / total) * 100);
+                    document.getElementById('ui-loading-file-percentile').textContent = `Asset ${loaded} / ${total} - ${progress}%`;
+                }
+
+                ldraw_loader.manager = loading_manager_ldr;
             }
 
             ldraw_loader.parse(e.target.result, async function (creation) {
@@ -1290,21 +1293,18 @@ document.getElementById("cre-import-ldr").addEventListener("change", function (e
 
                 for (const part of parts) {
                     const mesh = part.getObjectByProperty("isMesh", true);
-
-                    const mat = mesh
-                        ? (Array.isArray(mesh.material) ? mesh.material[0] : mesh.material)
-                        : null;
+                    const mat = mesh ? (Array.isArray(mesh.material) ? mesh.material[0] : mesh.material) : null;
 
                     const partJson = {
+                        id: part.userData.fileName,
                         ldraw: part.userData.fileName,
-                        texturedata: null,
-                        opacity: "1.0",
                         materials: [{
                             id: 0,
+                            opacity: 1.0,
                             colorcode: mat?.userData?.code ?? 16,
-                            texturedata: null
+                            textureID: null,
                         }],
-                        matrixw: null
+                        matrixw: {}
                     };
 
                     let pmanager = new PartManager();
@@ -1312,23 +1312,12 @@ document.getElementById("cre-import-ldr").addEventListener("change", function (e
                 }
 
                 document.title = filename + ' - ' + DEFAULT_TITLE;
-                console.log(creation.userData);
-
-                if (show_import_animation === true) {
-                    console.log("Creation imported.");
-                    tooltip("Creation imported.");
-                    document.getElementById('ui-loading-file').style.display = "none";
-                    document.getElementsByClassName('scene')[0].style.opacity = "1.0";
-                }
+                modal.hide();
             });
         } catch (err) {
             console.error("parsing error: " + err);
-            
-            if (show_import_animation === true) {
-                tooltip("An error happened while importing");
-                document.getElementById('ui-loading-file').style.display = "none";
-                document.getElementsByClassName('scene')[0].style.opacity = "1.0";
-            }
+            tooltip("An error happened while importing");
+            modal.hide();
         }
 
         event.target.value = "";
@@ -1337,6 +1326,22 @@ document.getElementById("cre-import-ldr").addEventListener("change", function (e
     reader.readAsText(file);
 });
 
+class importModal {
+    show() {
+        document.getElementById('scene').classList.add('hidden');
+        document.getElementById('ui-loading-file').classList.add('show');
+        document.getElementById('ui-loading-file-percentile').textContent = '0%';
+    }
+
+    hide() {
+        document.getElementById('ui-loading-file-percentile').textContent = null;
+        document.getElementById('scene').classList.remove('hidden');
+        document.getElementById('ui-loading-file').classList.remove('show');
+
+        ldraw_loader.manager = loading_manager; //reset manager
+    }
+}
+
 async function loadSceneFromJSON(data) {
     if (!data || !data.blocks || !Array.isArray(data.blocks)) {
         console.error("Invalid JSON data.");
@@ -1344,9 +1349,18 @@ async function loadSceneFromJSON(data) {
         return;
     }
 
+    let modal = new importModal();
+
     if (show_import_animation === true) {
-        document.getElementById('ui-loading-file').style.display = "block";
-        document.getElementsByClassName('scene')[0].style.opacity = "0.1";
+        modal.show();
+        let loading_manager_ldr = new THREE.LoadingManager();
+
+        loading_manager_ldr.onProgress = function(url, loaded, total) {
+            let progress = Math.round((loaded / total) * 100);
+            document.getElementById('ui-loading-file-percentile').textContent = `Asset ${loaded} / ${total} - ${progress}%`;
+        }
+
+        ldraw_loader.manager = loading_manager_ldr;
     }
 
     //legacy gr8brik colors
@@ -1442,10 +1456,9 @@ async function loadSceneFromJSON(data) {
     document.title = modelName + ' - ' + DEFAULT_TITLE;
 
     if (show_import_animation === true) {
-        console.log("Creation imported.");
+        console.info("Creation imported.");
         tooltip("Creation imported.");
-        document.getElementById('ui-loading-file').style.display = "none";
-        document.getElementsByClassName('scene')[0].style.opacity = "1.0";
+        modal.hide();
     }
     updateSceneData();
 }
@@ -1457,9 +1470,9 @@ async function loadLegacyJSON(data) {
         return;
     }
 
+    let modal = new importModal();
     if (show_import_animation === true) {
-        document.getElementById('ui-loading-file').style.display = "block";
-        document.getElementsByClassName('scene')[0].style.opacity = "0.1";
+        modal.show();
     }
 
     //legacy LEGACY colors (like, really old)
@@ -1494,11 +1507,9 @@ async function loadLegacyJSON(data) {
         console.log('loading');
 
         let partDim = block?.dimensions || null;
-        let partMatType = block?.intersect?.object?.materials[0]?.type;
         partPosition = block?.intersect?.point;
         partTexture = null;
         partOpacity = '1.0';
-        let partMaterials;
         let objname = block?.intersect?.object?.object?.uuid || makeid(8);
 
         if (Array.isArray(block?.intersect?.object?.object?.matrix) && block.intersect.object.object.matrix.length === 16) {
@@ -1562,10 +1573,9 @@ async function loadLegacyJSON(data) {
     document.title = modelName + ' - ' + DEFAULT_TITLE;
 
     if (show_import_animation === true) {
-        console.log("Creation imported.");
-        tooltip("Creation imported.");
-        document.getElementById('ui-loading-file').style.display = "none";
-        document.getElementsByClassName('scene')[0].style.opacity = "1.0";
+        console.log("Creation imported, and converted.");
+        tooltip("Creation imported, and converted.");
+        modal.hide();
     }
     updateSceneData();
 }
@@ -1839,6 +1849,7 @@ function init() {
     // Scene container
     if (!scene) {
         container = document.createElement('div');
+        container.id = 'scene';
         container.classList.add("scene");
         document.body.appendChild(container);
     }
@@ -1986,7 +1997,18 @@ function init() {
 
     // please read ldrawloader docs before changing these values
 
-    ldraw_loader = new THREE.LDrawLoader();
+    const loading_manager = new THREE.LoadingManager();
+
+    loading_manager.onProgress = (url, loaded, total) => {
+        let progress = Math.round((loaded / total) * 100);
+        console.log(`Loading ${url.split('/').pop()} from ${url.split('/')[2]}, ${loaded} / ${total} files (${progress}%).`);
+    }
+
+    loading_manager.onLoad = function() {
+        console.log('finished');
+    }
+
+    ldraw_loader = new THREE.LDrawLoader(loading_manager);
     ldraw_loader.preloadMaterials(ldraw_path + 'colors/ldconfig.ldr');
     ldraw_loader.setConditionalLineMaterial(LDrawConditionalLineMaterial);
     ldraw_loader.setPath(ldraw_path + 'actual/');
@@ -2723,8 +2745,6 @@ class fromCloud {
                 return;
             }
 
-            console.log(data);
-
             if(data.success && data.creations) {
                 data.creations.forEach(function(r) {
                     const clone = template.content.cloneNode(true);
@@ -3402,7 +3422,6 @@ class PartManager {
                     child.visible = false;
                 }
 
-                console.log(child.userData);
                 return;
             }
 
@@ -3478,10 +3497,8 @@ class PartManager {
                                     if (match?.colorcode) {
                                         let new_material = this.createMaterial(String(match.colorcode));
 
-                                        console.log('new mat', new_material);
                                         if(new_material) {
                                             Object.assign(child.material[index], new_material);
-                                            console.log(child.material[index]);
                                             child.material[index].userData.colorcode = partMat?.colorcode;
 
                                             child.traverse((o) => {
@@ -3548,7 +3565,7 @@ class PartManager {
         let line_parts = [];
 
         group.traverse((o) => {
-            if (o.userData) {
+            if (o.userData && o.material) {
                 if (o.userData.ldr_line && o.userData.parentLdraw) {
                     lines.push(o);
                 }
@@ -4133,27 +4150,6 @@ function getPartByUUID() {
 
     return obj;
 }
-
-/*function duplicatePart() {
-    if(!multiSelectedObject) {
-        return;
-    }
-
-    if (multiSelectedObject.size > 1) {
-        tooltip('You can only duplicate one part at a time')
-        return;
-    }
-
-    let clone;
-
-    console.log(selectionGroup);
-
-    clone = selectionGroup.clone();
-    clone.material = selectionGroup.material.clone(); 
-    scene.add(clone);
-
-    statehistory.saveState();
-}*/
 
 function duplicatePart() {
     if (!multiSelectedObject || multiSelectedObject.size === 0) {

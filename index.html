@@ -56,11 +56,7 @@
   </div>
 
 	<div class="mobile-toggle-contain">
-      <button id="toggleMenu" class="mobile-toggle ui-canbe-trans" style="top: 60px; padding-right: 0px; padding-left: 0px;">
-		    <i class="fa fa-bars" aria-hidden="true" title="Hide sidebar"></i>
-	    </button>
-	
-	    <button id="takeScreenshot" class="mobile-toggle ui-canbe-trans" style="top: 160px; padding-right: 0px; padding-left: 0px;">
+	    <button id="takeScreenshot" class="mobile-toggle ui-canbe-trans" style="top: 60px; padding-right: 0px; padding-left: 0px;">
 		    <i class="fa fa-camera" aria-hidden="true" title="Take a screenshot"></i>
 	    </button>
 	</div>
@@ -98,7 +94,7 @@
     <button data-tabbtnid="tab1" id="tab1" class="tab-button">Parts list</button>
     <button data-tabbtnid="tab2" id="tab2" class="tab-button">Parts in scene</button><br /><br />
     
-	  <input type="file" id="cre-import" accept=".json,.gr8" style="display: none;"><input type="file" id="cre-import-gr8z" accept=".zip,.gr8z" style="display: none;"><input type="file" id="cre-import-three" accept=".json" style="display: none;"><input type="file" id="cre-import-ldr" accept=".ldr,.dat" style="display: none;">
+	  <input type="file" id="cre-import" accept=".json,.gr8" style="display: none;"><input type="file" id="cre-import-legacy" accept=".json,.gr8" style="display: none;"><input type="file" id="cre-import-gr8z" accept=".zip,.gr8z" style="display: none;"><input type="file" id="cre-import-three" accept=".json" style="display: none;"><input type="file" id="cre-import-ldr" accept=".ldr,.dat,.mpd" style="display: none;">
 	  <span id="cre-export" style="display: none;"></span><span id="cre-export-gr8" style="display: none;"></span><span id="cre-export-gr8z" style="display: none;"></span><span id="cre-export-ldd" style="display: none;"></span><span id="selected-object-export-three" style="display: none;"></span><span id="cre-export-three" style="display: none;"></span>
 
     <span id="select-block">
@@ -110,12 +106,13 @@
     </ul>
   </div>
 
-  <button id="left-container-toggle">
-		<i class="fa fa-arrow-right" aria-hidden="true" title="Hide left siderbar"></i>
+  <button id="left-container-toggle" title="Hide left siderbar">
+		<i class="fa fa-arrow-right" aria-hidden="true"></i>
 	</button>
 
   <div id="ui-loading-file" class="ui-loading-file ui-canbe-trans">
     <p>Loading creation...</p>
+    <span id="ui-loading-file-percentile">0</span>
   </div>
 
   <div class="ui-popup-contain ui-canbe-trans" id="welcome-popup">
@@ -270,6 +267,7 @@
       <option value="cloud" selected>From account</option>
       <option value="cloud2" onclick="document.getElementById('import-url').style.display='block'">From URL</option>
 			<option value="json">Gr8brik (.json, .gr8)</option>
+      <option value="oldjson">Gr8brik (legacy) (.json)</option>
       <option value="gr8z">Gr8brik zipped (.gr8z)</option>
 			<option value="three">ThreeJS (.json)</option>
       <option value="ldr">Ldraw (.ldr, .dat, .mpd)</option>
@@ -285,15 +283,23 @@
     <h3><span style="color: #fff;">Export Model</span></h3>
     <div id="export-popup-form">
 		<select id="export-format" style="display: inline-block;">
-      <option value="gr8">Gr8brik (.gr8)</option>
-      <option value="gr8z">Gr8brik zipped (.gr8z)</option>
-			<option value="json">Gr8brik (.json)</option>
-      <option value="mpd">Ldraw (.mpd)</option>
-			<option value="three">ThreeJS (.json)</option>
-      <option value="selectedobj">Selected object geometry (.json)</option>
-			<option value="lxf">Lego Digital Designer (.lxf)</option>
-      <option value="obj">Wavefront (.obj)</option>
-      <option value="glb">Graphics Library Transmission Format (.glb)</option>
+
+      <optgroup label="Gr8Brik formats">
+        <option value="gr8z">Gr8brik zipped (.gr8z)</option>
+        <option value="gr8">Gr8brik (.gr8)</option>
+			  <option value="json">Gr8brik (.json)</option>
+      </optgroup>
+
+      <optgroup label="Lego formats">
+        <option value="mpd">Ldraw (.mpd)</option>
+        <option value="lxf">Lego Digital Designer (.lxf)</option>
+      </optgroup>
+
+      <optgroup label="3d formats">
+        <option value="three">ThreeJS (.json)</option>
+        <option value="obj">Wavefront (.obj)</option>
+        <option value="glb">Graphics Library Transmission Format (.glb)</option>
+      </optgroup>
 		</select><br />
     <p style="display:none"><label><input type="checkbox" name="is_legacy" value="false" selected> Is legacy</label></p>
 		<p><button class="btn" title="Finish exporting" id="export-finish">Download file</button></p>

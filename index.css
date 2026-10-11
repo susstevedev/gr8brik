@@ -5,6 +5,7 @@ body {
   --ui-anti-color: #242424;
   --ui-anti-text: #fff;
   --ui-button-blue: #87ceeb;
+  --ui-href-color: #000080;
   --ui-button-lightblue: #add8e6;
   --ui-elm-noglass: rgba(211, 211, 211, 0.8);
 
@@ -20,6 +21,7 @@ body {
 
 body.dark {
   --ui-text-color: #fff;
+  --ui-href-color: #87ceeb;
   --ui-color: #242424;
   --ui-color-darker: #101010;
   --ui-anti-color: #fafafa;
@@ -40,6 +42,10 @@ select {
   border-radius: 2px;
   transition: opacity 0.2s ease-in-out;
   padding: 2px 2px 2px 2px;
+
+  optgroup {
+    background-color: var(--ui-color) !important;
+  }
 }
 
 select:hover {
@@ -65,6 +71,10 @@ kbd {
 
 .fa {
 	padding: 2px 2px 2px 2px;
+}
+
+#scene.hidden {
+  opacity: 0.1;
 }
 
 #search-parts {
@@ -337,7 +347,8 @@ kbd {
   }
 }
 
-#ui-loading-file {
+#ui-loading-file.show {
+  display: block;
   border-radius: 2px;
   padding: 10px;
   background: var(--ui-color);
@@ -359,7 +370,6 @@ kbd {
 .ui-popup-contain {
   border-radius: 2px;
   padding: 10px;
-  /* background-color: var(--ui-color); */
   background: var(--ui-color);
   border: 1px var(--ui-anti-text) solid;
   color: var(--ui-text-color);
@@ -377,7 +387,7 @@ kbd {
   overflow-y: auto;
   
   a, a:visited {
-	  color: var(--ui-button-blue);
+	  color: var(--ui-href-color);
   }
   
   a:hover, a:visited:hover {

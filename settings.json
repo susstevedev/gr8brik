@@ -1,6 +1,6 @@
 {
     "lastUpdated": null,
-    "displayLines": false,
+    "displayLines": true,
     "highRes": true,
     "noSnap": false,
     "ui_trans": true,
@@ -60,7 +60,7 @@
     "hdris": {
         "0": {
             "url": "hdris/autumn_field_puresky_1k.hdr",
-            "name": "Autumn Field (Pure Sky) (default)"
+            "name": "Autumn Field (Pure Sky)"
         },
         "1": {
             "url": "hdris/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
@@ -68,7 +68,7 @@
         },
         "2": {
             "url": "hdris/studio_small_03_1k.hdr",
-            "name": "Studio Small 03"
+            "name": "Studio Small 03 (default)"
         },
         "3": {
             "url": "hdris/venice_sunset_1k.hdr",
