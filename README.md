@@ -11,6 +11,10 @@ Gr8Brik is an all-in-browser online LEGO CAD tool that runs entirely in your bro
 Demo: https://gr8brik.rf.gd/modeler \
 Not updated automatically. Whenever something is complete I update it. For the rest of the website's source: https://github.com/susstevedev/gr8brik-website
 
+## Inspiration
+Scrubs' work on Mecabricks (please check it out!) and bricklink Stud.io mostly.
+Also some other misc projects and the fact that I like digital Lego stuff.
+
 ## Libraries
 
 * [Three.js](https://threejs.org/) -WebGl rendering
