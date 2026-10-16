@@ -133,6 +133,40 @@ kbd {
   left: -999px;
 }
 
+#color-picker {
+  opacity: 1.0;
+  color: #d3d3d3;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-left: 5px;
+	width: fit-content;
+	cursor: pointer;
+	border: #d3d3d3 1px solid;
+}
+
+#color-picker:hover {
+  opacity: 0.8;
+}
+
+#color-picker-list {
+  display: none;
+	border: 1px solid #d3d3d3;
+	border-radius: 2px;
+	grid-template-columns: auto auto auto auto auto auto;
+}
+
+.color-picker-color {
+  color: #d3d3d3;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 0.25em;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: rgba(2, 2, 2, 0.06) 2px 2px 2px 2px;
+}
+
 .nano-scroll {
   overflow-y: auto;
   scrollbar-width: thin; 
@@ -194,6 +228,14 @@ kbd {
   #settings-account-loggedout #text {
     color: var(--ui-text-color);
   }
+}
+
+.user-notif-count {
+  background-color: #ff0000;
+  color: #fff;
+  border-radius: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #current-camera {

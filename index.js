@@ -1,7 +1,9 @@
-/* 
+/**
 The mess that runs the entire modeler 
 Credits: susstevedev, the_an0nym
+*/
 
+/**
 This code follows the MIT License
 
 Copyright (c) 2024 The Gr8brik Team
@@ -25,8 +27,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-// Used for debugging sometimes
-//'use strict';
+/**
+ * This program needs multiple reforms before the exit from beta:
+ * - Move most functions to classes
+ * - Move said classes to new files
+ * 
+ * A good example of a "perfect" ThreeJS application is the ThreeJS editor
+ * I have always respected it; sadly not enough to build my applications around a similar stucture
+ */
 
 window.addEventListener('beforeunload', function (e) {
     e.preventDefault();
@@ -87,76 +95,69 @@ function mergeConfig(settings, defaults) {
 // user login function
 window.loggedin = false;
 window.currentUser = null;
-function login() {
-    fetch(start_url + "/ajax/user.php?ajax=true", {
-        credentials: 'include',
-    })
+
+class UserAuth {
+    constructor() {
+        this.field = document.getElementById("username-field");
+    }
+
+    login() {
+        fetch(start_url + "/ajax/user.php?ajax=true", {
+            credentials: 'include',
+        })
         .then(res => res.json())
         .then(response => {
             if (response.success) {
-                const field = document.getElementById("username-field");
-                field.innerHTML = null;
+                this.field.innerHTML = null;
 
                 const name = document.createElement('span');
                 name.innerText = response.user;
                 name.style.paddingRight = "10px";
 
-                field.appendChild(name);
-                field.setAttribute("href", start_url + "/acc/creations");
-
-                tooltip('Logged in as ' + response.user);
+                this.field.appendChild(name);
+                this.field.setAttribute("href", start_url + "/acc/creations");
 
                 if (response.alert != null && response.alert != undefined && response.alert != 0) {
                     const notification = document.createElement('span');
                     notification.innerText = response.alert;
-                    notification.style.backgroundColor = "#ff0000";
-                    notification.style.color = "#fff";
-                    notification.style.borderRadius = '15px';
-                    notification.style.paddingLeft = "5px";
-                    notification.style.paddingRight = "5px";
+                    notification.classList.add('user-notif-count');
 
-                    field.appendChild(notification);
+                    this.field.appendChild(notification);
                 }
 
-                window.loggedin = true;
-                window.currentUser = {
-                    'userid': response.id,
-                    'username': response.user,
-                    'picture': start_url + response.pfp,
-                    'verified': response.is_verified,
-                };
+                this.currentUser(response);
+                tooltip('Logged in as ' + response.user);
             } else {
                 console.error("An error occured while authenticating: " + response.error);
                 document.getElementById("username-field").innerHTML = "Login";
                 window.loggedin = false;
             }
-            ui_login_v2(response);
+            this.ui_login(response);
         })
         .catch(async (err) => {
             window.loggedin = false;
             try {
                 let res = await err.response.json();
                 console.error(res.error);
-                ui_login_v2(res);
+                this.ui_login(res);
             } catch {
                 console.error("An error occured while authenticating: " + err);
-                ui_login_v2(null);
+                this.ui_login(null);
             }
         });
-}
-login();
+    }
 
-function getWarnStatus() {
-    fetch(start_url + "/ajax/user.php?get_warn_status=true", {
-        credentials: 'include',
-    })
+    getWarnStatus() {
+        fetch(start_url + "/ajax/user.php?get_warn_status=true", {
+            credentials: 'include',
+        })
         .then(res => res.json())
         .then(response => {
             if (response.status == "yes" && response.success == true) {
                 tooltipAlert(response.text, response.reason, response.additional, response.button);
 
-                // rerun login function to update user information (logging user out if they get banned)
-                login();
+                // rerun login function to update user information (logging user out if they get banned instead of just warned)
+                this.login();
             } else if (response.success == false) {
                 console.error("An error occured while authenticating: " + response.error);
             }
@@ -169,50 +170,73 @@ function getWarnStatus() {
                 console.error("An error occured while authenticating: " + err);
             }
         });
-}
-getWarnStatus();
+    }
 
-/* UI auth */
-function ui_login_v2(response) {
-    document.querySelector('#settings-account-auth').style.display = 'block';
+    currentUser(response) {
+        window.loggedin = true;
 
-    if (response && !response.error && response.success) {
-        document.querySelector('#settings-account-loggedout').style.display = 'none';
-
-        if (response.user) {
-            document.querySelector('#settings-account-auth .username').textContent = response.user;
-            document.querySelector('#settings-account-auth .username').style.display = 'block';
+        window.currentUser = {
+            'userid': response.id,
+            'username': response.user,
+            'picture': start_url + response.pfp,
+            'verified': response.is_verified,
         }
+    }
 
-        if (response.pfp) {
-            document.querySelector('#settings-account-auth .pfp img').src = response.pfp;
-            document.querySelector('#settings-account-auth .pfp').style.display = 'block';
+    ui_login(response) {
+        let yams = {
+            'container': document.querySelector('#settings-account-auth'),
+            'logout': document.querySelector('#settings-account-loggedout'),
+            'username': document.querySelector('#settings-account-auth .username'),
+            'pfp': document.querySelector('#settings-account-auth .pfp'),
+            'pfpImg': document.querySelector('#settings-account-auth .pfp img'),
+            'stats': document.querySelector('#settings-account-auth .stats'),
+            'statsFollowing': document.querySelector('#settings-account-auth .stats .following .stat'),
+            'statsFollowers': document.querySelector('#settings-account-auth .stats .followers .stat'),
+            'notVerified': document.querySelector('#settings-account-auth .notverified'),
+        };
+
+        yams.container.style.display = 'block';
+
+        if (response && !response.error && response.success) {
+            yams.logout.style.display = 'none';
+
+            if (response.user) {
+                yams.username.textContent = response.user;
+                yams.username.style.display = 'block';
+            }
+
+            if (response.pfp) {
+                yams.pfpImg.src = start_url + response.pfp;
+                yams.pfp.style.display = 'block';
+            }
+
+            if(response.stats && response.stats.following && response.stats.followers) {
+                yams.stats.style.display = 'block';
+                yams.statsFollowing.innerText = response.stats.following;
+                yams.statsFollowers.innerText = response.stats.followers;
+            }
+
+            if(response.is_verified !== true) {
+                yams.notVerified.style.display = 'block';
+            }
+        } else {
+            yams.pfp.style.display = 'none';
+            yams.username.style.display = 'none';
+            yams.stats.style.display = 'none';
+            yams.notVerified.style.display = 'none';
+
+            yams.logout.style.display = 'block';
+            yams.logout.querySelector('.message').textContent = 'Logged out';
+            yams.logout.querySelector('.text').innerHTML = `Log in to an account to save creations to node <a href="${start_url}"><b>${start_url}</b></a>`;
         }
-
-        if(response.stats && response.stats.following && response.stats.followers) {
-            document.querySelector('#settings-account-auth .stats').style.display = 'block';
-            document.querySelector('#settings-account-auth .stats .following .stat').innerText = response.stats.following;
-            document.querySelector('#settings-account-auth .stats .followers .stat').innerText = response.stats.followers;
-        }
-
-        if(response.is_verified !== true) {
-            document.querySelector('#settings-account-auth .notverified').style.display = 'block';
-        }
-    } else {
-        document.querySelector('#settings-account-auth .pfp').style.display = 'none';
-        document.querySelector('#settings-account-auth .username').style.display = 'none';
-        document.querySelector('#settings-account-auth .stats').style.display = 'none';
-        document.querySelector('#settings-account-auth .notverified').style.display = 'none';
-
-        let loggedoutelm = document.querySelector('#settings-account-loggedout');
-        loggedoutelm.style.display = 'block';
-        loggedoutelm.querySelector('.message').textContent = 'Logged out';
-        loggedoutelm.querySelector('.text').innerHTML = `Log in to an account to save creations to node <a href="${start_url}"><b>${start_url}</b></a>`;
     }
 }
+let _UserAuth = new UserAuth;
+_UserAuth.login();
+_UserAuth.getWarnStatus();
 
 let displayed_parts = [];
-let current_type = '';
 let cached_parts = {};
 
 function loadCategory() {
@@ -250,14 +274,15 @@ loadCategory();
 // load parts from url
 function loadParts(type) {
     console.log(`loading ${type} category`);
-    current_type = type;
     let fetch_str;
     let custom = false;
+    let dp = new search_display_partui();
 
     if (cached_parts[type]) {
         console.log(`${type} parts loaded from cache`);
         displayed_parts = cached_parts[type];
-        displayParts(displayed_parts, true);
+        //displayParts(displayed_parts, true);
+        dp.displayParts(displayed_parts, true);
         return;
     }
 
@@ -275,151 +300,12 @@ function loadParts(type) {
             if(!custom) {
                 cached_parts[type] = data;
             }
-            displayParts(displayed_parts, true, custom);
+            //displayParts(displayed_parts, true, custom);
+            dp.displayParts(displayed_parts, true, custom);
         })
         .catch(err => {
             console.error(err);
         });
-}
-
-// display parts function
-function displayParts(displayed_parts, new_category, custom = false) {
-    let select_block_contain = document.getElementById("select-block");
-    let cutespinny = document.getElementById('cutespinny');
-    let MAX_LOAD_AMOUNT = 50;
-    let currentIndex = 0;
-    let observer = null;
-    let sentinel = null;
-    let isRendering = false;
-
-    if(displayed_parts.error) {
-        console.error('error fetching custom parts ' + displayed_parts.code);
-        let error = displayed_parts?.message || "Something went wrong.";
-
-        if(displayed_parts.code == "LOGGED_OUT") {
-            error = "Please login to view and add custom parts to the scene.";
-        }
-
-        if(displayed_parts.code == "INV_LOGIN") {
-            error = "Invalid login.";
-        }
-
-        if(displayed_parts.code == "USR_NOT_VERIFY") {
-            error = "Please verify your account to view and add custom parts to the scene.";
-        }
-
-        if(displayed_parts.code == "NO_PARTS") {
-            error = "No parts found in query.";
-        }
-
-        tooltip(error);
-        return;
-    }
-
-    if(!custom) {
-        displayed_parts = displayed_parts.sort((a, b) => a.name.length - b.name.length);
-    }
-
-    function prepareParts() {
-        let oldSentinel = document.getElementById('scroll-sentinel');
-        if (oldSentinel) {
-            oldSentinel.remove();
-        };
-
-        sentinel = document.createElement('div');
-        sentinel.id = 'scroll-sentinel';
-        sentinel.style.height = '1px';
-        select_block_contain.appendChild(sentinel);
-
-        observer = new IntersectionObserver((entries) => {
-            if (entries.some(entry => entry.isIntersecting)) {
-                if (currentIndex < displayed_parts.length) {
-                    requestAnimationFrame(renderParts);
-                }
-            }
-        }, { rootMargin: '100px' });
-
-        observer.observe(sentinel);
-    }
-
-    function renderParts() {
-        if (isRendering) {
-            return;
-        }
-
-        isRendering = true;
-
-        cutespinny.style.display = 'block';
-
-        let loadLimit = Math.min(currentIndex + MAX_LOAD_AMOUNT, displayed_parts.length);
-        if (loadLimit > displayed_parts.length) {
-            loadLimit = displayed_parts.length;
-        }
-
-        let startIndex = currentIndex;
-        if (startIndex >= displayed_parts.length) {
-            return;
-        }
-
-        for (let i = startIndex; i < loadLimit; i++) {
-            let part = displayed_parts[i];
-            let span = document.createElement("span");
-
-            let icon_path;
-            let part_file_name;
-            let part_file;
-
-            if(custom) {
-                icon_path = part.thumbnail || part.url;
-                part_file_name = part.reference;
-                part_file = part.part;
-                span.setAttribute("textureID", part.id);
-            } else {
-                icon_path = `${ldraw_icon_path + part.file.split(".")[0]}.png`;
-                part_file_name = part.file.split(".")[0];
-                part_file = part.file;
-            }
-
-            span.id = part_file;
-            span.title = part.name;
-            span.classList.add('ui-tooltip');
-            span.setAttribute("value", part_file);
-            span.innerHTML = `
-                <img src="${icon_path}" loading="lazy" />
-                <br />
-                <small class="part-list-number">${part_file_name}</small>
-                <small class="ui-tooltip-text">${part.name}</small>
-            `;
-
-            select_block_contain.insertBefore(span, sentinel);
-        }
-
-        currentIndex = loadLimit;
-
-        if (currentIndex >= displayed_parts.length) {
-            observer.disconnect();
-        }
-
-        cutespinny.style.display = 'none';
-        isRendering = false;
-    }
-
-    if (new_category) {
-        if (observer) {
-            observer.disconnect();
-        }
-
-        MAX_LOAD_AMOUNT = 50;
-        currentIndex = 0;
-
-        let existingSpans = select_block_contain.querySelectorAll('span');
-
-        existingSpans.forEach(span => span.remove());
-        prepareParts();
-        renderParts();
-    } else {
-        renderParts();
-    }
 }
 
 // NEWER search function
@@ -444,7 +330,159 @@ function searchParts() {
         }
     }
 
-    displayParts(matchedItems, true);
+    let dp = new search_display_partui();
+    dp.displayParts(matchedItems, true);
+}
+
+/**
+ * Class to display parts
+ * Better replacement for old displayParts function
+ */
+class search_display_partui {
+    constructor() {
+        this.sentinel = null;
+        this.observer = null
+        this.max_load_amount = 50;
+        this.select_block_contain = document.getElementById("select-block");
+        this.cutespinny = document.getElementById('cutespinny');
+        this.current_index = 0;
+        this.is_rendering = false;
+        this.is_custom = false;
+    }
+
+    displayParts(displayed_parts, new_category, custom = false) {
+        this.is_custom = custom;
+
+        if(custom && displayed_parts.error) {
+            console.error('error fetching custom parts ' + displayed_parts.code);
+            let error = displayed_parts?.message || "Something went wrong.";
+
+            if(displayed_parts.code == "LOGGED_OUT") {
+                error = "Please login to view and add custom parts to the scene.";
+            }
+
+            if(displayed_parts.code == "INV_LOGIN") {
+                error = "Invalid login.";
+            }
+
+            if(displayed_parts.code == "USR_NOT_VERIFY") {
+                error = "Please verify your account to view and add custom parts to the scene.";
+            }
+
+            if(displayed_parts.code == "NO_PARTS") {
+                error = "No parts found in query.";
+            }
+
+            tooltip(error);
+            return;
+        }
+
+        if(!custom) {
+            displayed_parts = displayed_parts.sort((a, b) => a.name.length - b.name.length);
+        }
+
+        if (new_category) {
+            if (this.observer) {
+                this.observer.disconnect();
+            }
+
+            this.max_load_amount = 50;
+            this.current_index = 0;
+
+            let existingSpans = this.select_block_contain.querySelectorAll('span');
+            existingSpans.forEach(span => span.remove());
+
+            this.prepare(displayed_parts);
+            this.render(displayed_parts);
+        } else {
+            this.render(displayed_parts);
+        }
+    }
+
+    prepare(displayed_parts) {
+        let oldSentinel = document.getElementById('scroll-sentinel');
+        if (oldSentinel) {
+            oldSentinel.remove();
+        };
+
+        this.sentinel = document.createElement('div');
+        this.sentinel.id = 'scroll-sentinel';
+        this.sentinel.style.height = '1px';
+        this.select_block_contain.appendChild(this.sentinel);
+
+        this.observer = this.create_observer(displayed_parts);
+        this.observer.observe(this.sentinel);
+    }
+
+    create_observer(displayed_parts) {
+        return new IntersectionObserver((entries) => {
+            if (entries.some(entry => entry.isIntersecting)) {
+                if (this.current_index < displayed_parts.length) {
+                    requestAnimationFrame(() => this.render(displayed_parts));
+                }
+            }
+        }, { rootMargin: '100px' });
+    }
+
+    render(displayed_parts) {
+        if (this.is_rendering) {
+            return;
+        }
+        this.is_rendering = true;
+        this.cutespinny.style.display = 'block';
+
+        let loadLimit = Math.min(this.current_index + this.max_load_amount, displayed_parts.length);
+        if (loadLimit > displayed_parts.length) {
+            loadLimit = displayed_parts.length;
+        }
+
+        let startIndex = this.current_index;
+        if (startIndex >= displayed_parts.length) {
+            return;
+        }
+
+        for (let i = startIndex; i < loadLimit; i++) {
+            let part = displayed_parts[i];
+            let span = document.createElement("span");
+
+            let icon_path;
+            let part_file_name;
+            let part_file;
+
+            if(this.is_custom) {
+                icon_path = part.thumbnail || part.url;
+                part_file_name = part.reference;
+                part_file = part.part;
+                span.setAttribute("textureID", part.id);
+            } else {
+                icon_path = `${ldraw_icon_path + part.file.split(".")[0]}.png`;
+                part_file_name = part.file.split(".")[0];
+                part_file = part.file;
+            }
+
+            span.id = part_file;
+            span.title = part.name;
+            span.classList.add('ui-tooltip');
+            span.setAttribute("value", part_file);
+            span.innerHTML = `
+                <img src="${icon_path}" loading="lazy" />
+                <br />
+                <small class="part-list-number">${part_file_name}</small>
+                <small class="ui-tooltip-text">${part.name}</small>
+            `;
+
+            this.select_block_contain.insertBefore(span, this.sentinel);
+        }
+
+        this.current_index = loadLimit;
+
+        if (this.current_index >= displayed_parts.length) {
+            this.observer.disconnect();
+        }
+
+        this.cutespinny.style.display = 'none';
+        this.is_rendering = false;
+    }
 }
 
 document.getElementById("search-parts").addEventListener("keyup", function (event) {
@@ -610,6 +648,7 @@ document.getElementById("login-complete").addEventListener("click", function () 
 
     const mail = document.querySelector("#login-popup input[name='mail']").value.trim();
     const pwd = document.querySelector("#login-popup input[name='pwd']").value.trim();
+    const _UserAuth = new UserAuth();
 
     this.innerHTML = `<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>`;
 
@@ -628,7 +667,7 @@ document.getElementById("login-complete").addEventListener("click", function () 
         .then(response => {
             this.innerText = "Login";
             if (response.success === true) {
-                login();
+                _UserAuth.login();
             } else {
                 if (response.error) {
                     console.error(response.error);
@@ -2048,6 +2087,14 @@ function init() {
                     let decal = new Decalify(scene, camera);
                     decal.init_ui();
                     break
+                case 'KeyZ':
+                    event.preventDefault();
+                    window.statehistory.undo();
+                    break
+                case 'KeyY':
+                    event.preventDefault();
+                    window.statehistory.redo();
+                    break
             }
         } else {
             switch (event.code) {
@@ -2503,7 +2550,11 @@ class statehistoryManager {
     }
 
     loadState(jsonState) {
-        if (blockGroups && blockGroups.length > 0) {
+        if (multiSelectedObject) {
+            selector.clearSelection();
+        }
+
+        /*if (blockGroups && blockGroups.length > 0) {
             blockGroups.forEach(function (g) {
                 scene.remove(g);
                 if (g.geometry) {
@@ -2519,21 +2570,21 @@ class statehistoryManager {
                 g.updateMatrixWorld(true);
             });
             scene.updateMatrixWorld(true);
-        }
+        }*/
 
-        if (selectedObject) {
-            selectedObject = null;
-            transformControls.detach();
-        }
-
-        if (multiSelectedObject) {
-            selector.clearSelection();
-        }
+        wipe_scene();
+        let state = JSON.parse(jsonState);
 
         show_import_animation = false;
-        loadSceneFromJSON(JSON.parse(jsonState));
-        show_import_animation = true;
+        loadSceneFromJSON(state);
 
+        if(state.camera) {
+            camera.position.x = state.camera.x;
+            camera.position.y = state.camera.y;
+            camera.position.z = state.camera.z;
+        }
+
+        show_import_animation = true;
         this.scene.updateMatrixWorld();
     }
 }

@@ -23,17 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 
 	picker.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i>';
-	picker.style.color = '#d3d3d3';
-	picker.style.paddingLeft = "5px";
-	picker.style.paddingRight = "5px";
-	picker.style.marginLeft = "5px";
-	picker.style.width = "fit-content";
-	picker.style.cursor = 'pointer';
-	picker.style.border = '#d3d3d3 1px solid';
 
-	colorList.style.display = "none";
-	colorList.style.border = "1px solid #d3d3d3"
-	colorList.style.borderRadius = "2px";
+	/*
 	colorList.style.gridTemplateColumns = "auto auto auto auto auto auto";
 
 	picker.addEventListener("mouseover", function () {
@@ -43,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	picker.addEventListener("mouseout", function () {
 		picker.style.opacity = '';
 	});
+	*/
 
 	picker.addEventListener('click', function () {
 		if (colorList.style.display === "grid") {
@@ -91,21 +83,16 @@ document.addEventListener('DOMContentLoaded', function () {
 			span.title = color.name;
 			span.setAttribute("value", color.code);
 			span.classList.add('ui-tooltip');
+			span.classList.add('color-picker-color');
+
+			span.style.color = color.edge;
 			span.style.backgroundColor = color.hex;
-			span.style.color = '#d3d3d3';
-			span.style.paddingLeft = "5px";
-			span.style.paddingRight = "5px";
-			span.style.margin = "0.25em";
-			span.style.width = "25px";
-			span.style.height = "25px";
-			span.style.display = "inline-block";
-			span.style.cursor = 'pointer';
-			span.style.border = '#d3d3d3 1px solid'
-			span.style.boxShadow = "rgba(2, 2, 2, 0.06) 2px 2px 2px 2px";
+			span.style.border = `${color.edge} 1px solid`;
 
 			i += 1;
 			colorList.appendChild(span);
 		});
+		console.log(`${i} colors`);
 	}
 	displayColorListItems();
 
@@ -113,8 +100,12 @@ document.addEventListener('DOMContentLoaded', function () {
 		window.picker.setAttribute('color', partColor);
 		window.picker.value = partColor;
 
-		let ldrawHexMap = new Map(window.ldrawColors.map(c => [String(c.code), c.hex]));
-		window.picker.style.backgroundColor = ldrawHexMap.get(partColor);
+		let ldrawHexMap = new Map(window.ldrawColors.map(c => [String(c.code), c]));
+		let color = ldrawHexMap.get(partColor)?.hex;
+		let colorBorder = ldrawHexMap.get(partColor)?.edge;
+
+		window.picker.style.backgroundColor = color;
+		window.picker.style.border = `${colorBorder} 1px solid`;
 	}
 	updatecolorelement();
 });
