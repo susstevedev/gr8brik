@@ -59,33 +59,24 @@ import Stats from 'three/addons/libs/stats.module.js';
 
 import metadata from "./modules/metadata.js";
 import { tooltip, tooltipAlert } from './modules/tooltip.js';
-import { settings, defaults, readSettings, saveSettings, setDefaultSettings, clearSettings, validateSettings } from "./settings.js";
+import { settings, defaults, readSettings, saveSettings, setDefaultSettings, clearSettings, validateSettings, mergeConfig } from "./settings.js";
 import { ldrawColors, picker, setColor, getColor, updatecolorelement } from "./color.js";
+import { filter_objects_peices, clone_mesh_clean, makeid } from './modules/objectutils.js';
+import { ModelExports } from './modules/exportcreation.js';
+import { search_display_partui } from './modules/displayparts.js';
 import { SceneGraph } from './modules/scenegraph.js';
 import { UserAuth } from './modules/userauth.js';
 
-let THREE_LD = { OrbitControls: OrbitControls, TransformControls: TransformControls, LDrawLoader: LDrawLoader, GLTFExporter: GLTFExporter, HDRLoader: HDRLoader, RGBELoader: HDRLoader, OBJExporter, OBJExporter };
+let THREE_LD = { OrbitControls: OrbitControls, TransformControls: TransformControls, LDrawLoader: LDrawLoader, GLTFExporter: GLTFExporter, OBJExporter: OBJExporter, HDRLoader: HDRLoader, RGBELoader: HDRLoader, OBJExporter, OBJExporter };
 let THREE = { ...THREE_NS, ...THREE_LD }
 
-window.metadata = metadata;
-window.settings = settings;
-window.defaults = defaults;
+window.metadata = metadata, window.settings = settings, window.defaults = defaults;
 
 // globals
 let container = null, stats = null, animationFrameId = null, camera = null, scene = null, renderer = null, controls = null, transformControls = null, directional_lighting = null, ambient_lighting = null, ldraw_loader = null, loading_manager = null, mouse = null, raycaster = null, partMat = null, partMatrixWorld = null, partRotation = null, partPosition = null, selectedObject = null, multiSelectedObject = null, selectionGroup = null, selectedMap = null, selectedExport = null;
 
 let start_url = null, gh_base_url = null, DEFAULT_TITLE = null, show_import_animation = true, ldraw_path = null, ldraw_icon_path = null, blockGroups = [];
-window.version = null, window.scenegraph = null, window.currentUser = null, window.debug = false, window.loggedin;
-
-function mergeConfig(settings, defaults) {
-    settings ??= {};
-
-    for (const [key, value] of Object.entries(defaults)) {
-        if (!(key in settings)) {
-            settings[key] = value;
-        }
-    }
-}
+window.version = null, window.scenegraph = null, window.currentUser = null, window.debug = false;
 
 //settings.js is supposed to do this but whatever #okay
 let appConfig = window.metadata ?? {};
@@ -105,11 +96,10 @@ console.info('Gr8brik ' + window.version);
 start_url = 'http://localhost:3000';
 
 // user login functions
-let _UserAuth = new UserAuth(start_url);
-_UserAuth.login();
+window._UserAuth = new UserAuth(start_url);
+await _UserAuth.login();
 _UserAuth.getWarnStatus();
 window.currentUser = _UserAuth.currentUserObj;
-window.loggedin = _UserAuth.loggedin;
 
 let displayed_parts = [];
 let cached_parts = {};
@@ -151,12 +141,11 @@ function loadParts(type) {
     console.log(`loading ${type} category`);
     let fetch_str;
     let custom = false;
-    let dp = new search_display_partui();
+    let dp = new search_display_partui(ldraw_icon_path);
 
     if (cached_parts[type]) {
         console.log(`${type} parts loaded from cache`);
         displayed_parts = cached_parts[type];
-        //displayParts(displayed_parts, true);
         dp.displayParts(displayed_parts, true);
         return;
     }
@@ -175,7 +164,6 @@ function loadParts(type) {
             if(!custom) {
                 cached_parts[type] = data;
             }
-            //displayParts(displayed_parts, true, custom);
             dp.displayParts(displayed_parts, true, custom);
         })
         .catch(err => {
@@ -205,159 +193,8 @@ function searchParts() {
         }
     }
 
-    let dp = new search_display_partui();
+    let dp = new search_display_partui(ldraw_icon_path);
     dp.displayParts(matchedItems, true);
-}
-
-/**
- * Class to display parts
- * Better replacement for old displayParts function
- */
-class search_display_partui {
-    constructor() {
-        this.sentinel = null;
-        this.observer = null
-        this.max_load_amount = 50;
-        this.select_block_contain = document.getElementById("select-block");
-        this.cutespinny = document.getElementById('cutespinny');
-        this.current_index = 0;
-        this.is_rendering = false;
-        this.is_custom = false;
-    }
-
-    displayParts(displayed_parts, new_category, custom = false) {
-        this.is_custom = custom;
-
-        if(custom && displayed_parts.error) {
-            console.error('error fetching custom parts ' + displayed_parts.code);
-            let error = displayed_parts?.message || "Something went wrong.";
-
-            if(displayed_parts.code == "LOGGED_OUT") {
-                error = "Please login to view and add custom parts to the scene.";
-            }
-
-            if(displayed_parts.code == "INV_LOGIN") {
-                error = "Invalid login.";
-            }
-
-            if(displayed_parts.code == "USR_NOT_VERIFY") {
-                error = "Please verify your account to view and add custom parts to the scene.";
-            }
-
-            if(displayed_parts.code == "NO_PARTS") {
-                error = "No parts found in query.";
-            }
-
-            tooltip(error);
-            return;
-        }
-
-        if(!custom) {
-            displayed_parts = displayed_parts.sort((a, b) => a.name.length - b.name.length);
-        }
-
-        if (new_category) {
-            if (this.observer) {
-                this.observer.disconnect();
-            }
-
-            this.max_load_amount = 50;
-            this.current_index = 0;
-
-            let existingSpans = this.select_block_contain.querySelectorAll('span');
-            existingSpans.forEach(span => span.remove());
-
-            this.prepare(displayed_parts);
-            this.render(displayed_parts);
-        } else {
-            this.render(displayed_parts);
-        }
-    }
-
-    prepare(displayed_parts) {
-        let oldSentinel = document.getElementById('scroll-sentinel');
-        if (oldSentinel) {
-            oldSentinel.remove();
-        };
-
-        this.sentinel = document.createElement('div');
-        this.sentinel.id = 'scroll-sentinel';
-        this.sentinel.style.height = '1px';
-        this.select_block_contain.appendChild(this.sentinel);
-
-        this.observer = this.create_observer(displayed_parts);
-        this.observer.observe(this.sentinel);
-    }
-
-    create_observer(displayed_parts) {
-        return new IntersectionObserver((entries) => {
-            if (entries.some(entry => entry.isIntersecting)) {
-                if (this.current_index < displayed_parts.length) {
-                    requestAnimationFrame(() => this.render(displayed_parts));
-                }
-            }
-        }, { rootMargin: '100px' });
-    }
-
-    render(displayed_parts) {
-        if (this.is_rendering) {
-            return;
-        }
-        this.is_rendering = true;
-        this.cutespinny.style.display = 'block';
-
-        let loadLimit = Math.min(this.current_index + this.max_load_amount, displayed_parts.length);
-        if (loadLimit > displayed_parts.length) {
-            loadLimit = displayed_parts.length;
-        }
-
-        let startIndex = this.current_index;
-        if (startIndex >= displayed_parts.length) {
-            return;
-        }
-
-        for (let i = startIndex; i < loadLimit; i++) {
-            let part = displayed_parts[i];
-            let span = document.createElement("span");
-
-            let icon_path;
-            let part_file_name;
-            let part_file;
-
-            if(this.is_custom) {
-                icon_path = part.thumbnail || part.url;
-                part_file_name = part.reference;
-                part_file = part.part;
-                span.setAttribute("textureID", part.id);
-            } else {
-                icon_path = `${ldraw_icon_path + part.file.split(".")[0]}.png`;
-                part_file_name = part.file.split(".")[0];
-                part_file = part.file;
-            }
-
-            span.id = part_file;
-            span.title = part.name;
-            span.classList.add('ui-tooltip');
-            span.setAttribute("value", part_file);
-            span.innerHTML = `
-                <img src="${icon_path}" loading="lazy" />
-                <br />
-                <small class="part-list-number">${part_file_name}</small>
-                <small class="ui-tooltip-text">${part.name}</small>
-            `;
-
-            this.select_block_contain.insertBefore(span, this.sentinel);
-        }
-
-        this.current_index = loadLimit;
-
-        if (this.current_index >= displayed_parts.length) {
-            this.observer.disconnect();
-        }
-
-        this.cutespinny.style.display = 'none';
-        this.is_rendering = false;
-    }
 }
 
 document.getElementById("search-parts").addEventListener("keyup", function (event) {
@@ -433,7 +270,7 @@ document.getElementById("download-json").addEventListener("click", function () {
     if (sceneJSON) {
         autosave();
 
-        if (!window.loggedin) {
+        if (!_UserAuth.is_logged_in()) {
             this.disabled = true;
             this.classList.add('btn-disabled');
             tooltip('Login to save creation to server');
@@ -514,13 +351,14 @@ document.getElementById("download-json").addEventListener("click", function () {
 
 //login
 document.getElementById("login-complete").addEventListener("click", function () {
-    if (window.loggedin) {
+    const _UserAuth = new UserAuth();
+
+    if (_UserAuth.is_logged_in()) {
         return;
     }
 
     const mail = document.querySelector("#login-popup input[name='mail']").value.trim();
     const pwd = document.querySelector("#login-popup input[name='pwd']").value.trim();
-    const _UserAuth = new UserAuth();
 
     this.innerHTML = `<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>`;
 
@@ -539,6 +377,7 @@ document.getElementById("login-complete").addEventListener("click", function () 
         .then(response => {
             this.innerText = "Login";
             if (response.success === true) {
+                document.querySelector("#login-popup").style.display = 'none';
                 _UserAuth.login();
             } else {
                 if (response.error) {
@@ -610,7 +449,7 @@ document.getElementById("import-finish").addEventListener("click", function () {
 
 // export model
 document.getElementById("export-finish").addEventListener("click", function () {
-    if (!window.loggedin) {
+    if (!_UserAuth.is_logged_in()) {
         alert('Not authenticated');
         return;
     }
@@ -620,8 +459,9 @@ document.getElementById("export-finish").addEventListener("click", function () {
     }
 
     const format = document.getElementById("export-format").value;
+    const jszip = new JSZip();
     selectedExport = document.getElementById("export-format").value;
-    let exportclass = new ModelExports(scene);
+    let exportclass = new ModelExports(scene, start_url, THREE, jszip, blockGroups);
 
     switch (selectedExport) {
         case "three":
@@ -640,7 +480,7 @@ document.getElementById("export-finish").addEventListener("click", function () {
             exportclass.lxf();
             break;
         case "mpd":
-            exportSceneToMPD("creation");
+            exportclass.mpd("creation");
             break;
         case "glb":
             exportclass.glb();
@@ -763,237 +603,6 @@ function setcamangle(anglehor, anglever) {
 
     camera.position.set(nx, ny, nz);
     controls.update();
-}
-
-class ModelExports {
-    constructor(scene) {
-        if(!window.loggedin) {
-            return;
-        }
-
-        if(!scene) {
-            return;
-        }
-    }
-
-    gr8brikItselfYeahBitch(json = false) {
-        let data = generateSceneJSON();
-        let blob = new Blob([data], { type: "application/json" });
-
-        let url = URL.createObjectURL(blob);
-        let date = new Date();
-        let a = document.createElement("a");
-
-        a.href = url;
-
-        if(json) {
-            a.download = `gr8brik-creation-${date}.json`;
-        } else {
-            a.download = `gr8brik-creation-${date}.gr8`;
-        }
-
-        a.click();
-
-        setTimeout(() => {
-            URL.revokeObjectURL(url);
-        }, 10000);
-    }
-
-    zippedGr8() {
-        let data = generateSceneJSON();
-        let setting = JSON.stringify(window.settings, null, 2);
-        let zip = new JSZip();
-        let options = {compression: "DEFLATE",compressionOptions: { level: 9 }};
-
-        zip.file("creation.gr8", data, options);
-        zip.file("setting.json", setting, options);
-
-        zip.generateAsync({ type: "blob", compression: "DEFLATE", compressionOptions: { level: 9 }, comment: `Zipped ${start_url} creation` }).then(function (blob) {
-            let url = URL.createObjectURL(blob);
-            let date = new Date();
-            let a = document.createElement("a");
-            a.href = url;
-            a.download = `gr8brik-compressed-creation-${date}.gr8z`;
-            a.click();
-
-            setTimeout(() => {
-                URL.revokeObjectURL(url);
-            }, 10000);
-        });
-    }
-
-    lxf() {
-        let data = generateSceneLXFML();
-        let zip = new JSZip();
-        zip.file("IMAGE100.LXFML", data);
-
-        zip.generateAsync({ type: "blob" }).then(function (blob) {
-            let url = URL.createObjectURL(blob);
-            let date = new Date();
-            let a = document.createElement("a");
-            a.href = url;
-            a.download = `ldd-creation-${date}.lxf`;
-            a.click();
-
-            setTimeout(() => {
-                URL.revokeObjectURL(url);
-            }, 10000);
-        });
-    }
-
-    threeJson() {
-        let fileData = JSON.stringify(scene.toJSON());
-        let zip = new JSZip();
-
-        zip.file(`scene.json`, fileData, {compression: "DEFLATE",compressionOptions: { level: 9 }});
-
-        zip.generateAsync({ type: "blob", compression: "DEFLATE", compressionOptions: { level: 9 } }).then(function (blob) {
-            let url = URL.createObjectURL(blob);
-            let date = new Date();
-            let a = document.createElement("a");
-            a.href = url;
-            a.download = `threejs-${date}.zip`;
-            a.click();
-
-            setTimeout(() => {
-                URL.revokeObjectURL(url);
-            }, 10000);
-        });
-    }
-
-    glb() {
-        let exporter = new THREE.GLTFExporter();
-        let date = new Date();
-        let scene_ = scene;
-
-        if (scene.userData.export_full_scene === false) {
-            scene_ = filter_objects_peices();
-        }
-
-        exporter.parse(
-            scene_,
-            function (result) {
-                let blob = new Blob([result], { type: 'model/gltf-binary' });
-                let url = URL.createObjectURL(blob);
-                let a = document.createElement('a');
-
-                a.href = url;
-                a.download = `creation-${date}.glb`;
-                a.click();
-
-                setTimeout(() => URL.revokeObjectURL(url), 10000);
-            },
-            function (error) {
-                console.error(error);
-            },
-            {
-                binary: true,
-                onlyVisible: true,
-                embedImages: true,
-                forceIndices: true,
-                forcePowerOfTwoTextures: true,
-            }
-        );
-    }
-
-    obj() {
-        let exporter = new OBJExporter();
-        let date = new Date();
-        let result = exporter.parse(filter_objects_peices());
-
-        let blob = new Blob([result], { type: 'text/plain' });
-        let url = URL.createObjectURL(blob);
-        let a = document.createElement('a');
-
-        a.href = url;
-        a.download = `obj-mtl-${date}.obj`;
-        a.click();
-
-        setTimeout(() => URL.revokeObjectURL(url), 10000);
-    }
-}
-
-function exportSceneToMPD(name) {
-    const lines = [];
-    let userName = 'user';
-
-    if(window.currentUser && window.currentUser?.username) {
-        userName = '@' + window.currentUser.username;
-    }
-
-    lines.push(`0 FILE ${name}.ldr`);
-    lines.push(`0 ${name}`);
-    lines.push(`0 Name: ${name}.ldr`);
-    lines.push(`0 Author: ${userName} on Gr8Brik`);
-    lines.push(`0 !LDRAW_ORG Model`);
-    lines.push(`0 !LICENSE Redistributable under CCAL version 2.0`);
-    lines.push(`0`);
-
-    scene.updateMatrixWorld(true);
-    scene.rotation.x += Math.PI;
-    scene.traverse(child => {
-        if (!child.isMesh || !child.userData.ldraw) {
-            return;
-        }
-
-        let color_code = 16;
-        if (child.material && !Array.isArray(child.material)) {
-            if (child.material?.userData?.colorcode) {
-                color_code = child.material.userData.colorcode;
-            }
-        } else if(child.material && Array.isArray(child.material)) {
-            if(child.userData && child.material.userData && child.userData.main_mat_index) {
-                let id = child.userData.main_mat_index;
-
-                if (child.material.userData[id]?.userData?.colorcode) {
-                    color_code = child.material.userData[id].userData.colorcode;
-                }
-            }
-        }
-
-        let partName = child.userData.ldraw.replace("parts/", "");
-
-        let pos = new THREE.Vector3();
-        child.getWorldPosition(pos);
-        let x = (pos.x).toFixed(2);
-        let y = (pos.y).toFixed(2);
-        let z = (pos.z).toFixed(2);
-
-        // –– ROTATION ––
-        let e = child.matrixWorld.elements;
-        let a = e[0].toFixed(5),
-            b = e[4].toFixed(5),
-            c = e[8].toFixed(5),
-            d = e[1].toFixed(5),
-            ee = e[5].toFixed(5),
-            f = e[9].toFixed(5),
-            g = e[2].toFixed(5),
-            h = e[6].toFixed(5),
-            i = e[10].toFixed(5);
-
-        let line = [
-            `1`, color_code,
-            x, y, z,
-            a, b, c,
-            d, ee, f,
-            g, h, i,
-            partName
-        ].join(" ");
-        lines.push(line);
-    });
-    scene.rotation.x -= Math.PI;
-
-    let result = lines.join('\n');
-    let date = new Date();
-
-    let blob = new Blob([result], { type: 'text/plain' });
-    let url = URL.createObjectURL(blob);
-    let a = document.createElement('a');
-    a.href = url;
-    a.download = `creation-${date}.mpd`;
-    a.click();
-
-    setTimeout(() => URL.revokeObjectURL(url), 10000);
 }
 
 document.getElementById("cre-import").addEventListener("change", function (event) {
@@ -1310,8 +919,6 @@ async function loadSceneFromJSON(data) {
         partPosition = block.position;
         partRotation = block.rotation;
         partMatrixWorld = null;
-        partTexture = block.texturedata;
-        partOpacity = block.opacity ?? '1.0';
         let partMaterials;
         let objname = block?.id || block?.ldraw;
 
@@ -1416,8 +1023,6 @@ async function loadLegacyJSON(data) {
 
         let partDim = block?.dimensions || null;
         partPosition = block?.intersect?.point;
-        partTexture = null;
-        partOpacity = '1.0';
         let objname = block?.intersect?.object?.object?.uuid || makeid(8);
 
         if (Array.isArray(block?.intersect?.object?.object?.matrix) && block.intersect.object.object.matrix.length === 16) {
@@ -2636,11 +2241,12 @@ class fromCloud {
     };
 
     get_user_creations(open_model = true, page = 1) {
-        if(!window.loggedin) {
+        if(!_UserAuth.is_logged_in()) {
             tooltip('Please login to import models from your account');
             return;
         }
 
+        const you = _UserAuth.get_current_user().username ?? 'you';
         const popup = document.getElementById('user-creations-popup');
         const container = document.getElementById('user-creations-wrapper');
         const nextbutton = document.getElementById('user-creations-foward-button');
@@ -2671,7 +2277,7 @@ class fromCloud {
                     clone.querySelector('.creation-card').setAttribute('data-id', r.model_id);
                     clone.querySelector('.creation-card').setAttribute('data-doopen', open_model);
                     clone.querySelector('.creation-title').innerHTML = r.title;
-                    clone.querySelector('.meta-author .user').innerHTML = window.currentUser.username ?? 'you';
+                    clone.querySelector('.meta-author .user').innerHTML = you ?? 'you';
                     clone.querySelector('.meta-author .date').innerHTML = r.date;
                     clone.querySelector('.creation-thumbnail').setAttribute('src', start_url + r.thumb);
 
@@ -2932,7 +2538,7 @@ class Decalify {
             return;
         }
 
-        if(!window.loggedin) {
+        if(!_UserAuth.is_logged_in()) {
             tooltip('Login to save custom parts');
             return;
         }
@@ -3218,19 +2824,6 @@ function capture() {
     thumb.clear();
 
     return thumbnail;
-}
-
-function makeid(length) {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let counter = 0;
-
-    while (counter < length) {
-        result += characters.charAt(Math.floor(Math.random() * characters.length));
-        counter += 1;
-    }
-
-    return result;
 }
 
 /**
@@ -3840,141 +3433,6 @@ function createCustomMaterial(partColor, colormap) {
     return new THREE.MeshPhysicalMaterial(params);
 }
 
-/*function BLItemValid(obj) {
-    if (!obj) {
-        return false;
-    }
-
-    const isPart = obj.isMesh && obj.userData?.isBlock && obj.userData?.ldraw;
-
-    const isGroup = obj.userData?.isGroup;
-
-    return isPart || isGroup;
-}
-
-function getBLItems() {
-    const roots = [];
-
-    scene.children.forEach(child => {
-        findTopBL(child, roots);
-    });
-
-    return roots;
-}
-
-function findTopBL(node, roots) {
-    if (!node) {
-        return;
-    }
-
-    if (BLItemValid(node)) {
-        roots.push(node);
-        return;
-    }
-
-    if (node.children) {
-        node.children.forEach(child => {
-            findTopBL(child, roots);
-        });
-    }
-}
-
-function getBLChildren(node) {
-    const children = [];
-
-    if (!node?.children) {
-        return children;
-    }
-
-    node.children.forEach(child => {
-        findTopBL(child, children);
-    });
-
-    return children;
-}
-
-function updateBLItems() {
-    const items = getBLItems();
-    const blockList = document.getElementById('block-list');
-    let partCount = 0;
-
-    blockList.innerHTML = "";
-
-    items.forEach(obj => {
-        const item = renderBLItem(obj);
-        blockList.appendChild(item);
-    });
-
-    //part count at bottom of page
-    scene.traverse((obj) => {
-        if (obj.visible && obj.userData?.isBlock) {
-            partCount++;
-        }
-    });
-
-    document.querySelector('#part-count .count').innerHTML = partCount;
-}
-
-function renderBLItem(obj) {
-    const id = obj.uuid;
-    const colormap = new Map(ldrawColors.map(c => [String(c.code), c.name]));
-    const main_mat_index = obj?.userData?.main_mat_index || 1;
-
-    //quicky for fixing some issues with multi colored parts :p
-    let colorid;
-    if(Array.isArray(obj?.material)) {
-        colorid = String(obj.material[main_mat_index].userData?.colorcode) || '4';
-    } else {
-        colorid = String(obj.material?.userData?.colorcode) || '4';
-    }
-
-    const color = colormap.get(colorid) || 'Unknown color';
-    let part = "Unknown part";
-    let partIcon = `${ldraw_icon_path}3001.png`;
-
-    if (obj.userData?.isBlock && obj.userData?.ldraw) {
-        part = serialize_part_name(obj.userData.ldraw || obj.parent?.userData?.ldraw || obj.parent?.userData?.fileName);
-
-        partIcon = `${ldraw_icon_path}${part}.png`;
-    } else if (obj.userData?.isGroup) {
-        part = obj.name || "Group of parts";
-    }
-
-    const li = document.createElement('li');
-    li.classList.add('scene-block-item');
-    li.setAttribute('data-id', id);
-
-    const content = document.createElement('div');
-
-    const img = document.createElement('img');
-    img.setAttribute('src', partIcon);
-    img.setAttribute('loading', 'lazy');
-    img.setAttribute('width', '45px');
-
-    const text = document.createElement('span');
-    text.textContent = `${part} (${color})`;
-
-    content.appendChild(img);
-    content.appendChild(text);
-    li.appendChild(content);
-
-    const validChildren = getBLChildren(obj);
-
-    if (validChildren.length > 0) {
-        const ul = document.createElement('ul');
-        ul.classList.add('nested');
-
-        validChildren.forEach(child => {
-            const childLi = renderBLItem(child);
-            ul.appendChild(childLi);
-        });
-
-        li.appendChild(ul);
-    }
-
-    return li;
-}*/
-
 function groupParts(objects) {
     const group = new THREE.Group();
     group.name = "ldgroup_" + makeid(8);
@@ -4220,141 +3678,6 @@ function generateSceneJSON(legacy = false) {
 }
 window.generateSceneJSON = generateSceneJSON;
 
-//life support please just export as ldraw
-function generateSceneLXFML() {
-    let sceneBricks = '';
-    let boneRefs = [];
-    let refID = 0;
-    let totalPosition = new THREE.Vector3();
-    let count = 0;
-
-    if (selectedObject) {
-        transformControls.detach(selectedObject);
-        selectedObject = null;
-    }
-
-    if (multiSelectedObject) {
-        selector.clearSelection();
-    }
-
-    const ldd_colors = [{ "ldraw": "15", "lego": "1" }, { "ldraw": "7", "lego": "2" }, { "ldraw": "18", "lego": "3" }, { "ldraw": "12", "lego": "4" }, { "ldraw": "19", "lego": "5" }, { "ldraw": "17", "lego": "6" }, { "ldraw": "13", "lego": "9" }, { "ldraw": "313", "lego": "11" }, { "ldraw": "450", "lego": "12" }, { "ldraw": "92", "lego": "18" }, { "ldraw": "79", "lego": "20" }, { "ldraw": "4", "lego": "21" }, { "ldraw": "351", "lego": "22" }, { "ldraw": "1", "lego": "23" }, { "ldraw": "14", "lego": "24" }, { "ldraw": "6", "lego": "25" }, { "ldraw": "0", "lego": "26" }, { "ldraw": "8", "lego": "27" }, { "ldraw": "2", "lego": "28" }, { "ldraw": "74", "lego": "29" }, { "ldraw": "68", "lego": "36" }, { "ldraw": "10", "lego": "37" }, { "ldraw": "484", "lego": "38" }, { "ldraw": "20", "lego": "39" }, { "ldraw": "47", "lego": "40" }, { "ldraw": "36", "lego": "41" }, { "ldraw": "43", "lego": "42" }, { "ldraw": "33", "lego": "43" }, { "ldraw": "46", "lego": "44" }, { "ldraw": "9", "lego": "45" }, { "ldraw": "38", "lego": "47" }, { "ldraw": "34", "lego": "48" }, { "ldraw": "42", "lego": "49" }, { "ldraw": "294", "lego": "50" }, { "ldraw": "100", "lego": "100" }, { "ldraw": "73", "lego": "102" }, { "ldraw": "503", "lego": "103" }, { "ldraw": "22", "lego": "104" }, { "ldraw": "462", "lego": "105" }, { "ldraw": "25", "lego": "106" }, { "ldraw": "3", "lego": "107" }, { "ldraw": "110", "lego": "110" }, { "ldraw": "40", "lego": "111" }, { "ldraw": "112", "lego": "112" }, { "ldraw": "37", "lego": "113" }, { "ldraw": "114", "lego": "114" }, { "ldraw": "115", "lego": "115" }, { "ldraw": "11", "lego": "116" }, { "ldraw": "117", "lego": "117" }, { "ldraw": "118", "lego": "118" }, { "ldraw": "27", "lego": "119" }, { "ldraw": "120", "lego": "120" }, { "ldraw": "26", "lego": "124" }, { "ldraw": "125", "lego": "125" }, { "ldraw": "52", "lego": "126" }, { "ldraw": "142", "lego": "127" }, { "ldraw": "129", "lego": "129" }, { "ldraw": "179", "lego": "131" }, { "ldraw": "133", "lego": "132" }, { "ldraw": "379", "lego": "135" }, { "ldraw": "373", "lego": "136" }, { "ldraw": "28", "lego": "138" }, { "ldraw": "134", "lego": "139" }, { "ldraw": "272", "lego": "140" }, { "ldraw": "288", "lego": "141" }, { "ldraw": "41", "lego": "143" }, { "ldraw": "143", "lego": "143" }, { "ldraw": "137", "lego": "145" }, { "ldraw": "178", "lego": "147" }, { "ldraw": "148", "lego": "148" }, { "ldraw": "150", "lego": "150" }, { "ldraw": "378", "lego": "151" }, { "ldraw": "335", "lego": "153" }, { "ldraw": "320", "lego": "154" }, { "ldraw": "54", "lego": "157" }, { "ldraw": "135", "lego": "179" }, { "ldraw": "57", "lego": "182" }, { "ldraw": "183", "lego": "183" }, { "ldraw": "191", "lego": "191" }, { "ldraw": "70", "lego": "192" }, { "ldraw": "71", "lego": "194" }, { "ldraw": "89", "lego": "195" }, { "ldraw": "23", "lego": "196" }, { "ldraw": "69", "lego": "198" }, { "ldraw": "72", "lego": "199" }, { "ldraw": "81", "lego": "200" }, { "ldraw": "151", "lego": "208" }, { "ldraw": "212", "lego": "212" }, { "ldraw": "216", "lego": "216" }, { "ldraw": "6", "lego": "217" }, { "ldraw": "5", "lego": "221" }, { "ldraw": "29", "lego": "222" }, { "ldraw": "77", "lego": "223" }, { "ldraw": "226", "lego": "226" }, { "ldraw": "39", "lego": "229" }, { "ldraw": "45", "lego": "230" }, { "ldraw": "232", "lego": "232" }, { "ldraw": "44", "lego": "236" }, { "ldraw": "85", "lego": "268" }, { "ldraw": "78", "lego": "283" }, { "ldraw": "21", "lego": "294" }, { "ldraw": "297", "lego": "297" }, { "ldraw": "80", "lego": "298" }, { "ldraw": "82", "lego": "299" }, { "ldraw": "117", "lego": "304" }, { "ldraw": "308", "lego": "308" }, { "ldraw": "26", "lego": "309" }, { "ldraw": "334", "lego": "310" }, { "ldraw": "35", "lego": "311" }, { "ldraw": "86", "lego": "312" }, { "ldraw": "87", "lego": "315" }, { "ldraw": "83", "lego": "316" }, { "ldraw": "321", "lego": "321" }, { "ldraw": "323", "lego": "323" }];
-
-    let lddmap = new Map(ldd_colors.map(item => [item.ldraw, item.lego]));
-
-    blockGroups.forEach(function (group) {
-        group.traverse(function (child) {
-            if (child.isMesh) {
-                totalPosition.add(group.position);
-                count++;
-            }
-        });
-    });
-
-    blockGroups.forEach(function (group) {
-        let mesh_child = null;
-        group.traverse(function (child) {
-            if (child.isMesh) {
-                mesh_child = child;
-            }
-        });
-
-        if (mesh_child) {
-            let ldraw = group.ldraw.replace("parts/", "").replace(".dat", "");
-            const boneID = refID;
-            let colorID = 21;
-            let ldraw_code = 15;
-
-            if (!mesh_child.material.map && !mesh_child.isLineSegments) {
-                ldraw_code = mesh_child.material?.userData?.colorcode;
-                colorID = lddmap.get(String(ldraw_code));
-                console.log(ldraw_code);
-                console.log(colorID);
-            }
-
-            let adjustedMatrix = mesh_child.matrixWorld.clone();
-
-            const globalrot = new THREE.Matrix4().makeRotationX(Math.PI / 1);
-            adjustedMatrix.premultiply(globalrot);
-
-            const flipmatrix = new THREE.Matrix4().makeRotationX(Math.PI);
-            adjustedMatrix.multiply(flipmatrix);
-
-            const translationMatrix = new THREE.Matrix4().makeTranslation(-20, 0, 0); // 1 LDU
-            adjustedMatrix.multiply(translationMatrix);
-
-            sceneBricks += `
-                <Brick refID="${refID}" designID="${ldraw}" itemNos="${ldraw}">
-                <Part refID="${refID}" designID="${ldraw}" materials="${colorID},0" decoration="0">
-                    <Bone refID="${refID}" transformation="${LXFMLMatrix(adjustedMatrix)}"></Bone>
-                </Part>
-                </Brick>`;
-
-            boneRefs.push(boneID);
-            refID++;
-        }
-    });
-
-    const boneRefString = boneRefs.join(',');
-
-    const sceneData = `
-            <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-            <LXFML versionMajor="5" versionMinor="0" name="Unnamed">
-            <Meta>
-                <Application name="LEGO Digital Designer" versionMajor="4" versionMinor="3"/>
-                <Brand name="LDD"/>
-                <BrickSet version="2670"/>
-            </Meta>
-            <Model name="Unnamed"></Model>
-            <Cameras>
-                <Camera refID="0" fieldOfView="80" distance="120" transformation="1,0,0,0,1,0,0,0,1,0,0,120"/>
-            </Cameras>
-            <Bricks cameraRef="0">
-                ${sceneBricks}
-            </Bricks>
-            <RigidSystems>
-                <RigidSystem>
-                <Rigid refID="0" transformation="1,0,0,0,1,0,0,0,1,0,0,0" boneRefs="${boneRefString}"/>
-                </RigidSystem>
-            </RigidSystems>
-            <GroupSystems>
-                <GroupSystem></GroupSystem>
-            </GroupSystems>
-            <BuildingInstructions></BuildingInstructions>
-            </LXFML>
-        `;
-
-    return sceneData.replace(/\s+/g, ' ').trim();
-}
-
-function LXFMLMatrix(matrix4) {
-    const unit = 0.04;
-    const converted = matrix4.clone();
-
-    const rotx = new THREE.Matrix4().makeRotationX(Math.PI / 1);
-
-    const rot = new THREE.Matrix4();
-    rot.multiply(rotx);
-    converted.premultiply(rot);
-
-    const position = new THREE.Vector3();
-    const quaternion = new THREE.Quaternion();
-    const scale = new THREE.Vector3();
-    converted.decompose(position, quaternion, scale);
-
-    position.multiplyScalar(unit);
-    position.x -= 0.8;
-
-    converted.compose(position, quaternion, scale);
-    const elm = converted.transpose().elements;
-
-    return [
-        elm[0], elm[4], elm[8],
-        elm[1], elm[5], elm[9],
-        elm[2], elm[6], elm[10],
-        elm[3], elm[7], elm[11]
-    ].map(v => v.toFixed(10)).join(',');
-}
-
 function updateSceneData() {
     if (blockGroups && blockGroups.length > 0) {
         blockGroups.forEach(function (g) {
@@ -4513,93 +3836,6 @@ function clean_matrix(elm, precision = 4) {
     let round = parseFloat(val.toFixed(precision));
     return round === -0 ? 0 : round;
   });
-}
-
-const geometry_cache = new Map();
-// does what it says
-function clone_mesh_clean(obj) {
-    if (!obj.isMesh || !obj.geometry) {
-        return null;
-    }
-
-    if (!obj.userData.isBlock || !obj.userData.ldraw) {
-        return null;
-    }
-
-    let mat;
-
-    if (obj.material) {
-        if (Array.isArray(obj.material)) {
-            mat = obj.material.map(oldMaterial => {
-                return oldMaterial.clone();
-            });
-        } else {
-            if (obj.geometry && obj.geometry.groups && obj.geometry.groups.length > 0) {
-                mat = obj.geometry.groups.map(() => obj.material.clone());
-            } else {
-                mat = obj.material.clone();
-            }
-        }
-    } else {
-        if (obj.geometry && obj.geometry.groups && obj.geometry.groups.length > 0) {
-            mat = obj.geometry.groups.map(() => new THREE.MeshPhysicalMaterial({ color: 0xffffff }));
-        } else {
-            mat = new THREE.MeshPhysicalMaterial({ color: 0xffffff });
-        }
-    }
-
-    if (!mat) {
-        return new Error('Invalid material for object ' + obj.name);
-    }
-
-    let ldraw = obj.userData.ldraw;
-    let geometry;
-
-    if (geometry_cache.has(ldraw)) {
-        geometry = geometry_cache.get(ldraw);
-    } else {
-        geometry = obj.geometry.clone();
-        geometry.name = `ldraw_${ldraw}`;
-        geometry_cache.set(ldraw, geometry);
-    }
-
-    if (!geometry) {
-        return new Error('Invalid geometry for object ' + obj.name);
-    }
-
-    const obj_clone = new THREE.Mesh(geometry, mat);
-
-    obj.updateMatrixWorld(true);
-    obj.getWorldPosition(obj_clone.position);
-    obj.getWorldQuaternion(obj_clone.quaternion);
-    obj.getWorldScale(obj_clone.scale);
-
-    obj_clone.name = obj.name || 'clone ' + makeid(5);
-
-    return obj_clone;
-}
-
-function filter_objects_peices() {
-    let thumb = new THREE.Scene();
-
-    scene.traverse(function (object) {
-        if (object.isMesh && (object.userData.isBlock || object.userData.isTexture)) {
-            let hexColor;
-
-            if (!Array.isArray(object.material)) {
-                hexColor = object.material?.color || new THREE.Color(0xffffff);
-            } else {
-                hexColor = object.material[0]?.color || new THREE.Color(0xffffff);
-            }
-
-            let cloned = clone_mesh_clean(object);
-            if (cloned) {
-                thumb.add(cloned);
-                cloned.rotation.setFromQuaternion(cloned.quaternion);
-            }
-        }
-    });
-    return thumb;
 }
 
 //complex selection logic

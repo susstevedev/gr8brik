@@ -10,7 +10,7 @@
         "gh_base": "https://susstevedev.github.io/gr8brik/"
     },
     "ldraw": {
-        "parts_path": "https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-ldraw-fork@main/ldraw-parts/",
-        "icon_path": "https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-ldraw-fork@main/ldraw-icons/"
+        "parts_path": "https://susstevedev.github.io/gr8brik-ldraw-fork/ldraw-parts/",
+        "icon_path": "https://susstevedev.github.io/gr8brik-ldraw-fork/ldraw-icons/"
     }
 }

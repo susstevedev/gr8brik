@@ -103,4 +103,14 @@ function validateSettings(settings_saved, settings_default) {
     return repaired;
 }
 
-export { settings, defaults, readSettings, saveSettings, setDefaultSettings, clearSettings, validateSettings };
+function mergeConfig(settings, defaults) {
+    settings ??= {};
+
+    for (const [key, value] of Object.entries(defaults)) {
+        if (!(key in settings)) {
+            settings[key] = value;
+        }
+    }
+}
+
+export { settings, defaults, readSettings, saveSettings, setDefaultSettings, clearSettings, validateSettings, mergeConfig };

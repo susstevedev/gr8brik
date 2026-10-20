@@ -8,7 +8,7 @@ class UserAuth {
         this.loggedin = false;
     }
 
-    login() {
+    async login() {
         fetch(this.URL + "/ajax/user.php?ajax=true", {
             credentials: 'include',
         })
@@ -88,6 +88,14 @@ class UserAuth {
             'picture': this.URL + response.pfp,
             'verified': response.is_verified,
         }
+    }
+
+    is_logged_in() {
+        return this.loggedin;
+    }
+
+    get_current_user() {
+        return this.currentUserObj;
     }
 
     ui_login(response) {
