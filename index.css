@@ -430,10 +430,12 @@ kbd {
   
   a, a:visited {
 	  color: var(--ui-href-color);
+    text-decoration: none;
   }
   
   a:hover, a:visited:hover {
 	  color: var(--ui-text-color);
+    text-decoration: underline;
   }
 }
 

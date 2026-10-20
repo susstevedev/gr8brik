@@ -6,7 +6,7 @@ Credits: susstevedev, the_an0nym
 /**
 This code follows the MIT License
 
-Copyright (c) 2024 The Gr8brik Team
+Copyright (c) 2023-2026 The Gr8brik Team
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -41,10 +41,6 @@ window.addEventListener('beforeunload', function (e) {
     e.returnValue = '';
 });
 
-window.version = '2026.10b';
-window.CURRENT_APP = 'modeler';
-console.info('Gr8brik ' + window.version);
-
 // new imports
 import * as THREE_NS from 'three';
 
@@ -57,30 +53,29 @@ import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
 import { HDRLoader } from 'three/addons/loaders/HDRLoader.js';
 import { OBJExporter } from 'three/addons/exporters/OBJExporter.js';
 import { DecalGeometry } from 'three/addons/geometries/DecalGeometry.js';
+
 import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
 import Stats from 'three/addons/libs/stats.module.js';
 
-let THREE = { ...THREE_NS };
-THREE.OrbitControls = OrbitControls;
-THREE.TransformControls = TransformControls;
-THREE.LDrawLoader = LDrawLoader;
-THREE.GLTFExporter = GLTFExporter;
-THREE.HDRLoader = HDRLoader;
-THREE.RGBELoader = HDRLoader;
-THREE.OBJExporter = OBJExporter;
+import metadata from "./modules/metadata.js";
+import { tooltip, tooltipAlert } from './modules/tooltip.js';
+import { settings, defaults, readSettings, saveSettings, setDefaultSettings, clearSettings, validateSettings } from "./settings.js";
+import { ldrawColors, picker, setColor, getColor, updatecolorelement } from "./color.js";
+import { SceneGraph } from './modules/scenegraph.js';
+import { UserAuth } from './modules/userauth.js';
 
-window.debug = false; // debug mode
+let THREE_LD = { OrbitControls: OrbitControls, TransformControls: TransformControls, LDrawLoader: LDrawLoader, GLTFExporter: GLTFExporter, HDRLoader: HDRLoader, RGBELoader: HDRLoader, OBJExporter, OBJExporter };
+let THREE = { ...THREE_NS, ...THREE_LD }
+
+window.metadata = metadata;
+window.settings = settings;
+window.defaults = defaults;
 
 // globals
-let container = null, stats = null, animationFrameId = null, camera = null, scene = null, renderer = null, controls = null, transformControls = null, grid_helper = null, directional_lighting = null, ambient_lighting = null, ldraw_loader = null, loading_manager = null, mouse = null, raycaster = null, mesh_color = null, partName = null, partMat = null, partIcon = null, part = null, partMatrixWorld = null, partTexture = null, partOpacity = null, activeObject = null, partRotation = null, partPosition = null, selectedObject = null, multiSelectedObject = null, selectionGroup = null, customPosition = null, selectedMap = null, selectedExport = null;
-//let partColor = '#C91A09';
-let start_url = 'https://gr8brik.rf.gd', gh_base_url = 'https://susstevedev.github.io/gr8brik/', DEFAULT_TITLE = 'Modeler - Gr8brik', show_import_animation = true;
-const studSize = 1000, ldraw_path = "https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-ldraw-fork@main/ldraw-parts/", ldraw_icon_path = "https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-ldraw-fork@main/ldraw-icons/";
+let container = null, stats = null, animationFrameId = null, camera = null, scene = null, renderer = null, controls = null, transformControls = null, directional_lighting = null, ambient_lighting = null, ldraw_loader = null, loading_manager = null, mouse = null, raycaster = null, partMat = null, partMatrixWorld = null, partRotation = null, partPosition = null, selectedObject = null, multiSelectedObject = null, selectionGroup = null, selectedMap = null, selectedExport = null;
 
-let blockGroups = [];
-
-// debug only
-start_url = 'http://localhost:3000';
+let start_url = null, gh_base_url = null, DEFAULT_TITLE = null, show_import_animation = true, ldraw_path = null, ldraw_icon_path = null, blockGroups = [];
+window.version = null, window.scenegraph = null, window.currentUser = null, window.debug = false, window.loggedin;
 
 function mergeConfig(settings, defaults) {
     settings ??= {};
@@ -92,149 +87,29 @@ function mergeConfig(settings, defaults) {
     }
 }
 
-// user login function
-window.loggedin = false;
-window.currentUser = null;
+//settings.js is supposed to do this but whatever #okay
+let appConfig = window.metadata ?? {};
 
-class UserAuth {
-    constructor() {
-        this.field = document.getElementById("username-field");
-    }
+window.version = appConfig.version;
+window.debug = appConfig.debug;
+start_url = appConfig.urls.start;
+gh_base_url = appConfig.urls.gh_base;
+ldraw_path = appConfig.ldraw.parts_path;
+ldraw_icon_path = appConfig.ldraw.icon_path;
+DEFAULT_TITLE = `Modeler - ${appConfig.name}`;
 
-    login() {
-        fetch(start_url + "/ajax/user.php?ajax=true", {
-            credentials: 'include',
-        })
-        .then(res => res.json())
-        .then(response => {
-            if (response.success) {
-                this.field.innerHTML = null;
+window.CURRENT_APP = 'modeler';
+console.info('Gr8brik ' + window.version);
 
-                const name = document.createElement('span');
-                name.innerText = response.user;
-                name.style.paddingRight = "10px";
+// debug only
+start_url = 'http://localhost:3000';
 
-                this.field.appendChild(name);
-                this.field.setAttribute("href", start_url + "/acc/creations");
-
-                if (response.alert != null && response.alert != undefined && response.alert != 0) {
-                    const notification = document.createElement('span');
-                    notification.innerText = response.alert;
-                    notification.classList.add('user-notif-count');
-
-                    this.field.appendChild(notification);
-                }
-
-                this.currentUser(response);
-                tooltip('Logged in as ' + response.user);
-            } else {
-                console.error("An error occured while authenticating: " + response.error);
-                document.getElementById("username-field").innerHTML = "Login";
-                window.loggedin = false;
-            }
-            this.ui_login(response);
-        })
-        .catch(async (err) => {
-            window.loggedin = false;
-            try {
-                let res = await err.response.json();
-                console.error(res.error);
-                this.ui_login(res);
-            } catch {
-                console.error("An error occured while authenticating: " + err);
-                this.ui_login(null);
-            }
-        });
-    }
-
-    getWarnStatus() {
-        fetch(start_url + "/ajax/user.php?get_warn_status=true", {
-            credentials: 'include',
-        })
-        .then(res => res.json())
-        .then(response => {
-            if (response.status == "yes" && response.success == true) {
-                tooltipAlert(response.text, response.reason, response.additional, response.button);
-
-                // rerun login function to update user information (logging user out if they get banned instead of just warned)
-                this.login();
-            } else if (response.success == false) {
-                console.error("An error occured while authenticating: " + response.error);
-            }
-        })
-        .catch(async (err) => {
-            try {
-                const res = await err.response.json();
-                console.error("An error occured while authenticating: " + res.error);
-            } catch {
-                console.error("An error occured while authenticating: " + err);
-            }
-        });
-    }
-
-    currentUser(response) {
-        window.loggedin = true;
-
-        window.currentUser = {
-            'userid': response.id,
-            'username': response.user,
-            'picture': start_url + response.pfp,
-            'verified': response.is_verified,
-        }
-    }
-
-    ui_login(response) {
-        let yams = {
-            'container': document.querySelector('#settings-account-auth'),
-            'logout': document.querySelector('#settings-account-loggedout'),
-            'username': document.querySelector('#settings-account-auth .username'),
-            'pfp': document.querySelector('#settings-account-auth .pfp'),
-            'pfpImg': document.querySelector('#settings-account-auth .pfp img'),
-            'stats': document.querySelector('#settings-account-auth .stats'),
-            'statsFollowing': document.querySelector('#settings-account-auth .stats .following .stat'),
-            'statsFollowers': document.querySelector('#settings-account-auth .stats .followers .stat'),
-            'notVerified': document.querySelector('#settings-account-auth .notverified'),
-        };
-
-        yams.container.style.display = 'block';
-
-        if (response && !response.error && response.success) {
-            yams.logout.style.display = 'none';
-
-            if (response.user) {
-                yams.username.textContent = response.user;
-                yams.username.style.display = 'block';
-            }
-
-            if (response.pfp) {
-                yams.pfpImg.src = start_url + response.pfp;
-                yams.pfp.style.display = 'block';
-            }
-
-            if(response.stats && response.stats.following && response.stats.followers) {
-                yams.stats.style.display = 'block';
-                yams.statsFollowing.innerText = response.stats.following;
-                yams.statsFollowers.innerText = response.stats.followers;
-            }
-
-            if(response.is_verified !== true) {
-                yams.notVerified.style.display = 'block';
-            }
-        } else {
-            yams.pfp.style.display = 'none';
-            yams.username.style.display = 'none';
-            yams.stats.style.display = 'none';
-            yams.notVerified.style.display = 'none';
-
-            yams.logout.style.display = 'block';
-            yams.logout.querySelector('.message').textContent = 'Logged out';
-            yams.logout.querySelector('.text').innerHTML = `Log in to an account to save creations to node <a href="${start_url}"><b>${start_url}</b></a>`;
-        }
-    }
-}
-let _UserAuth = new UserAuth;
+// user login functions
+let _UserAuth = new UserAuth(start_url);
 _UserAuth.login();
 _UserAuth.getWarnStatus();
+window.currentUser = _UserAuth.currentUserObj;
+window.loggedin = _UserAuth.loggedin;
 
 let displayed_parts = [];
 let cached_parts = {};
@@ -512,16 +387,13 @@ document.getElementById("select-block").addEventListener("click", function (e) {
     const original_img = span.querySelector('img').getAttribute("src");
     span.querySelector('img').setAttribute("src", "img/load.gif");
 
-    part = 'parts/' + span.getAttribute("value");
-    partName = span.getAttribute("value");
-
     let partJson = {
-        "id": partName,
-        "ldraw": partName,
+        "id": selectedPart,
+        "ldraw": selectedPart,
         'materials': [
             {
-                'id': partName,
-                'colorcode': partColor,
+                'id': selectedPart,
+                'colorcode': getColor(),
                 "textureID": span.getAttribute("textureID"),
                 "opacity": 1,
             },
@@ -1350,7 +1222,7 @@ document.getElementById("cre-import-ldr").addEventListener("change", function (e
                     pmanager.addPartMaterials(part, partJson, partJson.materials, null, true);
                 }
 
-                document.title = filename + ' - ' + DEFAULT_TITLE;
+                document.title = filename + ' - ' + appConfig.title;
                 modal.hide();
             });
         } catch (err) {
@@ -1435,7 +1307,6 @@ async function loadSceneFromJSON(data) {
 
     let modelName = data?.metadata?.name || "Unnamed project";
     for (const block of data.blocks) {
-        partName = block.ldraw;
         partPosition = block.position;
         partRotation = block.rotation;
         partMatrixWorld = null;
@@ -1480,8 +1351,6 @@ async function loadSceneFromJSON(data) {
             throw new Error('Object ' + objname + ' is missing elements: materials');
         }
 
-        part = 'parts/' + block.ldraw;
-
         try {
             await new Promise((resolve, reject) => {
                 let pmanager = new PartManager();
@@ -1492,7 +1361,7 @@ async function loadSceneFromJSON(data) {
             tooltip(`Failed to load ${block.ldraw}`);
         }
     }
-    document.title = modelName + ' - ' + DEFAULT_TITLE;
+    document.title = modelName + ' - ' + appConfig.title;
 
     if (show_import_animation === true) {
         console.info("Creation imported.");
@@ -1609,7 +1478,7 @@ async function loadLegacyJSON(data) {
             tooltip(`Failed to load ${block2.ldraw}`);
         }
     }
-    document.title = modelName + ' - ' + DEFAULT_TITLE;
+    document.title = modelName + ' - ' + appConfig.title;
 
     if (show_import_animation === true) {
         console.log("Creation imported, and converted.");
@@ -1897,6 +1766,7 @@ function init() {
     if (!scene) {
         scene = new THREE.Scene();
         window.scene = scene;
+        window.scenegraph = new SceneGraph(scene, ldrawColors, ldraw_icon_path);
 
         if (window.settings) {
             mergeConfig(scene.userData, window.settings);
@@ -2248,7 +2118,7 @@ function init() {
         document.querySelector('.stats-contain').appendChild(stats.dom);
     }
 
-    document.title = DEFAULT_TITLE;
+    document.title = appConfig.title;
 
     let versionstrings = document.querySelectorAll('.version-string');
     versionstrings.forEach(elm => {
@@ -2660,7 +2530,6 @@ function changeBlockColor(color) {
     });
 
     updateSceneData();
-    updateBLItems();
     updatecolorelement();
     statehistory.saveState();
 
@@ -2752,7 +2621,6 @@ function deleteBlock(targetUUID) {
         tooltip('Part is not a valid mesh');
     }
 
-    updateBLItems();
     scene.updateMatrixWorld(true);
     updateSceneData();
     statehistory.saveState();
@@ -3399,7 +3267,7 @@ class PartManager {
             return;
         }
 
-        part = partJson.ldraw;
+        let part = partJson.ldraw;
         partMat = partJson.materials;
         partMatrixWorld = partJson.matrixw;
 
@@ -3460,7 +3328,7 @@ class PartManager {
 
         let blockGroup = new THREE.Group();
         blockGroup.name = `ldgroup_${blockGroup.uuid}`;
-        blockGroup.ldraw = part;
+        blockGroup.ldraw = partJson.ldraw;
 
         let display_lines = scene.userData.displayLines;
 
@@ -3650,7 +3518,7 @@ class PartManager {
             blockGroup.rotation.x = Math.PI;
         }
 
-        blockGroup.userData.partName = partName;
+        blockGroup.userData.partName = group.userData.fileName;
         scene.add(blockGroup);
 
         blockGroups.push(blockGroup);
@@ -3659,7 +3527,6 @@ class PartManager {
         let grid = new GridClass();
         grid.update(blockGroup);
 
-        updateBLItems();
         updatecolorelement();
         updateSceneData();
         statehistory.saveState();
@@ -3973,7 +3840,7 @@ function createCustomMaterial(partColor, colormap) {
     return new THREE.MeshPhysicalMaterial(params);
 }
 
-function BLItemValid(obj) {
+/*function BLItemValid(obj) {
     if (!obj) {
         return false;
     }
@@ -4106,7 +3973,7 @@ function renderBLItem(obj) {
     }
 
     return li;
-}
+}*/
 
 function groupParts(objects) {
     const group = new THREE.Group();
@@ -4126,7 +3993,7 @@ function groupParts(objects) {
     }
 
     updateSceneData();
-    updateBLItems();
+    window.scenegraph.updategraph();
     return group;
 }
 
@@ -4140,7 +4007,7 @@ function ungroupParts(group) {
     }
 
     parent.remove(group);
-    updateBLItems();
+    window.scenegraph.updategraph();
 }
 
 function objectSize(obj) {
@@ -4221,12 +4088,6 @@ function duplicatePart() {
 
     return clone;
 }
-
-document.getElementById("part-library-filter").addEventListener("change", function () {
-    let new_ldraw_path = this.value;
-    ldraw_loader.setPath(new_ldraw_path);
-    ldraw_loader.setPartsLibraryPath(new_ldraw_path);
-});
 
 function generateSceneJSON(legacy = false) {
     const scenedata_name = document.querySelector("#save-popup input[name='name']").value.trim();
@@ -4526,6 +4387,9 @@ function updateSceneData() {
             autosave();
         }
     }
+
+    window.scenegraph.updatescene(scene);
+    window.scenegraph.updategraph();
 }
 
 function autosave() {
@@ -4640,7 +4504,7 @@ function wipe_scene() {
 
     scene.clear();
     init();
-    updateBLItems();
+    window.scenegraph.updategraph();
 }
 
 //cleans matrixes to save file output size
@@ -4891,11 +4755,8 @@ class SelectorClass {
                     if (Array.isArray(child.material)) {
                         child.material.forEach(mat => mat.needsUpdate = true);
                     } else {
-                        if (
-                            child.material.userData &&
-                            child.material.userData.colorcode
-                        ) {
-                            partColor = child.material.userData.colorcode;
+                        if (child.material.userData && child.material.userData.colorcode) {
+                            setColor(child.material.userData.colorcode);
                         }
 
                         child.material.needsUpdate = true;
@@ -4908,8 +4769,7 @@ class SelectorClass {
         selectedObject = selectionGroup;
 
         updateSceneData();
-        updateBLItems();
-        window.updatecolorelement();
+        updatecolorelement();
     }
 
     deselect(obj) {
@@ -4943,7 +4803,6 @@ class SelectorClass {
         }
 
         updateSceneData();
-        updateBLItems();
     }
 
     clearSelection() {
@@ -5037,63 +4896,3 @@ async function initRenderer() {
     }
     animate();
 }
-
-function tooltip(text) {
-    const existing_tooltip = document.getElementById('tooltip');
-
-    if(existing_tooltip) {
-        existing_tooltip.remove();
-    }
-
-    const tooltip = document.createElement('div');
-
-    if (tooltip) {
-        tooltip.innerHTML = text;
-        tooltip.setAttribute('id', 'tooltip');
-
-        document.body.appendChild(tooltip);
-
-        setTimeout(() => {
-            tooltip.remove();
-        }, 5500);
-    }
-}
-
-function tooltipAlert(title, text, additionalText, buttonText) {
-    const tooltip = document.createElement('div');
-    const tooltipTitle = document.createElement('h4');
-    const tooltipText = document.createElement('p');
-    const tooltipTextAdditional = document.createElement('p');
-    const tooltipExit = document.createElement('button');
-
-    tooltipTitle.textContent = title;
-    tooltipText.textContent = text;
-    tooltipTextAdditional.textContent = additionalText;
-    tooltipExit.textContent = buttonText;
-
-    tooltipTitle.setAttribute('class', 'title');
-    tooltipExit.setAttribute('class', 'btn');
-
-    tooltip.appendChild(tooltipTitle);
-    tooltip.appendChild(tooltipText);
-    tooltip.appendChild(tooltipTextAdditional);
-    tooltip.appendChild(tooltipExit);
-
-    tooltip.setAttribute('id', 'tooltipAlert');
-    tooltip.setAttribute('class', 'trans');
-    document.body.appendChild(tooltip);
-
-    if (tooltip && tooltipExit) {
-        tooltipExit.addEventListener('click', function () {
-            tooltip.remove();
-        }, false);
-    }
-}
-
-/*window.addEventListener('load', () => {
-    setTimeout(() => {
-        if (document.getElementById("preloaded-logo")) {
-            document.getElementById("preloaded-logo").style.display = "none";
-        }
-    }, 500);
-});*/

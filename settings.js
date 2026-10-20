@@ -1,19 +1,21 @@
 let debug = window.debug;
+let settings;
+let defaults;
 
-fetch('settings.json')
+await fetch('settings.json')
     .then(response => {
         if (!response.ok) throw new Error(response.status);
         return response.json();
     })
     .then(data => {
-        window.defaults = data;
-        window.settings = structuredClone(data);
+        defaults = data;
+        settings = structuredClone(data);
         readSettings();
     })
     .catch(error => console.error(error));
 
 function setDefaultSettings() {
-    window.settings = structuredClone(window.defaults);
+    settings = structuredClone(defaults);
     localStorage.removeItem("settings");
 
     if (debug) {
@@ -27,7 +29,7 @@ function readSettings() {
     if (saved) {
         try {
             const parsed = JSON.parse(saved);
-            window.settings = validateSettings(parsed, window.defaults);
+            settings = validateSettings(parsed, defaults);
         } catch (e) {
             console.warn("failed to load settings " + e);
             setDefaultSettings();
@@ -37,11 +39,11 @@ function readSettings() {
 
 function saveSettings() {
     let date = new Date();
-    window.settings.lastUpdated = date.toUTCString();
-    let jsonData = JSON.stringify(window.settings);
+    settings.lastUpdated = date.toUTCString();
+    let jsonData = JSON.stringify(settings);
 
     localStorage.setItem("settings", jsonData);
-    scene.userData = window.settings;
+    scene.userData = settings;
 
     if (debug) {
         console.log('Settings saved.');
@@ -61,42 +63,44 @@ function clearSettings() {
     }
 }
 
-function validateSettings(savedSettings, defaultSettings) {
-    if (!savedSettings || typeof savedSettings !== 'object') {
-        return structuredClone(defaultSettings);
+function validateSettings(settings_saved, settings_default) {
+    if (!settings_saved || typeof settings_saved !== 'object') {
+        return structuredClone(settings_default);
     }
 
-    let repaired = structuredClone(savedSettings); 
+    let repaired = structuredClone(settings_saved); 
 
-    Object.keys(defaultSettings).forEach(key => {
-        let defaultValue = defaultSettings[key];
-        let savedValue = repaired[key];
+    Object.keys(settings_default).forEach(key => {
+        let default_key = settings_default[key];
+        let saved_key = repaired[key];
 
-        if (savedValue === undefined || savedValue === null) {
-            repaired[key] = structuredClone(defaultValue);
+        if (saved_key === undefined || saved_key === null) {
+            repaired[key] = structuredClone(default_key);
             return;
         }
 
-        let defaultType = typeof defaultValue;
-        let savedType = typeof savedValue;
-        let isDefault = Array.isArray(defaultValue);
-        let isSaved = Array.isArray(savedValue);
+        let defaultType = typeof default_key;
+        let savedType = typeof saved_key;
+        let isDefault = Array.isArray(default_key);
+        let isSaved = Array.isArray(saved_key);
 
         if (isDefault !== isSaved || (defaultType !== savedType && !isDefault)) {
-            repaired[key] = structuredClone(defaultValue);
+            repaired[key] = structuredClone(default_key);
             return;
         }
 
         if (key === 'camera' && isSaved) {
-            let isValid = savedValue.every(cam =>
+            let isValid = saved_key.every(cam =>
                 cam && typeof cam === 'object' && 'id' in cam && 'type' in cam && 'pos' in cam
             );
 
             if (!isValid) {
-                repaired.camera = structuredClone(defaultValue);
+                repaired.camera = structuredClone(default_key);
             }
         }
     });
 
     return repaired;
 }
+
+export { settings, defaults, readSettings, saveSettings, setDefaultSettings, clearSettings, validateSettings };

@@ -1,0 +1,16 @@
+{
+    "debug": false,
+    "name": "Gr8Brik",
+    "title": "Modeler - Gr8Brik",
+    "version": "2026.10.18b",
+    "webauthor": "susstevedev",
+    "github": "https://github.com/susstevedev/gr8brik",
+    "urls": {
+        "start": "https://gr8brik.rf.gd",
+        "gh_base": "https://susstevedev.github.io/gr8brik/"
+    },
+    "ldraw": {
+        "parts_path": "https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-ldraw-fork@main/ldraw-parts/",
+        "icon_path": "https://cdn.jsdelivr.net/gh/susstevedev/gr8brik-ldraw-fork@main/ldraw-icons/"
+    }
+}

@@ -121,7 +121,7 @@
 
     <div id="github-help-me">
       <h4>Hey! Are you a Javascript/ThreeJS developer?</h4>
-      <p>If you are, you can help me develop the project on <a href="https://github.com/susstevedev/gr8brik">GitHub</a>. I want to make more of the code class based and eventually make it follow better standards for module-based ThreeJS apps.</p>
+      <p>If you are, you can help me develop the project on <a class="gr8-github" href="">GitHub</a>. I want to make more of the code class based and eventually make it follow better standards for module-based ThreeJS apps.</p>
     </div>
 
     <img class="start-image" src="img/misc/start.png" width="640px" height="360px" />
@@ -134,7 +134,7 @@
     </div>
 
     <p>Version <b class="version-string"></b></p>
-    <p>Created and maintained by <a href="https://github.com/susstevedev">susstevedev</a> and other contributors on <a href="https://github.com/susstevedev/gr8brik">GitHub</a>.</p>
+    <p>Created and maintained by <a href="https://github.com/susstevedev">susstevedev</a> and other contributors on <a class="gr8-github" href="">GitHub</a>.</p>
     <p>2023 - 2026 Gr8brik and susstevedev. All rights reserved.</p>
   </div>
 
@@ -350,12 +350,6 @@
     <input type="checkbox" id="snapping-enable" checked>
     <label for="snapping-enable">Enable snapping to grid</label><br />
 
-    <span style="font-size: 14px;">Parts repo/lib</span>
-    <select id="part-library-filter" style="display: inline-block;">
-          <option id="parts-lib-1" value="https://raw.githubusercontent.com/susstevedev/gr8brik-ldraw-fork/refs/heads/main/ldraw-parts/actual/" selected>Default</option>
-          <option id="parts-lib-2" value="https://library.ldraw.org/library/official/">Ldraw.org offical</option>
-    </select><br />
-
     <h5><span style="color: var(--ui-text-color);">Backend</span></h5>
     <input type="checkbox" id="gpu-enable">
     <label for="gpu-enable">Enable WebGPU</label><br />
@@ -426,7 +420,7 @@
   </div>
 
   <p>Version <b class="version-string"></b></p>
-  <p>Created and maintained by <a href="https://github.com/susstevedev">susstevedev</a> and other contributors on <a href="https://github.com/susstevedev/gr8brik">GitHub</a>.</p>
+  <p>Created and maintained by <a href="https://github.com/susstevedev">susstevedev</a> and other contributors on <a class="gr8-github" href="">GitHub</a>.</p>
   <p>2023 - 2026 Gr8brik and susstevedev. All rights reserved.</p>
 </div>
 
@@ -462,10 +456,10 @@
     </div>
   </div>
 
-  <script src="basic.js?v=07-18-26"></script>
-  <script type="module" src="index.js?v=07-18-26"></script>
-  <script src="settings.js"></script>
-  <script src="color.js"></script>
-  <script src="ui.js"></script>
+  <script src="basic.js"></script>
+  <script type="module" src="index.js"></script>
+  <!-- <script src="settings.js"></script> -->
+  <!-- <script src="color.js"></script> -->
+  <script type="module" src="ui.js"></script>
 </body>
 </html>
