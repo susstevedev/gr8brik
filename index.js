@@ -63,6 +63,7 @@ import { settings, defaults, readSettings, saveSettings, setDefaultSettings, cle
 import { ldrawColors, picker, setColor, getColor, updatecolorelement } from "./color.js";
 import { filter_objects_peices, clone_mesh_clean, makeid, capture, isDark, getCookie } from './modules/objectutils.js';
 import { ModelExports } from './modules/exportcreation.js';
+import { stateHistoryManager } from './modules/statehistory.js';
 import { search_display_partui } from './modules/displayparts.js';
 import { SceneGraph } from './modules/scenegraph.js';
 import { grid_lines, imagePlane, planeTexture, GridClass, snapToGrid } from './modules/grid.js';
@@ -863,7 +864,7 @@ class importModal {
     }
 }
 
-async function loadSceneFromJSON(data) {
+async function loadSceneFromJSON(data, show_import_animation = true) {
     if (!data || !data.blocks || !Array.isArray(data.blocks)) {
         console.error("Invalid JSON data.");
         tooltip("Invalid JSON.");
@@ -978,6 +979,7 @@ async function loadSceneFromJSON(data) {
     }
     updateSceneData();
 }
+window.loadSceneFromJSON = loadSceneFromJSON;
 
 async function loadLegacyJSON(data) {
     if (!data) {
@@ -1393,7 +1395,7 @@ function init() {
                     event.preventDefault();
                     if(_clipboard && _clipboard.isMesh && _clipboard?.userData?.ldraw) {
                         scene.add(_clipboard);
-                        statehistory.saveState();
+                        statehistory.saveState(generateSceneJSON());
                     }
                     break
                 case 'KeyS':
@@ -1484,7 +1486,7 @@ function init() {
 
     transformControls.addEventListener('mouseUp', function () {
         controls.enabled = true;
-        statehistory.saveState();
+        statehistory.saveState(generateSceneJSON());
     });
 
     transformControls.addEventListener('dragging-changed', function (event) {
@@ -1815,89 +1817,7 @@ function applyHdri(use_hdri, background) {
     saveSettings();
 }
 
-class statehistoryManager {
-    constructor(scene) {
-        this.scene = scene;
-        this.undoStack = [];
-        this.redoStack = [];
-        this.saveState();
-        this.maxHistory = 30;
-    }
-
-    saveState() {
-        const snapshot = generateSceneJSON();
-
-        this.undoStack.push(snapshot);
-        this.redoStack = [];
-
-        if (this.undoStack.length > this.maxHistory) {
-            this.undoStack.shift();
-        }
-    }
-
-    undo() {
-        if (this.undoStack.length <= 1) {
-            return;
-        }
-
-        const currentState = this.undoStack.pop();
-        this.redoStack.push(currentState);
-
-        const previousState = this.undoStack[this.undoStack.length - 1];
-        this.loadState(previousState);
-    }
-
-    redo() {
-        if (this.redoStack.length === 0) {
-            return;
-        }
-
-        const nextState = this.redoStack.pop();
-        this.undoStack.push(nextState);
-        this.loadState(nextState);
-    }
-
-    loadState(jsonState) {
-        if (multiSelectedObject) {
-            selector.clearSelection();
-        }
-
-        /*if (blockGroups && blockGroups.length > 0) {
-            blockGroups.forEach(function (g) {
-                scene.remove(g);
-                if (g.geometry) {
-                    g.geometry.dispose();
-                }
-                if (g.material) {
-                    if (Array.isArray(g.material)) {
-                        g.material.forEach(m => m.dispose());
-                    } else {
-                        g.material.dispose();
-                    }
-                }
-                g.updateMatrixWorld(true);
-            });
-            scene.updateMatrixWorld(true);
-        }*/
-
-        wipe_scene();
-        let state = JSON.parse(jsonState);
-
-        show_import_animation = false;
-        loadSceneFromJSON(state);
-
-        if(state.camera) {
-            camera.position.x = state.camera.x;
-            camera.position.y = state.camera.y;
-            camera.position.z = state.camera.z;
-        }
-
-        show_import_animation = true;
-        this.scene.updateMatrixWorld();
-    }
-}
-
-window.statehistory = new statehistoryManager(scene);
+window.statehistory = new stateHistoryManager(scene, camera);
 
 function update_selected_map(obj) {
     const select = document.querySelector('#map-selector');
@@ -2016,7 +1936,7 @@ function changeBlockColor(color) {
 
     updateSceneData();
     updatecolorelement();
-    statehistory.saveState();
+    statehistory.saveState(generateSceneJSON());
 
     let namemap = new Map(ldrawColors.map(c => [String(c.code), c.name]));
     let colorname = namemap.get(color) || color;
@@ -2108,7 +2028,7 @@ function deleteBlock(targetUUID) {
 
     scene.updateMatrixWorld(true);
     updateSceneData();
-    statehistory.saveState();
+    statehistory.saveState(generateSceneJSON());
 }
 
 class fromCloud {
@@ -2921,7 +2841,7 @@ class PartManager {
 
         updatecolorelement();
         updateSceneData();
-        statehistory.saveState();
+        statehistory.saveState(generateSceneJSON());
     }
 
     assignMat(child, new_material, index) {
@@ -3645,6 +3565,7 @@ function wipe_scene() {
     init();
     window.scenegraph.updategraph();
 }
+window.wipe_scene = wipe_scene;
 
 //cleans matrixes to save file output size
 function clean_matrix(elm, precision = 4) {
@@ -3658,6 +3579,9 @@ function clean_matrix(elm, precision = 4) {
 multiSelectedObject = new Set();
 selectionGroup = new THREE.Group();
 scene.add(selectionGroup);
+
+window.multiSelectedObject = multiSelectedObject;
+window.selectionGroup = selectionGroup;
 
 window.addEventListener('pointerdown', function (event) {
     let target = event.target;
