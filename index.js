@@ -61,10 +61,11 @@ import metadata from "./modules/metadata.js";
 import { tooltip, tooltipAlert } from './modules/tooltip.js';
 import { settings, defaults, readSettings, saveSettings, setDefaultSettings, clearSettings, validateSettings, mergeConfig } from "./settings.js";
 import { ldrawColors, picker, setColor, getColor, updatecolorelement } from "./color.js";
-import { filter_objects_peices, clone_mesh_clean, makeid } from './modules/objectutils.js';
+import { filter_objects_peices, clone_mesh_clean, makeid, capture, isDark, getCookie } from './modules/objectutils.js';
 import { ModelExports } from './modules/exportcreation.js';
 import { search_display_partui } from './modules/displayparts.js';
 import { SceneGraph } from './modules/scenegraph.js';
+import { grid_lines, imagePlane, planeTexture, GridClass, snapToGrid } from './modules/grid.js';
 import { UserAuth } from './modules/userauth.js';
 
 let THREE_LD = { OrbitControls: OrbitControls, TransformControls: TransformControls, LDrawLoader: LDrawLoader, GLTFExporter: GLTFExporter, OBJExporter: OBJExporter, HDRLoader: HDRLoader, RGBELoader: HDRLoader, OBJExporter, OBJExporter };
@@ -269,7 +270,6 @@ document.getElementById("download-json").addEventListener("click", function () {
     const sceneJSON = generateSceneJSON();
     if (sceneJSON) {
         autosave();
-
         if (!_UserAuth.is_logged_in()) {
             this.disabled = true;
             this.classList.add('btn-disabled');
@@ -284,7 +284,7 @@ document.getElementById("download-json").addEventListener("click", function () {
         const desc = document.querySelector("#save-popup textarea[name='desc']").value.trim();
         const visible = document.querySelector('input[name="visible"]:checked');
         const can_edit = document.querySelector('input[name="can_edit"]').checked;
-        const screenshot = capture();
+        const screenshot = capture(scene, camera, THREE);
 
         this.innerHTML = `<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>`;
 
@@ -461,7 +461,7 @@ document.getElementById("export-finish").addEventListener("click", function () {
     const format = document.getElementById("export-format").value;
     const jszip = new JSZip();
     selectedExport = document.getElementById("export-format").value;
-    let exportclass = new ModelExports(scene, start_url, THREE, jszip, blockGroups);
+    let exportclass = new ModelExports(scene, start_url, THREE, jszip, camera);
 
     switch (selectedExport) {
         case "three":
@@ -553,7 +553,7 @@ document.getElementById("delete-block").addEventListener("click", function () {
 });
 
 document.getElementById("takeScreenshot").addEventListener("click", function () {
-    let url = capture();
+    let url = capture(scene, camera, THREE);
     let date = new Date();
     let a = document.createElement("a");
 
@@ -738,7 +738,8 @@ document.getElementById("cre-import-gr8z").addEventListener("change", function (
     try {
         let zip = new JSZip();
         zip.loadAsync(file).then(function (zip) {
-            let creation = zip.file("creation.gr8").async("string");
+            let creation = zip.file("creation.gr8").async("string") ?? zip.file("creation.json").async("string");
+
             creation.then(function (data) {
                 setTimeout(() => {
                     console.log(data);
@@ -1161,194 +1162,34 @@ document.getElementById("cre-import-three").addEventListener("change", function 
     reader.readAsArrayBuffer(file);
 });
 
-function getCookie(name) {
-    var cookies = document.cookie;
-    var parts = cookies.split(name + "=");
-    var cookieValue = null;
-    if (parts.length == 2) {
-        cookieValue = parts.pop().split(";").shift();
-    }
-    return cookieValue;
-}
 
-function isDark() {
-    if (getCookie('mode')) {
-        if (getCookie('mode') === 'dark') {
-            return true;
-        } else {
-            return false;
-        }
+function ui_toggles(settings) {
+    // transparent ui
+    if (settings.ui_trans) {
+        applyTransparent(settings.ui_trans);
+        document.getElementById("trans-enable").setAttribute('checked', 'true');
     } else {
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-}
-
-function snapToGrid(value, gridSize) {
-    return Math.round(value / gridSize) * gridSize;
-}
-
-let grid_lines = null;
-let imagePlane = null;
-let planeTexture = null;
-
-class GridClass {
-    constructor() {
-        this.MIN_STUDS = 16;
-        this.GRID_STUD_X = this.MIN_STUDS;
-        this.GRID_STUD_Z = this.MIN_STUDS;
-        this.min_x = -(this.MIN_STUDS / 2);
-        this.max_x = this.MIN_STUDS / 2;
-        this.min_z = -(this.MIN_STUDS / 2);
-        this.max_z = this.MIN_STUDS / 2;
+        document.getElementById("trans-enable").setAttribute('checked', 'false');
     }
 
-    update(obj) {
-        let changed = false;
-        let cell_x = Math.floor(obj.position.x / 20);
-        let cell_z = Math.floor(obj.position.z / 20);
-
-        if (cell_x < this.min_x) {
-            this.min_x = cell_x;
-            changed = true;
-        } else if (cell_x >= this.max_x) {
-            this.max_x = cell_x + 1;
-            changed = true;
-        }
-
-        if (cell_z < this.min_z) {
-            this.min_z = cell_z;
-            changed = true;
-        } else if (cell_z >= this.max_z) {
-            this.max_z = cell_z + 1;
-            changed = true;
-        }
-
-        if (changed) {
-            this.create(this.min_x, this.max_x, this.min_z, this.max_z);
-        }
+    // hdri
+    if (settings.use_hdri) {
+        applyHdri(settings.use_hdri, settings.hdri_background);
+        document.getElementById("hdr-enable").setAttribute('checked', 'true');
+        document.getElementById("hdr-background-enable").checked = settings.hdri_background;
+    } else {
+        document.getElementById("hdr-enable").setAttribute('checked', 'false');
+        document.getElementById("hdr-background-enable").setAttribute('checked', 'false');
     }
 
-    create(minX = this.min_x, maxX = this.max_x, minZ = this.min_z, maxZ = this.max_z) {
-        const color = isDark() ? 0xfafafa : 0x242424;
-        const texturepath = isDark() ? 'img/misc/griddark.webp' : 'img/misc/gridlight.webp';
-        
-        const studs_x = maxX - minX;
-        const studs_z = maxZ - minZ;
-        const sizeX = studs_x * 20;
-        const sizeZ = studs_z * 20;
-
-        if (!imagePlane) {
-            const textureLoader = new THREE.TextureLoader();
-
-            planeTexture = textureLoader.load(texturepath);
-            planeTexture.wrapS = THREE.RepeatWrapping;
-            planeTexture.wrapT = THREE.RepeatWrapping;
-
-            const planeGeometry = new THREE.PlaneGeometry(1, 1);
-
-            const planeMaterial = new THREE.MeshBasicMaterial({
-                map: planeTexture,
-                transparent: true,
-                side: THREE.DoubleSide
-            });
-
-            imagePlane = new THREE.Mesh(planeGeometry, planeMaterial);
-            imagePlane.rotation.x = -Math.PI / 2;
-            scene.add(imagePlane);
-        }
-
-        imagePlane.scale.set(sizeX, sizeZ, 1);
-        imagePlane.position.x = (minX + maxX) * 20 / 2;
-        imagePlane.position.z = (minZ + maxZ) * 20 / 2;
-        planeTexture.repeat.set(studs_x, studs_z);
-
-        if (planeTexture.source && planeTexture.source.data && !planeTexture.source.data.src.includes(texturepath)) {
-            const textureLoader = new THREE.TextureLoader();
-
-            planeTexture = textureLoader.load(texturepath);
-            planeTexture.wrapS = THREE.RepeatWrapping;
-            planeTexture.wrapT = THREE.RepeatWrapping;
-            imagePlane.material.map = planeTexture;
-            imagePlane.material.needsUpdate = true;
-        }
-
-        if (grid_lines) {
-            scene.remove(grid_lines);
-            grid_lines.geometry.dispose();
-            grid_lines.material.dispose();
-            grid_lines = null;
-        }
-
-        if (!scene.userData.grid_lines) {
-            return;
-        }
-
-        const vertices = [];
-        const startX = minX * 20;
-        const endX = maxX * 20;
-        const startZ = minZ * 20;
-        const endZ = maxZ * 20;
-
-        for (let x = startX; x <= endX; x += 20) {
-            vertices.push(x, 0, startZ, x, 0, endZ);
-        }
-
-        for (let z = startZ; z <= endZ; z += 20) {
-            vertices.push(startX, 0, z, endX, 0, z);
-        }
-
-        const geometry = new THREE.BufferGeometry();
-        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-
-        const material = new THREE.LineBasicMaterial({
-            color: color,
-            transparent: true,
-            opacity: 0.5
-        });
-
-        grid_lines = new THREE.LineSegments(geometry, material);
-        grid_lines.position.set(0, -0.1, 0); 
-        scene.add(grid_lines);
+    // webgpu
+    if (settings.use_webgpu) {
+        document.getElementById("gpu-enable").checked = true;
+    } else {
+        document.getElementById("gpu-enable").checked = false;
     }
 
-    remove = function() {
-        if(imagePlane) {
-            this.removeHelper(imagePlane);
-        }
-
-        if(planeTexture) {
-            this.removeHelper(planeTexture);
-        }
-
-        if(grid_lines) {
-            this.removeHelper(grid_lines);
-        }
-
-        grid_lines = null, planeTexture = null, imagePlane = null;
-    }
-
-    removeHelper = function(elm) {
-        scene.remove(elm);
-
-        if (elm.geometry) {
-            elm.geometry.dispose();
-        }
-
-        if (elm.material) {
-            elm.material.dispose();
-        }
-    }
-}
-
-function init() {
-    if (window.settings) {
-        mergeConfig(window.settings, window.defaults);
-    }
-
+    // darkmode
     if (isDark()) {
         document.body.classList.add("dark");
         document.getElementById("darkmode-enable").setAttribute('checked', 'true');
@@ -1357,6 +1198,31 @@ function init() {
             document.body.classList.remove("dark");
             document.getElementById("darkmode-enable").setAttribute('checked', 'false');
         }
+    }
+
+    // lines
+    if (settings.displayLines) {
+        document.getElementById("display-lines-enable").checked = true;
+    } else {
+        document.getElementById("display-lines-enable").checked = false;
+    }
+
+    if (settings.export_full_scene) {
+        document.getElementById("export-fullscene-enable").checked = true;
+    } else {
+        document.getElementById("export-fullscene-enable").checked = false;
+    }
+
+    if (settings.noSnap) {
+        document.getElementById("snapping-enable").checked = false;
+    } else {
+        document.getElementById("snapping-enable").checked = true;
+    }
+}
+
+function init() {
+    if (window.settings) {
+        mergeConfig(window.settings, window.defaults);
     }
 
     // Scene container
@@ -1403,28 +1269,7 @@ function init() {
         scene.add(transformControls);
     }
 
-    // transparent ui
-    if (scene.userData.ui_trans) {
-        applyTransparent(scene.userData.ui_trans);
-        document.getElementById("trans-enable").setAttribute('checked', 'true');
-    } else {
-        document.getElementById("trans-enable").setAttribute('checked', 'false');
-    }
-
-    //hdri
-    if (scene.userData.use_hdri) {
-        applyHdri(scene.userData.use_hdri, scene.userData.hdri_background);
-        document.getElementById("hdr-enable").setAttribute('checked', 'true');
-    } else {
-        document.getElementById("hdr-enable").setAttribute('checked', 'false');
-    }
-
-    // webgpu
-    if (scene.userData.use_webgpu) {
-        document.getElementById("gpu-enable").checked = true;
-    } else {
-        document.getElementById("gpu-enable").checked = false;
-    }
+    ui_toggles(scene.userData);
 
     function update_camera() {
         let activeId = scene.userData.activeCameraId ?? 0;
@@ -1447,7 +1292,6 @@ function init() {
                     0.1, 10000
                 );
                 camera.zoom = 2;
-                document.getElementById("flatcamera-enable").checked = true;
 
                 scene.background = new THREE.Color(0x1a1a1a);
                 if (scene._savedHdriMap) {
@@ -1465,7 +1309,6 @@ function init() {
 
                 let fov = camConfig.fov || window.defaults?.camera?.fov || 45;
                 camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 10000);
-                document.getElementById("flatcamera-enable").checked = false;
             }
 
             camera.position.set(camConfig.pos.x, camConfig.pos.y, camConfig.pos.z);
@@ -1506,7 +1349,7 @@ function init() {
         controls.dampingFactor = 0.8;
     }
 
-    let grid_class = new GridClass();
+    let grid_class = new GridClass(THREE);
     grid_class.create();
 
     // please read ldrawloader docs before changing these values
@@ -1710,7 +1553,7 @@ function init() {
             obj.rot = obj.rotation.clone();
         }
 
-        let grid = new GridClass();
+        let grid = new GridClass(THREE);
         grid.update(obj);
         updateSceneData();
     });
@@ -1762,18 +1605,6 @@ if (scene.userData.hideWelcome === true) {
     document.getElementById("welcome-popup").remove();
     document.getElementById("hide-welcome").setAttribute('checked', 'true');
 }
-
-document.getElementById("flatcamera-enable").addEventListener("change", function () {
-    if (scene.userData.flatcamera === true) {
-        scene.userData.flatcamera = false;
-        update_camera();
-    } else {
-        scene.userData.flatcamera = true;
-        update_camera();
-    }
-    scene.updateMatrixWorld(true);
-    saveSettings();
-});
 
 document.getElementById("snapping-enable").addEventListener("change", function () {
     const snapping = this.checked;
@@ -1834,7 +1665,7 @@ document.getElementById("display-lines-grid").addEventListener("change", functio
         scene.remove(grid_lines);
     }
 
-    let grid_class = new GridClass();
+    let grid_class = new GridClass(THREE);
     grid_class.create();
     scene.updateMatrixWorld(true);
     saveSettings();
@@ -1905,6 +1736,12 @@ document.getElementById("darkmode-enable").addEventListener("change", function (
     saveSettings();
 });
 
+document.querySelector('[data-testid=selected-hdri]').addEventListener("change", function () {
+    window.settings.hdri_background = true;
+    window.settings.hdris.selected = this.value;
+    applyHdri(true, true);
+});
+
 function applyTransparent(ui_trans) {
     if (ui_trans) {
         let elements = document.querySelectorAll('.ui-canbe-trans');
@@ -1929,17 +1766,13 @@ function applyHdri(use_hdri, background) {
         let hdr_url;
 
         let selectedHdr = hdris[selected];
-        hdr_url = selectedHdr ? selectedHdr.url : null;
-
-        if (!hdr_url) {
-            hdr_url = hdris[0].url;
-        }
+        hdr_url = selectedHdr ? selectedHdr.url : hdris[0].url;
 
         rgbe_loader.load(hdr_url, function (texture) {
             texture.mapping = THREE.EquirectangularReflectionMapping;
             scene.environment = texture;
 
-            if (background) {
+            if (background && !scene.userData.flatcamera) {
                 scene.background = texture;
                 document.body.classList.add('hdri-active');
 
@@ -2066,6 +1899,52 @@ class statehistoryManager {
 
 window.statehistory = new statehistoryManager(scene);
 
+function update_selected_map(obj) {
+    const select = document.querySelector('#map-selector');
+    select.replaceChildren(); 
+
+    let targetIdx;
+    let mats = [];
+    let namemap = new Map(ldrawColors.map(c => [String(c.code), c.name]));
+
+    if(!obj) return;
+
+    obj.traverse((child) => {
+        if (child.isMesh && child.material && child.userData && child.userData?.ldraw) {
+
+            if (child.userData.main_mat_name !== undefined) {
+                targetIdx = child.userData.main_mat_index;
+            } else {
+                targetIdx = 0;
+            }
+
+            if(Array.isArray(child.material)) {
+                child.material.forEach(mat => {
+                    mats.push(mat);
+                });
+            } else {
+                mats.push(child.material);
+            }
+
+            mats.forEach(mat => {
+                let colorcode = mat?.userData?.colorcode ?? 15;
+                let colorname = `${mats.indexOf(mat)} - ${namemap.get(colorcode) || mat.name}`;
+                let option = new Option(colorname, mats.indexOf(mat));
+
+                if (mats.indexOf(mat) === targetIdx) {
+                    option.selected = true;
+                }
+
+                select.add(option);
+            });
+        }
+    });
+}
+
+document.querySelector('#map-selector').addEventListener("change", function () {
+    selectedMap = document.querySelector('#map-selector').value;
+});
+
 function changeBlockColor(color) {
     if (!selectionGroup) {
         tooltip("No part selected");
@@ -2131,6 +2010,7 @@ function changeBlockColor(color) {
                 child.material = material;
                 pmanager.loadDecal(child.userData.textureObj, child, false);
             }
+            update_selected_map(child);
         }
     });
 
@@ -2189,7 +2069,7 @@ function deleteBlock(targetUUID) {
 
         selectionGroup.remove(part);
 
-        let grid_class_e = new GridClass();
+        let grid_class_e = new GridClass(THREE);
         grid_class_e.update(part);
 
         if (part.parent) {
@@ -2357,7 +2237,6 @@ class Decalify {
         this.image_ref = null;
 
         this.transformControls = new TransformControls(this.camera, renderer.domElement);
-        console.log(this.transformControls);
         scene.add(this.transformControls.getHelper());
 
         this.setup_transform_events();
@@ -2765,67 +2644,6 @@ class Decalify {
     }
 }
 
-/* Screenshot function */
-function capture() {
-    let thumb = new THREE.Scene();
-    thumb.background = null;
-
-    let count = 0;
-
-    if (selectedObject) {
-        selector.deselect(selectedObject);
-    }
-
-    if (multiSelectedObject) {
-        selector.clearSelection();
-    }
-
-    scene.traverse(function (object) {
-        if (object?.isMesh && object?.userData.isBlock && !object?.isTransformControls) {
-            let cloned = clone_mesh_clean(object);
-            if (cloned) {
-                thumb.add(cloned);
-                if (object.userData.isBlock) {
-                    cloned.rotation.setFromQuaternion(cloned.quaternion);
-                }
-                count++;
-            }
-        }
-    });
-
-    if (count === 0) {
-        console.warn("Scene is empty");
-        return null;
-    }
-
-    let light2 = new THREE.DirectionalLight(0xffffff, 2);
-    light2.position.set(camera.position.x || 250, camera.position.y || 250, camera.position.z || 250);
-    thumb.add(light2);
-
-    let ambient2 = new THREE.AmbientLight(0xdddddd, 1);
-    thumb.add(ambient2);
-
-    let capture_height = 240;
-    let capture_width = capture_height * 2;
-
-    let camera2 = camera.clone();
-    camera2.aspect = capture_width / capture_height;
-    camera2.updateProjectionMatrix();
-
-    let tempRenderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, alpha: true });
-    tempRenderer.setClearColor(0x000000, 0);
-    tempRenderer.setPixelRatio(1);
-    tempRenderer.setSize(capture_width, capture_height);
-
-    tempRenderer.render(thumb, camera2);
-    let thumbnail = tempRenderer.domElement.toDataURL("image/webp");
-
-    tempRenderer.dispose();
-    thumb.clear();
-
-    return thumbnail;
-}
-
 /**
  * Class that will eventually host most of the part functions
  */
@@ -2990,58 +2808,39 @@ class PartManager {
                 // main color uuid, for minifig textures
                 if (Array.isArray(child.material)) {
                     child.material.forEach((mat) => {
+                        var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
+
+                        child.material[index] = mat.clone();
+                        child.material[index].needsUpdate = true;
+
+                        mat.name = child.material[index].name + '_' + makeid(5);
+
                         if (mat.name.includes("Main_Colour")) {
-                            var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
-
-                            child.material[index] = mat.clone();
-                            child.material[index].needsUpdate = true;
-
-                            mat.name = child.material[index].name + '_' + makeid(5);
-
                             child.userData.main_mat_uuid = mat.uuid;
                             child.userData.main_mat_name = mat.name;
                             child.userData.main_mat_index = index;
+                        }
 
-                            if (partMat) {
-                                if (Array.isArray(partMat)) {
-                                    let match = partMat.find(m => m.id === index);
+                        if (partMat) {
+                            if (Array.isArray(partMat)) {
+                                let match = partMat.find(m => m.id === index);
 
-                                    if (match?.colorcode) {
-                                        let new_material = this.createMaterial(String(match.colorcode));
+                                if (match?.colorcode) {
+                                    let new_material = this.createMaterial(String(match.colorcode));
 
-                                        if(new_material) {
-                                            Object.assign(child.material[index], new_material);
-                                            child.material[index].userData.colorcode = partMat?.colorcode;
-
-                                            child.traverse((o) => {
-                                                if (o.isLineSegments && o.material && !Array.isArray(o.material) && o.material?.color) {
-                                                    o.material.color.set(custommaterial.userData.edgecolor); 
-                                                } else if(o.isLineSegments && o.material && Array.isArray(o.material)) {
-                                                    o.material.forEach(mat => {
-                                                        if(mat?.color) {
-                                                            mat.color.set(custommaterial.userData.edgecolor);
-                                                        }
-                                                    });
-                                                }
-                                            });
-                                        } else {
-                                            child.material[index].color = new THREE.Color("#ffffff");
-                                            child.material[index].userData.colorcode = '15';
-                                        }
+                                    if(new_material) {
+                                        this.assignMat(child, new_material, index);
                                     } else {
-                                        child.material[index].color = new THREE.Color("#ffffff");
-                                        child.material[index].userData.colorcode = '15';
+                                        let new_material = this.createMaterial('15');
+                                        this.assignMat(child, new_material, index);
                                     }
                                 } else {
-                                    child.material[index].color = new THREE.Color(partMat || "#ffffff");
+                                    if(child.userData.main_mat_index) {
+                                        let new_material = this.createMaterial('15');
+                                        this.assignMat(child, new_material, child.userData.main_mat_index);
+                                    }
                                 }
                             }
-                        } else {
-                            var index = child.material.map(function (mmap) { return mmap.uuid; }).indexOf(mat.uuid);
-                            child.material[index] = mat.clone();
-                            child.material[index].needsUpdate = true;
-                            child.material[index].name = child.material[index].name + '_' + makeid(5);
-                            child.material[index].userData.colorcode = mat.userData.code ?? 0;
                         }
                     });
                 }
@@ -3117,12 +2916,29 @@ class PartManager {
         blockGroups.push(blockGroup);
         selector.selectObject(blockGroup);
 
-        let grid = new GridClass();
+        let grid = new GridClass(THREE);
         grid.update(blockGroup);
 
         updatecolorelement();
         updateSceneData();
         statehistory.saveState();
+    }
+
+    assignMat(child, new_material, index) {
+        Object.assign(child.material[index], new_material);
+        child.material[index].userData.colorcode = partMat?.colorcode;
+
+        child.traverse((o) => {
+            if (o.isLineSegments && o.material && !Array.isArray(o.material) && o.material?.color) {
+                o.material.color.set(custommaterial.userData.edgecolor); 
+            } else if(o.isLineSegments && o.material && Array.isArray(o.material)) {
+                o.material.forEach(mat => {
+                    if(mat?.color) {
+                        mat.color.set(custommaterial.userData.edgecolor);
+                    }
+                });
+            }
+        });
     }
 
     loadDecal(decal, obj, recolor = true) {
@@ -3776,7 +3592,7 @@ function wipe_scene() {
         selectedObject = null;
     }
 
-    let grid_class = new GridClass();
+    let grid_class = new GridClass(THREE);
     grid_class.remove();
 
     const meshes = [];
@@ -4006,6 +3822,7 @@ class SelectorClass {
 
         updateSceneData();
         updatecolorelement();
+        update_selected_map(selectionGroup);
     }
 
     deselect(obj) {

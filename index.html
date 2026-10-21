@@ -98,7 +98,8 @@ SOFTWARE.
     <div id="color-picker-list"></div>
 
 		<span class="sub">Selected layer</span><br />
-		<input type="number" title="Most textured parts have more than three layers." id="selected-map" min="0" max="50" step="1" value="0"><br />
+    <select id="map-selector"></select>
+		<input type="number" title="Most textured parts have more than three layers." id="selected-map" min="0" max="50" step="1" value="0" style="display: none;"><br />
 	   
 		<input type="checkbox" id="trans-block" name="trans-block" value="Transparent">
 		<label class="sub" for="trans-block">Transparent</label><hr />
@@ -127,7 +128,7 @@ SOFTWARE.
     </ul>
   </div>
 
-  <button id="left-container-toggle" title="Hide left siderbar">
+  <button id="left-container-toggle" class="ui-canbe-trans" title="Hide left siderbar">
 		<i class="fa fa-arrow-right" aria-hidden="true"></i>
 	</button>
 
@@ -368,7 +369,7 @@ SOFTWARE.
     <p><span style="color: var(--ui-text-color);"><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Functional</span></p>
 
     <h5><span style="color: var(--ui-text-color);">Parts</span></h5>
-    <input type="checkbox" id="snapping-enable" checked>
+    <input type="checkbox" id="snapping-enable">
     <label for="snapping-enable">Enable snapping to grid</label><br />
 
     <h5><span style="color: var(--ui-text-color);">Backend</span></h5>
@@ -381,7 +382,7 @@ SOFTWARE.
 
     <h5><span style="color: var(--ui-text-color);">Parts</span></h5>
 
-    <input type="checkbox" id="smooth-normals-enable" checked>
+    <input type="checkbox" id="smooth-normals-enable">
     <label for="smooth-normals-enable">Enable smooth normals</label><br />
 
     <input type="checkbox" id="display-lines-enable">
@@ -395,7 +396,7 @@ SOFTWARE.
     <input type="checkbox" id="darkmode-enable">
     <label for="darkmode-enable">Enable dark mode</label><br />
 
-    <input type="checkbox" id="trans-enable" checked>
+    <input type="checkbox" id="trans-enable">
     <label for="trans-enable">Enable transparent UI elements</label><br />
 
     <input type="checkbox" id="display-lines-grid">
@@ -403,7 +404,7 @@ SOFTWARE.
 
     <h5><span style="color: var(--ui-text-color);">Lighting</span></h5>
 
-    <input type="checkbox" id="hdr-enable" checked>
+    <input type="checkbox" id="hdr-enable">
     <label for="hdr-enable">Enable HDRI lighting</label><br />
 
     <input type="checkbox" id="hdr-background-enable">
@@ -413,9 +414,6 @@ SOFTWARE.
     </select><br />
 
     <h5><span style="color: var(--ui-text-color);">Camera</span></h5>
-
-    <input type="checkbox" id="flatcamera-enable">
-    <label for="flatcamera-enable">Orthographic camera</label><br />
 
     <select id="camera-selector">
     </select>

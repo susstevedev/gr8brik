@@ -1,3 +1,4 @@
+import metadata from "./modules/metadata.js";
 import { settings as _settings, defaults as _defaults } from "./settings.js";
 window.settings = _settings;
 window.defaults = _defaults;
@@ -43,12 +44,6 @@ function update_hdris() {
     });
 }
 update_hdris();
-
-document.querySelector('[data-testid=selected-hdri]').addEventListener("change", function () {
-    window.settings.hdri_background = true;
-    window.settings.hdris.selected = this.value;
-    applyHdri(true, true);
-});
 
 function init_cam_ui() {
     const selector = document.getElementById("camera-selector");
@@ -262,5 +257,5 @@ function ui_event_listens() {
 ui_event_listens();
 
 document.querySelectorAll('.gr8-github').forEach(elm => {
-    elm.href = window.metadata.github ?? null;
+    elm.href = metadata.github ?? null;
 });

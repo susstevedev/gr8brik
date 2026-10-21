@@ -1,7 +1,7 @@
-import { filter_objects_peices } from "./objectutils.js";
+import { filter_objects_peices, capture } from "./objectutils.js";
 
 class ModelExports {
-    constructor(scene, start_url, three, zip, groups) {
+    constructor(scene, start_url, three, zip, camera) {
         if(!scene) {
             return;
         }
@@ -14,7 +14,7 @@ class ModelExports {
         this.THREE = three;
         this.zip = zip;
         this.URL = start_url;
-        this.groups = groups;
+        this.camera = camera;
     }
 
     gr8brikItselfYeahBitch(json = false) {
@@ -42,14 +42,16 @@ class ModelExports {
 
     zippedGr8() {
         let data = generateSceneJSON();
-        let setting = JSON.stringify(window.settings, null, 2);
+        let screenshot = capture(this.scene, this.camera, this.THREE);
         let zip = this.zip;
-        let options = {compression: "DEFLATE",compressionOptions: { level: 9 }};
 
-        zip.file("creation.gr8", data, options);
-        zip.file("setting.json", setting, options);
+        let file_options = {compression: "DEFLATE",compressionOptions: { level: 9 }};
+        let zip_options = { type: "blob", compression: "DEFLATE", compressionOptions: { level: 9 }, comment: `Zipped ${this.URL} creation` };
 
-        zip.generateAsync({ type: "blob", compression: "DEFLATE", compressionOptions: { level: 9 }, comment: `Zipped ${this.URL} creation` }).then(function (blob) {
+        zip.file("creation.gr8", data, file_options);
+        zip.file("thumb.webp", screenshot, file_options);
+
+        zip.generateAsync(zip_options).then(function (blob) {
             let url = URL.createObjectURL(blob);
             let date = new Date();
             let a = document.createElement("a");
