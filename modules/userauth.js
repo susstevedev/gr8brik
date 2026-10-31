@@ -148,4 +148,81 @@ class UserAuth {
     }
 }
 
-export { UserAuth };
+class fromCloud {
+    constructor(start_url) {
+        this.URL = start_url;
+        this.SERVER_CODES = {
+            'NO_LOGIN': 'Please sign in to continue',
+            'QUERY_NO_CREATIONS': 'No creations found',
+            'ACC_NO_CREATIONS': 'You don\'t have any creations yet',
+            'CREATION_404': 'Creation not found',
+            'EDIT_GENERIC': 'Failed to update creation',
+        };
+    }
+
+    get_user_creations(open_model = true, page = 1) {
+        if(!_UserAuth.is_logged_in()) {
+            tooltip(this.SERVER_CODES['NO_LOGIN'] || 'Please login to import models from your account');
+            return;
+        }
+
+        const you = _UserAuth.get_current_user().username ?? 'you';
+        const popup = document.getElementById('user-creations-popup');
+        const container = document.getElementById('user-creations-wrapper');
+        const nextbutton = document.getElementById('user-creations-foward-button');
+        const template = document.getElementById('gr8-creation-template');
+
+        fetch(this.URL + `/acc/creations?my_creations=true&page=${page}`, {
+            credentials: 'include',
+        })
+        .then(res => res.text())
+        .then(data => {
+            try {
+                data = JSON.parse(data);
+            } catch (error) {
+                tooltip('Could not parse as JSON');
+                console.error(error);
+                return;
+            }
+
+            if (data === null) {
+                tooltip('Empty response');
+                return;
+            }
+
+            if(data.success && data.creations) {
+                let thumb_url = this.URL;
+                data.creations.forEach(r => {
+                    const clone = template.content.cloneNode(true);
+
+                    clone.querySelector('.creation-card').setAttribute('data-id', r.model_id);
+                    clone.querySelector('.creation-card').setAttribute('data-doopen', open_model);
+                    clone.querySelector('.creation-title').innerHTML = r.title;
+                    clone.querySelector('.meta-author .user').innerHTML = you ?? 'you';
+                    clone.querySelector('.meta-author .date').innerHTML = r.date;
+                    clone.querySelector('.creation-thumbnail').setAttribute('src', thumb_url + r.thumb);
+
+                    clone.querySelector('.views').append(r.views + ' views');
+                    clone.querySelector('.favs').append(r.likes + ' favorites');
+                    clone.querySelector('.size').append(r.size);
+                    clone.querySelector('.comments').append(r.comments + ' comments');
+
+                    container.appendChild(clone);
+                });
+
+                let nextpage = page + 1;
+
+                popup.style.display = 'block';
+                nextbutton.setAttribute('data-doopen', open_model);
+                nextbutton.setAttribute('data-nextpage', nextpage);
+            } else if (data.code) {
+                tooltip(this.SERVER_CODES[response.code] || 'An error has occured');
+                return;
+            } else {
+                nextbutton.remove();
+            }
+        });
+    };
+}
+
+export { UserAuth, fromCloud };

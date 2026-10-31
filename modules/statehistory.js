@@ -3,9 +3,10 @@ class stateHistoryManager {
         this.scene = scene;
         this.undoStack = [];
         this.redoStack = [];
-        this.saveState();
         this.maxHistory = 30;
         this.camera = cam;
+
+        this.saveState();
     }
 
     saveState(snapshot) {

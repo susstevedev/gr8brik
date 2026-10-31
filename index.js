@@ -67,7 +67,7 @@ import { stateHistoryManager } from './modules/statehistory.js';
 import { search_display_partui } from './modules/displayparts.js';
 import { SceneGraph } from './modules/scenegraph.js';
 import { grid_lines, imagePlane, planeTexture, GridClass, snapToGrid } from './modules/grid.js';
-import { UserAuth } from './modules/userauth.js';
+import { UserAuth, fromCloud } from './modules/userauth.js';
 
 let THREE_LD = { OrbitControls: OrbitControls, TransformControls: TransformControls, LDrawLoader: LDrawLoader, GLTFExporter: GLTFExporter, OBJExporter: OBJExporter, HDRLoader: HDRLoader, RGBELoader: HDRLoader, OBJExporter, OBJExporter };
 let THREE = { ...THREE_NS, ...THREE_LD }
@@ -399,19 +399,12 @@ document.getElementById("login-complete").addEventListener("click", function () 
         });
 });
 
-let params = new URLSearchParams(window.location.search);
-let build_id = params.get("build_id");
-
-if (build_id !== undefined && build_id !== null) {
-    loadJSONFromCloud(build_id, true);
-}
-
 // import modal
 document.getElementById("import-finish").addEventListener("click", function () {
     const format = document.getElementById("import-format").value;
     const checkbox = document.querySelector('#import-popup-form [name="open"]');
     let open_creation = false;
-    let cloud = new fromCloud();
+    let cloud = new fromCloud(start_url);
 
     if (checkbox.checked) {
         open_creation = true;
@@ -860,7 +853,7 @@ class importModal {
         document.getElementById('scene').classList.remove('hidden');
         document.getElementById('ui-loading-file').classList.remove('show');
 
-        ldraw_loader.manager = loading_manager; //reset manager
+        ldraw_loader.manager = SetManager(); //reset manager
     }
 }
 
@@ -1355,18 +1348,7 @@ function init() {
     grid_class.create();
 
     // please read ldrawloader docs before changing these values
-
-    const loading_manager = new THREE.LoadingManager();
-
-    loading_manager.onProgress = (url, loaded, total) => {
-        let progress = Math.round((loaded / total) * 100);
-        console.log(`Loading ${url.split('/').pop()} from ${url.split('/')[2]}, ${loaded} / ${total} files (${progress}%).`);
-    }
-
-    loading_manager.onLoad = function() {
-        console.log('finished');
-    }
-
+    const loading_manager = SetManager();
     ldraw_loader = new THREE.LDrawLoader(loading_manager);
     ldraw_loader.preloadMaterials(ldraw_path + 'colors/ldconfig.ldr');
     ldraw_loader.setConditionalLineMaterial(LDrawConditionalLineMaterial);
@@ -1580,8 +1562,44 @@ function init() {
     }
 
     initRenderer();
+    initUrls();
 }
 init();
+
+function SetManager() {
+    const loading_manager = new THREE.LoadingManager();
+
+    loading_manager.onProgress = (url, loaded, total) => {
+        let progress = Math.round((loaded / total) * 100);
+        console.log(`Loading ${url.split('/').pop()} from ${url.split('/')[2]}, ${loaded} / ${total} files (${progress}%).`);
+    }
+
+    loading_manager.onLoad = function() {
+        console.log('finished');
+    }
+
+    return loading_manager;
+}
+
+function initUrls() {
+    let params = new URLSearchParams(window.location.search);
+    let build_id = params.get("build_id");
+
+    if (build_id !== undefined && build_id !== null) {
+        loadJSONFromCloud(build_id, true);
+    }
+
+    if(params.get("my_creations") !== undefined && params.get("my_creations") === 'true') {
+        let cloud = new fromCloud(start_url);
+        let page = false;
+        let open = false;
+
+        if(params.get("page") === 'true') page = true;
+        if(params.get("open") === 'true') open = true;
+
+        cloud.get_user_creations(open, page);
+    }
+}
 
 function toggleGlobalSnap() {
     if (scene.userData.noSnap === true) {
@@ -2031,85 +2049,12 @@ function deleteBlock(targetUUID) {
     statehistory.saveState(generateSceneJSON());
 }
 
-class fromCloud {
-    SERVER_CODES = {
-        'NO_LOGIN': 'Please sign in to continue',
-        'QUERY_NO_CREATIONS': 'No creations found',
-        'ACC_NO_CREATIONS': 'You don\'t have any creations yet',
-        'CREATION_404': 'Creation not found',
-        'EDIT_GENERIC': 'Failed to update creation',
-    };
-
-    get_user_creations(open_model = true, page = 1) {
-        if(!_UserAuth.is_logged_in()) {
-            tooltip('Please login to import models from your account');
-            return;
-        }
-
-        const you = _UserAuth.get_current_user().username ?? 'you';
-        const popup = document.getElementById('user-creations-popup');
-        const container = document.getElementById('user-creations-wrapper');
-        const nextbutton = document.getElementById('user-creations-foward-button');
-        const template = document.getElementById('gr8-creation-template');
-
-        fetch(start_url + `/acc/creations?my_creations=true&page=${page}`, {
-            credentials: 'include',
-        })
-        .then(res => res.text())
-        .then(data => {
-            try {
-                data = JSON.parse(data);
-            } catch (error) {
-                tooltip('Could not parse as JSON');
-                console.error(error);
-                return;
-            }
-
-            if (data === null) {
-                tooltip('Empty response');
-                return;
-            }
-
-            if(data.success && data.creations) {
-                data.creations.forEach(function(r) {
-                    const clone = template.content.cloneNode(true);
-
-                    clone.querySelector('.creation-card').setAttribute('data-id', r.model_id);
-                    clone.querySelector('.creation-card').setAttribute('data-doopen', open_model);
-                    clone.querySelector('.creation-title').innerHTML = r.title;
-                    clone.querySelector('.meta-author .user').innerHTML = you ?? 'you';
-                    clone.querySelector('.meta-author .date').innerHTML = r.date;
-                    clone.querySelector('.creation-thumbnail').setAttribute('src', start_url + r.thumb);
-
-                    clone.querySelector('.views').append(r.views + ' views');
-                    clone.querySelector('.favs').append(r.likes + ' favorites');
-                    clone.querySelector('.size').append(r.size);
-                    clone.querySelector('.comments').append(r.comments + ' comments');
-
-                    container.appendChild(clone);
-                });
-
-                let nextpage = page + 1;
-
-                popup.style.display = 'block';
-                nextbutton.setAttribute('data-doopen', open_model);
-                nextbutton.setAttribute('data-nextpage', nextpage);
-            } else if (data.code) {
-                tooltip(this.SERVER_CODES[response.code] || 'An error has occured');
-                return;
-            } else {
-                nextbutton.remove();
-            }
-        });
-    };
-}
-
 document.getElementById('user-creations-wrapper').addEventListener('click', function(event) {
     let item = event.target.closest('.creation-card');
 
     if (item) {
         let model_id = item.getAttribute('data-id');
-        let do_open = item.getAttribute('data-doopen');
+        let do_open = parseInt(item.getAttribute('data-doopen'));
 
         if (model_id) {
             loadJSONFromCloud(model_id, do_open);
@@ -2128,10 +2073,10 @@ document.getElementById('user-creations-wrapper').addEventListener('click', func
 });
 
 document.getElementById('user-creations-foward-button').addEventListener('click', function(event) {
-    let cloud = new fromCloud();
+    let cloud = new fromCloud(start_url);
     let btn = document.getElementById('user-creations-foward-button');
 
-    let open_model = btn.getAttribute('data-doopen');
+    let open_model = parseInt(btn.getAttribute('data-doopen'));
     let page = parseInt(btn.getAttribute('data-nextpage'));
 
     if(page && open_model) {

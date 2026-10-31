@@ -1,5 +1,5 @@
 import metadata from "./modules/metadata.js";
-import { settings as _settings, defaults as _defaults } from "./settings.js";
+import { settings as _settings, defaults as _defaults, readSettings, saveSettings, clearSettings } from "./settings.js";
 window.settings = _settings;
 window.defaults = _defaults;
 

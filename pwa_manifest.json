@@ -1,0 +1,57 @@
+{
+  "short_name": "Gr8Brik",
+  "name": "Gr8Brik Modeler",
+  "icons": [
+    {
+      "src": "img/logos/192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/logos/384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "img/logos/512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "id": "?source=pwa",
+  "start_url": "?source=pwa",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#87ceeb",
+  "shortcuts": [
+    {
+      "name": "Open a Creation from my account",
+      "short_name": "Open Creation",
+      "description": "Opens a dialog to view and edit Creations from your account.",
+      "url": "?source=pwa&my_creations=true",
+      "icons": [
+        {
+          "src": "img/logos/192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "description": "LDraw and WebGL based LEGO building webapp with social features in your web browser.",
+  "screenshots": [
+    {
+      "src": "img/misc/start.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "img/misc/start.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "form_factor": "wide"
+    }
+  ]
+}
